@@ -211,23 +211,31 @@ class CardItem extends StatelessWidget {
           behavior: HitTestBehavior.opaque,
           onTap: onTap,
           child: SizedBox(
-            width: 320,
-            child: Card(
-                color: Colors.primaries[item.type % 17],
-                child: Stack(
-                  children: <Widget>[
-                    Image.network(
-                        "https://realbitcoinclub.firebaseapp.com/img/app/pizzapirat.gif"),
-                    new Container(
-                      decoration: new BoxDecoration(
-                        color: Colors.purple,
+            width: 480,
+            child: Padding(
+              padding: EdgeInsets.all(5.0),
+              child: Card(
+                  color: Colors.primaries[item.type % 17],
+                  child: Stack(
+                    children: <Widget>[
+                      Image.network(
+                        "https://realbitcoinclub.firebaseapp.com/img/app/trbc.gif",
+                        height: 320,
+                        alignment: Alignment.bottomCenter,
                       ),
-                      child: Center(
-                        child: Text(item.name, style: textStyle),
+                      new Container(
+                        height: 120,
+                        decoration: new BoxDecoration(
+                          color: Colors.white,
+                          //gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [Colors.black, Colors.white]),
+                        ),
+                        child: Center(
+                          child: Text(item.name, style: textStyle),
+                        ),
                       ),
-                    ),
-                  ],
-                )),
+                    ],
+                  )),
+            ),
           ),
         ),
       ),
