@@ -17,7 +17,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample> {
   List<Merchant> names = new List<Merchant>(); // names we get from API
 
   void _getNames() async {
-    final response = await dio.get('https://realbitcoinclub.firebaseapp.com/places8.json');
+    final response =
+        await dio.get('https://realbitcoinclub.firebaseapp.com/places8.json');
     ListModel<Merchant> tempList = ListModel<Merchant>(
       listKey: _listKey,
       removedItemBuilder: _buildRemovedItem,
@@ -29,7 +30,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample> {
       Merchant m2 = Merchant.fromJson(response.data[i]);
       //tempList.add(m2);
       tempList.insert(_list.length, m2);
-      print(response.data[i].toString());
+      //print(response.data[i].toString());
     }
 
     setState(() {
@@ -42,7 +43,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample> {
     super.initState();
     _list = ListModel<Merchant>(
       listKey: _listKey,
-     removedItemBuilder: _buildRemovedItem,
+      removedItemBuilder: _buildRemovedItem,
     );
     _nextItem = 3;
     _getNames();
@@ -160,9 +161,9 @@ class ListModel<E> {
     final E removedItem = _items.removeAt(index);
     if (removedItem != null) {
       _animatedList.removeItem(index,
-              (BuildContext context, Animation<double> animation) {
-            return removedItemBuilder(removedItem, context, animation);
-          });
+          (BuildContext context, Animation<double> animation) {
+        return removedItemBuilder(removedItem, context, animation);
+      });
     }
     return removedItem;
   }
@@ -181,10 +182,10 @@ class ListModel<E> {
 class CardItem extends StatelessWidget {
   const CardItem(
       {Key key,
-        @required this.animation,
-        this.onTap,
-        @required this.item,
-        this.selected: false})
+      @required this.animation,
+      this.onTap,
+      @required this.item,
+      this.selected: false})
       : assert(animation != null),
         assert(item != null),
         assert(selected != null),
@@ -198,9 +199,9 @@ class CardItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Merchant m2 = Merchant.fromJson(jsonDecode(item.toString()));
-    TextStyle textStyle = Theme.of(context).textTheme.display1;
-    if (selected)
-      textStyle = textStyle.copyWith(color: Colors.lightGreenAccent[400]);
+    TextStyle textStyle = Theme.of(context).textTheme.body1;
+    //if (selected)
+    //textStyle = textStyle.copyWith(color: Colors.lightGreenAccent[400]);
     return Padding(
       padding: const EdgeInsets.all(1.0),
       child: SizeTransition(
@@ -210,13 +211,23 @@ class CardItem extends StatelessWidget {
           behavior: HitTestBehavior.opaque,
           onTap: onTap,
           child: SizedBox(
-            height: 128.0,
+            width: 320,
             child: Card(
-              color: Colors.primaries[11],
-              child: Center(
-                child: Text(item.name, style: textStyle),
-              ),
-            ),
+                color: Colors.primaries[item.type % 17],
+                child: Stack(
+                  children: <Widget>[
+                    Image.network(
+                        "https://realbitcoinclub.firebaseapp.com/img/app/pizzapirat.gif"),
+                    new Container(
+                      decoration: new BoxDecoration(
+                        color: Colors.purple,
+                      ),
+                      child: Center(
+                        child: Text(item.name, style: textStyle),
+                      ),
+                    ),
+                  ],
+                )),
           ),
         ),
       ),
@@ -231,25 +242,26 @@ class Merchant {
   String x;
   String y;
   String name;
-  String type;
+  int type;
   String reviewCount;
   String reviewStars;
-  String discount;
+  int discount;
   String tags;
   String location;
 
-  Merchant(this.id, this.x, this.y, this.name, this.type, this.reviewCount, this.reviewStars, this.discount, this.tags, this.location);
+  Merchant(this.id, this.x, this.y, this.name, this.type, this.reviewCount,
+      this.reviewStars, this.discount, this.tags, this.location);
 
   // named constructor
   Merchant.fromJson(Map<String, dynamic> json)
       : id = json['p'],
-        x= json['x'],
+        x = json['x'],
         y = json['y'],
         name = json['n'],
-        type = json['t'],
+        type = int.parse(json['t']),
         reviewCount = json['c'],
         reviewStars = json['s'],
-        discount = json['d'],
+        discount = int.parse(json['d']),
         tags = json['a'],
         location = json['l'];
 
