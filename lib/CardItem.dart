@@ -59,7 +59,7 @@ class CardItem extends StatelessWidget {
                             alignment: Alignment.topCenter,
                           ),
                           Container(
-                            height: 90,
+                            height: 120,
                             decoration: BoxDecoration(
                               color: Colors.primaries[item.type % 17]
                                   .withOpacity(0.8),
@@ -70,6 +70,7 @@ class CardItem extends StatelessWidget {
                               child: ListView(
                                 children: <Widget>[
                                   Text(item.name, style: textStyle),
+                                  Text("Distance: 0,1km", style: textStyle2),
                                   Text(item.tags, style: textStyle2),
                                   Text(
                                       "Reviews: " +
@@ -90,7 +91,11 @@ class CardItem extends StatelessWidget {
                         child: ButtonBar(
                           children: <Widget>[
                             FlatButton(
-                              child: const Text('DIRECTIONS'),
+                              child: const Text('REVIEW'),
+                              onPressed: () {/* ... */},
+                            ),
+                            FlatButton(
+                              child: const Text('VISIT'),
                               onPressed: () {/* ... */},
                             ),
                             FlatButton(
