@@ -111,7 +111,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample> {
           // Define the default Brightness and Colors
           brightness: Brightness.dark,
           primaryColor: Colors.lightBlue[800],
-          accentColor: Colors.cyan[600],
+          accentColor: Colors.white,
 
           // Define the default Font Family
           fontFamily: 'Montserrat',

@@ -39,32 +39,61 @@ class CardItem extends StatelessWidget {
           behavior: HitTestBehavior.opaque,
           onTap: onTap,
           child: SizedBox(
-            width: 480,
+            height: 402,
             child: Padding(
               padding: EdgeInsets.all(5.0),
               child: Card(
                   color: Colors.primaries[item.type % 17],
-                  child: Stack(
+                  child: Column(
                     children: <Widget>[
-                      Image.network(
-                        "https://realbitcoinclub.firebaseapp.com/img/app/" + item.id + ".gif",
-                        height: 320,
-                        alignment: Alignment.bottomCenter,
-                      ),
-                      new Container(
-                        height: 120,
-                        decoration: new BoxDecoration(
-                          color: Colors.primaries[item.type % 17],
-                          //gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [Colors.black, Colors.white]),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.all(10.0),
-                          child: ListView(children: <Widget>[
-                            Text(item.name, style: textStyle),
-                            Text(item.tags, style: textStyle2),
-                            Text("Reviews: " + item.reviewStars + " (" + item.reviewCount + ")", style: textStyle2),
-                            Text(item.location, style: textStyle2)],
+                      Stack(
+                        children: <Widget>[
+                          Image.network(
+                            "https://realbitcoinclub.firebaseapp.com/img/app/" +
+                                item.id +
+                                ".gif",
+                            height: 320,
+                            alignment: Alignment.topCenter,
                           ),
+                          Container(
+                            height: 90,
+                            decoration: BoxDecoration(
+                              color: Colors.primaries[item.type % 17].withOpacity(0.8),
+                              //gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [Colors.black, Colors.white]),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.all(10.0),
+                              child: ListView(
+                                children: <Widget>[
+                                  Text(item.name, style: textStyle),
+                                  Text(item.tags, style: textStyle2),
+                                  Text(
+                                      "Reviews: " +
+                                          item.reviewStars +
+                                          " (" +
+                                          item.reviewCount +
+                                          ")",
+                                      style: textStyle2),
+                                  Text(item.location, style: textStyle2)
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      ButtonTheme.bar(
+                        // make buttons use the appropriate styles for cards
+                        child: ButtonBar(
+                          children: <Widget>[
+                            FlatButton(
+                              child: const Text('DIRECTIONS'),
+                              onPressed: () {/* ... */},
+                            ),
+                            FlatButton(
+                              child: const Text('EXPAND'),
+                              onPressed: () {/* ... */},
+                            ),
+                          ],
                         ),
                       ),
                     ],
