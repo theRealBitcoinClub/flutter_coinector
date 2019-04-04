@@ -18,6 +18,7 @@ environment:
 
 dependencies:
   dio: ^2.1.0
+  transparent_image: ^1.0.0
   flutter:
     sdk: flutter
 

@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'Merchant.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 /// Displays its integer item as 'item N' on a Card whose color is based on
 /// the item's value. The text is displayed in bright green if selected is true.
@@ -48,17 +49,20 @@ class CardItem extends StatelessWidget {
                     children: <Widget>[
                       Stack(
                         children: <Widget>[
-                          Image.network(
-                            "https://realbitcoinclub.firebaseapp.com/img/app/" +
-                                item.id +
-                                ".gif",
+                          FadeInImage.memoryNetwork(
+                            placeholder: kTransparentImage,
+                            image:
+                                "https://realbitcoinclub.firebaseapp.com/img/app/" +
+                                    item.id +
+                                    ".gif",
                             height: 320,
                             alignment: Alignment.topCenter,
                           ),
                           Container(
                             height: 90,
                             decoration: BoxDecoration(
-                              color: Colors.primaries[item.type % 17].withOpacity(0.8),
+                              color: Colors.primaries[item.type % 17]
+                                  .withOpacity(0.8),
                               //gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [Colors.black, Colors.white]),
                             ),
                             child: Padding(
