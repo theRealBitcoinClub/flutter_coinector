@@ -1,6 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'ListModel.dart';
+import 'CardItem.dart';
+import 'Merchant.dart';
 import 'dart:convert';
 
 class AnimatedListSample extends StatefulWidget {
@@ -15,23 +18,28 @@ class _AnimatedListSampleState extends State<AnimatedListSample> {
   int _nextItem; // The next item inserted when the user presses the '+' button.
   final dio = new Dio(); // for http requests
   List<Merchant> names = new List<Merchant>(); // names we get from API
+  ListModel<Merchant> tempList;
+  Response response;
 
   void _getNames() async {
-    final response =
+    if (response == null)
+      response =
         await dio.get('https://realbitcoinclub.firebaseapp.com/places8.json');
-    ListModel<Merchant> tempList = ListModel<Merchant>(
+
+    //List<Merchant> tempList = new List<Merchant>();
+    tempList = ListModel<Merchant>(
       listKey: _listKey,
       removedItemBuilder: _buildRemovedItem,
     );
 
-    //List<Merchant> tempList = new List<Merchant>();
-
-    for (int i = 0; i < response.data.length; i++) {
+    //RESPONSE.DATA.LENGTH
+    for (int i = 0; i < 5; i++) {
       Merchant m2 = Merchant.fromJson(response.data[i]);
       //tempList.add(m2);
       tempList.insert(_list.length, m2);
       //print(response.data[i].toString());
     }
+    //tempList.sublist(0, 10);
 
     setState(() {
       _list = tempList;
@@ -99,9 +107,29 @@ class _AnimatedListSampleState extends State<AnimatedListSample> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        theme: ThemeData(
+          // Define the default Brightness and Colors
+          brightness: Brightness.dark,
+          primaryColor: Colors.lightBlue[800],
+          accentColor: Colors.cyan[600],
+
+          // Define the default Font Family
+          fontFamily: 'Montserrat',
+
+          // Define the default TextTheme. Use this to specify the default
+          // text styling for headlines, titles, bodies of text, and more.
+          textTheme: TextTheme(
+            headline: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+            title: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
+            body1: TextStyle(fontSize: 18.0, fontFamily: 'Hind', color: Colors.white),
+            body2: TextStyle(fontSize: 14.0, fontFamily: 'Hind', color: Colors.white70),
+          ),
+        ),
       home: Scaffold(
         appBar: AppBar(
           title: const Text('AnimatedList'),
+
+
           actions: <Widget>[
             IconButton(
               icon: const Icon(Icons.add_circle),
@@ -126,161 +154,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample> {
       ),
     );
   }
-}
-
-/// Keeps a Dart List in sync with an AnimatedList.
-///
-/// The [insert] and [removeAt] methods apply to both the internal list and the
-/// animated list that belongs to [listKey].
-///
-/// This class only exposes as much of the Dart List API as is needed by the
-/// sample app. More list methods are easily added, however methods that mutate the
-/// list must make the same changes to the animated list in terms of
-/// [AnimatedListState.insertItem] and [AnimatedList.removeItem].
-class ListModel<E> {
-  ListModel({
-    @required this.listKey,
-    @required this.removedItemBuilder,
-    Iterable<E> initialItems,
-  })  : assert(listKey != null),
-        assert(removedItemBuilder != null),
-        _items = List<E>.from(initialItems ?? <E>[]);
-
-  final GlobalKey<AnimatedListState> listKey;
-  final dynamic removedItemBuilder;
-  final List<E> _items;
-
-  AnimatedListState get _animatedList => listKey.currentState;
-
-  void insert(int index, E item) {
-    _items.insert(index, item);
-    _animatedList.insertItem(index);
-  }
-
-  E removeAt(int index) {
-    final E removedItem = _items.removeAt(index);
-    if (removedItem != null) {
-      _animatedList.removeItem(index,
-          (BuildContext context, Animation<double> animation) {
-        return removedItemBuilder(removedItem, context, animation);
-      });
-    }
-    return removedItem;
-  }
-
-  int get length => _items.length;
-
-  E operator [](int index) => _items[index];
-
-  int indexOf(E item) => _items.indexOf(item);
-}
-
-/// Displays its integer item as 'item N' on a Card whose color is based on
-/// the item's value. The text is displayed in bright green if selected is true.
-/// This widget's height is based on the animation parameter, it varies
-/// from 0 to 128 as the animation varies from 0.0 to 1.0.
-class CardItem extends StatelessWidget {
-  const CardItem(
-      {Key key,
-      @required this.animation,
-      this.onTap,
-      @required this.item,
-      this.selected: false})
-      : assert(animation != null),
-        assert(item != null),
-        assert(selected != null),
-        super(key: key);
-
-  final Animation<double> animation;
-  final VoidCallback onTap;
-  final Merchant item;
-  final bool selected;
-
-  @override
-  Widget build(BuildContext context) {
-    //Merchant m2 = Merchant.fromJson(jsonDecode(item.toString()));
-    TextStyle textStyle = Theme.of(context).textTheme.body1;
-    //if (selected)
-    //textStyle = textStyle.copyWith(color: Colors.lightGreenAccent[400]);
-    return Padding(
-      padding: const EdgeInsets.all(1.0),
-      child: SizeTransition(
-        axis: Axis.vertical,
-        sizeFactor: animation,
-        child: GestureDetector(
-          behavior: HitTestBehavior.opaque,
-          onTap: onTap,
-          child: SizedBox(
-            width: 480,
-            child: Padding(
-              padding: EdgeInsets.all(5.0),
-              child: Card(
-                  color: Colors.primaries[item.type % 17],
-                  child: Stack(
-                    children: <Widget>[
-                      Image.network(
-                        "https://realbitcoinclub.firebaseapp.com/img/app/trbc.gif",
-                        height: 320,
-                        alignment: Alignment.bottomCenter,
-                      ),
-                      new Container(
-                        height: 120,
-                        decoration: new BoxDecoration(
-                          color: Colors.white,
-                          //gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [Colors.black, Colors.white]),
-                        ),
-                        child: Center(
-                          child: Text(item.name, style: textStyle),
-                        ),
-                      ),
-                    ],
-                  )),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-//{"p":"trbc", "x":"41.406595", "y":"2.16655","n":"TRBC - The Real Bitcoin Club", "t":"99","c":"3","s":"5.0", "d":"3", "a":"0,1,2,34", "l":"Barcelona, Spain, Europe"}
-
-class Merchant {
-  String id;
-  String x;
-  String y;
-  String name;
-  int type;
-  String reviewCount;
-  String reviewStars;
-  int discount;
-  String tags;
-  String location;
-
-  Merchant(this.id, this.x, this.y, this.name, this.type, this.reviewCount,
-      this.reviewStars, this.discount, this.tags, this.location);
-
-  // named constructor
-  Merchant.fromJson(Map<String, dynamic> json)
-      : id = json['p'],
-        x = json['x'],
-        y = json['y'],
-        name = json['n'],
-        type = int.parse(json['t']),
-        reviewCount = json['c'],
-        reviewStars = json['s'],
-        discount = int.parse(json['d']),
-        tags = json['a'],
-        location = json['l'];
-
-  // method
-  /*Map<String, dynamic> toJson() {
-    return {
-      'name': name,
-      'age': age,
-    };
-  }*/
-
 }
 
 void main() {
