@@ -279,7 +279,7 @@ class CardItem extends StatelessWidget {
                               child: const Text('PAY'),
                               onPressed: () {
                                 showAlertDialog(context);
-                                },
+                              },
                             ),
                             FlatButton(
                               child: const Text('VISIT'),
@@ -301,7 +301,8 @@ class CardItem extends StatelessWidget {
 }
 
 _launchURL() async {
-  const url = 'https://search.google.com/local/writereview?placeid=ChIJ89o4J5aipBIRfDm0sBYWJZQ';
+  const url =
+      'https://search.google.com/local/writereview?placeid=ChIJ89o4J5aipBIRfDm0sBYWJZQ';
   if (await canLaunch(url)) {
     await launch(url);
   } else {
