@@ -110,7 +110,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample> {
         theme: ThemeData(
           // Define the default Brightness and Colors
           brightness: Brightness.dark,
-          primaryColor: Colors.lightBlue[800],
+          primaryColor: Colors.blueGrey[900],
           accentColor: Colors.white,
 
           // Define the default Font Family
@@ -127,19 +127,19 @@ class _AnimatedListSampleState extends State<AnimatedListSample> {
         ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('AnimatedList'),
+          title: const Text('Coinector'),
 
 
           actions: <Widget>[
             IconButton(
-              icon: const Icon(Icons.add_circle),
+              icon: const Icon(Icons.search),
               onPressed: _insert,
-              tooltip: 'insert a new item',
+              tooltip: 'search',
             ),
             IconButton(
-              icon: const Icon(Icons.remove_circle),
+              icon: const Icon(Icons.settings),
               onPressed: _remove,
-              tooltip: 'remove the selected item',
+              tooltip: 'settings',
             ),
           ],
         ),

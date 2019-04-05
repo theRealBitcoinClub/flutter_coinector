@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'Merchant.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'ItemInfoStackLayer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 /// Displays its integer item as 'item N' on a Card whose color is based on
 /// the item's value. The text is displayed in bright green if selected is true.
@@ -207,6 +208,7 @@ class CardItem extends StatelessWidget {
     TextStyle textStyle2 = Theme.of(context).textTheme.body2;
     //if (selected)
     //textStyle = textStyle.copyWith(color: Colors.lightGreenAccent[400]);
+    final generatedColor = Colors.primaries[item.type % 17];
     return Padding(
       padding: const EdgeInsets.all(1.0),
       child: SizeTransition(
@@ -220,7 +222,7 @@ class CardItem extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.all(5.0),
               child: Card(
-                  color: Colors.primaries[item.type % 17],
+                  color: generatedColor,
                   child: Column(
                     children: <Widget>[
                       Stack(
@@ -239,16 +241,28 @@ class CardItem extends StatelessWidget {
                               Container(
                                 height: 90,
                                 decoration: BoxDecoration(
-                                  color: Colors.primaries[item.type % 17],
-                                  //gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [Colors.black, Colors.white]),
+                                  //color: Colors.primaries[item.type % 17].withOpacity(0.7),
+
+                                  gradient: LinearGradient(
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                      colors: [
+                                        generatedColor,
+                                        generatedColor,
+                                        generatedColor.withOpacity(0.7)
+                                      ]),
                                 ),
                               ),
                               Container(
                                 height: 90,
-                                decoration:
-                                BoxDecoration(color: Colors.black.withOpacity(0.3)),
+                                decoration: BoxDecoration(
+                                    color: Colors.black.withOpacity(0.3)),
                               ),
-                              new ItemInfoStackLayer(item: item, textStyle: textStyle, textStyle2: textStyle2, tagText: tagText)
+                              new ItemInfoStackLayer(
+                                  item: item,
+                                  textStyle: textStyle,
+                                  textStyleSmall: textStyle2,
+                                  tagText: tagText)
                             ],
                           ),
                         ],
@@ -263,11 +277,15 @@ class CardItem extends StatelessWidget {
                             ),
                             FlatButton(
                               child: const Text('PAY'),
-                              onPressed: () {/* ... */},
+                              onPressed: () {
+                                showAlertDialog(context);
+                                },
                             ),
                             FlatButton(
                               child: const Text('VISIT'),
-                              onPressed: () {/* ... */},
+                              onPressed: () {
+                                _launchURL();
+                              },
                             ),
                           ],
                         ),
@@ -282,4 +300,48 @@ class CardItem extends StatelessWidget {
   }
 }
 
+_launchURL() async {
+  const url = 'https://search.google.com/local/writereview?placeid=ChIJ89o4J5aipBIRfDm0sBYWJZQ';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
 
+showAlertDialog(BuildContext context) {
+  // set up the buttons
+  Widget remindButton = FlatButton(
+    child: Text("DASH"),
+    onPressed: () {
+      Navigator.pop(context);
+    },
+  );
+  Widget cancelButton = FlatButton(
+    child: Text("BCH"),
+    onPressed: () {
+      Navigator.pop(context);
+    },
+  );
+  Widget launchButton = FlatButton(
+    child: Text("BTC"),
+    onPressed: null,
+  );
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text("Choose Coin"),
+    content: Text("Which coin do you want to use?"),
+    actions: [
+      remindButton,
+      cancelButton,
+      launchButton,
+    ],
+  );
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}

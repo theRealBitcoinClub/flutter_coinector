@@ -19,6 +19,8 @@ environment:
 dependencies:
   dio: ^2.1.0
   transparent_image: ^1.0.0
+  smooth_star_rating: 1.0.2
+  url_launcher: 5.0.2
   flutter:
     sdk: flutter
 
