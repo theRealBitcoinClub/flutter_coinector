@@ -19,6 +19,8 @@ class CardItem extends StatelessWidget {
         assert(selected != null),
         super(key: key);
 
+  final tagText = const {'Bitcoin','Events','Trading','Organic','Vegetarian','Vegan','Healthy','Burger','Sandwich','Muffin','Brownie','Cake','Cookie','Tiramisu','Pizza','Salad','Smoothie','Fruit','IceCream','Raw','Handbag','Cosmetic','Tattoo','Piercing','Souvenir','Hatha','Vinyasa','Massage','Upcycled','Coffee','NoGluten','Cocktails','Beer','Music','Projects','Electro','Rock','LiveDJ','Terrace','Seeds','Grinder','Papers','Advice','Calzone','Suppli','MakeUp','Gifts','Tapas','Copas','Piadina','Herbs','Grains','Fashion','Fair','Women','Drinks','TV','Retro','Color','BW','BTC','BCH','Online','Booking','HotDog','Fast','Kosher','Sushi','Moto','Coche','Tablet','Chicken','Rabbit','Potatoe','DASH','ETH','ATM','Disco','Dance','TakeAway','Meditation','Wine','Champagne','Alcohol','Booze','Hookers','Girls','Gay','Party','English','BnB','Haircut','Nails','Beauty','Miso','Teriyaki','Rice','Seafood','Hostel','Fries','Fish','Chips','Italian','Karaoke',' x x x ','Battery','Wheels','Men','Pasta','Dessert','Starter','BBQ','Noodle','Korean','Market','Bread','Bakery','Cafe','Games','Snacks','Elegant','Piano','Brunch','Nachos','Lunch','Breakfast','HappyHour','LateNight','Mexican','Burrito','Tortilla','Indonesian','Sports','Pastry','Bistro','Soup','Tea','Onion','Steak','Shakes','Empanadas','Dinner','Sweet','Fried','Omelette','Gin','Donut','Delivery','Cups','Filter','Juice','Vietnamese','Pie','Unagi','Greek','Japanese','Tacos','Kombucha','Indian','Nan','Club','Liquor','Pool','Hotel','Pork','Ribs','Kava','Chai','Izzy','Matcha','CBD','Latte'};
+
   final Animation<double> animation;
   final VoidCallback onTap;
   final Merchant item;
@@ -56,13 +58,12 @@ class CardItem extends StatelessWidget {
                                     item.id +
                                     ".gif",
                             height: 320,
-                            alignment: Alignment.topCenter,
+                            alignment: Alignment.bottomCenter,
                           ),
                           Container(
-                            height: 120,
+                            height: 90,
                             decoration: BoxDecoration(
-                              color: Colors.primaries[item.type % 17]
-                                  .withOpacity(0.8),
+                              color: Colors.primaries[item.type % 17],
                               //gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [Colors.black, Colors.white]),
                             ),
                             child: Padding(
@@ -70,16 +71,13 @@ class CardItem extends StatelessWidget {
                               child: ListView(
                                 children: <Widget>[
                                   Text(item.name, style: textStyle),
-                                  Text("Distance: 0,1km", style: textStyle2),
-                                  Text(item.tags, style: textStyle2),
-                                  Text(
-                                      "Reviews: " +
-                                          item.reviewStars +
-                                          " (" +
-                                          item.reviewCount +
-                                          ")",
-                                      style: textStyle2),
-                                  Text(item.location, style: textStyle2)
+                                  Text(item.location, style: textStyle2),
+                                  Text("Distance: 0,1km, Reviews: " +
+                                      item.reviewStars +
+                                      " (" +
+                                      item.reviewCount +
+                                      ")", style: textStyle2),
+                                  Text(parseElementAt(0) + ", " + parseElementAt(1) + ", " + parseElementAt(2) + ", " + parseElementAt(3), style: textStyle2)
                                 ],
                               ),
                             ),
@@ -95,11 +93,11 @@ class CardItem extends StatelessWidget {
                               onPressed: () {/* ... */},
                             ),
                             FlatButton(
-                              child: const Text('VISIT'),
+                              child: const Text('PAY'),
                               onPressed: () {/* ... */},
                             ),
                             FlatButton(
-                              child: const Text('EXPAND'),
+                              child: const Text('VISIT'),
                               onPressed: () {/* ... */},
                             ),
                           ],
@@ -113,4 +111,8 @@ class CardItem extends StatelessWidget {
       ),
     );
   }
+
+  String parseElementAt(int pos) => tagText.elementAt(int.parse(item.tags.split(",").elementAt(pos)));
 }
+
+
