@@ -11,8 +11,30 @@ class AnimatedListSample extends StatefulWidget {
   _AnimatedListSampleState createState() => _AnimatedListSampleState();
 }
 
-class _AnimatedListSampleState extends State<AnimatedListSample> {
+class _Page {
+  const _Page({this.text});
+  final String text;
+}
+const List<_Page> _pagesTags = <_Page>[
+  _Page(text: 'ORGANIC'),
+  _Page(text: 'BURGER'),
+  _Page(text: 'VEGAN'),
+  _Page(text: 'PIZZA'),
+  _Page(text: 'JUICE'),
+  _Page(text: 'SALAD'),
+  _Page(text: 'MARKET'),
+ /* _Page(text: 'SWEET'),
+  _Page(text: 'SPICEY'),
+  _Page(text: 'SALTY'),
+  _Page(text: 'COCKTAILS'),
+  _Page(text: 'BEER'),
+  _Page(text: 'MUSIC'),*/
+];
+
+class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTickerProviderStateMixin {
   final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
+  TabController _controller;
+  bool _customIndicator = false;
   ListModel<Merchant> _list;
   int _selectedItem;
   int _nextItem; // The next item inserted when the user presses the '+' button.
@@ -20,6 +42,12 @@ class _AnimatedListSampleState extends State<AnimatedListSample> {
   List<Merchant> names = new List<Merchant>(); // names we get from API
   ListModel<Merchant> tempList;
   Response response;
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   void _getNames() async {
     if (response == null)
@@ -46,9 +74,29 @@ class _AnimatedListSampleState extends State<AnimatedListSample> {
     });
   }
 
+  Decoration getIndicator() {
+    if (!_customIndicator) return const UnderlineTabIndicator();
+
+    return ShapeDecoration(
+      shape: const StadiumBorder(
+        side: BorderSide(
+          color: Colors.white24,
+          width: 2.0,
+        ),
+      ) +
+          const StadiumBorder(
+            side: BorderSide(
+              color: Colors.transparent,
+              width: 4.0,
+            ),
+          ),
+    );
+  }
+
   @override
   void initState() {
     super.initState();
+    _controller = TabController(vsync: this, length: _pagesTags.length);
     _list = ListModel<Merchant>(
       listKey: _listKey,
       removedItemBuilder: _buildRemovedItem,
@@ -128,7 +176,14 @@ class _AnimatedListSampleState extends State<AnimatedListSample> {
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Coinector'),
-
+          bottom: TabBar(
+            controller: _controller,
+            isScrollable: true,
+            indicator: getIndicator(),
+            tabs: _pagesTags.map<Tab>((_Page page) {
+                  return Tab(text: page.text);
+            }).toList(),
+          ),
 
           actions: <Widget>[
             IconButton(
@@ -143,14 +198,28 @@ class _AnimatedListSampleState extends State<AnimatedListSample> {
             ),
           ],
         ),
-        body: Padding(
+        body: TabBarView(
+        controller: _controller,
+        children: _pagesTags.map<Widget>((_Page page) {
+          return Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: AnimatedList(
+              key: _listKey,
+              initialItemCount: _list.length,
+              itemBuilder: _buildItem,
+            ),
+          );
+        }).toList(),
+      ),
+
+     /*   Padding(
           padding: const EdgeInsets.all(4.0),
           child: AnimatedList(
             key: _listKey,
             initialItemCount: _list.length,
             itemBuilder: _buildItem,
           ),
-        ),
+        ),*/
       ),
     );
   }
