@@ -16,14 +16,15 @@ class _Page {
   final String text;
 }
 const List<_Page> _pagesTags = <_Page>[
-  _Page(text: 'ORGANIC'),
-  _Page(text: 'BURGER'),
-  _Page(text: 'VEGAN'),
-  _Page(text: 'PIZZA'),
+  _Page(text: 'RESTAURANT'),
+  _Page(text: 'BAR'),
+  _Page(text: 'HOTEL'),
+  _Page(text: 'ATM'),
+  /*
   _Page(text: 'JUICE'),
   _Page(text: 'SALAD'),
   _Page(text: 'MARKET'),
- /* _Page(text: 'SWEET'),
+  _Page(text: 'SWEET'),
   _Page(text: 'SPICEY'),
   _Page(text: 'SALTY'),
   _Page(text: 'COCKTAILS'),
@@ -32,15 +33,24 @@ const List<_Page> _pagesTags = <_Page>[
 ];
 
 class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTickerProviderStateMixin {
-  final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
+  final GlobalKey<AnimatedListState> _listKeyRestaurant = GlobalKey<AnimatedListState>();
+  final GlobalKey<AnimatedListState> _listKeyBar = GlobalKey<AnimatedListState>();
+  final GlobalKey<AnimatedListState> _listKeyHotel = GlobalKey<AnimatedListState>();
+  final GlobalKey<AnimatedListState> _listKeyATM = GlobalKey<AnimatedListState>();
   TabController _controller;
   bool _customIndicator = false;
-  ListModel<Merchant> _list;
+  ListModel<Merchant> _listRestaurant;
+  ListModel<Merchant> _listBar;
+  ListModel<Merchant> _listHotel;
+  ListModel<Merchant> _listATM;
   int _selectedItem;
   int _nextItem; // The next item inserted when the user presses the '+' button.
   final dio = new Dio(); // for http requests
   List<Merchant> names = new List<Merchant>(); // names we get from API
-  ListModel<Merchant> tempList;
+  ListModel<Merchant> tempListRestaurant;
+  ListModel<Merchant> tempListBar;
+  ListModel<Merchant> tempListHotel;
+  ListModel<Merchant> tempListATM;
   Response response;
 
   @override
@@ -55,22 +65,46 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
         await dio.get('https://realbitcoinclub.firebaseapp.com/places8.json');
 
     //List<Merchant> tempList = new List<Merchant>();
-    tempList = ListModel<Merchant>(
-      listKey: _listKey,
+    tempListRestaurant = ListModel<Merchant>(
+      listKey: _listKeyRestaurant,
+      removedItemBuilder: _buildRemovedItem,
+    );
+    tempListBar = ListModel<Merchant>(
+      listKey: _listKeyBar,
+      removedItemBuilder: _buildRemovedItem,
+    );
+    tempListHotel = ListModel<Merchant>(
+      listKey: _listKeyHotel,
+      removedItemBuilder: _buildRemovedItem,
+    );
+    tempListATM = ListModel<Merchant>(
+      listKey: _listKeyATM,
       removedItemBuilder: _buildRemovedItem,
     );
 
     //RESPONSE.DATA.LENGTH
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < response.data.length; i++) {
       Merchant m2 = Merchant.fromJson(response.data[i]);
       //tempList.add(m2);
-      tempList.insert(_list.length, m2);
+      switch (m2.type) {
+        case 0: tempListRestaurant.insert(_listRestaurant.length, m2); return;
+        case 1: tempListRestaurant.insert(_listRestaurant.length, m2); return;
+        case 2: tempListBar.insert(_listBar.length, m2); return;
+        case 5: tempListHotel.insert(_listHotel.length, m2); return;
+        case 99: tempListATM.insert(_listATM.length, m2); return;
+      }
+
+      var x = "";
+      //tempList.insert(_list.length, m2);
       //print(response.data[i].toString());
     }
     //tempList.sublist(0, 10);
 
     setState(() {
-      _list = tempList;
+      _listRestaurant = tempListRestaurant;
+      _listBar = tempListBar;
+      _listHotel = tempListHotel;
+      _listATM = tempListATM;
     });
   }
 
@@ -97,8 +131,20 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
   void initState() {
     super.initState();
     _controller = TabController(vsync: this, length: _pagesTags.length);
-    _list = ListModel<Merchant>(
-      listKey: _listKey,
+    _listRestaurant = ListModel<Merchant>(
+      listKey: _listKeyRestaurant,
+      removedItemBuilder: _buildRemovedItem,
+    );
+    _listBar = ListModel<Merchant>(
+      listKey: _listKeyBar,
+      removedItemBuilder: _buildRemovedItem,
+    );
+    _listHotel = ListModel<Merchant>(
+      listKey: _listKeyHotel,
+      removedItemBuilder: _buildRemovedItem,
+    );
+    _listATM = ListModel<Merchant>(
+      listKey: _listKeyATM,
       removedItemBuilder: _buildRemovedItem,
     );
     _nextItem = 3;
@@ -106,17 +152,32 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
   }
 
   // Used to build list items that haven't been removed.
-  Widget _buildItem(
+  Widget _buildItemRestaurant(
       BuildContext context, int index, Animation<double> animation) {
     return CardItem(
       animation: animation,
-      item: _list[index],
-      selected: _selectedItem == _list[index],
-      onTap: () {
-        setState(() {
-          //_selectedItem = _selectedItem == _list[index] ? null : _list[index];
-        });
-      },
+      item: _listRestaurant[index],
+    );
+  }
+  Widget _buildItemBar(
+      BuildContext context, int index, Animation<double> animation) {
+    return CardItem(
+      animation: animation,
+      item: _listBar[index],
+    );
+  }
+  Widget _buildItemHotel(
+      BuildContext context, int index, Animation<double> animation) {
+    return CardItem(
+      animation: animation,
+      item: _listHotel[index],
+    );
+  }
+  Widget _buildItemATM(
+      BuildContext context, int index, Animation<double> animation) {
+    return CardItem(
+      animation: animation,
+      item: _listATM[index],
     );
   }
 
@@ -201,14 +262,44 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
         body: TabBarView(
         controller: _controller,
         children: _pagesTags.map<Widget>((_Page page) {
-          return Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: AnimatedList(
-              key: _listKey,
-              initialItemCount: _list.length,
-              itemBuilder: _buildItem,
-            ),
-          );
+          if (page.text == "RESTAURANT") {
+            return Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: AnimatedList(
+                key: _listKeyRestaurant,
+                initialItemCount: _listRestaurant.length,
+                itemBuilder: _buildItemRestaurant,
+              ),
+            );
+          } else if (page.text == "BAR") {
+            return Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: AnimatedList(
+                key: _listKeyBar,
+                initialItemCount: _listBar.length,
+                itemBuilder: _buildItemBar,
+              ),
+            );
+          } else if (page.text == "HOTEL") {
+            return Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: AnimatedList(
+                key: _listKeyHotel,
+                initialItemCount: _listHotel.length,
+                itemBuilder: _buildItemHotel,
+              ),
+            );
+          } else if (page.text == "ATM") {
+            return Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: AnimatedList(
+                key: _listKeyATM,
+                initialItemCount: _listATM.length,
+                itemBuilder: _buildItemATM,
+              ),
+            );
+          }
+
         }).toList(),
       ),
 
