@@ -12,17 +12,20 @@ class AnimatedListSample extends StatefulWidget {
 }
 
 class _Page {
-  const _Page({this.text});
+  const _Page({this.text, this.icon});
   final String text;
+  final IconData icon;
 }
+
+//TODO add takeaway
 const List<_Page> _pagesTags = <_Page>[
-  _Page(text: 'RESTAURANT'),
-  _Page(text: 'BAR'),
-  _Page(text: 'MARKET'),
-  _Page(text: 'SHOP'),
-  _Page(text: 'HOTEL'),
-  _Page(text: 'ATM'),
-  _Page(text: 'WELLNESS'),
+  _Page(text: 'EAT', icon: Icons.restaurant),
+  _Page(text: 'BAR', icon: Icons.local_bar),
+  _Page(text: 'MARKET', icon: Icons.shopping_cart),
+  _Page(text: 'SHOP', icon: Icons.shopping_basket),
+  _Page(text: 'HOTEL', icon: Icons.hotel),
+  _Page(text: 'ATM', icon: Icons.atm),
+  _Page(text: 'SPA', icon: Icons.spa),
   /*
   _Page(text: 'JUICE'),
   _Page(text: 'SALAD'),
@@ -317,7 +320,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
             isScrollable: true,
             indicator: getIndicator(),
             tabs: _pagesTags.map<Tab>((_Page page) {
-                  return Tab(text: page.text);
+                  return Tab(icon: Icon(page.icon), text: page.text);
             }).toList(),
           ),
 
