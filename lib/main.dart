@@ -18,8 +18,11 @@ class _Page {
 const List<_Page> _pagesTags = <_Page>[
   _Page(text: 'RESTAURANT'),
   _Page(text: 'BAR'),
+  _Page(text: 'MARKET'),
+  _Page(text: 'SHOP'),
   _Page(text: 'HOTEL'),
   _Page(text: 'ATM'),
+  _Page(text: 'WELLNESS'),
   /*
   _Page(text: 'JUICE'),
   _Page(text: 'SALAD'),
@@ -37,20 +40,29 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
   final GlobalKey<AnimatedListState> _listKeyBar = GlobalKey<AnimatedListState>();
   final GlobalKey<AnimatedListState> _listKeyHotel = GlobalKey<AnimatedListState>();
   final GlobalKey<AnimatedListState> _listKeyATM = GlobalKey<AnimatedListState>();
+  final GlobalKey<AnimatedListState> _listKeyShop = GlobalKey<AnimatedListState>();
+  final GlobalKey<AnimatedListState> _listKeyMarket = GlobalKey<AnimatedListState>();
+  final GlobalKey<AnimatedListState> _listKeyWellness = GlobalKey<AnimatedListState>();
   TabController _controller;
   bool _customIndicator = false;
   ListModel<Merchant> _listRestaurant;
   ListModel<Merchant> _listBar;
+  ListModel<Merchant> _listMarket;
+  ListModel<Merchant> _listShop;
   ListModel<Merchant> _listHotel;
   ListModel<Merchant> _listATM;
+  ListModel<Merchant> _listWellness;
   int _selectedItem;
   int _nextItem; // The next item inserted when the user presses the '+' button.
   final dio = new Dio(); // for http requests
   List<Merchant> names = new List<Merchant>(); // names we get from API
   ListModel<Merchant> tempListRestaurant;
   ListModel<Merchant> tempListBar;
+  ListModel<Merchant> tempListMarket;
+  ListModel<Merchant> tempListShop;
   ListModel<Merchant> tempListHotel;
   ListModel<Merchant> tempListATM;
+  ListModel<Merchant> tempListWellness;
   Response response;
 
   @override
@@ -81,6 +93,18 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
       listKey: _listKeyATM,
       removedItemBuilder: _buildRemovedItem,
     );
+    tempListMarket = ListModel<Merchant>(
+      listKey: _listKeyMarket,
+      removedItemBuilder: _buildRemovedItem,
+    );
+    tempListShop = ListModel<Merchant>(
+      listKey: _listKeyShop,
+      removedItemBuilder: _buildRemovedItem,
+    );
+    tempListWellness = ListModel<Merchant>(
+      listKey: _listKeyWellness,
+      removedItemBuilder: _buildRemovedItem,
+    );
 
     //RESPONSE.DATA.LENGTH
     for (int i = 0; i < 100; i++) {
@@ -91,8 +115,14 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
         tempListRestaurant.insert(_listRestaurant.length, m2);
       else if (m2.type == 2)
         tempListBar.insert(_listBar.length, m2);
+      else if (m2.type == 3)
+        tempListMarket.insert(_listMarket.length, m2);
+      else if (m2.type == 4)
+        tempListShop.insert(_listShop.length, m2);
       else if (m2.type == 5)
         tempListHotel.insert(_listHotel.length, m2);
+      else if (m2.type == 999)
+        tempListWellness.insert(_listWellness.length, m2);
       else if (m2.type == 99)
         tempListATM.insert(_listATM.length, m2);
       /*switch (m2.type) {
@@ -114,6 +144,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
       _listBar = tempListBar;
       _listHotel = tempListHotel;
       _listATM = tempListATM;
+      _listMarket = tempListMarket;
+      _listShop = tempListShop;
+      _listWellness = tempListWellness;
     });
   }
 
@@ -156,6 +189,18 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
       listKey: _listKeyATM,
       removedItemBuilder: _buildRemovedItem,
     );
+    _listMarket = ListModel<Merchant>(
+      listKey: _listKeyMarket,
+      removedItemBuilder: _buildRemovedItem,
+    );
+    _listShop = ListModel<Merchant>(
+      listKey: _listKeyShop,
+      removedItemBuilder: _buildRemovedItem,
+    );
+    _listWellness = ListModel<Merchant>(
+      listKey: _listKeyWellness,
+      removedItemBuilder: _buildRemovedItem,
+    );
     _nextItem = 3;
     _getNames();
   }
@@ -187,6 +232,27 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
     return CardItem(
       animation: animation,
       item: _listATM[index],
+    );
+  }
+  Widget _buildItemWellness(
+      BuildContext context, int index, Animation<double> animation) {
+    return CardItem(
+      animation: animation,
+      item: _listWellness[index],
+    );
+  }
+  Widget _buildItemMarket(
+      BuildContext context, int index, Animation<double> animation) {
+    return CardItem(
+      animation: animation,
+      item: _listMarket[index],
+    );
+  }
+  Widget _buildItemShop(
+      BuildContext context, int index, Animation<double> animation) {
+    return CardItem(
+      animation: animation,
+      item: _listShop[index],
     );
   }
 
@@ -291,6 +357,22 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
             Padding(
               padding: const EdgeInsets.all(4.0),
               child: AnimatedList(
+                key: _listKeyMarket,
+                initialItemCount: _listMarket.length,
+                itemBuilder: _buildItemMarket,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: AnimatedList(
+                key: _listKeyShop,
+                initialItemCount: _listShop.length,
+                itemBuilder: _buildItemShop,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: AnimatedList(
                 key: _listKeyHotel,
                 initialItemCount: _listHotel.length,
                 itemBuilder: _buildItemHotel,
@@ -302,6 +384,14 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
                 key: _listKeyATM,
                 initialItemCount: _listATM.length,
                 itemBuilder: _buildItemATM,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: AnimatedList(
+                key: _listKeyWellness,
+                initialItemCount: _listWellness.length,
+                itemBuilder: _buildItemWellness,
               ),
             )]
          /* } else if (page.text == "BAR") {
