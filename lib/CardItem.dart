@@ -260,14 +260,16 @@ class CardItem extends StatelessWidget {
                                       colors: [
                                         generatedColor,
                                         generatedColor,
-                                        generatedColor.withOpacity(0.7)
+                                        generatedColor.withOpacity(0.9),
+                                        generatedColor.withOpacity(0.75),
+                                        generatedColor.withOpacity(0.6)
                                       ]),
                                 ),
                               ),
                               Container(
                                 height: 100,
                                 decoration: BoxDecoration(
-                                    color: Colors.black.withOpacity(0.3)),
+                                    color: Colors.black.withOpacity(0.2)),
                               ),
                               new ItemInfoStackLayer(
                                   item: item,
