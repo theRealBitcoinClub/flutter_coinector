@@ -250,7 +250,7 @@ class CardItem extends StatelessWidget {
                           Stack(
                             children: <Widget>[
                               Container(
-                                height: 90,
+                                height: 100,
                                 decoration: BoxDecoration(
                                   //color: Colors.primaries[item.type % 17].withOpacity(0.7),
 
@@ -265,7 +265,7 @@ class CardItem extends StatelessWidget {
                                 ),
                               ),
                               Container(
-                                height: 90,
+                                height: 100,
                                 decoration: BoxDecoration(
                                     color: Colors.black.withOpacity(0.3)),
                               ),

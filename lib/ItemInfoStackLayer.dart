@@ -20,7 +20,7 @@ class ItemInfoStackLayer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 90,
+      height: 100,
       child: Padding(
         padding: EdgeInsets.all(10.0),
         child: ListView(
