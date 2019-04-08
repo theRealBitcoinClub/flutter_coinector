@@ -76,6 +76,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   ListModel<Merchant> tempListATM;
   ListModel<Merchant> tempListWellness;
   Response response;
+  String _title = "Coinector";
 
   @override
   void dispose() {
@@ -180,10 +181,17 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     );
   }
 
+  _handleTabSelection() {
+      setState(() {
+        _title = _pagesTags[_controller.index].title;
+      });
+  }
+
   @override
   void initState() {
     super.initState();
     _controller = TabController(vsync: this, length: _pagesTags.length);
+    _controller.addListener(_handleTabSelection);
     _listRestaurant = ListModel<Merchant>(
       listKey: _listKeyRestaurant,
       removedItemBuilder: _buildRemovedItem,
@@ -357,7 +365,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                 (BuildContext context, bool innerBoxIsScrolled) {
               return <Widget>[
                 SliverAppBar(
-                  title: const Text('Coinector'),
+                  title: Text(_title),
                   bottom: TabBar(
                     controller: _controller,
                     isScrollable: true,
