@@ -89,7 +89,56 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       response =
           await dio.get('https://realbitcoinclub.firebaseapp.com/places8.json');
 
-    //List<Merchant> tempList = new List<Merchant>();
+    initTempListModel();
+
+    //RESPONSE.DATA.LENGTH
+    for (int i = 0; i < 50; i++) {
+      Merchant m2 = Merchant.fromJson(response.data[i]);
+
+      insertIntoTempList(m2);
+    }
+
+    setState(() {
+      _listRestaurant = tempListRestaurant;
+      _listBar = tempListBar;
+      _listHotel = tempListHotel;
+      _listATM = tempListATM;
+      _listMarket = tempListMarket;
+      _listShop = tempListShop;
+      _listWellness = tempListWellness;
+    });
+  }
+
+  void insertIntoTempList(Merchant m2) {
+    switch (m2.type) {
+      case 0:
+        tempListRestaurant.insert(_listRestaurant.length, m2);
+        break;
+      case 1:
+        tempListRestaurant.insert(_listRestaurant.length, m2);
+        break;
+      case 2:
+        tempListBar.insert(_listBar.length, m2);
+        break;
+      case 3:
+        tempListMarket.insert(_listMarket.length, m2);
+        break;
+      case 4:
+        tempListShop.insert(_listShop.length, m2);
+        break;
+      case 5:
+        tempListHotel.insert(_listHotel.length, m2);
+        break;
+      case 99:
+        tempListATM.insert(_listATM.length, m2);
+        break;
+      case 999:
+        tempListWellness.insert(_listWellness.length, m2);
+        break;
+    }
+  }
+
+  void initTempListModel() {
     tempListRestaurant = ListModel<Merchant>(
       listKey: _listKeyRestaurant,
       removedItemBuilder: _buildRemovedItem,
@@ -118,48 +167,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       listKey: _listKeyWellness,
       removedItemBuilder: _buildRemovedItem,
     );
-
-    //RESPONSE.DATA.LENGTH
-    for (int i = 0; i < 100; i++) {
-      Merchant m2 = Merchant.fromJson(response.data[i]);
-      //Merchant m3 = Merchant.fromJson(response.data[i]);
-      //tempList.add(m2);
-      if (m2.type == 0 || m2.type == 1)
-        tempListRestaurant.insert(_listRestaurant.length, m2);
-      else if (m2.type == 2)
-        tempListBar.insert(_listBar.length, m2);
-      else if (m2.type == 3)
-        tempListMarket.insert(_listMarket.length, m2);
-      else if (m2.type == 4)
-        tempListShop.insert(_listShop.length, m2);
-      else if (m2.type == 5)
-        tempListHotel.insert(_listHotel.length, m2);
-      else if (m2.type == 999)
-        tempListWellness.insert(_listWellness.length, m2);
-      else if (m2.type == 99) tempListATM.insert(_listATM.length, m2);
-      /*switch (m2.type) {
-        case 0: tempListRestaurant.insert(_listRestaurant.length, m2); return;
-        case 1: tempListRestaurant.insert(_listRestaurant.length, m2); return;
-        case 2: tempListBar.insert(_listBar.length, m2); return;
-        case 5: tempListHotel.insert(_listHotel.length, m2); return;
-        case 99: tempListATM.insert(_listATM.length, m2); return;
-      }*/
-
-      var x = "";
-      //tempList.insert(_list.length, m2);
-      //print(response.data[i].toString());
-    }
-    //tempList.sublist(0, 10);
-
-    setState(() {
-      _listRestaurant = tempListRestaurant;
-      _listBar = tempListBar;
-      _listHotel = tempListHotel;
-      _listATM = tempListATM;
-      _listMarket = tempListMarket;
-      _listShop = tempListShop;
-      _listWellness = tempListWellness;
-    });
   }
 
   Decoration getIndicator() {
@@ -182,9 +189,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   _handleTabSelection() {
-      setState(() {
-        _title = _pagesTags[_controller.index].title;
-      });
+    setState(() {
+      _title = _pagesTags[_controller.index].title;
+    });
   }
 
   @override
@@ -192,6 +199,12 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     super.initState();
     _controller = TabController(vsync: this, length: _pagesTags.length);
     _controller.addListener(_handleTabSelection);
+    initListModel();
+    _nextItem = 3;
+    _getNames();
+  }
+
+  void initListModel() {
     _listRestaurant = ListModel<Merchant>(
       listKey: _listKeyRestaurant,
       removedItemBuilder: _buildRemovedItem,
@@ -220,8 +233,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       listKey: _listKeyWellness,
       removedItemBuilder: _buildRemovedItem,
     );
-    _nextItem = 3;
-    _getNames();
   }
 
   // Used to build list items that haven't been removed.
@@ -337,60 +348,35 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         ),
       ),
       home: Scaffold(
-          /*appBar: AppBar(
-            title: const Text('Coinector'),
-            bottom: TabBar(
-              controller: _controller,
-              isScrollable: true,
-              indicator: getIndicator(),
-              tabs: _pagesTags.map<Tab>((_Page page) {
-                return Tab(icon: Icon(page.icon), text: page.text);
-              }).toList(),
-            ),
-            actions: <Widget>[
-              IconButton(
-                icon: const Icon(Icons.search),
-                onPressed: _insert,
-                tooltip: 'search',
-              ),
-              IconButton(
-                icon: const Icon(Icons.settings),
-                onPressed: _remove,
-                tooltip: 'settings',
-              ),
-            ],
-          ),*/
           body: NestedScrollView(
-            headerSliverBuilder:
-                (BuildContext context, bool innerBoxIsScrolled) {
-              return <Widget>[
-                SliverAppBar(
-                  title: Text(_title),
-                  bottom: TabBar(
-                    controller: _controller,
-                    isScrollable: true,
-                    indicator: getIndicator(),
-                    tabs: _pagesTags.map<Tab>((_Page page) {
-                      return Tab(icon: Icon(page.icon), text: page.text);
-                    }).toList(),
-                  ),
-                  actions: <Widget>[
-                    IconButton(
-                      icon: const Icon(Icons.search),
-                      onPressed: _insert,
-                      tooltip: 'search',
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.settings),
-                      onPressed: _remove,
-                      tooltip: 'settings',
-                    ),
-                  ],
-
-                  expandedHeight: 30.0,
-                  floating: false,
-                  pinned: false,
-                  /*flexibleSpace: FlexibleSpaceBar(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return <Widget>[
+            SliverAppBar(
+              title: Text(_title),
+              bottom: TabBar(
+                controller: _controller,
+                isScrollable: true,
+                indicator: getIndicator(),
+                tabs: _pagesTags.map<Tab>((_Page page) {
+                  return Tab(icon: Icon(page.icon), text: page.text);
+                }).toList(),
+              ),
+              actions: <Widget>[
+                IconButton(
+                  icon: const Icon(Icons.search),
+                  onPressed: _insert,
+                  tooltip: 'search',
+                ),
+                IconButton(
+                  icon: const Icon(Icons.settings),
+                  onPressed: _remove,
+                  tooltip: 'settings',
+                ),
+              ],
+              expandedHeight: 30.0,
+              floating: false,
+              pinned: false,
+              /*flexibleSpace: FlexibleSpaceBar(
                     centerTitle: true,
                     title: Text("KATEGORIE"/* TODO titlerein _pagesTags[_controller.index].title*/,
                         style: TextStyle(
@@ -402,111 +388,70 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                         fit: BoxFit.cover,
                       ) //TODO restaurants image w/ text
                   ),*/
-                ),
-              ];
-            },
-            body: TabBarView(controller: _controller, children: [
-              //_pagesTags.map<Widget>((_Page page) {
-              // if (page.text == "RESTAURANT") {
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: AnimatedList(
-                  key: _listKeyRestaurant,
-                  initialItemCount: _listRestaurant.length,
-                  itemBuilder: _buildItemRestaurant,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: AnimatedList(
-                  key: _listKeyBar,
-                  initialItemCount: _listBar.length,
-                  itemBuilder: _buildItemBar,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: AnimatedList(
-                  key: _listKeyMarket,
-                  initialItemCount: _listMarket.length,
-                  itemBuilder: _buildItemMarket,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: AnimatedList(
-                  key: _listKeyShop,
-                  initialItemCount: _listShop.length,
-                  itemBuilder: _buildItemShop,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: AnimatedList(
-                  key: _listKeyHotel,
-                  initialItemCount: _listHotel.length,
-                  itemBuilder: _buildItemHotel,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: AnimatedList(
-                  key: _listKeyATM,
-                  initialItemCount: _listATM.length,
-                  itemBuilder: _buildItemATM,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: AnimatedList(
-                  key: _listKeyWellness,
-                  initialItemCount: _listWellness.length,
-                  itemBuilder: _buildItemWellness,
-                ),
-              )
-            ]
-                /* } else if (page.text == "BAR") {
-            return Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: AnimatedList(
-                key: _listKeyBar,
-                initialItemCount: _listBar.length,
-                itemBuilder: _buildItemBar,
-              ),
-            );
-          } else if (page.text == "HOTEL") {
-            return Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: AnimatedList(
-                key: _listKeyHotel,
-                initialItemCount: _listHotel.length,
-                itemBuilder: _buildItemHotel,
-              ),
-            );
-          } else if (page.text == "ATM") {
-            return Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: AnimatedList(
-                key: _listKeyATM,
-                initialItemCount: _listATM.length,
-                itemBuilder: _buildItemATM,
-              ),
-            );
-          }*/
-
-                //}).toList(),
-                ),
+            ),
+          ];
+        },
+        body: TabBarView(controller: _controller, children: [
+          //_pagesTags.map<Widget>((_Page page) {
+          // if (page.text == "RESTAURANT") {
+          Padding(
+            padding: const EdgeInsets.all(0.0),
+            child: AnimatedList(
+              key: _listKeyRestaurant,
+              initialItemCount: _listRestaurant.length,
+              itemBuilder: _buildItemRestaurant,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(0.0),
+            child: AnimatedList(
+              key: _listKeyBar,
+              initialItemCount: _listBar.length,
+              itemBuilder: _buildItemBar,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(0.0),
+            child: AnimatedList(
+              key: _listKeyMarket,
+              initialItemCount: _listMarket.length,
+              itemBuilder: _buildItemMarket,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(0.0),
+            child: AnimatedList(
+              key: _listKeyShop,
+              initialItemCount: _listShop.length,
+              itemBuilder: _buildItemShop,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(0.0),
+            child: AnimatedList(
+              key: _listKeyHotel,
+              initialItemCount: _listHotel.length,
+              itemBuilder: _buildItemHotel,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(0.0),
+            child: AnimatedList(
+              key: _listKeyATM,
+              initialItemCount: _listATM.length,
+              itemBuilder: _buildItemATM,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(0.0),
+            child: AnimatedList(
+              key: _listKeyWellness,
+              initialItemCount: _listWellness.length,
+              itemBuilder: _buildItemWellness,
+            ),
           )
-
-          /*   Padding(
-          padding: const EdgeInsets.all(4.0),
-          child: AnimatedList(
-            key: _listKey,
-            initialItemCount: _list.length,
-            itemBuilder: _buildItem,
-          ),
-        ),*/
-          ),
+        ]),
+      )),
     );
   }
 }
