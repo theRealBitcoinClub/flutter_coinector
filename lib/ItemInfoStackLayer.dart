@@ -24,6 +24,7 @@ class ItemInfoStackLayer extends StatelessWidget {
       child: Padding(
         padding: EdgeInsets.all(10.0),
         child: ListView(
+          physics: const NeverScrollableScrollPhysics(),
           children: <Widget>[
             Text(item.name + "   ", style: textStyle),
             Row(

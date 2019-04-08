@@ -209,6 +209,25 @@ class CardItem extends StatelessWidget {
     //if (selected)
     //textStyle = textStyle.copyWith(color: Colors.lightGreenAccent[400]);
     final generatedColor = Colors.primaries[item.type % 17];
+    var image;
+    try {
+      image = FadeInImage.memoryNetwork(
+        placeholder: kTransparentImage,
+        image: "https://realbitcoinclub.firebaseapp.com/img/app/" +
+            item.id +
+            ".gif",
+        height: 320,
+        alignment: Alignment.bottomCenter,
+      );
+    } catch (e) {
+      image = FadeInImage.memoryNetwork(
+        placeholder: kTransparentImage,
+        image: "https://realbitcoinclub.firebaseapp.com/img/app/trbc.gif",
+        height: 320,
+        alignment: Alignment.bottomCenter,
+      );
+      //CATCH ALL 404 because of missing images
+    }
     return Padding(
       padding: const EdgeInsets.all(1.0),
       child: SizeTransition(
@@ -227,15 +246,7 @@ class CardItem extends StatelessWidget {
                     children: <Widget>[
                       Stack(
                         children: <Widget>[
-                          FadeInImage.memoryNetwork(
-                            placeholder: kTransparentImage,
-                            image:
-                                "https://realbitcoinclub.firebaseapp.com/img/app/" +
-                                    item.id +
-                                    ".gif",
-                            height: 320,
-                            alignment: Alignment.bottomCenter,
-                          ),
+                          image,
                           Stack(
                             children: <Widget>[
                               Container(
@@ -273,7 +284,9 @@ class CardItem extends StatelessWidget {
                           children: <Widget>[
                             FlatButton(
                               child: const Text('REVIEW'),
-                              onPressed: () {/* ... */},
+                              onPressed: () {
+                                /* ... */
+                              },
                             ),
                             FlatButton(
                               child: const Text('PAY'),
