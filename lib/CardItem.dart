@@ -241,6 +241,9 @@ class CardItem extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.all(5.0),
               child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
                   color: generatedColor,
                   child: Column(
                     children: <Widget>[
@@ -290,12 +293,12 @@ class CardItem extends StatelessWidget {
                                 /* ... */
                               },
                             ),
-                            FlatButton(
+                           /* FlatButton(
                               child: const Text('PAY'),
                               onPressed: () {
                                 showAlertDialog(context);
                               },
-                            ),
+                            ),*/
                             FlatButton(
                               child: const Text('VISIT'),
                               onPressed: () {
