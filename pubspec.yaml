@@ -21,7 +21,7 @@ dependencies:
   transparent_image: ^1.0.0
   smooth_star_rating: ^1.0.2
   url_launcher: ^5.0.2
-  geolocator: ^3.0.1
+  #geolocator: ^3.0.1
   flutter:
     sdk: flutter
 
