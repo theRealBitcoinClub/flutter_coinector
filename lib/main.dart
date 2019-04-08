@@ -329,7 +329,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         ),
       ),
       home: Scaffold(
-          appBar: AppBar(
+          /*appBar: AppBar(
             title: const Text('Coinector'),
             bottom: TabBar(
               controller: _controller,
@@ -351,27 +351,49 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                 tooltip: 'settings',
               ),
             ],
-          ),
+          ),*/
           body: NestedScrollView(
             headerSliverBuilder:
                 (BuildContext context, bool innerBoxIsScrolled) {
               return <Widget>[
                 SliverAppBar(
+                  title: const Text('Coinector'),
+                  bottom: TabBar(
+                    controller: _controller,
+                    isScrollable: true,
+                    indicator: getIndicator(),
+                    tabs: _pagesTags.map<Tab>((_Page page) {
+                      return Tab(icon: Icon(page.icon), text: page.text);
+                    }).toList(),
+                  ),
+                  actions: <Widget>[
+                    IconButton(
+                      icon: const Icon(Icons.search),
+                      onPressed: _insert,
+                      tooltip: 'search',
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.settings),
+                      onPressed: _remove,
+                      tooltip: 'settings',
+                    ),
+                  ],
+
                   expandedHeight: 30.0,
                   floating: false,
                   pinned: false,
-                  flexibleSpace: FlexibleSpaceBar(
+                  /*flexibleSpace: FlexibleSpaceBar(
                     centerTitle: true,
                     title: Text("KATEGORIE"/* TODO titlerein _pagesTags[_controller.index].title*/,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 18.0,
                         )),
-                    /*background: Image.network(
+                    background: Image.network(
                         "https://realbitcoinclub.firebaseapp.com/img/app/trbc.gif",
                         fit: BoxFit.cover,
-                      ) TODO restaurants image w/ text*/
-                  ),
+                      ) //TODO restaurants image w/ text
+                  ),*/
                 ),
               ];
             },
