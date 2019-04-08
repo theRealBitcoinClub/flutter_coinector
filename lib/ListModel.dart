@@ -36,12 +36,13 @@ class ListModel<E> {
 
   void insert(int index, E item) {
     _items.insert(index, item);
-    _animatedList.insertItem(index);
+    if (_animatedList != null)
+      _animatedList.insertItem(index);
   }
 
   E removeAt(int index) {
     final E removedItem = _items.removeAt(index);
-    if (removedItem != null) {
+    if (removedItem != null && _animatedList != null) {
       _animatedList.removeItem(index,
           (BuildContext context, Animation<double> animation) {
         return removedItemBuilder(removedItem, context, animation);

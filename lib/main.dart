@@ -83,16 +83,25 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
     );
 
     //RESPONSE.DATA.LENGTH
-    for (int i = 0; i < response.data.length; i++) {
+    for (int i = 0; i < 100; i++) {
       Merchant m2 = Merchant.fromJson(response.data[i]);
+      //Merchant m3 = Merchant.fromJson(response.data[i]);
       //tempList.add(m2);
-      switch (m2.type) {
+      if (m2.type==0 || m2.type == 1)
+        tempListRestaurant.insert(_listRestaurant.length, m2);
+      else if (m2.type == 2)
+        tempListBar.insert(_listBar.length, m2);
+      else if (m2.type == 5)
+        tempListHotel.insert(_listHotel.length, m2);
+      else if (m2.type == 99)
+        tempListATM.insert(_listATM.length, m2);
+      /*switch (m2.type) {
         case 0: tempListRestaurant.insert(_listRestaurant.length, m2); return;
         case 1: tempListRestaurant.insert(_listRestaurant.length, m2); return;
         case 2: tempListBar.insert(_listBar.length, m2); return;
         case 5: tempListHotel.insert(_listHotel.length, m2); return;
         case 99: tempListATM.insert(_listATM.length, m2); return;
-      }
+      }*/
 
       var x = "";
       //tempList.insert(_list.length, m2);
@@ -261,17 +270,41 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
         ),
         body: TabBarView(
         controller: _controller,
-        children: _pagesTags.map<Widget>((_Page page) {
-          if (page.text == "RESTAURANT") {
-            return Padding(
+        children: [//_pagesTags.map<Widget>((_Page page) {
+         // if (page.text == "RESTAURANT") {
+            Padding(
               padding: const EdgeInsets.all(4.0),
               child: AnimatedList(
                 key: _listKeyRestaurant,
                 initialItemCount: _listRestaurant.length,
                 itemBuilder: _buildItemRestaurant,
               ),
-            );
-          } else if (page.text == "BAR") {
+            ),
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: AnimatedList(
+                key: _listKeyBar,
+                initialItemCount: _listBar.length,
+                itemBuilder: _buildItemBar,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: AnimatedList(
+                key: _listKeyHotel,
+                initialItemCount: _listHotel.length,
+                itemBuilder: _buildItemHotel,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(4.0),
+              child: AnimatedList(
+                key: _listKeyATM,
+                initialItemCount: _listATM.length,
+                itemBuilder: _buildItemATM,
+              ),
+            )]
+         /* } else if (page.text == "BAR") {
             return Padding(
               padding: const EdgeInsets.all(4.0),
               child: AnimatedList(
@@ -298,9 +331,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
                 itemBuilder: _buildItemATM,
               ),
             );
-          }
+          }*/
 
-        }).toList(),
+        //}).toList(),
       ),
 
      /*   Padding(
