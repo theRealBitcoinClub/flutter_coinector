@@ -12,20 +12,21 @@ class AnimatedListSample extends StatefulWidget {
 }
 
 class _Page {
-  const _Page({this.text, this.icon});
+  const _Page({this.text, this.icon, this.title});
   final String text;
+  final String title;
   final IconData icon;
 }
 
 //TODO add takeaway
 const List<_Page> _pagesTags = <_Page>[
-  _Page(text: 'EAT', icon: Icons.restaurant),
-  _Page(text: 'BAR', icon: Icons.local_bar),
-  _Page(text: 'MARKET', icon: Icons.shopping_cart),
-  _Page(text: 'SHOP', icon: Icons.shopping_basket),
-  _Page(text: 'HOTEL', icon: Icons.hotel),
-  _Page(text: 'ATM', icon: Icons.atm),
-  _Page(text: 'SPA', icon: Icons.spa),
+  _Page(text: 'EAT', icon: Icons.restaurant, title: 'RESTAURANT & TAKE-AWAY'),
+  _Page(text: 'BAR', icon: Icons.local_bar, title: 'BAR, CLUB & CAFE'),
+  _Page(text: 'MARKET', icon: Icons.shopping_cart, title: 'SUPERMARKET'),
+  _Page(text: 'SHOP', icon: Icons.shopping_basket, title: 'SOUVENIR & SERVICE'),
+  _Page(text: 'HOTEL', icon: Icons.hotel, title: 'HOTEL, B&B, FLAT'),
+  _Page(text: 'ATM', icon: Icons.atm, title: 'TELLER & TRADER'),
+  _Page(text: 'SPA', icon: Icons.spa, title: 'WELLNESS & BEAUTY'),
   /*
   _Page(text: 'JUICE'),
   _Page(text: 'SALAD'),
@@ -38,14 +39,22 @@ const List<_Page> _pagesTags = <_Page>[
   _Page(text: 'MUSIC'),*/
 ];
 
-class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTickerProviderStateMixin {
-  final GlobalKey<AnimatedListState> _listKeyRestaurant = GlobalKey<AnimatedListState>();
-  final GlobalKey<AnimatedListState> _listKeyBar = GlobalKey<AnimatedListState>();
-  final GlobalKey<AnimatedListState> _listKeyHotel = GlobalKey<AnimatedListState>();
-  final GlobalKey<AnimatedListState> _listKeyATM = GlobalKey<AnimatedListState>();
-  final GlobalKey<AnimatedListState> _listKeyShop = GlobalKey<AnimatedListState>();
-  final GlobalKey<AnimatedListState> _listKeyMarket = GlobalKey<AnimatedListState>();
-  final GlobalKey<AnimatedListState> _listKeyWellness = GlobalKey<AnimatedListState>();
+class _AnimatedListSampleState extends State<AnimatedListSample>
+    with SingleTickerProviderStateMixin {
+  final GlobalKey<AnimatedListState> _listKeyRestaurant =
+      GlobalKey<AnimatedListState>();
+  final GlobalKey<AnimatedListState> _listKeyBar =
+      GlobalKey<AnimatedListState>();
+  final GlobalKey<AnimatedListState> _listKeyHotel =
+      GlobalKey<AnimatedListState>();
+  final GlobalKey<AnimatedListState> _listKeyATM =
+      GlobalKey<AnimatedListState>();
+  final GlobalKey<AnimatedListState> _listKeyShop =
+      GlobalKey<AnimatedListState>();
+  final GlobalKey<AnimatedListState> _listKeyMarket =
+      GlobalKey<AnimatedListState>();
+  final GlobalKey<AnimatedListState> _listKeyWellness =
+      GlobalKey<AnimatedListState>();
   TabController _controller;
   bool _customIndicator = false;
   ListModel<Merchant> _listRestaurant;
@@ -77,7 +86,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
   void _getNames() async {
     if (response == null)
       response =
-        await dio.get('https://realbitcoinclub.firebaseapp.com/places8.json');
+          await dio.get('https://realbitcoinclub.firebaseapp.com/places8.json');
 
     //List<Merchant> tempList = new List<Merchant>();
     tempListRestaurant = ListModel<Merchant>(
@@ -114,7 +123,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
       Merchant m2 = Merchant.fromJson(response.data[i]);
       //Merchant m3 = Merchant.fromJson(response.data[i]);
       //tempList.add(m2);
-      if (m2.type==0 || m2.type == 1)
+      if (m2.type == 0 || m2.type == 1)
         tempListRestaurant.insert(_listRestaurant.length, m2);
       else if (m2.type == 2)
         tempListBar.insert(_listBar.length, m2);
@@ -126,8 +135,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
         tempListHotel.insert(_listHotel.length, m2);
       else if (m2.type == 999)
         tempListWellness.insert(_listWellness.length, m2);
-      else if (m2.type == 99)
-        tempListATM.insert(_listATM.length, m2);
+      else if (m2.type == 99) tempListATM.insert(_listATM.length, m2);
       /*switch (m2.type) {
         case 0: tempListRestaurant.insert(_listRestaurant.length, m2); return;
         case 1: tempListRestaurant.insert(_listRestaurant.length, m2); return;
@@ -158,11 +166,11 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
 
     return ShapeDecoration(
       shape: const StadiumBorder(
-        side: BorderSide(
-          color: Colors.white24,
-          width: 2.0,
-        ),
-      ) +
+            side: BorderSide(
+              color: Colors.white24,
+              width: 2.0,
+            ),
+          ) +
           const StadiumBorder(
             side: BorderSide(
               color: Colors.transparent,
@@ -216,6 +224,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
       item: _listRestaurant[index],
     );
   }
+
   Widget _buildItemBar(
       BuildContext context, int index, Animation<double> animation) {
     return CardItem(
@@ -223,6 +232,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
       item: _listBar[index],
     );
   }
+
   Widget _buildItemHotel(
       BuildContext context, int index, Animation<double> animation) {
     return CardItem(
@@ -230,6 +240,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
       item: _listHotel[index],
     );
   }
+
   Widget _buildItemATM(
       BuildContext context, int index, Animation<double> animation) {
     return CardItem(
@@ -237,6 +248,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
       item: _listATM[index],
     );
   }
+
   Widget _buildItemWellness(
       BuildContext context, int index, Animation<double> animation) {
     return CardItem(
@@ -244,6 +256,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
       item: _listWellness[index],
     );
   }
+
   Widget _buildItemMarket(
       BuildContext context, int index, Animation<double> animation) {
     return CardItem(
@@ -251,6 +264,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
       item: _listMarket[index],
     );
   }
+
   Widget _buildItemShop(
       BuildContext context, int index, Animation<double> animation) {
     return CardItem(
@@ -294,131 +308,134 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(
-          // Define the default Brightness and Colors
-          brightness: Brightness.dark,
-          primaryColor: Colors.blueGrey[900],
-          accentColor: Colors.white,
+      theme: ThemeData(
+        // Define the default Brightness and Colors
+        brightness: Brightness.dark,
+        primaryColor: Colors.blueGrey[900],
+        accentColor: Colors.white,
 
-          // Define the default Font Family
-          fontFamily: 'Montserrat',
+        // Define the default Font Family
+        fontFamily: 'Montserrat',
 
-          // Define the default TextTheme. Use this to specify the default
-          // text styling for headlines, titles, bodies of text, and more.
-          textTheme: TextTheme(
-            headline: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-            title: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
-            body1: TextStyle(fontSize: 18.0, fontFamily: 'Hind', color: Colors.white),
-            body2: TextStyle(fontSize: 14.0, fontFamily: 'Hind', color: Colors.white70),
-          ),
+        // Define the default TextTheme. Use this to specify the default
+        // text styling for headlines, titles, bodies of text, and more.
+        textTheme: TextTheme(
+          headline: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+          title: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
+          body1: TextStyle(
+              fontSize: 18.0, fontFamily: 'Hind', color: Colors.white),
+          body2: TextStyle(
+              fontSize: 14.0, fontFamily: 'Hind', color: Colors.white70),
         ),
+      ),
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Coinector'),
-          bottom: TabBar(
-            controller: _controller,
-            isScrollable: true,
-            indicator: getIndicator(),
-            tabs: _pagesTags.map<Tab>((_Page page) {
-                  return Tab(icon: Icon(page.icon), text: page.text);
-            }).toList(),
+          appBar: AppBar(
+            title: const Text('Coinector'),
+            bottom: TabBar(
+              controller: _controller,
+              isScrollable: true,
+              indicator: getIndicator(),
+              tabs: _pagesTags.map<Tab>((_Page page) {
+                return Tab(icon: Icon(page.icon), text: page.text);
+              }).toList(),
+            ),
+            actions: <Widget>[
+              IconButton(
+                icon: const Icon(Icons.search),
+                onPressed: _insert,
+                tooltip: 'search',
+              ),
+              IconButton(
+                icon: const Icon(Icons.settings),
+                onPressed: _remove,
+                tooltip: 'settings',
+              ),
+            ],
           ),
-
-          actions: <Widget>[
-            IconButton(
-              icon: const Icon(Icons.search),
-              onPressed: _insert,
-              tooltip: 'search',
-            ),
-            IconButton(
-              icon: const Icon(Icons.settings),
-              onPressed: _remove,
-              tooltip: 'settings',
-            ),
-          ],
-        ),
           body: NestedScrollView(
-            headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            headerSliverBuilder:
+                (BuildContext context, bool innerBoxIsScrolled) {
               return <Widget>[
                 SliverAppBar(
-                  expandedHeight: 200.0,
+                  expandedHeight: 30.0,
                   floating: false,
-                  pinned: true,
+                  pinned: false,
                   flexibleSpace: FlexibleSpaceBar(
-                      centerTitle: true,
-                      title: Text("Collapsing Toolbar",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16.0,
-                          )),
-                      background: Image.network(
+                    centerTitle: true,
+                    title: Text("KATEGORIE"/* TODO titlerein _pagesTags[_controller.index].title*/,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18.0,
+                        )),
+                    /*background: Image.network(
                         "https://realbitcoinclub.firebaseapp.com/img/app/trbc.gif",
                         fit: BoxFit.cover,
-                      )),
+                      ) TODO restaurants image w/ text*/
+                  ),
                 ),
               ];
             },
-            body: TabBarView(
-                controller: _controller,
-                children: [//_pagesTags.map<Widget>((_Page page) {
-                  // if (page.text == "RESTAURANT") {
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: AnimatedList(
-                      key: _listKeyRestaurant,
-                      initialItemCount: _listRestaurant.length,
-                      itemBuilder: _buildItemRestaurant,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: AnimatedList(
-                      key: _listKeyBar,
-                      initialItemCount: _listBar.length,
-                      itemBuilder: _buildItemBar,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: AnimatedList(
-                      key: _listKeyMarket,
-                      initialItemCount: _listMarket.length,
-                      itemBuilder: _buildItemMarket,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: AnimatedList(
-                      key: _listKeyShop,
-                      initialItemCount: _listShop.length,
-                      itemBuilder: _buildItemShop,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: AnimatedList(
-                      key: _listKeyHotel,
-                      initialItemCount: _listHotel.length,
-                      itemBuilder: _buildItemHotel,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: AnimatedList(
-                      key: _listKeyATM,
-                      initialItemCount: _listATM.length,
-                      itemBuilder: _buildItemATM,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: AnimatedList(
-                      key: _listKeyWellness,
-                      initialItemCount: _listWellness.length,
-                      itemBuilder: _buildItemWellness,
-                    ),
-                  )]
-              /* } else if (page.text == "BAR") {
+            body: TabBarView(controller: _controller, children: [
+              //_pagesTags.map<Widget>((_Page page) {
+              // if (page.text == "RESTAURANT") {
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: AnimatedList(
+                  key: _listKeyRestaurant,
+                  initialItemCount: _listRestaurant.length,
+                  itemBuilder: _buildItemRestaurant,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: AnimatedList(
+                  key: _listKeyBar,
+                  initialItemCount: _listBar.length,
+                  itemBuilder: _buildItemBar,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: AnimatedList(
+                  key: _listKeyMarket,
+                  initialItemCount: _listMarket.length,
+                  itemBuilder: _buildItemMarket,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: AnimatedList(
+                  key: _listKeyShop,
+                  initialItemCount: _listShop.length,
+                  itemBuilder: _buildItemShop,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: AnimatedList(
+                  key: _listKeyHotel,
+                  initialItemCount: _listHotel.length,
+                  itemBuilder: _buildItemHotel,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: AnimatedList(
+                  key: _listKeyATM,
+                  initialItemCount: _listATM.length,
+                  itemBuilder: _buildItemATM,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: AnimatedList(
+                  key: _listKeyWellness,
+                  initialItemCount: _listWellness.length,
+                  itemBuilder: _buildItemWellness,
+                ),
+              )
+            ]
+                /* } else if (page.text == "BAR") {
             return Padding(
               padding: const EdgeInsets.all(4.0),
               child: AnimatedList(
@@ -447,11 +464,11 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
             );
           }*/
 
-              //}).toList(),
-            ),
+                //}).toList(),
+                ),
           )
 
-     /*   Padding(
+          /*   Padding(
           padding: const EdgeInsets.all(4.0),
           child: AnimatedList(
             key: _listKey,
@@ -459,7 +476,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
             itemBuilder: _buildItem,
           ),
         ),*/
-      ),
+          ),
     );
   }
 }
