@@ -334,67 +334,88 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
             ),
           ],
         ),
-        body: TabBarView(
-        controller: _controller,
-        children: [//_pagesTags.map<Widget>((_Page page) {
-         // if (page.text == "RESTAURANT") {
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: AnimatedList(
-                key: _listKeyRestaurant,
-                initialItemCount: _listRestaurant.length,
-                itemBuilder: _buildItemRestaurant,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: AnimatedList(
-                key: _listKeyBar,
-                initialItemCount: _listBar.length,
-                itemBuilder: _buildItemBar,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: AnimatedList(
-                key: _listKeyMarket,
-                initialItemCount: _listMarket.length,
-                itemBuilder: _buildItemMarket,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: AnimatedList(
-                key: _listKeyShop,
-                initialItemCount: _listShop.length,
-                itemBuilder: _buildItemShop,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: AnimatedList(
-                key: _listKeyHotel,
-                initialItemCount: _listHotel.length,
-                itemBuilder: _buildItemHotel,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: AnimatedList(
-                key: _listKeyATM,
-                initialItemCount: _listATM.length,
-                itemBuilder: _buildItemATM,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: AnimatedList(
-                key: _listKeyWellness,
-                initialItemCount: _listWellness.length,
-                itemBuilder: _buildItemWellness,
-              ),
-            )]
-         /* } else if (page.text == "BAR") {
+          body: NestedScrollView(
+            headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+              return <Widget>[
+                SliverAppBar(
+                  expandedHeight: 200.0,
+                  floating: false,
+                  pinned: true,
+                  flexibleSpace: FlexibleSpaceBar(
+                      centerTitle: true,
+                      title: Text("Collapsing Toolbar",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16.0,
+                          )),
+                      background: Image.network(
+                        "https://realbitcoinclub.firebaseapp.com/img/app/trbc.gif",
+                        fit: BoxFit.cover,
+                      )),
+                ),
+              ];
+            },
+            body: TabBarView(
+                controller: _controller,
+                children: [//_pagesTags.map<Widget>((_Page page) {
+                  // if (page.text == "RESTAURANT") {
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: AnimatedList(
+                      key: _listKeyRestaurant,
+                      initialItemCount: _listRestaurant.length,
+                      itemBuilder: _buildItemRestaurant,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: AnimatedList(
+                      key: _listKeyBar,
+                      initialItemCount: _listBar.length,
+                      itemBuilder: _buildItemBar,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: AnimatedList(
+                      key: _listKeyMarket,
+                      initialItemCount: _listMarket.length,
+                      itemBuilder: _buildItemMarket,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: AnimatedList(
+                      key: _listKeyShop,
+                      initialItemCount: _listShop.length,
+                      itemBuilder: _buildItemShop,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: AnimatedList(
+                      key: _listKeyHotel,
+                      initialItemCount: _listHotel.length,
+                      itemBuilder: _buildItemHotel,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: AnimatedList(
+                      key: _listKeyATM,
+                      initialItemCount: _listATM.length,
+                      itemBuilder: _buildItemATM,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: AnimatedList(
+                      key: _listKeyWellness,
+                      initialItemCount: _listWellness.length,
+                      itemBuilder: _buildItemWellness,
+                    ),
+                  )]
+              /* } else if (page.text == "BAR") {
             return Padding(
               padding: const EdgeInsets.all(4.0),
               child: AnimatedList(
@@ -423,8 +444,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample> with SingleTick
             );
           }*/
 
-        //}).toList(),
-      ),
+              //}).toList(),
+            ),
+          )
 
      /*   Padding(
           padding: const EdgeInsets.all(4.0),
