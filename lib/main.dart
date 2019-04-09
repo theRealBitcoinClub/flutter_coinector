@@ -46,6 +46,8 @@ const List<_Page> _pagesTags = <_Page>[
   _Page(text: 'MUSIC'),*/
 ];
 
+List<_Page> _filteredPages = _pagesTags;
+
 class _AnimatedListSampleState extends State<AnimatedListSample>
     with SingleTickerProviderStateMixin {
   final GlobalKey<AnimatedListState> _listKeyRestaurant =
@@ -86,6 +88,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   String _title = "Coinector";
   bool isUnfilteredList = false;
 
+  String _searchTerm;
+
   @override
   void dispose() {
     _controller.dispose();
@@ -105,6 +109,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           await dio.get('https://realbitcoinclub.firebaseapp.com/places8.json');
 
     initTempListModel();
+    _filteredPages = _pagesTags;
 
     //RESPONSE.DATA.LENGTH
     for (int i = 0; i < 50; i++) {
@@ -122,6 +127,39 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       _listShop = tempListShop;
       _listWellness = tempListWellness;
     });
+/*
+    var hasRemovedCounter = 0;
+
+    setState (() {
+      if (_listRestaurant.length == 0) {
+        _filteredPages.removeAt(0);
+        hasRemovedCounter++;
+      }
+      if (_listBar.length == 0) {
+        _filteredPages.removeAt(1 - hasRemovedCounter);
+        hasRemovedCounter++;
+      }
+      if (_listHotel.length == 0) {
+        _filteredPages.removeAt(2 - hasRemovedCounter);
+        hasRemovedCounter++;
+      }
+      if (_listATM.length == 0) {
+        _filteredPages.removeAt(3 - hasRemovedCounter);
+        hasRemovedCounter++;
+      }
+      if (_listMarket.length == 0) {
+        _filteredPages.removeAt(4 - hasRemovedCounter);
+        hasRemovedCounter++;
+      }
+      if (_listShop.length == 0) {
+        _filteredPages.removeAt(5 - hasRemovedCounter);
+        hasRemovedCounter++;
+      }
+      if (_listWellness.length == 0) {
+        _filteredPages.removeAt(6 - hasRemovedCounter);
+        hasRemovedCounter++;
+      }
+    });*/
   }
 
   bool _containsFilteredTag(Merchant m, int filterWordIndex) {
@@ -219,6 +257,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   _handleEmptySearchBar() {
+    _searchTerm = _typeAheadController.text;
     if (_typeAheadController.text.length <= 2 && !isUnfilteredList) {
       _getNames(-1);
     } else {}
@@ -226,7 +265,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   _handleTabSelection() {
     setState(() {
-      _title = _pagesTags[_controller.index].title;
+      _title = _filteredPages[_controller.index].title;
     });
   }
 
@@ -236,7 +275,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   void initState() {
     super.initState();
     _typeAheadController.addListener(_handleEmptySearchBar);
-    _controller = TabController(vsync: this, length: _pagesTags.length);
+    _controller = TabController(vsync: this, length: _filteredPages.length);
     _controller.addListener(_handleTabSelection);
     initListModel();
     _nextItem = 3;
@@ -393,7 +432,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                 controller: _controller,
                 isScrollable: true,
                 indicator: getIndicator(),
-                tabs: _pagesTags.map<Tab>((_Page page) {
+                tabs: _filteredPages.map<Tab>((_Page page) {
                   return Tab(icon: Icon(page.icon), text: page.text);
                 }).toList(),
               ),
@@ -411,7 +450,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
               ],
               title: TypeAheadFormField(
                 noItemsFoundBuilder: (context) =>
-                    Text('Type atleast 3 characters'),
+                    Text('Enter atleast 3 characters!'),
                 getImmediateSuggestions: false,
                 textFieldConfiguration: TextFieldConfiguration(
                     controller: _typeAheadController,
@@ -490,7 +529,10 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           )
         : Padding(
             padding: EdgeInsets.all(5.0),
-            child: Text('--- Loading Cards ---'),
+            child: _searchTerm == null
+                ? Text('Loading...')
+                : Text(
+                    'You searched for $_searchTerm, but there are no matching results in this category! Clear the search bar to retrieve unfiltered results or filter for a different word.'),
           );
   }
 
