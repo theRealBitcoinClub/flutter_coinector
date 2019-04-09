@@ -84,6 +84,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   ListModel<Merchant> tempListWellness;
   Response response;
   String _title = "Coinector";
+  bool isUnfilteredList = false;
 
   @override
   void dispose() {
@@ -92,6 +93,13 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void _getNames(int filterWordIndex) async {
+    if (filterWordIndex == -1) {
+      if (isUnfilteredList) return;
+      this.isUnfilteredList = true;
+    } else {
+      this.isUnfilteredList = false;
+    }
+
     if (response == null)
       response =
           await dio.get('https://realbitcoinclub.firebaseapp.com/places8.json');
@@ -128,33 +136,34 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void _insertIntoTempList(Merchant m2, int filterWordIndex) {
-    if (filterWordIndex != null && filterWordIndex != -1 && !_containsFilteredTag(m2, filterWordIndex))
-      return;
+    if (filterWordIndex != null &&
+        filterWordIndex != -1 &&
+        !_containsFilteredTag(m2, filterWordIndex)) return;
 
     switch (m2.type) {
       case 0:
-        tempListRestaurant.insert(_listRestaurant.length, m2);
+        tempListRestaurant.insert(0, m2);
         break;
       case 1:
-        tempListRestaurant.insert(_listRestaurant.length, m2);
+        tempListRestaurant.insert(0, m2);
         break;
       case 2:
-        tempListBar.insert(_listBar.length, m2);
+        tempListBar.insert(0, m2);
         break;
       case 3:
-        tempListMarket.insert(_listMarket.length, m2);
+        tempListMarket.insert(0, m2);
         break;
       case 4:
-        tempListShop.insert(_listShop.length, m2);
+        tempListShop.insert(0, m2);
         break;
       case 5:
-        tempListHotel.insert(_listHotel.length, m2);
+        tempListHotel.insert(0, m2);
         break;
       case 99:
-        tempListATM.insert(_listATM.length, m2);
+        tempListATM.insert(0, m2);
         break;
       case 999:
-        tempListWellness.insert(_listWellness.length, m2);
+        tempListWellness.insert(0, m2);
         break;
     }
   }
@@ -209,15 +218,24 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     );
   }
 
+  _handleEmptySearchBar() {
+    if (_typeAheadController.text.length <= 2 && !isUnfilteredList) {
+      _getNames(-1);
+    } else {}
+  }
+
   _handleTabSelection() {
     setState(() {
       _title = _pagesTags[_controller.index].title;
     });
   }
 
+  TextEditingController _typeAheadController = new TextEditingController();
+
   @override
   void initState() {
     super.initState();
+    _typeAheadController.addListener(_handleEmptySearchBar);
     _controller = TabController(vsync: this, length: _pagesTags.length);
     _controller.addListener(_handleTabSelection);
     initListModel();
@@ -259,58 +277,55 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   // Used to build list items that haven't been removed.
   Widget _buildItemRestaurant(
       BuildContext context, int index, Animation<double> animation) {
-    return CardItem(
-      animation: animation,
-      item: _listRestaurant[index],
-    );
+    return _buildItem(index, animation, _listRestaurant);
+  }
+
+  CardItem _buildItem(
+      int index, Animation<double> animation, ListModel<Merchant> listModel) {
+    try {
+      if (listModel != null &&
+          listModel[index] != null &&
+          listModel.length > 0) {
+        return CardItem(
+          animation: animation,
+          item: listModel[index],
+        );
+      }
+    } catch (e) {
+      //not catching RangeErrors caused issues with filterbar
+      return null;
+    }
+    return null;
   }
 
   Widget _buildItemBar(
       BuildContext context, int index, Animation<double> animation) {
-    return CardItem(
-      animation: animation,
-      item: _listBar[index],
-    );
+    return _buildItem(index, animation, _listBar);
   }
 
   Widget _buildItemHotel(
       BuildContext context, int index, Animation<double> animation) {
-    return CardItem(
-      animation: animation,
-      item: _listHotel[index],
-    );
+    return _buildItem(index, animation, _listHotel);
   }
 
   Widget _buildItemATM(
       BuildContext context, int index, Animation<double> animation) {
-    return CardItem(
-      animation: animation,
-      item: _listATM[index],
-    );
+    return _buildItem(index, animation, _listATM);
   }
 
   Widget _buildItemWellness(
       BuildContext context, int index, Animation<double> animation) {
-    return CardItem(
-      animation: animation,
-      item: _listWellness[index],
-    );
+    return _buildItem(index, animation, _listWellness);
   }
 
   Widget _buildItemMarket(
       BuildContext context, int index, Animation<double> animation) {
-    return CardItem(
-      animation: animation,
-      item: _listMarket[index],
-    );
+    return _buildItem(index, animation, _listMarket);
   }
 
   Widget _buildItemShop(
       BuildContext context, int index, Animation<double> animation) {
-    return CardItem(
-      animation: animation,
-      item: _listShop[index],
-    );
+    return _buildItem(index, animation, _listShop);
   }
 
   // Used to build an item after it has been removed from the list. This method is
@@ -393,30 +408,36 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                   onPressed: _remove,
                   tooltip: 'settings',
                 ),
-
               ],
-              title: TypeAheadField(
+              title: TypeAheadFormField(
+                noItemsFoundBuilder: (context) =>
+                    Text('Type atleast 3 characters'),
+                getImmediateSuggestions: false,
                 textFieldConfiguration: TextFieldConfiguration(
+                    controller: _typeAheadController,
                     autofocus: true,
                     style: DefaultTextStyle.of(context)
                         .style
                         .copyWith(fontStyle: FontStyle.italic),
-                    decoration:
-                    InputDecoration(border: OutlineInputBorder())),
-                suggestionsCallback: (pattern) async {
-                  return await _getSuggestions(pattern);
+                    decoration: InputDecoration(border: OutlineInputBorder())),
+                suggestionsCallback: (pattern) {
+                  return _getSuggestions(pattern);
                 },
                 itemBuilder: (context, suggestion) {
                   return ListTile(
                     title: Text(suggestion.text),
-                    leading: Text(suggestion.index.toString()),
+                    //leading: Text(suggestion.index.toString()),
                     /*leading: Icon(Icons.shopping_cart),
                       title: Text(suggestion['name']),
                       subtitle: Text('\$${suggestion['price']}'),*/
                   );
                 },
                 onSuggestionSelected: (suggestion) {
-                  _getNames(_getSuggestions(suggestion));
+                  this._typeAheadController.text = suggestion.text;
+                  //print(suggestion.index);
+//                  _getNames(_getSuggestions(suggestion));
+                  _getNames(suggestion.index);
+
                   /*Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) =>
                             ProductPage(product: suggestion)));*/
@@ -443,69 +464,40 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         body: TabBarView(controller: _controller, children: [
           //_pagesTags.map<Widget>((_Page page) {
           // if (page.text == "RESTAURANT") {
-          Padding(
-            padding: const EdgeInsets.all(0.0),
-            child: AnimatedList(
-              key: _listKeyRestaurant,
-              initialItemCount: _listRestaurant.length,
-              itemBuilder: _buildItemRestaurant,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(0.0),
-            child: AnimatedList(
-              key: _listKeyBar,
-              initialItemCount: _listBar.length,
-              itemBuilder: _buildItemBar,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(0.0),
-            child: AnimatedList(
-              key: _listKeyMarket,
-              initialItemCount: _listMarket.length,
-              itemBuilder: _buildItemMarket,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(0.0),
-            child: AnimatedList(
-              key: _listKeyShop,
-              initialItemCount: _listShop.length,
-              itemBuilder: _buildItemShop,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(0.0),
-            child: AnimatedList(
-              key: _listKeyHotel,
-              initialItemCount: _listHotel.length,
-              itemBuilder: _buildItemHotel,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(0.0),
-            child: AnimatedList(
-              key: _listKeyATM,
-              initialItemCount: _listATM.length,
-              itemBuilder: _buildItemATM,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(0.0),
-            child: AnimatedList(
-              key: _listKeyWellness,
-              initialItemCount: _listWellness.length,
-              itemBuilder: _buildItemWellness,
-            ),
-          )
+          buildTabContainer(
+              _listKeyRestaurant, _listRestaurant, _buildItemRestaurant),
+          buildTabContainer(_listKeyBar, _listBar, _buildItemBar),
+          buildTabContainer(_listKeyMarket, _listMarket, _buildItemMarket),
+          buildTabContainer(_listKeyShop, _listShop, _buildItemShop),
+          buildTabContainer(_listKeyHotel, _listHotel, _buildItemHotel),
+          buildTabContainer(_listKeyATM, _listATM, _buildItemATM),
+          buildTabContainer(
+              _listKeyWellness, _listWellness, _buildItemWellness),
         ]),
       )),
     );
   }
 
+  Padding buildTabContainer(var listKey, var list, var builderMethod) {
+    return (list.length > 0)
+        ? Padding(
+            padding: const EdgeInsets.all(0.0),
+            child: AnimatedList(
+              key: listKey,
+              initialItemCount: list.length,
+              itemBuilder: builderMethod,
+            ),
+          )
+        : Padding(
+            padding: EdgeInsets.all(5.0),
+            child: Text('--- Loading Cards ---'),
+          );
+  }
+
   _getSuggestions(String pattern) {
     List<_SuggestionMatch> matches = new List();
+
+    if (pattern.length <= 2) return matches;
 
     for (int x = 0; x < CardItem.tagText.length; x++) {
       String currentItem = CardItem.tagText.elementAt(x);
