@@ -503,21 +503,26 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         body: TabBarView(controller: _controller, children: [
           //_pagesTags.map<Widget>((_Page page) {
           // if (page.text == "RESTAURANT") {
+          buildTabContainer(_listKeyRestaurant, _listRestaurant,
+              _buildItemRestaurant, _pagesTags[0].title),
           buildTabContainer(
-              _listKeyRestaurant, _listRestaurant, _buildItemRestaurant),
-          buildTabContainer(_listKeyBar, _listBar, _buildItemBar),
-          buildTabContainer(_listKeyMarket, _listMarket, _buildItemMarket),
-          buildTabContainer(_listKeyShop, _listShop, _buildItemShop),
-          buildTabContainer(_listKeyHotel, _listHotel, _buildItemHotel),
-          buildTabContainer(_listKeyATM, _listATM, _buildItemATM),
+              _listKeyBar, _listBar, _buildItemBar, _pagesTags[1].title),
+          buildTabContainer(_listKeyMarket, _listMarket, _buildItemMarket,
+              _pagesTags[2].title),
           buildTabContainer(
-              _listKeyWellness, _listWellness, _buildItemWellness),
+              _listKeyShop, _listShop, _buildItemShop, _pagesTags[3].title),
+          buildTabContainer(
+              _listKeyHotel, _listHotel, _buildItemHotel, _pagesTags[4].title),
+          buildTabContainer(
+              _listKeyATM, _listATM, _buildItemATM, _pagesTags[5].title),
+          buildTabContainer(_listKeyWellness, _listWellness, _buildItemWellness,
+              _pagesTags[6].title),
         ]),
       )),
     );
   }
 
-  Padding buildTabContainer(var listKey, var list, var builderMethod) {
+  Padding buildTabContainer(var listKey, var list, var builderMethod, var cat) {
     return (list.length > 0)
         ? Padding(
             padding: const EdgeInsets.all(0.0),
@@ -532,7 +537,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
             child: _searchTerm == null
                 ? Text('Loading...')
                 : Text(
-                    'You searched for $_searchTerm, but there are no matching results in this category! Clear the search bar to retrieve unfiltered results or filter for a different word.'),
+                    'You searched for $_searchTerm, but there are no matching results in this category: $cat! Clear the search bar to retrieve unfiltered results or filter for a different word.'),
           );
   }
 
