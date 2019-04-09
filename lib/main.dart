@@ -1,3 +1,4 @@
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
@@ -9,6 +10,12 @@ import 'dart:convert';
 class AnimatedListSample extends StatefulWidget {
   @override
   _AnimatedListSampleState createState() => _AnimatedListSampleState();
+}
+
+class _SuggestionMatch {
+  const _SuggestionMatch({this.text, this.index});
+  final String text;
+  final int index;
 }
 
 class _Page {
@@ -84,7 +91,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     super.dispose();
   }
 
-  void _getNames() async {
+  void _getNames(int filterWordIndex) async {
     if (response == null)
       response =
           await dio.get('https://realbitcoinclub.firebaseapp.com/places8.json');
@@ -95,7 +102,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     for (int i = 0; i < 50; i++) {
       Merchant m2 = Merchant.fromJson(response.data[i]);
 
-      insertIntoTempList(m2);
+      _insertIntoTempList(m2, filterWordIndex);
     }
 
     setState(() {
@@ -109,7 +116,21 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     });
   }
 
-  void insertIntoTempList(Merchant m2) {
+  bool _containsFilteredTag(Merchant m, int filterWordIndex) {
+    var splittedTags = m.tags.split(',');
+    for (int i = 0; i < splittedTags.length; i++) {
+      var currentTag = int.parse(splittedTags[i]);
+      if (currentTag == filterWordIndex) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  void _insertIntoTempList(Merchant m2, int filterWordIndex) {
+    if (filterWordIndex != null && filterWordIndex != -1 && !_containsFilteredTag(m2, filterWordIndex))
+      return;
+
     switch (m2.type) {
       case 0:
         tempListRestaurant.insert(_listRestaurant.length, m2);
@@ -201,7 +222,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     _controller.addListener(_handleTabSelection);
     initListModel();
     _nextItem = 3;
-    _getNames();
+    _getNames(-1);
   }
 
   void initListModel() {
@@ -352,7 +373,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
             SliverAppBar(
-              title: Text(_title),
+              //title: Text(_title),
               bottom: TabBar(
                 controller: _controller,
                 isScrollable: true,
@@ -372,7 +393,35 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                   onPressed: _remove,
                   tooltip: 'settings',
                 ),
+
               ],
+              title: TypeAheadField(
+                textFieldConfiguration: TextFieldConfiguration(
+                    autofocus: true,
+                    style: DefaultTextStyle.of(context)
+                        .style
+                        .copyWith(fontStyle: FontStyle.italic),
+                    decoration:
+                    InputDecoration(border: OutlineInputBorder())),
+                suggestionsCallback: (pattern) async {
+                  return await _getSuggestions(pattern);
+                },
+                itemBuilder: (context, suggestion) {
+                  return ListTile(
+                    title: Text(suggestion.text),
+                    leading: Text(suggestion.index.toString()),
+                    /*leading: Icon(Icons.shopping_cart),
+                      title: Text(suggestion['name']),
+                      subtitle: Text('\$${suggestion['price']}'),*/
+                  );
+                },
+                onSuggestionSelected: (suggestion) {
+                  _getNames(_getSuggestions(suggestion));
+                  /*Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) =>
+                            ProductPage(product: suggestion)));*/
+                },
+              ),
               expandedHeight: 30.0,
               floating: false,
               pinned: false,
@@ -453,6 +502,19 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         ]),
       )),
     );
+  }
+
+  _getSuggestions(String pattern) {
+    List<_SuggestionMatch> matches = new List();
+
+    for (int x = 0; x < CardItem.tagText.length; x++) {
+      String currentItem = CardItem.tagText.elementAt(x);
+      if (currentItem.toLowerCase().contains(pattern.toLowerCase())) {
+        matches.add(new _SuggestionMatch(text: currentItem, index: x));
+      }
+    }
+
+    return matches;
   }
 }
 

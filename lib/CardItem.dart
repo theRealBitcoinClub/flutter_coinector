@@ -21,7 +21,7 @@ class CardItem extends StatelessWidget {
         assert(selected != null),
         super(key: key);
 
-  final tagText = const {
+  static final tagText = const {
     'Bitcoin',
     'Events',
     'Trading',
