@@ -19,19 +19,14 @@ class SuggestionList extends StatelessWidget {
           leading: query.isEmpty ? const Icon(Icons.history) : const Icon(null),
           title: RichText(
             text: TextSpan(
-              text: (SearchDemoSearchDelegate.TRY_ANOTHER_WORD != suggestion &&
-                      SearchDemoSearchDelegate.ENTER_ATLEAST_THREE !=
-                          suggestion)
+              text: (isRealSuggestion(suggestion))
                   ? suggestion.substring(0, query.length)
                   : suggestion,
               style:
                   theme.textTheme.subhead.copyWith(fontWeight: FontWeight.bold),
               children: <TextSpan>[
                 TextSpan(
-                  text: (SearchDemoSearchDelegate.TRY_ANOTHER_WORD !=
-                              suggestion &&
-                          SearchDemoSearchDelegate.ENTER_ATLEAST_THREE !=
-                              suggestion)
+                  text: (isRealSuggestion(suggestion))
                       ? suggestion.substring(query.length)
                       : '',
                   style: theme.textTheme.subhead,
@@ -40,13 +35,17 @@ class SuggestionList extends StatelessWidget {
             ),
           ),
           onTap: () {
-            if (SearchDemoSearchDelegate.TRY_ANOTHER_WORD != suggestion &&
-                SearchDemoSearchDelegate.ENTER_ATLEAST_THREE != suggestion) {
+            if (isRealSuggestion(suggestion)) {
               onSelected(suggestion);
             }
           },
         );
       },
     );
+  }
+
+  bool isRealSuggestion(String suggestion) {
+    return SearchDemoSearchDelegate.TRY_ANOTHER_WORD != suggestion &&
+        SearchDemoSearchDelegate.ENTER_ATLEAST_THREE != suggestion;
   }
 }
