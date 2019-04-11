@@ -25,8 +25,17 @@ class SearchDemoSearchDelegate extends SearchDelegate<SuggestionMatch> {
 
   buildHistory() async {
     List<String> historyItems = await getHistory();
+    if (historyItems == null || historyItems.isEmpty) return;
+
+    historyItems = _reverseList(historyItems);
     _history.clear();
     historyItems.forEach((item) => _history.add(item));
+  }
+
+  _reverseList(List<String> list) {
+    List<String> reversedList = [];
+    list.forEach((item) => reversedList.insert(0, item));
+    return reversedList;
   }
 
   var _kNotificationsPrefs = "historyItems";
@@ -39,7 +48,6 @@ class SearchDemoSearchDelegate extends SearchDelegate<SuggestionMatch> {
 
   Future<bool> setHistory(List<String> value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-
     return prefs.setStringList(_kNotificationsPrefs, value);
   }
 
