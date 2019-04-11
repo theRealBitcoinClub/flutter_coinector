@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'SearchDemoSearchDelegate.dart';
 
 class SuggestionList extends StatelessWidget {
   const SuggestionList({this.suggestions, this.query, this.onSelected});
@@ -18,18 +19,31 @@ class SuggestionList extends StatelessWidget {
           leading: query.isEmpty ? const Icon(Icons.history) : const Icon(null),
           title: RichText(
             text: TextSpan(
-              text: suggestion.substring(0, query.length),
-              style: theme.textTheme.subhead.copyWith(fontWeight: FontWeight.bold),
+              text: (SearchDemoSearchDelegate.TRY_ANOTHER_WORD != suggestion &&
+                      SearchDemoSearchDelegate.ENTER_ATLEAST_THREE !=
+                          suggestion)
+                  ? suggestion.substring(0, query.length)
+                  : suggestion,
+              style:
+                  theme.textTheme.subhead.copyWith(fontWeight: FontWeight.bold),
               children: <TextSpan>[
                 TextSpan(
-                  text: suggestion.substring(query.length),
+                  text: (SearchDemoSearchDelegate.TRY_ANOTHER_WORD !=
+                              suggestion &&
+                          SearchDemoSearchDelegate.ENTER_ATLEAST_THREE !=
+                              suggestion)
+                      ? suggestion.substring(query.length)
+                      : '',
                   style: theme.textTheme.subhead,
                 ),
               ],
             ),
           ),
           onTap: () {
-            onSelected(suggestion);
+            if (SearchDemoSearchDelegate.TRY_ANOTHER_WORD != suggestion &&
+                SearchDemoSearchDelegate.ENTER_ATLEAST_THREE != suggestion) {
+              onSelected(suggestion);
+            }
           },
         );
       },

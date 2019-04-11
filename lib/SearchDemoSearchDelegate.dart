@@ -7,13 +7,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SearchDemoSearchDelegate extends SearchDelegate<SuggestionMatch> {
   //final List<int> _data = List<int>.generate(100001, (int i) => i).reversed.toList();
   //final List<int> _history = <int>[42607, 85604, 66374, 44, 174];
-  final Set<String> _history = Set.from(<String>['bla', 'bla1']);
-/*
-  final List<SuggestionMatch> _history = <SuggestionMatch>[
-    SuggestionMatch(text: 'bla', index: 0),
-    SuggestionMatch(text: 'bla1', index: 1)
-  ];
-  */
+  final Set<String> _history = Set.from(<String>[]);
+
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
@@ -51,7 +46,10 @@ class SearchDemoSearchDelegate extends SearchDelegate<SuggestionMatch> {
   _getSuggestions(String pattern) {
     List<String> matches = new List();
 
-    if (pattern.length <= 2) return matches;
+    if (pattern.length < 3) {
+      matches.add(ENTER_ATLEAST_THREE);
+      return matches;
+    }
 
     for (int x = 0; x < Tags.tagText.length; x++) {
       String currentItem = Tags.tagText.elementAt(x);
@@ -60,14 +58,20 @@ class SearchDemoSearchDelegate extends SearchDelegate<SuggestionMatch> {
       }
     }
 
+    if (matches.length == 0) {
+      matches.add(TRY_ANOTHER_WORD);
+    }
+
     return matches;
   }
+
+  static final TRY_ANOTHER_WORD = 'Try another word!';
+  static final ENTER_ATLEAST_THREE = 'Enter atleast 3 characters!';
 
   _addHistoryItem(String item) async {
     List<String> historyItems = await getHistory();
 
-    if (historyItems == null)
-      historyItems = [];
+    if (historyItems == null) historyItems = [];
 
     historyItems.add(item);
     _history.add(item);
