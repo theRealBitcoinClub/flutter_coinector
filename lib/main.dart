@@ -479,15 +479,13 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                     IconButton(
                       icon: const Icon(Icons.search),
                       onPressed: () async {
-                        final SuggestionMatch selected = await showSearch<SuggestionMatch>(
+                        final String selected = await showSearch<String>(
                           context: context,
                           delegate: _delegate,
                         );
-                        /*if (selected != null && selected != _lastIntegerSelected) {
-                      setState(() {
-                        _lastIntegerSelected = selected;
-                      });
-                    }*/
+                        if (selected != null /*&& selected != _lastIntegerSelected*/) {
+                          _getNames(3);
+                        }
                       },
                       tooltip: 'search',
                     ),

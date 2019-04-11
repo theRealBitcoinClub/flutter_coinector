@@ -4,7 +4,7 @@ import 'Tags.dart';
 import 'SuggestionMatch.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class SearchDemoSearchDelegate extends SearchDelegate<SuggestionMatch> {
+class SearchDemoSearchDelegate extends SearchDelegate<String> {
   //final List<int> _data = List<int>.generate(100001, (int i) => i).reversed.toList();
   //final List<int> _history = <int>[42607, 85604, 66374, 44, 174];
   final Set<String> _history = Set.from(<String>[]);
@@ -99,6 +99,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<SuggestionMatch> {
       onSelected: (String suggestion) {
         query = suggestion;
         _addHistoryItem(suggestion);
+        close(context, suggestion);
         //showResults(context);
       },
     );
