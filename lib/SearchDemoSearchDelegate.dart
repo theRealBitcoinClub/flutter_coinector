@@ -84,6 +84,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
     historyItems.add(item);
     _history.add(item);
     setHistory(historyItems);
+    buildHistory();
   }
 
   @override

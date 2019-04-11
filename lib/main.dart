@@ -7,6 +7,7 @@ import 'ListModel.dart';
 import 'CardItem.dart';
 import 'Merchant.dart';
 import 'SearchDemoSearchDelegate.dart';
+import 'Tags.dart';
 //import 'dart:convert';
 
 class AnimatedListSample extends StatefulWidget {
@@ -414,7 +415,10 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         // text styling for headlines, titles, bodies of text, and more.
         textTheme: TextTheme(
           headline: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-          title: TextStyle(fontSize: 24.0, fontStyle: FontStyle.normal, color: Colors.grey[900]),
+          title: TextStyle(
+              fontSize: 24.0,
+              fontStyle: FontStyle.normal,
+              color: Colors.grey[900]),
           body1: TextStyle(
               fontSize: 18.0, fontFamily: 'Hind', color: Colors.white),
           body2: TextStyle(
@@ -454,7 +458,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                 (BuildContext context, bool innerBoxIsScrolled) {
               return <Widget>[
                 SliverAppBar(
-
                   leading: IconButton(
                     tooltip: 'Navigation',
                     icon: AnimatedIcon(
@@ -483,8 +486,20 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                           context: context,
                           delegate: _delegate,
                         );
-                        if (selected != null /*&& selected != _lastIntegerSelected*/) {
-                          _getNames(3);
+
+                        if (_searchTerm != null && _searchTerm.isNotEmpty) {
+                          _getNames(-1);
+                          _searchTerm = null;
+                        }
+
+                        if (selected !=
+                            null /*&& selected != _lastIntegerSelected*/) {
+                          var index = _getTagIndex(selected);
+                          _getNames(index);
+
+                          print ('selected:' + selected);
+                          print ('index:' + index.toString());
+                          _searchTerm = selected;
                         }
                       },
                       tooltip: 'search',
@@ -495,7 +510,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                       tooltip: 'settings',
                     ),
                   ],
-                  title: Text(_pagesTags[_controller.index].title),
+                  title: Text(_searchTerm != null
+                      ? _searchTerm
+                      : _pagesTags[_controller.index].title),
                   /*TypeAheadFormField(
                 noItemsFoundBuilder: (context) =>
                     Text('Enter atleast 3 characters!'),
@@ -588,7 +605,18 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                     'You searched for $_searchTerm, but there are no matching results in this category: $cat! Clear the search bar to retrieve unfiltered results or filter for a different word.'),
           );
   }
+}
 
+int _getTagIndex(String searchTerm) {
+  Tags.tagText.contains(searchTerm);
+  int i = 0;
+  for (; i < Tags.tagText.length; i++) {
+    if (Tags.tagText.elementAt(i) == searchTerm) {
+      break;
+    }
+  }
+
+  return i;
 }
 
 void main() {
