@@ -1,6 +1,8 @@
 import 'package:endlisch/SuggestionMatch.dart';
 //import 'package:flutter_typeahead/flutter_typeahead.dart';
 //import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import 'dart:async' show Future;
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'ListModel.dart';
@@ -8,7 +10,7 @@ import 'CardItem.dart';
 import 'Merchant.dart';
 import 'SearchDemoSearchDelegate.dart';
 import 'Tags.dart';
-//import 'dart:convert';
+import 'dart:convert';
 
 class AnimatedListSample extends StatefulWidget {
   @override
@@ -102,17 +104,21 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     } else {
       this.isUnfilteredList = false;
     }
-
+/*
     if (response == null)
       response =
           await dio.get('https://realbitcoinclub.firebaseapp.com/places8.json');
+  */
+    String places = await loadAsset();
+    List<dynamic> placesList = json.decode(places);
 
     initTempListModel();
     _filteredPages = _pagesTags;
 
     //RESPONSE.DATA.LENGTH
     for (int i = 0; i < 50; i++) {
-      Merchant m2 = Merchant.fromJson(response.data[i]);
+      //Merchant m2 = Merchant.fromJson(response.data[i]);
+      Merchant m2 = Merchant.fromJson(placesList.elementAt(i));
 
       _insertIntoTempList(m2, filterWordIndex);
     }
@@ -159,6 +165,10 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         hasRemovedCounter++;
       }
     });*/
+  }
+
+  Future<String> loadAsset() async {
+    return await rootBundle.loadString('assets/places.json');
   }
 
   bool _containsFilteredTag(Merchant m, int filterWordIndex) {
@@ -497,9 +507,11 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                           var index = _getTagIndex(selected);
                           _getNames(index);
 
-                          print ('selected:' + selected);
-                          print ('index:' + index.toString());
-                          _searchTerm = selected;
+                          print('selected:' + selected);
+                          print('index:' + index.toString());
+                          setState(() {
+                            _searchTerm = selected;
+                          });
                         }
                       },
                       tooltip: 'search',
