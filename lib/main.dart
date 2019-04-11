@@ -91,6 +91,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   String _searchTerm;
 
+  List<dynamic> placesList;
+
   @override
   void dispose() {
     _controller.dispose();
@@ -109,14 +111,15 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       response =
           await dio.get('https://realbitcoinclub.firebaseapp.com/places8.json');
   */
-    String places = await loadAsset();
-    List<dynamic> placesList = json.decode(places);
-
+    if (placesList == null) {
+      String places = await loadAsset();
+      placesList = json.decode(places);
+    }
     initTempListModel();
     _filteredPages = _pagesTags;
 
     //RESPONSE.DATA.LENGTH
-    for (int i = 0; i < 50; i++) {
+    for (int i = 0; i < 40; i++) {
       //Merchant m2 = Merchant.fromJson(response.data[i]);
       Merchant m2 = Merchant.fromJson(placesList.elementAt(i));
 
