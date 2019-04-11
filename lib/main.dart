@@ -52,6 +52,7 @@ List<_Page> _filteredPages = _pagesTags;
 class _AnimatedListSampleState extends State<AnimatedListSample>
     with SingleTickerProviderStateMixin {
   final SearchDemoSearchDelegate _delegate = SearchDemoSearchDelegate();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<AnimatedListState> _listKeyRestaurant =
       GlobalKey<AnimatedListState>();
   final GlobalKey<AnimatedListState> _listKeyBar =
@@ -425,43 +426,83 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         ),
       ),
       home: Scaffold(
+          drawer: Drawer(
+            child: Column(
+              children: <Widget>[
+                const UserAccountsDrawerHeader(
+                  accountName: Text('Peter Widget'),
+                  accountEmail: Text('peter.widget@example.com'),
+                  /*currentAccountPicture: CircleAvatar(
+                    backgroundImage: AssetImage(
+                      'people/square/peter.png',
+                      package: 'flutter_gallery_assets',
+                    ),
+                  ),*/
+                  margin: EdgeInsets.zero,
+                ),
+                /*MediaQuery.removePadding(
+                  context: context,
+                  // DrawerHeader consumes top MediaQuery padding.
+                  removeTop: true,
+                  child: const ListTile(
+                    leading: Icon(Icons.payment),
+                    title: Text('Placeholder'),
+                  ),
+                ),*/
+              ],
+            ),
+          ),
+          key: _scaffoldKey,
           body: NestedScrollView(
-        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          return <Widget>[
-            SliverAppBar(
-              //title: Text(_title),
-              bottom: TabBar(
-                controller: _controller,
-                isScrollable: true,
-                indicator: getIndicator(),
-                tabs: _filteredPages.map<Tab>((_Page page) {
-                  return Tab(icon: Icon(page.icon), text: page.text);
-                }).toList(),
-              ),
-              actions: <Widget>[
-                IconButton(
-                  icon: const Icon(Icons.search),
-                  onPressed: () async {
-                    final int selected = await showSearch<int>(
-                      context: context,
-                      delegate: _delegate,
-                    );
-                    /*if (selected != null && selected != _lastIntegerSelected) {
+            headerSliverBuilder:
+                (BuildContext context, bool innerBoxIsScrolled) {
+              return <Widget>[
+                SliverAppBar(
+
+                  leading: IconButton(
+                    tooltip: 'Navigation',
+                    icon: AnimatedIcon(
+                      icon: AnimatedIcons.menu_arrow,
+                      color: Colors.white,
+                      progress: _delegate.transitionAnimation,
+                    ),
+                    onPressed: () {
+                      _scaffoldKey.currentState.openDrawer();
+                    },
+                  ),
+                  //title: Text(_title),
+                  bottom: TabBar(
+                    controller: _controller,
+                    isScrollable: true,
+                    indicator: getIndicator(),
+                    tabs: _filteredPages.map<Tab>((_Page page) {
+                      return Tab(icon: Icon(page.icon), text: page.text);
+                    }).toList(),
+                  ),
+                  actions: <Widget>[
+                    IconButton(
+                      icon: const Icon(Icons.search),
+                      onPressed: () async {
+                        final int selected = await showSearch<int>(
+                          context: context,
+                          delegate: _delegate,
+                        );
+                        /*if (selected != null && selected != _lastIntegerSelected) {
                       setState(() {
                         _lastIntegerSelected = selected;
                       });
                     }*/
-                  },
-                  tooltip: 'search',
-                ),
-                IconButton(
-                  icon: const Icon(Icons.settings),
-                  onPressed: _remove,
-                  tooltip: 'settings',
-                ),
-              ],
-              title: Text(_pagesTags[_controller.index].title),
-          /*TypeAheadFormField(
+                      },
+                      tooltip: 'search',
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.settings),
+                      onPressed: _remove,
+                      tooltip: 'settings',
+                    ),
+                  ],
+                  title: Text(_pagesTags[_controller.index].title),
+                  /*TypeAheadFormField(
                 noItemsFoundBuilder: (context) =>
                     Text('Enter atleast 3 characters!'),
                 getImmediateSuggestions: false,
@@ -495,10 +536,10 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                             ProductPage(product: suggestion)));*/
                 },
               ),*/
-              expandedHeight: 30.0,
-              floating: false,
-              pinned: false,
-              /*flexibleSpace: FlexibleSpaceBar(
+                  expandedHeight: 30.0,
+                  floating: false,
+                  pinned: false,
+                  /*flexibleSpace: FlexibleSpaceBar(
                     centerTitle: true,
                     title: Text("KATEGORIE"/* TODO titlerein _pagesTags[_controller.index].title*/,
                         style: TextStyle(
@@ -510,28 +551,28 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                         fit: BoxFit.cover,
                       ) //TODO restaurants image w/ text
                   ),*/
-            ),
-          ];
-        },
-        body: TabBarView(controller: _controller, children: [
-          //_pagesTags.map<Widget>((_Page page) {
-          // if (page.text == "RESTAURANT") {
-          buildTabContainer(_listKeyRestaurant, _listRestaurant,
-              _buildItemRestaurant, _pagesTags[0].title),
-          buildTabContainer(
-              _listKeyBar, _listBar, _buildItemBar, _pagesTags[1].title),
-          buildTabContainer(_listKeyMarket, _listMarket, _buildItemMarket,
-              _pagesTags[2].title),
-          buildTabContainer(
-              _listKeyShop, _listShop, _buildItemShop, _pagesTags[3].title),
-          buildTabContainer(
-              _listKeyHotel, _listHotel, _buildItemHotel, _pagesTags[4].title),
-          buildTabContainer(
-              _listKeyATM, _listATM, _buildItemATM, _pagesTags[5].title),
-          buildTabContainer(_listKeyWellness, _listWellness, _buildItemWellness,
-              _pagesTags[6].title),
-        ]),
-      )),
+                ),
+              ];
+            },
+            body: TabBarView(controller: _controller, children: [
+              //_pagesTags.map<Widget>((_Page page) {
+              // if (page.text == "RESTAURANT") {
+              buildTabContainer(_listKeyRestaurant, _listRestaurant,
+                  _buildItemRestaurant, _pagesTags[0].title),
+              buildTabContainer(
+                  _listKeyBar, _listBar, _buildItemBar, _pagesTags[1].title),
+              buildTabContainer(_listKeyMarket, _listMarket, _buildItemMarket,
+                  _pagesTags[2].title),
+              buildTabContainer(
+                  _listKeyShop, _listShop, _buildItemShop, _pagesTags[3].title),
+              buildTabContainer(_listKeyHotel, _listHotel, _buildItemHotel,
+                  _pagesTags[4].title),
+              buildTabContainer(
+                  _listKeyATM, _listATM, _buildItemATM, _pagesTags[5].title),
+              buildTabContainer(_listKeyWellness, _listWellness,
+                  _buildItemWellness, _pagesTags[6].title),
+            ]),
+          )),
     );
   }
 
