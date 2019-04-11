@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:endlisch/Merchant.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
+import 'package:endlisch/Tags.dart';
 
 class ItemInfoStackLayer extends StatelessWidget {
   const ItemInfoStackLayer({
@@ -9,13 +10,11 @@ class ItemInfoStackLayer extends StatelessWidget {
     @required this.item,
     @required this.textStyle,
     @required this.textStyleSmall,
-    @required this.tagText,
   }) : super(key: key);
 
   final Merchant item;
   final TextStyle textStyle;
   final TextStyle textStyleSmall;
-  final Set<String> tagText;
 
   @override
   Widget build(BuildContext context) {
@@ -73,5 +72,5 @@ class ItemInfoStackLayer extends StatelessWidget {
   }
 
   String parseElementAt(int pos) =>
-      tagText.elementAt(int.parse(item.tags.split(",").elementAt(pos)));
+      Tags.tagText.elementAt(int.parse(item.tags.split(",").elementAt(pos)));
 }

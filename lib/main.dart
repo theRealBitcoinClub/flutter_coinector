@@ -1,3 +1,4 @@
+import 'package:endlisch/SuggestionMatch.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -11,12 +12,6 @@ import 'dart:convert';
 class AnimatedListSample extends StatefulWidget {
   @override
   _AnimatedListSampleState createState() => _AnimatedListSampleState();
-}
-
-class _SuggestionMatch {
-  const _SuggestionMatch({this.text, this.index});
-  final String text;
-  final int index;
 }
 
 class _Page {
@@ -483,7 +478,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                     IconButton(
                       icon: const Icon(Icons.search),
                       onPressed: () async {
-                        final int selected = await showSearch<int>(
+                        final SuggestionMatch selected = await showSearch<SuggestionMatch>(
                           context: context,
                           delegate: _delegate,
                         );
@@ -595,20 +590,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           );
   }
 
-  _getSuggestions(String pattern) {
-    List<_SuggestionMatch> matches = new List();
-
-    if (pattern.length <= 2) return matches;
-
-    for (int x = 0; x < CardItem.tagText.length; x++) {
-      String currentItem = CardItem.tagText.elementAt(x);
-      if (currentItem.toLowerCase().contains(pattern.toLowerCase())) {
-        matches.add(new _SuggestionMatch(text: currentItem, index: x));
-      }
-    }
-
-    return matches;
-  }
 }
 
 void main() {
