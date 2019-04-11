@@ -258,13 +258,13 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           ),
     );
   }
-
+/*
   _handleEmptySearchBar() {
     _searchTerm = _typeAheadController.text;
     if (_typeAheadController.text.length <= 2 && !isUnfilteredList) {
       _getNames(-1);
     } else {}
-  }
+  }*/
 
   _handleTabSelection() {
     setState(() {
@@ -272,12 +272,12 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     });
   }
 
-  TextEditingController _typeAheadController = new TextEditingController();
+  //TextEditingController _typeAheadController = new TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    _typeAheadController.addListener(_handleEmptySearchBar);
+    //_typeAheadController.addListener(_handleEmptySearchBar);
     _controller = TabController(vsync: this, length: _filteredPages.length);
     _controller.addListener(_handleTabSelection);
     initListModel();
