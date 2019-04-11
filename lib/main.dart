@@ -119,7 +119,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     _filteredPages = _pagesTags;
 
     //RESPONSE.DATA.LENGTH
-    for (int i = 0; i < 40; i++) {
+    for (int i = 0; i < placesList.length; i++) {
       //Merchant m2 = Merchant.fromJson(response.data[i]);
       Merchant m2 = Merchant.fromJson(placesList.elementAt(i));
 

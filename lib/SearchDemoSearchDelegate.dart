@@ -107,9 +107,15 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
   }
 
   @override
+  void showResults(BuildContext context) {
+    //DONT SHOW ANY RESULTS HERE, SIMPLY REMOVE THE WIDGET
+    close(context, null);
+  }
+
+  @override
   Widget buildResults(BuildContext context) {
-    //close(context, null);
-    Navigator.pop(context);
+    return Padding(padding: EdgeInsets.all(0.0),);
+    //Navigator.pop(context);
     /*final int searched = int.tryParse(query);
     if (searched == null || !_data.contains(searched)) {
       return Center(
