@@ -1,13 +1,13 @@
 import 'package:endlisch/SuggestionMatch.dart';
-import 'package:flutter_typeahead/flutter_typeahead.dart';
-import 'package:flutter/foundation.dart';
+//import 'package:flutter_typeahead/flutter_typeahead.dart';
+//import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'ListModel.dart';
 import 'CardItem.dart';
 import 'Merchant.dart';
 import 'SearchDemoSearchDelegate.dart';
-import 'dart:convert';
+//import 'dart:convert';
 
 class AnimatedListSample extends StatefulWidget {
   @override
@@ -273,6 +273,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   void initState() {
     super.initState();
     //_typeAheadController.addListener(_handleEmptySearchBar);
+    _delegate.buildHistory();
     _controller = TabController(vsync: this, length: _filteredPages.length);
     _controller.addListener(_handleTabSelection);
     initListModel();
@@ -413,7 +414,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         // text styling for headlines, titles, bodies of text, and more.
         textTheme: TextTheme(
           headline: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-          title: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
+          title: TextStyle(fontSize: 24.0, fontStyle: FontStyle.normal, color: Colors.grey[900]),
           body1: TextStyle(
               fontSize: 18.0, fontFamily: 'Hind', color: Colors.white),
           body2: TextStyle(
