@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'ListModel.dart';
 import 'CardItem.dart';
 import 'Merchant.dart';
+import 'SearchDemoSearchDelegate.dart';
 import 'dart:convert';
 
 class AnimatedListSample extends StatefulWidget {
@@ -50,6 +51,7 @@ List<_Page> _filteredPages = _pagesTags;
 
 class _AnimatedListSampleState extends State<AnimatedListSample>
     with SingleTickerProviderStateMixin {
+  final SearchDemoSearchDelegate _delegate = SearchDemoSearchDelegate();
   final GlobalKey<AnimatedListState> _listKeyRestaurant =
       GlobalKey<AnimatedListState>();
   final GlobalKey<AnimatedListState> _listKeyBar =
@@ -439,7 +441,17 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
               actions: <Widget>[
                 IconButton(
                   icon: const Icon(Icons.search),
-                  onPressed: _insert,
+                  onPressed: () async {
+                    final int selected = await showSearch<int>(
+                      context: context,
+                      delegate: _delegate,
+                    );
+                    /*if (selected != null && selected != _lastIntegerSelected) {
+                      setState(() {
+                        _lastIntegerSelected = selected;
+                      });
+                    }*/
+                  },
                   tooltip: 'search',
                 ),
                 IconButton(
@@ -448,7 +460,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                   tooltip: 'settings',
                 ),
               ],
-              title: TypeAheadFormField(
+              title: Text(_pagesTags[_controller.index].title),
+          /*TypeAheadFormField(
                 noItemsFoundBuilder: (context) =>
                     Text('Enter atleast 3 characters!'),
                 getImmediateSuggestions: false,
@@ -458,7 +471,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                     style: DefaultTextStyle.of(context)
                         .style
                         .copyWith(fontStyle: FontStyle.italic),
-                    decoration: InputDecoration(border: OutlineInputBorder())),
+                    decoration: InputDecoration()),
                 suggestionsCallback: (pattern) {
                   return _getSuggestions(pattern);
                 },
@@ -481,7 +494,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                         builder: (context) =>
                             ProductPage(product: suggestion)));*/
                 },
-              ),
+              ),*/
               expandedHeight: 30.0,
               floating: false,
               pinned: false,
