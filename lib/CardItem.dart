@@ -31,27 +31,11 @@ class CardItem extends StatelessWidget {
   Widget build(BuildContext context) {
     TextStyle textStyle = Theme.of(context).textTheme.body1;
     TextStyle textStyle2 = Theme.of(context).textTheme.body2;
-    final generatedColor = Colors.primaries[item.type % 17];
-    var image;
-    try {
-      image = FadeInImage.memoryNetwork(
-        placeholder: kTransparentImage,
-        image: "https://realbitcoinclub.firebaseapp.com/img/app/" +
-            item.id +
-            ".gif",
-        height: 320,
-        alignment: Alignment.bottomCenter,
-      );
-    } catch (e) {
-      image = SizedBox(
-        height: 320,
-      );
-      //TODO CATCH ALL 404 because of missing images and show placeholder
-    }
+    final generatedColor = Colors.primaries[item.type % 17].shade700;
     return SizedBox(
       child: Card(
-        clipBehavior: Clip.none,
-          margin: EdgeInsets.all(5.0),
+          clipBehavior: Clip.none,
+          margin: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 15.0),
           elevation: 3.0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0),
@@ -61,7 +45,20 @@ class CardItem extends StatelessWidget {
             children: <Widget>[
               Stack(
                 children: <Widget>[
-                  image,
+                  Padding(
+                    padding: EdgeInsets.all(0.0),
+                    child: FadeInImage.memoryNetwork(
+                      fit: BoxFit.contain,
+                      fadeInDuration: Duration(milliseconds: 300),
+                      placeholder: kTransparentImage,
+                      image:
+                          "https://realbitcoinclub.firebaseapp.com/img/app/" +
+                              item.id +
+                              ".gif",
+                      height: 320,
+                      alignment: Alignment.bottomCenter,
+                    ),
+                  ),
                   Stack(
                     children: <Widget>[
                       Container(

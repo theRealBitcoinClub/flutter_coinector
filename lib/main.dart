@@ -490,6 +490,10 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                       progress: _delegate.transitionAnimation,
                     ),
                     onPressed: () {
+                      if (_searchTerm == null) {
+                        _controller.animateTo(0);
+                      }
+
                       setState(() {
                         showUnfilteredLists();
                       });
