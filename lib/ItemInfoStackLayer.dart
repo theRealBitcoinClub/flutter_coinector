@@ -38,27 +38,26 @@ class ItemInfoStackLayer extends StatelessWidget {
             ),
             Row(
               children: <Widget>[
-                Text(
+                /*Text(
                   "0,1 km   ",
                   style: textStyleSmall,
-                ),
-                Stack(
-                  children: <Widget>[
-                    SmoothStarRating(
-                      allowHalfRating: true,
-                      starCount: 5,
-                      rating: double.parse(item.reviewStars),
-                      size: 15.0,
-                      color: Colors.yellow[700],
-                      borderColor: Colors.white,
-                    ),
-                    Container(
-                      child: Text(item.reviewStars, style: textStyleSmall),
-                      decoration:
-                          BoxDecoration(color: Colors.black.withOpacity(0.5)),
-                    )
-                  ],
-                )
+                ),*/
+                item.reviewCount == '0'
+                    ? Padding(padding: EdgeInsets.all(0.0),)
+                    : Row(
+                        children: <Widget>[
+                          SmoothStarRating(
+                            allowHalfRating: true,
+                            starCount: 5,
+                            rating: double.parse(item.reviewStars),
+                            size: 15.0,
+                            color: Colors.yellow[700],
+                            borderColor: Colors.white,
+                          ),
+                          Text(" " + convertRatingToPercentage(item.reviewStars), style: textStyleSmall),
+
+                        ],
+                      )
               ],
             ),
             Text(
@@ -73,11 +72,14 @@ class ItemInfoStackLayer extends StatelessWidget {
     );
   }
 
+  String convertRatingToPercentage(String stars) {
+    return (double.parse(stars) * 20).round().toString() + "%";
+  }
+
   String parseElementAt(splittedTags, int pos) {
     int tagIndex = int.parse(splittedTags.elementAt(pos));
 
-    if (tagIndex == 104)
-      return "";
+    if (tagIndex == 104) return "";
 
     String addSeparator = "";
     if (pos != 0) addSeparator = " - ";
