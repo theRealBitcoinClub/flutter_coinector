@@ -82,6 +82,13 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   ListModel<Merchant> tempListHotel;
   ListModel<Merchant> tempListATM;
   ListModel<Merchant> tempListWellness;
+  ListModel<Merchant> unfilteredListRestaurant;
+  ListModel<Merchant> unfilteredListBar;
+  ListModel<Merchant> unfilteredListMarket;
+  ListModel<Merchant> unfilteredListShop;
+  ListModel<Merchant> unfilteredListHotel;
+  ListModel<Merchant> unfilteredListATM;
+  ListModel<Merchant> unfilteredListWellness;
   Response response;
   String _title = "Coinector";
   bool isUnfilteredList = false;
@@ -99,6 +106,14 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   void _getNames(int filterWordIndex, String locationFilter) async {
     if (filterWordIndex == -1) {
       if (isUnfilteredList) return;
+      updateListModel(
+          unfilteredListRestaurant,
+          unfilteredListBar,
+          unfilteredListHotel,
+          unfilteredListATM,
+          unfilteredListMarket,
+          unfilteredListShop,
+          unfilteredListWellness);
       this.isUnfilteredList = true;
     } else {
       this.isUnfilteredList = false;
@@ -123,15 +138,34 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       _insertIntoTempList(m2, filterWordIndex, locationFilter);
     }
 
+    initUnfilteredLists();
+
+    updateListModel(tempListRestaurant, tempListBar, tempListHotel, tempListATM,
+        tempListMarket, tempListShop, tempListWellness);
+  }
+
+  void updateListModel(restaurant, bar, hotel, atm, market, shop, wellness) {
     setState(() {
-      _listRestaurant = tempListRestaurant;
-      _listBar = tempListBar;
-      _listHotel = tempListHotel;
-      _listATM = tempListATM;
-      _listMarket = tempListMarket;
-      _listShop = tempListShop;
-      _listWellness = tempListWellness;
+      _listRestaurant = restaurant;
+      _listBar = bar;
+      _listHotel = hotel;
+      _listATM = atm;
+      _listMarket = market;
+      _listShop = shop;
+      _listWellness = wellness;
     });
+  }
+
+  void initUnfilteredLists() {
+    if (unfilteredListRestaurant == null) {
+      unfilteredListRestaurant = tempListRestaurant;
+      unfilteredListBar = tempListBar;
+      unfilteredListHotel = tempListHotel;
+      unfilteredListATM = tempListATM;
+      unfilteredListMarket = tempListMarket;
+      unfilteredListShop = tempListShop;
+      unfilteredListWellness = tempListWellness;
+    }
   }
 
   Future<String> loadAsset() async {
@@ -538,7 +572,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   Padding buildTabContainer(var listKey, var list, var builderMethod, var cat) {
-    return (list.length > 0)
+    return (list != null && list.length > 0)
         ? Padding(
             padding: const EdgeInsets.all(0.0),
             child: AnimatedList(
