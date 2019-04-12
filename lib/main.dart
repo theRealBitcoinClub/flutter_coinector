@@ -446,7 +446,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         ),
       ),
       home: Scaffold(
-          drawer: Drawer(
+          /*drawer: Drawer(
             child: Column(
               children: <Widget>[
                 const UserAccountsDrawerHeader(
@@ -471,7 +471,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                 ),*/
               ],
             ),
-          ),
+          ),*/
           key: _scaffoldKey,
           body: NestedScrollView(
             headerSliverBuilder:
@@ -481,14 +481,18 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                   elevation: 1.5,
                   forceElevated: true,
                   leading: IconButton(
-                    tooltip: 'Navigation',
+                    tooltip: 'Clear Filter',
                     icon: AnimatedIcon(
-                      icon: AnimatedIcons.menu_arrow,
+                      icon: _searchTerm == null
+                          ? AnimatedIcons.home_menu
+                          : AnimatedIcons.close_menu,
                       color: Colors.white,
                       progress: _delegate.transitionAnimation,
                     ),
                     onPressed: () {
-                      _scaffoldKey.currentState.openDrawer();
+                      setState(() {
+                        showUnfilteredLists();
+                      });
                     },
                   ),
                   //title: Text(_title),
@@ -501,36 +505,12 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                     }).toList(),
                   ),
                   actions: <Widget>[
-                    IconButton(
-                      icon: const Icon(Icons.search),
-                      onPressed: () async {
-                        final String selected = await showSearch<String>(
-                          context: context,
-                          delegate: _delegate,
-                        );
-
-                        if (_searchTerm != null && _searchTerm.isNotEmpty) {
-                          _searchTerm = null;
-                          _getNames(-1, null);
-                        }
-
-                        if (selected !=
-                            null /*&& selected != _lastIntegerSelected*/) {
-                          var index = _getTagIndex(selected);
-                          _getNames(index, selected);
-
-                          setState(() {
-                            _searchTerm = selected;
-                          });
-                        }
-                      },
-                      tooltip: 'search',
-                    ),
-                    IconButton(
+                    buildIconButtonSearch(context),
+                    /*IconButton(
                       icon: const Icon(Icons.settings),
                       onPressed: _remove,
                       tooltip: 'settings',
-                    ),
+                    ),*/
                   ],
                   title: Text(_searchTerm != null
                       ? _searchTerm
@@ -575,6 +555,41 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           )),
     );
   }
+
+  IconButton buildIconButtonSearch(BuildContext context) {
+    return IconButton(
+      icon: AnimatedIcon(
+          progress: _delegate.transitionAnimation,
+          icon: AnimatedIcons.search_ellipsis),
+      onPressed: () async {
+        final String selected = await showSearch<String>(
+          context: context,
+          delegate: _delegate,
+        );
+
+        showUnfilteredLists();
+
+        if (selected != null /*&& selected != _lastIntegerSelected*/) {
+          var index = _getTagIndex(selected);
+          _getNames(index, selected);
+
+          setState(() {
+            _searchTerm = selected;
+          });
+        }
+      },
+      tooltip: 'search',
+    );
+  }
+
+  void showUnfilteredLists() {
+    if (isFilteredList()) {
+      _searchTerm = null;
+      _getNames(-1, null);
+    }
+  }
+
+  bool isFilteredList() => _searchTerm != null && _searchTerm.isNotEmpty;
 
   Padding buildTabContainer(var listKey, var list, var builderMethod, var cat) {
     return (list != null && list.length > 0)
