@@ -48,8 +48,7 @@ class CardItem extends StatelessWidget {
       );
       //TODO CATCH ALL 404 because of missing images and show placeholder
     }
-    return Padding(
-      padding: EdgeInsets.all(5.0),
+    return SizedBox(
       child: Card(
         clipBehavior: Clip.none,
           margin: EdgeInsets.all(5.0),

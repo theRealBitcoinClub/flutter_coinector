@@ -576,15 +576,18 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     );
   }
 
-  Widget buildTabContainer(var listKey, var list, var builderMethod, var cat) {
+  Padding buildTabContainer(var listKey, var list, var builderMethod, var cat) {
     return (list != null && list.length > 0)
-        ? AnimatedList(
-            /*padding: const EdgeInsets.only(
+        ? Padding(
+            child: AnimatedList(
+              /*padding: const EdgeInsets.only(
               top: 0.0,
             ),*/
-            key: listKey,
-            initialItemCount: list.length,
-            itemBuilder: builderMethod,
+              key: listKey,
+              initialItemCount: list.length,
+              itemBuilder: builderMethod,
+            ),
+            padding: EdgeInsets.all(0.0),
           )
         : Padding(
             padding: EdgeInsets.all(15.0),
