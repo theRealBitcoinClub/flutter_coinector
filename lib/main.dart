@@ -569,6 +569,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         );
 
         showUnfilteredLists();
+        _searchTerm = '';
+        updateTitle();
 
         if (selected != null /*&& selected != _lastIntegerSelected*/) {
           var index = _getTagIndex(selected);
