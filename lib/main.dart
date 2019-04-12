@@ -1,6 +1,3 @@
-import 'package:endlisch/SuggestionMatch.dart';
-//import 'package:flutter_typeahead/flutter_typeahead.dart';
-//import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async' show Future;
 import 'package:flutter/material.dart';
@@ -99,7 +96,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     super.dispose();
   }
 
-  void _getNames(int filterWordIndex) async {
+  void _getNames(int filterWordIndex, String locationFilter) async {
     if (filterWordIndex == -1) {
       if (isUnfilteredList) return;
       this.isUnfilteredList = true;
@@ -123,7 +120,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       //Merchant m2 = Merchant.fromJson(response.data[i]);
       Merchant m2 = Merchant.fromJson(placesList.elementAt(i));
 
-      _insertIntoTempList(m2, filterWordIndex);
+      _insertIntoTempList(m2, filterWordIndex, locationFilter);
     }
 
     setState(() {
@@ -135,39 +132,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       _listShop = tempListShop;
       _listWellness = tempListWellness;
     });
-/*
-    var hasRemovedCounter = 0;
-
-    setState (() {
-      if (_listRestaurant.length == 0) {
-        _filteredPages.removeAt(0);
-        hasRemovedCounter++;
-      }
-      if (_listBar.length == 0) {
-        _filteredPages.removeAt(1 - hasRemovedCounter);
-        hasRemovedCounter++;
-      }
-      if (_listHotel.length == 0) {
-        _filteredPages.removeAt(2 - hasRemovedCounter);
-        hasRemovedCounter++;
-      }
-      if (_listATM.length == 0) {
-        _filteredPages.removeAt(3 - hasRemovedCounter);
-        hasRemovedCounter++;
-      }
-      if (_listMarket.length == 0) {
-        _filteredPages.removeAt(4 - hasRemovedCounter);
-        hasRemovedCounter++;
-      }
-      if (_listShop.length == 0) {
-        _filteredPages.removeAt(5 - hasRemovedCounter);
-        hasRemovedCounter++;
-      }
-      if (_listWellness.length == 0) {
-        _filteredPages.removeAt(6 - hasRemovedCounter);
-        hasRemovedCounter++;
-      }
-    });*/
   }
 
   Future<String> loadAsset() async {
@@ -185,10 +149,17 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     return false;
   }
 
-  void _insertIntoTempList(Merchant m2, int filterWordIndex) {
+  bool _containsLocation(Merchant m, String location) {
+    if (location == null || location.isEmpty) return false;
+
+    return m.location.toLowerCase().contains(location.toLowerCase());
+  }
+
+  void _insertIntoTempList(Merchant m2, int filterWordIndex, String location) {
     if (filterWordIndex != null &&
         filterWordIndex != -1 &&
-        !_containsFilteredTag(m2, filterWordIndex)) return;
+        !_containsFilteredTag(m2, filterWordIndex) &&
+        !_containsLocation(m2, location)) return;
 
     switch (m2.type) {
       case 0:
@@ -292,7 +263,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     _controller.addListener(_handleTabSelection);
     initListModel();
     _nextItem = 3;
-    _getNames(-1);
+    _getNames(-1, null);
   }
 
   void initListModel() {
@@ -501,17 +472,15 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                         );
 
                         if (_searchTerm != null && _searchTerm.isNotEmpty) {
-                          _getNames(-1);
+                          _getNames(-1, null);
                           _searchTerm = null;
                         }
 
                         if (selected !=
                             null /*&& selected != _lastIntegerSelected*/) {
                           var index = _getTagIndex(selected);
-                          _getNames(index);
+                          _getNames(index, selected);
 
-                          print('selected:' + selected);
-                          print('index:' + index.toString());
                           setState(() {
                             _searchTerm = selected;
                           });
@@ -528,40 +497,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                   title: Text(_searchTerm != null
                       ? _searchTerm
                       : _pagesTags[_controller.index].title),
-                  /*TypeAheadFormField(
-                noItemsFoundBuilder: (context) =>
-                    Text('Enter atleast 3 characters!'),
-                getImmediateSuggestions: false,
-                textFieldConfiguration: TextFieldConfiguration(
-                    controller: _typeAheadController,
-                    autofocus: true,
-                    style: DefaultTextStyle.of(context)
-                        .style
-                        .copyWith(fontStyle: FontStyle.italic),
-                    decoration: InputDecoration()),
-                suggestionsCallback: (pattern) {
-                  return _getSuggestions(pattern);
-                },
-                itemBuilder: (context, suggestion) {
-                  return ListTile(
-                    title: Text(suggestion.text),
-                    //leading: Text(suggestion.index.toString()),
-                    /*leading: Icon(Icons.shopping_cart),
-                      title: Text(suggestion['name']),
-                      subtitle: Text('\$${suggestion['price']}'),*/
-                  );
-                },
-                onSuggestionSelected: (suggestion) {
-                  this._typeAheadController.text = suggestion.text;
-                  //print(suggestion.index);
-//                  _getNames(_getSuggestions(suggestion));
-                  _getNames(suggestion.index);
-
-                  /*Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) =>
-                            ProductPage(product: suggestion)));*/
-                },
-              ),*/
                   expandedHeight: 30.0,
                   floating: false,
                   pinned: false,
