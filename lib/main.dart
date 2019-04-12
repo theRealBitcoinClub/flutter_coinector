@@ -438,7 +438,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
               fontStyle: FontStyle.normal,
               color: Colors.grey[900]),
           body1: TextStyle(
-              fontSize: 18.0, fontFamily: 'Hind', color: Colors.white),
+              fontSize: 17.0,
+              fontFamily: 'Hind',
+              color: Colors.white.withOpacity(0.85)),
           body2: TextStyle(
               fontSize: 14.0, fontFamily: 'Hind', color: Colors.white70),
         ),
@@ -508,8 +510,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                         );
 
                         if (_searchTerm != null && _searchTerm.isNotEmpty) {
-                          _getNames(-1, null);
                           _searchTerm = null;
+                          _getNames(-1, null);
                         }
 
                         if (selected !=
@@ -533,7 +535,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                   title: Text(_searchTerm != null
                       ? _searchTerm
                       : _pagesTags[_controller.index].title),
-                  expandedHeight: 30.0,
+                  //expandedHeight: 300.0, GOOD SPACE FOR ADS LATER
                   floating: true,
                   snap: true,
                   pinned: false,
@@ -574,23 +576,39 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     );
   }
 
-  Padding buildTabContainer(var listKey, var list, var builderMethod, var cat) {
+  Widget buildTabContainer(var listKey, var list, var builderMethod, var cat) {
     return (list != null && list.length > 0)
-        ? Padding(
-            padding: const EdgeInsets.all(0.0),
-            child: AnimatedList(
-              key: listKey,
-              initialItemCount: list.length,
-              itemBuilder: builderMethod,
-            ),
+        ? AnimatedList(
+            /*padding: const EdgeInsets.only(
+              top: 0.0,
+            ),*/
+            key: listKey,
+            initialItemCount: list.length,
+            itemBuilder: builderMethod,
           )
         : Padding(
-            padding: EdgeInsets.all(5.0),
+            padding: EdgeInsets.all(15.0),
             child: _searchTerm == null
                 ? Text('Loading...')
-                : Text(
-                    'You searched for $_searchTerm, but there are no matching results in this category: $cat! Clear the search bar to retrieve unfiltered results or filter for a different word.'),
-          );
+                : Column(
+                    children: <Widget>[
+                      Text(cat.toString().toUpperCase()),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'You filtered for $_searchTerm, but there are no matching results in this category!',
+                        style: TextStyle(fontWeight: FontWeight.w300),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'Hit the search icon to retrieve unfiltered results or filter for a different word.',
+                        style: TextStyle(fontStyle: FontStyle.italic),
+                      ),
+                    ],
+                  ));
   }
 }
 

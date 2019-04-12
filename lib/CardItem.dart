@@ -13,7 +13,7 @@ class CardItem extends StatelessWidget {
   const CardItem(
       {Key key,
       @required this.animation,
-      this.onTap,
+      //  this.onTap,
       @required this.item,
       this.selected: false})
       : assert(animation != null),
@@ -22,18 +22,15 @@ class CardItem extends StatelessWidget {
         super(key: key);
 
   final Animation<double> animation;
-  final VoidCallback onTap;
+  //final VoidCallback onTap;
   final Merchant item;
   final bool selected;
   final double itemHeight = 100;
 
   @override
   Widget build(BuildContext context) {
-    //Merchant m2 = Merchant.fromJson(jsonDecode(item.toString()));
     TextStyle textStyle = Theme.of(context).textTheme.body1;
     TextStyle textStyle2 = Theme.of(context).textTheme.body2;
-    //if (selected)
-    //textStyle = textStyle.copyWith(color: Colors.lightGreenAccent[400]);
     final generatedColor = Colors.primaries[item.type % 17];
     var image;
     try {
@@ -46,100 +43,91 @@ class CardItem extends StatelessWidget {
         alignment: Alignment.bottomCenter,
       );
     } catch (e) {
-      image = FadeInImage.memoryNetwork(
-        placeholder: kTransparentImage,
-        image: "https://realbitcoinclub.firebaseapp.com/img/app/trbc.gif",
+      image = SizedBox(
         height: 320,
-        alignment: Alignment.bottomCenter,
       );
-      //CATCH ALL 404 because of missing images
+      //TODO CATCH ALL 404 because of missing images and show placeholder
     }
     return Padding(
-      padding: const EdgeInsets.all(1.0),
-      child: SizeTransition(
-        axis: Axis.vertical,
-        sizeFactor: animation,
-        child: GestureDetector(
-          behavior: HitTestBehavior.opaque,
-          onTap: onTap,
-          child: SizedBox(
-            height: 402,
-            child: Padding(
-              padding: EdgeInsets.all(5.0),
-              child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  color: generatedColor,
-                  child: Column(
+      padding: EdgeInsets.all(5.0),
+      child: Card(
+        clipBehavior: Clip.none,
+          margin: EdgeInsets.all(5.0),
+          elevation: 3.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          color: generatedColor,
+          child: Column(
+            children: <Widget>[
+              Stack(
+                children: <Widget>[
+                  image,
+                  Stack(
                     children: <Widget>[
-                      Stack(
-                        children: <Widget>[
-                          image,
-                          Stack(
-                            children: <Widget>[
-                              Container(
-                                height: itemHeight,
-                                decoration: BoxDecoration(
-                                  //color: Colors.primaries[item.type % 17].withOpacity(0.7),
-
-                                  gradient: LinearGradient(
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                      colors: [
-                                        generatedColor,
-                                        generatedColor,
-                                        generatedColor.withOpacity(0.9),
-                                        generatedColor.withOpacity(0.75),
-                                        generatedColor.withOpacity(0.6)
-                                      ]),
-                                ),
-                              ),
-                              Container(
-                                height: itemHeight,
-                                decoration: BoxDecoration(
-                                    color: Colors.black.withOpacity(0.2)),
-                              ),
-                              new ItemInfoStackLayer(
-                                  item: item,
-                                  textStyle: textStyle,
-                                  textStyleSmall: textStyle2,
-                                  height: itemHeight)
-                            ],
-                          ),
-                        ],
+                      Container(
+                        height: itemHeight,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                generatedColor,
+                                generatedColor,
+                                generatedColor.withOpacity(0.9),
+                                generatedColor.withOpacity(0.75),
+                                generatedColor.withOpacity(0.6)
+                              ]),
+                        ),
                       ),
-                      ButtonTheme.bar(
-                        // make buttons use the appropriate styles for cards
-                        child: ButtonBar(
-                          children: <Widget>[
-                            FlatButton(
-                              child: const Text('REVIEW'),
-                              onPressed: () {
-                                /* ... */
-                              },
-                            ),
-                            /* FlatButton(
+                      Container(
+                        height: itemHeight,
+                        decoration:
+                            BoxDecoration(color: Colors.black.withOpacity(0.2)),
+                      ),
+                      new ItemInfoStackLayer(
+                          item: item,
+                          textStyle: textStyle,
+                          textStyleSmall: textStyle2,
+                          height: itemHeight)
+                    ],
+                  ),
+                ],
+              ),
+              ButtonTheme.bar(
+                padding: EdgeInsets.all(10.0),
+                // make buttons use the appropriate styles for cards
+                child: ButtonBar(
+                  children: <Widget>[
+                    FlatButton(
+                      child: const Text(
+                        'REVIEW',
+                        style: TextStyle(fontSize: 14),
+                      ),
+                      onPressed: () {
+                        /* ... */
+                      },
+                    ),
+                    /* FlatButton(
                               child: const Text('PAY'),
                               onPressed: () {
                                 showAlertDialog(context);
                               },
                             ),*/
-                            FlatButton(
-                              child: const Text('VISIT'),
-                              onPressed: () {
-                                _launchURL();
-                              },
-                            ),
-                          ],
-                        ),
+                    FlatButton(
+                      child: const Text(
+                        'VISIT',
+                        style: TextStyle(fontSize: 14),
                       ),
-                    ],
-                  )),
-            ),
-          ),
-        ),
-      ),
+                      onPressed: () {
+                        _launchURL();
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          )),
     );
   }
 }
