@@ -438,7 +438,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
               fontStyle: FontStyle.normal,
               color: Colors.grey[900]),
           body1: TextStyle(
-              fontSize: 18.0, fontFamily: 'Hind', color: Colors.white),
+              fontSize: 17.0,
+              fontFamily: 'Hind',
+              color: Colors.white.withOpacity(0.85)),
           body2: TextStyle(
               fontSize: 14.0, fontFamily: 'Hind', color: Colors.white70),
         ),

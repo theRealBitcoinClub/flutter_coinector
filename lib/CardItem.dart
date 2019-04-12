@@ -13,7 +13,7 @@ class CardItem extends StatelessWidget {
   const CardItem(
       {Key key,
       @required this.animation,
-      this.onTap,
+      //  this.onTap,
       @required this.item,
       this.selected: false})
       : assert(animation != null),
@@ -22,7 +22,7 @@ class CardItem extends StatelessWidget {
         super(key: key);
 
   final Animation<double> animation;
-  final VoidCallback onTap;
+  //final VoidCallback onTap;
   final Merchant item;
   final bool selected;
   final double itemHeight = 100;
@@ -49,97 +49,85 @@ class CardItem extends StatelessWidget {
       //TODO CATCH ALL 404 because of missing images and show placeholder
     }
     return Padding(
-      padding: const EdgeInsets.all(1.0),
-      child: SizeTransition(
-        axis: Axis.vertical,
-        sizeFactor: animation,
-        child: GestureDetector(
-          behavior: HitTestBehavior.opaque,
-          onTap: onTap,
-          child: SizedBox(
-            height: 402,
-            child: Padding(
-              padding: EdgeInsets.all(3.0),
-              child: Card(
-                  elevation: 3.0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  color: generatedColor,
-                  child: Column(
+      padding: EdgeInsets.all(5.0),
+      child: Card(
+        clipBehavior: Clip.none,
+          margin: EdgeInsets.all(5.0),
+          elevation: 3.0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          color: generatedColor,
+          child: Column(
+            children: <Widget>[
+              Stack(
+                children: <Widget>[
+                  image,
+                  Stack(
                     children: <Widget>[
-                      Stack(
-                        children: <Widget>[
-                          image,
-                          Stack(
-                            children: <Widget>[
-                              Container(
-                                height: itemHeight,
-                                decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                      colors: [
-                                        generatedColor,
-                                        generatedColor,
-                                        generatedColor.withOpacity(0.9),
-                                        generatedColor.withOpacity(0.75),
-                                        generatedColor.withOpacity(0.6)
-                                      ]),
-                                ),
-                              ),
-                              Container(
-                                height: itemHeight,
-                                decoration: BoxDecoration(
-                                    color: Colors.black.withOpacity(0.2)),
-                              ),
-                              new ItemInfoStackLayer(
-                                  item: item,
-                                  textStyle: textStyle,
-                                  textStyleSmall: textStyle2,
-                                  height: itemHeight)
-                            ],
-                          ),
-                        ],
+                      Container(
+                        height: itemHeight,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                generatedColor,
+                                generatedColor,
+                                generatedColor.withOpacity(0.9),
+                                generatedColor.withOpacity(0.75),
+                                generatedColor.withOpacity(0.6)
+                              ]),
+                        ),
                       ),
-                      ButtonTheme.bar(
-                        padding: EdgeInsets.all(10.0),
-                        // make buttons use the appropriate styles for cards
-                        child: ButtonBar(
-                          children: <Widget>[
-                            FlatButton(
-                              child: const Text(
-                                'REVIEW',
-                                style: TextStyle(fontSize: 14),
-                              ),
-                              onPressed: () {
-                                /* ... */
-                              },
-                            ),
-                            /* FlatButton(
+                      Container(
+                        height: itemHeight,
+                        decoration:
+                            BoxDecoration(color: Colors.black.withOpacity(0.2)),
+                      ),
+                      new ItemInfoStackLayer(
+                          item: item,
+                          textStyle: textStyle,
+                          textStyleSmall: textStyle2,
+                          height: itemHeight)
+                    ],
+                  ),
+                ],
+              ),
+              ButtonTheme.bar(
+                padding: EdgeInsets.all(10.0),
+                // make buttons use the appropriate styles for cards
+                child: ButtonBar(
+                  children: <Widget>[
+                    FlatButton(
+                      child: const Text(
+                        'REVIEW',
+                        style: TextStyle(fontSize: 14),
+                      ),
+                      onPressed: () {
+                        /* ... */
+                      },
+                    ),
+                    /* FlatButton(
                               child: const Text('PAY'),
                               onPressed: () {
                                 showAlertDialog(context);
                               },
                             ),*/
-                            FlatButton(
-                              child: const Text(
-                                'VISIT',
-                                style: TextStyle(fontSize: 14),
-                              ),
-                              onPressed: () {
-                                _launchURL();
-                              },
-                            ),
-                          ],
-                        ),
+                    FlatButton(
+                      child: const Text(
+                        'VISIT',
+                        style: TextStyle(fontSize: 14),
                       ),
-                    ],
-                  )),
-            ),
-          ),
-        ),
-      ),
+                      onPressed: () {
+                        _launchURL();
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          )),
     );
   }
 }
