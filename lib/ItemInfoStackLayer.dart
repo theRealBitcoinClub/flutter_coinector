@@ -33,7 +33,7 @@ class ItemInfoStackLayer extends StatelessWidget {
               style: textStyle,
               maxLines: 1,
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Row(
@@ -60,7 +60,7 @@ class ItemInfoStackLayer extends StatelessWidget {
                       )
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Text(

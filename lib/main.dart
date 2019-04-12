@@ -592,21 +592,21 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         : Padding(
             padding: EdgeInsets.all(15.0),
             child: _searchTerm == null
-                ? Text('Loading...')
+                ? const Text('Loading...')
                 : Column(
                     children: <Widget>[
                       Text(cat.toString().toUpperCase()),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(
                         'You filtered for $_searchTerm, but there are no matching results in this category!',
                         style: TextStyle(fontWeight: FontWeight.w300),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
-                      Text(
+                      const Text(
                         'Hit the search icon to retrieve unfiltered results or filter for a different word.',
                         style: TextStyle(fontStyle: FontStyle.italic),
                       ),
