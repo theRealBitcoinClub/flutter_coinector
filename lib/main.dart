@@ -282,7 +282,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   _handleTabSelection() {
     setState(() {
-      _title = _filteredPages[_controller.index].title;
+      if (!isFilteredList()) updateTitle();
     });
   }
 
@@ -294,10 +294,15 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     //_typeAheadController.addListener(_handleEmptySearchBar);
     _delegate.buildHistory();
     _controller = TabController(vsync: this, length: _filteredPages.length);
+    updateTitle();
     _controller.addListener(_handleTabSelection);
     initListModel();
     _nextItem = 3;
     _getNames(-1, null);
+  }
+
+  void updateTitle() {
+    _title = _pagesTags[_controller.index].title;
   }
 
   void initListModel() {
@@ -400,23 +405,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     );
   }
 
-  // Insert the "next item" into the list model.
-  void _insert() {
-    //final int index =
-    //_selectedItem == null ? _list.length : _list.indexOf(_selectedItem);
-    //_list.insert(index, _nextItem++);
-  }
-
-  // Remove the selected item from the list model.
-  void _remove() {
-    if (_selectedItem != null) {
-      //_list.removeAt(_list.indexOf(_selectedItem));
-      setState(() {
-        _selectedItem = null;
-      });
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -481,18 +469,21 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                   elevation: 1.5,
                   forceElevated: true,
                   leading: IconButton(
-                    tooltip: 'Clear Filter',
+                    tooltip: isFilterEmpty() ? 'Home' : 'Clear Filter',
                     icon: AnimatedIcon(
-                      icon: _searchTerm == null
+                      icon: isFilterEmpty()
                           ? AnimatedIcons.home_menu
                           : AnimatedIcons.close_menu,
                       color: Colors.white,
                       progress: _delegate.transitionAnimation,
                     ),
                     onPressed: () {
-                      if (_searchTerm == null) {
+                      if (isFilterEmpty()) {
                         _controller.animateTo(0);
+                        return;
                       }
+
+                      updateTitle();
 
                       setState(() {
                         showUnfilteredLists();
@@ -516,9 +507,13 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                       tooltip: 'settings',
                     ),*/
                   ],
-                  title: Text(_searchTerm != null
-                      ? _searchTerm
-                      : _pagesTags[_controller.index].title),
+                  title: AnimatedSwitcher(
+                      duration: Duration(milliseconds: 1000),
+                      child: Text(
+                          _title) /*Text(_searchTerm != null
+                        ? _searchTerm
+                        : _pagesTags[_controller.index].title),*/
+                      ),
                   //expandedHeight: 300.0, GOOD SPACE FOR ADS LATER
                   floating: true,
                   snap: true,
@@ -560,6 +555,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     );
   }
 
+  bool isFilterEmpty() => _searchTerm == null || _searchTerm.isEmpty;
+
   IconButton buildIconButtonSearch(BuildContext context) {
     return IconButton(
       icon: AnimatedIcon(
@@ -579,16 +576,17 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
           setState(() {
             _searchTerm = selected;
+            _title = selected;
           });
         }
       },
-      tooltip: 'search',
+      tooltip: 'Search',
     );
   }
 
   void showUnfilteredLists() {
     if (isFilteredList()) {
-      _searchTerm = null;
+      _searchTerm = '';
       _getNames(-1, null);
     }
   }
@@ -610,7 +608,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           )
         : Padding(
             padding: EdgeInsets.all(15.0),
-            child: _searchTerm == null
+            child: isFilterEmpty()
                 ? const Center(
                     child: CircularProgressIndicator(),
                   )
