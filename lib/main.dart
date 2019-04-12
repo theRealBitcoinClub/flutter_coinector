@@ -510,8 +510,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                         );
 
                         if (_searchTerm != null && _searchTerm.isNotEmpty) {
-                          _getNames(-1, null);
                           _searchTerm = null;
+                          _getNames(-1, null);
                         }
 
                         if (selected !=
