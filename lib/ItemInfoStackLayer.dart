@@ -18,6 +18,7 @@ class ItemInfoStackLayer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var splittedtags = item.tags.split(",");
     return Container(
       height: 100,
       child: Padding(
@@ -25,7 +26,11 @@ class ItemInfoStackLayer extends StatelessWidget {
         child: ListView(
           physics: const NeverScrollableScrollPhysics(),
           children: <Widget>[
-            Text(item.name + "   ", style: textStyle, maxLines: 1,),
+            Text(
+              item.name + "   ",
+              style: textStyle,
+              maxLines: 1,
+            ),
             Row(
               children: <Widget>[
                 Text(item.location + "   ", style: textStyleSmall),
@@ -57,13 +62,10 @@ class ItemInfoStackLayer extends StatelessWidget {
               ],
             ),
             Text(
-                parseElementAt(0) +
-                    ", " +
-                    parseElementAt(1) +
-                    ", " +
-                    parseElementAt(2) +
-                    ", " +
-                    parseElementAt(3),
+                parseElementAt(splittedtags, 0) +
+                    parseElementAt(splittedtags, 1) +
+                    parseElementAt(splittedtags, 2) +
+                    parseElementAt(splittedtags, 3),
                 style: textStyleSmall)
           ],
         ),
@@ -71,6 +73,15 @@ class ItemInfoStackLayer extends StatelessWidget {
     );
   }
 
-  String parseElementAt(int pos) =>
-      Tags.tagText.elementAt(int.parse(item.tags.split(",").elementAt(pos)));
+  String parseElementAt(splittedTags, int pos) {
+    int tagIndex = int.parse(splittedTags.elementAt(pos));
+
+    if (tagIndex == 104)
+      return "";
+
+    String addSeparator = "";
+    if (pos != 0) addSeparator = " - ";
+
+    return addSeparator + Tags.tagText.elementAt(tagIndex);
+  }
 }
