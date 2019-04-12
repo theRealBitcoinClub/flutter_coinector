@@ -607,7 +607,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         : Padding(
             padding: EdgeInsets.all(15.0),
             child: _searchTerm == null
-                ? const Text('Loading...')
+                ? const Center(
+                    child: CircularProgressIndicator(),
+                  )
                 : Column(
                     children: <Widget>[
                       Text(cat.toString().toUpperCase()),
