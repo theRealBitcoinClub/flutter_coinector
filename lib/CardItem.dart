@@ -29,11 +29,8 @@ class CardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //Merchant m2 = Merchant.fromJson(jsonDecode(item.toString()));
     TextStyle textStyle = Theme.of(context).textTheme.body1;
     TextStyle textStyle2 = Theme.of(context).textTheme.body2;
-    //if (selected)
-    //textStyle = textStyle.copyWith(color: Colors.lightGreenAccent[400]);
     final generatedColor = Colors.primaries[item.type % 17];
     var image;
     try {
@@ -46,13 +43,10 @@ class CardItem extends StatelessWidget {
         alignment: Alignment.bottomCenter,
       );
     } catch (e) {
-      image = FadeInImage.memoryNetwork(
-        placeholder: kTransparentImage,
-        image: "https://realbitcoinclub.firebaseapp.com/img/app/trbc.gif",
+      image = SizedBox(
         height: 320,
-        alignment: Alignment.bottomCenter,
       );
-      //CATCH ALL 404 because of missing images
+      //TODO CATCH ALL 404 because of missing images and show placeholder
     }
     return Padding(
       padding: const EdgeInsets.all(1.0),
@@ -65,8 +59,9 @@ class CardItem extends StatelessWidget {
           child: SizedBox(
             height: 402,
             child: Padding(
-              padding: EdgeInsets.all(5.0),
+              padding: EdgeInsets.all(3.0),
               child: Card(
+                  elevation: 3.0,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0),
                   ),
@@ -81,8 +76,6 @@ class CardItem extends StatelessWidget {
                               Container(
                                 height: itemHeight,
                                 decoration: BoxDecoration(
-                                  //color: Colors.primaries[item.type % 17].withOpacity(0.7),
-
                                   gradient: LinearGradient(
                                       begin: Alignment.topCenter,
                                       end: Alignment.bottomCenter,
@@ -110,11 +103,15 @@ class CardItem extends StatelessWidget {
                         ],
                       ),
                       ButtonTheme.bar(
+                        padding: EdgeInsets.all(10.0),
                         // make buttons use the appropriate styles for cards
                         child: ButtonBar(
                           children: <Widget>[
                             FlatButton(
-                              child: const Text('REVIEW'),
+                              child: const Text(
+                                'REVIEW',
+                                style: TextStyle(fontSize: 14),
+                              ),
                               onPressed: () {
                                 /* ... */
                               },
@@ -126,7 +123,10 @@ class CardItem extends StatelessWidget {
                               },
                             ),*/
                             FlatButton(
-                              child: const Text('VISIT'),
+                              child: const Text(
+                                'VISIT',
+                                style: TextStyle(fontSize: 14),
+                              ),
                               onPressed: () {
                                 _launchURL();
                               },
