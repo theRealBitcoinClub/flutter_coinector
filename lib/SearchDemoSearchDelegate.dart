@@ -5,7 +5,8 @@ import 'SuggestionMatch.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SearchDemoSearchDelegate extends SearchDelegate<String> {
-  final Set<String> _history = Set.from(<String>[]);
+  final Set<String> _historyBackup = Set.from(Tags.locations);
+  final Set<String> _history = Set.from(Tags.locations);
 
   @override
   Widget buildLeading(BuildContext context) {
@@ -28,6 +29,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
     historyItems = _reverseList(historyItems);
     _history.clear();
     historyItems.forEach((item) => _history.add(item));
+    _history.addAll(_historyBackup);
   }
 
   _reverseList(List<String> list) {
@@ -52,10 +54,10 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
   _getSuggestions(String pattern) {
     List<String> matches = new List();
 
-    if (pattern.length < 3) {
+    /*if (pattern.length < 2) {
       matches.add(ENTER_ATLEAST_THREE);
       return matches;
-    }
+    }*/
 
     addMatches(pattern, matches, Tags.tagText);
     addMatches(pattern, matches, Tags.locations);
@@ -75,15 +77,15 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
 
   void addMatch(
       int x, String pattern, List<String> matches, String currentItem) {
-    if (contains(currentItem, pattern)) {
+    if (startsWith(currentItem, pattern)) {
       matches.add(currentItem);
     }
   }
 
-  bool contains(String currentItem, String pattern) =>
-      currentItem.toLowerCase().contains(pattern.toLowerCase());
+  bool startsWith(String currentItem, String pattern) =>
+      currentItem.toLowerCase().startsWith(pattern.toLowerCase());
 
-  static final TRY_ANOTHER_WORD = 'Try another word!';
+  static final TRY_ANOTHER_WORD = 'Not found! Try another word!';
   static final ENTER_ATLEAST_THREE = 'Enter atleast 3 characters!';
 
   _addHistoryItem(String item) async {
