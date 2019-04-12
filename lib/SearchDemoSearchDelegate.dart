@@ -116,6 +116,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
   @override
   void showResults(BuildContext context) {
     //DONT SHOW ANY RESULTS HERE, SIMPLY REMOVE THE WIDGET
+    //THIS METHOD IS CALLED WHEN USER HITS THE SEARCH ICON OF THE KEYBOARD LAYOUT
     close(context, null);
   }
 

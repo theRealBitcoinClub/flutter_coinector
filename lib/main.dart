@@ -476,6 +476,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                 (BuildContext context, bool innerBoxIsScrolled) {
               return <Widget>[
                 SliverAppBar(
+                  elevation: 1.5,
+                  forceElevated: true,
                   leading: IconButton(
                     tooltip: 'Navigation',
                     icon: AnimatedIcon(
@@ -532,7 +534,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                       ? _searchTerm
                       : _pagesTags[_controller.index].title),
                   expandedHeight: 30.0,
-                  floating: false,
+                  floating: true,
+                  snap: true,
                   pinned: false,
                   /*flexibleSpace: FlexibleSpaceBar(
                     centerTitle: true,
