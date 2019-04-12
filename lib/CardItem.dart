@@ -25,6 +25,7 @@ class CardItem extends StatelessWidget {
   final VoidCallback onTap;
   final Merchant item;
   final bool selected;
+  final double itemHeight = 100;
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +79,7 @@ class CardItem extends StatelessWidget {
                           Stack(
                             children: <Widget>[
                               Container(
-                                height: 100,
+                                height: itemHeight,
                                 decoration: BoxDecoration(
                                   //color: Colors.primaries[item.type % 17].withOpacity(0.7),
 
@@ -95,14 +96,15 @@ class CardItem extends StatelessWidget {
                                 ),
                               ),
                               Container(
-                                height: 100,
+                                height: itemHeight,
                                 decoration: BoxDecoration(
                                     color: Colors.black.withOpacity(0.2)),
                               ),
                               new ItemInfoStackLayer(
                                   item: item,
                                   textStyle: textStyle,
-                                  textStyleSmall: textStyle2)
+                                  textStyleSmall: textStyle2,
+                                  height: itemHeight)
                             ],
                           ),
                         ],
@@ -117,7 +119,7 @@ class CardItem extends StatelessWidget {
                                 /* ... */
                               },
                             ),
-                           /* FlatButton(
+                            /* FlatButton(
                               child: const Text('PAY'),
                               onPressed: () {
                                 showAlertDialog(context);

@@ -8,8 +8,7 @@ class CoinectorTextScalevalue {
 
   @override
   bool operator ==(dynamic other) {
-    if (runtimeType != other.runtimeType)
-      return false;
+    if (runtimeType != other.runtimeType) return false;
     final CoinectorTextScalevalue typedOther = other;
     return scale == typedOther.scale && label == typedOther.label;
   }
@@ -21,10 +20,10 @@ class CoinectorTextScalevalue {
   String toString() {
     return '$runtimeType($label)';
   }
-
 }
 
-const List<CoinectorTextScalevalue> kAllCoinectorTextScalevalues = <CoinectorTextScalevalue>[
+const List<CoinectorTextScalevalue> kAllCoinectorTextScalevalues =
+    <CoinectorTextScalevalue>[
   CoinectorTextScalevalue(null, 'System Default'),
   CoinectorTextScalevalue(0.8, 'Small'),
   CoinectorTextScalevalue(1.0, 'Normal'),

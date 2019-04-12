@@ -10,17 +10,19 @@ class ItemInfoStackLayer extends StatelessWidget {
     @required this.item,
     @required this.textStyle,
     @required this.textStyleSmall,
+    @required this.height,
   }) : super(key: key);
 
   final Merchant item;
   final TextStyle textStyle;
   final TextStyle textStyleSmall;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
     var splittedtags = item.tags.split(",");
     return Container(
-      height: 100,
+      height: height,
       child: Padding(
         padding: EdgeInsets.all(10.0),
         child: ListView(
@@ -31,19 +33,16 @@ class ItemInfoStackLayer extends StatelessWidget {
               style: textStyle,
               maxLines: 1,
             ),
-            Row(
-              children: <Widget>[
-                Text(item.location + "   ", style: textStyleSmall),
-              ],
+            SizedBox(
+              height: 5,
             ),
             Row(
               children: <Widget>[
-                /*Text(
-                  "0,1 km   ",
-                  style: textStyleSmall,
-                ),*/
+                Text(item.location + "   ", style: textStyleSmall),
                 item.reviewCount == '0'
-                    ? Padding(padding: EdgeInsets.all(0.0),)
+                    ? Padding(
+                        padding: EdgeInsets.all(0.0),
+                      )
                     : Row(
                         children: <Widget>[
                           SmoothStarRating(
@@ -54,18 +53,24 @@ class ItemInfoStackLayer extends StatelessWidget {
                             color: Colors.yellow[700],
                             borderColor: Colors.white,
                           ),
-                          Text(" " + convertRatingToPercentage(item.reviewStars), style: textStyleSmall),
-
+                          Text(
+                              " " + convertRatingToPercentage(item.reviewStars),
+                              style: textStyleSmall),
                         ],
                       )
               ],
+            ),
+            SizedBox(
+              height: 10,
             ),
             Text(
                 parseElementAt(splittedtags, 0) +
                     parseElementAt(splittedtags, 1) +
                     parseElementAt(splittedtags, 2) +
                     parseElementAt(splittedtags, 3),
-                style: textStyleSmall)
+                style: TextStyle(
+                    fontWeight: FontWeight.w300,
+                    color: Colors.white.withOpacity(0.8)))
           ],
         ),
       ),

@@ -1,6 +1,14 @@
 class Tags {
   static final locations = const {
-    'Europe, America, Asia, Africa, Australia', 'USA', 'Germany', 'Spain', 'Berlin', 'Colorado', 'Caracas', 'Tokyo', 'Venezuela'
+    'Europe, America, Asia, Africa, Australia',
+    'USA',
+    'Germany',
+    'Spain',
+    'Berlin',
+    'Colorado',
+    'Caracas',
+    'Tokyo',
+    'Venezuela'
   };
   static final tagText = const {
     'Bitcoin',

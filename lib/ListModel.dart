@@ -26,18 +26,16 @@ class ListModel<E> {
   AnimatedListState get _animatedList => listKey.currentState;
 
   ListModel<E> sublist(int start, int end) {
-    if (end >= _items.length)
-      end = _items.length - 1;
+    if (end >= _items.length) end = _items.length - 1;
 
-    _items =_items.sublist(start, end);
+    _items = _items.sublist(start, end);
 
     return this;
   }
 
   void insert(int index, E item) {
     _items.insert(index, item);
-    if (_animatedList != null)
-      _animatedList.insertItem(index);
+    if (_animatedList != null) _animatedList.insertItem(index);
   }
 
   E removeAt(int index) {

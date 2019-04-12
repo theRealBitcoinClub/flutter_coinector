@@ -7,8 +7,10 @@ class CoinectorTheme {
   final ThemeData data;
 }
 
-final CoinectorTheme kDarkCoinectorTheme = CoinectorTheme._('Dark', _buildDarkTheme());
-final CoinectorTheme kLightCoinectorTheme = CoinectorTheme._('Light', _buildLightTheme());
+final CoinectorTheme kDarkCoinectorTheme =
+    CoinectorTheme._('Dark', _buildDarkTheme());
+final CoinectorTheme kLightCoinectorTheme =
+    CoinectorTheme._('Light', _buildLightTheme());
 
 TextTheme _buildTextTheme(TextTheme base) {
   return base.copyWith(
