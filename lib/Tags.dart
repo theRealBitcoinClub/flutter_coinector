@@ -17,7 +17,6 @@ class Tags {
     'Norway',
     'Bergen', 'Sweden', 'Göteborg', 'Rychnov nad Kněžnou', 'Czechia', 'Piran',
     'Slovenia', 'Yerevan', 'Armenia', 'Yaroslavl',
-    //TODO ADD all current locations and put them as default history items,grow history from that dont replace it,keep the suggestions
     'America',
     'Venezuela', 'Caracas', 'Maracaibo', 'Puerto la Cruz', 'Catia La Mar',
     'El Parmazo', 'Acarigua', 'San Cristobal',
@@ -61,6 +60,11 @@ class Tags {
     'Queensland', 'Agnes Water', 'Aitkenvale', 'Townsville', 'Cairns', 'Perth',
     'Africa',
   };
+
+  static final titleTags = const {
+    'Helado','Heladeria','Truck','Cerveceria','Dulces','Hamburguesas', 'Tentacion', 'Delicias', 'Pasteles','Pasteleria', 'Panaderia', 'Subway','Papa John','Pasticceria',
+  };
+
   static final tagText = const {
     'Bitcoin',
     //TODO make tags clickable

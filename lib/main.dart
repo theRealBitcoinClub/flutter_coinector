@@ -15,31 +15,35 @@ class AnimatedListSample extends StatefulWidget {
 }
 
 class _Page {
-  const _Page({this.text, this.icon, this.title});
+  const _Page({this.text, this.icon, this.title, this.index});
   final String text;
   final String title;
   final IconData icon;
+  final int index;
 }
 
 //TODO add takeaway
 const List<_Page> _pagesTags = <_Page>[
-  _Page(text: 'EAT', icon: Icons.restaurant, title: 'RESTAURANT & TAKE-AWAY'),
-  _Page(text: 'BAR', icon: Icons.local_bar, title: 'BAR, CLUB & CAFE'),
-  _Page(text: 'MARKET', icon: Icons.shopping_cart, title: 'SUPERMARKET'),
-  _Page(text: 'SHOP', icon: Icons.shopping_basket, title: 'SOUVENIR & SERVICE'),
-  _Page(text: 'HOTEL', icon: Icons.hotel, title: 'HOTEL, B&B, FLAT'),
-  _Page(text: 'ATM', icon: Icons.atm, title: 'TELLER & TRADER'),
-  _Page(text: 'SPA', icon: Icons.spa, title: 'WELLNESS & BEAUTY'),
-  /*
-  _Page(text: 'JUICE'),
-  _Page(text: 'SALAD'),
-  _Page(text: 'MARKET'),
-  _Page(text: 'SWEET'),
-  _Page(text: 'SPICEY'),
-  _Page(text: 'SALTY'),
-  _Page(text: 'COCKTAILS'),
-  _Page(text: 'BEER'),
-  _Page(text: 'MUSIC'),*/
+  _Page(
+      text: 'EAT',
+      icon: Icons.restaurant,
+      title: 'RESTAURANT & TAKE-AWAY',
+      index: 0),
+  _Page(
+      text: 'BAR', icon: Icons.local_bar, title: 'BAR, CLUB & CAFE', index: 1),
+  _Page(
+      text: 'MARKET',
+      icon: Icons.shopping_cart,
+      title: 'SUPERMARKET',
+      index: 2),
+  _Page(
+      text: 'SHOP',
+      icon: Icons.shopping_basket,
+      title: 'SOUVENIR & SERVICE',
+      index: 3),
+  _Page(text: 'HOTEL', icon: Icons.hotel, title: 'HOTEL, B&B, FLAT', index: 4),
+  _Page(text: 'ATM', icon: Icons.atm, title: 'TELLER & TRADER', index: 5),
+  _Page(text: 'SPA', icon: Icons.spa, title: 'WELLNESS & BEAUTY', index: 6),
 ];
 
 List<_Page> _filteredPages = _pagesTags;
@@ -48,47 +52,22 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     with SingleTickerProviderStateMixin {
   final SearchDemoSearchDelegate _delegate = SearchDemoSearchDelegate();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  final GlobalKey<AnimatedListState> _listKeyRestaurant =
-      GlobalKey<AnimatedListState>();
-  final GlobalKey<AnimatedListState> _listKeyBar =
-      GlobalKey<AnimatedListState>();
-  final GlobalKey<AnimatedListState> _listKeyHotel =
-      GlobalKey<AnimatedListState>();
-  final GlobalKey<AnimatedListState> _listKeyATM =
-      GlobalKey<AnimatedListState>();
-  final GlobalKey<AnimatedListState> _listKeyShop =
-      GlobalKey<AnimatedListState>();
-  final GlobalKey<AnimatedListState> _listKeyMarket =
-      GlobalKey<AnimatedListState>();
-  final GlobalKey<AnimatedListState> _listKeyWellness =
-      GlobalKey<AnimatedListState>();
+  final List<GlobalKey<AnimatedListState>> _listKeys = [
+    GlobalKey<AnimatedListState>(),
+    GlobalKey<AnimatedListState>(),
+    GlobalKey<AnimatedListState>(),
+    GlobalKey<AnimatedListState>(),
+    GlobalKey<AnimatedListState>(),
+    GlobalKey<AnimatedListState>(),
+    GlobalKey<AnimatedListState>()
+  ];
   TabController _controller;
   bool _customIndicator = false;
-  ListModel<Merchant> _listRestaurant;
-  ListModel<Merchant> _listBar;
-  ListModel<Merchant> _listMarket;
-  ListModel<Merchant> _listShop;
-  ListModel<Merchant> _listHotel;
-  ListModel<Merchant> _listATM;
-  ListModel<Merchant> _listWellness;
-  int _selectedItem;
-  int _nextItem; // The next item inserted when the user presses the '+' button.
+  List<ListModel<Merchant>> _lists = [];
   final dio = new Dio(); // for http requests
   List<Merchant> names = new List<Merchant>(); // names we get from API
-  ListModel<Merchant> tempListRestaurant;
-  ListModel<Merchant> tempListBar;
-  ListModel<Merchant> tempListMarket;
-  ListModel<Merchant> tempListShop;
-  ListModel<Merchant> tempListHotel;
-  ListModel<Merchant> tempListATM;
-  ListModel<Merchant> tempListWellness;
-  ListModel<Merchant> unfilteredListRestaurant;
-  ListModel<Merchant> unfilteredListBar;
-  ListModel<Merchant> unfilteredListMarket;
-  ListModel<Merchant> unfilteredListShop;
-  ListModel<Merchant> unfilteredListHotel;
-  ListModel<Merchant> unfilteredListATM;
-  ListModel<Merchant> unfilteredListWellness;
+  List<ListModel<Merchant>> tempLists = [];
+  List<ListModel<Merchant>> unfilteredLists = [];
   Response response;
   String _title = "Coinector";
   bool isUnfilteredList = false;
@@ -106,14 +85,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   void _getNames(int filterWordIndex, String locationFilter) async {
     if (filterWordIndex == -1) {
       if (isUnfilteredList) return;
-      updateListModel(
-          unfilteredListRestaurant,
-          unfilteredListBar,
-          unfilteredListHotel,
-          unfilteredListATM,
-          unfilteredListMarket,
-          unfilteredListShop,
-          unfilteredListWellness);
+      if (unfilteredLists.length != 0) updateListModel(unfilteredLists);
       this.isUnfilteredList = true;
     } else {
       this.isUnfilteredList = false;
@@ -138,34 +110,26 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       _insertIntoTempList(m2, filterWordIndex, locationFilter);
     }
 
-    initUnfilteredLists();
+    if (unfilteredLists.length == 0) initUnfilteredLists();
 
-    updateListModel(tempListRestaurant, tempListBar, tempListHotel, tempListATM,
-        tempListMarket, tempListShop, tempListWellness);
+    updateListModel(tempLists);
   }
 
-  void updateListModel(restaurant, bar, hotel, atm, market, shop, wellness) {
+  void updateList(List destination, List tmpList) {
+    destination.clear();
+    for (int i = 0; i < tmpList.length; i++) {
+      destination.add(tmpList[i]);
+    }
+  }
+
+  void updateListModel(List<ListModel<Merchant>> tmpList) {
     setState(() {
-      _listRestaurant = restaurant;
-      _listBar = bar;
-      _listHotel = hotel;
-      _listATM = atm;
-      _listMarket = market;
-      _listShop = shop;
-      _listWellness = wellness;
+      updateList(_lists, tmpList);
     });
   }
 
   void initUnfilteredLists() {
-    if (unfilteredListRestaurant == null) {
-      unfilteredListRestaurant = tempListRestaurant;
-      unfilteredListBar = tempListBar;
-      unfilteredListHotel = tempListHotel;
-      unfilteredListATM = tempListATM;
-      unfilteredListMarket = tempListMarket;
-      unfilteredListShop = tempListShop;
-      unfilteredListWellness = tempListWellness;
-    }
+    updateList(unfilteredLists, tempLists);
   }
 
   Future<String> loadAsset() async {
@@ -184,74 +148,67 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   bool _containsLocation(Merchant m, String location) {
-    if (location == null || location.isEmpty) return false;
+    return _containsString(m.location, location);
+  }
 
-    return m.location.toLowerCase().contains(location.toLowerCase());
+  bool _containsTitle(Merchant m, String title) {
+    return _containsString(m.name, title);
+  }
+
+  bool _containsString(String src, String pattern) {
+    if (pattern == null || pattern.isEmpty || src == null || src.isEmpty)
+      return false;
+
+    return src.toLowerCase().contains(pattern.toLowerCase());
   }
 
   void _insertIntoTempList(Merchant m2, int filterWordIndex, String location) {
     if (filterWordIndex != null &&
         filterWordIndex != -1 &&
         !_containsFilteredTag(m2, filterWordIndex) &&
-        !_containsLocation(m2, location)) return;
+        !_containsLocation(m2, location) &&
+        !_containsTitle(m2, location)) return;
 
     switch (m2.type) {
       case 0:
-        tempListRestaurant.insert(0, m2);
+        tempLists[0].insert(0, m2);
         break;
       case 1:
-        tempListRestaurant.insert(0, m2);
+        tempLists[0].insert(0, m2);
         break;
       case 2:
-        tempListBar.insert(0, m2);
+        tempLists[1].insert(0, m2);
         break;
       case 3:
-        tempListMarket.insert(0, m2);
+        tempLists[2].insert(0, m2);
         break;
       case 4:
-        tempListShop.insert(0, m2);
+        tempLists[3].insert(0, m2);
         break;
       case 5:
-        tempListHotel.insert(0, m2);
+        tempLists[4].insert(0, m2);
         break;
       case 99:
-        tempListATM.insert(0, m2);
+        tempLists[5].insert(0, m2);
         break;
       case 999:
-        tempListWellness.insert(0, m2);
+        tempLists[6].insert(0, m2);
         break;
     }
   }
 
+  void initListModelSevenTimes(List lists) {
+    lists.clear();
+    for (int i = 0; i < 7; i++) {
+      lists.add(ListModel<Merchant>(
+        listKey: _listKeys[i],
+        removedItemBuilder: _buildRemovedItem,
+      ));
+    }
+  }
+
   void initTempListModel() {
-    tempListRestaurant = ListModel<Merchant>(
-      listKey: _listKeyRestaurant,
-      removedItemBuilder: _buildRemovedItem,
-    );
-    tempListBar = ListModel<Merchant>(
-      listKey: _listKeyBar,
-      removedItemBuilder: _buildRemovedItem,
-    );
-    tempListHotel = ListModel<Merchant>(
-      listKey: _listKeyHotel,
-      removedItemBuilder: _buildRemovedItem,
-    );
-    tempListATM = ListModel<Merchant>(
-      listKey: _listKeyATM,
-      removedItemBuilder: _buildRemovedItem,
-    );
-    tempListMarket = ListModel<Merchant>(
-      listKey: _listKeyMarket,
-      removedItemBuilder: _buildRemovedItem,
-    );
-    tempListShop = ListModel<Merchant>(
-      listKey: _listKeyShop,
-      removedItemBuilder: _buildRemovedItem,
-    );
-    tempListWellness = ListModel<Merchant>(
-      listKey: _listKeyWellness,
-      removedItemBuilder: _buildRemovedItem,
-    );
+    initListModelSevenTimes(tempLists);
   }
 
   Decoration getIndicator() {
@@ -272,13 +229,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           ),
     );
   }
-/*
-  _handleEmptySearchBar() {
-    _searchTerm = _typeAheadController.text;
-    if (_typeAheadController.text.length <= 2 && !isUnfilteredList) {
-      _getNames(-1);
-    } else {}
-  }*/
 
   _handleTabSelection() {
     setState(() {
@@ -286,18 +236,14 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     });
   }
 
-  //TextEditingController _typeAheadController = new TextEditingController();
-
   @override
   void initState() {
     super.initState();
-    //_typeAheadController.addListener(_handleEmptySearchBar);
     _delegate.buildHistory();
     _controller = TabController(vsync: this, length: _filteredPages.length);
     updateTitle();
     _controller.addListener(_handleTabSelection);
     initListModel();
-    _nextItem = 3;
     _getNames(-1, null);
   }
 
@@ -306,40 +252,13 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void initListModel() {
-    _listRestaurant = ListModel<Merchant>(
-      listKey: _listKeyRestaurant,
-      removedItemBuilder: _buildRemovedItem,
-    );
-    _listBar = ListModel<Merchant>(
-      listKey: _listKeyBar,
-      removedItemBuilder: _buildRemovedItem,
-    );
-    _listHotel = ListModel<Merchant>(
-      listKey: _listKeyHotel,
-      removedItemBuilder: _buildRemovedItem,
-    );
-    _listATM = ListModel<Merchant>(
-      listKey: _listKeyATM,
-      removedItemBuilder: _buildRemovedItem,
-    );
-    _listMarket = ListModel<Merchant>(
-      listKey: _listKeyMarket,
-      removedItemBuilder: _buildRemovedItem,
-    );
-    _listShop = ListModel<Merchant>(
-      listKey: _listKeyShop,
-      removedItemBuilder: _buildRemovedItem,
-    );
-    _listWellness = ListModel<Merchant>(
-      listKey: _listKeyWellness,
-      removedItemBuilder: _buildRemovedItem,
-    );
+    initListModelSevenTimes(_lists);
   }
 
   // Used to build list items that haven't been removed.
   Widget _buildItemRestaurant(
       BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _listRestaurant);
+    return _buildItem(index, animation, _lists[0]);
   }
 
   CardItem _buildItem(
@@ -362,32 +281,32 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   Widget _buildItemBar(
       BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _listBar);
+    return _buildItem(index, animation, _lists[1]);
   }
 
   Widget _buildItemHotel(
       BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _listHotel);
+    return _buildItem(index, animation, _lists[4]);
   }
 
   Widget _buildItemATM(
       BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _listATM);
+    return _buildItem(index, animation, _lists[5]);
   }
 
   Widget _buildItemWellness(
       BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _listWellness);
+    return _buildItem(index, animation, _lists[6]);
   }
 
   Widget _buildItemMarket(
       BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _listMarket);
+    return _buildItem(index, animation, _lists[2]);
   }
 
   Widget _buildItemShop(
       BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _listShop);
+    return _buildItem(index, animation, _lists[3]);
   }
 
   // Used to build an item after it has been removed from the list. This method is
@@ -508,12 +427,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                     ),*/
                   ],
                   title: AnimatedSwitcher(
-                      duration: Duration(milliseconds: 1000),
-                      child: Text(
-                          _title) /*Text(_searchTerm != null
-                        ? _searchTerm
-                        : _pagesTags[_controller.index].title),*/
-                      ),
+                      duration: Duration(milliseconds: 500),
+                      child: Text(_title)),
                   //expandedHeight: 300.0, GOOD SPACE FOR ADS LATER
                   floating: true,
                   snap: true,
@@ -534,22 +449,20 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
               ];
             },
             body: TabBarView(controller: _controller, children: [
-              //_pagesTags.map<Widget>((_Page page) {
-              // if (page.text == "RESTAURANT") {
-              buildTabContainer(_listKeyRestaurant, _listRestaurant,
-                  _buildItemRestaurant, _pagesTags[0].title),
+              buildTabContainer(_listKeys[0], _lists[0], _buildItemRestaurant,
+                  _pagesTags[0].title),
               buildTabContainer(
-                  _listKeyBar, _listBar, _buildItemBar, _pagesTags[1].title),
-              buildTabContainer(_listKeyMarket, _listMarket, _buildItemMarket,
+                  _listKeys[1], _lists[1], _buildItemBar, _pagesTags[1].title),
+              buildTabContainer(_listKeys[2], _lists[2], _buildItemMarket,
                   _pagesTags[2].title),
               buildTabContainer(
-                  _listKeyShop, _listShop, _buildItemShop, _pagesTags[3].title),
-              buildTabContainer(_listKeyHotel, _listHotel, _buildItemHotel,
+                  _listKeys[3], _lists[3], _buildItemShop, _pagesTags[3].title),
+              buildTabContainer(_listKeys[4], _lists[4], _buildItemHotel,
                   _pagesTags[4].title),
               buildTabContainer(
-                  _listKeyATM, _listATM, _buildItemATM, _pagesTags[5].title),
-              buildTabContainer(_listKeyWellness, _listWellness,
-                  _buildItemWellness, _pagesTags[6].title),
+                  _listKeys[5], _lists[5], _buildItemATM, _pagesTags[5].title),
+              buildTabContainer(_listKeys[6], _lists[6], _buildItemWellness,
+                  _pagesTags[6].title)
             ]),
           )),
     );
@@ -628,7 +541,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                         height: 10,
                       ),
                       const Text(
-                        'Hit the search icon to retrieve unfiltered results or filter for a different word.',
+                        'Tap the X on the top left to retrieve unfiltered results or filter for a different word by tapping the search icon on the top right.',
                         style: TextStyle(fontStyle: FontStyle.italic),
                       ),
                     ],

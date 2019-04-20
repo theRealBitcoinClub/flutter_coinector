@@ -61,6 +61,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
 
     addMatches(pattern, matches, Tags.tagText);
     addMatches(pattern, matches, Tags.locations);
+    addMatches(pattern, matches, Tags.titleTags);
 
     if (matches.length == 0) {
       matches.add(TRY_ANOTHER_WORD);
