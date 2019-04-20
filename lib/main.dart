@@ -24,26 +24,27 @@ class _Page {
 
 //TODO add takeaway
 const List<_Page> _pagesTags = <_Page>[
+  _Page(text: 'EAT', icon: Icons.restaurant, title: 'RESTAURANT', index: 0),
   _Page(
-      text: 'EAT',
-      icon: Icons.restaurant,
-      title: 'RESTAURANT & TAKE-AWAY',
-      index: 0),
+      text: 'TOGO',
+      icon: Icons.restaurant_menu,
+      title: 'TAKE-AWAY & DELIVERY',
+      index: 1),
   _Page(
-      text: 'BAR', icon: Icons.local_bar, title: 'BAR, CLUB & CAFE', index: 1),
+      text: 'BAR', icon: Icons.local_bar, title: 'BAR, CLUB & CAFE', index: 2),
   _Page(
       text: 'MARKET',
       icon: Icons.shopping_cart,
       title: 'SUPERMARKET',
-      index: 2),
+      index: 3),
   _Page(
       text: 'SHOP',
       icon: Icons.shopping_basket,
       title: 'SOUVENIR & SERVICE',
-      index: 3),
-  _Page(text: 'HOTEL', icon: Icons.hotel, title: 'HOTEL, B&B, FLAT', index: 4),
-  _Page(text: 'ATM', icon: Icons.atm, title: 'TELLER & TRADER', index: 5),
-  _Page(text: 'SPA', icon: Icons.spa, title: 'WELLNESS & BEAUTY', index: 6),
+      index: 4),
+  _Page(text: 'HOTEL', icon: Icons.hotel, title: 'HOTEL, B&B, FLAT', index: 5),
+  _Page(text: 'ATM', icon: Icons.atm, title: 'TELLER & TRADER', index: 6),
+  _Page(text: 'SPA', icon: Icons.spa, title: 'WELLNESS & BEAUTY', index: 7),
 ];
 
 List<_Page> _filteredPages = _pagesTags;
@@ -52,15 +53,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     with SingleTickerProviderStateMixin {
   final SearchDemoSearchDelegate _delegate = SearchDemoSearchDelegate();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  final List<GlobalKey<AnimatedListState>> _listKeys = [
-    GlobalKey<AnimatedListState>(),
-    GlobalKey<AnimatedListState>(),
-    GlobalKey<AnimatedListState>(),
-    GlobalKey<AnimatedListState>(),
-    GlobalKey<AnimatedListState>(),
-    GlobalKey<AnimatedListState>(),
-    GlobalKey<AnimatedListState>()
-  ];
+  final List<GlobalKey<AnimatedListState>> _listKeys = [];
   TabController _controller;
   bool _customIndicator = false;
   List<ListModel<Merchant>> _lists = [];
@@ -174,32 +167,34 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         tempLists[0].insert(0, m2);
         break;
       case 1:
-        tempLists[0].insert(0, m2);
-        break;
-      case 2:
         tempLists[1].insert(0, m2);
         break;
-      case 3:
+      case 2:
         tempLists[2].insert(0, m2);
         break;
-      case 4:
+      case 3:
         tempLists[3].insert(0, m2);
         break;
-      case 5:
+      case 4:
         tempLists[4].insert(0, m2);
         break;
-      case 99:
+      case 5:
         tempLists[5].insert(0, m2);
         break;
-      case 999:
+      case 99:
         tempLists[6].insert(0, m2);
+        break;
+      case 999:
+        tempLists[7].insert(0, m2);
         break;
     }
   }
 
-  void initListModelSevenTimes(List lists) {
+  void initListModelSeveralTimes(List lists) {
     lists.clear();
-    for (int i = 0; i < 7; i++) {
+    _listKeys.clear();
+    for (int i = 0; i < 8; i++) {
+      _listKeys.add(GlobalKey<AnimatedListState>());
       lists.add(ListModel<Merchant>(
         listKey: _listKeys[i],
         removedItemBuilder: _buildRemovedItem,
@@ -208,7 +203,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void initTempListModel() {
-    initListModelSevenTimes(tempLists);
+    initListModelSeveralTimes(tempLists);
   }
 
   Decoration getIndicator() {
@@ -252,13 +247,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void initListModel() {
-    initListModelSevenTimes(_lists);
-  }
-
-  // Used to build list items that haven't been removed.
-  Widget _buildItemRestaurant(
-      BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _lists[0]);
+    initListModelSeveralTimes(_lists);
   }
 
   CardItem _buildItem(
@@ -279,34 +268,46 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     return null;
   }
 
-  Widget _buildItemBar(
+  // Used to build list items that haven't been removed.
+  Widget _buildItemRestaurant(
+      BuildContext context, int index, Animation<double> animation) {
+    return _buildItem(index, animation, _lists[0]);
+  }
+
+  // Used to build list items that haven't been removed.
+  Widget _buildItemTogo(
       BuildContext context, int index, Animation<double> animation) {
     return _buildItem(index, animation, _lists[1]);
   }
 
-  Widget _buildItemHotel(
-      BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _lists[4]);
-  }
-
-  Widget _buildItemATM(
-      BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _lists[5]);
-  }
-
-  Widget _buildItemWellness(
-      BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _lists[6]);
-  }
-
-  Widget _buildItemMarket(
+  Widget _buildItemBar(
       BuildContext context, int index, Animation<double> animation) {
     return _buildItem(index, animation, _lists[2]);
   }
 
-  Widget _buildItemShop(
+  Widget _buildItemMarket(
       BuildContext context, int index, Animation<double> animation) {
     return _buildItem(index, animation, _lists[3]);
+  }
+
+  Widget _buildItemShop(
+      BuildContext context, int index, Animation<double> animation) {
+    return _buildItem(index, animation, _lists[4]);
+  }
+
+  Widget _buildItemHotel(
+      BuildContext context, int index, Animation<double> animation) {
+    return _buildItem(index, animation, _lists[5]);
+  }
+
+  Widget _buildItemATM(
+      BuildContext context, int index, Animation<double> animation) {
+    return _buildItem(index, animation, _lists[6]);
+  }
+
+  Widget _buildItemWellness(
+      BuildContext context, int index, Animation<double> animation) {
+    return _buildItem(index, animation, _lists[7]);
   }
 
   // Used to build an item after it has been removed from the list. This method is
@@ -452,17 +453,19 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
               buildTabContainer(_listKeys[0], _lists[0], _buildItemRestaurant,
                   _pagesTags[0].title),
               buildTabContainer(
-                  _listKeys[1], _lists[1], _buildItemBar, _pagesTags[1].title),
-              buildTabContainer(_listKeys[2], _lists[2], _buildItemMarket,
-                  _pagesTags[2].title),
+                  _listKeys[1], _lists[1], _buildItemTogo, _pagesTags[1].title),
               buildTabContainer(
-                  _listKeys[3], _lists[3], _buildItemShop, _pagesTags[3].title),
-              buildTabContainer(_listKeys[4], _lists[4], _buildItemHotel,
-                  _pagesTags[4].title),
+                  _listKeys[2], _lists[2], _buildItemBar, _pagesTags[2].title),
+              buildTabContainer(_listKeys[3], _lists[3], _buildItemMarket,
+                  _pagesTags[3].title),
               buildTabContainer(
-                  _listKeys[5], _lists[5], _buildItemATM, _pagesTags[5].title),
-              buildTabContainer(_listKeys[6], _lists[6], _buildItemWellness,
-                  _pagesTags[6].title)
+                  _listKeys[4], _lists[4], _buildItemShop, _pagesTags[4].title),
+              buildTabContainer(_listKeys[5], _lists[5], _buildItemHotel,
+                  _pagesTags[5].title),
+              buildTabContainer(
+                  _listKeys[6], _lists[6], _buildItemATM, _pagesTags[6].title),
+              buildTabContainer(_listKeys[7], _lists[7], _buildItemWellness,
+                  _pagesTags[7].title)
             ]),
           )),
     );
