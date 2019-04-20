@@ -130,7 +130,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   void _getNames(int filterWordIndex, String locationFilter) async {
     if (filterWordIndex == -1) {
       if (isUnfilteredList) return;
-      updateListModel(unfilteredLists);
+      if (unfilteredLists.length != 0) updateListModel(unfilteredLists);
       this.isUnfilteredList = true;
     } else {
       this.isUnfilteredList = false;
@@ -155,10 +155,11 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       _insertIntoTempList(m2, filterWordIndex, locationFilter);
     }
 
-    initUnfilteredLists();
+    if (unfilteredLists.length == 0) initUnfilteredLists();
 
     updateListModel(tempLists);
   }
+
   void updateList(List destination, List tmpList) {
     destination.clear();
     for (int i = 0; i < tmpList.length; i++) {
@@ -171,7 +172,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     for (int i = 0; i < tmpList.length; i++) {
       _lists.add(tmpList[i]);
     }*/
-    updateList(_lists, tmpList);
+    setState(() {
+      updateList(_lists, tmpList);
+    });
     /*setState(() {
       _listRestaurant = restaurant;
       _listBar = bar;
@@ -584,20 +587,48 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                 ),
               ];
             },
-            body: TabBarView(
-                controller: _controller,
-                children:
-                    //_pagesTags.map<Widget>((_Page page) {
+            body: TabBarView(controller: _controller, children: [
+              buildTabContainer(_listKeys[0], _lists[0], _buildItemRestaurant,
+                  _pagesTags[0].title),
+              buildTabContainer(
+                  _listKeys[1], _lists[1], _buildItemBar, _pagesTags[1].title),
+              buildTabContainer(_listKeys[2], _lists[2], _buildItemMarket,
+                  _pagesTags[2].title),
+              buildTabContainer(
+                  _listKeys[3], _lists[3], _buildItemShop, _pagesTags[3].title),
+              buildTabContainer(_listKeys[4], _lists[4], _buildItemHotel,
+                  _pagesTags[4].title),
+              buildTabContainer(
+                  _listKeys[5], _lists[5], _buildItemATM, _pagesTags[5].title),
+              buildTabContainer(_listKeys[6], _lists[6], _buildItemWellness,
+                  _pagesTags[6].title)
+            ]
+                /*   //_pagesTags.map<Widget>((_Page page) {
                     _filteredPages.map<Widget>((_Page p) {
-                  if (p.text == "RESTAURANT") {
+                  if (p.index == 0) {
                     buildTabContainer(_listKeys[p.index], _lists[p.index],
                         _buildItemRestaurant, _pagesTags[p.index].title);
-                  } else
-                  if (p.text == "RESTAURANT") {
+                  } else if (p.index == 1) {
                     buildTabContainer(_listKeys[p.index], _lists[p.index],
-                        _buildItemRestaurant, _pagesTags[p.index].title);
+                        _buildItemBar, _pagesTags[p.index].title);
+                  } else if (p.index == 2) {
+                    buildTabContainer(_listKeys[p.index], _lists[p.index],
+                        _buildItemMarket, _pagesTags[p.index].title);
+                  } else if (p.index == 3) {
+                    buildTabContainer(_listKeys[p.index], _lists[p.index],
+                        _buildItemShop, _pagesTags[p.index].title);
+                  } else if (p.index == 4) {
+                    buildTabContainer(_listKeys[p.index], _lists[p.index],
+                        _buildItemHotel, _pagesTags[p.index].title);
+                  } else if (p.index == 5) {
+                    buildTabContainer(_listKeys[p.index], _lists[p.index],
+                        _buildItemATM, _pagesTags[p.index].title);
+                  } else if (p.index == 6) {
+                    buildTabContainer(_listKeys[p.index], _lists[p.index],
+                        _buildItemWellness, _pagesTags[p.index].title);
                   }
-                }).toList()),
+                }).toList()*/
+                ),
           )),
     );
   }
