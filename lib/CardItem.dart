@@ -96,24 +96,42 @@ class CardItem extends StatelessWidget {
                 child: ButtonBar(
                   children: <Widget>[
                     FlatButton(
-                      child: const Text(
-                        'REVIEW',
-                        style: TextStyle(fontSize: 14),
+                      child: Column(
+                        children: <Widget>[
+                          const Icon(Icons.rate_review),
+                          const SizedBox(height: 3,),
+                          const Text(
+                            'REVIEW',
+                            style: TextStyle(fontSize: 14),
+                          )
+                        ],
                       ),
                       onPressed: () {
                         /* ... */
                       },
                     ),
-                    /* FlatButton(
-                              child: const Text('PAY'),
-                              onPressed: () {
-                                showAlertDialog(context);
-                              },
-                            ),*/
                     FlatButton(
-                      child: const Text(
-                        'VISIT',
-                        style: TextStyle(fontSize: 14),
+                      child: Column(
+                        children: <Widget>[
+                          const Icon(Icons.payment),
+                          const SizedBox(height: 3,),
+                          const Text('PAY')
+                        ],
+                      ),
+                      onPressed: () {
+                        showAlertDialog(context);
+                      },
+                    ),
+                    FlatButton(
+                      child: Column(
+                        children: <Widget>[
+                          const Icon(Icons.directions_run),
+                          const SizedBox(height: 3,),
+                          const Text(
+                            'VISIT',
+                            style: TextStyle(fontSize: 14),
+                          )
+                        ],
                       ),
                       onPressed: () {
                         _launchURL();
