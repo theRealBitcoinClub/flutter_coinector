@@ -1,9 +1,8 @@
- /// For the moment we will use redundant data which we might normalize later if we run into any memory issues, therefore the mappings are not needed
- /// This file contains all the city and state codes to make sure they are unique, as const does not allow duplicates
+/// For the moment we will use redundant data which we might normalize later if we run into any memory issues, therefore the mappings are not needed
+/// This file contains all the city and state codes to make sure they are unique, as const does not allow duplicates
 
 class DataStructure {
-  static final continents =
-      const {'america', 'europe', 'africa', 'asia', 'australia'};
+  static final continents = const {'am', 'e', 'af', 'as', 'au'};
   /* static final statesMappedToContinents = const {
     'nha, nyo',
     'spa, fra, ger',
@@ -15,5 +14,7 @@ class DataStructure {
   /* static final citiesMappedToStates =
       const {'par,mar', 'ber,ham', 'por', 'nyc,alb', 'bar,mad'};*/
   static final cities = const {'bar', 'mad', 'mar', 'nyc', 'par', 'por'};
-  static final ids = const {'newyorkpizza'}; //this variable exists to assure that we do not have duplicates
+  static final ids = const {
+    'newyorkpizza'
+  }; //this variable exists to assure that we do not have duplicates
 }
