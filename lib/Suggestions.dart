@@ -89,18 +89,18 @@ class Suggestions {
     'Apia - Samoa - America,am,ci',
     'Russia - Asia,as,s',
     'Australia,au,co',
-    'Gold Coast - Australia,au,ci',
-    'Melbourne - Australia,au,ci',
-    'Sidney - Australia,au,ci',
-    'Nelson Bay - Australia,au,ci',
-    'Christchurch - Australia,au,ci',
-    'Byron Bay - Australia,au,ci',
-    'Brisbane - Australia,au,ci',
+    'Melbourne - Victoria - Australia,au,ci',
+    'Sidney - New South Wales - Australia,au,ci',
+    'Nelson Bay - New South Wales - Australia,au,ci',
+    'Byron Bay - New South Wales - Australia,au,ci',
     'Queensland - Australia,au,s',
+    'Gold Coast - Queensland - Australia,au,ci',
+    'Brisbane - Queensland - Australia,au,ci',
     'Agnes Water - Queensland - Australia,au,ci',
     'Aitkenvale - Queensland - Australia,au,ci',
     'Townsville - Queensland - Australia,au,ci',
     'Cairns - Queensland - Australia,au,ci',
-    'Perth - Australia,au,ci'
+    'Perth - West Australia - Australia,au,ci',
+    'Christchurch - New Zealand,au,ci'
   };
 }

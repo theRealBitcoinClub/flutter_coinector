@@ -103,10 +103,8 @@
 ,{"p":"yakinikutamurafukuoka", "x":"33.5878136","y":"130.3941922","n":"炭火焼肉たむら福岡店 - Yakiniku Tamura Fukuoka","t":"0","c":"21","s":"3.9", "d":"0", "a":"111,67,112,138", "l":"Fukuoka, Japan, Asia"}
 ,{"p":"yakinikutamuranagasaki", "x":"32.8258168","y":"129.84688","n":"炭火焼肉たむら 長崎店 - Yakiniku Tamura Nagasaki","t":"0","c":"52","s":"3.2", "d":"0", "a":"111,67,112,138", "l":"Nagasaki, Japan, Asia"}
 ,{"p":"apiainnsamoa", "x":"-13.8474364","y":"-171.778085","n":"Apia Inn Samoa","t":"5","c":"1","s":"5.0", "d":"0", "a":"156,129,138,31", "l":"Apia, Samoa, Island"}
-,{"p":"gringoloco", "x":"-28.0012452","y":"153.4309136","n":"Gringo Loco Cantina","t":"2","c":"119","s":"3.6", "d":"0", "a":"156,129,138,31", "l":"Gold Coast, Queensland, Australia"}
-,{"p":"restaurant1903", "x":"-31.9444011","y":"115.8634259","n":"1903 Restaurant","t":"0","c":"96","s":"4.3", "d":"0", "a":"67,100,97,143", "l":"Robinson Ave, Perth, Australia"}
-,{"p":"francesca", "x":"-37.773621","y":"144.998428","n":"Francesca's Bar","t":"2","c":"82","s":"4.5", "d":"0", "a":"31,32,14,76", "l":"High St, Melbourne, Australia"}
-,{"p":"verucasalt", "x":"-37.885791","y":"144.987916","n":"Veruca Salt","t":"0","c":"69","s":"4.6", "d":"0", "a":"8,9,11,124", "l":"Ormond Rd, Melbourne, Australia"}
+,{"p":"francesca", "x":"-37.773621","y":"144.998428","n":"Francesca's Bar","t":"2","c":"82","s":"4.5", "d":"0", "a":"31,32,14,76", "l":"Melbourne, Victoria, Australia"}
+,{"p":"verucasalt", "x":"-37.885791","y":"144.987916","n":"Veruca Salt","t":"0","c":"69","s":"4.6", "d":"0", "a":"8,9,11,124", "l":"Melbourne, Victoria, Australia"}
 ,{"p":"platform62", "x":"-33.9231906","y":"151.1874351","n":"Platform 62","t":"0","c":"40","s":"4.7", "d":"0", "a":"120,121,81,3", "l":"Mascot, Sidney, Australia"}
 ,{"p":"urbanpizza", "x":"-33.885727","y":"151.177249","n":"Urban Pizza Bar","t":"1","c":"68","s":"4.4", "d":"0", "a":"14,102,109,110", "l":"Camperdown, Sidney, Australia"}
 ,{"p":"spawnpoint", "x":"-33.869619","y":"151.2051551","n":"Spawn Point Small Bar","t":"2","c":"243","s":"4.4", "d":"0", "a":"56,57,118,119", "l":"Hyde Park, Sidney, Australia"}
@@ -114,6 +112,8 @@
 ,{"p":"portstephens", "x":"-32.718805","y":"152.14999","n":"Port Stephen's Motel - 3 Star Hotel","t":"5","c":"31","s":"4.0", "d":"0", "a":"104,104,104,104", "l":"Magnus St, Nelson Bay, Australia"}
 ,{"p":"nutrientdepot", "x":"-43.5435925","y":"172.5877462","n":"Nutrient Depot","t":"0","c":"96","s":"4.3", "d":"0", "a":"3,6,29,135", "l":"Middleton, Christchurch, Australia"}
 ,{"p":"stoneandwood", "x":"-28.634215","y":"153.586002","n":"Stone and Wood Brewing Company","t":"2","c":"98","s":"4.7", "d":"0", "a":"32,33,119,32", "l":"Boronia Pl, Byron Bay, Australia"}
+,{"p":"gringoloco", "x":"-28.0012452","y":"153.4309136","n":"Gringo Loco Cantina","t":"2","c":"119","s":"3.6", "d":"0", "a":"156,129,138,31", "l":"Gold Coast, Queensland, Australia"}
+,{"p":"restaurant1903", "x":"-31.9444011","y":"115.8634259","n":"1903 Restaurant","t":"0","c":"96","s":"4.3", "d":"0", "a":"67,100,97,143", "l":"Perth, Queensland, Australia"}
 ,{"p":"nexthotelbrisbane", "x":"-27.4702158","y":"153.0238486","n":"Next Hotel Brisbane","t":"5","c":"707","s":"4.5", "d":"0", "a":"104,104,104,104", "l":"Brisbane City, Queensland, Australia"}
 ,{"p":"brewcafe", "x":"-27.4691319","y":"153.0251388","n":"Brew Cafe and Wine Bar","t":"2","c":"501","s":"4.4", "d":"0", "a":"81,32,47,122", "l":"Brisbane City, Queensland, Australia"}
 ,{"p":"xcargo", "x":"-27.458605","y":"153.0364821","n":"X Cargo","t":"2","c":"64","s":"3.9", "d":"0", "a":"31,71,99,108", "l":"Fortitude, Brisbane, Australia"}
