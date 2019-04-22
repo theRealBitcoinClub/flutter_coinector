@@ -81,7 +81,7 @@ class CardItem extends StatelessWidget {
                         decoration:
                             BoxDecoration(color: Colors.black.withOpacity(0.2)),
                       ),
-                      new ItemInfoStackLayer(
+                      ItemInfoStackLayer(
                           item: item,
                           textStyle: textStyle,
                           textStyleSmall: textStyle2,
@@ -99,10 +99,12 @@ class CardItem extends StatelessWidget {
                       child: Column(
                         children: <Widget>[
                           const Icon(Icons.rate_review),
-                          const SizedBox(height: 3,),
+                          const SizedBox(
+                            height: 3,
+                          ),
                           const Text(
                             'REVIEW',
-                            style: TextStyle(fontSize: 14),
+                            style: const TextStyle(fontSize: 14),
                           )
                         ],
                       ),
@@ -114,7 +116,9 @@ class CardItem extends StatelessWidget {
                       child: Column(
                         children: <Widget>[
                           const Icon(Icons.payment),
-                          const SizedBox(height: 3,),
+                          const SizedBox(
+                            height: 3,
+                          ),
                           const Text('PAY')
                         ],
                       ),
@@ -126,15 +130,17 @@ class CardItem extends StatelessWidget {
                       child: Column(
                         children: <Widget>[
                           const Icon(Icons.directions_run),
-                          const SizedBox(height: 3,),
+                          const SizedBox(
+                            height: 3,
+                          ),
                           const Text(
                             'VISIT',
-                            style: TextStyle(fontSize: 14),
+                            style: const TextStyle(fontSize: 14),
                           )
                         ],
                       ),
                       onPressed: () {
-                        _launchURL();
+                        _launchURL(item.id);
                       },
                     ),
                   ],
@@ -146,9 +152,8 @@ class CardItem extends StatelessWidget {
   }
 }
 
-_launchURL() async {
-  const url =
-      'https://search.google.com/local/writereview?placeid=ChIJ89o4J5aipBIRfDm0sBYWJZQ';
+_launchURL(id) async {
+  var url = 'https://realbitcoinclub-url.firebaseapp.com/' + id;
   if (await canLaunch(url)) {
     await launch(url);
   } else {
