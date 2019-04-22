@@ -15,4 +15,5 @@ class DataStructure {
   /* static final citiesMappedToStates =
       const {'par,mar', 'ber,ham', 'por', 'nyc,alb', 'bar,mad'};*/
   static final cities = const {'bar', 'mad', 'mar', 'nyc', 'par', 'por'};
+  static final ids = const {'newyorkpizza'}; //this variable exists to assure that we do not have duplicates
 }
