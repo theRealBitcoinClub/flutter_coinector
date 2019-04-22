@@ -2,6 +2,7 @@
 
 For each city, country and continent exists a separate .json file.
 For each suggestion exists a comma separated object inside an array inside the dart file "Suggestions.dart"
+If a city has less than 50/100 results, we show the results of the state (there exists no separate file for the city and the file lookup will throw an exception)
 
 ## File naming convention
 
@@ -25,7 +26,8 @@ The user hits the suggestion and the data search is initialized:
 2. Open the file and show all the results
 
 The user searches for "Vegan" -> We suggest him to choose "Vegan"
-1. Get all the filenames from all the locations and scan them for the tag (This search takes some time, but we can show results popping up one after the other)
+1a. Get all the places from the places.json containing all places worldwide
+1b. Get all the filenames from all the locations, load each file, search them for the tag
 2. Show all the results sorted by locations and optionally if we have the location of the user we can sort the list
 
 (optional as it involves dependency for places api and requires permission to grab user location and we can assume that each user knows where he wants to search) 
