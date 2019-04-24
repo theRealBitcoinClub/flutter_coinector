@@ -1,0 +1,49 @@
+[{"p":"muerdelacarne", "x":"10.6686013","y":"-71.612962","n":"Muerde La Carne Restaurante","t":"0","c":"239","s":"4.4", "d":"0", "a":"7,15,138,100", "l":"Maracaibo, Venezuela, America"}
+,{"p":"meranto", "x":"10.1812413","y":"-64.6820729","n":"Caffe Meranto","t":"2","c":"18","s":"4.7", "d":"0", "a":"29,16,11,142", "l":"Puerto la Cruz, Venezuela, America"}
+,{"p":"lasempanadas", "x":"10.2038044","y":"-64.6280279","n":"Las Empanadas de Simon","t":"0","c":"5","s":"4.6", "d":"0", "a":"140,141,55,32", "l":"Puerto la Cruz, Venezuela, America"}
+,{"p":"altomar", "x":"10.5995735","y":"-67.040492","n":"Hotel Alto Mar","t":"5","c":"101","s":"4.5", "d":"0", "a":"104,104,104,104", "l":"Catia La Mar, Venezuela, America"}
+,{"p":"posada", "x":"10.4885315","y":"-67.6122634","n":"Posada El Oasis","t":"5","c":"8","s":"3.8", "d":"0", "a":"104,104,104,104", "l":"El Parmazo, Venezuela, America"}
+,{"p":"fanatic", "x":"9.5639874","y":"-69.2035326","n":"Fanatic Sport Bar","t":"2","c":"82","s":"4.3", "d":"0", "a":"31,32,71,99", "l":"Acarigua, Venezuela, America"}
+,{"p":"steakburger", "x":"9.5667649","y":"-69.215185","n":"Steak Burger","t":"0","c":"83","s":"4.6", "d":"0", "a":"7,99,137,100", "l":"Acarigua, Venezuela, America"}
+,{"p":"lasogagrillbar", "x":"9.5637874","y":"-69.2132714","n":"La Soga Grill and Bar","t":"0","c":"101","s":"4.5", "d":"0", "a":"7,111,99,100", "l":"Acarigua, Venezuela, America"}
+,{"p":"litalia", "x":"9.558281","y":"-69.204444","n":"L'Italia Restaurant","t":"0","c":"16","s":"3.9", "d":"0", "a":"102,108,71,15", "l":"Acarigua, Venezuela, America"}
+,{"p":"altosdeleste", "x":"7.7724126","y":"-72.209355","n":"Panaderia Altos del Este","t":"1","c":"38","s":"3.9", "d":"0", "a":"115,116,117,142", "l":"San Cristobal, Venezuela, America"}
+,{"p":"perroscalientes", "x":"10.49666","y":"-66.93624","n":"Perros Calientes Cruz de La Vega, the richest hotdogs, burguer and pepitos","t":"1","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"subwaymultiplaza", "x":"10.4856078","y":"-66.9342997","n":"Subway – Multiplaza Paraíso","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"genesishernandez", "x":"10.49668","y":"-66.93626","n":"Genesis Hernandez – Frutería y Venta de Hortalizas, fruits and vegetables.","t":"3","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"panaderiapasteleria", "x":"10.4966888","y":"-66.9321591","n":"Panaderia Pasteleria y Delicateses Ares C.A.","t":"1","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"lachipola", "x":"10.5036193","y":"-66.90414799999996","n":"La Chipola – Comida Criolla","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"subwaybellasartes", "x":"10.5006287","y":"-66.89621160000002","n":"Subway – Bellas Artes","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"baricostabarista", "x":"10.50459","y":"-66.88741779999998","n":"BariCosta – Barista (Special Coffee)","t":"2","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"heladeriaefealtamira", "x":"10.5072523","y":"-66.8513772","n":"HELADERIA EFE ALTAMIRA - CORPORACION CARALE 1010 C.A.","t":"1","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"papajohnlospalos", "x":"10.5065673","y":"-66.84244339999998","n":"Pizza Papa John’s – Los Palos Grandes","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"subwaymillennium", "x":"10.495231","y":"-66.832742","n":"Subway – Millennium","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"papajohnlosruices", "x":"10.4827433","y":"-66.83127619999999","n":"Pizza Papa John’s – Los Ruices","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"kolash", "x":"10.4627503","y":"-66.81862030000002","n":"Kolash Cakery – Dulces Y Tortas","t":"1","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"subwaylido", "x":"10.4911492","y":"-66.86255160000002","n":"Subway – Lido","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"wieners", "x":"10.4775527","y":"-66.814898","n":"Wieners - Hot Dogs","t":"1","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"subwaysanignacio", "x":"10.4880644","y":"-66.86869580000001","n":"Subway – San Ignacio","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"mmqdulce", "x":"10.4855","y":"-66.8863692","n":"MMQDULCE – Dulces Y Tortas","t":"1","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"subwayelrosal", "x":"10.48906","y":"-66.86477","n":"Subway – El Rosal","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"majaguabar", "x":"10.4856438","y":"-66.8864","n":"Majagua Bar - Cocteles y Hamburguesas","t":"2","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"subwaylossimbolos", "x":"10.4827691","y":"-66.8963099","n":"Subway – Los Simbolos","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"supergolfeados", "x":"10.4729198","y":"-66.8952299","n":"SUPER GOLFEADOS","t":"1","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"papajohnelrosal", "x":"10.48904","y":"-66.86476","n":"Pizza Papa John’s – El Rosal","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"fatfactory", "x":"10.4763101","y":"-66.89306999999997","n":"Fat Factory - Hamburguesas empacadas al vacio junto a su pan y demas ingredientes para elaborar en casa","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"papajohnloschaguaramos", "x":"10.4856438","y":"-66.8862","n":"Pizza Papa John’s – Los Chaguaramos","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"salopastel", "x":"10.4901964","y":"-66.8597792","n":"Salo Pastel - Pasteles, desnudos o decorados por encargo","t":"1","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"papajohnplazalasamericas", "x":"10.4577714","y":"-66.82864440000003","n":"Pizza Papa John’s – Plaza las Americas","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"mastranto", "x":"10.48059","y":"-66.903565","n":"Mastranto Delicias para Picar","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"subwaylatrinidad", "x":"10.4339299","y":"-66.87073429999998","n":"Subway – La Trinidad","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"tentaciones", "x":"10.48065","y":"-66.90358","n":"Dulces Tentaciones y Sabores, cakes and desserts","t":"1","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"subwaysanantonio", "x":"10.3696393","y":"-66.95710259999998","n":"Subway – San Antonio de los Altos","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"papajohnsanantonio", "x":"10.480495","y":"-66.903595","n":"Pizza Papa John’s – San Antonio de los Altos","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"pedronavaz", "x":"10.48050","y":"-66.90355","n":"PEDRO NAVAZ – DISTRIBUIDORA DE HELADOS - ICE CREAM","t":"1","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"freka1802", "x":"10.48053","y":"-66.903625","n":"FREKA 1802 - Hamburguesas","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"pinchero", "x":"10.48055","y":"-66.90364","n":"El pinchero - Delicatessen and food sales","t":"1","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"dulcesdemaita", "x":"10.4805937","y":"-66.9036063","n":"Dulces de Maita","t":"1","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"relincho", "x":"10.48057","y":"-66.9036063","n":"Cerveceria Artesanal Relincho","t":"3","c":"0","s":"0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"tentacionmm", "x":"10.48059","y":"-66.903655","n":"Tentacion MM, dedicated to the elaboration and distribution of sweets and desserts","t":"1","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"bartender", "x":"10.48061","y":"-66.90367","n":"BARTENDER TRUCK VENEZUELA - beverage truck, milkshakes,smoothies and cocktails","t":"2","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"gustavomarady", "x":"10.48063","y":"-66.90369","n":"GUSTAVO MARADY – Distribuidor de Helado","t":"1","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"navija", "x":"10.4339299","y":"-66.87073429999998","n":"Navija Abi Saab – Cocina Arabe En Casa","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}]

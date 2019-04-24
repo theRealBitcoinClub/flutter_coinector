@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'SearchDemoSearchDelegate.dart';
+import 'SuggestionMatch.dart';
 
 class SuggestionList extends StatelessWidget {
   const SuggestionList({this.suggestions, this.query, this.onSelected});
@@ -8,35 +9,50 @@ class SuggestionList extends StatelessWidget {
   final String query;
   final ValueChanged<String> onSelected;
 
+  String addSeparator(String input) {
+    return input != null && input.isNotEmpty ? " - " + input : "";
+  }
+
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
     return ListView.builder(
       itemCount: suggestions.length,
       itemBuilder: (BuildContext context, int i) {
-        final String suggestion = suggestions[i];
+        final SuggestionMatch match = SuggestionMatch.parseString(suggestions[i], i);
+        final String searchMatch = match.searchMatch;
+        final String state = addSeparator(match.state);
+        final String continent = addSeparator(match.continent);
         return ListTile(
           leading: query.isEmpty ? const Icon(Icons.history) : const Icon(null),
           title: RichText(
             text: TextSpan(
-              text: (isRealSuggestion(suggestion))
-                  ? suggestion.substring(0, query.length)
-                  : suggestion,
+              text: (isRealSuggestion(searchMatch))
+                  ? searchMatch.substring(0, query.length)
+                  : searchMatch,
               style:
                   theme.textTheme.subhead.copyWith(fontWeight: FontWeight.bold),
               children: <TextSpan>[
                 TextSpan(
-                  text: (isRealSuggestion(suggestion))
-                      ? suggestion.substring(query.length)
+                  text: (isRealSuggestion(searchMatch))
+                      ? searchMatch.substring(query.length)
                       : '',
                   style: theme.textTheme.subhead,
+                ),
+                TextSpan(
+                  text: state,
+                  style: theme.textTheme.subhead.copyWith(color: Colors.white.withOpacity(0.5)),
+                ),
+                TextSpan(
+                  text: continent,
+                  style: theme.textTheme.subhead.copyWith(color: Colors.white.withOpacity(0.5)),
                 ),
               ],
             ),
           ),
           onTap: () {
-            if (isRealSuggestion(suggestion)) {
-              onSelected(suggestion);
+            if (isRealSuggestion(searchMatch)) {
+              onSelected(match.input);
             }
           },
         );
