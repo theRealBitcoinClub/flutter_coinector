@@ -1,19 +1,29 @@
+import 'package:endlisch/SuggestionMatch.dart';
 import 'package:flutter/material.dart';
 import 'SuggestionList.dart';
 import 'Tags.dart';
-import 'SuggestionMatch.dart';
+//import 'SuggestionMatch.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'Suggestions.dart';
 
 class SearchDemoSearchDelegate extends SearchDelegate<String> {
-  final Set<String> _historyBackup = Set.from(Tags.locations);
-  final Set<String> _history = Set.from(Tags.locations);
+  final Set<String> _historyBackup = Set.from(Suggestions.locations);
+  final Set<String> _history = Set.from(Suggestions.locations);
+
+  //TODO use Suggestions.locations, split the String before you make it visible
+
+  /*void initBackup() {
+    //Suggestions.locations.forEach((item) => _history.add(item));
+    Suggestions.locations.forEach((String input) =>
+        {_historyBackup.add(SuggestionMatch.parseString(input))});
+  }*/
 
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
       tooltip: 'Back',
       icon: AnimatedIcon(
-        icon: AnimatedIcons.menu_close,
+        icon: AnimatedIcons.menu_arrow,
         progress: transitionAnimation,
       ),
       onPressed: () {
@@ -60,7 +70,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
     }*/
 
     addMatches(pattern, matches, Tags.tagText);
-    addMatches(pattern, matches, Tags.locations);
+    addMatches(pattern, matches, Suggestions.locations);
     addMatches(pattern, matches, Tags.titleTags);
 
     if (matches.length == 0) {
@@ -86,8 +96,8 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
   bool startsWith(String currentItem, String pattern) =>
       currentItem.toLowerCase().startsWith(pattern.toLowerCase());
 
-  static final TRY_ANOTHER_WORD = 'Not found! Try another word!';
-  static final ENTER_ATLEAST_THREE = 'Enter atleast 3 characters!';
+  static const TRY_ANOTHER_WORD = 'Not found! Try another word!';
+  static const ENTER_ATLEAST_THREE = 'Enter atleast 3 characters!';
 
   _addHistoryItem(String item) async {
     List<String> historyItems = await getHistory();
@@ -108,10 +118,11 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
     return SuggestionList(
       query: query,
       suggestions: suggestions.map<String>((String i) => i).toList(),
-      onSelected: (String suggestion) {
-        query = suggestion;
-        _addHistoryItem(suggestion);
-        close(context, suggestion);
+      onSelected: (String match) {
+        String title = match.split(",")[0];
+        query = title.split(" - ")[0];
+        _addHistoryItem(match);
+        close(context, match);
       },
     );
   }

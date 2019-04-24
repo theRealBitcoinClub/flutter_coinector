@@ -67,15 +67,14 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   String _searchTerm;
 
-  List<dynamic> placesList;
-
   @override
   void dispose() {
     _controller.dispose();
     super.dispose();
   }
 
-  void _getNames(int filterWordIndex, String locationFilter) async {
+  void _getNames(
+      int filterWordIndex, String locationFilter, String fileName) async {
     if (filterWordIndex == -1) {
       if (isUnfilteredList) return;
       if (unfilteredLists.length != 0) updateListModel(unfilteredLists);
@@ -88,10 +87,14 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       response =
           await dio.get('https://realbitcoinclub.firebaseapp.com/places8.json');
   */
-    if (placesList == null) {
-      String places = await loadAsset();
-      placesList = json.decode(places);
+    List<dynamic> placesList;
+
+    if (fileName == null) {
+      placesList = await loadAndEncodeAsset('assets/places.json');
+    } else {
+      placesList = await loadAndEncodeAsset('assets/' + fileName + '.json');
     }
+
     initTempListModel();
     _filteredPages = _pagesTags;
 
@@ -125,8 +128,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     updateList(unfilteredLists, tempLists);
   }
 
-  Future<String> loadAsset() async {
-    return await rootBundle.loadString('assets/places.json');
+  Future<List<dynamic>> loadAndEncodeAsset(final String fileName) async {
+    String asset = await rootBundle.loadString(fileName);
+    return json.decode(asset);
   }
 
   bool _containsFilteredTag(Merchant m, int filterWordIndex) {
@@ -239,11 +243,13 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     updateTitle();
     _controller.addListener(_handleTabSelection);
     initListModel();
-    _getNames(-1, null);
+    _getNames(-1, null, null);
   }
 
   void updateTitle() {
-    _title = _pagesTags[_controller.index].title;
+    setState(() {
+      _title = _pagesTags[_controller.index].title;
+    });
   }
 
   void initListModel() {
@@ -484,18 +490,23 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           delegate: _delegate,
         );
 
-        showUnfilteredLists();
-        _searchTerm = '';
-        updateTitle();
-
         if (selected != null /*&& selected != _lastIntegerSelected*/) {
+          var selectedArray = selected.split(",");
+          final String title = selectedArray[0];
+          final String search = title.split(" - ")[0];
+          final String fileName =
+              selectedArray.length > 1 ? selectedArray[1] : null;
+
           var index = _getTagIndex(selected);
-          _getNames(index, selected);
+          _getNames(index, search, fileName);
 
           setState(() {
-            _searchTerm = selected;
-            _title = selected;
+            _searchTerm = search;
+            _title = title;
           });
+        } else {
+          showUnfilteredLists();
+          updateTitle();
         }
       },
       tooltip: 'Search',
@@ -505,7 +516,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   void showUnfilteredLists() {
     if (isFilteredList()) {
       _searchTerm = '';
-      _getNames(-1, null);
+      _getNames(-1, null, null);
     }
   }
 
