@@ -156,7 +156,10 @@ class CardItem extends StatelessWidget {
   }
 }
 
+//TODO setup various servers to host images, for each dataset one
+//TODO get receiving address from adddr.json
 _launchURL(id) async {
+//TODO setup the url forwarding on the URL server
   var url = 'https://realbitcoinclub-url.firebaseapp.com/' + id;
   if (await canLaunch(url)) {
     await launch(url);
