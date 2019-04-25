@@ -100,6 +100,9 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
     buildHistory();
   }
 
+
+
+
   @override
   Widget buildSuggestions(BuildContext context) {
     final Iterable<String> suggestions =

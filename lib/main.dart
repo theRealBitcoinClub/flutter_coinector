@@ -5,7 +5,6 @@ import 'dart:async' show Future;
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'ListModel.dart';
-import 'CardItem.dart';
 import 'Merchant.dart';
 import 'SearchDemoSearchDelegate.dart';
 import 'Tags.dart';
@@ -146,12 +145,12 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       response =
           await dio.get('https://realbitcoinclub.firebaseapp.com/places8.json');
   */
-    List<dynamic> placesList;
+    List<dynamic> placesList = [];
 
     if (fileName == null) {
-      //TODO remove places, tell the user he has to hit the search button and he can search for locations or tags
+      //TODO internationalize the app
       //TODO refactor tag search, use all asset files separate
-      placesList = await loadAndEncodeAsset('assets/places.json');
+      //placesList = await loadAndEncodeAsset('assets/places.json');
     } else {
       placesList = await loadAndEncodeAsset('assets/' + fileName + '.json');
     }
@@ -302,15 +301,37 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     super.initState();
     searchDelegate.buildHistory();
     tabController = TabController(vsync: this, length: _filteredPages.length);
-    updateTitle();
+    //updateTitle();
     tabController.addListener(_handleTabSelection);
     initListModel();
     loadAssets(-1, null, null);
+    //initBlinkAnimation();
     if (hasHitSearch == null || !hasHitSearch) {
       initHasHitSearch().then((hasHit) {
         if (!hasHit) initBlinkAnimation();
       });
     }
+  }
+
+  void showInfoDialogWithCloseButton(BuildContext context) async {
+    showDialog(
+        context: context,
+        builder: (BuildContext ctx) {
+          return AlertDialog(
+            backgroundColor: Colors.grey[900],
+            content: Text(
+                "- Select a city, state or continent from the suggestions list.\n\n- Use the keyboard to search for tags -> 'Burger,Dessert,Beer''\n\n- The suggestions list contains all the locations, it is scrollable."),
+            title: Text("Filter for locations or tags"),
+            actions: <Widget>[
+              FlatButton(
+                onPressed: () async {
+                  Navigator.of(context).pop();
+                },
+                child: Text("CLOSE"),
+              )
+            ],
+          );
+        });
   }
 
   void updateTitle() {
@@ -329,13 +350,13 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       theme: ThemeData(
         // Define the default Brightness and Colors
         brightness: Brightness.dark,
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.grey[800],
         primaryColor: Colors.grey[900],
         accentColor: Colors.white,
 
         // Define the default Font Family
-        fontFamily: 'Montserrat',
-
+        //fontFamily: 'Montserrat',
+        fontFamily: 'OpenSans',
         // Define the default TextTheme. Use this to specify the default
         // text styling for headlines, titles, bodies of text, and more.
         textTheme: TextTheme(
@@ -494,21 +515,23 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         ? AnimatedBuilder(
             animation: searchIconBlinkAnimation,
             builder: (BuildContext context, Widget child) {
-              return buildIconButtonSearchContainer(context, false);
+              return buildIconButtonSearchContainer(context);
             })
-        : buildIconButtonSearchContainer(context, true);
+        : buildIconButtonSearchContainer(context);
   }
 
-  IconButton buildIconButtonSearchContainer(BuildContext context, bool showSearchAnimation) {
+  IconButton buildIconButtonSearchContainer(BuildContext context) {
     return IconButton(
       icon: AnimatedIcon(
-          color: showSearchAnimation != null && !showSearchAnimation
+          color: hasHitSearch != null && !hasHitSearch
               ? searchIconBlinkAnimation.value
               : Colors.white,
           progress: searchDelegate.transitionAnimation,
           icon: AnimatedIcons.search_ellipsis),
       onPressed: () async {
-        handleSearchButtonAnimationAndPersistHit(showSearchAnimation);
+        if (!hasHitSearch) showInfoDialogWithCloseButton(context);
+        //TODO DIALOG POPUP AFTER SHOWSEARCH select a city, state or continent from the suggestions list. Alternatively use the keyboard to search for tags -> "Burger,Dessert,Beer'
+        handleSearchButtonAnimationAndPersistHit();
         final String selected = await showSearch<String>(
           context: context,
           delegate: searchDelegate,
@@ -525,7 +548,26 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     );
   }
 
-  void handleSearchButtonAnimationAndPersistHit(bool hasHitSearch) {
+  Widget buildIconButtonSearchInfo(
+      BuildContext context, bool showSearchAnimation) {
+    return Transform.rotate(
+        angle: 44.6,
+        child: IconButton(
+          color: Colors.white70,
+          //iconSize: 40.0,
+          icon: Icon(
+              //color: Colors.white,
+              //progress: searchDelegate.transitionAnimation,
+              Icons.arrow_upward),
+          onPressed: () async {
+            //showInfoDialogWithCloseButton(context);
+            //initBlinkAnimation();
+          },
+          tooltip: 'Touch the search button on the top right.',
+        ));
+  }
+
+  void handleSearchButtonAnimationAndPersistHit() async {
     if (hasHitSearch == null || !hasHitSearch) {
       if (searchIconBlinkAnimationController != null) {
         setState(() {
@@ -567,6 +609,11 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   bool isFilteredList() => _searchTerm != null && _searchTerm.isNotEmpty;
 
+  /* Widget buildLa() {
+    showInfoDialogWithCloseButton(context);
+    return buildSearchHintRow('Touch the search icon');
+  }*/
+
   Widget buildTabContainer(var listKey, var list, var builderMethod, var cat) {
     return (list != null && list.length > 0)
         ? Padding(
@@ -581,9 +628,17 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         : Padding(
             padding: EdgeInsets.fromLTRB(25.0, 10.0, 25.0, 0.0),
             child: isFilterEmpty()
-                ? const Center(
-                    child: CircularProgressIndicator(),
-                  )
+                ? Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                        SizedBox(
+                          height: 30.0,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 30.0),
+                          child: buildSearchHintRow('Touch the search button'),
+                        )
+                      ])
                 : Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
@@ -599,36 +654,39 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                       buildSeparator(),
                       Row(
                         children: <Widget>[
-                          IconButton(
-                            tooltip: 'Arrow Up',
-                            icon: AnimatedIcon(
-                                progress: searchDelegate.transitionAnimation,
-                                icon: AnimatedIcons.menu_arrow),
-                          ),
+                          IconButton(icon: Icon(Icons.arrow_upward)),
                           const Text(
                             'Hit a colored icon to see matches.',
                             style: TextStyle(fontWeight: FontWeight.w300),
                           )
                         ],
                       ),
-                      buildSeparator(),
+                      /*buildSeparator(),
                       Row(children: <Widget>[
                         buildHomeButton(),
                         const Text(
                           'Show all merchants of all categories.',
                           style: TextStyle(fontWeight: FontWeight.w300),
                         )
-                      ]),
+                      ]),*/
                       buildSeparator(),
-                      Row(children: <Widget>[
-                        buildIconButtonSearch(context,),
-                        const Text(
-                          'Filter for locations or tags.',
-                          style: TextStyle(fontWeight: FontWeight.w300),
-                        )
-                      ]),
+                      buildSearchHintRow('Filter for locations or tags.'),
                     ],
                   ));
+  }
+
+  Row buildSearchHintRow(final String text) {
+    return Row(children: <Widget>[
+      IconButton(
+        icon: Icon(Icons.search),
+      ),
+      Text(
+        text,
+        overflow: TextOverflow.fade,
+        style: TextStyle(fontWeight: FontWeight.w300),
+      ),
+      buildIconButtonSearchInfo(context, false),
+    ]);
   }
 
   IconButton buildHomeButton() {

@@ -35,9 +35,6 @@ class CardItem extends StatelessWidget {
 
     final infoBoxBackgroundColor = MyColors.getCardInfoBoxBackgroundColor(item.type);
     final actionButtonBackgroundColor = MyColors.getCardActionButtonBackgroundColor(item.type);
-    //final tabColor = Colors.primaries[item.type % 17].shade700;
-    //TODO jedes tab bekommt eine feste Farbe, dieselbe wie auf BMAP.CASH (Android Asset Studio), dann wird die Farbe auf dem tabselector angezeigt
-    //TODO Item Color weiß und dafür den Hintergrund und die tabicons farbig
     return SizedBox(
       child: Card(
           clipBehavior: Clip.none,
@@ -125,7 +122,7 @@ class CardItem extends StatelessWidget {
                         ],
                       ),
                       onPressed: () {
-                        showAlertDialog(context);
+                        showPayDialog(context);
                       },
                     ),
                     FlatButton(
@@ -172,7 +169,7 @@ _launchURL(id) async {
   }
 }
 
-showAlertDialog(BuildContext context) {
+showPayDialog(BuildContext context) {
   // set up the buttons
   Widget remindButton = FlatButton(
     child: Text("DASH"),
