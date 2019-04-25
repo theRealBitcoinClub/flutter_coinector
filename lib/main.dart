@@ -119,6 +119,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     List<dynamic> placesList;
 
     if (fileName == null) {
+      //TODO remove places, tell the user he has to hit the search button and he can search for locations or tags
+      //TODO refactor tag search, use all asset files separate
       placesList = await loadAndEncodeAsset('assets/places.json');
     } else {
       placesList = await loadAndEncodeAsset('assets/' + fileName + '.json');
@@ -348,77 +350,74 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                 (BuildContext context, bool innerBoxIsScrolled) {
               return <Widget>[
                 SliverAppBar(
-                  elevation: 1.5,
-                  forceElevated: true,
-                  leading: IconButton(
-                    tooltip: isFilterEmpty() ? 'Home' : 'Clear Filter',
-                    icon: AnimatedIcon(
-                      icon: isFilterEmpty()
-                          ? AnimatedIcons.home_menu
-                          : AnimatedIcons.close_menu,
-                      color: Colors.white,
-                      progress: searchDelegate.transitionAnimation,
+                    elevation: 1.5,
+                    forceElevated: true,
+                    leading: IconButton(
+                      tooltip: isFilterEmpty() ? 'Home' : 'Clear Filter',
+                      icon: AnimatedIcon(
+                        icon: isFilterEmpty()
+                            ? AnimatedIcons.home_menu
+                            : AnimatedIcons.close_menu,
+                        color: Colors.white,
+                        progress: searchDelegate.transitionAnimation,
+                      ),
+                      onPressed: () {
+                        if (isFilterEmpty()) {
+                          tabController.animateTo(0);
+                          return;
+                        }
+
+                        updateTitle();
+
+                        setState(() {
+                          showUnfilteredLists();
+                        });
+                      },
                     ),
-                    onPressed: () {
-                      if (isFilterEmpty()) {
-                        tabController.animateTo(0);
-                        return;
-                      }
-
-                      updateTitle();
-
-                      setState(() {
-                        showUnfilteredLists();
-                      });
-                    },
-                  ),
-                  bottom: TabBar(
-                    controller: tabController,
-                    isScrollable: true,
-                    indicator: getIndicator(),
-                    tabs: _filteredPages.map<Tab>((_Page page) {
-                      return _lists[page.index].length > 0
-                          ? Tab(
-                              icon: Icon(page.icon, color: Colors.white),
-                              text: page.text)
-                          : Tab(icon: Icon(page.icon, color: Colors.white.withOpacity(0.5)), text: page.text);
-                    }).toList(),
-                  ),
-                  actions: <Widget>[
-                    buildIconButtonSearch(context),
-                    /*IconButton(
+                    bottom: TabBar(
+                      controller: tabController,
+                      isScrollable: true,
+                      indicator: getIndicator(),
+                      tabs: _filteredPages.map<Tab>((_Page page) {
+                        return _lists[page.index].length > 0
+                            ? Tab(
+                                icon: Icon(
+                                  page.icon,
+                                  color: Colors.white,
+                                  size: 30,
+                                ),
+                                text: page.text)
+                            : Tab(
+                                icon: Icon(
+                                page.icon,
+                                color: Colors.white.withOpacity(0.5),
+                                size: 20,
+                              ));
+                      }).toList(),
+                    ),
+                    actions: <Widget>[
+                      buildIconButtonSearch(context),
+                      //TODO build profile and settings page
+                      /*IconButton(
                       icon: const Icon(Icons.settings),
                       onPressed: _remove,
                       tooltip: 'settings',
                     ),*/
-                  ],
-                  title: AnimatedSwitcher(
-                      duration: Duration(milliseconds: 500),
-                      child: Text(
-                        _title,
-                        style: TextStyle(
-                            fontSize: 24.0,
-                            fontWeight: FontWeight.w300,
-                            fontStyle: FontStyle.normal,
-                            color: Colors.white.withOpacity(0.7)),
-                      )),
-                  //expandedHeight: 300.0, GOOD SPACE FOR ADS LATER
-                  floating: true,
-                  snap: true,
-                  pinned: false,
-                  /*flexibleSpace: FlexibleSpaceBar(
-                    centerTitle: true,
-                    title: Text("KATEGORIE",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18.0,
+                    ],
+                    title: AnimatedSwitcher(
+                        duration: Duration(milliseconds: 500),
+                        child: Text(
+                          _title,
+                          style: TextStyle(
+                              fontSize: 24.0,
+                              fontWeight: FontWeight.w300,
+                              fontStyle: FontStyle.normal,
+                              color: Colors.white.withOpacity(0.7)),
                         )),
-                    background: Image.network(
-                        "https://realbitcoinclub.firebaseapp.com/img/app/trbc.gif",
-                        fit: BoxFit.cover,
-                      ) //TODO restaurants image w/ text
-                  ),*/
-                ),
+                    //expandedHeight: 300.0, GOOD SPACE FOR ADS LATER
+                    floating: true,
+                    snap: true,
+                    pinned: false),
               ];
             },
             body: TabBarView(
