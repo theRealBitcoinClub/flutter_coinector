@@ -1,3 +1,4 @@
+import 'package:endlisch/CardItemBuilder.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async' show Future;
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import 'Merchant.dart';
 import 'SearchDemoSearchDelegate.dart';
 import 'Tags.dart';
 import 'dart:convert';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AnimatedListSample extends StatefulWidget {
   @override
@@ -49,11 +51,11 @@ const List<_Page> _pagesTags = <_Page>[
 List<_Page> _filteredPages = _pagesTags;
 
 class _AnimatedListSampleState extends State<AnimatedListSample>
-    with SingleTickerProviderStateMixin {
-  final SearchDemoSearchDelegate _delegate = SearchDemoSearchDelegate();
+    with TickerProviderStateMixin {
+  final SearchDemoSearchDelegate searchDelegate = SearchDemoSearchDelegate();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final List<GlobalKey<AnimatedListState>> _listKeys = [];
-  TabController _controller;
+  TabController tabController;
   bool _customIndicator = false;
   List<ListModel<Merchant>> _lists = [];
   final dio = new Dio(); // for http requests
@@ -63,16 +65,44 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   Response response;
   String _title = "Coinector";
   bool isUnfilteredList = false;
-
+  bool hasHitSearch;
+  var sharedPrefKeyHasHitSearch = "sharedPrefKeyHasHitSearch";
   String _searchTerm;
+
+  Animation<Color> searchIconBlinkAnimation;
+  AnimationController searchIconBlinkAnimationController;
+
+  initBlinkAnimation() {
+    searchIconBlinkAnimationController = AnimationController(
+        duration: const Duration(milliseconds: 1000), vsync: this);
+    final CurvedAnimation curve = CurvedAnimation(
+        parent: searchIconBlinkAnimationController, curve: Curves.decelerate);
+    searchIconBlinkAnimation =
+        ColorTween(begin: Colors.white, end: Colors.red[800]).animate(curve);
+    searchIconBlinkAnimation.addStatusListener((status) {
+      /*if (hasHitSearch) {
+        searchIconBlinkAnimationController.reset();
+        return;
+      }*/
+      if (status == AnimationStatus.completed) {
+        searchIconBlinkAnimationController.reverse();
+      } else if (status == AnimationStatus.dismissed) {
+        searchIconBlinkAnimationController.forward();
+      }
+      setState(() {});
+    });
+    searchIconBlinkAnimationController.forward();
+  }
 
   @override
   void dispose() {
-    _controller.dispose();
+    tabController.dispose();
+    if (searchIconBlinkAnimationController != null)
+      searchIconBlinkAnimationController.dispose();
     super.dispose();
   }
 
-  void _getNames(
+  void loadAssets(
       int filterWordIndex, String locationFilter, String fileName) async {
     if (filterWordIndex == -1) {
       if (isUnfilteredList) return;
@@ -89,6 +119,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     List<dynamic> placesList;
 
     if (fileName == null) {
+      //TODO remove places, tell the user he has to hit the search button and he can search for locations or tags
+      //TODO refactor tag search, use all asset files separate
       placesList = await loadAndEncodeAsset('assets/places.json');
     } else {
       placesList = await loadAndEncodeAsset('assets/' + fileName + '.json');
@@ -196,11 +228,12 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   void initListModelSeveralTimes(List lists) {
     lists.clear();
     _listKeys.clear();
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < _filteredPages.length + 1; i++) {
       _listKeys.add(GlobalKey<AnimatedListState>());
       lists.add(ListModel<Merchant>(
+        tabIndex: i,
         listKey: _listKeys[i],
-        removedItemBuilder: _buildRemovedItem,
+        removedItemBuilder: CardItemBuilder.buildRemovedItem,
       ));
     }
   }
@@ -237,97 +270,27 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   @override
   void initState() {
     super.initState();
-    _delegate.buildHistory();
-    _controller = TabController(vsync: this, length: _filteredPages.length);
+    searchDelegate.buildHistory();
+    tabController = TabController(vsync: this, length: _filteredPages.length);
     updateTitle();
-    _controller.addListener(_handleTabSelection);
+    tabController.addListener(_handleTabSelection);
     initListModel();
-    _getNames(-1, null, null);
+    loadAssets(-1, null, null);
+    if (hasHitSearch == null || !hasHitSearch) {
+      initHasHitSearch().then((hasHit) {
+        if (!hasHit) initBlinkAnimation();
+      });
+    }
   }
 
   void updateTitle() {
     setState(() {
-      _title = _pagesTags[_controller.index].title;
+      _title = _pagesTags[tabController.index].title;
     });
   }
 
   void initListModel() {
     initListModelSeveralTimes(_lists);
-  }
-
-  CardItem _buildItem(
-      int index, Animation<double> animation, ListModel<Merchant> listModel) {
-    try {
-      if (listModel != null &&
-          listModel[index] != null &&
-          listModel.length > 0) {
-        return CardItem(
-          animation: animation,
-          item: listModel[index],
-        );
-      }
-    } catch (e) {
-      //not catching RangeErrors caused issues with filterbar
-      return null;
-    }
-    return null;
-  }
-
-  // Used to build list items that haven't been removed.
-  Widget _buildItemRestaurant(
-      BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _lists[0]);
-  }
-
-  // Used to build list items that haven't been removed.
-  Widget _buildItemTogo(
-      BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _lists[1]);
-  }
-
-  Widget _buildItemBar(
-      BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _lists[2]);
-  }
-
-  Widget _buildItemMarket(
-      BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _lists[3]);
-  }
-
-  Widget _buildItemShop(
-      BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _lists[4]);
-  }
-
-  Widget _buildItemHotel(
-      BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _lists[5]);
-  }
-
-  Widget _buildItemATM(
-      BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _lists[6]);
-  }
-
-  Widget _buildItemWellness(
-      BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _lists[7]);
-  }
-
-  // Used to build an item after it has been removed from the list. This method is
-  // needed because a removed item remains  visible until its animation has
-  // completed (even though it's gone as far this ListModel is concerned).
-  // The widget will be used by the [AnimatedListState.removeItem] method's
-  // [AnimatedListRemovedItemBuilder] parameter.
-  Widget _buildRemovedItem(
-      Merchant item, BuildContext context, Animation<double> animation) {
-    return CardItem(
-      animation: animation,
-      item: item,
-      selected: false,
-      // No gesture detector here: we don't want removed items to be interactive.
-    );
   }
 
   @override
@@ -346,10 +309,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         // text styling for headlines, titles, bodies of text, and more.
         textTheme: TextTheme(
           headline: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-          title: TextStyle(
-              fontSize: 24.0,
-              fontStyle: FontStyle.normal,
-              color: Colors.grey[900]),
           body1: TextStyle(
               fontSize: 17.0,
               fontFamily: 'Hind',
@@ -391,118 +350,149 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                 (BuildContext context, bool innerBoxIsScrolled) {
               return <Widget>[
                 SliverAppBar(
-                  elevation: 1.5,
-                  forceElevated: true,
-                  leading: IconButton(
-                    tooltip: isFilterEmpty() ? 'Home' : 'Clear Filter',
-                    icon: AnimatedIcon(
-                      icon: isFilterEmpty()
-                          ? AnimatedIcons.home_menu
-                          : AnimatedIcons.close_menu,
-                      color: Colors.white,
-                      progress: _delegate.transitionAnimation,
+                    elevation: 1.5,
+                    forceElevated: true,
+                    leading: IconButton(
+                      tooltip: isFilterEmpty() ? 'Home' : 'Clear Filter',
+                      icon: AnimatedIcon(
+                        icon: isFilterEmpty()
+                            ? AnimatedIcons.home_menu
+                            : AnimatedIcons.close_menu,
+                        color: Colors.white,
+                        progress: searchDelegate.transitionAnimation,
+                      ),
+                      onPressed: () {
+                        if (isFilterEmpty()) {
+                          tabController.animateTo(0);
+                          return;
+                        }
+
+                        updateTitle();
+
+                        setState(() {
+                          showUnfilteredLists();
+                        });
+                      },
                     ),
-                    onPressed: () {
-                      if (isFilterEmpty()) {
-                        _controller.animateTo(0);
-                        return;
-                      }
-
-                      updateTitle();
-
-                      setState(() {
-                        showUnfilteredLists();
-                      });
-                    },
-                  ),
-                  //title: Text(_title),
-                  bottom: TabBar(
-                    controller: _controller,
-                    isScrollable: true,
-                    indicator: getIndicator(),
-                    tabs: _filteredPages.map<Tab>((_Page page) {
-                      return Tab(icon: Icon(page.icon), text: page.text);
-                    }).toList(),
-                  ),
-                  actions: <Widget>[
-                    buildIconButtonSearch(context),
-                    /*IconButton(
+                    bottom: TabBar(
+                      controller: tabController,
+                      isScrollable: true,
+                      indicator: getIndicator(),
+                      tabs: _filteredPages.map<Tab>((_Page page) {
+                        return _lists[page.index].length > 0
+                            ? Tab(
+                                icon: Icon(
+                                  page.icon,
+                                  color: Colors.white,
+                                  size: 30,
+                                ),
+                                text: page.text)
+                            : Tab(
+                                icon: Icon(
+                                page.icon,
+                                color: Colors.white.withOpacity(0.5),
+                                size: 20,
+                              ));
+                      }).toList(),
+                    ),
+                    actions: <Widget>[
+                      buildIconButtonSearch(context),
+                      //TODO build profile and settings page
+                      /*IconButton(
                       icon: const Icon(Icons.settings),
                       onPressed: _remove,
                       tooltip: 'settings',
                     ),*/
-                  ],
-                  title: AnimatedSwitcher(
-                      duration: Duration(milliseconds: 500),
-                      child: Text(_title)),
-                  //expandedHeight: 300.0, GOOD SPACE FOR ADS LATER
-                  floating: true,
-                  snap: true,
-                  pinned: false,
-                  /*flexibleSpace: FlexibleSpaceBar(
-                    centerTitle: true,
-                    title: Text("KATEGORIE",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18.0,
+                    ],
+                    title: AnimatedSwitcher(
+                        duration: Duration(milliseconds: 500),
+                        child: Text(
+                          _title,
+                          style: TextStyle(
+                              fontSize: 24.0,
+                              fontWeight: FontWeight.w300,
+                              fontStyle: FontStyle.normal,
+                              color: Colors.white.withOpacity(0.7)),
                         )),
-                    background: Image.network(
-                        "https://realbitcoinclub.firebaseapp.com/img/app/trbc.gif",
-                        fit: BoxFit.cover,
-                      ) //TODO restaurants image w/ text
-                  ),*/
-                ),
+                    //expandedHeight: 300.0, GOOD SPACE FOR ADS LATER
+                    floating: true,
+                    snap: true,
+                    pinned: false),
               ];
             },
-            body: TabBarView(controller: _controller, children: [
-              buildTabContainer(_listKeys[0], _lists[0], _buildItemRestaurant,
-                  _pagesTags[0].title),
-              buildTabContainer(
-                  _listKeys[1], _lists[1], _buildItemTogo, _pagesTags[1].title),
-              buildTabContainer(
-                  _listKeys[2], _lists[2], _buildItemBar, _pagesTags[2].title),
-              buildTabContainer(_listKeys[3], _lists[3], _buildItemMarket,
-                  _pagesTags[3].title),
-              buildTabContainer(
-                  _listKeys[4], _lists[4], _buildItemShop, _pagesTags[4].title),
-              buildTabContainer(_listKeys[5], _lists[5], _buildItemHotel,
-                  _pagesTags[5].title),
-              buildTabContainer(
-                  _listKeys[6], _lists[6], _buildItemATM, _pagesTags[6].title),
-              buildTabContainer(_listKeys[7], _lists[7], _buildItemWellness,
-                  _pagesTags[7].title)
-            ]),
+            body: TabBarView(
+                controller: tabController, children: buildAllTabContainer()),
           )),
     );
   }
 
+  List<Widget> buildAllTabContainer() {
+    var builder = CardItemBuilder(_lists);
+    return [
+      buildTabContainer(_listKeys[0], _lists[0], builder.buildItemRestaurant,
+          _pagesTags[0].title),
+      buildTabContainer(
+          _listKeys[1], _lists[1], builder.buildItemTogo, _pagesTags[1].title),
+      buildTabContainer(
+          _listKeys[2], _lists[2], builder.buildItemBar, _pagesTags[2].title),
+      buildTabContainer(_listKeys[3], _lists[3], builder.buildItemMarket,
+          _pagesTags[3].title),
+      buildTabContainer(
+          _listKeys[4], _lists[4], builder.buildItemShop, _pagesTags[4].title),
+      buildTabContainer(
+          _listKeys[5], _lists[5], builder.buildItemHotel, _pagesTags[5].title),
+      buildTabContainer(
+          _listKeys[6], _lists[6], builder.buildItemATM, _pagesTags[6].title),
+      buildTabContainer(_listKeys[7], _lists[7], builder.buildItemWellness,
+          _pagesTags[7].title)
+    ];
+  }
+
   bool isFilterEmpty() => _searchTerm == null || _searchTerm.isEmpty;
 
-  IconButton buildIconButtonSearch(BuildContext context) {
+  Future<bool> initHasHitSearch() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      var tmp = prefs.getBool(sharedPrefKeyHasHitSearch);
+      hasHitSearch = tmp != null ? tmp : false;
+    });
+
+    return hasHitSearch;
+  }
+
+  Future<bool> persistHasHitSearch() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.setBool(sharedPrefKeyHasHitSearch, true);
+  }
+
+  Widget buildIconButtonSearch(BuildContext context) {
+    return searchIconBlinkAnimation != null
+        ? AnimatedBuilder(
+            animation: searchIconBlinkAnimation,
+            builder: (BuildContext context, Widget child) {
+              return buildIconButton(context, false);
+            })
+        : buildIconButton(context, true);
+  }
+
+  IconButton buildIconButton(BuildContext context, bool hasHitSearch) {
     return IconButton(
       icon: AnimatedIcon(
-          progress: _delegate.transitionAnimation,
+          color: hasHitSearch != null && !hasHitSearch
+              ? searchIconBlinkAnimation.value
+              : Colors.white,
+          progress: searchDelegate.transitionAnimation,
           icon: AnimatedIcons.search_ellipsis),
       onPressed: () async {
+        handleSearchButtonAnimationAndPersistHit(hasHitSearch);
         final String selected = await showSearch<String>(
           context: context,
-          delegate: _delegate,
+          delegate: searchDelegate,
         );
 
         if (selected != null /*&& selected != _lastIntegerSelected*/) {
-          var selectedArray = selected.split(",");
-          final String title = selectedArray[0];
-          final String search = title.split(" - ")[0];
-          final String fileName =
-              selectedArray.length > 1 ? selectedArray[1] : null;
-
-          var index = _getTagIndex(selected);
-          _getNames(index, search, fileName);
-
-          setState(() {
-            _searchTerm = search;
-            _title = title;
-          });
+          filterListUpdateTitle(selected);
         } else {
           showUnfilteredLists();
           updateTitle();
@@ -512,16 +502,49 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     );
   }
 
+  void handleSearchButtonAnimationAndPersistHit(bool hasHitSearch) {
+    if (hasHitSearch == null || !hasHitSearch) {
+      if (searchIconBlinkAnimationController != null) {
+        setState(() {
+          searchIconBlinkAnimationController.reset();
+          //searchIconBlinkAnimationController.value = 0.0;
+        });
+      }
+
+      setState(() {
+        hasHitSearch = true;
+      });
+
+      persistHasHitSearch();
+      //initHasHitSearch();
+    }
+  }
+
+  void filterListUpdateTitle(String selected) {
+    var selectedArray = selected.split(",");
+    final String title = selectedArray[0];
+    final String search = title.split(" - ")[0];
+    final String fileName = selectedArray.length > 1 ? selectedArray[1] : null;
+
+    var index = _getTagIndex(selected);
+    loadAssets(index, search, fileName);
+
+    setState(() {
+      _searchTerm = search;
+      _title = search;
+    });
+  }
+
   void showUnfilteredLists() {
     if (isFilteredList()) {
       _searchTerm = '';
-      _getNames(-1, null, null);
+      loadAssets(-1, null, null);
     }
   }
 
   bool isFilteredList() => _searchTerm != null && _searchTerm.isNotEmpty;
 
-  Padding buildTabContainer(var listKey, var list, var builderMethod, var cat) {
+  Widget buildTabContainer(var listKey, var list, var builderMethod, var cat) {
     return (list != null && list.length > 0)
         ? Padding(
             child: AnimatedList(

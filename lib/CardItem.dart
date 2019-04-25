@@ -32,6 +32,7 @@ class CardItem extends StatelessWidget {
     TextStyle textStyle = Theme.of(context).textTheme.body1;
     TextStyle textStyle2 = Theme.of(context).textTheme.body2;
     final generatedColor = Colors.primaries[item.type % 17].shade700;
+    //TODO jedes tab bekommt eine feste Farbe, dieselbe wie auf BMAP.CASH (Android Asset Studio), dann wird die Farbe auf dem tabselector angezeigt
     return SizedBox(
       child: Card(
           clipBehavior: Clip.none,
@@ -98,10 +99,8 @@ class CardItem extends StatelessWidget {
                     FlatButton(
                       child: Column(
                         children: <Widget>[
-                          const Icon(Icons.rate_review),
-                          const SizedBox(
-                            height: 3,
-                          ),
+                          buildIcon(Icons.rate_review),
+                          buildSpacer(),
                           const Text(
                             'REVIEW',
                             style: const TextStyle(fontSize: 14),
@@ -115,10 +114,8 @@ class CardItem extends StatelessWidget {
                     FlatButton(
                       child: Column(
                         children: <Widget>[
-                          const Icon(Icons.payment),
-                          const SizedBox(
-                            height: 3,
-                          ),
+                          buildIcon(Icons.payment),
+                          buildSpacer(),
                           const Text('PAY')
                         ],
                       ),
@@ -129,10 +126,8 @@ class CardItem extends StatelessWidget {
                     FlatButton(
                       child: Column(
                         children: <Widget>[
-                          const Icon(Icons.directions_run),
-                          const SizedBox(
-                            height: 3,
-                          ),
+                          buildIcon(Icons.directions_run),
+                          buildSpacer(),
                           const Text(
                             'VISIT',
                             style: const TextStyle(fontSize: 14),
@@ -149,6 +144,14 @@ class CardItem extends StatelessWidget {
             ],
           )),
     );
+  }
+
+  Icon buildIcon(final icon) => Icon(icon, size: 30);
+
+  SizedBox buildSpacer() {
+    return const SizedBox(
+                          height: 5,
+                        );
   }
 }
 
