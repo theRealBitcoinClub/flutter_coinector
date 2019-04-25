@@ -1,22 +1,12 @@
-import 'package:endlisch/SuggestionMatch.dart';
 import 'package:flutter/material.dart';
 import 'SuggestionList.dart';
 import 'Tags.dart';
-//import 'SuggestionMatch.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Suggestions.dart';
 
 class SearchDemoSearchDelegate extends SearchDelegate<String> {
   final Set<String> _historyBackup = Set.from(Suggestions.locations);
   final Set<String> _history = Set.from(Suggestions.locations);
-
-  //TODO use Suggestions.locations, split the String before you make it visible
-
-  /*void initBackup() {
-    //Suggestions.locations.forEach((item) => _history.add(item));
-    Suggestions.locations.forEach((String input) =>
-        {_historyBackup.add(SuggestionMatch.parseString(input))});
-  }*/
 
   @override
   Widget buildLeading(BuildContext context) {

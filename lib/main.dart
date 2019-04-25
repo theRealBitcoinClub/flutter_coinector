@@ -22,7 +22,6 @@ class _Page {
   final int index;
 }
 
-//TODO add takeaway
 const List<_Page> _pagesTags = <_Page>[
   _Page(text: 'EAT', icon: Icons.restaurant, title: 'RESTAURANT', index: 0),
   _Page(
@@ -442,7 +441,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                   pinned: false,
                   /*flexibleSpace: FlexibleSpaceBar(
                     centerTitle: true,
-                    title: Text("KATEGORIE"/* TODO titlerein _pagesTags[_controller.index].title*/,
+                    title: Text("KATEGORIE",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 18.0,

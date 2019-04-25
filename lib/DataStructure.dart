@@ -16,5 +16,5 @@ class DataStructure {
   static final cities = const {'bar', 'mad', 'mar', 'nyc', 'par', 'por'};
   static final ids = const {
     'newyorkpizza'
-  }; //this variable exists to assure that we do not have duplicates
+  }; //this variable exists to assure that we do not have id duplicates
 }
