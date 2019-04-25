@@ -384,14 +384,14 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                                 icon: Icon(
                                   page.icon,
                                   color: Colors.white,
-                                  size: 30,
+                                  size: 25,
                                 ),
                                 text: page.text)
                             : Tab(
                                 icon: Icon(
                                 page.icon,
                                 color: Colors.white.withOpacity(0.5),
-                                size: 20,
+                                size: 22,
                               ));
                       }).toList(),
                     ),
@@ -548,9 +548,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     return (list != null && list.length > 0)
         ? Padding(
             child: AnimatedList(
-              /*padding: const EdgeInsets.only(
-              top: 0.0,
-            ),*/
+              //padding: EdgeInsets.fromLTRB(5.0, 10.0, 5.0, 5.0),
               key: listKey,
               initialItemCount: list.length,
               itemBuilder: builderMethod,
@@ -558,30 +556,41 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
             padding: EdgeInsets.all(0.0),
           )
         : Padding(
-            padding: EdgeInsets.all(15.0),
+            padding: EdgeInsets.fromLTRB(25.0, 10.0, 25.0, 0.0),
             child: isFilterEmpty()
                 ? const Center(
                     child: CircularProgressIndicator(),
                   )
                 : Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(cat.toString().toUpperCase()),
-                      const SizedBox(
-                        height: 10,
-                      ),
+                      /*Text(
+                        cat.toString().toUpperCase(),
+                        textScaleFactor: 1.5,
+                      ),*/
+                      buildSeparator(),
                       Text(
-                        'You filtered for $_searchTerm, but there are no matching results in this category!',
+                        'There are no matches in this category.',
+                        style: TextStyle(fontWeight: FontWeight.w400),
+                      ),
+                      buildSeparator(),
+                      Text(
+                        'Please select another Tab that contains results.',
                         style: TextStyle(fontWeight: FontWeight.w300),
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
+                      buildSeparator(),
                       const Text(
-                        'Tap the X on the top left to retrieve unfiltered results or filter for a different word by tapping the search icon on the top right.',
-                        style: TextStyle(fontStyle: FontStyle.italic),
+                        'Or hit the X on the top left for unfiltered results.',
+                        style: TextStyle(fontWeight: FontWeight.w300),
                       ),
                     ],
                   ));
+  }
+
+  SizedBox buildSeparator() {
+    return const SizedBox(
+      height: 10,
+    );
   }
 }
 

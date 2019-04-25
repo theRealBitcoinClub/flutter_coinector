@@ -33,6 +33,7 @@ class CardItem extends StatelessWidget {
     TextStyle textStyle2 = Theme.of(context).textTheme.body2;
     final generatedColor = Colors.primaries[item.type % 17].shade700;
     //TODO jedes tab bekommt eine feste Farbe, dieselbe wie auf BMAP.CASH (Android Asset Studio), dann wird die Farbe auf dem tabselector angezeigt
+    //TODO Item Color weiß und dafür den Hintergrund und die tabicons farbig
     return SizedBox(
       child: Card(
           clipBehavior: Clip.none,
@@ -146,7 +147,7 @@ class CardItem extends StatelessWidget {
     );
   }
 
-  Icon buildIcon(final icon) => Icon(icon, size: 30);
+  Icon buildIcon(final icon) => Icon(icon, size: 25);
 
   SizedBox buildSpacer() {
     return const SizedBox(
