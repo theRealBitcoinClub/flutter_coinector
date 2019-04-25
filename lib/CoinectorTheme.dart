@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CoinectorTheme {
+/*class CoinectorTheme {
   const CoinectorTheme._(this.name, this.data);
 
   final String name;
@@ -86,3 +86,4 @@ ThemeData _buildLightTheme() {
     accentTextTheme: _buildTextTheme(base.accentTextTheme),
   );
 }
+*/

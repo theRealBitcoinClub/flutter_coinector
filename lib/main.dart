@@ -1,4 +1,5 @@
 import 'package:endlisch/CardItemBuilder.dart';
+import 'package:endlisch/MyColors.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async' show Future;
 import 'package:flutter/material.dart';
@@ -17,35 +18,64 @@ class AnimatedListSample extends StatefulWidget {
 }
 
 class _Page {
-  const _Page({this.text, this.icon, this.title, this.index});
+  const _Page(
+      {this.text, this.icon, this.title, this.tabIndex, this.typeIndex});
   final String text;
   final String title;
   final IconData icon;
-  final int index;
+  final int tabIndex;
+  final int typeIndex;
 }
 
 const List<_Page> _pagesTags = <_Page>[
-  _Page(text: 'EAT', icon: Icons.restaurant, title: 'RESTAURANT', index: 0),
+  _Page(
+      text: 'EAT',
+      icon: Icons.restaurant,
+      title: 'RESTAURANT',
+      tabIndex: 0,
+      typeIndex: 0),
   _Page(
       text: 'TOGO',
       icon: Icons.restaurant_menu,
       title: 'TAKE-AWAY & DELIVERY',
-      index: 1),
+      tabIndex: 1,
+      typeIndex: 1),
   _Page(
-      text: 'BAR', icon: Icons.local_bar, title: 'BAR, CLUB & CAFE', index: 2),
+      text: 'BAR',
+      icon: Icons.local_bar,
+      title: 'BAR, CLUB & CAFE',
+      tabIndex: 2,
+      typeIndex: 2),
   _Page(
       text: 'MARKET',
       icon: Icons.shopping_cart,
       title: 'SUPERMARKET',
-      index: 3),
+      tabIndex: 3,
+      typeIndex: 3),
   _Page(
       text: 'SHOP',
       icon: Icons.shopping_basket,
       title: 'SOUVENIR & SERVICE',
-      index: 4),
-  _Page(text: 'HOTEL', icon: Icons.hotel, title: 'HOTEL, B&B, FLAT', index: 5),
-  _Page(text: 'ATM', icon: Icons.atm, title: 'TELLER & TRADER', index: 6),
-  _Page(text: 'SPA', icon: Icons.spa, title: 'WELLNESS & BEAUTY', index: 7),
+      tabIndex: 4,
+      typeIndex: 4),
+  _Page(
+      text: 'HOTEL',
+      icon: Icons.hotel,
+      title: 'HOTEL, B&B, FLAT',
+      tabIndex: 5,
+      typeIndex: 5),
+  _Page(
+      text: 'ATM',
+      icon: Icons.atm,
+      title: 'TELLER & TRADER',
+      tabIndex: 6,
+      typeIndex: 99),
+  _Page(
+      text: 'SPA',
+      icon: Icons.spa,
+      title: 'WELLNESS & BEAUTY',
+      tabIndex: 7,
+      typeIndex: 999),
 ];
 
 List<_Page> _filteredPages = _pagesTags;
@@ -299,7 +329,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       theme: ThemeData(
         // Define the default Brightness and Colors
         brightness: Brightness.dark,
-        primaryColor: Colors.blueGrey[900],
+        backgroundColor: Colors.black,
+        primaryColor: Colors.grey[900],
         accentColor: Colors.white,
 
         // Define the default Font Family
@@ -352,41 +383,31 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                 SliverAppBar(
                     elevation: 1.5,
                     forceElevated: true,
-                    leading: IconButton(
-                      tooltip: isFilterEmpty() ? 'Home' : 'Clear Filter',
-                      icon: AnimatedIcon(
-                        icon: isFilterEmpty()
-                            ? AnimatedIcons.home_menu
-                            : AnimatedIcons.close_menu,
-                        color: Colors.white,
-                        progress: searchDelegate.transitionAnimation,
-                      ),
-                      onPressed: () {
-                        if (isFilterEmpty()) {
-                          tabController.animateTo(0);
-                          return;
-                        }
-
-                        updateTitle();
-
-                        setState(() {
-                          showUnfilteredLists();
-                        });
-                      },
-                    ),
+                    leading: buildHomeButton(),
                     bottom: TabBar(
                       controller: tabController,
                       isScrollable: true,
                       indicator: getIndicator(),
                       tabs: _filteredPages.map<Tab>((_Page page) {
-                        return _lists[page.index].length > 0
+                        return _lists[page.tabIndex].length > 0
                             ? Tab(
                                 icon: Icon(
                                   page.icon,
-                                  color: Colors.white,
-                                  size: 25,
+                                  color: MyColors.getTabColor(page.typeIndex),
+                                  size: 22,
                                 ),
-                                text: page.text)
+                                //text: page.text)
+                                /*child: Text(page.text,
+                                    maxLines: 1,
+
+                                    overflow: TextOverflow.fade,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .body2
+                                        .copyWith(
+                                            color: MyColors.getTabColor(
+                                                page.typeIndex)))*/
+                              )
                             : Tab(
                                 icon: Icon(
                                 page.icon,
@@ -404,16 +425,18 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                       tooltip: 'settings',
                     ),*/
                     ],
-                    title: AnimatedSwitcher(
-                        duration: Duration(milliseconds: 500),
-                        child: Text(
-                          _title,
-                          style: TextStyle(
-                              fontSize: 24.0,
-                              fontWeight: FontWeight.w300,
-                              fontStyle: FontStyle.normal,
-                              color: Colors.white.withOpacity(0.7)),
-                        )),
+                    title: Padding(
+                        padding: EdgeInsets.all(5.0),
+                        child: AnimatedSwitcher(
+                            duration: Duration(milliseconds: 500),
+                            child: Text(
+                              _title,
+                              style: TextStyle(
+                                  fontSize: 22.0,
+                                  fontWeight: FontWeight.w300,
+                                  fontStyle: FontStyle.normal,
+                                  color: Colors.white.withOpacity(0.7)),
+                            ))),
                     //expandedHeight: 300.0, GOOD SPACE FOR ADS LATER
                     floating: true,
                     snap: true,
@@ -471,21 +494,21 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         ? AnimatedBuilder(
             animation: searchIconBlinkAnimation,
             builder: (BuildContext context, Widget child) {
-              return buildIconButton(context, false);
+              return buildIconButtonSearchContainer(context, false);
             })
-        : buildIconButton(context, true);
+        : buildIconButtonSearchContainer(context, true);
   }
 
-  IconButton buildIconButton(BuildContext context, bool hasHitSearch) {
+  IconButton buildIconButtonSearchContainer(BuildContext context, bool showSearchAnimation) {
     return IconButton(
       icon: AnimatedIcon(
-          color: hasHitSearch != null && !hasHitSearch
+          color: showSearchAnimation != null && !showSearchAnimation
               ? searchIconBlinkAnimation.value
               : Colors.white,
           progress: searchDelegate.transitionAnimation,
           icon: AnimatedIcons.search_ellipsis),
       onPressed: () async {
-        handleSearchButtonAnimationAndPersistHit(hasHitSearch);
+        handleSearchButtonAnimationAndPersistHit(showSearchAnimation);
         final String selected = await showSearch<String>(
           context: context,
           delegate: searchDelegate,
@@ -574,17 +597,63 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                         style: TextStyle(fontWeight: FontWeight.w400),
                       ),
                       buildSeparator(),
-                      Text(
-                        'Please select another Tab that contains results.',
-                        style: TextStyle(fontWeight: FontWeight.w300),
+                      Row(
+                        children: <Widget>[
+                          IconButton(
+                            tooltip: 'Arrow Up',
+                            icon: AnimatedIcon(
+                                progress: searchDelegate.transitionAnimation,
+                                icon: AnimatedIcons.menu_arrow),
+                          ),
+                          const Text(
+                            'Hit a colored icon to see matches.',
+                            style: TextStyle(fontWeight: FontWeight.w300),
+                          )
+                        ],
                       ),
                       buildSeparator(),
-                      const Text(
-                        'Or hit the X on the top left for unfiltered results.',
-                        style: TextStyle(fontWeight: FontWeight.w300),
-                      ),
+                      Row(children: <Widget>[
+                        buildHomeButton(),
+                        const Text(
+                          'Show all merchants of all categories.',
+                          style: TextStyle(fontWeight: FontWeight.w300),
+                        )
+                      ]),
+                      buildSeparator(),
+                      Row(children: <Widget>[
+                        buildIconButtonSearch(context,),
+                        const Text(
+                          'Filter for locations or tags.',
+                          style: TextStyle(fontWeight: FontWeight.w300),
+                        )
+                      ]),
                     ],
                   ));
+  }
+
+  IconButton buildHomeButton() {
+    return IconButton(
+      tooltip: isFilterEmpty() ? 'Home' : 'Clear Filter',
+      icon: AnimatedIcon(
+        icon: isFilterEmpty()
+            ? AnimatedIcons.home_menu
+            : AnimatedIcons.close_menu,
+        color: Colors.white,
+        progress: searchDelegate.transitionAnimation,
+      ),
+      onPressed: () {
+        if (isFilterEmpty()) {
+          tabController.animateTo(0);
+          return;
+        }
+
+        updateTitle();
+
+        setState(() {
+          showUnfilteredLists();
+        });
+      },
+    );
   }
 
   SizedBox buildSeparator() {

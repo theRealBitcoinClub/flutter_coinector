@@ -1,3 +1,4 @@
+import 'package:endlisch/MyColors.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'Merchant.dart';
@@ -31,18 +32,21 @@ class CardItem extends StatelessWidget {
   Widget build(BuildContext context) {
     TextStyle textStyle = Theme.of(context).textTheme.body1;
     TextStyle textStyle2 = Theme.of(context).textTheme.body2;
-    final generatedColor = Colors.primaries[item.type % 17].shade700;
+
+    final infoBoxBackgroundColor = MyColors.getCardInfoBoxBackgroundColor(item.type);
+    final actionButtonBackgroundColor = MyColors.getCardActionButtonBackgroundColor(item.type);
+    //final tabColor = Colors.primaries[item.type % 17].shade700;
     //TODO jedes tab bekommt eine feste Farbe, dieselbe wie auf BMAP.CASH (Android Asset Studio), dann wird die Farbe auf dem tabselector angezeigt
     //TODO Item Color weiß und dafür den Hintergrund und die tabicons farbig
     return SizedBox(
       child: Card(
           clipBehavior: Clip.none,
-          margin: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 15.0),
-          elevation: 3.0,
+          margin: EdgeInsets.only(left: 5.0, right: 5.0, bottom: 10.0),
+          elevation: 10.0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0),
           ),
-          color: generatedColor,
+          color: actionButtonBackgroundColor,
           child: Column(
             children: <Widget>[
               Stack(
@@ -70,11 +74,11 @@ class CardItem extends StatelessWidget {
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
                               colors: [
-                                generatedColor,
-                                generatedColor,
-                                generatedColor.withOpacity(0.9),
-                                generatedColor.withOpacity(0.75),
-                                generatedColor.withOpacity(0.6)
+                                infoBoxBackgroundColor,
+                                infoBoxBackgroundColor,
+                                infoBoxBackgroundColor.withOpacity(0.9),
+                                infoBoxBackgroundColor.withOpacity(0.75),
+                                infoBoxBackgroundColor.withOpacity(0.6)
                               ]),
                         ),
                       ),
