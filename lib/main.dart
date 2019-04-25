@@ -381,7 +381,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                           ? Tab(
                               icon: Icon(page.icon, color: Colors.white),
                               text: page.text)
-                          : Tab(icon: Icon(page.icon), text: page.text);
+                          : Tab(icon: Icon(page.icon, color: Colors.white.withOpacity(0.5)), text: page.text);
                     }).toList(),
                   ),
                   actions: <Widget>[
@@ -400,7 +400,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                             fontSize: 24.0,
                             fontWeight: FontWeight.w300,
                             fontStyle: FontStyle.normal,
-                            color: Colors.white70),
+                            color: Colors.white.withOpacity(0.7)),
                       )),
                   //expandedHeight: 300.0, GOOD SPACE FOR ADS LATER
                   floating: true,
