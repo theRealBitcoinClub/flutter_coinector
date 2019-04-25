@@ -32,6 +32,7 @@ class CardItem extends StatelessWidget {
     TextStyle textStyle = Theme.of(context).textTheme.body1;
     TextStyle textStyle2 = Theme.of(context).textTheme.body2;
     final generatedColor = Colors.primaries[item.type % 17].shade700;
+    //TODO jedes tab bekommt eine feste Farbe, dieselbe wie auf BMAP.CASH, dann wird die Farbe auf dem tabselector angezeigt
     return SizedBox(
       child: Card(
           clipBehavior: Clip.none,

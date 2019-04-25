@@ -12,6 +12,7 @@ import 'package:flutter/material.dart';
 /// [AnimatedListState.insertItem] and [AnimatedList.removeItem].
 class ListModel<E> {
   ListModel({
+    @required this.tabIndex,
     @required this.listKey,
     @required this.removedItemBuilder,
     Iterable<E> initialItems,
@@ -22,6 +23,7 @@ class ListModel<E> {
   final GlobalKey<AnimatedListState> listKey;
   final dynamic removedItemBuilder;
   List<E> _items;
+  final int tabIndex;
 
   AnimatedListState get _animatedList => listKey.currentState;
 
