@@ -60,6 +60,7 @@ flutter:
     - assets/e.json
     - assets/e-spa.json
     - assets/places.json
+    - assets/placesId.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

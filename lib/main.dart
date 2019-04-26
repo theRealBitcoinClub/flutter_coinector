@@ -685,7 +685,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                       buildSeparator(),
                       Row(
                         children: <Widget>[
-                          IconButton(icon: Icon(Icons.arrow_upward)),
+                          /*IconButton(icon: */Icon(Icons.arrow_upward),
                           const Text(
                             'Hit a colored icon to see matches.',
                             style: TextStyle(fontWeight: FontWeight.w300),

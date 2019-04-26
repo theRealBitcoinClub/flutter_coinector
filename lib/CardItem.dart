@@ -1,4 +1,5 @@
 import 'package:endlisch/AssetLoader.dart';
+import 'package:endlisch/Place.dart';
 import 'package:endlisch/main.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:endlisch/MyColors.dart';
@@ -52,105 +53,116 @@ class CardItem extends StatelessWidget {
           color: actionButtonBackgroundColor,
           child: Column(
             children: <Widget>[
-              Stack(
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.all(0.0),
-                    child: FadeInImage.memoryNetwork(
-                      fit: BoxFit.contain,
-                      fadeInDuration: Duration(milliseconds: 300),
-                      placeholder: kTransparentImage,
-                      image:
-                          "https://realbitcoinclub.firebaseapp.com/img/app/" +
-                              item.id +
-                              ".gif",
-                      height: 320,
-                      alignment: Alignment.bottomCenter,
-                    ),
-                  ),
-                  Stack(
-                    children: <Widget>[
-                      Container(
-                        height: itemHeight,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                infoBoxBackgroundColor,
-                                infoBoxBackgroundColor,
-                                infoBoxBackgroundColor.withOpacity(0.9),
-                                infoBoxBackgroundColor.withOpacity(0.75),
-                                infoBoxBackgroundColor.withOpacity(0.6)
-                              ]),
-                        ),
-                      ),
-                      Container(
-                        height: itemHeight,
-                        decoration:
-                            BoxDecoration(color: Colors.black.withOpacity(0.2)),
-                      ),
-                      ItemInfoStackLayer(
-                          item: item,
-                          textStyle: textStyle,
-                          textStyleSmall: textStyle2,
-                          height: itemHeight)
-                    ],
-                  ),
-                ],
-              ),
-              ButtonTheme.bar(
-                padding: EdgeInsets.all(10.0),
-                // make buttons use the appropriate styles for cards
-                child: ButtonBar(
-                  children: <Widget>[
-                    FlatButton(
-                      child: Column(
-                        children: <Widget>[
-                          buildIcon(Icons.rate_review),
-                          buildSpacer(),
-                          const Text(
-                            'REVIEW',
-                            style: const TextStyle(fontSize: 14),
-                          )
-                        ],
-                      ),
-                      onPressed: () {
-                        /* ... */
-                      },
-                    ),
-                    FlatButton(
-                      child: Column(
-                        children: <Widget>[
-                          buildIcon(Icons.payment),
-                          buildSpacer(),
-                          const Text('PAY')
-                        ],
-                      ),
-                      onPressed: () {
-                        showPayDialog(context, item.id);
-                      },
-                    ),
-                    FlatButton(
-                      child: Column(
-                        children: <Widget>[
-                          buildIcon(Icons.directions_run),
-                          buildSpacer(),
-                          const Text(
-                            'VISIT',
-                            style: const TextStyle(fontSize: 14),
-                          )
-                        ],
-                      ),
-                      onPressed: () {
-                        _launchURL(item.id);
-                      },
-                    ),
-                  ],
-                ),
-              ),
+              buildContentStack(infoBoxBackgroundColor, textStyle, textStyle2),
+              buildButtonTheme(context),
             ],
           )),
+    );
+  }
+
+  Stack buildContentStack(
+      Color infoBoxBackgroundColor, TextStyle textStyle, TextStyle textStyle2) {
+    return Stack(
+      children: <Widget>[
+        Padding(
+          padding: EdgeInsets.all(0.0),
+          child: FadeInImage.memoryNetwork(
+            fit: BoxFit.contain,
+            fadeInDuration: Duration(milliseconds: 300),
+            placeholder: kTransparentImage,
+            image: "https://realbitcoinclub.firebaseapp.com/img/app/" +
+                item.id +
+                ".gif",
+            height: 320,
+            alignment: Alignment.bottomCenter,
+          ),
+        ),
+        Stack(
+          children: <Widget>[
+            buildGradientContainer(infoBoxBackgroundColor),
+            Container(
+              height: itemHeight,
+              decoration: BoxDecoration(color: Colors.black.withOpacity(0.2)),
+            ),
+            ItemInfoStackLayer(
+                item: item,
+                textStyle: textStyle,
+                textStyleSmall: textStyle2,
+                height: itemHeight)
+          ],
+        ),
+      ],
+    );
+  }
+
+  Container buildGradientContainer(Color infoBoxBackgroundColor) {
+    return Container(
+      height: itemHeight,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              infoBoxBackgroundColor,
+              infoBoxBackgroundColor,
+              infoBoxBackgroundColor.withOpacity(0.9),
+              infoBoxBackgroundColor.withOpacity(0.75),
+              infoBoxBackgroundColor.withOpacity(0.6)
+            ]),
+      ),
+    );
+  }
+
+  ButtonTheme buildButtonTheme(BuildContext context) {
+    return ButtonTheme.bar(
+      padding: EdgeInsets.all(10.0),
+      // make buttons use the appropriate styles for cards
+      child: ButtonBar(
+        children: <Widget>[
+          FlatButton(
+            child: Column(
+              children: <Widget>[
+                buildIcon(Icons.rate_review),
+                buildSpacer(),
+                const Text(
+                  'REVIEW',
+                  style: const TextStyle(fontSize: 14),
+                )
+              ],
+            ),
+            onPressed: () {
+              launchReviewUrl(item.id);
+            },
+          ),
+          FlatButton(
+            child: Column(
+              children: <Widget>[
+                buildIcon(Icons.payment),
+                buildSpacer(),
+                const Text('PAY')
+              ],
+            ),
+            onPressed: () {
+              showPayDialog(context, item.id);
+            },
+          ),
+          FlatButton(
+            child: Column(
+              children: <Widget>[
+                buildIcon(Icons.directions_run),
+                buildSpacer(),
+                const Text(
+                  'VISIT',
+                  style: const TextStyle(fontSize: 14),
+                )
+              ],
+            ),
+            onPressed: () {
+              _launchURL(item.id);
+            },
+          ),
+        ],
+      ),
     );
   }
 
@@ -174,10 +186,21 @@ _launchURL(id) async {
   }
 }
 
-String addr;
+launchReviewUrl(id) async {
+  Place place =  await AssetLoader.loadPlace(id);
+  //String place =  await AssetLoader.loadPlacesId(id);
+  var url = 'https://search.google.com/local/writereview?placeid=' + place.placesId;
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
+var addr;
 
 showPayDialog(BuildContext context, String id) async {
-  addr = await loadReceivingAddress(id);
+  addr = await AssetLoader.loadReceivingAddress(id);
 
   if (addr.isEmpty) {
     showMissingAddrDialog(context);
@@ -220,18 +243,6 @@ showPayDialog(BuildContext context, String id) async {
     );
 }
 
-Future<String> loadReceivingAddress(String id) async {
-  String addr = "";
-  List addresses = await AssetLoader.loadAndEncodeAsset("assets/addr.json");
-  addresses.forEach((item) {
-    var itemId = item['p'];
-    if (itemId == id) {
-      addr = item['b'];
-    }
-  });
-  return addr;
-}
-
 void showMissingAddrDialog(BuildContext context) {
   showDialog(
       context: context,
@@ -259,7 +270,6 @@ void closeChooseDialogAndShowAddressDialog(BuildContext context, method) {
 }
 
 Widget buildAddressDetailDialogDASH(BuildContext context) {
-  //var data = 'dash:XoH4f212bxhsWeS6ZUbqvKGRd9rJkKA5wa';
   var data = addr.split(",")[1];
   if (data == '-') {
     return AlertDialog(
@@ -273,7 +283,7 @@ Widget buildAddressDetailDialogDASH(BuildContext context) {
         content: new InkWell(
             child: new Text(data),
             onTap: () {
-              copyAddressToClipboadAndShowDialog(data, context);
+              copyAddressToClipAndShowDialog(data, context);
               //launch(data);
             }),
         actions: [buildCloseDialogButton(context)]);
@@ -291,7 +301,6 @@ FlatButton buildCloseDialogButton(BuildContext context) {
 }
 
 Widget buildAddressDetailDialogBCH(BuildContext context) {
-  //var data = 'bitcoincash:qz69e5y8yrtujhsyht7q9xq5zhu4mrklmv0ap7tq5f';
   var data = addr.split(",")[0];
   if (data == '-') {
     return AlertDialog(
@@ -306,13 +315,13 @@ Widget buildAddressDetailDialogBCH(BuildContext context) {
       content: new InkWell(
           child: new Text(data),
           onTap: () {
-            copyAddressToClipboadAndShowDialog(data, context);
+            copyAddressToClipAndShowDialog(data, context);
             //launch(data);
           }),
     );
 }
 
-void copyAddressToClipboadAndShowDialog(String data, BuildContext context) {
+void copyAddressToClipAndShowDialog(String data, BuildContext context) {
   Navigator.pop(context);
   ClipboardManager.copyToClipBoard(data).then((result) {
     showDialog(
