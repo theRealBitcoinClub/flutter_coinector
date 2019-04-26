@@ -1,3 +1,4 @@
+import 'package:endlisch/AssetLoader.dart';
 import 'package:endlisch/CardItemBuilder.dart';
 import 'package:endlisch/MyColors.dart';
 import 'package:endlisch/SnackBarPage.dart';
@@ -148,6 +149,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   */
     List<dynamic> placesList = [];
 
+    //TODO add addresses to demonstrate payments/donations to coinspice & dashboost
+
     if (fileName == null) {
       //TODO internationalize the app, translate the strings
       //TODO ask for phone number, map phone numbers to continents
@@ -172,7 +175,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   Future<List<dynamic>> parseAssetUpdateListModel(int filterWordIndex,
       String locationFilter, String fileName, bool clearListContent) async {
-    var placesList = await loadAndEncodeAsset(fileName);
+    var placesList = await AssetLoader.loadAndEncodeAsset(fileName);
     initTempListModel();
     for (int i = 0; i < placesList.length; i++) {
       Merchant m2 = Merchant.fromJson(placesList.elementAt(i));
@@ -219,11 +222,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   void initUnfilteredLists() {
     updateList(unfilteredLists, tempLists, true);
-  }
-
-  Future<List<dynamic>> loadAndEncodeAsset(final String fileName) async {
-    String asset = await rootBundle.loadString(fileName);
-    return json.decode(asset);
   }
 
   bool _containsFilteredTag(Merchant m, int filterWordIndex) {

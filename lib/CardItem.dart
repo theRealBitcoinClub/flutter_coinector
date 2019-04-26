@@ -1,3 +1,6 @@
+import 'package:endlisch/AssetLoader.dart';
+import 'package:endlisch/main.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:endlisch/MyColors.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -125,7 +128,7 @@ class CardItem extends StatelessWidget {
                         ],
                       ),
                       onPressed: () {
-                        showPayDialog(context);
+                        showPayDialog(context, item.id);
                       },
                     ),
                     FlatButton(
@@ -171,56 +174,80 @@ _launchURL(id) async {
   }
 }
 
-showPayDialog(BuildContext context) {
+String addr;
+
+showPayDialog(BuildContext context, String id) async {
+  addr = await loadReceivingAddress(id);
+
+  if (addr.isEmpty) {
+    showMissingAddrDialog(context);
+  } else
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Pay now"),
+          elevation: 10.0,
+          titlePadding: EdgeInsets.fromLTRB(30.0, 25.0, 30.0, 10.0),
+          contentPadding: EdgeInsets.fromLTRB(35.0, 20.0, 30.0, 15.0),
+          content: Text("Dash or Bitcoin Cash?"),
+          actions: [
+            buildCloseDialogButton(context),
+            FlatButton(
+              shape: roundedRectangleBorder(),
+              child: Text("DASH"),
+              color: Colors.blue,
+              onPressed: () {
+                closeChooseDialogAndShowAddressDialog(
+                    context, buildAddressDetailDialogDASH);
+              },
+            ),
+            FlatButton(
+              shape: roundedRectangleBorder(),
+              color: Colors.green,
+              child: Text("BCH"),
+              onPressed: () {
+                closeChooseDialogAndShowAddressDialog(
+                    context, buildAddressDetailDialogBCH);
+              },
+            ),
+            SizedBox(
+              width: 10,
+            )
+          ],
+        );
+      },
+    );
+}
+
+Future<String> loadReceivingAddress(String id) async {
+  String addr = "";
+  List addresses = await AssetLoader.loadAndEncodeAsset("assets/addr.json");
+  addresses.forEach((item) {
+    var itemId = item['p'];
+    if (itemId == id) {
+      addr = item['b'];
+    }
+  });
+  return addr;
+}
+
+void showMissingAddrDialog(BuildContext context) {
   showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text("Pay now"),
-        elevation: 10.0,
-        titlePadding: EdgeInsets.fromLTRB(30.0, 25.0, 30.0, 10.0),
-        contentPadding: EdgeInsets.fromLTRB(35.0, 20.0, 30.0, 15.0),
-        /*shape: RoundedRectangleBorder(
-            side: BorderSide.none,
-            /*borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(10.0),
-                topRight: Radius.circular(10.0),
-                bottomLeft: Radius.circular(15.0),
-                bottomRight: Radius.circular(15.0))*/),*/
-        content: Text("Dash or Bitcoin Cash?"),
-        actions: [
-          buildCloseDialogButton(context),
-          FlatButton(
-            shape: roundedRectangleBorder(),
-            child: Text("DASH"),
-            color: Colors.blue,
-            onPressed: () {
-              closeChooseDialogAndShowAddressDialog(
-                  context, buildAddressDetailDialogDASH);
-            },
-          ),
-          FlatButton(
-            shape: roundedRectangleBorder(),
-            color: Colors.green,
-            child: Text("BCH"),
-            onPressed: () {
-              closeChooseDialogAndShowAddressDialog(
-                  context, buildAddressDetailDialogBCH);
-            },
-          ),
-          SizedBox(
-            width: 10,
-          )
-        ],
-      );
-    },
-  );
+      context: context,
+      builder: (BuildContext ctx) {
+        return AlertDialog(
+            actions: [buildCloseDialogButton(context)],
+            title: Text("Missing address"),
+            content: Text(
+                "This merchant has not yet provided any payment receiving address!"));
+      });
 }
 
 RoundedRectangleBorder roundedRectangleBorder() {
   return RoundedRectangleBorder(
-              side: BorderSide.none,
-              borderRadius: BorderRadius.all(Radius.circular(5.0)));
+      side: BorderSide.none,
+      borderRadius: BorderRadius.all(Radius.circular(5.0)));
 }
 
 void closeChooseDialogAndShowAddressDialog(BuildContext context, method) {
@@ -232,16 +259,24 @@ void closeChooseDialogAndShowAddressDialog(BuildContext context, method) {
 }
 
 Widget buildAddressDetailDialogDASH(BuildContext context) {
-  var data = 'dash:XoH4f212bxhsWeS6ZUbqvKGRd9rJkKA5wa';
-  return AlertDialog(
-      title: Text("DASH (touch address to pay)"),
-      content: new InkWell(
-          child: new Text(data),
-          onTap: () {
-            copyAddressToClipboadAndShowDialog(data, context);
-            //launch(data);
-          }),
-      actions: [buildCloseDialogButton(context)]);
+  //var data = 'dash:XoH4f212bxhsWeS6ZUbqvKGRd9rJkKA5wa';
+  var data = addr.split(",")[1];
+  if (data == '-') {
+    return AlertDialog(
+      content: Text(
+          "This merchant does not accept DASH payments, please pay with BCH!"),
+      actions: <Widget>[buildCloseDialogButton(context)],
+    );
+  } else
+    return AlertDialog(
+        title: Text("DASH (touch address to pay)"),
+        content: new InkWell(
+            child: new Text(data),
+            onTap: () {
+              copyAddressToClipboadAndShowDialog(data, context);
+              //launch(data);
+            }),
+        actions: [buildCloseDialogButton(context)]);
 }
 
 FlatButton buildCloseDialogButton(BuildContext context) {
@@ -256,17 +291,25 @@ FlatButton buildCloseDialogButton(BuildContext context) {
 }
 
 Widget buildAddressDetailDialogBCH(BuildContext context) {
-  var data = 'bitcoincash:qz69e5y8yrtujhsyht7q9xq5zhu4mrklmv0ap7tq5f';
-  return AlertDialog(
-    title: Text("BCH (touch address to pay)"),
-    actions: [buildCloseDialogButton(context)],
-    content: new InkWell(
-        child: new Text(data),
-        onTap: () {
-          copyAddressToClipboadAndShowDialog(data, context);
-          //launch(data);
-        }),
-  );
+  //var data = 'bitcoincash:qz69e5y8yrtujhsyht7q9xq5zhu4mrklmv0ap7tq5f';
+  var data = addr.split(",")[0];
+  if (data == '-') {
+    return AlertDialog(
+      content: Text(
+          "This merchant does not accept BCH payments, please pay with DASH!"),
+      actions: <Widget>[buildCloseDialogButton(context)],
+    );
+  } else
+    return AlertDialog(
+      title: Text("BCH (touch address to pay)"),
+      actions: [buildCloseDialogButton(context)],
+      content: new InkWell(
+          child: new Text(data),
+          onTap: () {
+            copyAddressToClipboadAndShowDialog(data, context);
+            //launch(data);
+          }),
+    );
 }
 
 void copyAddressToClipboadAndShowDialog(String data, BuildContext context) {
