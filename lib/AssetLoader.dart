@@ -8,13 +8,18 @@ class AssetLoader {
     return json.decode(asset);
   }
 
+  static List addresses;
+
   static Future<String> loadReceivingAddress(String id) async {
+    if (addresses == null)
+      addresses = await AssetLoader.loadAndEncodeAsset("assets/addr.json");
+
     String addr = "";
-    List addresses = await AssetLoader.loadAndEncodeAsset("assets/addr.json");
     addresses.forEach((item) {
       var itemId = item['p'];
       if (itemId == id) {
         addr = item['b'];
+        return;
       }
     });
     return addr;
@@ -32,15 +37,18 @@ class AssetLoader {
     });
     return addr;
   }*/
+  static List places;
 
   static Future<Place> loadPlace(String id) async {
-    List addresses =
-        await AssetLoader.loadAndEncodeAsset("assets/placesId.json");
+    if (places == null)
+      places = await AssetLoader.loadAndEncodeAsset("assets/placesId.json");
+
     Place result;
-    addresses.forEach((item) {
+    places.forEach((item) {
       var itemId = item['p'];
       if (itemId == id) {
         result = Place.fromJson(item);
+        return;
       }
     });
     return result;

@@ -158,7 +158,7 @@ class CardItem extends StatelessWidget {
               ],
             ),
             onPressed: () {
-              _launchURL(item.id);
+              launchVisitUrl(item.id);
             },
           ),
         ],
@@ -176,9 +176,9 @@ class CardItem extends StatelessWidget {
 }
 
 //TODO setup various servers to host images, for each dataset one
-_launchURL(id) async {
-//TODO setup the url forwarding on the URL server
-  var url = 'https://realbitcoinclub-url.firebaseapp.com/' + id;
+launchVisitUrl(id) async {
+  Place place = await AssetLoader.loadPlace(id);
+  var url = 'https://goo.gl/maps/' + place.shareId;
   if (await canLaunch(url)) {
     await launch(url);
   } else {
@@ -187,9 +187,10 @@ _launchURL(id) async {
 }
 
 launchReviewUrl(id) async {
-  Place place =  await AssetLoader.loadPlace(id);
+  Place place = await AssetLoader.loadPlace(id);
   //String place =  await AssetLoader.loadPlacesId(id);
-  var url = 'https://search.google.com/local/writereview?placeid=' + place.placesId;
+  var url =
+      'https://search.google.com/local/writereview?placeid=' + place.placesId;
   if (await canLaunch(url)) {
     await launch(url);
   } else {
@@ -250,8 +251,19 @@ void showMissingAddrDialog(BuildContext context) {
         return AlertDialog(
             actions: [buildCloseDialogButton(context)],
             title: Text("Missing address"),
-            content: Text(
-                "This merchant has not yet provided any payment receiving address!"));
+            content: new InkWell(
+                child: Text(
+                    "This merchant has not yet provided any payment receiving address!\n\nTouch here to send an email to bitcoinmap.cash@protonmail.com"),
+                onTap: () {
+                  if (true ==
+                      canLaunch(
+                          "mailTo:bitcoinmap.cash@protonmail.com?subject=Coinecccctorrrrr")) {
+                    launch(
+                        "mailTo:bitcoinmap.cash@protonmail.com?subject=Coinecccctorrrrr");
+                  } else {
+                    //TODO show dialog that there was not found any supported email client and forward the user to a sign up form
+                  }
+                }));
       });
 }
 
@@ -274,7 +286,7 @@ Widget buildAddressDetailDialogDASH(BuildContext context) {
   if (data == '-') {
     return AlertDialog(
       content: Text(
-          "This merchant does not accept DASH payments, please pay with BCH!"),
+          "This merchant does not yet accept DASH payments, please pay with BCH or explain the benefits of accepting BCH to the merchant!"),
       actions: <Widget>[buildCloseDialogButton(context)],
     );
   } else
@@ -305,7 +317,7 @@ Widget buildAddressDetailDialogBCH(BuildContext context) {
   if (data == '-') {
     return AlertDialog(
       content: Text(
-          "This merchant does not accept BCH payments, please pay with DASH!"),
+          "This merchant does not accept BCH payments, please pay with DASH or explain the benefits of accepting DASH to the merchant!"),
       actions: <Widget>[buildCloseDialogButton(context)],
     );
   } else
