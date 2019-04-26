@@ -17,6 +17,7 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  clipboard_manager: ^0.0.4
   #flutter_typeahead: ^1.4.0
   shared_preferences: ^0.5.2
   dio: ^2.1.0

@@ -5,6 +5,7 @@ import 'Merchant.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'ItemInfoStackLayer.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:clipboard_manager/clipboard_manager.dart';
 
 /// Displays its integer item as 'item N' on a Card whose color is based on
 /// the item's value. The text is displayed in bright green if selected is true.
@@ -33,8 +34,10 @@ class CardItem extends StatelessWidget {
     TextStyle textStyle = Theme.of(context).textTheme.body1;
     TextStyle textStyle2 = Theme.of(context).textTheme.body2;
 
-    final infoBoxBackgroundColor = MyColors.getCardInfoBoxBackgroundColor(item.type);
-    final actionButtonBackgroundColor = MyColors.getCardActionButtonBackgroundColor(item.type);
+    final infoBoxBackgroundColor =
+        MyColors.getCardInfoBoxBackgroundColor(item.type);
+    final actionButtonBackgroundColor =
+        MyColors.getCardActionButtonBackgroundColor(item.type);
     return SizedBox(
       child: Card(
           clipBehavior: Clip.none,
@@ -152,13 +155,12 @@ class CardItem extends StatelessWidget {
 
   SizedBox buildSpacer() {
     return const SizedBox(
-                          height: 5,
-                        );
+      height: 5,
+    );
   }
 }
 
 //TODO setup various servers to host images, for each dataset one
-//TODO get receiving address from adddr.json
 _launchURL(id) async {
 //TODO setup the url forwarding on the URL server
   var url = 'https://realbitcoinclub-url.firebaseapp.com/' + id;
@@ -170,38 +172,114 @@ _launchURL(id) async {
 }
 
 showPayDialog(BuildContext context) {
-  // set up the buttons
-  Widget remindButton = FlatButton(
-    child: Text("DASH"),
-    onPressed: () {
-      Navigator.pop(context);
-    },
-  );
-  Widget cancelButton = FlatButton(
-    child: Text("BCH"),
-    onPressed: () {
-      Navigator.pop(context);
-    },
-  );
-  Widget launchButton = FlatButton(
-    child: Text("BTC"),
-    onPressed: null,
-  );
-  // set up the AlertDialog
-  AlertDialog alert = AlertDialog(
-    title: Text("Choose Coin"),
-    content: Text("Which coin do you want to use?"),
-    actions: [
-      remindButton,
-      cancelButton,
-      launchButton,
-    ],
-  );
-  // show the dialog
   showDialog(
     context: context,
     builder: (BuildContext context) {
-      return alert;
+      return AlertDialog(
+        title: Text("Pay now"),
+        elevation: 10.0,
+        titlePadding: EdgeInsets.fromLTRB(30.0, 25.0, 30.0, 10.0),
+        contentPadding: EdgeInsets.fromLTRB(35.0, 20.0, 30.0, 15.0),
+        /*shape: RoundedRectangleBorder(
+            side: BorderSide.none,
+            /*borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(10.0),
+                topRight: Radius.circular(10.0),
+                bottomLeft: Radius.circular(15.0),
+                bottomRight: Radius.circular(15.0))*/),*/
+        content: Text("Dash or Bitcoin Cash?"),
+        actions: [
+          buildCloseDialogButton(context),
+          FlatButton(
+            shape: roundedRectangleBorder(),
+            child: Text("DASH"),
+            color: Colors.blue,
+            onPressed: () {
+              closeChooseDialogAndShowAddressDialog(
+                  context, buildAddressDetailDialogDASH);
+            },
+          ),
+          FlatButton(
+            shape: roundedRectangleBorder(),
+            color: Colors.green,
+            child: Text("BCH"),
+            onPressed: () {
+              closeChooseDialogAndShowAddressDialog(
+                  context, buildAddressDetailDialogBCH);
+            },
+          ),
+          SizedBox(
+            width: 10,
+          )
+        ],
+      );
     },
   );
+}
+
+RoundedRectangleBorder roundedRectangleBorder() {
+  return RoundedRectangleBorder(
+              side: BorderSide.none,
+              borderRadius: BorderRadius.all(Radius.circular(5.0)));
+}
+
+void closeChooseDialogAndShowAddressDialog(BuildContext context, method) {
+  Navigator.pop(context);
+  showDialog(
+    context: context,
+    builder: method,
+  );
+}
+
+Widget buildAddressDetailDialogDASH(BuildContext context) {
+  var data = 'dash:XoH4f212bxhsWeS6ZUbqvKGRd9rJkKA5wa';
+  return AlertDialog(
+      title: Text("DASH (touch address to pay)"),
+      content: new InkWell(
+          child: new Text(data),
+          onTap: () {
+            copyAddressToClipboadAndShowDialog(data, context);
+            //launch(data);
+          }),
+      actions: [buildCloseDialogButton(context)]);
+}
+
+FlatButton buildCloseDialogButton(BuildContext context) {
+  return FlatButton(
+    child: Row(
+      children: <Widget>[Icon(Icons.close), Text(' CLOSE')],
+    ),
+    onPressed: () {
+      Navigator.of(context).pop();
+    },
+  );
+}
+
+Widget buildAddressDetailDialogBCH(BuildContext context) {
+  var data = 'bitcoincash:qz69e5y8yrtujhsyht7q9xq5zhu4mrklmv0ap7tq5f';
+  return AlertDialog(
+    title: Text("BCH (touch address to pay)"),
+    actions: [buildCloseDialogButton(context)],
+    content: new InkWell(
+        child: new Text(data),
+        onTap: () {
+          copyAddressToClipboadAndShowDialog(data, context);
+          //launch(data);
+        }),
+  );
+}
+
+void copyAddressToClipboadAndShowDialog(String data, BuildContext context) {
+  Navigator.pop(context);
+  ClipboardManager.copyToClipBoard(data).then((result) {
+    showDialog(
+        context: context,
+        builder: (buildCtx) {
+          return AlertDialog(
+            content: Text(
+                "Address was copied to clipboard!\n\nOpen your favorite Wallet to send a transaction.\n\nIf you have a compatible Wallet installed it should open now!\n\nClick here to install a compatible free Wallet."),
+            title: Text("Copied to clipboard!"),
+          );
+        });
+  });
 }

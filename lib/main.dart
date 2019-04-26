@@ -149,8 +149,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     List<dynamic> placesList = [];
 
     if (fileName == null) {
-      //TODO internationalize the app
-      //TODO refactor tag search, use all asset files separate
+      //TODO internationalize the app, translate the strings
+      //TODO ask for phone number, map phone numbers to continents
+      //TODO ask for location, if given load the continent last
       placesList = await parseAssetUpdateListModel(
           filterWordIndex, locationFilter, 'assets/am.json', true);
       placesList = await parseAssetUpdateListModel(
@@ -383,7 +384,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       theme: ThemeData(
         // Define the default Brightness and Colors
         brightness: Brightness.dark,
-        backgroundColor: Colors.grey[800],
+        backgroundColor: Colors.grey[900],
         primaryColor: Colors.grey[900],
         accentColor: Colors.white,
 
@@ -562,13 +563,12 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           progress: searchDelegate.transitionAnimation,
           icon: AnimatedIcons.search_ellipsis),
       onPressed: () async {
-        if (!hasHitSearch) showInfoDialogWithCloseButton(context);
-        //TODO DIALOG POPUP AFTER SHOWSEARCH select a city, state or continent from the suggestions list. Alternatively use the keyboard to search for tags -> "Burger,Dessert,Beer'
-        handleSearchButtonAnimationAndPersistHit();
         final String selected = await showSearch<String>(
           context: context,
           delegate: searchDelegate,
         );
+        if (!hasHitSearch) showInfoDialogWithCloseButton(context);
+        handleSearchButtonAnimationAndPersistHit();
 
         if (selected != null /*&& selected != _lastIntegerSelected*/) {
           filterListUpdateTitle(selected);
