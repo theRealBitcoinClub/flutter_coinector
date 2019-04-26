@@ -70,6 +70,9 @@ class CardItem extends StatelessWidget {
             fit: BoxFit.contain,
             fadeInDuration: Duration(milliseconds: 300),
             placeholder: kTransparentImage,
+            //TODO load images from splitted servers
+            //TODO add placeholder image with first frame of animation
+            //TODO offer low data version which only shows one image and loads more images on tap of carditem
             image: "https://realbitcoinclub.firebaseapp.com/img/app/" +
                 item.id +
                 ".gif",
@@ -254,10 +257,10 @@ void showMissingAddrDialog(BuildContext context) {
             content: new InkWell(
                 child: Text(
                     "This merchant has not yet provided any payment receiving address!\n\nTouch here to send an email to bitcoinmap.cash@protonmail.com"),
-                onTap: () {
-                  if (true ==
-                      canLaunch(
-                          "mailTo:bitcoinmap.cash@protonmail.com?subject=Coinecccctorrrrr")) {
+                onTap: () async {
+                  var hasEmailClient = await canLaunch(
+                      "mailTo:bitcoinmap.cash@protonmail.com?subject=Coinecccctorrrrr");
+                  if (hasEmailClient) {
                     launch(
                         "mailTo:bitcoinmap.cash@protonmail.com?subject=Coinecccctorrrrr");
                   } else {
