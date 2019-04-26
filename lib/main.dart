@@ -1,5 +1,6 @@
 import 'package:endlisch/CardItemBuilder.dart';
 import 'package:endlisch/MyColors.dart';
+import 'package:endlisch/SnackBarPage.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:async' show Future;
 import 'package:flutter/material.dart';
@@ -150,17 +151,29 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     if (fileName == null) {
       //TODO internationalize the app
       //TODO refactor tag search, use all asset files separate
-      //placesList = await loadAndEncodeAsset('assets/places.json');
+      placesList = await parseAssetUpdateListModel(
+          filterWordIndex, locationFilter, 'assets/am.json', true);
+      placesList = await parseAssetUpdateListModel(
+          filterWordIndex, locationFilter, 'assets/e.json', false);
+      placesList = await parseAssetUpdateListModel(
+          filterWordIndex, locationFilter, 'assets/as.json', false);
+      placesList = await parseAssetUpdateListModel(
+          filterWordIndex, locationFilter, 'assets/au.json', false);
     } else {
-      placesList = await loadAndEncodeAsset('assets/' + fileName + '.json');
+      placesList = await parseAssetUpdateListModel(filterWordIndex,
+          locationFilter, 'assets/' + fileName + '.json', true);
     }
 
-    initTempListModel();
-    _filteredPages = _pagesTags;
-
+    //_filteredPages = _pagesTags;
+//TODO add more title to match title search
     //RESPONSE.DATA.LENGTH
+  }
+
+  Future<List<dynamic>> parseAssetUpdateListModel(int filterWordIndex,
+      String locationFilter, String fileName, bool clearListContent) async {
+    var placesList = await loadAndEncodeAsset(fileName);
+    initTempListModel();
     for (int i = 0; i < placesList.length; i++) {
-      //Merchant m2 = Merchant.fromJson(response.data[i]);
       Merchant m2 = Merchant.fromJson(placesList.elementAt(i));
 
       _insertIntoTempList(m2, filterWordIndex, locationFilter);
@@ -168,24 +181,43 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
     if (unfilteredLists.length == 0) initUnfilteredLists();
 
-    updateListModel(tempLists);
+    if (clearListContent)
+      updateListModel(tempLists);
+    else
+      addToListModel(tempLists);
+
+    return placesList;
   }
 
-  void updateList(List destination, List tmpList) {
-    destination.clear();
+  void updateList(List destination, List tmpList, bool clearOldContent) {
+    if (clearOldContent) destination.clear();
     for (int i = 0; i < tmpList.length; i++) {
-      destination.add(tmpList[i]);
+      ListModel<Merchant> currentTmpList = tmpList[i];
+      if (clearOldContent) {
+        destination.add(currentTmpList);
+      } else {
+        ListModel<Merchant> currentList = destination[i];
+        for (int x = 0; x < currentTmpList.length; x++) {
+          currentList.insert(0, currentTmpList[x]);
+        }
+      }
     }
+  }
+
+  void addToListModel(List<ListModel<Merchant>> tmpList) {
+    setState(() {
+      updateList(_lists, tmpList, false);
+    });
   }
 
   void updateListModel(List<ListModel<Merchant>> tmpList) {
     setState(() {
-      updateList(_lists, tmpList);
+      updateList(_lists, tmpList, true);
     });
   }
 
   void initUnfilteredLists() {
-    updateList(unfilteredLists, tempLists);
+    updateList(unfilteredLists, tempLists, true);
   }
 
   Future<List<dynamic>> loadAndEncodeAsset(final String fileName) async {
@@ -313,18 +345,19 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     }
   }
 
-  void showInfoDialogWithCloseButton(BuildContext context) async {
+  void showInfoDialogWithCloseButton(BuildContext context) {
     showDialog(
         context: context,
         builder: (BuildContext ctx) {
           return AlertDialog(
             backgroundColor: Colors.grey[900],
             content: Text(
-                "- Select a city, state or continent from the suggestions list.\n\n- Use the keyboard to search for tags -> 'Burger,Dessert,Beer''\n\n- The suggestions list contains all the locations, it is scrollable."),
-            title: Text("Filter for locations or tags"),
+                "- Scroll & Tap a suggestion to filter the list.\n\n- Use the keyboard to search: \ne.g. -> 'Burger,Dessert,Beer'"),
+            title: Text("Search"),
+            //TODO Add merchant names to searchindex
             actions: <Widget>[
               FlatButton(
-                onPressed: () async {
+                onPressed: () {
                   Navigator.of(context).pop();
                 },
                 child: Text("CLOSE"),
@@ -559,7 +592,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
               //color: Colors.white,
               //progress: searchDelegate.transitionAnimation,
               Icons.arrow_upward),
-          onPressed: () async {
+          onPressed: () {
             //showInfoDialogWithCloseButton(context);
             //initBlinkAnimation();
           },
@@ -661,14 +694,14 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                           )
                         ],
                       ),
-                      /*buildSeparator(),
+                      buildSeparator(),
                       Row(children: <Widget>[
                         buildHomeButton(),
                         const Text(
                           'Show all merchants of all categories.',
                           style: TextStyle(fontWeight: FontWeight.w300),
                         )
-                      ]),*/
+                      ]),
                       buildSeparator(),
                       buildSearchHintRow('Filter for locations or tags.'),
                     ],
