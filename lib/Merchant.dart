@@ -12,6 +12,7 @@ class Merchant {
   int discount;
   String tags;
   String location;
+  String serverId;
 
   Merchant(this.id, this.x, this.y, this.name, this.type, this.reviewCount,
       this.reviewStars, this.discount, this.tags, this.location);
@@ -27,6 +28,7 @@ class Merchant {
         reviewStars = json['s'],
         discount = int.parse(json['d']),
         tags = json['a'],
+  //TODO use one single source of locations, take the suggestions or the placesIDAddress as reference
         location = json['l'];
 
   // method

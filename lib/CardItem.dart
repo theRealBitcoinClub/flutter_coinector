@@ -1,7 +1,5 @@
 import 'package:endlisch/AssetLoader.dart';
 import 'package:endlisch/Place.dart';
-import 'package:endlisch/main.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:endlisch/MyColors.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -59,26 +57,47 @@ class CardItem extends StatelessWidget {
           )),
     );
   }
+/*/TODO load placeholder
+  loadPlaceHolder() {
+    rootBundle.load('assets/placeholder640x480.png').then((data) {
+      return data.buffer.asUint8List();
+    });
+  }*/
 
   Stack buildContentStack(
       Color infoBoxBackgroundColor, TextStyle textStyle, TextStyle textStyle2) {
+    var gifUrl = "https://realbitcoinclub-" +
+        item.serverId +
+        ".firebaseapp.com/gif/" +
+        item.id +
+        ".gif";
+
+    var img;
+
+    //try {
+    img = FadeInImage.memoryNetwork(
+      //TODO add sexy fadeinCurvee
+      fit: BoxFit.contain,
+      fadeInDuration: Duration(milliseconds: 300),
+      placeholder: kTransparentImage,
+      //TODO load images from splitted servers
+      //TODO add images, add placeholder for currently missing images
+      //TODO add placeholder image with first frame of animation
+      //TODO offer low data version which only shows one image and loads more images on tap of carditem
+      image: gifUrl,
+      height: 320,
+      alignment: Alignment.bottomCenter,
+    );
+    //} catch (e) {
+    //TODO add fallback if image can not be loaded or internet connection is not available
+    //  img = Image.asset("assets/placeholder640x480.png");
+    //}
+
     return Stack(
       children: <Widget>[
         Padding(
           padding: EdgeInsets.all(0.0),
-          child: FadeInImage.memoryNetwork(
-            fit: BoxFit.contain,
-            fadeInDuration: Duration(milliseconds: 300),
-            placeholder: kTransparentImage,
-            //TODO load images from splitted servers
-            //TODO add placeholder image with first frame of animation
-            //TODO offer low data version which only shows one image and loads more images on tap of carditem
-            image: "https://realbitcoinclub.firebaseapp.com/img/app/" +
-                item.id +
-                ".gif",
-            height: 320,
-            alignment: Alignment.bottomCenter,
-          ),
+          child: img,
         ),
         Stack(
           children: <Widget>[
@@ -134,7 +153,7 @@ class CardItem extends StatelessWidget {
               ],
             ),
             onPressed: () {
-              launchReviewUrl(item.id);
+              launchReviewUrl(context, item.id);
             },
           ),
           FlatButton(
@@ -185,12 +204,26 @@ launchVisitUrl(id) async {
   if (await canLaunch(url)) {
     await launch(url);
   } else {
+    //TODO show a message to the user, his internet connection might be off
     throw 'Could not launch $url';
   }
 }
 
-launchReviewUrl(id) async {
+launchReviewUrl(context, id) async {
   Place place = await AssetLoader.loadPlace(id);
+  if (place == null) {
+    showDialog(
+        context: context,
+        builder: (BuildContext ctx) {
+          return AlertDialog(
+            actions: [buildCloseDialogButton(ctx)],
+            //TODO Optimize by offering a form to submit the data
+            content: Text(
+                "This place was not found on Google Maps yet, help us and send a link of the Google Maps entry to bitcoinmap.cash@protonmail.com"),
+          );
+        });
+    return;
+  }
   //String place =  await AssetLoader.loadPlacesId(id);
   var url =
       'https://search.google.com/local/writereview?placeid=' + place.placesId;
@@ -258,11 +291,11 @@ void showMissingAddrDialog(BuildContext context) {
                 child: Text(
                     "This merchant has not yet provided any payment receiving address!\n\nTouch here to send an email to bitcoinmap.cash@protonmail.com"),
                 onTap: () async {
-                  var hasEmailClient = await canLaunch(
-                      "mailTo:bitcoinmap.cash@protonmail.com?subject=Coinecccctorrrrr");
+                  var urlString =
+                      "mailTo:bitcoinmap.cash@protonmail.com?subject=Coinecccctorrrrr";
+                  var hasEmailClient = await canLaunch(urlString);
                   if (hasEmailClient) {
-                    launch(
-                        "mailTo:bitcoinmap.cash@protonmail.com?subject=Coinecccctorrrrr");
+                    await launch(urlString);
                   } else {
                     //TODO show dialog that there was not found any supported email client and forward the user to a sign up form
                   }

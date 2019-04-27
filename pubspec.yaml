@@ -50,6 +50,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/placeholder640x480.png
     - assets/addr.json
     - assets/am.json
     - assets/am-ven.json
@@ -59,7 +60,6 @@ flutter:
     - assets/au.json
     - assets/e.json
     - assets/e-spa.json
-    - assets/places.json
     - assets/placesId.json
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -34,7 +34,7 @@
 ,{"p":"bandung", "x":"43.0770448","y":"-89.374404","n":"Bandung Indonesian Restaurant","t":"0","c":"178","s":"4.5", "d":"0", "a":"131,71,108,96", "l":"Madison, Wisconsin, America"}
 ,{"p":"citylounge", "x":"42.958897","y":"-87.863421","n":"City Lounge","t":"2","c":"192","s":"4.0", "d":"0", "a":"37,126,132,119", "l":"Milwaukee, Wisconsin, America"}
 ,{"p":"luminous", "x":"44.8029692","y":"-106.9537325","n":"Luminous Brewhouse","t":"2","c":"31","s":"4.5", "d":"0", "a":"32,33,55,119", "l":"Sheridan, Wyoming, America"}
-,{"p":"millinn", "x":"44.774132","y":"-106.9417101","n":"Mill Inn","t":"5","c":"100","s":"4.4", "d":"0", "a":"104,104,104,104", "l":"Sheridan, Wyoming, America"}
+,{"p":"mill", "x":"44.774132","y":"-106.9417101","n":"Mill Inn","t":"5","c":"100","s":"4.4", "d":"0", "a":"104,104,104,104", "l":"Sheridan, Wyoming, America"}
 ,{"p":"xpresso", "x":"40.765987","y":"-111.888509","n":"XpressO","t":"2","c":"4","s":"4.5", "d":"0", "a":"29,146,3,147", "l":"Salt Lake City, Utah, America"}
 ,{"p":"classiccrustpizza", "x":"33.5974227","y":"-112.0351418","n":"Classic Crust Pizza","t":"0","c":"130","s":"4.2", "d":"0", "a":"14,102,108,109", "l":"Salt Lake City, Utah, America"}
 ,{"p":"perroscalientes", "x":"10.49666","y":"-66.93624","n":"Perros Calientes Cruz de La Vega, the richest hotdogs, burguer and pepitos","t":"1","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
@@ -50,7 +50,7 @@
 ,{"p":"papajohnlosruices", "x":"10.4827433","y":"-66.83127619999999","n":"Pizza Papa John’s – Los Ruices","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
 ,{"p":"kolash", "x":"10.4627503","y":"-66.81862030000002","n":"Kolash Cakery – Dulces Y Tortas","t":"1","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
 ,{"p":"subwaylido", "x":"10.4911492","y":"-66.86255160000002","n":"Subway – Lido","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
-,{"p":"wieners", "x":"10.4775527","y":"-66.814898","n":"Wieners - Hot Dogs","t":"1","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"wien", "x":"10.4775527","y":"-66.814898","n":"Wieners - Hot Dogs","t":"1","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
 ,{"p":"subwaysanignacio", "x":"10.4880644","y":"-66.86869580000001","n":"Subway – San Ignacio","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
 ,{"p":"mmqdulce", "x":"10.4855","y":"-66.8863692","n":"MMQDULCE – Dulces Y Tortas","t":"1","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
 ,{"p":"subwayelrosal", "x":"10.48906","y":"-66.86477","n":"Subway – El Rosal","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
@@ -64,7 +64,7 @@
 ,{"p":"papajohnplazalasamericas", "x":"10.4577714","y":"-66.82864440000003","n":"Pizza Papa John’s – Plaza las Americas","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
 ,{"p":"mastranto", "x":"10.48059","y":"-66.903565","n":"Mastranto Delicias para Picar","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
 ,{"p":"subwaylatrinidad", "x":"10.4339299","y":"-66.87073429999998","n":"Subway – La Trinidad","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
-,{"p":"tentaciones", "x":"10.48065","y":"-66.90358","n":"Dulces Tentaciones y Sabores, cakes and desserts","t":"1","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"tenta", "x":"10.48065","y":"-66.90358","n":"Dulces Tentaciones y Sabores, cakes and desserts","t":"1","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
 ,{"p":"subwaysanantonio", "x":"10.3696393","y":"-66.95710259999998","n":"Subway – San Antonio de los Altos","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
 ,{"p":"papajohnsanantonio", "x":"10.480495","y":"-66.903595","n":"Pizza Papa John’s – San Antonio de los Altos","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
 ,{"p":"pedronavaz", "x":"10.48050","y":"-66.90355","n":"PEDRO NAVAZ – DISTRIBUIDORA DE HELADOS - ICE CREAM","t":"1","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
@@ -72,7 +72,7 @@
 ,{"p":"pinchero", "x":"10.48055","y":"-66.90364","n":"El pinchero - Delicatessen and food sales","t":"1","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
 ,{"p":"dulcesdemaita", "x":"10.4805937","y":"-66.9036063","n":"Dulces de Maita","t":"1","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
 ,{"p":"relincho", "x":"10.48057","y":"-66.9036063","n":"Cerveceria Artesanal Relincho","t":"3","c":"0","s":"0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
-,{"p":"tentacionmm", "x":"10.48059","y":"-66.903655","n":"Tentacion MM, dedicated to the elaboration and distribution of sweets and desserts","t":"1","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
+,{"p":"tentamm", "x":"10.48059","y":"-66.903655","n":"Tentacion MM, dedicated to the elaboration and distribution of sweets and desserts","t":"1","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
 ,{"p":"bartender", "x":"10.48061","y":"-66.90367","n":"BARTENDER TRUCK VENEZUELA - beverage truck, milkshakes,smoothies and cocktails","t":"2","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
 ,{"p":"gustavomarady", "x":"10.48063","y":"-66.90369","n":"GUSTAVO MARADY – Distribuidor de Helado","t":"1","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}
 ,{"p":"navija", "x":"10.4339299","y":"-66.87073429999998","n":"Navija Abi Saab – Cocina Arabe En Casa","t":"0","c":"0","s":"0.0", "d":"5", "a":"104,104,104,104", "l":"Caracas, Venezuela, America"}

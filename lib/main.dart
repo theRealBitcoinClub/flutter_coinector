@@ -156,16 +156,16 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       //TODO ask for phone number, map phone numbers to continents
       //TODO ask for location, if given load the continent last
       placesList = await parseAssetUpdateListModel(
-          filterWordIndex, locationFilter, 'assets/am.json', true);
+          filterWordIndex, locationFilter, 'assets/am.json','am', true);
       placesList = await parseAssetUpdateListModel(
-          filterWordIndex, locationFilter, 'assets/e.json', false);
+          filterWordIndex, locationFilter, 'assets/e.json','e', false);
       placesList = await parseAssetUpdateListModel(
-          filterWordIndex, locationFilter, 'assets/as.json', false);
+          filterWordIndex, locationFilter, 'assets/as.json','as', false);
       placesList = await parseAssetUpdateListModel(
-          filterWordIndex, locationFilter, 'assets/au.json', false);
+          filterWordIndex, locationFilter, 'assets/au.json','au', false);
     } else {
       placesList = await parseAssetUpdateListModel(filterWordIndex,
-          locationFilter, 'assets/' + fileName + '.json', true);
+          locationFilter, 'assets/' + fileName + '.json',fileName, true);
     }
 
     //_filteredPages = _pagesTags;
@@ -174,11 +174,12 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   Future<List<dynamic>> parseAssetUpdateListModel(int filterWordIndex,
-      String locationFilter, String fileName, bool clearListContent) async {
-    var placesList = await AssetLoader.loadAndEncodeAsset(fileName);
+      String locationFilter, String assetUri, String serverId, bool clearListContent) async {
+    var placesList = await AssetLoader.loadAndEncodeAsset(assetUri);
     initTempListModel();
     for (int i = 0; i < placesList.length; i++) {
       Merchant m2 = Merchant.fromJson(placesList.elementAt(i));
+      m2.serverId = serverId;
 
       _insertIntoTempList(m2, filterWordIndex, locationFilter);
     }
