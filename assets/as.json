@@ -4,15 +4,14 @@
 ,{"p":"daikanyama", "x":"35.64827","y":"139.7036586","n":"daikanyama O'KOK","t":"0","c":"33","s":"4.4", "d":"0", "a":"104,104,104,104", "l":"2 Chome−21−15 Ebisunishi, Shibuya City, Tokyo, Japan"}
 ,{"p":"cafedeperle", "x":"35.669106","y":"139.761887","n":"Cafe de Perle - カフェ・ド・ペルル","t":"2","c":"6","s":"4.3", "d":"0", "a":"81,82,83,84", "l":"7 Chome−7−9, Ginza, Chuo City, Tokyo, Japan"}
 ,{"p":"twodogstaproom", "x":"35.6626594","y":"139.7352281","n":"Two Dogs Taproom トゥー·ドッグス·タップルーム","t":"0","c":"241","s":"4.2", "d":"0", "a":"14,32,31,8", "l":"Japan, Tokyo, Minato City, Roppongi, 3 Chome−15−24"}
-,{"p":"thepinkcow", "x":"35.662003","y":"139.734554","n":"The Pink Cow","t":"2","c":"69","s":"4.1", "d":"0", "a":"14,100,96,31", "l":"Tokyo, Japan, Asia"}
-,{"p":"downtownb", "x":"35.665032","y":"139.736647","n":"Downtown B's Indian Kitchen","t":"0","c":"229","s":"4.7", "d":"0", "a":"158,159,71,135", "l":"Tokyo, Japan, Asia"}
-,{"p":"fline", "x":"35.6333881","y":"139.6611829","n":"エフライン","t":"4","c":"3","s":"5.0", "d":"0", "a":"104,104,104,104", "l":"Tokyo, Japan, Asia"}
-,{"p":"kagurazaka", "x":"35.706609","y":"139.731268","n":"Kagurazaka","t":"0","c":"6","s":"4.0", "d":"0", "a":"104,104,104,104", "l":"Tokyo, Japan, Asia"}
-,{"p":"newsalsasudada", "x":"35.6616764","y":"139.7351021","n":"New Salsa Sudada - サルサスダーダ","t":"2","c":"21","s":"4.1", "d":"0", "a":"31,32,33,160", "l":"Tokyo, Japan, Asia"}
-,{"p":"thepinkcowakasaka", "x":"35.6720966","y":"139.7397304","n":"The Pink Cow Akasaka","t":"0","c":"11","s":"4.6", "d":"0", "a":"14,100,96,31", "l":"Tokyo, Japan, Asia"}
-,{"p":"goodheavens", "x":"35.6589099","y":"139.6676123","n":"Good Heavens","t":"0","c":"52","s":"4.4", "d":"0", "a":"104,104,104,104", "l":"Tokyo, Japan, Asia"}
-,{"p":"kandakirari", "x":"35.6930112","y":"139.7731941","n":"Kanda Kirari - 輝きらり","t":"0","c":"23","s":"4.0", "d":"0", "a":"155,67,100,97", "l":"Tokyo, Japan, Asia"}
-,{"p":"greecefood", "x":"35.703482","y":"139.5996612","n":"ギリシャ小町三丁目 - Greece Food","t":"0","c":"3","s":"4.7", "d":"0", "a":"104,104,104,104", "l":"Tokyo, Japan, Asia"}
+,{"p":"thepinkcowakasaka", "x":"35.6720966","y":"139.7397304","n":"The Pink Cow Akasaka - 赤坂 The Pink Cow (ピンクカウ)","t":"0","c":"57","s":"4.5", "d":"0", "a":"14,100,96,31", "l":"2 Chome-7-5 Akasaka, Minato City, Tokyo, Japan"}
+,{"p":"downtownb", "x":"35.665032","y":"139.736647","n":"Downtown B's Indian Kitchen - ダウンタウン ビーズ","t":"0","c":"357","s":"4.7", "d":"0", "a":"158,159,71,135", "l":"3 Chome-4 Roppongi, Minato City, Tokyo, Japan"}
+,{"p":"fline", "x":"35.6333881","y":"139.6611829","n":"f,line - エフライン","t":"4","c":"3","s":"5.0", "d":"0", "a":"104,104,104,104", "l":"4 Chome-4-4-3 Kamiuma, Setagaya City, Tokyo, Japan"}
+,{"p":"kagurazaka", "x":"35.706609","y":"139.731268","n":"Kagurazaka aka be e tasuki - 神楽坂 あかべえ 襷｜神楽坂 焼き鳥 ワイン 日本酒","t":"0","c":"17","s":"4.1", "d":"0", "a":"104,104,104,104", "l":"6 Chome-3 Yamabukicho, Shinjuku City, Tokyo, Japan"}
+,{"p":"newsalsasudada", "x":"35.6616764","y":"139.7351021","n":"New Salsa Sudada - サルサスダーダ","t":"2","c":"33","s":"4.1", "d":"0", "a":"31,32,33,160", "l":"5 Chome-16-5 Roppongi, Minato City, Tokyo, Japan"}
+,{"p":"goodheavens", "x":"35.6589099","y":"139.6676123","n":"Good Heavens","t":"0","c":"87","s":"4.4", "d":"0", "a":"104,104,104,104", "l":"Japan, Tokyo, Setagaya City, Daizawa5 Chome−32−"}
+,{"p":"kandakirari", "x":"35.6930112","y":"139.7731941","n":"Kanda Kirari - 輝きらり","t":"0","c":"40","s":"4.0", "d":"0", "a":"155,67,100,97", "l":"Japan, Tokyo, Chiyoda City, Kanda Konyacho"}
+,{"p":"greecefood", "x":"35.703482","y":"139.5996612","n":"Greek bar ギリシャ小町三丁目","t":"0","c":"15","s":"4.6", "d":"0", "a":"104,104,104,104", "l":"3 Chome-11 Nishiogiminami, Suginami City, Tokyo, Japan"}
 ,{"p":"bargolden", "x":"35.6308575","y":"139.6843618","n":"ゴールデン - Bar Golden","t":"2","c":"2","s":"3.0", "d":"0", "a":"31,32,83,119", "l":"Tokyo, Japan, Asia"}
 ,{"p":"glutenfree", "x":"35.664605","y":"139.736968","n":"Gluten Free 61 - Cafe & Bar","t":"0","c":"16","s":"4.4", "d":"0", "a":"6,15,30,108", "l":"Tokyo, Japan, Asia"}
 ,{"p":"nembar", "x":"35.6597224","y":"139.6953952","n":"Nem Bar - Crypto BAR","t":"2","c":"28","s":"4.0", "d":"0", "a":"31,32,81,82", "l":"Tokyo, Japan, Asia"}
