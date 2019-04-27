@@ -10,12 +10,12 @@
 ,{"p":"litalia", "x":"9.558281","y":"-69.204444","n":"L'Italia Restaurant","t":"0","c":"21","s":"4.2", "d":"0", "a":"102,108,71,15", "l":"Acarigua, Portuguesa, Venezuela"}
 ,{"p":"altosdeleste", "x":"7.7724126","y":"-72.209355","n":"Panaderia Altos del Este","t":"1","c":"69","s":"4.0", "d":"0", "a":"115,116,117,142", "l":"San Cristobal, Tachira, Venezuela"}
 ,{"p":"loncheria", "x":"2.4386966","y":"-76.6070317","n":"Loncheria Caldas","t":"0","c":"246","s":"4.2", "d":"0", "a":"111,138,100,99", "l":"Carrera 6, Popayan, Cauca, Colombia"}
-,{"p":"windschief", "x":"16.8588867","y":"-88.281852","n":"Windschief Beach Bar And MiniGolf","t":"2","c":"21","s":"4.8", "d":"0", "a":"100,96,15,32", "l":"Hopkins, Belize, America"}
-,{"p":"casasofiarestaurant", "x":"17.209844","y":"-88.9415","n":"Casa Sofia Italian Restaurant","t":"0","c":"27","s":"4.3", "d":"0", "a":"102,108,71,15", "l":"Unitedville, Belize, America"}
-,{"p":"casasofiahotel", "x":"17.209844","y":"-88.9417","n":"Casa Sofia Inn","t":"5","c":"27","s":"4.3", "d":"0", "a":"104,104,104,104", "l":"Unitedville, Belize, America"}
-,{"p":"mayalousplace", "x":"17.2100257","y":"-88.9412167","n":"Maya Lous Place","t":"0","c":"12","s":"4.1", "d":"0", "a":"7,14,99,71", "l":"Unitedville, Belize, America"}
-,{"p":"artehelado", "x":"17.9917209","y":"-92.9471109","n":"Artehelado Villahermosa","t":"1","c":"24","s":"4.8", "d":"0", "a":"18,79,139,55", "l":"Villahermosa, Tabasco, Mexico"}
-,{"p":"rempahrempahcafebar", "x":"18.4525012","y":"-69.9493383","n":"Rempah Rempah Cafe & Bar","t":"2","c":"1","s":"5.0", "d":"0", "a":"71,135,138,31", "l":"Santo Domingo, Dominican Republic"}
+,{"p":"windschief", "x":"16.8588867","y":"-88.281852","n":"Windschief Beach Bar And MiniGolf","t":"2","c":"35","s":"4.7", "d":"0", "a":"100,96,15,32", "l":"Hopkins, Belize"}
+,{"p":"casasofiarestaurant", "x":"17.209844","y":"-88.9415","n":"Casa Sofia Italian Restaurant","t":"0","c":"33","s":"4.4", "d":"0", "a":"102,108,71,15", "l":"Western Highway, Unitedville, Belize"}
+,{"p":"casasofiahotel", "x":"17.209844","y":"-88.9417","n":"Casa Sofia Inn","t":"5","c":"33","s":"4.4", "d":"0", "a":"104,104,104,104", "l":"Western Highway, Unitedville, Belize"}
+,{"p":"mayalousplace", "x":"17.2100257","y":"-88.9412167","n":"Maya Lous Place","t":"0","c":"12","s":"4.1", "d":"0", "a":"7,14,99,71", "l":"Western Highway, Unitedville, Belize"}
+,{"p":"artehelado", "x":"17.9917209","y":"-92.9471109","n":"Artehelado Villahermosa","t":"1","c":"36","s":"4.7", "d":"0", "a":"18,79,139,55", "l":"Villahermosa, Tabasco, Mexico"}
+,{"p":"rempahrempahcafebar", "x":"18.4525012","y":"-69.9493383","n":"Rempah Rempah Cafe & Bar","t":"2","c":"44","s":"4.4", "d":"0", "a":"71,135,138,31", "l":"Santo Domingo, Dominican Republic"}
 ,{"p":"peoplespub", "x":"45.1928354","y":"-67.2761859","n":"People's Pub","t":"2","c":"27","s":"4.3", "d":"0", "a":"104,104,104,104", "l":"Saint Stephen, Canada, America"}
 ,{"p":"figures", "x":"43.6739721","y":"-79.3960984","n":"Figures","t":"0","c":"267","s":"4.2", "d":"0", "a":"14,100,8,138", "l":"Toronto, Canada, America"}
 ,{"p":"kirby", "x":"43.1435947","y":"-72.3732477","n":"Kirby's Q","t":"0","c":"36","s":"4.6", "d":"0", "a":"111,71,164,165", "l":"Alstead, New Hampshire, America"}
