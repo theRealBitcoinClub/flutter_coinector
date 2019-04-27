@@ -11,23 +11,20 @@
 ,{"p":"newsalsasudada", "x":"35.6616764","y":"139.7351021","n":"New Salsa Sudada - サルサスダーダ","t":"2","c":"33","s":"4.1", "d":"0", "a":"31,32,33,160", "l":"5 Chome-16-5 Roppongi, Minato City, Tokyo, Japan"}
 ,{"p":"goodheavens", "x":"35.6589099","y":"139.6676123","n":"Good Heavens","t":"0","c":"87","s":"4.4", "d":"0", "a":"104,104,104,104", "l":"Japan, Tokyo, Setagaya City, Daizawa5 Chome−32−"}
 ,{"p":"kandakirari", "x":"35.6930112","y":"139.7731941","n":"Kanda Kirari - 輝きらり","t":"0","c":"40","s":"4.0", "d":"0", "a":"155,67,100,97", "l":"Japan, Tokyo, Chiyoda City, Kanda Konyacho"}
-,{"p":"greecefood", "x":"35.703482","y":"139.5996612","n":"Greek bar ギリシャ小町三丁目","t":"0","c":"15","s":"4.6", "d":"0", "a":"104,104,104,104", "l":"3 Chome-11 Nishiogiminami, Suginami City, Tokyo, Japan"}
-,{"p":"bargolden", "x":"35.6308575","y":"139.6843618","n":"ゴールデン - Bar Golden","t":"2","c":"2","s":"3.0", "d":"0", "a":"31,32,83,119", "l":"Tokyo, Japan, Asia"}
-,{"p":"glutenfree", "x":"35.664605","y":"139.736968","n":"Gluten Free 61 - Cafe & Bar","t":"0","c":"16","s":"4.4", "d":"0", "a":"6,15,30,108", "l":"Tokyo, Japan, Asia"}
-,{"p":"nembar", "x":"35.6597224","y":"139.6953952","n":"Nem Bar - Crypto BAR","t":"2","c":"28","s":"4.0", "d":"0", "a":"31,32,81,82", "l":"Tokyo, Japan, Asia"}
-,{"p":"330bar", "x":"35.6480452","y":"139.7104592","n":"私を恵比寿に連れてって 330BAR","t":"2","c":"11","s":"2.8", "d":"0", "a":"31,32,33,81", "l":"Tokyo, Japan, Asia"}
+,{"p":"bargolden", "x":"35.6308575","y":"139.6843618","n":"ゴールデン - Bar Golden","t":"2","c":"3","s":"3.3", "d":"0", "a":"31,32,83,119", "l":"2 Chome-40-10 Chuocho, Meguro City, Tokyo, Japan"}
+,{"p":"glutenfree", "x":"35.664605","y":"139.736968","n":"Gluten Free 61 cafe & bar - グルテンフリー61 カフェ&バ","t":"0","c":"60","s":"4.8", "d":"0", "a":"6,15,30,108", "l":"3 Chome-4-４番地６号 Roppongi, Minato City, Tokyo, Japan"}
+,{"p":"330bar", "x":"35.6480452","y":"139.7104592","n":"私を恵比寿に連れてって 330BAR","t":"2","c":"16","s":"3.2", "d":"0", "a":"31,32,33,81", "l":"Japan, Tokyo, Shibuya City, Ebisu, 1 Chome−7−4"}
 ,{"p":"rakantokyo", "x":"35.6632748","y":"139.7329313","n":"RAKAN Tokyo - Nightclub","t":"2","c":"1","s":"5.0", "d":"0", "a":"31,33,82,160", "l":"Tokyo, Japan, Asia"}
-,{"p":"greekbar", "x":"35.7034722","y":"139.5996424","n":"Greek bar ギリシャ小町三丁目","t":"0","c":"7","s":"4.4", "d":"0", "a":"154,143,15,8", "l":"Tokyo, Japan, Asia"}
-,{"p":"kawashou", "x":"35.946634","y":"139.831329","n":"Kawashou Unagi","t":"0","c":"94","s":"4.1", "d":"0", "a":"100,142,143,153", "l":"Tokyo, Japan, Asia"}
-,{"p":"soulfoodhouse", "x":"35.655364","y":"139.734573","n":"Soul Food House","t":"0","c":"137","s":"4.6", "d":"0", "a":"97,143,7,15", "l":"Tokyo, Japan, Asia"}
-,{"p":"lacocinadegaston", "x":"35.6873575","y":"139.7798908","n":"La Cocinca de Gaston","t":"0","c":"7","s":"5.0", "d":"0", "a":"97,15,100,138", "l":"Tokyo, Japan, Asia"}
-,{"p":"riceplus", "x":"35.6553945","y":"139.694185","n":"ライスプラス - RicePlus","t":"0","c":"5","s":"5.0", "d":"0", "a":"29,31,32,119", "l":"Tokyo, Japan, Asia"}
-,{"p":"hackersbar", "x":"35.6644485","y":"139.7305855","n":"Hackers Bar","t":"2","c":"40","s":"4.5", "d":"0", "a":"31,32,81,82", "l":"Tokyo, Japan, Asia"}
-,{"p":"gyozashack", "x":"35.643273","y":"139.6701459","n":"GYOZA SHACK","t":"0","c":"41","s":"3.9", "d":"0", "a":"97,100,143,15", "l":"Tokyo, Japan, Asia"}
-,{"p":"yakinikutamura", "x":"34.700377","y":"135.542964","n":"たむら 蒲生本店 - Yakiniku Tamura","t":"0","c":"82","s":"3.2", "d":"0", "a":"111,67,112,138", "l":"Osaka, Japan, Asia"}
-,{"p":"shochumeigetsu", "x":"34.6761286","y":"135.5144284","n":"明月 (酒店) - Sho Chu Meigetsu","t":"4","c":"1","s":"5.0", "d":"0", "a":"161,81,82,83", "l":"Osaka, Japan, Asia"}
-,{"p":"osarucoffee", "x":"34.6637216","y":"135.4954944","n":"オサル コーヒー Osaru Coffee","t":"2","c":"53","s":"4.4", "d":"0", "a":"29,8,109,142", "l":"Osaka, Japan, Asia"}
-,{"p":"unityface", "x":"34.5321509","y":"135.4955319","n":"Unity Faith - 喫茶・軽食 ユニティーフェイス","t":"0","c":"4","s":"4.3", "d":"0", "a":"29,31,135,119", "l":"Osaka, Japan, Asia"}
+,{"p":"greekbar", "x":"35.7034722","y":"139.5996424","n":"Greek bar ギリシャ小町三丁目","t":"0","c":"15","s":"4.6", "d":"0", "a":"154,143,15,8", "l":"3 Chome-11 Nishiogiminami, Suginami City, Tokyo, Japan"}
+,{"p":"kawashou", "x":"35.946634","y":"139.831329","n":"Kawashou うなぎ 川昌 - Unagi","t":"0","c":"173","s":"4.2", "d":"0", "a":"100,142,143,153", "l":"1511-2 Kanasugi, Matsubushi, Saitama, Japan"}
+,{"p":"soulfoodhouse", "x":"35.655364","y":"139.734573","n":"Soul Food House","t":"0","c":"316","s":"4.6", "d":"0", "a":"97,143,7,15", "l":"Japan, Tokyo, Minato City, Azabujuban, 2 Chome−8−１０"}
+,{"p":"lacocinadegaston", "x":"35.6873575","y":"139.7798908","n":"ラ コシーナ デ ゲン - la cocina de gaston","t":"0","c":"30","s":"4.6", "d":"0", "a":"97,15,100,138", "l":"Japan, Kanagawa, Kamakura, Yuigahama, 1 Chome−12−7"}
+,{"p":"riceplus", "x":"35.6553945","y":"139.694185","n":"RicePlus（ライスプラス）","t":"0","c":"7","s":"4.9", "d":"0", "a":"29,31,32,119", "l":"Japan, Tokyo, Shibuya City, Maruyamacho, 28−8"}
+,{"p":"hackersbar", "x":"35.6644485","y":"139.7305855","n":"Hackers Bar","t":"2","c":"57","s":"4.4", "d":"0", "a":"31,32,81,82", "l":"Japan, Tokyo, Minato City, Roppongi, 7 Chome−12−3"}
+,{"p":"gyozashack", "x":"35.643273","y":"139.6701459","n":"GYOZA SHACK","t":"0","c":"52","s":"3.9", "d":"0", "a":"97,100,143,15", "l":"2 Chome-13-10 Sangenjaya, Setagaya City, Tokyo, Japan"}
+,{"p":"yakinikutamura", "x":"34.700377","y":"135.542964","n":"Yakiniku Tamura - 北海道の旬 焼肉たむら","t":"0","c":"82","s":"3.2", "d":"0", "a":"111,67,112,138", "l":"2 Chome-7-3 Marunouchi, Chiyoda City, Tokyo, Japan"}
+,{"p":"osarucoffee", "x":"34.6637216","y":"135.4954944","n":"オサル コーヒー Osaru Coffee","t":"2","c":"88","s":"4.5", "d":"0", "a":"29,8,109,142", "l":" 1 Chome-7-15 Motomachi, Naniwa Ward, Osaka, Japan"}
+,{"p":"unityface", "x":"34.5321509","y":"135.4955319","n":"喫茶・軽食 ユニティーフェイス - Unity Faith","t":"0","c":"9","s":"4.3", "d":"0", "a":"29,31,135,119", "l":"Japan, Osaka, Sakai, Naka Ward, Fukaishimizucho, 3835"}
 ,{"p":"engaro", "x":"34.702269","y":"135.487596","n":"大阪 梅田 福島区 ｜ORGANIC SALON ENGARO【 美容院 美容室 / カラー 白髪染め / オーガニック ヴィラロドラ ローランドオーウェイ 】","t":"4","c":"3","s":"5.0", "d":"0", "a":"104,104,104,104", "l":"Osaka, Japan, Asia"}
 ,{"p":"cafebarcoins", "x":"34.6595934","y":"135.5059829","n":"仮想通貨カフェ＆バーＣＯＩＮＳ","t":"2","c":"9","s":"4.6", "d":"0", "a":"29,31,32,33", "l":"Osaka, Japan, Asia"}
 ,{"p":"04village", "x":"34.6550227","y":"135.5084907","n":"０４ ｖｉｌｌａｇｅ なんば","t":"5","c":"60","s":"4.3", "d":"0", "a":"60,61,90,98", "l":"Osaka, Japan, Asia"}
