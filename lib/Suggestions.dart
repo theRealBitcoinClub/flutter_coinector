@@ -4,6 +4,8 @@
 
 class Suggestions {
   static final locations = const {
+    //TODO continents show full list without filter
+  //TODO update new locations which are in placesId, remove old locations
     'Europe,e,co',
     'Germany - Europe,e,s',
     'Berlin - Germany - Europe,e,ci',

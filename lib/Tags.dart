@@ -2,6 +2,7 @@ class Tags {
 
 
   static final titleTags = const {
+    'Muerde La Carne','Carne','Caffe','Caffe Meranto','Meranto','Empanadas de Simon','Empanadas','Simon','Alto Mar','Posada El Oasis','Fanatic Sport','Sport','Steak Burger','Steak','Burger','La Soga','Italia','','','','','','','','','','','','','','Hotel','Restaurant','Bar','Grill',
     'Helado','Heladeria','Truck','Cerveceria','Dulces','Hamburguesas', 'Tentacion', 'Delicias', 'Pasteles','Pasteleria', 'Panaderia', 'Subway','Papa John','Pasticceria',
   };
 
