@@ -16,14 +16,14 @@
 ,{"p":"mayalousplace", "x":"17.2100257","y":"-88.9412167","n":"Maya Lous Place","t":"0","c":"12","s":"4.1", "d":"0", "a":"7,14,99,71", "l":"Western Highway, Unitedville, Belize"}
 ,{"p":"artehelado", "x":"17.9917209","y":"-92.9471109","n":"Artehelado Villahermosa","t":"1","c":"36","s":"4.7", "d":"0", "a":"18,79,139,55", "l":"Villahermosa, Tabasco, Mexico"}
 ,{"p":"rempahrempahcafebar", "x":"18.4525012","y":"-69.9493383","n":"Rempah Rempah Cafe & Bar","t":"2","c":"44","s":"4.4", "d":"0", "a":"71,135,138,31", "l":"Santo Domingo, Dominican Republic"}
-,{"p":"peoplespub", "x":"45.1928354","y":"-67.2761859","n":"People's Pub","t":"2","c":"27","s":"4.3", "d":"0", "a":"104,104,104,104", "l":"Saint Stephen, Canada, America"}
-,{"p":"figures", "x":"43.6739721","y":"-79.3960984","n":"Figures","t":"0","c":"267","s":"4.2", "d":"0", "a":"14,100,8,138", "l":"Toronto, Canada, America"}
-,{"p":"kirby", "x":"43.1435947","y":"-72.3732477","n":"Kirby's Q","t":"0","c":"36","s":"4.6", "d":"0", "a":"111,71,164,165", "l":"Alstead, New Hampshire, America"}
-,{"p":"streetza360", "x":"43.068945","y":"-70.773056","n":"STREET'za 360","t":"0","c":"47","s":"4.6", "d":"0", "a":"71,99,14,15", "l":"Portsmouth, New Hampshire, America"}
-,{"p":"liarsbench", "x":"43.0725374","y":"-70.7687944","n":"Liar's Bench Beer Co","t":"2","c":"88","s":"4.7", "d":"0", "a":"32,33,38,32", "l":"Portsmouth, New Hampshire, America"}
-,{"p":"3sartspace", "x":"43.0799851","y":"-70.7629727","n":"3S Artspace","t":"2","c":"121","s":"4.6", "d":"0", "a":"29,31,32,71", "l":"Portsmouth, New Hampshire, America"}
-,{"p":"street", "x":"43.069034","y":"-70.7732358","n":"STREET","t":"0","c":"541","s":"4.5", "d":"0", "a":"7,15,99,71", "l":"Portsmouth, New Hampshire, America"}
-,{"p":"lamaisonnavarre", "x":"43.076224","y":"-70.760166","n":"La Maison Navarre - Pastry, Bistro, Wine Bar","t":"2","c":"168","s":"4.8", "d":"0", "a":"133,81,109,134", "l":"Portsmouth, New Hampshire, America"}
+,{"p":"peoplespub", "x":"45.1928354","y":"-67.2761859","n":"People's Pub","t":"2","c":"38","s":"4.2", "d":"0", "a":"104,104,104,104", "l":"People's Pub, 1 Milltown Blvd, Saint Stephen, NB, Canada"}
+,{"p":"figures", "x":"43.6739721","y":"-79.3960984","n":"Figures","t":"0","c":"322","s":"4.1", "d":"0", "a":"14,100,8,138", "l":"Avenue Road, Toronto, ON, Canada"}
+,{"p":"kirby", "x":"43.1435947","y":"-72.3732477","n":"Kirby's Q","t":"0","c":"46","s":"4.7", "d":"0", "a":"111,71,164,165", "l":"River Street, Alstead, NH, USA"}
+,{"p":"streetza360", "x":"43.068945","y":"-70.773056","n":"STREET'za 360","t":"0","c":"71","s":"4.6", "d":"0", "a":"71,99,14,15", "l":"Islington Street, Portsmouth, NH, USA"}
+,{"p":"liarsbench", "x":"43.0725374","y":"-70.7687944","n":"Liar's Bench Beer Co","t":"2","c":"117","s":"4.6", "d":"0", "a":"32,33,38,32", "l":" Islington Street, Portsmouth, NH, USA"}
+,{"p":"3sartspace", "x":"43.0799851","y":"-70.7629727","n":"3S Artspace","t":"2","c":"161","s":"4.7", "d":"0", "a":"29,31,32,71", "l":"Vaughan Street, Portsmouth, NH, USA"}
+,{"p":"street", "x":"43.069034","y":"-70.7732358","n":"STREET eat/drink 360","t":"0","c":"668","s":"4.5", "d":"0", "a":"7,15,99,71", "l":"STREET eat/drink 360, Islington Street, Portsmouth, NH, USA"}
+,{"p":"lamaisonnavarre", "x":"43.076224","y":"-70.760166","n":"La Maison Navarre - Pastry, Bistro, Wine Bar","t":"2","c":"219","s":"4.8", "d":"0", "a":"133,81,109,134", "l":"Congress Street, Portsmouth, NH, USA"}
 ,{"p":"fezziwig", "x":"43.0768584","y":"-70.7546156","n":"Fezziwig's Food and Fountain","t":"0","c":"82","s":"4.6", "d":"0", "a":"81,109,15,8", "l":"Portsmouth, New Hampshire, America"}
 ,{"p":"theboldmariner", "x":"36.8761266","y":"-76.3054246","n":"The Bold Mariner Brewing Company","t":"2","c":"68","s":"4.6", "d":"0", "a":"32,8,119,32", "l":"Norfolk, Virginia, America"}
 ,{"p":"lasireneupper", "x":"40.7838279","y":"-73.9780648","n":"La Sirene Upper West Side","t":"0","c":"36","s":"4.4", "d":"0", "a":"38,100,97,109", "l":"NYC, New York, America"}
