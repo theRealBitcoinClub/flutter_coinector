@@ -8,8 +8,8 @@
 ,{"p":"steakburger", "x":"9.5667649","y":"-69.215185","n":"Steak Burger","t":"0","c":"174","s":"4.6", "d":"0", "a":"7,99,137,100", "l":"Avenida Las Lagrimas, Araure, Portuguesa, Venezuela"}
 ,{"p":"lasogagrillbar", "x":"9.5637874","y":"-69.2132714","n":"La Soga Grill & Bar","t":"0","c":"158","s":"4.6", "d":"0", "a":"7,111,99,100", "l":"Araure, Portuguesa, Venezuela"}
 ,{"p":"litalia", "x":"9.558281","y":"-69.204444","n":"L'Italia Restaurant","t":"0","c":"21","s":"4.2", "d":"0", "a":"102,108,71,15", "l":"Acarigua, Portuguesa, Venezuela"}
-,{"p":"altosdeleste", "x":"7.7724126","y":"-72.209355","n":"Panaderia Altos del Este","t":"1","c":"38","s":"3.9", "d":"0", "a":"115,116,117,142", "l":"San Cristobal, Venezuela, America"}
-,{"p":"loncheria", "x":"2.4386966","y":"-76.6070317","n":"Loncheria Caldas","t":"0","c":"148","s":"4.3", "d":"0", "a":"111,138,100,99", "l":"Popayan, Colombia, America"}
+,{"p":"altosdeleste", "x":"7.7724126","y":"-72.209355","n":"Panaderia Altos del Este","t":"1","c":"69","s":"4.0", "d":"0", "a":"115,116,117,142", "l":"San Cristobal, Tachira, Venezuela"}
+,{"p":"loncheria", "x":"2.4386966","y":"-76.6070317","n":"Loncheria Caldas","t":"0","c":"246","s":"4.2", "d":"0", "a":"111,138,100,99", "l":"Carrera 6, Popayan, Cauca, Colombia"}
 ,{"p":"windschief", "x":"16.8588867","y":"-88.281852","n":"Windschief Beach Bar And MiniGolf","t":"2","c":"21","s":"4.8", "d":"0", "a":"100,96,15,32", "l":"Hopkins, Belize, America"}
 ,{"p":"casasofiarestaurant", "x":"17.209844","y":"-88.9415","n":"Casa Sofia Italian Restaurant","t":"0","c":"27","s":"4.3", "d":"0", "a":"102,108,71,15", "l":"Unitedville, Belize, America"}
 ,{"p":"casasofiahotel", "x":"17.209844","y":"-88.9417","n":"Casa Sofia Inn","t":"5","c":"27","s":"4.3", "d":"0", "a":"104,104,104,104", "l":"Unitedville, Belize, America"}

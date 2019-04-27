@@ -5,7 +5,7 @@
 class Suggestions {
   static final locations = const {
     //TODO continents show full list without filter
-  //TODO update new locations which are in placesId, remove old locations
+    //TODO update new locations which are in placesId, remove old locations
     'Europe,e,co',
     'Germany - Europe,e,s',
     'Berlin - Germany - Europe,e,ci',
@@ -34,12 +34,21 @@ class Suggestions {
     'America,am,co',
     'Venezuela - America,am-ven,s',
     'Caracas - Venezuela - America,am-ven-car,ci',
+    'Portuguesa - Venezuela - America,am-ven-car,ci',
+    'Araure - Venezuela - America,am-ven-car,ci',
+    'Aragua - Venezuela - America,am-ven-car,ci',
+    'Choroni - Venezuela - America,am-ven-car,ci',
+    'Lecheria - Venezuela - America,am-ven-car,ci',
+    'Zulia - Venezuela - America,am-ven-car,ci',
     'Maracaibo - Venezuela - America,am-ven,ci',
+    'Anzoategui - Venezuela - America,am-ven,ci',
     'Puerto la Cruz - Venezuela - America,am-ven,ci',
+    'Vargas - Venezuela - America,am-ven,ci',
     'Catia La Mar - Venezuela - America,am-ven,ci',
     'El Parmazo - Venezuela - America,am-ven,ci',
     'Acarigua - Venezuela - America,am-ven,ci',
     'San Cristobal - Venezuela - America,am-ven,ci',
+  'Tachira - Venezuela - America,am-ven,ci',
     'Columbia - America,am,s',
     'Popayán - Colombia,am,ci',
     'Belize - America,am,s',
@@ -91,6 +100,9 @@ class Suggestions {
     'Apia - Samoa - America,am,ci',
     'Russia - Asia,as,s',
     'Australia,au,co',
+    'WA - West Australia - Australia,au,s',
+    'NSW - New South Wales - Australia,au,s',
+    'VIC - Victoria - Australia,au,s',
     'Melbourne - Victoria - Australia,au,ci',
     'Sidney - New South Wales - Australia,au,ci',
     'Nelson Bay - New South Wales - Australia,au,ci',
@@ -101,6 +113,7 @@ class Suggestions {
     'Agnes Water - Queensland - Australia,au,ci',
     'Aitkenvale - Queensland - Australia,au,ci',
     'Townsville - Queensland - Australia,au,ci',
+    'Elwood - Victoria - Australia,au,s',
     'Cairns - Queensland - Australia,au,ci',
     'Perth - West Australia - Australia,au,ci',
     'Christchurch - New Zealand,au,ci'
