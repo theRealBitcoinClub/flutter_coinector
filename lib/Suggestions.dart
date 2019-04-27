@@ -70,6 +70,8 @@ class Suggestions {
     'Norfolk - Virginia - America,am,ci',
     'New York - America,am,s',
     'NYC - New York - America,am,ci',
+    'USA - America,am,s',
+    'WY - Wyoming - America,am,ci',
     'California - America,am,s',
     'San Jose - California - America,am,ci',
     'Los Angeles - California - America,am,ci',
