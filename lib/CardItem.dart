@@ -180,7 +180,7 @@ class CardItem extends StatelessWidget {
               ],
             ),
             onPressed: () {
-              launchVisitUrl(item.id);
+              launchVisitUrl(context, item.id);
             },
           ),
         ],
@@ -198,8 +198,13 @@ class CardItem extends StatelessWidget {
 }
 
 //TODO setup various servers to host images, for each dataset one
-launchVisitUrl(id) async {
+launchVisitUrl(context, id) async {
   Place place = await AssetLoader.loadPlace(id);
+  if(place == null) {
+    showPlaceNotFoundOnGmaps(context);
+    return;
+  }
+
   var url = 'https://goo.gl/maps/' + place.shareId;
   if (await canLaunch(url)) {
     await launch(url);
@@ -212,16 +217,7 @@ launchVisitUrl(id) async {
 launchReviewUrl(context, id) async {
   Place place = await AssetLoader.loadPlace(id);
   if (place == null) {
-    showDialog(
-        context: context,
-        builder: (BuildContext ctx) {
-          return AlertDialog(
-            actions: [buildCloseDialogButton(ctx)],
-            //TODO Optimize by offering a form to submit the data
-            content: Text(
-                "This place was not found on Google Maps yet, help us and send a link of the Google Maps entry to bitcoinmap.cash@protonmail.com"),
-          );
-        });
+    showPlaceNotFoundOnGmaps(context);
     return;
   }
   //String place =  await AssetLoader.loadPlacesId(id);
@@ -232,6 +228,19 @@ launchReviewUrl(context, id) async {
   } else {
     throw 'Could not launch $url';
   }
+}
+
+void showPlaceNotFoundOnGmaps(context) {
+  showDialog(
+      context: context,
+      builder: (BuildContext ctx) {
+        return AlertDialog(
+          actions: [buildCloseDialogButton(ctx)],
+          //TODO Optimize by offering a form to submit the data
+          content: Text(
+              "This place was not found on Google Maps yet, help us and send a link of the Google Maps entry to bitcoinmap.cash@protonmail.com"),
+        );
+      });
 }
 
 var addr;

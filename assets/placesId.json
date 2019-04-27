@@ -1,3 +1,83 @@
 [{"p":"restaurant1903","placesId":"ChIJnXRg4s-6MioRZjZXH95ga8Q", "shareId": "7RyeW6khirrLCyjV6","adr":"Restaurant 1903, Robinson Avenue, Perth WA, Australia"}
 ,{"p":"urbanpizza","placesId":"ChIJ0-2j2iiwEmsR_rYxOszQjXc", "shareId": "zoeCq2Goo73nsnSY8","adr":"Urban Pizza Bar, Layton Street, Camperdown NSW, Australia"}
-,{"p":"verucasalt","placesId":"ChIJb_kmEPJo1moRchmujT9jC1Y", "shareId": "VvFELWX2PbAf2iqo8","adr":"Veruca Salt, Ormond Road, Elwood VIC, Australia"}]
+,{"p":"verucasalt","placesId":"ChIJb_kmEPJo1moRchmujT9jC1Y", "shareId": "VvFELWX2PbAf2iqo8","adr":"Veruca Salt, Ormond Road, Elwood VIC, Australia"}
+,{"p":"muerdelacarne","placesId":"ChIJXwBwR-eYiY4RcCt_sut-vlc", "shareId": "9uX7JSbcDksc54KKA","adr":"Muerde La Carne Restaurante, Avenida 10, Maracaibo, Zulia, Venezuela"}
+,{"p":"meranto","placesId":"ChIJ2VnnP25zLYwRJblWE16m3eg", "shareId": "xkpxVzZiuG58pW8v7","adr":"Caffè Meranto, Lecheria, Anzoategui, Venezuela"}
+,{"p":"lasempanadas","placesId":"ChIJ36e2bRx0LYwRdJYaX5gRnfc", "shareId": "dx7c8HaRULjBvBt89","adr":"Las Empanadas De Simón, Puerto La Cruz, Anzoategui, Venezuela"}
+,{"p":"altomar","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"posada","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"fanatic","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"steakburger","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"lasogagrillbar","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"litalia","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"altosdeleste","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"loncheria","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"windschief","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"casasofiarestaurant","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"casasofiahotel","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"mayalousplace","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"artehelado","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"rempahrempahcafebar","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"peoplespub","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"figures","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"kirby","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"streetza360","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"liarsbench","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"3sartspace","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"street","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"lamaisonnavarre","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"fezziwig","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"theboldmariner","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"lasireneupper","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"lasirenesoho","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"mamacha","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"koreanspringbbq","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"mysticwater","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"trevipasta","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"bandung","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"citylounge","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"luminous","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"mill","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"xpresso","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"classiccrustpizza","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"perroscalientes","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"subwaymultiplaza","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"genesishernandez","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"panaderiapasteleria","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"lachipola","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"subwaybellasartes","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"baricostabarista","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"heladeriaefealtamira","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"papajohnlospalos","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"subwaymillennium","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"papajohnlosruices","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"kolash","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"subwaylido","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"wien","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"subwaysanignacio","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"mmqdulce","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"subwayelrosal","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"majaguabar","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"subwaylossimbolos","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"supergolfeados","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"papajohnelrosal","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"fatfactory","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"papajohnloschaguaramos","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"salopastel","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"papajohnplazalasamericas","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"mastranto","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"subwaylatrinidad","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"tenta","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"subwaysanantonio","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"papajohnsanantonio","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"pedronavaz","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"freka1802","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"pinchero","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"dulcesdemaita","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"relincho","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"tentamm","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"bartender","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"gustavomarady","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"navija","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"apiainnsamoa","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}
+,{"p":"xxxx","placesId":"xxxx", "shareId": "xxxx","adr":"xxxx"}]
