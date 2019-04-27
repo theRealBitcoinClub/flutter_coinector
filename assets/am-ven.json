@@ -1,8 +1,9 @@
 [{"p":"muerdelacarne", "x":"10.6686013","y":"-71.612962","n":"Muerde La Carne Restaurante","t":"0","c":"239","s":"4.4", "d":"0", "a":"7,15,138,100", "l":"Maracaibo, Venezuela, America"}
 ,{"p":"meranto", "x":"10.1812413","y":"-64.6820729","n":"Caffe Meranto","t":"2","c":"18","s":"4.7", "d":"0", "a":"29,16,11,142", "l":"Puerto la Cruz, Venezuela, America"}
 ,{"p":"lasempanadas", "x":"10.2038044","y":"-64.6280279","n":"Las Empanadas de Simon","t":"0","c":"5","s":"4.6", "d":"0", "a":"140,141,55,32", "l":"Puerto la Cruz, Venezuela, America"}
-,{"p":"altomar", "x":"10.5995735","y":"-67.040492","n":"Hotel Alto Mar","t":"5","c":"101","s":"4.5", "d":"0", "a":"104,104,104,104", "l":"Catia La Mar, Venezuela, America"}
-,{"p":"posada", "x":"10.4885315","y":"-67.6122634","n":"Posada El Oasis","t":"5","c":"8","s":"3.8", "d":"0", "a":"104,104,104,104", "l":"El Parmazo, Venezuela, America"}
+,{"p":"altomarr", "x":"10.5995736","y":"-67.040493","n":"Restaurante Alto Mar","t":"5","c":"101","s":"4.5", "d":"0", "a":"104,104,104,104", "l":"Catia La Mar, Venezuela, America"}
+,{"p":"altomarh", "x":"10.5995734","y":"-67.040491","n":"Hotel Alto Mar","t":"0","c":"154","s":"4.4", "d":"0", "a":"104,104,104,104", "l":"Catia La Mar, Venezuela, America"}
+,{"p":"posada", "x":"10.4885315","y":"-67.6122634","n":"Posada El Oasis","t":"5","c":"7","s":"4.1", "d":"0", "a":"104,104,104,104", "l":"El Parmazo, Venezuela, America"}
 ,{"p":"fanatic", "x":"9.5639874","y":"-69.2035326","n":"Fanatic Sport Bar","t":"2","c":"82","s":"4.3", "d":"0", "a":"31,32,71,99", "l":"Acarigua, Venezuela, America"}
 ,{"p":"steakburger", "x":"9.5667649","y":"-69.215185","n":"Steak Burger","t":"0","c":"83","s":"4.6", "d":"0", "a":"7,99,137,100", "l":"Acarigua, Venezuela, America"}
 ,{"p":"lasogagrillbar", "x":"9.5637874","y":"-69.2132714","n":"La Soga Grill and Bar","t":"0","c":"101","s":"4.5", "d":"0", "a":"7,111,99,100", "l":"Acarigua, Venezuela, America"}

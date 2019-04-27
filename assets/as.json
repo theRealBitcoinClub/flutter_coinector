@@ -40,8 +40,8 @@
 ,{"p":"toripao", "x":"34.697499","y":"135.4851051","n":"toripao - 鶏料理pao","t":"0","c":"1","s":"5.0", "d":"0", "a":"71,94,96,135", "l":"Osaka, Japan, Asia"}
 ,{"p":"nazimichi", "x":"34.6620575","y":"135.4971423","n":"Nazimichi Jimi - ナジミチヂミ","t":"0","c":"2","s":"5.0", "d":"0", "a":"113,67,99,15", "l":"Osaka, Japan, Asia"}
 ,{"p":"ajinoya2", "x":"34.6680903","y":"135.5006587","n":"Ajinoya 2nd Shop - 味乃家 2号店","t":"0","c":"27","s":"3.7", "d":"0", "a":"100,112,142,144", "l":"Osaka, Japan, Asia"}
-,{"p":"yakinikutamurafukuoka", "x":"33.5878136","y":"130.3941922","n":"炭火焼肉たむら福岡店 - Yakiniku Tamura Fukuoka","t":"0","c":"21","s":"3.9", "d":"0", "a":"111,67,112,138", "l":"Fukuoka, Japan, Asia"}
-,{"p":"yakinikutamuranagasaki", "x":"32.8258168","y":"129.84688","n":"炭火焼肉たむら 長崎店 - Yakiniku Tamura Nagasaki","t":"0","c":"52","s":"3.2", "d":"0", "a":"111,67,112,138", "l":"Nagasaki, Japan, Asia"}
+,{"p":"yakinikutamurafukuoka", "x":"33.5878136","y":"130.3941922","n":"Fukuoka - 炭火焼肉たむら福岡店 - Yakiniku Tamura","t":"0","c":"21","s":"3.9", "d":"0", "a":"111,67,112,138", "l":"Fukuoka, Japan, Asia"}
+,{"p":"yakinikutamuranagasaki", "x":"32.8258168","y":"129.84688","n":"Nagasaki - 炭火焼肉たむら 長崎店 - Yakiniku Tamura","t":"0","c":"52","s":"3.2", "d":"0", "a":"111,67,112,138", "l":"Nagasaki, Japan, Asia"}
 ,{"p":"ducatuscafe", "x":"-8.684123","y":"115.1682889","n":"Ducatus Cafe","t":"2","c":"11","s":"4.8", "d":"0", "a":"29,11,8,136", "l":"Bali, Indonesia, Asia"}
 ,{"p":"ducatuscafesingapore", "x":"1.2784458","y":"103.848261","n":"Ducatus Cafe Singapore","t":"2","c":"11","s":"4.2", "d":"0", "a":"15,16,8,150", "l":"Singapore, Malaysia, Asia"}
 ,{"p":"bunk5021", "x":"14.5634905","y":"121.0302437","n":"BUNK 5021 HOSTEL","t":"5","c":"4","s":"4.8", "d":"0", "a":"104,104,104,104", "l":"Manila, Philippines, Asia"}
