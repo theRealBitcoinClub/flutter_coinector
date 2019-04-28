@@ -18,16 +18,16 @@ class CardItem extends StatelessWidget {
       {Key key,
       @required this.animation,
       //  this.onTap,
-      @required this.item,
+      @required this.merchant,
       this.selected: false})
       : assert(animation != null),
-        assert(item != null),
+        assert(merchant != null),
         assert(selected != null),
         super(key: key);
 
   final Animation<double> animation;
   //final VoidCallback onTap;
-  final Merchant item;
+  final Merchant merchant;
   final bool selected;
   final double itemHeight = 100;
 
@@ -37,9 +37,9 @@ class CardItem extends StatelessWidget {
     TextStyle textStyle2 = Theme.of(context).textTheme.body2;
 
     final infoBoxBackgroundColor =
-        MyColors.getCardInfoBoxBackgroundColor(item.type);
+        MyColors.getCardInfoBoxBackgroundColor(merchant.type);
     final actionButtonBackgroundColor =
-        MyColors.getCardActionButtonBackgroundColor(item.type);
+        MyColors.getCardActionButtonBackgroundColor(merchant.type);
     return SizedBox(
       child: Card(
           clipBehavior: Clip.none,
@@ -67,9 +67,9 @@ class CardItem extends StatelessWidget {
   Stack buildContentStack(
       Color infoBoxBackgroundColor, TextStyle textStyle, TextStyle textStyle2) {
     var gifUrl = "https://realbitcoinclub-" +
-        item.serverId +
+        merchant.serverId +
         ".firebaseapp.com/gif/" +
-        item.id +
+        merchant.id +
         ".gif";
 
     var img;
@@ -107,7 +107,7 @@ class CardItem extends StatelessWidget {
               decoration: BoxDecoration(color: Colors.black.withOpacity(0.2)),
             ),
             ItemInfoStackLayer(
-                item: item,
+                item: merchant,
                 textStyle: textStyle,
                 textStyleSmall: textStyle2,
                 height: itemHeight)
@@ -144,7 +144,19 @@ class CardItem extends StatelessWidget {
           FlatButton(
             child: Column(
               children: <Widget>[
-                buildIcon(Icons.rate_review),
+                buildIcon(Icons.payment, getToggleColor()),
+                buildSpacer(),
+                Text('PAY', style: TextStyle(color: getToggleColor()))
+              ],
+            ),
+            onPressed: () {
+              handlePayButton(context);
+            },
+          ),
+          FlatButton(
+            child: Column(
+              children: <Widget>[
+                buildIcon(Icons.rate_review, Colors.white),
                 buildSpacer(),
                 const Text(
                   'REVIEW',
@@ -153,25 +165,13 @@ class CardItem extends StatelessWidget {
               ],
             ),
             onPressed: () {
-              launchReviewUrl(context, item.id);
+              launchReviewUrl(context, merchant.id);
             },
           ),
           FlatButton(
             child: Column(
               children: <Widget>[
-                buildIcon(Icons.payment),
-                buildSpacer(),
-                const Text('PAY')
-              ],
-            ),
-            onPressed: () {
-              showPayDialog(context, item.id);
-            },
-          ),
-          FlatButton(
-            child: Column(
-              children: <Widget>[
-                buildIcon(Icons.directions_run),
+                buildIcon(Icons.directions_run, Colors.white),
                 buildSpacer(),
                 const Text(
                   'VISIT',
@@ -180,7 +180,7 @@ class CardItem extends StatelessWidget {
               ],
             ),
             onPressed: () {
-              launchVisitUrl(context, item.id);
+              launchVisitUrl(context, merchant.id);
             },
           ),
         ],
@@ -188,7 +188,24 @@ class CardItem extends StatelessWidget {
     );
   }
 
-  Icon buildIcon(final icon) => Icon(icon, size: 25);
+  Future handlePayButton(BuildContext context) async {
+    bothReceivingAddresses =
+        await AssetLoader.loadReceivingAddress(merchant.id);
+    if (merchant.isPayEnabled)
+      showPayDialog(context);
+    else {
+      showMissingAddrDialog(context);
+    }
+  }
+
+  Color getToggleColor() =>
+      merchant.isPayEnabled ? Colors.white : Colors.white54;
+
+  Icon buildIcon(final icon, final color) => Icon(
+        icon,
+        size: 25,
+        color: color,
+      );
 
   SizedBox buildSpacer() {
     return const SizedBox(
@@ -197,10 +214,12 @@ class CardItem extends StatelessWidget {
   }
 }
 
+var bothReceivingAddresses;
+
 //TODO setup various servers to host images, for each dataset one
 launchVisitUrl(context, id) async {
   Place place = await AssetLoader.loadPlace(id);
-  if(isPlaceMissing(place)) {
+  if (isPlaceMissing(place)) {
     showPlaceNotFoundOnGmaps(context);
     return;
   }
@@ -243,52 +262,48 @@ void showPlaceNotFoundOnGmaps(context) {
               "This place was not found on Google Maps yet, help us and send a link of the Google Maps entry to bitcoinmap.cash@protonmail.com"),
         );
       });
-}
+} //TODO show deactivated REVIEW icon
 
-var addr;
-
-showPayDialog(BuildContext context, String id) async {
-  addr = await AssetLoader.loadReceivingAddress(id);
-
-  if (addr.isEmpty) {
+showPayDialog(BuildContext context) async {
+  /* if (bothReceivingAddresses.isEmpty) {
     showMissingAddrDialog(context);
-  } else
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text("Pay now"),
-          elevation: 10.0,
-          titlePadding: EdgeInsets.fromLTRB(30.0, 25.0, 30.0, 10.0),
-          contentPadding: EdgeInsets.fromLTRB(35.0, 20.0, 30.0, 15.0),
-          content: Text("Dash or Bitcoin Cash?"),
-          actions: [
-            buildCloseDialogButton(context),
-            FlatButton(
-              shape: roundedRectangleBorder(),
-              child: Text("DASH"),
-              color: Colors.blue,
-              onPressed: () {
-                closeChooseDialogAndShowAddressDialog(
-                    context, buildAddressDetailDialogDASH);
-              },
-            ),
-            FlatButton(
-              shape: roundedRectangleBorder(),
-              color: Colors.green,
-              child: Text("BCH"),
-              onPressed: () {
-                closeChooseDialogAndShowAddressDialog(
-                    context, buildAddressDetailDialogBCH);
-              },
-            ),
-            SizedBox(
-              width: 10,
-            )
-          ],
-        );
-      },
-    );
+  } else*/
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text("Pay now"),
+        elevation: 10.0,
+        titlePadding: EdgeInsets.fromLTRB(30.0, 25.0, 30.0, 10.0),
+        contentPadding: EdgeInsets.fromLTRB(35.0, 20.0, 30.0, 15.0),
+        content: Text("Dash or Bitcoin Cash?"),
+        actions: [
+          buildCloseDialogButton(context),
+          FlatButton(
+            shape: roundedRectangleBorder(),
+            child: Text("DASH"),
+            color: Colors.blue,
+            onPressed: () {
+              closeChooseDialogAndShowAddressDialog(
+                  context, buildAddressDetailDialogDASH);
+            },
+          ),
+          FlatButton(
+            shape: roundedRectangleBorder(),
+            color: Colors.green,
+            child: Text("BCH"),
+            onPressed: () {
+              closeChooseDialogAndShowAddressDialog(
+                  context, buildAddressDetailDialogBCH);
+            },
+          ),
+          SizedBox(
+            width: 10,
+          )
+        ],
+      );
+    },
+  );
 }
 
 void showMissingAddrDialog(BuildContext context) {
@@ -321,7 +336,7 @@ RoundedRectangleBorder roundedRectangleBorder() {
 }
 
 void closeChooseDialogAndShowAddressDialog(BuildContext context, method) {
-  Navigator.pop(context);
+  Navigator.of(context).pop();
   showDialog(
     context: context,
     builder: method,
@@ -329,7 +344,7 @@ void closeChooseDialogAndShowAddressDialog(BuildContext context, method) {
 }
 
 Widget buildAddressDetailDialogDASH(BuildContext context) {
-  var data = addr.split(",")[1];
+  var data = bothReceivingAddresses.split(",")[1];
   if (data == '-') {
     return AlertDialog(
       content: Text(
@@ -360,7 +375,7 @@ FlatButton buildCloseDialogButton(BuildContext context) {
 }
 
 Widget buildAddressDetailDialogBCH(BuildContext context) {
-  var data = addr.split(",")[0];
+  var data = bothReceivingAddresses.split(",")[0];
   if (data == '-') {
     return AlertDialog(
       content: Text(
@@ -381,7 +396,7 @@ Widget buildAddressDetailDialogBCH(BuildContext context) {
 }
 
 void copyAddressToClipAndShowDialog(String data, BuildContext context) {
-  Navigator.pop(context);
+  Navigator.of(context).pop();
   ClipboardManager.copyToClipBoard(data).then((result) {
     showDialog(
         context: context,

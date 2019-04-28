@@ -180,6 +180,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     for (int i = 0; i < placesList.length; i++) {
       Merchant m2 = Merchant.fromJson(placesList.elementAt(i));
       m2.serverId = serverId;
+      m2.isPayEnabled = await AssetLoader.loadReceivingAddress(m2.id) != null;
 
       _insertIntoTempList(m2, filterWordIndex, locationFilter);
     }

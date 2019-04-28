@@ -14,7 +14,7 @@ class AssetLoader {
     if (addresses == null)
       addresses = await AssetLoader.loadAndEncodeAsset("assets/addr.json");
 
-    String addr = "";
+    String addr;
     addresses.forEach((item) {
       var itemId = item['p'];
       if (itemId == id) {

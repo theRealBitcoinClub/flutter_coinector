@@ -18,7 +18,7 @@ class CardItemBuilder {
           listModel.length > 0) {
         return CardItem(
           animation: animation,
-          item: listModel[index],
+          merchant: listModel[index],
         );
       }
     } catch (e) {
@@ -79,7 +79,7 @@ class CardItemBuilder {
       Merchant item, BuildContext context, Animation<double> animation) {
     return CardItem(
       animation: animation,
-      item: item,
+      merchant: item,
       selected: false,
       // No gesture detector here: we don't want removed items to be interactive.
     );
