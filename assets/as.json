@@ -36,9 +36,9 @@
 ,{"p":"ajinoya2", "x":"34.6680903","y":"135.5006587","n":"Ajinoya 2nd Shop - 味乃家 2号店","t":"0","c":"62","s":"3.7", "d":"0", "a":"100,112,142,144", "l":"Japan, Osaka, Chuo Ward, Nanba, 1 Chome−７−13"}
 ,{"p":"yakinikutamurafukuoka", "x":"33.5878136","y":"130.3941922","n":"炭火焼肉たむら福岡店 - Yakiniku Tamura Fukuoka","t":"0","c":"29","s":"3.8", "d":"0", "a":"111,67,112,138", "l":"Japan, Fukuoka, Chuo Ward, Daimyo, 1 Chome−12−39"}
 ,{"p":"yakinikutamuranagasaki", "x":"32.8258168","y":"129.84688","n":"炭火焼肉たむら 長崎店 - Yakiniku Tamura Nagasaki","t":"0","c":"63","s":"3.3", "d":"0", "a":"111,67,112,138", "l":"Japan, Nagasaki, Togitsu, Nodago, 48-13"}
-,{"p":"ducatuscafe", "x":"-8.684123","y":"115.1682889","n":"Ducatus Cafe","t":"2","c":"11","s":"4.8", "d":"0", "a":"29,11,8,136", "l":"Bali, Indonesia, Asia"}
-,{"p":"ducatuscafesingapore", "x":"1.2784458","y":"103.848261","n":"Ducatus Cafe Singapore","t":"2","c":"11","s":"4.2", "d":"0", "a":"15,16,8,150", "l":"Singapore, Malaysia, Asia"}
-,{"p":"bunk5021", "x":"14.5634905","y":"121.0302437","n":"BUNK 5021 HOSTEL","t":"5","c":"4","s":"4.8", "d":"0", "a":"104,104,104,104", "l":"Manila, Philippines, Asia"}
-,{"p":"pattayabeergarden", "x":"12.928118","y":"100.87435","n":"Pattaya Beer Garden","t":"0","c":"1301","s":"4.2", "d":"0", "a":"32,97,15,8", "l":"Pattaya, Thailand, Asia"}
-,{"p":"cocotte", "x":"13.7374603","y":"100.5700932","n":"Cocotte","t":"0","c":"519","s":"4.4", "d":"0", "a":"97,138,109,71", "l":"Bangkok, Thailand, Asia"}
-,{"p":"catmosphere", "x":"18.8063742","y":"98.9580105","n":"Catmosphere Cat Cafe","t":"2","c":"290","s":"4.4", "d":"0", "a":"29,142,108,16", "l":"Chiang May, Thailand, Asia"}]
+,{"p":"ducatuscafe", "x":"-8.684123","y":"115.1682889","n":"DUCATUS CAFE","t":"2","c":"17","s":"4.8", "d":"0", "a":"29,11,8,136", "l":"Sunset Road, Seminyak, Badung Regency, Bali, Indonesia"}
+,{"p":"ducatuscafesingapore", "x":"1.2784458","y":"103.848261","n":"Ducatus Cafe Singapore","t":"2","c":"22","s":"4.1", "d":"0", "a":"15,16,8,150", "l":"Singapore, Malaysia, Asia"}
+,{"p":"bunk5021", "x":"14.5634905","y":"121.0302437","n":"BUNK 5021 HOSTEL","t":"5","c":"35","s":"4.3", "d":"0", "a":"104,104,104,104", "l":"P Burgos, Makati, Metro Manila, Philippines"}
+,{"p":"pattayabeergarden", "x":"12.928118","y":"100.87435","n":"Pattaya Beer Garden","t":"0","c":"1878","s":"4.2", "d":"0", "a":"32,97,15,8", "l":"Beach Road, Pattaya City, Bang Lamung District, Chon Buri, Thailand"}
+,{"p":"cocotte", "x":"13.7374603","y":"100.5700932","n":"Cocotte Soi","t":"0","c":"707","s":"4.4", "d":"0", "a":"97,138,109,71", "l":"Sukhumvit 39, Khlong Tan Nuea, Watthana, Bangkok, Thailand"}
+,{"p":"catmosphere", "x":"18.8063742","y":"98.9580105","n":"Catmosphere Cat Cafe","t":"2","c":"290","s":"4.4", "d":"0", "a":"29,142,108,16", "l":"Huaykaew Road, Su Thep, Mueang Chiang Mai District, Chiang Mai, Thailand"}]
