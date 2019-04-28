@@ -1,3 +1,4 @@
+import 'package:endlisch/RatingWidgetBuilder.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:endlisch/Merchant.dart';
@@ -24,7 +25,7 @@ class ItemInfoStackLayer extends StatelessWidget {
     return Container(
       height: height,
       child: Padding(
-        padding: EdgeInsets.fromLTRB(15.0,10.0,15.0,10.0),
+        padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
         child: ListView(
           physics: const NeverScrollableScrollPhysics(),
           children: <Widget>[
@@ -36,50 +37,32 @@ class ItemInfoStackLayer extends StatelessWidget {
             const SizedBox(
               height: 5,
             ),
-            Row(
-              children: <Widget>[
-                Text(item.location + "   ", style: textStyleSmall),
-                item.reviewCount == '0'
-                    ? Padding(
-                        padding: EdgeInsets.all(0.0),
-                      )
-                    : Row(
-                        children: <Widget>[
-                          SmoothStarRating(
-                            allowHalfRating: true,
-                            starCount: 5,
-                            rating: double.parse(item.reviewStars),
-                            size: 15.0,
-                            color: Colors.yellow[700],
-                            borderColor: Colors.white,
-                          ),
-                          Text(
-                              " " + convertRatingToPercentage(item.reviewStars),
-                              style: textStyleSmall),
-                        ],
-                      )
-              ],
-            ),
+            Text(item.location + "   ", style: textStyleSmall),
             const SizedBox(
               height: 10,
             ),
-            Text(
-                parseElementAt(splittedtags, 0) +
-                    parseElementAt(splittedtags, 1) +
-                    parseElementAt(splittedtags, 2) +
-                    parseElementAt(splittedtags, 3),
-                style: TextStyle(
-                    fontWeight: FontWeight.w300,
-                    color: Colors.white.withOpacity(0.8)))
+            Row(
+              //TODO make items fit on the card
+              children: <Widget>[
+                buildTagText(splittedtags)
+              ],
+            ),
           ],
         ),
       ),
     );
   }
-
-  String convertRatingToPercentage(String stars) {
-    return (double.parse(stars) * 20).round().toString() + "%";
+  Text buildTagText(List<String> splittedtags) {
+    return Text(
+        parseElementAt(splittedtags, 0) +
+            parseElementAt(splittedtags, 1) +
+            parseElementAt(splittedtags, 2) +
+            parseElementAt(splittedtags, 3) +
+            "   ",
+        style: TextStyle(
+            fontWeight: FontWeight.w300, color: Colors.white.withOpacity(0.8)));
   }
+
 
   String parseElementAt(splittedTags, int pos) {
     int tagIndex = int.parse(splittedTags.elementAt(pos));

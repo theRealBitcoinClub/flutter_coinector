@@ -1,6 +1,7 @@
 import 'package:endlisch/AssetLoader.dart';
 import 'package:endlisch/Place.dart';
 import 'package:endlisch/MyColors.dart';
+import 'package:endlisch/RatingWidgetBuilder.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'Merchant.dart';
@@ -143,66 +144,88 @@ class CardItem extends StatelessWidget {
       // make buttons use the appropriate styles for cards
       child: ButtonBar(
         children: <Widget>[
-          FlatButton(
-            child: Column(
+          /*GestureDetector(
+
+              onTap: () {
+                handleReviewClick(context, merchant);
+              }, //TODO Navigate to give a rating
+              child:*/
+          Row(
               children: <Widget>[
-                buildIcon(Icons.payment, getToggleColor(merchant.isPayEnabled)),
-                buildSpacer(),
-                Text('PAY',
-                    style:
-                        TextStyle(color: getToggleColor(merchant.isPayEnabled)))
-              ],
-            ),
-            onPressed: () {
-              handlePayButton(context);
-            },
-          ),
-          FlatButton(
-            child: Column(
-              children: <Widget>[
-                buildIcon(
-                    Icons.rate_review, getToggleColor(merchant.place != null)),
-                buildSpacer(),
-                Text(
-                  'REVIEW',
-                  style:
-                      TextStyle(color: getToggleColor(merchant.place != null)),
-                )
-              ],
-            ),
-            onPressed: () {
-              if (merchant.place == null) {
-                showPlaceNotFoundOnGmaps(context);
-                return;
-              }
-              launchReviewUrl(context, merchant.place);
-            },
-          ),
-          FlatButton(
-            child: Column(
-              children: <Widget>[
-                buildIcon(Icons.directions_run,
-                    getToggleColor(merchant.place != null)),
-                buildSpacer(),
-                Text(
-                  'VISIT',
-                  style: TextStyle(
-                      fontSize: 14,
-                      color: getToggleColor(merchant.place != null)),
-                )
-              ],
-            ),
-            onPressed: () {
-              if (merchant.place == null) {
-                showPlaceNotFoundOnGmaps(context);
-                return;
-              }
-              launchVisitUrl(context, merchant.place);
-            },
-          ),
+            RatingWidgetBuilder.buildRatingWidgetIfReviewsAvailable(
+                merchant, Theme.of(context).textTheme.body2),
+            SizedBox(
+              width: 20,
+            )
+          ]),
+          buildFlatButtonPay(context),
+          buildFlatButtonReview(context),
+          buildFlatButtonVisit(context),
         ],
       ),
     );
+  }
+
+  FlatButton buildFlatButtonVisit(BuildContext context) {
+    return FlatButton(
+          child: Column(
+            children: <Widget>[
+              buildIcon(Icons.directions_run,
+                  getToggleColor(merchant.place != null)),
+              buildSpacer(),
+              Text(
+                'VISIT',
+                style: TextStyle(
+                    fontSize: 14,
+                    color: getToggleColor(merchant.place != null)),
+              )
+            ],
+          ),
+          onPressed: () {
+            if (merchant.place == null) {
+              showPlaceNotFoundOnGmaps(context);
+              return;
+            }
+            launchVisitUrl(context, merchant.place);
+          },
+        );
+  }
+
+  FlatButton buildFlatButtonPay(BuildContext context) {
+    return FlatButton(
+          child: Column(
+            children: <Widget>[
+              buildIcon(Icons.payment, getToggleColor(merchant.isPayEnabled)),
+              buildSpacer(),
+              Text('PAY',
+                  style:
+                      TextStyle(color: getToggleColor(merchant.isPayEnabled)))
+            ],
+          ),
+          onPressed: () {
+            handlePayButton(context);
+          },
+        );
+  }
+
+  FlatButton buildFlatButtonReview(BuildContext context) {
+    return FlatButton(
+          child: Column(
+            children: <Widget>[
+              buildIcon(
+                  Icons.rate_review, getToggleColor(merchant.place != null)),
+              buildSpacer(),
+              Text(
+                'REVIEW',
+                style:
+                    TextStyle(color: getToggleColor(merchant.place != null)),
+              )
+            ],
+          ),
+          onPressed: () {
+            handleReviewClick(context, merchant);
+          },
+        );
   }
 
   Future handlePayButton(BuildContext context) async {
@@ -267,7 +290,7 @@ void showPlaceNotFoundOnGmaps(context) {
               "Help to grow adoption!\n\nSend the missing information to:\n\nbitcoinmap.cash@protonmail.com"),
         );
       });
-}
+} //TODO Fix textoverflow
 
 showPayDialog(BuildContext context) async {
   showDialog(
@@ -419,4 +442,12 @@ void copyAddressToClipAndShowDialog(String data, BuildContext context) {
           );
         });
   });
+}
+
+void handleReviewClick(context, merchant) async {
+  if (merchant.place == null) {
+    showPlaceNotFoundOnGmaps(context);
+    return;
+  }
+  launchReviewUrl(context, merchant.place);
 }
