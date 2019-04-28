@@ -15,6 +15,7 @@ class Suggestions {
     'Tarifa - Spain - Europe,e-spa,ci',
     'France - Europe,e,s',
     'Paris - France - Europe,e,ci',
+    'UK - Europe,e,ci',
     'England - Europe,e,ci',
     'London - England - Europe,e,ci',
     'Holywell - England - Europe,e,ci',

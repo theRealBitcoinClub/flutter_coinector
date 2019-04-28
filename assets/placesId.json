@@ -181,31 +181,30 @@
 ,{"p":"kamoma","placesId":"ChIJv-i8e72ipBIRN3GysUBeu10", "shareId": "6JgbLpHHPphDsoRo9","adr":"Kamoma Spritz Bar, Plaça del Sol, Barcelona, Spain"}
 ,{"p":"akash","placesId":"ChIJQ_6E1buipBIR15z5t-oayMU", "shareId": "EoCbcXSbLkNkFPodA","adr":"Perruqueria Akash, Carrer de la Providència, Barcelona, Spain"}
 ,{"p":"ChIJh2A7VL2ipBIRIxR3Ylnot50","placesId":"ChIJh2A7VL2ipBIRIxR3Ylnot50", "shareId": "32zeGM2k4VmY52jo9","adr":"Sincronia Yoga | Gracia Barcelona, Carrer de Pere Serafí, Barcelona, Spain"}
-,{"p":"polloexpress","placesId":"", "shareId": "","adr":""}
-,{"p":"polloexpressgourmet","placesId":"", "shareId": "","adr":""}
-,{"p":"autoescuelasactual","placesId":"", "shareId": "","adr":""}
-,{"p":"autoescuelasactual2","placesId":"", "shareId": "","adr":""}
-,{"p":"ecocentersupermercado","placesId":"", "shareId": "","adr":""}
-,{"p":"ecocenteryoga","placesId":"", "shareId": "","adr":""}
-,{"p":"ecocenterbar","placesId":"", "shareId": "","adr":""}
-,{"p":"ecocenterrestaurante","placesId":"", "shareId": "","adr":""}
-,{"p":"elcuartito","placesId":"", "shareId": "","adr":""}
-,{"p":"bambule","placesId":"", "shareId": "","adr":""}
-,{"p":"bambule2","placesId":"", "shareId": "","adr":""}
-,{"p":"ecobakeryglutenfree","placesId":"", "shareId": "","adr":""}
-,{"p":"deuxpointzero", "x":"48.8685002","y":"2.3542593","n":"Deux Point Zero","t":"2","c":"179","s":"4.1", "d":"0", "a":"31,32,33,76", "l":"Paris, France, Europe"}
-,{"p":"llscafe", "x":"51.5590909","y":"-0.1785917","n":"LLS Cafe Deli","t":"0","c":"70","s":"4.6", "d":"0", "a":"8,15,14,135", "l":"London, England, Europe"}
-,{"p":"brewdogcanarywharf", "x":"51.5044668","y":"-0.0150128","n":"BrewDog Canary Wharf","t":"2","c":"5","s":"5.0", "d":"0", "a":"7,32,31,33", "l":"London, England, Europe"}
-,{"p":"westlandcoffee", "x":"51.528216","y":"-0.090584","n":"Westland Coffee and Wine","t":"2","c":"46","s":"4.7", "d":"0", "a":"29,8,32,81", "l":"London, England, Europe"}
-,{"p":"nincomsoup", "x":"51.52567","y":"-0.087561","n":"Nincomsoup","t":"0","c":"69","s":"4.1", "d":"0", "a":"135,29,119,136", "l":"London, England, Europe"}
-,{"p":"thecoffeebean", "x":"53.2737949","y":"-3.2220382","n":"The Coffee Bean","t":"4","c":"1","s":"5.0", "d":"0", "a":"29,40,148,149", "l":"Holywell, England, Europe"}
-,{"p":"thecornercafe", "x":"53.3087543","y":"-3.7404846","n":"The Corner Cafe","t":"2","c":"70","s":"4.7", "d":"0", "a":"29,8,125,152", "l":"Rhos on Sea, England, Europe"}
-,{"p":"thegreenroom", "x":"52.0258816","y":"-1.1499362","n":"The Green Room","t":"2","c":"166","s":"4.5", "d":"0", "a":"8,38,109,15", "l":"Brackley, England, Europe"}
-,{"p":"chaoscoffeebar", "x":"60.388109","y":"5.325569","n":"Chaos Coffee Bar / Kaffe Chaos","t":"2","c":"55","s":"4.6", "d":"0", "a":"29,8,31,142", "l":"Bergen, Norway, Europe"}
-,{"p":"foxx", "x":"57.6987613","y":"11.9685019","n":"Foxx","t":"2","c":"66","s":"4.4", "d":"0", "a":"29,8,150,125", "l":"Göteborg, Sweden, Europe"}
-,{"p":"tonyscoffeebar", "x":"57.6975382","y":"11.9861658","n":"Tonys Coffeebar","t":"2","c":"45","s":"4.8", "d":"0", "a":"29,8,142,125", "l":"Göteborg, Sweden, Europe"}
-,{"p":"mamasbanh", "x":"52.5311","y":"13.43435","n":"Mamas Banh | Vietnamese Tapas","t":"0","c":"182","s":"4.7", "d":"0", "a":"151,71,15,112", "l":"Berlin, Germany, Europe"}
-,{"p":"friedelrichter", "x":"52.5282002","y":"13.3914314","n":"Friedel Richter Restaurant","t":"0","c":"72","s":"4.4", "d":"0", "a":"7,14,99,100", "l":"Berlin, Germany, Europe"}
-,{"p":"tavernapizza", "x":"50.162967","y":"16.2732019","n":"Taverna Pizza and Pinsa Romana","t":"0","c":"194","s":"3.8", "d":"0", "a":"31,32,14,97", "l":"Rychnov nad Kněžnou, Czechia, Europe"}
-,{"p":"pizzapirat", "x":"45.5260364","y":"13.5684371","n":"Gostišče Pirat, Robin Vogrič, s.p.","t":"0","c":"318","s":"4.5", "d":"0", "a":"100,108,112,97", "l":"Piran, Slovenia, Europe"}
-,{"p":"elburrito", "x":"40.1774193","y":"44.5189469","n":"El Burrito","t":"0","c":"7","s":"5.0", "d":"0", "a":"129,123,156,99", "l":"Yerevan, Armenia, Europe"}]
+,{"p":"polloexpress","placesId":"ChIJoSVYbukEYg0R6Dtl8VLQ4hI", "shareId": "https://goo.gl/maps/FJ4KXsKZcXcHC8o87","adr":"Pollo Expresss, Benidorm, Spain"}
+,{"p":"polloexpressgourmet","placesId":"ChIJPcru1NEEYg0RdF5bjUQt_Io", "shareId": "https://goo.gl/maps/rCfuXNt81P2Te92P7","adr":"Pollo Expresss Gourmet, Avenida de la Armada Española, Benidorm, Spain"}
+,{"p":"ecocentersupermercado","placesId":"ChIJuTefl_eODA0RBTjF2cmHRbE", "shareId": "https://goo.gl/maps/BwJQJXUynJCf86Vq7","adr":"Supermercado Tarifa Eco Center, Calle San Sebastián, Tarifa, Spain"}
+,{"p":"ecocenteryoga","placesId":"ChIJuTefl_eODA0RBTjF2cmHRbE", "shareId": "https://goo.gl/maps/BwJQJXUynJCf86Vq7","adr":"Yoga Tarifa Eco Center, Calle San Sebastián, Tarifa, Spain"}
+,{"p":"ecocenterbar","placesId":"ChIJuTefl_eODA0RBTjF2cmHRbE", "shareId": "https://goo.gl/maps/BwJQJXUynJCf86Vq7","adr":"Bar Tarifa Eco Center, Calle San Sebastián, Tarifa, Spain"}
+,{"p":"ecocenterrestaurante","placesId":"ChIJuTefl_eODA0RBTjF2cmHRbE", "shareId": "https://goo.gl/maps/BwJQJXUynJCf86Vq7","adr":"Restaurante Tarifa Eco Center, Calle San Sebastián, Tarifa, Spain"}
+,{"p":"elcuartito","placesId":"ChIJy10plfmODA0RF9bfJ1S74mY", "shareId": "https://goo.gl/maps/kBPFgR1HvyzbpXR89","adr":"El Cuartito, Grupo Cardenal Cisneros, Tarifa, Spain"}
+,{"p":"bambule","placesId":"ChIJB0CRuPeODA0RIHGvZ8QHkEo", "shareId": "https://goo.gl/maps/dweH1NjgMJ8fgoS7A","adr":"Bambule, Calle Batalla del Salado, Tarifa, Spain"}
+,{"p":"bambule2","placesId":"ChIJs-cU41eODA0RvNUKsLc__Q8", "shareId": "https://goo.gl/maps/N4ZfqhVhkUGAoHzQ9","adr":"Bambule, Calle Sancho IV el Bravo, Tarifa, Spain"}
+,{"p":"growcafe", "placesId": "ChIJlygacviODA0Rp0qfeBCB86A","shareId": "https://goo.gl/maps/DCtek5KxoZ2mXKC86", "adr": "Grow Café, Calle Alcalde Juan Núñez, Tarifa, Spain"}
+,{"p":"ecobakeryglutenfree","placesId":"ChIJ9yC1k_OODA0R_hsICKjs2Lw", "shareId": "https://goo.gl/maps/zELNjpPwYgLpMEcD8","adr":"Ecobakery Gluten Free, Mar Adriatico, Tarifa, Spain"}
+,{"p":"deuxpointzero", "placesId": "ChIJX1-dVBBu5kcRiga19PxzXEs","shareId": "https://goo.gl/maps/EgUE4rQmgPpdXLyJA", "adr": "Deux Point Zero, Rue Blondel, Paris, France"}
+,{"p":"llscafe", "placesId": "ChIJGSQBG30adkgRYbI-NJb9EUE","shareId": "https://goo.gl/maps/PdMht718sN8gArQS9", "adr": "LLS Café Deli, Heath Street, London, UK"}
+,{"p":"brewdogcanarywharf", "placesId": "ChIJp0vw00YDdkgRIRg9UcmlWX4","shareId": "https://goo.gl/maps/apPyp3Panf2Lbni28", "adr": "BrewDog Canary Wharf, Churchill Place, London, UK"}
+,{"p":"westlandcoffee", "placesId": "ChIJ66Qb-aYcdkgRYyPsUppfmlU","shareId": "https://goo.gl/maps/hYGvWpy4ocf2VAmZA", "adr": "Westland Coffee & Wine, Westland Place, London, UK"}
+,{"p":"nincomsoup", "placesId": "ChIJeeID-aUcdkgRnUz4uK86coU","shareId": "https://goo.gl/maps/pNRURS6y8PQosVve8", "adr": "Nincomsoup, London, UK"}
+,{"p":"thecoffeebean", "placesId": "ChIJLe5JHfHVekgR3OK0u2H7PwA","shareId": "https://goo.gl/maps/gEfy2QpMxw1Fd3gQ6", "adr": "The Coffee Bean, High Street, Twickenham, UK"}
+,{"p":"thecornercafe", "placesId": "ChIJ5fzuYYsfZUgRWvXlVhA-mEU","shareId": "https://goo.gl/maps/HuYxDKvG3yi2SE3r9", "adr": "The Corner Cafe, Rhos Road, Rhos on Sea, Colwyn Bay, UK"}
+,{"p":"thegreenroom", "placesId": "","shareId": "", "adr": ""}
+,{"p":"chaoscoffeebar", "placesId": "","shareId": "", "adr": ""}
+,{"p":"foxx", "placesId": "","shareId": "", "adr": ""}
+,{"p":"tonyscoffeebar", "placesId": "","shareId": "", "adr": ""}
+,{"p":"mamasbanh", "placesId": "","shareId": "", "adr": ""}
+,{"p":"friedelrichter", "placesId": "","shareId": "", "adr": ""}
+,{"p":"tavernapizza", "placesId": "","shareId": "", "adr": ""}
+,{"p":"pizzapirat", "placesId": "","shareId": "", "adr": ""}
+,{"p":"elburrito", "placesId": "","shareId": "", "adr": ""}]

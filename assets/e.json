@@ -16,26 +16,24 @@
 ,{"p":"kamoma", "x":"41.4014862","y":"2.1568869","n":"Kamoma - Spritz Bar","t":"2","c":"41","s":"4.1", "d":"0", "a":"47,31,32,33", "l":"Plaça del Sol, Barcelona, Spain"}
 ,{"p":"akash", "x":"41.4083532","y":"2.1597298","n":"Perruqueria Akash","t":"4","c":"7","s":"4.9", "d":"0", "a":"91,65,107,58", "l":"Carrer de la Providència, Barcelona, Spain"}
 ,{"p":"ChIJh2A7VL2ipBIRIxR3Ylnot50", "x":"41.4006341","y":"2.155889","n":"Sincronia Yoga","t":"999","c":"23","s":"4.8", "d":"0", "a":"25,26,27,80", "l":"Gracia, Carrer de Pere Serafí, Barcelona, Spain"}
-,{"p":"polloexpress", "x":"38.5419413","y":"-0.1272807","n":"Pollo Expresss","t":"0","c":"148","s":"4.5", "d":"0", "a":"71,72,73,65", "l":"Benidorm, Spain, Europe"}
-,{"p":"polloexpressgourmet", "x":"38.5372292","y":"-0.1425705","n":"Pollo Expresss Gourmet","t":"0","c":"41","s":"4.2", "d":"0", "a":"71,72,67,18", "l":"Benidorm, Spain, Europe"}
-,{"p":"autoescuelasactual", "x":"38.542009","y":"-0.127293","n":"Autoescuelas Actual Benidorm","t":"4","c":"3","s":"5.0", "d":"0", "a":"65,68,69,70", "l":"Benidorm, Spain, Europe"}
-,{"p":"autoescuelasactual2", "x":"38.5783923","y":"-0.1300543","n":"Autoescuelas Actual La Nuca","t":"4","c":"4","s":"5.0", "d":"0", "a":"65,68,69,70", "l":"Benidorm, Spain, Europe"}
-,{"p":"ecocentersupermercado", "x":"36.0141","y":"-5.6053","n":"Supermercado Ecologico - Eco Center Tarifa","t":"4","c":"226","s":"4.6", "d":"0", "a":"3,4,17,51", "l":"Tarifa, Spain, Europe"}
-,{"p":"ecocenteryoga", "x":"36.0142","y":"-5.6054","n":"Yoga y Meditacion - Eco Center Tarifa","t":"999","c":"226","s":"4.6", "d":"0", "a":"25,26,27,80", "l":"Tarifa, Spain, Europe"}
-,{"p":"ecocenterbar", "x":"36.0143","y":"-5.6055","n":"Bar y Musica - Eco Center Tarifa","t":"2","c":"226","s":"4.6", "d":"0", "a":"31,32,33,47", "l":"Tarifa, Spain, Europe"}
-,{"p":"ecocenterrestaurante", "x":"36.0144","y":"-5.6056","n":"Restaurante Ecologico - Eco Center Tarifa","t":"0","c":"226","s":"4.6", "d":"0", "a":"3,15,16,14", "l":"Tarifa, Spain, Europe"}
-,{"p":"elcuartito", "x":"36.0114734","y":"-5.6078355","n":"El Cuartito Tarifa - Tapas Bar","t":"0","c":"17","s":"4.9", "d":"0", "a":"31,32,15,47", "l":"Tarifa, Spain, Europe"}
-,{"p":"bambule", "x":"36.014772","y":"-5.6051206","n":"Bambule Batalla - Clothing and Asseccories","t":"4","c":"4","s":"5.0", "d":"0", "a":"52,54,107,24", "l":"Tarifa, Spain, Europe"}
-,{"p":"bambule2", "x":"36.0122788","y":"-5.6035059","n":"Bambule Sancho - Clothing and Asseccories","t":"4","c":"10","s":"3.9", "d":"0", "a":"52,54,107,24", "l":"Tarifa, Spain, Europe"}
-,{"p":"growcafe", "x":"36.0109379","y":"-5.6053444","n":"Grow Cafe - Vegetarian","t":"2","c":"29","s":"4.9", "d":"0", "a":"4,29,8,11", "l":"Tarifa, Spain, Europe"}
-,{"p":"ecobakeryglutenfree", "x":"36.01988","y":"-5.609871","n":"Eco Bakery - Gluten Free","t":"4","c":"23","s":"4.9", "d":"0", "a":"3,115,11,30", "l":"Tarifa, Spain, Europe"}
-,{"p":"deuxpointzero", "x":"48.8685002","y":"2.3542593","n":"Deux Point Zero","t":"2","c":"179","s":"4.1", "d":"0", "a":"31,32,33,76", "l":"Paris, France, Europe"}
-,{"p":"llscafe", "x":"51.5590909","y":"-0.1785917","n":"LLS Cafe Deli","t":"0","c":"70","s":"4.6", "d":"0", "a":"8,15,14,135", "l":"London, England, Europe"}
-,{"p":"brewdogcanarywharf", "x":"51.5044668","y":"-0.0150128","n":"BrewDog Canary Wharf","t":"2","c":"5","s":"5.0", "d":"0", "a":"7,32,31,33", "l":"London, England, Europe"}
-,{"p":"westlandcoffee", "x":"51.528216","y":"-0.090584","n":"Westland Coffee and Wine","t":"2","c":"46","s":"4.7", "d":"0", "a":"29,8,32,81", "l":"London, England, Europe"}
-,{"p":"nincomsoup", "x":"51.52567","y":"-0.087561","n":"Nincomsoup","t":"0","c":"69","s":"4.1", "d":"0", "a":"135,29,119,136", "l":"London, England, Europe"}
-,{"p":"thecoffeebean", "x":"53.2737949","y":"-3.2220382","n":"The Coffee Bean","t":"4","c":"1","s":"5.0", "d":"0", "a":"29,40,148,149", "l":"Holywell, England, Europe"}
-,{"p":"thecornercafe", "x":"53.3087543","y":"-3.7404846","n":"The Corner Cafe","t":"2","c":"70","s":"4.7", "d":"0", "a":"29,8,125,152", "l":"Rhos on Sea, England, Europe"}
+,{"p":"polloexpress", "x":"38.5419413","y":"-0.1272807","n":"Pollo Expresss","t":"0","c":"184","s":"4.5", "d":"0", "a":"71,72,73,65", "l":"Benidorm, Spain, Europe"}
+,{"p":"polloexpressgourmet", "x":"38.5372292","y":"-0.1425705","n":"Pollo Expresss Gourmet","t":"0","c":"78","s":"4.1", "d":"0", "a":"71,72,67,18", "l":"Benidorm, Spain, Europe"}
+,{"p":"ecocentersupermercado", "x":"36.0141","y":"-5.6053","n":"Supermercado Ecologico - Eco Center Tarifa","t":"4","c":"326","s":"4.5", "d":"0", "a":"3,4,17,51", "l":"Calle San Sebastián, Tarifa, Spain"}
+,{"p":"ecocenteryoga", "x":"36.0142","y":"-5.6054","n":"Yoga y Meditacion - Eco Center Tarifa","t":"999","c":"326","s":"4.5", "d":"0", "a":"25,26,27,80", "l":"Calle San Sebastián, Tarifa, Spain"}
+,{"p":"ecocenterbar", "x":"36.0143","y":"-5.6055","n":"Bar y Musica - Eco Center Tarifa","t":"2","c":"326","s":"4.5", "d":"0", "a":"31,32,33,47", "l":"Calle San Sebastián, Tarifa, Spain"}
+,{"p":"ecocenterrestaurante", "x":"36.0144","y":"-5.6056","n":"Restaurante Ecologico - Eco Center Tarifa","t":"0","c":"326","s":"4.5", "d":"0", "a":"3,15,16,14", "l":"Calle San Sebastián, Tarifa, Spain"}
+,{"p":"elcuartito", "x":"36.0114734","y":"-5.6078355","n":"El Cuartito - Tapas Bar","t":"0","c":"22","s":"4.9", "d":"0", "a":"31,32,15,47", "l":"Grupo Cardenal Cisneros, Tarifa, Spain"}
+,{"p":"bambule", "x":"36.014772","y":"-5.6051206","n":"Bambule Batalla - Clothing and Asseccories","t":"4","c":"6","s":"5.0", "d":"0", "a":"52,54,107,24", "l":"Calle Batalla del Salado, Tarifa, Spain"}
+,{"p":"bambule2", "x":"36.0122788","y":"-5.6035059","n":"Bambule Sancho - Clothing and Asseccories","t":"4","c":"14","s":"4.2", "d":"0", "a":"52,54,107,24", "l":"Calle Sancho IV el Bravo, Tarifa, Spain"}
+,{"p":"growcafe", "x":"36.0109379","y":"-5.6053444","n":"Grow Cafe - Vegetarian","t":"2","c":"39","s":"4.8", "d":"0", "a":"4,29,8,11", "l":"Calle Alcalde Juan Núñez, Tarifa, Spain"}
+,{"p":"ecobakeryglutenfree", "x":"36.01988","y":"-5.609871","n":"Eco Bakery - Gluten Free","t":"4","c":"37","s":"4.7", "d":"0", "a":"3,115,11,30", "l":"Mar Adriatico, Tarifa, Spain"}
+,{"p":"deuxpointzero", "x":"48.8685002","y":"2.3542593","n":"Deux Point Zero","t":"2","c":"241","s":"4.0", "d":"0", "a":"31,32,33,76", "l":"Rue Blondel, Paris, France"}
+,{"p":"llscafe", "x":"51.5590909","y":"-0.1785917","n":"LLS Cafe Deli","t":"0","c":"92","s":"4.5", "d":"0", "a":"8,15,14,135", "l":"Heath Street, London, UK"}
+,{"p":"brewdogcanarywharf", "x":"51.5044668","y":"-0.0150128","n":"BrewDog Canary Wharf","t":"2","c":"98","s":"4.4", "d":"0", "a":"7,32,31,33", "l":"Churchill Place, London, UK"}
+,{"p":"westlandcoffee", "x":"51.528216","y":"-0.090584","n":"Westland Coffee & Wine","t":"2","c":"57","s":"4.6", "d":"0", "a":"29,8,32,81", "l":"Westland Place, London, UK"}
+,{"p":"nincomsoup", "x":"51.52567","y":"-0.087561","n":"Nincomsoup","t":"0","c":"96","s":"4.2", "d":"0", "a":"135,29,119,136", "l":"Nincomsoup, London, UK"}
+,{"p":"thecoffeebean", "x":"53.2737949","y":"-3.2220382","n":"Sarahs Coffee, The Coffee Bean","t":"4","c":"1","s":"5.0", "d":"0", "a":"29,40,148,149", "l":"The Mews, Holywell, UK"}
+,{"p":"thecornercafe", "x":"53.3087543","y":"-3.7404846","n":"The Corner Cafe","t":"2","c":"94","s":"4.7", "d":"0", "a":"29,8,125,152", "l":" Rhos Road, Rhos on Sea, Colwyn Bay, UK"}
 ,{"p":"thegreenroom", "x":"52.0258816","y":"-1.1499362","n":"The Green Room","t":"2","c":"166","s":"4.5", "d":"0", "a":"8,38,109,15", "l":"Brackley, England, Europe"}
 ,{"p":"chaoscoffeebar", "x":"60.388109","y":"5.325569","n":"Chaos Coffee Bar / Kaffe Chaos","t":"2","c":"55","s":"4.6", "d":"0", "a":"29,8,31,142", "l":"Bergen, Norway, Europe"}
 ,{"p":"foxx", "x":"57.6987613","y":"11.9685019","n":"Foxx","t":"2","c":"66","s":"4.4", "d":"0", "a":"29,8,150,125", "l":"Göteborg, Sweden, Europe"}
