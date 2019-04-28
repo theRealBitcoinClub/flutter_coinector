@@ -28,18 +28,16 @@
 ,{"p":"growcafe", "x":"36.0109379","y":"-5.6053444","n":"Grow Cafe - Vegetarian","t":"2","c":"39","s":"4.8", "d":"0", "a":"4,29,8,11", "l":"Calle Alcalde Juan Núñez, Tarifa, Spain"}
 ,{"p":"ecobakeryglutenfree", "x":"36.01988","y":"-5.609871","n":"Eco Bakery - Gluten Free","t":"4","c":"37","s":"4.7", "d":"0", "a":"3,115,11,30", "l":"Mar Adriatico, Tarifa, Spain"}
 ,{"p":"deuxpointzero", "x":"48.8685002","y":"2.3542593","n":"Deux Point Zero","t":"2","c":"241","s":"4.0", "d":"0", "a":"31,32,33,76", "l":"Rue Blondel, Paris, France"}
-,{"p":"llscafe", "x":"51.5590909","y":"-0.1785917","n":"LLS Cafe Deli","t":"0","c":"92","s":"4.5", "d":"0", "a":"8,15,14,135", "l":"Heath Street, London, UK"}
-,{"p":"brewdogcanarywharf", "x":"51.5044668","y":"-0.0150128","n":"BrewDog Canary Wharf","t":"2","c":"98","s":"4.4", "d":"0", "a":"7,32,31,33", "l":"Churchill Place, London, UK"}
-,{"p":"westlandcoffee", "x":"51.528216","y":"-0.090584","n":"Westland Coffee & Wine","t":"2","c":"57","s":"4.6", "d":"0", "a":"29,8,32,81", "l":"Westland Place, London, UK"}
-,{"p":"nincomsoup", "x":"51.52567","y":"-0.087561","n":"Nincomsoup","t":"0","c":"96","s":"4.2", "d":"0", "a":"135,29,119,136", "l":"Nincomsoup, London, UK"}
-,{"p":"thecoffeebean", "x":"53.2737949","y":"-3.2220382","n":"Sarahs Coffee, The Coffee Bean","t":"4","c":"1","s":"5.0", "d":"0", "a":"29,40,148,149", "l":"The Mews, Holywell, UK"}
-,{"p":"thecornercafe", "x":"53.3087543","y":"-3.7404846","n":"The Corner Cafe","t":"2","c":"94","s":"4.7", "d":"0", "a":"29,8,125,152", "l":" Rhos Road, Rhos on Sea, Colwyn Bay, UK"}
-,{"p":"thegreenroom", "x":"52.0258816","y":"-1.1499362","n":"The Green Room","t":"2","c":"166","s":"4.5", "d":"0", "a":"8,38,109,15", "l":"Brackley, England, Europe"}
-,{"p":"chaoscoffeebar", "x":"60.388109","y":"5.325569","n":"Chaos Coffee Bar / Kaffe Chaos","t":"2","c":"55","s":"4.6", "d":"0", "a":"29,8,31,142", "l":"Bergen, Norway, Europe"}
-,{"p":"foxx", "x":"57.6987613","y":"11.9685019","n":"Foxx","t":"2","c":"66","s":"4.4", "d":"0", "a":"29,8,150,125", "l":"Göteborg, Sweden, Europe"}
-,{"p":"tonyscoffeebar", "x":"57.6975382","y":"11.9861658","n":"Tonys Coffeebar","t":"2","c":"45","s":"4.8", "d":"0", "a":"29,8,142,125", "l":"Göteborg, Sweden, Europe"}
-,{"p":"mamasbanh", "x":"52.5311","y":"13.43435","n":"Mamas Banh | Vietnamese Tapas","t":"0","c":"182","s":"4.7", "d":"0", "a":"151,71,15,112", "l":"Berlin, Germany, Europe"}
-,{"p":"friedelrichter", "x":"52.5282002","y":"13.3914314","n":"Friedel Richter Restaurant","t":"0","c":"72","s":"4.4", "d":"0", "a":"7,14,99,100", "l":"Berlin, Germany, Europe"}
-,{"p":"tavernapizza", "x":"50.162967","y":"16.2732019","n":"Taverna Pizza and Pinsa Romana","t":"0","c":"194","s":"3.8", "d":"0", "a":"31,32,14,97", "l":"Rychnov nad Kněžnou, Czechia, Europe"}
-,{"p":"pizzapirat", "x":"45.5260364","y":"13.5684371","n":"Gostišče Pirat, Robin Vogrič, s.p.","t":"0","c":"318","s":"4.5", "d":"0", "a":"100,108,112,97", "l":"Piran, Slovenia, Europe"}
-,{"p":"elburrito", "x":"40.1774193","y":"44.5189469","n":"El Burrito","t":"0","c":"7","s":"5.0", "d":"0", "a":"129,123,156,99", "l":"Yerevan, Armenia, Europe"}]
+,{"p":"llscafe", "x":"51.5590909","y":"-0.1785917","n":"LLS Cafe Deli","t":"0","c":"92","s":"4.5", "d":"0", "a":"8,15,14,135", "l":"Heath Street, London, England, UK"}
+,{"p":"brewdogcanarywharf", "x":"51.5044668","y":"-0.0150128","n":"BrewDog Canary Wharf","t":"2","c":"98","s":"4.4", "d":"0", "a":"7,32,31,33", "l":"Churchill Place, London, England, UK"}
+,{"p":"westlandcoffee", "x":"51.528216","y":"-0.090584","n":"Westland Coffee & Wine","t":"2","c":"57","s":"4.6", "d":"0", "a":"29,8,32,81", "l":"Westland Place, London, England, UK"}
+,{"p":"nincomsoup", "x":"51.52567","y":"-0.087561","n":"Nincomsoup","t":"0","c":"96","s":"4.2", "d":"0", "a":"135,29,119,136", "l":"Nincomsoup, London, England, UK"}
+,{"p":"thecoffeebean", "x":"53.2737949","y":"-3.2220382","n":"Sarahs Coffee, The Coffee Bean","t":"4","c":"1","s":"5.0", "d":"0", "a":"29,40,148,149", "l":"The Mews, Holywell, England, UK"}
+,{"p":"thecornercafe", "x":"53.3087543","y":"-3.7404846","n":"The Corner Cafe","t":"2","c":"94","s":"4.7", "d":"0", "a":"29,8,125,152", "l":" Rhos Road, Rhos on Sea, Colwyn Bay, England, UK"}
+,{"p":"thegreenroom", "x":"52.0258816","y":"-1.1499362","n":"The Green Room","t":"2","c":"224","s":"4.6", "d":"0", "a":"8,38,109,15", "l":"Bridge Street, Brackley, England, UK"}
+,{"p":"chaoscoffeebar", "x":"60.388109","y":"5.325569","n":"Chaos Coffee Bar / Kafe Chaos","t":"2","c":"76","s":"4.5", "d":"0", "a":"29,8,31,142", "l":"Fosswinckels gate, Bergen, Norway"}
+,{"p":"tonyscoffeebar", "x":"57.6975382","y":"11.9861658","n":"Tonys coffeebar","t":"2","c":"79","s":"4.8", "d":"0", "a":"29,8,142,125", "l":"Skånegatan, Gothenburg, Sweden"}
+,{"p":"mamasbanh", "x":"52.5311","y":"13.43435","n":"Mamas Banh | Vietnamese Tapas","t":"0","c":"182","s":"4.7", "d":"0", "a":"151,71,15,112", "l":"Prenzlauer Berg, Hufelandstraße, Berlin, Germany"}
+,{"p":"friedelrichter", "x":"52.5282002","y":"13.3914314","n":"Friedel Richter Restaurant","t":"0","c":"98","s":"4.5", "d":"0", "a":"7,14,99,100", "l":"Torstraße, Berlin, Germany"}
+,{"p":"tavernapizza", "x":"50.162967","y":"16.2732019","n":"Taverna Pizza&Pinsa Romana","t":"0","c":"261","s":"3.8", "d":"0", "a":"31,32,14,97", "l":"Taverna Pizza&Pinsa Romana, Balbínova, Rychnov nad Kněžnou, Czechia"}
+,{"p":"pizzapirat", "x":"45.5260364","y":"13.5684371","n":"Gostisce Pirat, Robin Vogric, s.p.","t":"0","c":"413","s":"4.5", "d":"0", "a":"100,108,112,97", "l":"Župančičeva ulica, Piran - Pirano, Slovenia"}]

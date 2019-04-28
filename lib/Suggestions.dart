@@ -24,7 +24,7 @@ class Suggestions {
     'Norway - Europe,e,s',
     'Bergen - Norway - Europe,e,ci',
     'Sweden - Europe,e,s',
-    'Göteborg - Sweden - Europe,e,ci',
+    'Gothenburg - Sweden - Europe,e,ci',
     'Rychnov nad Kněžnou - Czechia - Europe,e,ci',
     'Czechia - Europe,e,s',
     'Piran - Slovenia - Europe,e,ci',
