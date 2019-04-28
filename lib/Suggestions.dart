@@ -131,6 +131,7 @@ class Suggestions {
     'WA - West Australia - Australia,au,s',
     'NSW - New South Wales - Australia,au,s',
     'VIC - Victoria - Australia,au,s',
+    'QLD - Queensland - Australia,au,s',
     'Melbourne - Victoria - Australia,au,ci',
     'Sidney - New South Wales - Australia,au,ci',
     'Nelson Bay - New South Wales - Australia,au,ci',

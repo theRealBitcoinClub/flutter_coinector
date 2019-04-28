@@ -9,13 +9,13 @@
 ,{"p":"portstephens", "x":"-32.718805","y":"152.14999","n":"Port Stephen's Motel - 3 Star Hotel","t":"5","c":"44","s":"4.0", "d":"0", "a":"104,104,104,104", "l":"Magnus Street, Nelson Bay NSW, Australia"}
 ,{"p":"nutrientdepot", "x":"-43.5435925","y":"172.5877462","n":"Nutrient Depot","t":"0","c":"49","s":"4.5", "d":"0", "a":"3,6,29,135", "l":"Birmingham Drive, Middleton, Christchurch, New Zealand"}
 ,{"p":"stoneandwood", "x":"-28.634215","y":"153.586002","n":"Stone & Wood Brewing Company","t":"2","c":"132","s":"4.7", "d":"0", "a":"32,33,119,32", "l":"Centennial Circuit, Byron Bay NSW, Australia"}
-,{"p":"nexthotelbrisbane", "x":"-27.4702158","y":"153.0238486","n":"Next Hotel Brisbane","t":"5","c":"707","s":"4.5", "d":"0", "a":"104,104,104,104", "l":"Brisbane City, Queensland, Australia"}
-,{"p":"brewcafe", "x":"-27.4691319","y":"153.0251388","n":"Brew Cafe and Wine Bar","t":"2","c":"501","s":"4.4", "d":"0", "a":"81,32,47,122", "l":"Brisbane City, Queensland, Australia"}
-,{"p":"xcargo", "x":"-27.458605","y":"153.0364821","n":"X Cargo","t":"2","c":"64","s":"3.9", "d":"0", "a":"31,71,99,108", "l":"Fortitude, Brisbane, Australia"}
-,{"p":"newyorkpizza", "x":"-27.4569692","y":"153.0368568","n":"Boroughs of New York Pizza","t":"0","c":"146","s":"4.0", "d":"0", "a":"14,125,126,127", "l":"Fortitude, Brisbane, Australia"}
-,{"p":"nomnom", "x":"-27.4580795","y":"153.0351267","n":"Nom Nom Korean Eatery","t":"0","c":"126","s":"4.2", "d":"0", "a":"113,67,99,15", "l":"Fortitude, Brisbane, Australia"}
-,{"p":"5dogs", "x":"-27.4577851","y":"153.0342357","n":"5 Dogs Hot Dogs","t":"1","c":"131","s":"3.8", "d":"0", "a":"64,123,124,79", "l":"Fortitude, Brisbane, Australia"}
-,{"p":"stephs", "x":"-27.4576832","y":"153.0342048","n":"Steph'S Cafe","t":"2","c":"6","s":"5.0", "d":"0", "a":"32,8,55,79", "l":"Fortitude, Brisbane, Australia"}
+,{"p":"nexthotelbrisbane", "x":"-27.4702158","y":"153.0238486","n":"Next Hotel Brisbane","t":"5","c":"927","s":"4.5", "d":"0", "a":"104,104,104,104", "l":"Queen Street, Brisbane City QLD, Australia"}
+,{"p":"brewcafe", "x":"-27.4691319","y":"153.0251388","n":"Brew Cafe & Wine Bar","t":"2","c":"712","s":"4.4", "d":"0", "a":"81,32,47,122", "l":"Burnett Lane, Brisbane City QLD, Australia"}
+,{"p":"xcargo", "x":"-27.458605","y":"153.0364821","n":"X CARGO - Beer Garden","t":"2","c":"242","s":"4.0", "d":"0", "a":"31,71,99,108", "l":"McLachlan Street, Fortitude Valley QLD, Australia"}
+,{"p":"newyorkpizza", "x":"-27.4569692","y":"153.0368568","n":"Boroughs of New York Wood fire Pizza","t":"0","c":"133","s":"3.8", "d":"0", "a":"14,125,126,127", "l":"Creek Road, Carindale QLD, Australia"}
+,{"p":"nomnom", "x":"-27.4580795","y":"153.0351267","n":"Nom Nom Korean Eatery","t":"0","c":"175","s":"4.2", "d":"0", "a":"113,67,99,15", "l":"Fortitude Valley QLD, Australia"}
+,{"p":"5dogs", "x":"-27.4577851","y":"153.0342357","n":"5 Dogs HotDog","t":"1","c":"215","s":"3.9", "d":"0", "a":"64,123,124,79", "l":"Brunswick Street, Fortitude Valley QLD, Australia"}
+,{"p":"stephs", "x":"-27.4576832","y":"153.0342048","n":"Steph's Cafe","t":"2","c":"9","s":"5.0", "d":"0", "a":"32,8,55,79", "l":"Brunswick Street, Fortitude Valley QLD, Australia"}
 ,{"p":"thevalley", "x":"-27.452379","y":"153.039292","n":"Ovolo The Valley - 5 Star Hotel","t":"5","c":"282","s":"4.4", "d":"0", "a":"104,104,104,104", "l":"Fortitude, Brisbane, Australia"}
 ,{"p":"spoondelicafe", "x":"-27.4032246","y":"153.1092763","n":"Spoon Deli Cafe","t":"2","c":"13","s":"4.6", "d":"0", "a":"29,79,8,15", "l":"Airport, Brisbane, Australia"}
 ,{"p":"botanistkitchenbar", "x":"-27.4036899","y":"153.1096041","n":"The Botanist Kitchen and Bar","t":"2","c":"10","s":"3.5", "d":"0", "a":"29,79,8,15", "l":"Airport, Brisbane, Australia"}
