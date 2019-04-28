@@ -30,15 +30,14 @@
 ,{"p":"lagoons", "x":"-24.1961369","y":"151.8949128","n":"Lagoons 1770 Resort & Spa","t":"5","c":"152","s":"4.6", "d":"0", "a":"104,104,104,104", "l":"Captain Cook Drive, Agnes Water QLD, Australia"}
 ,{"p":"1770hotel", "x":"-24.2229407","y":"151.8804586","n":"1770 Southern Cross Backpackers - 3 Star","t":"5","c":"40","s":"4.1", "d":"0", "a":"104,104,104,104", "l":"Round Hill Road, Agnes Water QLD, Australia"}
 ,{"p":"getaway", "x":"-24.217025","y":"151.914584","n":"Getaway Garden Cafe","t":"0","c":"171","s":"4.5", "d":"0", "a":"7,11,100,125", "l":"Bicentennial Drive, Agnes Water QLD, Australia"}
-,{"p":"agnes", "x":"-24.2152877","y":"151.902547","n":"Agnes Water Tavern","t":"2","c":"79","s":"3.5", "d":"0", "a":"111,138,8,100", "l":"Agnes Water, Queensland, Australia"}
-,{"p":"discovery", "x":"-24.2132828","y":"151.901788","n":"Cafe Discovery","t":"0","c":"43","s":"4.4", "d":"0", "a":"8,11,17,109", "l":"Agnes Water, Queensland, Australia"}
-,{"p":"backpackers", "x":"-24.2110028","y":"151.902216","n":"Backpackers @ 1770","t":"5","c":"70","s":"4.4", "d":"0", "a":"104,104,104,104", "l":"Agnes Water, Queensland, Australia"}
-,{"p":"greenturtle", "x":"-24.208358","y":"151.9025738","n":"Green Turtle Brasserie","t":"0","c":"25","s":"3.4", "d":"0", "a":"8,15,125,141", "l":"Agnes Water, Queensland, Australia"}
-,{"p":"sandcastles", "x":"-24.2082681","y":"151.9019972","n":"Sandcastles 1770 Motel and Resort","t":"5","c":"136","s":"4.1", "d":"0", "a":"104,104,104,104", "l":"Agnes Water, Queensland, Australia"}
-,{"p":"catsmeow", "x":"-19.2888512","y":"146.7971418","n":"The Cat's Meow","t":"0","c":"117","s":"4.3", "d":"0", "a":"7,99,11,15", "l":"Aitkenvale, Queensland, Australia"}
-,{"p":"littlepegs", "x":"-19.2844316","y":"146.7978993","n":"Little Peg's Cafe","t":"2","c":"15","s":"4.9", "d":"0", "a":"29,109,119,142", "l":"Townsville, Queensland, Australia"}
-,{"p":"altbrew", "x":"-19.2617703","y":"146.815679","n":"Alt Brew","t":"2","c":"2","s":"4.0", "d":"0", "a":"8,99,29,109", "l":"Townsville, Queensland, Australia"}
-,{"p":"thewatermark", "x":"-19.2479035","y":"146.812666","n":"Restaurant The Watermark Townsville","t":"0","c":"441","s":"4.3", "d":"0", "a":"100,97,138,163", "l":"Townsville, Queensland, Australia"}
-,{"p":"thewatermark", "x":"-19.2479035","y":"146.812666","n":"Hotel The Watermark Townsville","t":"5","c":"441","s":"4.3", "d":"0", "a":"104,104,104,104", "l":"Townsville, Queensland, Australia"}
-,{"p":"belpaese", "x":"-16.9245326","y":"145.7765271","n":"Bel Paese Trattoria Pizzeria","t":"0","c":"60","s":"4.3", "d":"0", "a":"14,15,108,97", "l":"Cairns, Queensland, Australia"}
-,{"p":"thedownunderbar", "x":"-16.9212842","y":"145.7754019","n":"The Downunder Bar","t":"2","c":"99","s":"4.5", "d":"0", "a":"31,32,162,132", "l":"Cairns, Queensland, Australia"}]
+,{"p":"agnes", "x":"-24.2152877","y":"151.902547","n":"Agnes Water Tavern","t":"2","c":"91","s":"3.4", "d":"0", "a":"111,138,8,100", "l":"Tavern Road, Agnes Water QLD, Australia"}
+,{"p":"discovery", "x":"-24.2132828","y":"151.901788","n":"Cafe Discovery","t":"0","c":"69","s":"4.4", "d":"0", "a":"8,11,17,109", "l":"Cafe Discovery, Agnes Water QLD, Australia"}
+,{"p":"backpackers", "x":"-24.2110028","y":"151.902216","n":"Backpackers @ 1770","t":"5","c":"90","s":"4.5", "d":"0", "a":"104,104,104,104", "l":"Grahame Colyer Drive, Agnes Water QLD, Australia"}
+,{"p":"greenturtle", "x":"-24.208358","y":"151.9025738","n":"Green Turtle Brasserie","t":"0","c":"46","s":"3.4", "d":"0", "a":"8,15,125,141", "l":"Captain Cook Drive, Agnes Water QLD, Australia"}
+,{"p":"sandcastles", "x":"-24.2082681","y":"151.9019972","n":"Sandcastles 1770 Motel & Resort - 4 Star","t":"5","c":"193","s":"4.2", "d":"0", "a":"104,104,104,104", "l":"Captain Cook Drive, Agnes Water QLD, Australia"}
+,{"p":"catsmeow", "x":"-19.2888512","y":"146.7971418","n":"The Cat’s Meow","t":"0","c":"144","s":"4.3", "d":"0", "a":"7,99,11,15", "l":"Charters Towers Road, Hermit Park QLD, Australia"}
+,{"p":"littlepegs", "x":"-19.2844316","y":"146.7978993","n":"Little Pegs Cafe","t":"2","c":"30","s":"5.0", "d":"0", "a":"29,109,119,142", "l":"Charters Towers Road, Hermit Park QLD, Australia"}
+,{"p":"altbrew", "x":"-19.2617703","y":"146.815679","n":"Alt Brew","t":"2","c":"3","s":"4.0", "d":"0", "a":"8,99,29,109", "l":"Flinders Street, Townsville City QLD, Australia"}
+,{"p":"thewatermark", "x":"-19.2479035","y":"146.812666","n":"The Watermark Townsville Restaurant","t":"0","c":"624","s":"4.3", "d":"0", "a":"100,97,138,163", "l":"The Strand, North Ward QLD, Australia"}
+,{"p":"thewatermark", "x":"-19.2479035","y":"146.812666","n":"The Watermark Townsville Hotel","t":"5","c":"624","s":"4.3", "d":"0", "a":"104,104,104,104", "l":"The Strand, North Ward QLD, Australia"}
+,{"p":"thedownunderbar", "x":"-16.9212842","y":"145.7754019","n":"The Downunder Bar","t":"2","c":"134","s":"4.5", "d":"0", "a":"31,32,162,132", "l":"Lake Street, Cairns City QLD, Australia"}]
