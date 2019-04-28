@@ -25,19 +25,17 @@
 ,{"p":"yakinikutamura", "x":"34.700377","y":"135.542964","n":"Yakiniku Tamura - 北海道の旬 焼肉たむら","t":"0","c":"82","s":"3.2", "d":"0", "a":"111,67,112,138", "l":"2 Chome-7-3 Marunouchi, Chiyoda City, Tokyo, Japan"}
 ,{"p":"osarucoffee", "x":"34.6637216","y":"135.4954944","n":"オサル コーヒー Osaru Coffee","t":"2","c":"88","s":"4.5", "d":"0", "a":"29,8,109,142", "l":" 1 Chome-7-15 Motomachi, Naniwa Ward, Osaka, Japan"}
 ,{"p":"unityface", "x":"34.5321509","y":"135.4955319","n":"喫茶・軽食 ユニティーフェイス - Unity Faith","t":"0","c":"9","s":"4.3", "d":"0", "a":"29,31,135,119", "l":"Japan, Osaka, Sakai, Naka Ward, Fukaishimizucho, 3835"}
-,{"p":"engaro", "x":"34.702269","y":"135.487596","n":"大阪 梅田 福島区 ｜ORGANIC SALON ENGARO【 美容院 美容室 / カラー 白髪染め / オーガニック ヴィラロドラ ローランドオーウェイ 】","t":"4","c":"3","s":"5.0", "d":"0", "a":"104,104,104,104", "l":"Osaka, Japan, Asia"}
-,{"p":"cafebarcoins", "x":"34.6595934","y":"135.5059829","n":"仮想通貨カフェ＆バーＣＯＩＮＳ","t":"2","c":"9","s":"4.6", "d":"0", "a":"29,31,32,33", "l":"Osaka, Japan, Asia"}
-,{"p":"04village", "x":"34.6550227","y":"135.5084907","n":"０４ ｖｉｌｌａｇｅ なんば","t":"5","c":"60","s":"4.3", "d":"0", "a":"60,61,90,98", "l":"Osaka, Japan, Asia"}
-,{"p":"scrub", "x":"34.7026289","y":"135.4876282","n":"/scrub - Italian Restaurant","t":"0","c":"9","s":"4.0", "d":"0", "a":"14,15,108,102", "l":"Osaka, Japan, Asia"}
-,{"p":"trianglecoffee", "x":"34.665282","y":"135.505369","n":"TRI⊿NGLE COFFEE トライアングルコーヒー","t":"2","c":"6","s":"5.0", "d":"0", "a":"29,145,142,31", "l":"Osaka, Japan, Asia"}
-,{"p":"bitcafe", "x":"34.6725595","y":"135.4904279","n":"bit cafe","t":"2","c":"16","s":"4.0", "d":"0", "a":"29,109,64,15", "l":"Osaka, Japan, Asia"}
-,{"p":"barpiller", "x":"34.6706541","y":"135.5035323","n":"Bar Piller - 公式","t":"0","c":"12","s":"4.7", "d":"0", "a":"155,67,100,112", "l":"Osaka, Japan, Asia"}
-,{"p":"slices", "x":"34.6702486","y":"135.4996966","n":"Slices Pizza Restaurant - スライシーズ","t":"0","c":"89","s":"4.3", "d":"0", "a":"14,15,31,109", "l":"Osaka, Japan, Asia"}
-,{"p":"toripao", "x":"34.697499","y":"135.4851051","n":"toripao - 鶏料理pao","t":"0","c":"1","s":"5.0", "d":"0", "a":"71,94,96,135", "l":"Osaka, Japan, Asia"}
-,{"p":"nazimichi", "x":"34.6620575","y":"135.4971423","n":"Nazimichi Jimi - ナジミチヂミ","t":"0","c":"2","s":"5.0", "d":"0", "a":"113,67,99,15", "l":"Osaka, Japan, Asia"}
-,{"p":"ajinoya2", "x":"34.6680903","y":"135.5006587","n":"Ajinoya 2nd Shop - 味乃家 2号店","t":"0","c":"27","s":"3.7", "d":"0", "a":"100,112,142,144", "l":"Osaka, Japan, Asia"}
-,{"p":"yakinikutamurafukuoka", "x":"33.5878136","y":"130.3941922","n":"Fukuoka - 炭火焼肉たむら福岡店 - Yakiniku Tamura","t":"0","c":"21","s":"3.9", "d":"0", "a":"111,67,112,138", "l":"Fukuoka, Japan, Asia"}
-,{"p":"yakinikutamuranagasaki", "x":"32.8258168","y":"129.84688","n":"Nagasaki - 炭火焼肉たむら 長崎店 - Yakiniku Tamura","t":"0","c":"52","s":"3.2", "d":"0", "a":"111,67,112,138", "l":"Nagasaki, Japan, Asia"}
+,{"p":"engaro", "x":"34.702269","y":"135.487596","n":"ENGARO organic & hair clinic 大阪市北区大淀南オーガニック美容室","t":"4","c":"5","s":"4.8", "d":"0", "a":"104,104,104,104", "l":"Japan, Osaka, Kita Ward, 北区1 Chome−10"}
+,{"p":"cafebarcoins", "x":"34.6595934","y":"135.5059829","n":"仮想通貨カフェ＆バーＣＯＩＮＳ","t":"2","c":"9","s":"4.6", "d":"0", "a":"29,31,32,33", "l":"Japan, Osaka, Chuo Ward, Souemoncho, 5−6"}
+,{"p":"04village", "x":"34.6550227","y":"135.5084907","n":"０４ ｖｉｌｌａｇｅ なんば","t":"5","c":"93","s":"4.3", "d":"0", "a":"60,61,90,98", "l":"Japan, Osaka, Naniwa Ward, Shimodera, 3 Chome−12−9"}
+,{"p":"trianglecoffee", "x":"34.665282","y":"135.505369","n":"cycle&cafe TRI⊿NGLE COFFEE トライアングルコーヒー","t":"2","c":"7","s":"5.0", "d":"0", "a":"29,145,142,31", "l":"1-22 Nanbasennichimae, Chuo Ward, Osaka, Japan"}
+,{"p":"bitcafe", "x":"34.6725595","y":"135.4904279","n":"bit cafe","t":"2","c":"22","s":"4.0", "d":"0", "a":"29,109,64,15", "l":"Japan, Osaka, 大阪市西区 Nishi Ward, Minamihorie, 2 Chome−13−17 bit cafe"}
+,{"p":"slices", "x":"34.6702486","y":"135.4996966","n":"Slices Pizza Restaurant - スライシーズ","t":"0","c":"123","s":"4.2", "d":"0", "a":"14,15,31,109", "l":"2 Chome-3-21 Nishishinsaibashi, Chuo Ward, Osaka, Japan"}
+,{"p":"toripao", "x":"34.697499","y":"135.4851051","n":"toripao - 鶏料理pao","t":"0","c":"7","s":"3.9", "d":"0", "a":"71,94,96,135", "l":"Japan, Osaka, Fukushima Ward, Fukushima, 7 Chome−7−番7号"}
+,{"p":"nazimichi", "x":"34.6620575","y":"135.4971423","n":"ナジミチヂミ Izakaya Restaurant","t":"0","c":"23","s":"4.7", "d":"0", "a":"113,67,99,15", "l":"Japan, Osaka, Naniwa Ward, Motomachi, 2 Chome−7−1"}
+,{"p":"ajinoya2", "x":"34.6680903","y":"135.5006587","n":"Ajinoya 2nd Shop - 味乃家 2号店","t":"0","c":"62","s":"3.7", "d":"0", "a":"100,112,142,144", "l":"Japan, Osaka, Chuo Ward, Nanba, 1 Chome−７−13"}
+,{"p":"yakinikutamurafukuoka", "x":"33.5878136","y":"130.3941922","n":"炭火焼肉たむら福岡店 - Yakiniku Tamura Fukuoka","t":"0","c":"29","s":"3.8", "d":"0", "a":"111,67,112,138", "l":"Japan, Fukuoka, Chuo Ward, Daimyo, 1 Chome−12−39"}
+,{"p":"yakinikutamuranagasaki", "x":"32.8258168","y":"129.84688","n":"炭火焼肉たむら 長崎店 - Yakiniku Tamura Nagasaki","t":"0","c":"63","s":"3.3", "d":"0", "a":"111,67,112,138", "l":"Japan, Nagasaki, Togitsu, Nodago, 48-13"}
 ,{"p":"ducatuscafe", "x":"-8.684123","y":"115.1682889","n":"Ducatus Cafe","t":"2","c":"11","s":"4.8", "d":"0", "a":"29,11,8,136", "l":"Bali, Indonesia, Asia"}
 ,{"p":"ducatuscafesingapore", "x":"1.2784458","y":"103.848261","n":"Ducatus Cafe Singapore","t":"2","c":"11","s":"4.2", "d":"0", "a":"15,16,8,150", "l":"Singapore, Malaysia, Asia"}
 ,{"p":"bunk5021", "x":"14.5634905","y":"121.0302437","n":"BUNK 5021 HOSTEL","t":"5","c":"4","s":"4.8", "d":"0", "a":"104,104,104,104", "l":"Manila, Philippines, Asia"}
