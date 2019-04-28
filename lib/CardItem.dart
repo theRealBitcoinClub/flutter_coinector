@@ -200,7 +200,7 @@ class CardItem extends StatelessWidget {
 //TODO setup various servers to host images, for each dataset one
 launchVisitUrl(context, id) async {
   Place place = await AssetLoader.loadPlace(id);
-  if(place == null) {
+  if(isPlaceMissing(place)) {
     showPlaceNotFoundOnGmaps(context);
     return;
   }
@@ -216,7 +216,7 @@ launchVisitUrl(context, id) async {
 
 launchReviewUrl(context, id) async {
   Place place = await AssetLoader.loadPlace(id);
-  if (place == null) {
+  if (isPlaceMissing(place)) {
     showPlaceNotFoundOnGmaps(context);
     return;
   }
@@ -229,6 +229,8 @@ launchReviewUrl(context, id) async {
     throw 'Could not launch $url';
   }
 }
+
+bool isPlaceMissing(Place place) => place == null || place.placesId.isEmpty;
 
 void showPlaceNotFoundOnGmaps(context) {
   showDialog(
