@@ -65,7 +65,7 @@ const List<_Page> _pagesTags = <_Page>[
       title: 'HOTEL, B&B, FLAT',
       tabIndex: 5,
       typeIndex: 5),
-  _Page(
+  _Page( //TODO remove category ATM
       text: 'ATM',
       icon: Icons.atm,
       title: 'TELLER & TRADER',
