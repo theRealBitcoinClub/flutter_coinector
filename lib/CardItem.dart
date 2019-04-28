@@ -262,11 +262,12 @@ void showPlaceNotFoundOnGmaps(context) {
         return AlertDialog(
           actions: [buildCloseDialogButton(ctx)],
           //TODO Optimize by offering a form to submit the data
+          title: Text("Missing Google Maps link!"),
           content: Text(
-              "This place was not found on Google Maps yet, help us and send a link of the Google Maps entry to bitcoinmap.cash@protonmail.com"),
+              "Help to grow adoption!\n\nSend the missing information to:\n\nbitcoinmap.cash@protonmail.com"),
         );
       });
-} //TODO show deactivated REVIEW icon
+}
 
 showPayDialog(BuildContext context) async {
   showDialog(
@@ -319,7 +320,7 @@ void showMissingAddrDialog(BuildContext context) {
             title: Text("Missing address"),
             content: new InkWell(
                 child: Text(
-                    "This merchant has not yet provided any payment receiving address!\n\nTouch here to send an email to bitcoinmap.cash@protonmail.com"),
+                    "This merchant has not yet provided any payment receiving address!\n\nExplain to the merchant the benefits of providing an address!\n\nTouch here to send an email to:\n\nbitcoinmap.cash@protonmail.com"),
                 onTap: () async {
                   var urlString =
                       "mailTo:bitcoinmap.cash@protonmail.com?subject=Coinecccctorrrrr";
