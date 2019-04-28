@@ -1,8 +1,8 @@
 import 'package:clipboard_manager/clipboard_manager.dart';
-import 'package:endlisch/AssetLoader.dart';
-import 'package:endlisch/MyColors.dart';
-import 'package:endlisch/Place.dart';
-import 'package:endlisch/RatingWidgetBuilder.dart';
+import 'package:coinector/AssetLoader.dart';
+import 'package:coinector/MyColors.dart';
+import 'package:coinector/Place.dart';
+import 'package:coinector/RatingWidgetBuilder.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';

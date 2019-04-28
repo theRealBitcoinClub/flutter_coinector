@@ -1,4 +1,4 @@
-package cash.bitcoinmap.endlisch;
+package cash.bitcoinmap.coinector;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

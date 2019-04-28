@@ -1,9 +1,9 @@
 import 'dart:async' show Future;
 
 import 'package:dio/dio.dart';
-import 'package:endlisch/AssetLoader.dart';
-import 'package:endlisch/CardItemBuilder.dart';
-import 'package:endlisch/MyColors.dart';
+import 'package:coinector/AssetLoader.dart';
+import 'package:coinector/CardItemBuilder.dart';
+import 'package:coinector/MyColors.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

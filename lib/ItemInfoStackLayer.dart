@@ -1,5 +1,5 @@
-import 'package:endlisch/Merchant.dart';
-import 'package:endlisch/Tags.dart';
+import 'package:coinector/Merchant.dart';
+import 'package:coinector/Tags.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 

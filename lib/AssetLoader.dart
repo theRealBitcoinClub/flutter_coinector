@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:endlisch/Place.dart';
+import 'package:coinector/Place.dart';
 import 'package:flutter/services.dart';
 
 class AssetLoader {
