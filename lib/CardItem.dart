@@ -381,7 +381,7 @@ Widget buildAddressDetailDialogDASH(BuildContext context) {
     );
   } else
     return AlertDialog(
-        title: Text("DASH (touch address to pay)"),
+        title: Text("DASH (donate to dashboost.org)"),
         content: new InkWell(
             child: new Text(data),
             onTap: () {
@@ -414,7 +414,7 @@ Widget buildAddressDetailDialogBCH(BuildContext context) {
     );
   } else
     return AlertDialog(
-      title: Text("BCH (touch address to pay)"),
+      title: Text("BCH (donate to coinspice.io)"),
       actions: [buildCloseDialogButton(context)],
       content: new InkWell(
           child: new Text(getBCHAddress()),
