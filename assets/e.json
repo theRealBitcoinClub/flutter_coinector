@@ -11,16 +11,11 @@
 ,{"p":"ChIJkcsO_L2ipBIRzzk1Q5JNaxU", "x":"41.4013999","y":"2.1594724","n":"King Kaya - Growshop","t":"4","c":"33","s":"4.9", "d":"0", "a":"39,40,41,42", "l":"Carrer de la Mare de Déu dels Desemparats, Barcelona, Spain"}
 ,{"p":"ChIJYWoT6byipBIR-6HaCztMc5A", "x":"41.4044523","y":"2.1562822","n":"MIT K - Upcycling Vegan Art Bags","t":"4","c":"9","s":"5.0", "d":"0", "a":"3,5,20,28", "l":"Barcelona, Spain"}
 ,{"p":"ChIJ5ynTF5iipBIRSOx9O00QlvI", "x":"41.3999126","y":"2.1540813","n":"VeGala Vegan Beauty","t":"4","c":"26","s":"4.7", "d":"0", "a":"5,21,45,46", "l":"Carrer de Santa Eugènia, Barcelona, Spain"}
-,{"p":"amelia", "x":"41.402147","y":"2.157944","n":"Amelia Bakery - Tartas por pedido","t":"1","c":"19","s":"4.6", "d":"0", "a":"9,10,11,12", "l":"Barcelona, Spain, Europe"}
-,{"p":"recup", "x":"41.404653","y":"2.155916","n":"Rekup & Co - Handmade Souvenirs","t":"4","c":"8","s":"4.2", "d":"0", "a":"24,28,53,58", "l":"Barcelona, Spain, Europe"}
-,{"p":"kamoma", "x":"41.4014862","y":"2.1568869","n":"Kamoma - Aperol Spritz Bar","t":"2","c":"19","s":"4.2", "d":"0", "a":"47,31,32,33", "l":"Barcelona, Spain, Europe"}
-,{"p":"akash", "x":"41.4083532","y":"2.1597298","n":"Akash - Perruqueria","t":"4","c":"2","s":"5.0", "d":"0", "a":"91,65,107,58", "l":"Barcelona, Spain, Europe"}
-,{"p":"sweetbcn1", "x":"41.4062714","y":"2.1449862","n":"Sweet Flat #1","t":"5","c":"59","s":"4.6", "d":"1", "a":"104,104,104,104", "l":"Barcelona, Spain, Europe"}
-,{"p":"sweetbcn2", "x":"41.3992051","y":"2.1575469","n":"Sweet Flat #2","t":"5","c":"59","s":"4.6", "d":"1", "a":"104,104,104,104", "l":"Barcelona, Spain, Europe"}
-,{"p":"sweetbcn3", "x":"41.3985755","y":"2.1591838","n":"Sweet Flat #3","t":"5","c":"59","s":"4.6", "d":"1", "a":"104,104,104,104", "l":"Barcelona, Spain, Europe"}
-,{"p":"sweetbcn4", "x":"41.398815","y":"2.167693","n":"Sweet House #4","t":"5","c":"59","s":"4.6", "d":"1", "a":"104,104,104,104", "l":"Barcelona, Spain, Europe"}
-,{"p":"sweetbcn5", "x":"41.3968436","y":"2.1660045","n":"Sweet Hostel #5","t":"5","c":"102","s":"4.4", "d":"1", "a":"104,104,104,104", "l":"Barcelona, Spain, Europe"}
-,{"p":"ChIJh2A7VL2ipBIRIxR3Ylnot50", "x":"41.4006341","y":"2.155889","n":"Sincronia Yoga","t":"999","c":"18","s":"4.8", "d":"0", "a":"25,26,27,80", "l":"Barcelona, Spain, Europe"}
+,{"p":"amelia", "x":"41.402147","y":"2.157944","n":"Amelia Bakery - Tartas por pedido","t":"1","c":"32","s":"4.6", "d":"0", "a":"9,10,11,12", "l":"Carrer de Ramón y Cajal, Barcelona, Spain"}
+,{"p":"recup", "x":"41.404653","y":"2.155916","n":"Rekup & Co Verdi - Handmade Souvenirs","t":"4","c":"15","s":"4.5", "d":"0", "a":"24,28,53,58", "l":"Carrer de Verdi, Barcelona, Spain"}
+,{"p":"kamoma", "x":"41.4014862","y":"2.1568869","n":"Kamoma - Spritz Bar","t":"2","c":"41","s":"4.1", "d":"0", "a":"47,31,32,33", "l":"Plaça del Sol, Barcelona, Spain"}
+,{"p":"akash", "x":"41.4083532","y":"2.1597298","n":"Perruqueria Akash","t":"4","c":"7","s":"4.9", "d":"0", "a":"91,65,107,58", "l":"Carrer de la Providència, Barcelona, Spain"}
+,{"p":"ChIJh2A7VL2ipBIRIxR3Ylnot50", "x":"41.4006341","y":"2.155889","n":"Sincronia Yoga","t":"999","c":"23","s":"4.8", "d":"0", "a":"25,26,27,80", "l":"Gracia, Carrer de Pere Serafí, Barcelona, Spain"}
 ,{"p":"polloexpress", "x":"38.5419413","y":"-0.1272807","n":"Pollo Expresss","t":"0","c":"148","s":"4.5", "d":"0", "a":"71,72,73,65", "l":"Benidorm, Spain, Europe"}
 ,{"p":"polloexpressgourmet", "x":"38.5372292","y":"-0.1425705","n":"Pollo Expresss Gourmet","t":"0","c":"41","s":"4.2", "d":"0", "a":"71,72,67,18", "l":"Benidorm, Spain, Europe"}
 ,{"p":"autoescuelasactual", "x":"38.542009","y":"-0.127293","n":"Autoescuelas Actual Benidorm","t":"4","c":"3","s":"5.0", "d":"0", "a":"65,68,69,70", "l":"Benidorm, Spain, Europe"}
