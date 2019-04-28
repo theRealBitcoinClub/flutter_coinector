@@ -16,20 +16,20 @@
 ,{"p":"nomnom", "x":"-27.4580795","y":"153.0351267","n":"Nom Nom Korean Eatery","t":"0","c":"175","s":"4.2", "d":"0", "a":"113,67,99,15", "l":"Fortitude Valley QLD, Australia"}
 ,{"p":"5dogs", "x":"-27.4577851","y":"153.0342357","n":"5 Dogs HotDog","t":"1","c":"215","s":"3.9", "d":"0", "a":"64,123,124,79", "l":"Brunswick Street, Fortitude Valley QLD, Australia"}
 ,{"p":"stephs", "x":"-27.4576832","y":"153.0342048","n":"Steph's Cafe","t":"2","c":"9","s":"5.0", "d":"0", "a":"32,8,55,79", "l":"Brunswick Street, Fortitude Valley QLD, Australia"}
-,{"p":"thevalley", "x":"-27.452379","y":"153.039292","n":"Ovolo The Valley - 5 Star Hotel","t":"5","c":"282","s":"4.4", "d":"0", "a":"104,104,104,104", "l":"Fortitude, Brisbane, Australia"}
-,{"p":"spoondelicafe", "x":"-27.4032246","y":"153.1092763","n":"Spoon Deli Cafe","t":"2","c":"13","s":"4.6", "d":"0", "a":"29,79,8,15", "l":"Airport, Brisbane, Australia"}
-,{"p":"botanistkitchenbar", "x":"-27.4036899","y":"153.1096041","n":"The Botanist Kitchen and Bar","t":"2","c":"10","s":"3.5", "d":"0", "a":"29,79,8,15", "l":"Airport, Brisbane, Australia"}
-,{"p":"burgerurge", "x":"-27.404534","y":"153.1098813","n":"Burger Urge","t":"1","c":"27","s":"2.6", "d":"0", "a":"7,15,99,65", "l":"Airport, Brisbane, Australia"}
-,{"p":"windmillbarbistro", "x":"-27.4038738","y":"153.1103544","n":"Windmill Bar Bistro","t":"0","c":"43","s":"2.9", "d":"0", "a":"32,14,99,15", "l":"Airport, Brisbane, Australia"}
-,{"p":"redrooster", "x":"-27.4032945","y":"153.1107098","n":"Red Rooster","t":"0","c":"24","s":"2.9", "d":"0", "a":"70,71,99,7", "l":"Airport, Brisbane, Australia"}
-,{"p":"madmexfresh", "x":"-27.403388","y":"153.110521","n":"Mad Mex Fresh Mexican Grill","t":"0","c":"21","s":"3.7", "d":"0", "a":"128,129,130,29", "l":"Airport, Brisbane, Australia"}
-,{"p":"madmex", "x":"-27.3861781","y":"153.1193317","n":"Mad Mex","t":"0","c":"21","s":"3.7", "d":"0", "a":"128,129,156,157", "l":"Airport, Brisbane, Australia"}
-,{"p":"sumosalad", "x":"-27.386266","y":"153.1196583","n":"SumoSalad","t":"1","c":"11","s":"3.2", "d":"0", "a":"15,8,135,142", "l":"Airport, Brisbane, Australia"}
-,{"p":"giancarlo", "x":"-27.3861207","y":"153.1215657","n":"Giancarlo Coffee","t":"2","c":"19","s":"2.7", "d":"0", "a":"29,8,119,55", "l":"Airport, Brisbane, Australia"}
-,{"p":"wasabiwarriors", "x":"-27.3860451","y":"153.1215553","n":"Wasabi Warriors","t":"2","c":"25","s":"3.0", "d":"0", "a":"67,71,15,79", "l":"Airport, Brisbane, Australia"}
-,{"p":"lagoons", "x":"-24.1961369","y":"151.8949128","n":"Lagoons 1770 Resort and Spa","t":"5","c":"121","s":"4.6", "d":"0", "a":"104,104,104,104", "l":"Agnes Water, Queensland, Australia"}
-,{"p":"1770hotel", "x":"-24.2229407","y":"151.8804586","n":"1770 Southern Cross Backpackers","t":"5","c":"26","s":"4.1", "d":"0", "a":"104,104,104,104", "l":"Agnes Water, Queensland, Australia"}
-,{"p":"getaway", "x":"-24.217025","y":"151.914584","n":"Getaway Garden Cafe","t":"0","c":"115","s":"4.5", "d":"0", "a":"7,11,100,125", "l":"Agnes Water, Queensland, Australia"}
+,{"p":"thevalley", "x":"-27.452379","y":"153.039292","n":"Ovolo The Valley - 5 Star Hotel","t":"5","c":"325","s":"4.4", "d":"0", "a":"104,104,104,104", "l":"Ann Street, Fortitude Valley QLD, Australia"}
+,{"p":"spoondelicafe", "x":"-27.4032246","y":"153.1092763","n":"Spoon Deli Cafe","t":"2","c":"19","s":"4.4", "d":"0", "a":"29,79,8,15", "l":"Airport Drive, Brisbane Airport QLD, Australia"}
+,{"p":"botanistkitchenbar", "x":"-27.4036899","y":"153.1096041","n":"The Botanist Kitchen and Bar","t":"2","c":"18","s":"2.9", "d":"0", "a":"29,79,8,15", "l":"Airport Drive, Brisbane Airport QLD, Australia"}
+,{"p":"burgerurge", "x":"-27.404534","y":"153.1098813","n":"Burger Urge DFO skygate","t":"1","c":"211","s":"3.7", "d":"0", "a":"7,15,99,65", "l":"Brisbane Airport QLD, Australia"}
+,{"p":"windmillbarbistro", "x":"-27.4038738","y":"153.1103544","n":"Windmill & Co - Bar & Bistro","t":"0","c":"61","s":"2.8", "d":"0", "a":"32,14,99,15", "l":"Brisbane Airport QLD, Australia"}
+,{"p":"redrooster", "x":"-27.4032945","y":"153.1107098","n":"Red Rooster","t":"0","c":"32","s":"2.7", "d":"0", "a":"70,71,99,7", "l":"Airport Drive, Eagle Farm QLD, Australia"}
+,{"p":"madmexfresh", "x":"-27.403388","y":"153.110521","n":"Mad Mex Fresh Mexican Grill","t":"0","c":"27","s":"3.5", "d":"0", "a":"128,129,130,29", "l":"Brisbane Airport QLD, Australia"}
+,{"p":"madmex", "x":"-27.3861781","y":"153.1193317","n":"Mad Mex","t":"0","c":"12","s":"3.1", "d":"0", "a":"128,129,156,157", "l":"Bribie Way, Brisbane Airport QLD, Australia"}
+,{"p":"sumosalad", "x":"-27.386266","y":"153.1196583","n":"SumoSalad","t":"1","c":"17","s":"2.9", "d":"0", "a":"15,8,135,142", "l":"Airport Drive, Brisbane Airport QLD, Australia"}
+,{"p":"giancarlo", "x":"-27.3861207","y":"153.1215657","n":"Giancarlo Coffee","t":"2","c":"28","s":"3.1", "d":"0", "a":"29,8,119,55", "l":"Bribie Way, Brisbane Airport QLD, Australia"}
+,{"p":"wasabiwarriors", "x":"-27.3860451","y":"153.1215553","n":"Wasabi Warriors - Sushi Restaurant","t":"2","c":"42","s":"3.0", "d":"0", "a":"67,71,15,79", "l":"Bribie Way, Brisbane Airport QLD, Australia"}
+,{"p":"lagoons", "x":"-24.1961369","y":"151.8949128","n":"Lagoons 1770 Resort & Spa","t":"5","c":"152","s":"4.6", "d":"0", "a":"104,104,104,104", "l":"Captain Cook Drive, Agnes Water QLD, Australia"}
+,{"p":"1770hotel", "x":"-24.2229407","y":"151.8804586","n":"1770 Southern Cross Backpackers - 3 Star","t":"5","c":"40","s":"4.1", "d":"0", "a":"104,104,104,104", "l":"Round Hill Road, Agnes Water QLD, Australia"}
+,{"p":"getaway", "x":"-24.217025","y":"151.914584","n":"Getaway Garden Cafe","t":"0","c":"171","s":"4.5", "d":"0", "a":"7,11,100,125", "l":"Bicentennial Drive, Agnes Water QLD, Australia"}
 ,{"p":"agnes", "x":"-24.2152877","y":"151.902547","n":"Agnes Water Tavern","t":"2","c":"79","s":"3.5", "d":"0", "a":"111,138,8,100", "l":"Agnes Water, Queensland, Australia"}
 ,{"p":"discovery", "x":"-24.2132828","y":"151.901788","n":"Cafe Discovery","t":"0","c":"43","s":"4.4", "d":"0", "a":"8,11,17,109", "l":"Agnes Water, Queensland, Australia"}
 ,{"p":"backpackers", "x":"-24.2110028","y":"151.902216","n":"Backpackers @ 1770","t":"5","c":"70","s":"4.4", "d":"0", "a":"104,104,104,104", "l":"Agnes Water, Queensland, Australia"}
