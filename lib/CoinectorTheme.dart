@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+
 
 /*class CoinectorTheme {
   const CoinectorTheme._(this.name, this.data);

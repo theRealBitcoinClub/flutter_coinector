@@ -1,17 +1,16 @@
+import 'dart:async' show Future;
+
+import 'package:dio/dio.dart';
 import 'package:endlisch/AssetLoader.dart';
 import 'package:endlisch/CardItemBuilder.dart';
 import 'package:endlisch/MyColors.dart';
-import 'package:endlisch/SnackBarPage.dart';
-import 'package:flutter/services.dart' show rootBundle;
-import 'dart:async' show Future;
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'ListModel.dart';
 import 'Merchant.dart';
 import 'SearchDemoSearchDelegate.dart';
 import 'Tags.dart';
-import 'dart:convert';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class AnimatedListSample extends StatefulWidget {
   @override
@@ -145,7 +144,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       response =
           await dio.get('https://realbitcoinclub.firebaseapp.com/places8.json');
   */
-    List<dynamic> placesList = [];
 
     //TODO add addresses to demonstrate payments/donations to coinspice & dashboost
 
@@ -153,16 +151,16 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       //TODO internationalize the app, translate the strings
       //TODO ask for phone number, map phone numbers to continents
       //TODO ask for location, if given load the continent last
-      placesList = await parseAssetUpdateListModel(
+      parseAssetUpdateListModel(
           filterWordIndex, locationFilter, 'assets/am.json','am', true);
-      placesList = await parseAssetUpdateListModel(
+      parseAssetUpdateListModel(
           filterWordIndex, locationFilter, 'assets/e.json','e', false);
-      placesList = await parseAssetUpdateListModel(
+      parseAssetUpdateListModel(
           filterWordIndex, locationFilter, 'assets/as.json','as', false);
-      placesList = await parseAssetUpdateListModel(
+      parseAssetUpdateListModel(
           filterWordIndex, locationFilter, 'assets/au.json','au', false);
     } else {
-      placesList = await parseAssetUpdateListModel(filterWordIndex,
+      parseAssetUpdateListModel(filterWordIndex,
           locationFilter, 'assets/' + fileName + '.json',fileName, true);
     }
 
@@ -707,7 +705,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   Row buildSearchHintRow(final String text) {
     return Row(children: <Widget>[
-      IconButton(
+      IconButton(onPressed: null,
         icon: Icon(Icons.search),
       ),
       Text(

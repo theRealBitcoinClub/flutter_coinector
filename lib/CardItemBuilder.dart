@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'Merchant.dart';
+
 import 'CardItem.dart';
 import 'ListModel.dart';
+import 'Merchant.dart';
 
 class CardItemBuilder {
   List<ListModel<Merchant>>  _lists;

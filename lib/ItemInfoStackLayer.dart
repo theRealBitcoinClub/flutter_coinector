@@ -1,9 +1,7 @@
-import 'package:endlisch/RatingWidgetBuilder.dart';
+import 'package:endlisch/Merchant.dart';
+import 'package:endlisch/Tags.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:endlisch/Merchant.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
-import 'package:endlisch/Tags.dart';
 
 class ItemInfoStackLayer extends StatelessWidget {
   const ItemInfoStackLayer({

@@ -1,6 +1,7 @@
+import 'dart:convert';
+
 import 'package:endlisch/Place.dart';
 import 'package:flutter/services.dart';
-import 'dart:convert';
 
 class AssetLoader {
   static Future<List<dynamic>> loadAndEncodeAsset(final String fileName) async {

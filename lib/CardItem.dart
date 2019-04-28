@@ -1,14 +1,15 @@
+import 'package:clipboard_manager/clipboard_manager.dart';
 import 'package:endlisch/AssetLoader.dart';
-import 'package:endlisch/Place.dart';
 import 'package:endlisch/MyColors.dart';
+import 'package:endlisch/Place.dart';
 import 'package:endlisch/RatingWidgetBuilder.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'Merchant.dart';
 import 'package:transparent_image/transparent_image.dart';
-import 'ItemInfoStackLayer.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:clipboard_manager/clipboard_manager.dart';
+
+import 'ItemInfoStackLayer.dart';
+import 'Merchant.dart';
 
 /// Displays its integer item as 'item N' on a Card whose color is based on
 /// the item's value. The text is displayed in bright green if selected is true.
