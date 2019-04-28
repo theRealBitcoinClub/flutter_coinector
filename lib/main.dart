@@ -152,16 +152,16 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       //TODO ask for phone number, map phone numbers to continents
       //TODO ask for location, if given load the continent last
       parseAssetUpdateListModel(
-          filterWordIndex, locationFilter, 'assets/am.json','am', true);
+          filterWordIndex, locationFilter, 'assets/am.json', 'am', true);
       parseAssetUpdateListModel(
-          filterWordIndex, locationFilter, 'assets/e.json','e', false);
+          filterWordIndex, locationFilter, 'assets/e.json', 'e', false);
       parseAssetUpdateListModel(
-          filterWordIndex, locationFilter, 'assets/as.json','as', false);
+          filterWordIndex, locationFilter, 'assets/as.json', 'as', false);
       parseAssetUpdateListModel(
-          filterWordIndex, locationFilter, 'assets/au.json','au', false);
+          filterWordIndex, locationFilter, 'assets/au.json', 'au', false);
     } else {
-      parseAssetUpdateListModel(filterWordIndex,
-          locationFilter, 'assets/' + fileName + '.json',fileName, true);
+      parseAssetUpdateListModel(filterWordIndex, locationFilter,
+          'assets/' + fileName + '.json', fileName, true);
     }
 
     //_filteredPages = _pagesTags;
@@ -169,8 +169,12 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     //RESPONSE.DATA.LENGTH
   }
 
-  Future<List<dynamic>> parseAssetUpdateListModel(int filterWordIndex,
-      String locationFilter, String assetUri, String serverId, bool clearListContent) async {
+  Future<List<dynamic>> parseAssetUpdateListModel(
+      int filterWordIndex,
+      String locationFilter,
+      String assetUri,
+      String serverId,
+      bool clearListContent) async {
     var placesList = await AssetLoader.loadAndEncodeAsset(assetUri);
     initTempListModel();
     for (int i = 0; i < placesList.length; i++) {
@@ -504,14 +508,14 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   List<Widget> buildAllTabContainer() {
     var builder = CardItemBuilder(_lists);
     return [
-      buildTabContainer(_listKeys[0], _lists[0], builder.buildItemRestaurant,
-          pages[0].title),
+      buildTabContainer(
+          _listKeys[0], _lists[0], builder.buildItemRestaurant, pages[0].title),
       buildTabContainer(
           _listKeys[1], _lists[1], builder.buildItemTogo, pages[1].title),
       buildTabContainer(
           _listKeys[2], _lists[2], builder.buildItemBar, pages[2].title),
-      buildTabContainer(_listKeys[3], _lists[3], builder.buildItemMarket,
-          pages[3].title),
+      buildTabContainer(
+          _listKeys[3], _lists[3], builder.buildItemMarket, pages[3].title),
       buildTabContainer(
           _listKeys[4], _lists[4], builder.buildItemShop, pages[4].title),
       buildTabContainer(
@@ -675,14 +679,20 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                         textScaleFactor: 1.5,
                       ),*/
                       buildSeparator(),
+                      buildSeparator(),
                       Text(
                         'There are no matches in this category.',
                         style: TextStyle(fontWeight: FontWeight.w400),
                       ),
                       buildSeparator(),
+                      buildSeparator(),
                       Row(
                         children: <Widget>[
-                          /*IconButton(icon: */Icon(Icons.arrow_upward),
+                          Padding(
+                            padding: EdgeInsets.all(10.0),
+                            child: /*IconButton(icon: */ Icon(
+                                Icons.arrow_upward),
+                          ),
                           const Text(
                             'Hit a colored icon to see matches.',
                             style: TextStyle(fontWeight: FontWeight.w300),
@@ -705,7 +715,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   Row buildSearchHintRow(final String text) {
     return Row(children: <Widget>[
-      IconButton(onPressed: null,
+      IconButton(
+        onPressed: null,
         icon: Icon(Icons.search),
       ),
       Text(

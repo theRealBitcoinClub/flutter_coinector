@@ -37,7 +37,7 @@ class SuggestionMatch {
         state: state,
         continent: continent,
         fileName: inputArray.length > 1 ? inputArray[1] : "",
-        type: inputArray.length > 1 ? inputArray[2] : "",
+        type: inputArray.length > 2 ? inputArray[2] : "",
         index: index,
         input: input);
   }

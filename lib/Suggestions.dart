@@ -6,7 +6,6 @@ class Suggestions {
   static final locations = const {
     //TODO continents show full list without filter
     //TODO update new locations which are in placesId, remove old locations
-    'Europe,e,co',
     'Germany - Europe,e,s',
     'Berlin - Germany - Europe,e,ci',
     'Spain - Europe,e-spa,s',
@@ -64,6 +63,7 @@ class Suggestions {
     'NB - Canada - America,am,s',
     'Saint Stephen - Canada - America,am,ci',
     'Toronto - Canada - America,am,ci',
+    'NH - New Hampshire - America,am,s',
     'New Hampshire - America,am,s',
     'Alstead - New Hampshire - America,am,ci',
     'Portsmouth - New Hampshire - America,am,ci',
@@ -85,7 +85,6 @@ class Suggestions {
     'Sheridan - Wyoming - America,am,ci',
     'Utah - America,am,s',
     'Salt Lake City - Utah - America,am,ci',
-    'Asia,as,co',
     'Indonesia - Asia,as,s',
     'Bali - Indonesia - Asia,as,ci',
     'Singapore - Malaysia - Asia,as,ci',
