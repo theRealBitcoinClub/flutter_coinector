@@ -67,7 +67,9 @@ class CardItem extends StatelessWidget {
   Stack buildContentStack(
       Color infoBoxBackgroundColor, TextStyle textStyle, TextStyle textStyle2) {
     var gifUrl = "https://realbitcoinclub-" +
-        merchant.serverId +
+        (merchant.serverId.contains('-')
+            ? merchant.serverId.split('-')[0]
+            : merchant.serverId) +
         ".firebaseapp.com/gif/" +
         merchant.id +
         ".gif";
@@ -146,7 +148,9 @@ class CardItem extends StatelessWidget {
               children: <Widget>[
                 buildIcon(Icons.payment, getToggleColor(merchant.isPayEnabled)),
                 buildSpacer(),
-                Text('PAY', style: TextStyle(color: getToggleColor(merchant.isPayEnabled)))
+                Text('PAY',
+                    style:
+                        TextStyle(color: getToggleColor(merchant.isPayEnabled)))
               ],
             ),
             onPressed: () {
@@ -156,11 +160,13 @@ class CardItem extends StatelessWidget {
           FlatButton(
             child: Column(
               children: <Widget>[
-                buildIcon(Icons.rate_review, getToggleColor(merchant.place != null)),
+                buildIcon(
+                    Icons.rate_review, getToggleColor(merchant.place != null)),
                 buildSpacer(),
-                const Text(
+                Text(
                   'REVIEW',
-                  style: const TextStyle(fontSize: 14),
+                  style:
+                      TextStyle(color: getToggleColor(merchant.place != null)),
                 )
               ],
             ),
@@ -175,11 +181,14 @@ class CardItem extends StatelessWidget {
           FlatButton(
             child: Column(
               children: <Widget>[
-                buildIcon(Icons.directions_run, getToggleColor(merchant.place != null)),
+                buildIcon(Icons.directions_run,
+                    getToggleColor(merchant.place != null)),
                 buildSpacer(),
-                const Text(
+                Text(
                   'VISIT',
-                  style: const TextStyle(fontSize: 14),
+                  style: TextStyle(
+                      fontSize: 14,
+                      color: getToggleColor(merchant.place != null)),
                 )
               ],
             ),
@@ -206,8 +215,7 @@ class CardItem extends StatelessWidget {
     }
   }
 
-  Color getToggleColor(isEnabled) =>
-      isEnabled ? Colors.white : Colors.white54;
+  Color getToggleColor(isEnabled) => isEnabled ? Colors.white : Colors.white54;
 
   Icon buildIcon(final icon, final color) => Icon(
         icon,
@@ -261,24 +269,24 @@ void showPlaceNotFoundOnGmaps(context) {
 } //TODO show deactivated REVIEW icon
 
 showPayDialog(BuildContext context) async {
-  /* if (bothReceivingAddresses.isEmpty) {
-    showMissingAddrDialog(context);
-  } else*/
   showDialog(
     context: context,
     builder: (BuildContext context) {
+      var isEmptyBCH = isAddressEmpty(getBCHAddress());
+      var isEmptyDASH = isAddressEmpty(getDASHAddress());
+
       return AlertDialog(
-        title: Text("Pay now"),
+        //title: Text("Pay now"),
         elevation: 10.0,
         titlePadding: EdgeInsets.fromLTRB(30.0, 25.0, 30.0, 10.0),
         contentPadding: EdgeInsets.fromLTRB(35.0, 20.0, 30.0, 15.0),
-        content: Text("Dash or Bitcoin Cash?"),
+        //content: Text("Dash or Bitcoin Cash?"),
         actions: [
           buildCloseDialogButton(context),
           FlatButton(
             shape: roundedRectangleBorder(),
             child: Text("DASH"),
-            color: Colors.blue,
+            color: isEmptyDASH ? Colors.blue.withOpacity(0.3) : Colors.blue,
             onPressed: () {
               closeChooseDialogAndShowAddressDialog(
                   context, buildAddressDetailDialogDASH);
@@ -286,7 +294,7 @@ showPayDialog(BuildContext context) async {
           ),
           FlatButton(
             shape: roundedRectangleBorder(),
-            color: Colors.green,
+            color: isEmptyBCH ? Colors.green.withOpacity(0.3) : Colors.green,
             child: Text("BCH"),
             onPressed: () {
               closeChooseDialogAndShowAddressDialog(
@@ -332,7 +340,7 @@ RoundedRectangleBorder roundedRectangleBorder() {
 }
 
 void closeChooseDialogAndShowAddressDialog(BuildContext context, method) {
-  Navigator.of(context).pop();
+  //Navigator.of(context).pop();
   showDialog(
     context: context,
     builder: method,
@@ -340,8 +348,8 @@ void closeChooseDialogAndShowAddressDialog(BuildContext context, method) {
 }
 
 Widget buildAddressDetailDialogDASH(BuildContext context) {
-  var data = bothReceivingAddresses.split(",")[1];
-  if (data == '-') {
+  var data = getDASHAddress();
+  if (isAddressEmpty(data)) {
     return AlertDialog(
       content: Text(
           "This merchant does not yet accept DASH payments, please pay with BCH or explain the benefits of accepting BCH to the merchant!"),
@@ -359,6 +367,8 @@ Widget buildAddressDetailDialogDASH(BuildContext context) {
         actions: [buildCloseDialogButton(context)]);
 }
 
+getDASHAddress() => bothReceivingAddresses.split(",")[1];
+
 FlatButton buildCloseDialogButton(BuildContext context) {
   return FlatButton(
     child: Row(
@@ -371,11 +381,11 @@ FlatButton buildCloseDialogButton(BuildContext context) {
 }
 
 Widget buildAddressDetailDialogBCH(BuildContext context) {
-  var data = bothReceivingAddresses.split(",")[0];
-  if (data == '-') {
+  var data = getBCHAddress();
+  if (isAddressEmpty(data)) {
     return AlertDialog(
       content: Text(
-          "This merchant does not accept BCH payments, please pay with DASH or explain the benefits of accepting DASH to the merchant!"),
+          "This merchant does not yet accept BCH payments, please pay with DASH or explain the benefits of accepting BCH to the merchant!"),
       actions: <Widget>[buildCloseDialogButton(context)],
     );
   } else
@@ -383,7 +393,7 @@ Widget buildAddressDetailDialogBCH(BuildContext context) {
       title: Text("BCH (touch address to pay)"),
       actions: [buildCloseDialogButton(context)],
       content: new InkWell(
-          child: new Text(data),
+          child: new Text(getBCHAddress()),
           onTap: () {
             copyAddressToClipAndShowDialog(data, context);
             //launch(data);
@@ -391,8 +401,12 @@ Widget buildAddressDetailDialogBCH(BuildContext context) {
     );
 }
 
+bool isAddressEmpty(data) => data == '-';
+
+getBCHAddress() => bothReceivingAddresses.split(",")[0];
+
 void copyAddressToClipAndShowDialog(String data, BuildContext context) {
-  Navigator.of(context).pop();
+  //Navigator.of(context).pop();
   ClipboardManager.copyToClipBoard(data).then((result) {
     showDialog(
         context: context,
