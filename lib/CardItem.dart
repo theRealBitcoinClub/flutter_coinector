@@ -286,12 +286,13 @@ void showPlaceNotFoundOnGmaps(context) {
         return AlertDialog(
           actions: [buildCloseDialogButton(ctx)],
           //TODO Optimize by offering a form to submit the data
-          title: Text("Missing Google Maps link!"),
+          title: Text("Missing Google Maps link!",style: TextStyle(color: Colors.white)),
           content: Text(
               "Help to grow adoption!\n\nSend the missing information to:\n\nbitcoinmap.cash@protonmail.com"),
         );
       });
 } //TODO Fix textoverflow
+//TODO remove DASH tag or return results
 
 showPayDialog(BuildContext context) async {
   showDialog(
@@ -341,7 +342,7 @@ void showMissingAddrDialog(BuildContext context) {
       builder: (BuildContext ctx) {
         return AlertDialog(
             actions: [buildCloseDialogButton(context)],
-            title: Text("Missing address"),
+            title: Text("Missing address",style: TextStyle(color: Colors.white)),
             content: new InkWell(
                 child: Text(
                     "This merchant has not yet provided any payment receiving address!\n\nExplain to the merchant the benefits of providing an address!\n\nTouch here to send an email to:\n\nbitcoinmap.cash@protonmail.com"),
@@ -382,7 +383,7 @@ Widget buildAddressDetailDialogDASH(BuildContext context) {
     );
   } else
     return AlertDialog(
-        title: Text("DASH (donate to dashboost.org)"),
+        title: Text("DASH (donate to dashboost.org)",style: TextStyle(color: Colors.white)),
         content: new InkWell(
             child: new Text(data),
             onTap: () {
@@ -415,7 +416,7 @@ Widget buildAddressDetailDialogBCH(BuildContext context) {
     );
   } else
     return AlertDialog(
-      title: Text("BCH (donate to coinspice.io)"),
+      title: Text("BCH (donate to coinspice.io)",style: TextStyle(color: Colors.white)),
       actions: [buildCloseDialogButton(context)],
       content: new InkWell(
           child: new Text(getBCHAddress()),
@@ -439,7 +440,7 @@ void copyAddressToClipAndShowDialog(String data, BuildContext context) {
           return AlertDialog(
             content: Text(
                 "Address was copied to clipboard!\n\nOpen your favorite Wallet to send a transaction.\n\nIf you have a compatible Wallet installed it should open now!\n\nClick here to install a compatible free Wallet."),
-            title: Text("Copied to clipboard!"),
+            title: Text("Copied to clipboard!",style: TextStyle(color: Colors.white)),
           );
         });
   });

@@ -355,7 +355,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
             backgroundColor: Colors.grey[900],
             content: Text(
                 "- Scroll & Tap a suggestion to filter the list.\n\n- Use the keyboard to search: \ne.g. -> 'Burger,Dessert,Beer'"),
-            title: Text("Search"),
+            title: Text("Search", style: TextStyle(color: Colors.white)),
             //TODO Add merchant names to searchindex
             actions: <Widget>[
               FlatButton(
@@ -395,7 +395,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         // Define the default TextTheme. Use this to specify the default
         // text styling for headlines, titles, bodies of text, and more.
         textTheme: TextTheme(
-          title: TextStyle(color:Colors.black),
+          title: TextStyle(color: Colors.black),
           headline: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
           body1: TextStyle(
               fontSize: 17.0,
