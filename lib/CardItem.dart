@@ -408,7 +408,7 @@ Widget buildAddressDetailDialogBCH(BuildContext context) {
   var data = getBCHAddress();
   if (isAddressEmpty(data)) {
     return AlertDialog(
-      content: Text(
+      content: Text( //TODO add tags for all locations
           "This merchant does not yet accept BCH payments, please pay with DASH or explain the benefits of accepting BCH to the merchant!"),
       actions: <Widget>[buildCloseDialogButton(context)],
     );

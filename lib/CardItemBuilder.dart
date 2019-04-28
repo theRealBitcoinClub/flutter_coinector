@@ -60,14 +60,10 @@ class CardItemBuilder {
     return _buildItem(index, animation, _lists[5]);
   }
 
-  Widget buildItemATM(
-      BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _lists[6]);
-  }
 
   Widget buildItemWellness(
       BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _lists[7]);
+    return _buildItem(index, animation, _lists[6]);
   }
 
   // Used to build an item after it has been removed from the list. This method is

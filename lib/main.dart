@@ -28,7 +28,7 @@ class _Page {
   final int typeIndex;
 }
 
-const List<_Page> _pagesTags = <_Page>[
+const List<_Page> pages = <_Page>[
   _Page(
       text: 'EAT',
       icon: Icons.restaurant,
@@ -65,21 +65,19 @@ const List<_Page> _pagesTags = <_Page>[
       title: 'HOTEL, B&B, FLAT',
       tabIndex: 5,
       typeIndex: 5),
-  _Page( //TODO remove category ATM
+  /*_Page( //TODO remove category ATM
       text: 'ATM',
       icon: Icons.atm,
       title: 'TELLER & TRADER',
       tabIndex: 6,
-      typeIndex: 99),
+      typeIndex: 99),*/
   _Page(
       text: 'SPA',
       icon: Icons.spa,
       title: 'WELLNESS & BEAUTY',
-      tabIndex: 7,
+      tabIndex: 6,
       typeIndex: 999),
 ];
-
-List<_Page> _filteredPages = _pagesTags;
 
 class _AnimatedListSampleState extends State<AnimatedListSample>
     with TickerProviderStateMixin {
@@ -279,19 +277,19 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       case 5:
         tempLists[5].insert(0, m2);
         break;
-      case 99:
+      case 999:
         tempLists[6].insert(0, m2);
         break;
-      case 999:
+      /*case 999:
         tempLists[7].insert(0, m2);
-        break;
+        break;*/
     }
   }
 
   void initListModelSeveralTimes(List lists) {
     lists.clear();
     _listKeys.clear();
-    for (int i = 0; i < _filteredPages.length + 1; i++) {
+    for (int i = 0; i < pages.length + 1; i++) {
       _listKeys.add(GlobalKey<AnimatedListState>());
       lists.add(ListModel<Merchant>(
         tabIndex: i,
@@ -334,7 +332,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   void initState() {
     super.initState();
     searchDelegate.buildHistory();
-    tabController = TabController(vsync: this, length: _filteredPages.length);
+    tabController = TabController(vsync: this, length: pages.length);
     //updateTitle();
     tabController.addListener(_handleTabSelection);
     initListModel();
@@ -371,7 +369,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   void updateTitle() {
     setState(() {
-      _title = _pagesTags[tabController.index].title;
+      _title = pages[tabController.index].title;
     });
   }
 
@@ -444,7 +442,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                       controller: tabController,
                       isScrollable: true,
                       indicator: getIndicator(),
-                      tabs: _filteredPages.map<Tab>((_Page page) {
+                      tabs: pages.map<Tab>((_Page page) {
                         return _lists[page.tabIndex].length > 0
                             ? Tab(
                                 icon: Icon(
@@ -509,21 +507,19 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     var builder = CardItemBuilder(_lists);
     return [
       buildTabContainer(_listKeys[0], _lists[0], builder.buildItemRestaurant,
-          _pagesTags[0].title),
+          pages[0].title),
       buildTabContainer(
-          _listKeys[1], _lists[1], builder.buildItemTogo, _pagesTags[1].title),
+          _listKeys[1], _lists[1], builder.buildItemTogo, pages[1].title),
       buildTabContainer(
-          _listKeys[2], _lists[2], builder.buildItemBar, _pagesTags[2].title),
+          _listKeys[2], _lists[2], builder.buildItemBar, pages[2].title),
       buildTabContainer(_listKeys[3], _lists[3], builder.buildItemMarket,
-          _pagesTags[3].title),
+          pages[3].title),
       buildTabContainer(
-          _listKeys[4], _lists[4], builder.buildItemShop, _pagesTags[4].title),
+          _listKeys[4], _lists[4], builder.buildItemShop, pages[4].title),
       buildTabContainer(
-          _listKeys[5], _lists[5], builder.buildItemHotel, _pagesTags[5].title),
+          _listKeys[5], _lists[5], builder.buildItemHotel, pages[5].title),
       buildTabContainer(
-          _listKeys[6], _lists[6], builder.buildItemATM, _pagesTags[6].title),
-      buildTabContainer(_listKeys[7], _lists[7], builder.buildItemWellness,
-          _pagesTags[7].title)
+          _listKeys[6], _lists[6], builder.buildItemWellness, pages[6].title),
     ];
   }
 
