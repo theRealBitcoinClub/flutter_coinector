@@ -35,21 +35,25 @@ class ItemInfoStackLayer extends StatelessWidget {
             const SizedBox(
               height: 5,
             ),
-            Text(item.location + "   ", style: textStyleSmall),
+            Text(
+              item.location,
+              maxLines: 1,
+              style: textStyleSmall,
+              overflow: TextOverflow.clip,
+            ),
             const SizedBox(
               height: 10,
             ),
             Row(
               //TODO make items fit on the card
-              children: <Widget>[
-                buildTagText(splittedtags)
-              ],
+              children: <Widget>[buildTagText(splittedtags)],
             ),
           ],
         ),
       ),
     );
   }
+
   Text buildTagText(List<String> splittedtags) {
     return Text(
         parseElementAt(splittedtags, 0) +
@@ -60,7 +64,6 @@ class ItemInfoStackLayer extends StatelessWidget {
         style: TextStyle(
             fontWeight: FontWeight.w300, color: Colors.white.withOpacity(0.8)));
   }
-
 
   String parseElementAt(splittedTags, int pos) {
     int tagIndex = int.parse(splittedTags.elementAt(pos));
