@@ -1,5 +1,7 @@
 //{"p":"trbc", "x":"41.406595", "y":"2.16655","n":"TRBC - The Real Bitcoin Club", "t":"99","c":"3","s":"5.0", "d":"3", "a":"0,1,2,34", "l":"Barcelona, Spain, Europe"}
 
+import 'package:endlisch/Place.dart';
+
 class Merchant {
   bool isPayEnabled = false;
   int index;
@@ -14,6 +16,7 @@ class Merchant {
   String tags;
   String location;
   String serverId;
+  Place place;
 
   Merchant(this.id, this.x, this.y, this.name, this.type, this.reviewCount,
       this.reviewStars, this.discount, this.tags, this.location);

@@ -181,6 +181,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       Merchant m2 = Merchant.fromJson(placesList.elementAt(i));
       m2.serverId = serverId;
       m2.isPayEnabled = await AssetLoader.loadReceivingAddress(m2.id) != null;
+      m2.place = await AssetLoader.loadPlace(m2.id);
 
       _insertIntoTempList(m2, filterWordIndex, locationFilter);
     }

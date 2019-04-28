@@ -144,9 +144,9 @@ class CardItem extends StatelessWidget {
           FlatButton(
             child: Column(
               children: <Widget>[
-                buildIcon(Icons.payment, getToggleColor()),
+                buildIcon(Icons.payment, getToggleColor(merchant.isPayEnabled)),
                 buildSpacer(),
-                Text('PAY', style: TextStyle(color: getToggleColor()))
+                Text('PAY', style: TextStyle(color: getToggleColor(merchant.isPayEnabled)))
               ],
             ),
             onPressed: () {
@@ -156,7 +156,7 @@ class CardItem extends StatelessWidget {
           FlatButton(
             child: Column(
               children: <Widget>[
-                buildIcon(Icons.rate_review, Colors.white),
+                buildIcon(Icons.rate_review, getToggleColor(merchant.place != null)),
                 buildSpacer(),
                 const Text(
                   'REVIEW',
@@ -165,13 +165,17 @@ class CardItem extends StatelessWidget {
               ],
             ),
             onPressed: () {
-              launchReviewUrl(context, merchant.id);
+              if (merchant.place == null) {
+                showPlaceNotFoundOnGmaps(context);
+                return;
+              }
+              launchReviewUrl(context, merchant.place);
             },
           ),
           FlatButton(
             child: Column(
               children: <Widget>[
-                buildIcon(Icons.directions_run, Colors.white),
+                buildIcon(Icons.directions_run, getToggleColor(merchant.place != null)),
                 buildSpacer(),
                 const Text(
                   'VISIT',
@@ -180,7 +184,11 @@ class CardItem extends StatelessWidget {
               ],
             ),
             onPressed: () {
-              launchVisitUrl(context, merchant.id);
+              if (merchant.place == null) {
+                showPlaceNotFoundOnGmaps(context);
+                return;
+              }
+              launchVisitUrl(context, merchant.place);
             },
           ),
         ],
@@ -198,8 +206,8 @@ class CardItem extends StatelessWidget {
     }
   }
 
-  Color getToggleColor() =>
-      merchant.isPayEnabled ? Colors.white : Colors.white54;
+  Color getToggleColor(isEnabled) =>
+      isEnabled ? Colors.white : Colors.white54;
 
   Icon buildIcon(final icon, final color) => Icon(
         icon,
@@ -217,13 +225,7 @@ class CardItem extends StatelessWidget {
 var bothReceivingAddresses;
 
 //TODO setup various servers to host images, for each dataset one
-launchVisitUrl(context, id) async {
-  Place place = await AssetLoader.loadPlace(id);
-  if (isPlaceMissing(place)) {
-    showPlaceNotFoundOnGmaps(context);
-    return;
-  }
-
+launchVisitUrl(context, place) async {
   var url = 'https://goo.gl/maps/' + place.shareId;
   if (await canLaunch(url)) {
     await launch(url);
@@ -233,13 +235,7 @@ launchVisitUrl(context, id) async {
   }
 }
 
-launchReviewUrl(context, id) async {
-  Place place = await AssetLoader.loadPlace(id);
-  if (isPlaceMissing(place)) {
-    showPlaceNotFoundOnGmaps(context);
-    return;
-  }
-  //String place =  await AssetLoader.loadPlacesId(id);
+launchReviewUrl(context, place) async {
   var url =
       'https://search.google.com/local/writereview?placeid=' + place.placesId;
   if (await canLaunch(url)) {

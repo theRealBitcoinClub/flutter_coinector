@@ -48,7 +48,8 @@ class AssetLoader {
       var itemId = item['p'];
       if (itemId == id) {
         result = Place.fromJson(item);
-        return;
+
+        return result.placesId;
       }
     });
     return result;
