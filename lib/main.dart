@@ -12,7 +12,7 @@ import 'ListModel.dart';
 import 'Merchant.dart';
 import 'SearchDemoSearchDelegate.dart';
 import 'Tags.dart';
-import 'package:flutter_crashlytics/flutter_crashlytics.dart';
+//import 'package:flutter_crashlytics/flutter_crashlytics.dart';
 //import 'package:permission_handler/permission_handler.dart';
 
 class AnimatedListSample extends StatefulWidget {
