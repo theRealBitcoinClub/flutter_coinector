@@ -20,7 +20,7 @@ dependencies:
   permission_handler: '^3.0.0'
   #flutter_advanced_networkimage: any
   #launch_review: 2.0.0
-  flutter_crashlytics: 1.0.0
+  #flutter_crashlytics: 1.0.0
   clipboard_manager: ^0.0.4
   #flutter_typeahead: ^1.4.0
   shared_preferences: ^0.5.2
