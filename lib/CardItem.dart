@@ -3,11 +3,10 @@ import 'package:coinector/AssetLoader.dart';
 import 'package:coinector/MyColors.dart';
 import 'package:coinector/Place.dart';
 import 'package:coinector/RatingWidgetBuilder.dart';
+import 'package:coinector/UrlLauncher.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
-import 'package:url_launcher/url_launcher.dart';
-
 import 'ItemInfoStackLayer.dart';
 import 'Merchant.dart';
 
@@ -151,8 +150,7 @@ class CardItem extends StatelessWidget {
                 handleReviewClick(context, merchant);
               }, //TODO Navigate to give a rating
               child:*/
-          Row(
-              children: <Widget>[
+          Row(children: <Widget>[
             RatingWidgetBuilder.buildRatingWidgetIfReviewsAvailable(
                 merchant, Theme.of(context).textTheme.body2),
             SizedBox(
@@ -169,64 +167,60 @@ class CardItem extends StatelessWidget {
 
   FlatButton buildFlatButtonVisit(BuildContext context) {
     return FlatButton(
-          child: Column(
-            children: <Widget>[
-              buildIcon(Icons.directions_run,
-                  getToggleColor(merchant.place != null)),
-              buildSpacer(),
-              Text(
-                'VISIT',
-                style: TextStyle(
-                    fontSize: 14,
-                    color: getToggleColor(merchant.place != null)),
-              )
-            ],
-          ),
-          onPressed: () {
-            if (merchant.place == null) {
-              showPlaceNotFoundOnGmaps(context);
-              return;
-            }
-            launchVisitUrl(context, merchant.place);
-          },
-        );
+      child: Column(
+        children: <Widget>[
+          buildIcon(
+              Icons.directions_run, getToggleColor(merchant.place != null)),
+          buildSpacer(),
+          Text(
+            'VISIT',
+            style: TextStyle(
+                fontSize: 14, color: getToggleColor(merchant.place != null)),
+          )
+        ],
+      ),
+      onPressed: () {
+        if (merchant.place == null) {
+          showPlaceNotFoundOnGmaps(context);
+          return;
+        }
+        UrlLauncher.launchVisitUrl(context, merchant.place);
+      },
+    );
   }
 
   FlatButton buildFlatButtonPay(BuildContext context) {
     return FlatButton(
-          child: Column(
-            children: <Widget>[
-              buildIcon(Icons.payment, getToggleColor(merchant.isPayEnabled)),
-              buildSpacer(),
-              Text('PAY',
-                  style:
-                      TextStyle(color: getToggleColor(merchant.isPayEnabled)))
-            ],
-          ),
-          onPressed: () {
-            handlePayButton(context);
-          },
-        );
+      child: Column(
+        children: <Widget>[
+          buildIcon(Icons.payment, getToggleColor(merchant.isPayEnabled)),
+          buildSpacer(),
+          Text('PAY',
+              style: TextStyle(color: getToggleColor(merchant.isPayEnabled)))
+        ],
+      ),
+      onPressed: () {
+        handlePayButton(context);
+      },
+    );
   }
 
   FlatButton buildFlatButtonReview(BuildContext context) {
     return FlatButton(
-          child: Column(
-            children: <Widget>[
-              buildIcon(
-                  Icons.rate_review, getToggleColor(merchant.place != null)),
-              buildSpacer(),
-              Text(
-                'REVIEW',
-                style:
-                    TextStyle(color: getToggleColor(merchant.place != null)),
-              )
-            ],
-          ),
-          onPressed: () {
-            handleReviewClick(context, merchant);
-          },
-        );
+      child: Column(
+        children: <Widget>[
+          buildIcon(Icons.rate_review, getToggleColor(merchant.place != null)),
+          buildSpacer(),
+          Text(
+            'REVIEW',
+            style: TextStyle(color: getToggleColor(merchant.place != null)),
+          )
+        ],
+      ),
+      onPressed: () {
+        handleReviewClick(context, merchant);
+      },
+    );
   }
 
   Future handlePayButton(BuildContext context) async {
@@ -256,27 +250,6 @@ class CardItem extends StatelessWidget {
 
 var bothReceivingAddresses;
 
-//TODO setup various servers to host images, for each dataset one
-launchVisitUrl(context, place) async {
-  var url = 'https://goo.gl/maps/' + place.shareId;
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    //TODO show a message to the user, his internet connection might be off
-    throw 'Could not launch $url';
-  }
-}
-
-launchReviewUrl(context, place) async {
-  var url =
-      'https://search.google.com/local/writereview?placeid=' + place.placesId;
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Could not launch $url';
-  }
-}
-
 bool isPlaceMissing(Place place) => place == null || place.placesId.isEmpty;
 
 void showPlaceNotFoundOnGmaps(context) {
@@ -286,7 +259,8 @@ void showPlaceNotFoundOnGmaps(context) {
         return AlertDialog(
           actions: [buildCloseDialogButton(ctx)],
           //TODO Optimize by offering a form to submit the data
-          title: Text("Missing Google Maps link!",style: TextStyle(color: Colors.white)),
+          title: Text("Missing Google Maps link!",
+              style: TextStyle(color: Colors.white)),
           content: Text(
               "Help to grow adoption!\n\nSend the missing information to:\n\nbitcoinmap.cash@protonmail.com"),
         );
@@ -342,19 +316,21 @@ void showMissingAddrDialog(BuildContext context) {
       builder: (BuildContext ctx) {
         return AlertDialog(
             actions: [buildCloseDialogButton(context)],
-            title: Text("Missing address",style: TextStyle(color: Colors.white)),
+            title:
+                Text("Missing address", style: TextStyle(color: Colors.white)),
             content: new InkWell(
                 child: Text(
                     "This merchant has not yet provided any payment receiving address!\n\nExplain to the merchant the benefits of providing an address!\n\nTouch here to send an email to:\n\nbitcoinmap.cash@protonmail.com"),
                 onTap: () async {
-                  var urlString =
-                      "mailTo:bitcoinmap.cash@protonmail.com?subject=Coinecccctorrrrr";
-                  var hasEmailClient = await canLaunch(urlString);
-                  if (hasEmailClient) {
-                    await launch(urlString);
-                  } else {
+                  await UrlLauncher.launchEmailClient(() {
+                    showAboutDialog(
+                        context: context,
+                        applicationName: "Bla",
+                        applicationVersion: "1.1.0",
+                        applicationIcon: Icon(Icons.font_download),
+                        children: [Text("bitcoinmap.cash@protonmail.com")]);
                     //TODO show dialog that there was not found any supported email client and forward the user to a sign up form
-                  }
+                  });
                 }));
       });
 }
@@ -383,7 +359,8 @@ Widget buildAddressDetailDialogDASH(BuildContext context) {
     );
   } else
     return AlertDialog(
-        title: Text("DASH (donate to dashboost.org)",style: TextStyle(color: Colors.white)),
+        title: Text("DASH (donate to dashboost.org)",
+            style: TextStyle(color: Colors.white)),
         content: new InkWell(
             child: new Text(data),
             onTap: () {
@@ -410,13 +387,14 @@ Widget buildAddressDetailDialogBCH(BuildContext context) {
   var data = getBCHAddress();
   if (isAddressEmpty(data)) {
     return AlertDialog(
-      content: Text( //TODO add tags for all locations
+      content: Text(//TODO add tags for all locations
           "This merchant does not yet accept BCH payments, please pay with DASH or explain the benefits of accepting BCH to the merchant!"),
       actions: <Widget>[buildCloseDialogButton(context)],
     );
   } else
     return AlertDialog(
-      title: Text("BCH (donate to coinspice.io)",style: TextStyle(color: Colors.white)),
+      title: Text("BCH (donate to coinspice.io)",
+          style: TextStyle(color: Colors.white)),
       actions: [buildCloseDialogButton(context)],
       content: new InkWell(
           child: new Text(getBCHAddress()),
@@ -440,7 +418,8 @@ void copyAddressToClipAndShowDialog(String data, BuildContext context) {
           return AlertDialog(
             content: Text(
                 "Address was copied to clipboard!\n\nOpen your favorite Wallet to send a transaction.\n\nIf you have a compatible Wallet installed it should open now!\n\nClick here to install a compatible free Wallet."),
-            title: Text("Copied to clipboard!",style: TextStyle(color: Colors.white)),
+            title: Text("Copied to clipboard!",
+                style: TextStyle(color: Colors.white)),
           );
         });
   });
@@ -451,5 +430,5 @@ void handleReviewClick(context, merchant) async {
     showPlaceNotFoundOnGmaps(context);
     return;
   }
-  launchReviewUrl(context, merchant.place);
+  UrlLauncher.launchReviewUrl(context, merchant.place);
 }

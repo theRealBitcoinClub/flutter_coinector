@@ -1,6 +1,7 @@
 import 'dart:async' show Future;
 
-import 'package:dio/dio.dart';
+import 'package:coinector/UrlLauncher.dart';
+//import 'package:dio/dio.dart';
 import 'package:coinector/AssetLoader.dart';
 import 'package:coinector/CardItemBuilder.dart';
 import 'package:coinector/MyColors.dart';
@@ -86,11 +87,11 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   TabController tabController;
   bool _customIndicator = false;
   List<ListModel<Merchant>> _lists = [];
-  final dio = new Dio(); // for http requests
+  //final dio = new Dio(); // for http requests
   List<Merchant> names = new List<Merchant>(); // names we get from API
   List<ListModel<Merchant>> tempLists = [];
   List<ListModel<Merchant>> unfilteredLists = [];
-  Response response;
+//  Response response;
   String _title = "Coinector";
   bool isUnfilteredList = false;
   bool hasHitSearch;
@@ -151,8 +152,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       //TODO internationalize the app, translate the strings
       //TODO ask for phone number, map phone numbers to continents
       //TODO ask for location, if given load the continent last
+      initListModel();
       parseAssetUpdateListModel(
-          filterWordIndex, locationFilter, 'assets/am.json', 'am', true);
+          filterWordIndex, locationFilter, 'assets/am.json', 'am', false);
       parseAssetUpdateListModel(
           filterWordIndex, locationFilter, 'assets/e.json', 'e', false);
       parseAssetUpdateListModel(
@@ -182,6 +184,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       m2.serverId = serverId;
       m2.isPayEnabled = await AssetLoader.loadReceivingAddress(m2.id) != null;
       m2.place = await AssetLoader.loadPlace(m2.id);
+      //TODO can i do setState here without the await to update lazy?
 
       _insertIntoTempList(m2, filterWordIndex, locationFilter);
     }
@@ -338,7 +341,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     //updateTitle();
     tabController.addListener(_handleTabSelection);
     initListModel();
-    loadAssets(-1, null, null);
+    //loadAssets(-1, null, null);
     //initBlinkAnimation();
     if (hasHitSearch == null || !hasHitSearch) {
       initHasHitSearch().then((hasHit) {
@@ -474,6 +477,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                       }).toList(),
                     ),
                     actions: <Widget>[
+                      buildIconButtonMap(context),
                       buildIconButtonSearch(context),
                       //TODO build profile and settings page
                       /*IconButton(
@@ -484,7 +488,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                     ],
                     title: Padding(
                         padding: EdgeInsets.all(5.0),
-                        child: AnimatedSwitcher(
+                        child: AnimatedSwitcher( //TODO fix animation, how to switch animted with a fade transition?
                             duration: Duration(milliseconds: 500),
                             child: Text(
                               _title,
@@ -542,6 +546,12 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   Future<bool> persistHasHitSearch() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.setBool(sharedPrefKeyHasHitSearch, true);
+  }
+
+  Widget buildIconButtonMap(BuildContext ctx) {
+    return IconButton(icon: Icon(Icons.map), onPressed: () {
+      UrlLauncher.launchMapInPlayStoreFallbackToBrowser();
+    });
   }
 
   Widget buildIconButtonSearch(BuildContext context) {
