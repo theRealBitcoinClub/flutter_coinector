@@ -12,6 +12,7 @@ import 'ListModel.dart';
 import 'Merchant.dart';
 import 'SearchDemoSearchDelegate.dart';
 import 'Tags.dart';
+//import 'package:permission_handler/permission_handler.dart';
 
 class AnimatedListSample extends StatefulWidget {
   @override
@@ -336,6 +337,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   @override
   void initState() {
     super.initState();
+
+    //Map<PermissionGroup, PermissionStatus> permissions = await PermissionHandler().requestPermissions([PermissionGroup.locationWhenInUse]).then(onValue);
+
     searchDelegate.buildHistory();
     tabController = TabController(vsync: this, length: pages.length);
     //updateTitle();

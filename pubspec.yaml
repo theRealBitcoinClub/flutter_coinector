@@ -17,6 +17,8 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  permission_handler: '^3.0.0'
+  #flutter_advanced_networkimage: any
   #launch_review: 2.0.0
   clipboard_manager: ^0.0.4
   #flutter_typeahead: ^1.4.0

@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'ItemInfoStackLayer.dart';
 import 'Merchant.dart';
+//import 'package:flutter_advanced_networkimage/provider.dart';
 
 /// Displays its integer item as 'item N' on a Card whose color is based on
 /// the item's value. The text is displayed in bright green if selected is true.
@@ -67,7 +68,7 @@ class CardItem extends StatelessWidget {
 
   Stack buildContentStack(
       Color infoBoxBackgroundColor, TextStyle textStyle, TextStyle textStyle2) {
-    var gifUrl = "https://realbitcoinclub-" +
+    var gifUrl = "http://realbitcoinclub-" +
         (merchant.serverId.contains('-')
             ? merchant.serverId.split('-')[0]
             : merchant.serverId) +
@@ -101,9 +102,20 @@ class CardItem extends StatelessWidget {
     );
   }
 
-  loadImage(String gifUrl) {
+  Widget loadImage(String gifUrl) {
     var img;
     try {
+      /*img = Image(
+        image: AdvancedNetworkImage(
+          gifUrl,
+          //TODO is header necessary? header: "",
+          header:  {'':''},
+          fallbackAssetImage: "assets/placeholder640x480.png",
+          useDiskCache: true,
+          cacheRule: CacheRule(maxAge: const Duration(days: 7)),
+        ),
+        fit: BoxFit.cover,
+      );*/
       img = FadeInImage.memoryNetwork(
         fadeInCurve: Curves.decelerate,
         fit: BoxFit.contain,
@@ -115,11 +127,15 @@ class CardItem extends StatelessWidget {
         alignment: Alignment.bottomCenter,
       );
     } catch (e) {
-      img = FadeInImage.assetNetwork(
-          placeholder: "assets/placeholder640x480.png",
-          image: "assets/placeholder640x480.png");
+      onLoadImageFailed(img);
     }
     return img;
+  }
+
+  void onLoadImageFailed(img) {
+    img = FadeInImage.assetNetwork(
+        placeholder: "assets/placeholder640x480.png",
+        image: "assets/placeholder640x480.png");
   }
 
   Container buildGradientContainer(Color infoBoxBackgroundColor) {
