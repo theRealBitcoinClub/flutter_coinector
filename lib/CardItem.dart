@@ -75,26 +75,7 @@ class CardItem extends StatelessWidget {
         merchant.id +
         ".gif";
 
-    var img;
-
-    //try {
-    img = FadeInImage.memoryNetwork(
-      //TODO add sexy fadeinCurvee
-      fit: BoxFit.contain,
-      fadeInDuration: Duration(milliseconds: 300),
-      placeholder: kTransparentImage,
-      //TODO load images from splitted servers
-      //TODO add images, add placeholder for currently missing images
-      //TODO add placeholder image with first frame of animation
-      //TODO offer low data version which only shows one image and loads more images on tap of carditem
-      image: gifUrl,
-      height: 320,
-      alignment: Alignment.bottomCenter,
-    );
-    //} catch (e) {
-    //TODO add fallback if image can not be loaded or internet connection is not available
-    //  img = Image.asset("assets/placeholder640x480.png");
-    //}
+    var img = loadImage(gifUrl);
 
     return Stack(
       children: <Widget>[
@@ -118,6 +99,27 @@ class CardItem extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  loadImage(String gifUrl) {
+    var img;
+    try {
+      img = FadeInImage.memoryNetwork(
+        fadeInCurve: Curves.decelerate,
+        fit: BoxFit.contain,
+        fadeInDuration: Duration(milliseconds: 500),
+        placeholder: kTransparentImage,
+        //TODO offer low data version which only shows one image and loads more images on tap of carditem
+        image: gifUrl,
+        height: 320,
+        alignment: Alignment.bottomCenter,
+      );
+    } catch (e) {
+      img = FadeInImage.assetNetwork(
+          placeholder: "assets/placeholder640x480.png",
+          image: "assets/placeholder640x480.png");
+    }
+    return img;
   }
 
   Container buildGradientContainer(Color infoBoxBackgroundColor) {

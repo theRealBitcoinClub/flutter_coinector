@@ -217,22 +217,18 @@ class Tags {
     'Free and Sweet',
     'Obrador',
     'Dulce',
-
     'La Pizza',
     'Candela Canela - Sweet Desserts',
-
     'Chatelet',
     'Cocktail',
     'MIT K',
     'Upcycling',
-
     'Bags',
     'Molsa L\'Estel',
     'Supermercado',
     'Ecologico',
     'King Kaya',
     'VeGala Vegan Beauty',
-
     'Perruqueria Akash',
     'Akash',
     'Sincronia Yoga',
