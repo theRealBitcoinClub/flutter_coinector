@@ -11,13 +11,14 @@ description: Coinnect the world.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.0+1
+version: 1.2.0+11
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
-  permission_handler: '^3.0.0'
+  permission_handler: ^3.0.1
+  #permission: ^0.1.1
   #flutter_advanced_networkimage: any
   #launch_review: 2.0.0
   #flutter_crashlytics: 1.0.0
@@ -28,7 +29,7 @@ dependencies:
   transparent_image: ^1.0.0
   smooth_star_rating: ^1.0.2
   url_launcher: ^5.0.2
-  #geolocator: ^3.0.1
+  #geolocator: ^4.0.0
   flutter:
     sdk: flutter
 

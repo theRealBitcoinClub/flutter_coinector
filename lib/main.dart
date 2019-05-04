@@ -13,7 +13,8 @@ import 'Merchant.dart';
 import 'SearchDemoSearchDelegate.dart';
 import 'Tags.dart';
 //import 'package:flutter_crashlytics/flutter_crashlytics.dart';
-//import 'package:permission_handler/permission_handler.dart';
+import 'package:permission_handler/permission_handler.dart';
+//import 'package:permission/permission.dart';
 
 class AnimatedListSample extends StatefulWidget {
   @override
@@ -339,8 +340,13 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   void initState() {
     super.initState();
 
-    //Map<PermissionGroup, PermissionStatus> permissions = await PermissionHandler().requestPermissions([PermissionGroup.locationWhenInUse]).then(onValue);
+    //TODO show popup ask the user if he wants to see the distance of each place to his current position
+   /*PermissionHandler()
+        .requestPermissions([PermissionGroup.locationWhenInUse]).then(
+            (Map<PermissionGroup, PermissionStatus> p) {
 
+            });
+*/
     searchDelegate.buildHistory();
     tabController = TabController(vsync: this, length: pages.length);
     //updateTitle();
@@ -493,7 +499,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                     ],
                     title: Padding(
                         padding: EdgeInsets.all(5.0),
-                        child: AnimatedSwitcher( //TODO fix animation, how to switch animted with a fade transition?
+                        child: AnimatedSwitcher(
+                            //TODO fix animation, how to switch animted with a fade transition?
                             duration: Duration(milliseconds: 500),
                             child: Text(
                               _title,
@@ -554,9 +561,11 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   Widget buildIconButtonMap(BuildContext ctx) {
-    return IconButton(icon: Icon(Icons.map), onPressed: () {
-      UrlLauncher.launchMapInPlayStoreFallbackToBrowser();
-    });
+    return IconButton(
+        icon: Icon(Icons.map),
+        onPressed: () {
+          UrlLauncher.launchMapInPlayStoreFallbackToBrowser();
+        });
   }
 
   Widget buildIconButtonSearch(BuildContext context) {

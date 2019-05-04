@@ -175,7 +175,7 @@ class CardItem extends StatelessWidget {
               width: 20,
             )
           ]),
-          buildFlatButtonPay(context),
+          //buildFlatButtonPay(context),
           buildFlatButtonReview(context),
           buildFlatButtonVisit(context),
         ],
@@ -338,14 +338,15 @@ void showMissingAddrDialog(BuildContext context) {
                 Text("Missing address", style: TextStyle(color: Colors.white)),
             content: new InkWell(
                 child: Text(
-                    "This merchant has not yet provided any payment receiving address!\n\nExplain to the merchant the benefits of providing an address!\n\nTouch here to send an email to:\n\nbitcoinmap.cash@protonmail.com"),
+                    "This merchant has not yet provided any payment receiving address!\n\nExplain to the merchant the benefits of providing an address and touch here to send an email to:\n\nbitcoinmap.cash@protonmail.com"),
                 onTap: () async {
-                  await UrlLauncher.launchEmailClient(() {
+                  copyAddressToClipAndShowDialog("bitcoinmap.cash@protonmail.com", context);
+                  UrlLauncher.launchEmailClient(() {
                     showAboutDialog(
                         context: context,
-                        applicationName: "Bla",
-                        applicationVersion: "1.1.0",
-                        applicationIcon: Icon(Icons.font_download),
+                        applicationName: "Coinector",
+                        applicationVersion: "v1.2.0",
+                        applicationIcon: Image.asset("assets/placeholder640x480.png"),
                         children: [Text("bitcoinmap.cash@protonmail.com")]);
                     //TODO show dialog that there was not found any supported email client and forward the user to a sign up form
                   });
