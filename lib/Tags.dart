@@ -138,7 +138,6 @@ class Tags {
     'DUCATUS CAFE Bali',
     'Ducatus Cafe Singapore',
     'BUNK 5021 HOSTEL',
-
     'Pattaya Beer Garden',
     'Garden',
     'Cocotte Soi',
@@ -151,7 +150,6 @@ class Tags {
     'Spawn Point Small Bar',
     'Small',
     'La Stazione Bakery & Cafe',
-
     'Port Stephens Motel',
     'Motel',
     'Nutrient Depot',
@@ -164,7 +162,6 @@ class Tags {
     'New York',
     'Wood',
     'Nom Nom Korean Eatery',
-
     'Eatery',
     '5 Dogs',
 

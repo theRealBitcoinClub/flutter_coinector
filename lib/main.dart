@@ -97,7 +97,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 //  Response response;
   String _title = "Coinector";
   bool isUnfilteredList = false;
-  bool hasHitSearch;
+  bool
+      hasHitSearch; //TODO count user activity by how often he hits search, how much he interacts with the app, reward him for that with badges
   var sharedPrefKeyHasHitSearch = "sharedPrefKeyHasHitSearch";
   String _searchTerm;
 
@@ -354,7 +355,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     initListModel();
     //loadAssets(-1, null, null);
     //initBlinkAnimation();
-    if (hasHitSearch == null || !hasHitSearch) {
+    if (hasNotHitSearch()) {
       initHasHitSearch().then((hasHit) {
         if (!hasHit) initBlinkAnimation();
       });
@@ -368,8 +369,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           return AlertDialog(
             backgroundColor: Colors.grey[900],
             content: Text(
-                "- Scroll & Tap a suggestion to filter the list.\n\n- Use the keyboard to search: \ne.g. -> 'Burger,Dessert,Beer'"),
-            title: Text("Search", style: TextStyle(color: Colors.white)),
+                "Search your favorite food:\n\n  🍔 Burger     🍰 Dessert\n\n  🥗 Salad      🐮 Vegan\n\n  🇮🇹 Italian      🍕 Pizza"),
+            title:
+                Text("Hint of the day", style: TextStyle(color: Colors.white)),
             //TODO Add merchant names to searchindex
             actions: <Widget>[
               FlatButton(
@@ -627,7 +629,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void handleSearchButtonAnimationAndPersistHit() async {
-    if (hasHitSearch == null || !hasHitSearch) {
+    if (hasNotHitSearch()) {
       if (searchIconBlinkAnimationController != null) {
         setState(() {
           searchIconBlinkAnimationController.reset();
@@ -643,6 +645,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       //initHasHitSearch();
     }
   }
+
+  bool hasNotHitSearch() => hasHitSearch == null || !hasHitSearch;
 
   void filterListUpdateTitle(String selected) {
     var selectedArray = selected.split(",");
@@ -695,7 +699,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                         ),
                         Padding(
                           padding: EdgeInsets.only(left: 30.0),
-                          child: buildSearchHintRow('Touch the search button'),
+                          child: buildSearchHintRow('SEARCH'),
                         )
                       ])
                 : Column(
