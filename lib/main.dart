@@ -165,8 +165,12 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       parseAssetUpdateListModel(
           filterWordIndex, locationFilter, 'assets/au.json', 'au', true);
     } else {
-      parseAssetUpdateListModel(filterWordIndex, locationFilter,
-          'assets/' + fileName + '.json', fileName, true);
+      parseAssetUpdateListModel(
+          filterWordIndex,
+          locationFilter,
+          'assets/' + fileName + '.json',
+          fileName,
+          true); //TODO refactor remove that parameter
     }
 
     //_filteredPages = _pagesTags;
@@ -197,43 +201,45 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
     if (unfilteredLists.length == 0) initUnfilteredLists();
 
-    if (clearListContent)
-      updateListModel(tempLists);
-    else
+    //  if (clearListContent)
+    updateListModel(tempLists);
+    /*else
       addToListModel(tempLists);
-
+*/
     return placesList;
   }
 
-  void updateList(List destination, List tmpList, bool clearOldContent) {
-    if (clearOldContent) destination.clear();
+  void updateList(List destination, List tmpList) {
+    //if (clearOldContent)
+    destination.clear();
     for (int i = 0; i < tmpList.length; i++) {
       ListModel<Merchant> currentTmpList = tmpList[i];
-      if (clearOldContent) {
-        destination.add(currentTmpList);
-      } else {
+      //if (clearOldContent) {
+      destination.add(currentTmpList);
+      /*} else {
         ListModel<Merchant> currentList = destination[i];
         for (int x = 0; x < currentTmpList.length; x++) {
           currentList.insert(0, currentTmpList[x]);
         }
-      }
+      }*/
     }
   }
 
+/*
   void addToListModel(List<ListModel<Merchant>> tmpList) {
     setState(() {
       updateList(_lists, tmpList, false);
     });
   }
-
+*/
   void updateListModel(List<ListModel<Merchant>> tmpList) {
     setState(() {
-      updateList(_lists, tmpList, true);
+      updateList(_lists, tmpList);
     });
   }
 
   void initUnfilteredLists() {
-    updateList(unfilteredLists, tempLists, true);
+    updateList(unfilteredLists, tempLists);
   }
 
   bool _containsFilteredTag(Merchant m, int filterWordIndex) {
@@ -587,7 +593,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   IconButton buildIconButtonSearchContainer(BuildContext context) {
     return IconButton(
       icon: AnimatedIcon(
-          color: hasHitSearch != null && !hasHitSearch //TODO refactor this to use the function hasNotHitSearch
+          color: hasHitSearch != null &&
+                  !hasHitSearch //TODO refactor this to use the function hasNotHitSearch
               ? searchIconBlinkAnimation.value
               : Colors.white,
           progress: searchDelegate.transitionAnimation,
