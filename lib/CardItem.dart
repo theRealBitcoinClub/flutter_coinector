@@ -35,8 +35,8 @@ class CardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle textStyle = Theme.of(context).textTheme.body1;
-    TextStyle textStyle2 = Theme.of(context).textTheme.body2;
+    TextStyle textStyleBody1 = Theme.of(context).textTheme.body1;
+    TextStyle textStyleBody2 = Theme.of(context).textTheme.body2;
 
     final infoBoxBackgroundColor =
         MyColors.getCardInfoBoxBackgroundColor(merchant.type);
@@ -53,7 +53,8 @@ class CardItem extends StatelessWidget {
           color: actionButtonBackgroundColor,
           child: Column(
             children: <Widget>[
-              buildContentStack(infoBoxBackgroundColor, textStyle, textStyle2),
+              buildContentStack(
+                  infoBoxBackgroundColor, textStyleBody1, textStyleBody2),
               buildButtonTheme(context),
             ],
           )),
@@ -69,9 +70,7 @@ class CardItem extends StatelessWidget {
   Stack buildContentStack(
       Color infoBoxBackgroundColor, TextStyle textStyle, TextStyle textStyle2) {
     var gifUrl = "http://realbitcoinclub-" +
-        (merchant.serverId.contains('-')
-            ? merchant.serverId.split('-')[0]
-            : merchant.serverId) +
+        getServerId() +
         ".firebaseapp.com/gif/" +
         merchant.id +
         ".gif";
@@ -93,13 +92,19 @@ class CardItem extends StatelessWidget {
             ),
             ItemInfoStackLayer(
                 item: merchant,
-                textStyle: textStyle,
-                textStyleSmall: textStyle2,
+                textStyleMerchantTitle: textStyle,
+                textStyleMerchantLocation: textStyle2,
                 height: itemHeight)
           ],
         ),
       ],
     );
+  }
+
+  String getServerId() {
+    return (merchant.serverId.contains('-')
+        ? merchant.serverId.split('-')[0]
+        : merchant.serverId);
   }
 
   Widget loadImage(String gifUrl) {
@@ -340,13 +345,15 @@ void showMissingAddrDialog(BuildContext context) {
                 child: Text(
                     "This merchant has not yet provided any payment receiving address!\n\nExplain to the merchant the benefits of providing an address and touch here to send an email to:\n\nbitcoinmap.cash@protonmail.com"),
                 onTap: () async {
-                  copyAddressToClipAndShowDialog("bitcoinmap.cash@protonmail.com", context);
+                  copyAddressToClipAndShowDialog(
+                      "bitcoinmap.cash@protonmail.com", context);
                   UrlLauncher.launchEmailClient(() {
                     showAboutDialog(
                         context: context,
                         applicationName: "Coinector",
                         applicationVersion: "v1.2.0",
-                        applicationIcon: Image.asset("assets/placeholder640x480.png"),
+                        applicationIcon:
+                            Image.asset("assets/placeholder640x480.png"),
                         children: [Text("bitcoinmap.cash@protonmail.com")]);
                     //TODO show dialog that there was not found any supported email client and forward the user to a sign up form
                   });

@@ -341,7 +341,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     super.initState();
 
     //TODO show popup ask the user if he wants to see the distance of each place to his current position
-   /*PermissionHandler()
+    /*PermissionHandler()
         .requestPermissions([PermissionGroup.locationWhenInUse]).then(
             (Map<PermissionGroup, PermissionStatus> p) {
 
@@ -416,7 +416,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
               fontFamily: 'Hind',
               color: Colors.white.withOpacity(0.85)),
           body2: TextStyle(
-              fontSize: 14.0, fontFamily: 'Hind', color: Colors.white70),
+              fontSize: 14.0,
+              fontFamily: 'Hind',
+              color: Colors.white.withOpacity(0.7)),
         ),
       ),
       home: Scaffold(

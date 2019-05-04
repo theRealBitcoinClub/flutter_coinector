@@ -7,14 +7,14 @@ class ItemInfoStackLayer extends StatelessWidget {
   const ItemInfoStackLayer({
     Key key,
     @required this.item,
-    @required this.textStyle,
-    @required this.textStyleSmall,
+    @required this.textStyleMerchantTitle,
+    @required this.textStyleMerchantLocation,
     @required this.height,
   }) : super(key: key);
 
   final Merchant item;
-  final TextStyle textStyle;
-  final TextStyle textStyleSmall;
+  final TextStyle textStyleMerchantTitle;
+  final TextStyle textStyleMerchantLocation;
   final double height;
 
   @override
@@ -28,8 +28,8 @@ class ItemInfoStackLayer extends StatelessWidget {
           physics: const NeverScrollableScrollPhysics(),
           children: <Widget>[
             Text(
-              item.name + "   ",
-              style: textStyle,
+              item.name,
+              style: textStyleMerchantTitle,
               maxLines: 1,
             ),
             const SizedBox(
@@ -38,8 +38,7 @@ class ItemInfoStackLayer extends StatelessWidget {
             Text(
               item.location,
               maxLines: 1,
-              style: textStyleSmall,
-              overflow: TextOverflow.clip,
+              style: textStyleMerchantLocation,
             ),
             const SizedBox(
               height: 10,
@@ -56,7 +55,7 @@ class ItemInfoStackLayer extends StatelessWidget {
 
   Text buildTagText(List<String> splittedtags) {
     return Text(
-        parseElementAt(splittedtags, 0) +
+        parseElementAt(splittedtags, 0) +on 
             parseElementAt(splittedtags, 1) +
             parseElementAt(splittedtags, 2) +
             parseElementAt(splittedtags, 3) +
