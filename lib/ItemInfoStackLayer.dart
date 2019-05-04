@@ -55,7 +55,7 @@ class ItemInfoStackLayer extends StatelessWidget {
 
   Text buildTagText(List<String> splittedtags) {
     return Text(
-        parseElementAt(splittedtags, 0) +on 
+        parseElementAt(splittedtags, 0) +
             parseElementAt(splittedtags, 1) +
             parseElementAt(splittedtags, 2) +
             parseElementAt(splittedtags, 3) +
