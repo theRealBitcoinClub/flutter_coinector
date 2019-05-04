@@ -150,28 +150,26 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           await dio.get('https://realbitcoinclub.firebaseapp.com/places8.json');
   */
 
-    //TODO add addresses to demonstrate payments/donations to coinspice & dashboost
+    initListModel();
 
     if (fileName == null) {
       //TODO internationalize the app, translate the strings
       //TODO ask for phone number, map phone numbers to continents
       //TODO ask for location, if given load the continent last
-      initListModel();
       parseAssetUpdateListModel(
-          filterWordIndex, locationFilter, 'assets/am.json', 'am', false);
+          filterWordIndex, locationFilter, 'assets/am.json', 'am', true);
       parseAssetUpdateListModel(
-          filterWordIndex, locationFilter, 'assets/e.json', 'e', false);
+          filterWordIndex, locationFilter, 'assets/e.json', 'e', true);
       parseAssetUpdateListModel(
-          filterWordIndex, locationFilter, 'assets/as.json', 'as', false);
+          filterWordIndex, locationFilter, 'assets/as.json', 'as', true);
       parseAssetUpdateListModel(
-          filterWordIndex, locationFilter, 'assets/au.json', 'au', false);
+          filterWordIndex, locationFilter, 'assets/au.json', 'au', true);
     } else {
       parseAssetUpdateListModel(filterWordIndex, locationFilter,
           'assets/' + fileName + '.json', fileName, true);
     }
 
     //_filteredPages = _pagesTags;
-//TODO add more title to match title search
     //RESPONSE.DATA.LENGTH
   }
 
@@ -186,8 +184,12 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     for (int i = 0; i < placesList.length; i++) {
       Merchant m2 = Merchant.fromJson(placesList.elementAt(i));
       m2.serverId = serverId;
-      m2.isPayEnabled = await AssetLoader.loadReceivingAddress(m2.id) != null;
-      m2.place = await AssetLoader.loadPlace(m2.id);
+      //TODO at the moment there is no PAY feature: m2.isPayEnabled = await AssetLoader.loadReceivingAddress(m2.id) != null;
+      setState(() {
+        AssetLoader.loadPlace(m2.id).then((place) {
+          m2.place = place;
+        });
+      });
       //TODO can i do setState here without the await to update lazy?
 
       _insertIntoTempList(m2, filterWordIndex, locationFilter);
@@ -585,7 +587,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   IconButton buildIconButtonSearchContainer(BuildContext context) {
     return IconButton(
       icon: AnimatedIcon(
-          color: hasHitSearch != null && !hasHitSearch
+          color: hasHitSearch != null && !hasHitSearch //TODO refactor this to use the function hasNotHitSearch
               ? searchIconBlinkAnimation.value
               : Colors.white,
           progress: searchDelegate.transitionAnimation,
