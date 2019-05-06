@@ -68,7 +68,7 @@ const List<_Page> pages = <_Page>[
       title: 'HOTEL, B&B, FLAT',
       tabIndex: 5,
       typeIndex: 5),
-  /*_Page( //TODO remove category ATM
+  /*_Page(
       text: 'ATM',
       icon: Icons.atm,
       title: 'TELLER & TRADER',
@@ -148,90 +148,62 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     if (response == null)
       response =
           await dio.get('https://realbitcoinclub.firebaseapp.com/places8.json');
+          //TODO get data from server, add push notifications for new spots, in that case apps looses offline capabilities...
+          //TODO get data from server, additionally to the places which are hardcoded, simply load another additional list which gets synced each month with a new release of the app
   */
 
     initListModel();
 
     if (fileName == null) {
-      //TODO internationalize the app, translate the strings
-      //TODO ask for phone number, map phone numbers to continents
-      //TODO ask for location, if given load the continent last
+      //TODO internationalize the tags, let users search for hamburguesa instead of burger or hamburger, all should lead to the same results which then display the short term "burger"
+      //TODO internationalize the app, translate the strings, let users search locations in their language (Köln a.k.a. Cologne, Colonia, Brüssel, Brussels)
       parseAssetUpdateListModel(
-          filterWordIndex, locationFilter, 'assets/am.json', 'am', true);
+          filterWordIndex, locationFilter, 'assets/am.json', 'am');
       parseAssetUpdateListModel(
-          filterWordIndex, locationFilter, 'assets/e.json', 'e', true);
+          filterWordIndex, locationFilter, 'assets/e.json', 'e');
       parseAssetUpdateListModel(
-          filterWordIndex, locationFilter, 'assets/as.json', 'as', true);
+          filterWordIndex, locationFilter, 'assets/as.json', 'as');
       parseAssetUpdateListModel(
-          filterWordIndex, locationFilter, 'assets/au.json', 'au', true);
+          filterWordIndex, locationFilter, 'assets/au.json', 'au');
     } else {
-      parseAssetUpdateListModel(
-          filterWordIndex,
-          locationFilter,
-          'assets/' + fileName + '.json',
-          fileName,
-          true); //TODO refactor remove that parameter
+      parseAssetUpdateListModel(filterWordIndex, locationFilter,
+          'assets/' + fileName + '.json', fileName);
     }
-
-    //_filteredPages = _pagesTags;
-    //RESPONSE.DATA.LENGTH
   }
 
-  Future<List<dynamic>> parseAssetUpdateListModel(
-      int filterWordIndex,
-      String locationFilter,
-      String assetUri,
-      String serverId,
-      bool clearListContent) async {
+  Future<List<dynamic>> parseAssetUpdateListModel(int filterWordIndex,
+      String locationFilter, String assetUri, String serverId) async {
     var placesList = await AssetLoader.loadAndEncodeAsset(assetUri);
     initTempListModel();
     for (int i = 0; i < placesList.length; i++) {
       Merchant m2 = Merchant.fromJson(placesList.elementAt(i));
       m2.serverId = serverId;
-      //TODO at the moment there is no PAY feature: m2.isPayEnabled = await AssetLoader.loadReceivingAddress(m2.id) != null;
+      //at the moment there is no PAY feature: m2.isPayEnabled = await AssetLoader.loadReceivingAddress(m2.id) != null;
       setState(() {
         AssetLoader.loadPlace(m2.id).then((place) {
           m2.place = place;
         });
       });
-      //TODO can i do setState here without the await to update lazy?
 
       _insertIntoTempList(m2, filterWordIndex, locationFilter);
     }
 
     if (unfilteredLists.length == 0) initUnfilteredLists();
 
-    //  if (clearListContent)
     updateListModel(tempLists);
-    /*else
-      addToListModel(tempLists);
-*/
     return placesList;
   }
 
   void updateList(List destination, List tmpList) {
-    //if (clearOldContent)
-    destination.clear();
     for (int i = 0; i < tmpList.length; i++) {
       ListModel<Merchant> currentTmpList = tmpList[i];
-      //if (clearOldContent) {
-      destination.add(currentTmpList);
-      /*} else {
-        ListModel<Merchant> currentList = destination[i];
-        for (int x = 0; x < currentTmpList.length; x++) {
-          currentList.insert(0, currentTmpList[x]);
-        }
-      }*/
+      ListModel<Merchant> currentList = destination[i];
+      for (int x = 0; x < currentTmpList.length; x++) {
+        currentList.insert(currentList.length, currentTmpList[x]);
+      }
     }
   }
 
-/*
-  void addToListModel(List<ListModel<Merchant>> tmpList) {
-    setState(() {
-      updateList(_lists, tmpList, false);
-    });
-  }
-*/
   void updateListModel(List<ListModel<Merchant>> tmpList) {
     setState(() {
       updateList(_lists, tmpList);
@@ -239,10 +211,11 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void initUnfilteredLists() {
+    initListModelSeveralTimes(unfilteredLists, false);
     updateList(unfilteredLists, tempLists);
   }
 
-  bool _containsFilteredTag(Merchant m, int filterWordIndex) {
+  bool matchesFilteredTag(Merchant m, int filterWordIndex) {
     var splittedTags = m.tags.split(',');
     for (int i = 0; i < splittedTags.length; i++) {
       var currentTag = int.parse(splittedTags[i]);
@@ -269,9 +242,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void _insertIntoTempList(Merchant m2, int filterWordIndex, String location) {
-    if (filterWordIndex != null &&
-        filterWordIndex != -1 &&
-        !_containsFilteredTag(m2, filterWordIndex) &&
+    if (filterWordIndexDoesNotMatch(filterWordIndex, m2) &&
         !_containsLocation(m2, location) &&
         !_containsTitle(m2, location)) return;
 
@@ -303,21 +274,30 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     }
   }
 
-  void initListModelSeveralTimes(List lists) {
+  bool filterWordIndexDoesNotMatch(int filterWordIndex, Merchant m2) {
+    return hasFilterWordIndex(filterWordIndex) &&
+        !matchesFilteredTag(m2, filterWordIndex);
+  }
+
+  bool hasFilterWordIndex(int filterWordIndex) {
+    return filterWordIndex != null && filterWordIndex != -1;
+  }
+
+  void initListModelSeveralTimes(List lists, bool keepListKeys) {
     lists.clear();
-    _listKeys.clear();
+    if (keepListKeys) _listKeys.clear();
     for (int i = 0; i < pages.length + 1; i++) {
-      _listKeys.add(GlobalKey<AnimatedListState>());
+      if (keepListKeys) _listKeys.add(GlobalKey<AnimatedListState>());
       lists.add(ListModel<Merchant>(
         tabIndex: i,
-        listKey: _listKeys[i],
+        listKey: (keepListKeys) ? _listKeys[i] : GlobalKey<AnimatedListState>(),
         removedItemBuilder: CardItemBuilder.buildRemovedItem,
       ));
     }
   }
 
   void initTempListModel() {
-    initListModelSeveralTimes(tempLists);
+    initListModelSeveralTimes(tempLists, false);
   }
 
   Decoration getIndicator() {
@@ -380,7 +360,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                 "Search your favorite food:\n\n  🍔 Burger     🍰 Dessert\n\n  🥗 Salad      🐮 Vegan\n\n  🇮🇹 Italian      🍕 Pizza"),
             title:
                 Text("Hint of the day", style: TextStyle(color: Colors.white)),
-            //TODO Add merchant names to searchindex
             actions: <Widget>[
               FlatButton(
                 onPressed: () {
@@ -400,8 +379,10 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void initListModel() {
-    initListModelSeveralTimes(_lists);
+    initListModelSeveralTimes(_lists, true);
   }
+
+  //TODO make use of theme styles everywhere and add switch theme button
 
   @override
   Widget build(BuildContext context) {
@@ -466,7 +447,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                 SliverAppBar(
                     elevation: 1.5,
                     forceElevated: true,
-                    leading: buildHomeButton(),
+                    leading: buildIconButtonMap(context),
                     bottom: TabBar(
                       controller: tabController,
                       isScrollable: true,
@@ -500,14 +481,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                       }).toList(),
                     ),
                     actions: <Widget>[
-                      buildIconButtonMap(context),
                       buildIconButtonSearch(context),
-                      //TODO build profile and settings page
-                      /*IconButton(
-                      icon: const Icon(Icons.settings),
-                      onPressed: _remove,
-                      tooltip: 'settings',
-                    ),*/
                     ],
                     title: Padding(
                         padding: EdgeInsets.all(5.0),
@@ -741,7 +715,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                       ),
                       buildSeparator(),
                       Row(children: <Widget>[
-                        buildHomeButton(),
+                        buildClearFilterButton(),
                         const Text(
                           'Show all merchants of all categories.',
                           style: TextStyle(fontWeight: FontWeight.w300),
@@ -768,22 +742,15 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     ]);
   }
 
-  IconButton buildHomeButton() {
+  IconButton buildClearFilterButton() {
     return IconButton(
-      tooltip: isFilterEmpty() ? 'Home' : 'Clear Filter',
+      tooltip: 'Clear Filter',
       icon: AnimatedIcon(
-        icon: isFilterEmpty()
-            ? AnimatedIcons.home_menu
-            : AnimatedIcons.close_menu,
+        icon: AnimatedIcons.close_menu,
         color: Colors.white,
         progress: searchDelegate.transitionAnimation,
       ),
       onPressed: () {
-        if (isFilterEmpty()) {
-          tabController.animateTo(0);
-          return;
-        }
-
         updateTitle();
 
         setState(() {

@@ -4,8 +4,8 @@
 
 class Suggestions {
   static final locations = const {
-    //TODO continents show full list without filter
-    //TODO update new locations which are in placesId, remove old locations
+    //TODO add continents to search for, then show full list without filter when selected a continent
+    //TODO update new locations which are in placesId, remove old locations, use these new locations as single source of truth, remove them from places.json, use numbers like with the tags
     'Germany - Europe,e,s',
     'Berlin - Germany - Europe,e,ci',
     'Spain - Europe,e-spa,s',

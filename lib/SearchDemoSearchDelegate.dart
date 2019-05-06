@@ -55,11 +55,6 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
   _getSuggestions(String pattern) {
     List<String> matches = new List();
 
-    /*if (pattern.length < 2) {
-      matches.add(ENTER_ATLEAST_THREE);
-      return matches;
-    }*/
-
     addMatches(pattern, matches, Tags.tagText);
     addMatches(pattern, matches, Suggestions.locations);
     addMatches(pattern, matches, Tags.titleTags);
@@ -100,9 +95,6 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
     setHistory(historyItems);
     buildHistory();
   }
-
-
-
 
   @override
   Widget buildSuggestions(BuildContext context) {

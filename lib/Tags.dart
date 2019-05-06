@@ -17,7 +17,6 @@ class Tags {
     'L\'Italia',
     'Italia',
     'Urban Pizza',
-    //TODO make a contains search instead of startwith when filtering locations
     '1903',
     'Veruca Salt',
     'Altos del Este',
@@ -277,22 +276,22 @@ class Tags {
     'Tentacion',
     'Delicias',
     'Pasteles',
-    'Pasteleria', //TODO Add places in Berlin, Hamburg, Italia, Athen
+    'Pasteleria',
     'Panaderia',
-    'Subway', //TODO BLINK REVIEW BUTTON & stars, OPEN DIALOG, GIVE INSTRUCTIONS,  IF REVIEW COUNT IS BELOW 10
+    'Subway', //TODO BLINK REVIEW BUTTON like the search button
     'Papa John',
   };
 
   static final tagText = const {
     'Bitcoin',
-    //TODO make tags clickable
+    //TODO add icon code for each tag
     'Events',
     'Trading',
     'Organic',
     'Vegetarian',
     'Vegan',
     'Healthy',
-    'Burger',
+    'Burger 🍔',
     'Sandwich',
     'Muffin',
     'Brownie',
@@ -370,8 +369,8 @@ class Tags {
     'Champagne',
     'Alcohol',
     'Booze',
-    '.:-ubfzger', //TODO You cant remove, but replace with another string
-    '.:-dfxgr', //TODO TITLE TEXT COLOR IS WHITE in searchform?!
+    '.:-ubfzger', //You cant remove because we use fixed indexes, but replace with another string that is unlikely to be typed in by the user
+    '.:-dfxgr',
     '.:-kmvdf',
     'Party',
     '.:-ubfzger5',
