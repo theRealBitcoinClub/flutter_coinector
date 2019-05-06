@@ -60,7 +60,7 @@ class ItemInfoStackLayer extends StatelessWidget {
             parseElementAt(splittedtags, 2) +
             parseElementAt(splittedtags, 3) +
             "   ",
-        style: TextStyle(
+        style: TextStyle( fontSize: 14.0,
             fontWeight: FontWeight.w300, color: Colors.white.withOpacity(0.8)));
   }
 
