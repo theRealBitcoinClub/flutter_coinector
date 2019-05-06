@@ -31,7 +31,7 @@ class CardItem extends StatelessWidget {
   //final VoidCallback onTap;
   final Merchant merchant;
   final bool selected;
-  final double itemHeight = 100;
+  final double itemHeight = 91;
 
   @override
   Widget build(BuildContext context) {
