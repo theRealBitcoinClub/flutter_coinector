@@ -31,7 +31,7 @@ class Suggestions {
     'Yerevan - Armenia - Europe,e,ci',
     'Armenia - Europe,e,s',
     'Yaroslavl - Europe,e,ci',
-    'America,am,co',
+    //'America,am,co',
     'Venezuela - America,am-ven,s',
     'Caracas - Venezuela - America,am-ven-car,ci',
     'Portuguesa - Venezuela - America,am-ven-car,ci',
