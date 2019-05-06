@@ -42,6 +42,7 @@ class Suggestions {
     'Zulia - Venezuela - America,am-ven-car,ci',
     'Maracaibo - Venezuela - America,am-ven,ci',
     'Anzoategui - Venezuela - America,am-ven,ci',
+    //'Alto Mar - Venezuela - America,am-ven,ci',
     'Puerto la Cruz - Venezuela - America,am-ven,ci',
     'Vargas - Venezuela - America,am-ven,ci',
     'Catia La Mar - Venezuela - America,am-ven,ci',
