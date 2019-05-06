@@ -18,7 +18,7 @@
 ,{"p":"amelia", "x":"41.402147","y":"2.157944","n":"Amelia Bakery - Tartas por pedido","t":"1","c":"19","s":"4.6", "d":"0", "a":"9,10,11,12", "l":"Barcelona, Spain, Europe"}
 ,{"p":"recup", "x":"41.404653","y":"2.155916","n":"Rekup & Co - Handmade Souvenirs","t":"4","c":"8","s":"4.2", "d":"0", "a":"24,28,53,58", "l":"Barcelona, Spain, Europe"}
 ,{"p":"kamoma", "x":"41.4014862","y":"2.1568869","n":"Kamoma - Aperol Spritz Bar","t":"2","c":"19","s":"4.2", "d":"0", "a":"47,31,32,33", "l":"Barcelona, Spain, Europe"}
-,{"p":"akash", "x":"41.4083532","y":"2.1597298","n":"Akash - Perruqueria","t":"4","c":"2","s":"5.0", "d":"0", "a":"91,65,107,58", "l":"Barcelona, Spain, Europe"}
+,{"p":"akash", "x":"41.4083532","y":"2.1597298","n":"Akash - Perruqueria","t":"4","c":"2","s":"5.0", "d":"0", "a":"91,65,107,57", "l":"Barcelona, Spain, Europe"}
 ,{"p":"sweetbcn1", "x":"41.4062714","y":"2.1449862","n":"Sweet Flat #1","t":"5","c":"59","s":"4.6", "d":"1", "a":"104,104,104,104", "l":"Barcelona, Spain, Europe"}
 ,{"p":"sweetbcn2", "x":"41.3992051","y":"2.1575469","n":"Sweet Flat #2","t":"5","c":"59","s":"4.6", "d":"1", "a":"104,104,104,104", "l":"Barcelona, Spain, Europe"}
 ,{"p":"sweetbcn3", "x":"41.3985755","y":"2.1591838","n":"Sweet Flat #3","t":"5","c":"59","s":"4.6", "d":"1", "a":"104,104,104,104", "l":"Barcelona, Spain, Europe"}
@@ -126,7 +126,7 @@
 ,{"p":"botanistkitchenbar", "x":"-27.4036899","y":"153.1096041","n":"The Botanist Kitchen and Bar","t":"2","c":"10","s":"3.5", "d":"0", "a":"29,79,8,15", "l":"Airport, Brisbane, Australia"}
 ,{"p":"burgerurge", "x":"-27.404534","y":"153.1098813","n":"Burger Urge","t":"1","c":"27","s":"2.6", "d":"0", "a":"7,15,99,65", "l":"Airport, Brisbane, Australia"}
 ,{"p":"windmillbarbistro", "x":"-27.4038738","y":"153.1103544","n":"Windmill Bar Bistro","t":"0","c":"43","s":"2.9", "d":"0", "a":"32,14,99,15", "l":"Airport, Brisbane, Australia"}
-,{"p":"redrooster", "x":"-27.4032945","y":"153.1107098","n":"Red Rooster","t":"0","c":"24","s":"2.9", "d":"0", "a":"70,71,99,7", "l":"Airport, Brisbane, Australia"}
+,{"p":"redrooster", "x":"-27.4032945","y":"153.1107098","n":"Red Rooster","t":"0","c":"24","s":"2.9", "d":"0", "a":"65,71,99,7", "l":"Airport, Brisbane, Australia"}
 ,{"p":"madmexfresh", "x":"-27.403388","y":"153.110521","n":"Mad Mex Fresh Mexican Grill","t":"0","c":"21","s":"3.7", "d":"0", "a":"128,129,130,29", "l":"Airport, Brisbane, Australia"}
 ,{"p":"madmex", "x":"-27.3861781","y":"153.1193317","n":"Mad Mex","t":"0","c":"21","s":"3.7", "d":"0", "a":"128,129,156,157", "l":"Airport, Brisbane, Australia"}
 ,{"p":"sumosalad", "x":"-27.386266","y":"153.1196583","n":"SumoSalad","t":"1","c":"11","s":"3.2", "d":"0", "a":"15,8,135,142", "l":"Airport, Brisbane, Australia"}
