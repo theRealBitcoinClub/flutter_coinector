@@ -21,6 +21,7 @@ class ItemInfoStackLayer extends StatelessWidget {
   Widget build(BuildContext context) {
     var splittedtags = item.tags.split(",");
     return Container(
+      //decoration: BoxDecoration(color: Colors.black.withOpacity(0.5)),
       height: height,
       child: Padding(
         padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 0.0),

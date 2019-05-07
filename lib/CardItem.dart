@@ -84,8 +84,8 @@ class CardItem extends StatelessWidget {
         ),
         Stack(
           children: <Widget>[
-            //buildGradientContainer(infoBoxBackgroundColor),
-            Container(
+            buildGradientContainer(Colors.grey[900]),
+            /*Container(
               height: itemHeight,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
@@ -100,7 +100,7 @@ class CardItem extends StatelessWidget {
                         blurStyle: BlurStyle.outer)
                   ],
                   color: Colors.grey[900].withOpacity(0.8)),
-            ),
+            ),*/
             ItemInfoStackLayer(
                 item: merchant,
                 textStyleMerchantTitle: textStyle,
@@ -158,15 +158,21 @@ class CardItem extends StatelessWidget {
     return Container(
       height: itemHeight,
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(15.0),
+            topRight: Radius.circular(15.0),
+            bottomLeft: Radius.elliptical(30, 15)),
         gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              infoBoxBackgroundColor,
+              //infoBoxBackgroundColor,
               infoBoxBackgroundColor,
               infoBoxBackgroundColor.withOpacity(0.9),
               infoBoxBackgroundColor.withOpacity(0.8),
-              infoBoxBackgroundColor.withOpacity(0.7)
+              infoBoxBackgroundColor.withOpacity(0.7),
+              infoBoxBackgroundColor.withOpacity(0.6),
+              infoBoxBackgroundColor.withOpacity(0.5),
             ]),
       ),
     );
