@@ -168,6 +168,7 @@ class CardItem extends StatelessWidget {
             colors: [
               //infoBoxBackgroundColor,
               infoBoxBackgroundColor,
+              infoBoxBackgroundColor.withOpacity(0.95),
               infoBoxBackgroundColor.withOpacity(0.9),
               infoBoxBackgroundColor.withOpacity(0.8),
               infoBoxBackgroundColor.withOpacity(0.7),
