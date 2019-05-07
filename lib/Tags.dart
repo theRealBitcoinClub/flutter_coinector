@@ -292,10 +292,10 @@ class Tags {
     'Burger 🍔',
     'Sandwich 🍞',
     'Muffin 🧁', //The muffin icon is invisible
-    '-+.1xBrownie',
+    'Brownie',
     'Cake 🎂',
     'Cookie 🍪',
-    'Tiramisu',
+    '-.,12Tiramisu',
     'Pizza 🍕',
     'Salad 🥗',
     'Smoothie 🥤',
