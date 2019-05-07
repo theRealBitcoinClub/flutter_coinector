@@ -28,10 +28,9 @@ class CardItem extends StatelessWidget {
         super(key: key);
 
   final Animation<double> animation;
-  //final VoidCallback onTap;
   final Merchant merchant;
   final bool selected;
-  final double itemHeight = 91;
+  final double itemHeight = 95;
 
   @override
   Widget build(BuildContext context) {
@@ -60,12 +59,6 @@ class CardItem extends StatelessWidget {
           )),
     );
   }
-/*/TODO load placeholder
-  loadPlaceHolder() {
-    rootBundle.load('assets/placeholder640x480.png').then((data) {
-      return data.buffer.asUint8List();
-    });
-  }*/
 
   Stack buildContentStack(
       Color infoBoxBackgroundColor, TextStyle textStyle, TextStyle textStyle2) {
@@ -138,6 +131,7 @@ class CardItem extends StatelessWidget {
   }
 
   void onLoadImageFailed(img) {
+    //TODO has this feature ever worked?
     img = FadeInImage.assetNetwork(
         placeholder: "assets/placeholder640x480.png",
         image: "assets/placeholder640x480.png");
