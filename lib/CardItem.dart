@@ -1,5 +1,6 @@
 import 'package:clipboard_manager/clipboard_manager.dart';
 import 'package:coinector/AssetLoader.dart';
+import 'package:coinector/CustomBoxShadow.dart';
 import 'package:coinector/MyColors.dart';
 import 'package:coinector/Place.dart';
 import 'package:coinector/RatingWidgetBuilder.dart';
@@ -11,10 +12,6 @@ import 'ItemInfoStackLayer.dart';
 import 'Merchant.dart';
 //import 'package:flutter_advanced_networkimage/provider.dart';
 
-/// Displays its integer item as 'item N' on a Card whose color is based on
-/// the item's value. The text is displayed in bright green if selected is true.
-/// This widget's height is based on the animation parameter, it varies
-/// from 0 to 128 as the animation varies from 0.0 to 1.0.
 class CardItem extends StatelessWidget {
   const CardItem(
       {Key key,
@@ -38,9 +35,10 @@ class CardItem extends StatelessWidget {
     TextStyle textStyleBody2 = Theme.of(context).textTheme.body2;
 
     final infoBoxBackgroundColor =
-        MyColors.getCardInfoBoxBackgroundColor(merchant.type);
+        MyColors.getCardInfoBoxBackgroundColor(merchant.type).withOpacity(1.0);
     final actionButtonBackgroundColor =
-        MyColors.getCardActionButtonBackgroundColor(merchant.type);
+        MyColors.getCardActionButtonBackgroundColor(merchant.type)
+            .withOpacity(0.8);
     return SizedBox(
       child: Card(
           clipBehavior: Clip.none,
@@ -68,20 +66,40 @@ class CardItem extends StatelessWidget {
         merchant.id +
         ".gif";
 
-    var img = loadImage(gifUrl);
+    //var img = loadImage(gifUrl);
 
     return Stack(
       children: <Widget>[
         Padding(
           padding: EdgeInsets.all(0.0),
-          child: img,
+          child: FadeInImage.memoryNetwork(
+            fadeInCurve: Curves.decelerate,
+            fit: BoxFit.contain,
+            fadeInDuration: Duration(milliseconds: 500),
+            placeholder: kTransparentImage,
+            image: gifUrl,
+            height: 320,
+            alignment: Alignment.bottomCenter,
+          ),
         ),
         Stack(
           children: <Widget>[
-            buildGradientContainer(infoBoxBackgroundColor),
+            //buildGradientContainer(infoBoxBackgroundColor),
             Container(
               height: itemHeight,
-              decoration: BoxDecoration(color: Colors.black.withOpacity(0.2)),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.elliptical(30, 15),
+                      topLeft: Radius.circular(15.0),
+                      topRight: Radius.circular(15.0)),
+                  boxShadow: [
+                    CustomBoxShadow(
+                        color: infoBoxBackgroundColor.withOpacity(0.5),
+                        blurRadius: 3.0,
+                        offset: Offset(0.0, 0.0),
+                        blurStyle: BlurStyle.outer)
+                  ],
+                  color: Colors.grey[900].withOpacity(0.8)),
             ),
             ItemInfoStackLayer(
                 item: merchant,
@@ -102,7 +120,7 @@ class CardItem extends StatelessWidget {
 
   Widget loadImage(String gifUrl) {
     var img;
-    try {
+    /*try {
       /*img = Image(
         image: AdvancedNetworkImage(
           gifUrl,
@@ -125,16 +143,15 @@ class CardItem extends StatelessWidget {
         alignment: Alignment.bottomCenter,
       );
     } catch (e) {
-      onLoadImageFailed(img);
-    }
+      */
+    //img = onLoadImageFailed();
+    //}
     return img;
   }
 
-  void onLoadImageFailed(img) {
-    //TODO has this feature ever worked?
-    img = FadeInImage.assetNetwork(
-        placeholder: "assets/placeholder640x480.png",
-        image: "assets/placeholder640x480.png");
+  Widget onLoadImageFailed() {
+    final img = "assets/placeholder640x480.png";
+    return FadeInImage.assetNetwork(placeholder: img, image: img);
   }
 
   Container buildGradientContainer(Color infoBoxBackgroundColor) {
@@ -148,37 +165,57 @@ class CardItem extends StatelessWidget {
               infoBoxBackgroundColor,
               infoBoxBackgroundColor,
               infoBoxBackgroundColor.withOpacity(0.9),
-              infoBoxBackgroundColor.withOpacity(0.75),
-              infoBoxBackgroundColor.withOpacity(0.6)
+              infoBoxBackgroundColor.withOpacity(0.8),
+              infoBoxBackgroundColor.withOpacity(0.7)
             ]),
       ),
     );
   }
 
-  ButtonTheme buildButtonTheme(BuildContext context) {
-    return ButtonTheme.bar(
-      padding: EdgeInsets.all(10.0),
-      // make buttons use the appropriate styles for cards
-      child: ButtonBar(
-        children: <Widget>[
-          /*GestureDetector(
+  Container buildButtonTheme(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          boxShadow: [
+            CustomBoxShadow(
+                color: Colors.white.withOpacity(0.5),
+                blurRadius: 1.0,
+                offset: Offset(0.0, 0.0),
+                blurStyle: BlurStyle.outer)
+          ],
+          borderRadius: BorderRadius.only(
+              bottomRight: Radius.elliptical(15, 15),
+              bottomLeft: Radius.elliptical(15, 15)),
+          color: Colors.grey[900].withOpacity(0.1)),
+      child: ButtonTheme.bar(
+          /*shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            side: BorderSide(
+                color: Colors.white, width: 1.0, style: BorderStyle.solid)),*/
+          //splashColor: Colors.white,
+          padding: EdgeInsets.all(10.0),
+          // make buttons use the appropriate styles for cards
+          child: ButtonBar(
+            mainAxisSize: MainAxisSize.max,
+            alignment: MainAxisAlignment.end,
+            children: <Widget>[
+              /*GestureDetector(
 
               onTap: () {
                 handleReviewClick(context, merchant);
-              }, //TODO Navigate to give a rating
+              },
               child:*/
-          Row(children: <Widget>[
-            RatingWidgetBuilder.buildRatingWidgetIfReviewsAvailable(
-                merchant, Theme.of(context).textTheme.body2),
-            SizedBox(
-              width: 20,
-            )
-          ]),
-          //buildFlatButtonPay(context),
-          buildFlatButtonReview(context),
-          buildFlatButtonVisit(context),
-        ],
-      ),
+              //buildFlatButtonPay(context),
+              Row(children: <Widget>[
+                RatingWidgetBuilder.buildRatingWidgetIfReviewsAvailable(
+                    merchant, Theme.of(context).textTheme.body2),
+                SizedBox(
+                  width: 10.0,
+                )
+              ]),
+              buildFlatButtonReview(context),
+              buildFlatButtonVisit(context),
+            ],
+          )),
     );
   }
 
@@ -282,8 +319,7 @@ void showPlaceNotFoundOnGmaps(context) {
               "Help to grow adoption!\n\nSend the missing information to:\n\nbitcoinmap.cash@protonmail.com"),
         );
       });
-} //TODO Fix textoverflow
-//TODO remove DASH tag or return results
+}
 
 showPayDialog(BuildContext context) async {
   showDialog(
@@ -337,9 +373,9 @@ void showMissingAddrDialog(BuildContext context) {
                 Text("Missing address", style: TextStyle(color: Colors.white)),
             content: new InkWell(
                 child: Text(
-                    "This merchant has not yet provided any payment receiving address!\n\nExplain to the merchant the benefits of providing an address and touch here to send an email to:\n\nbitcoinmap.cash@protonmail.com"),
+                    "This merchant has not yet provided any payment receiving address!\n\nExplain to the merchant the benefits (Proof of Adoption) of providing an address and touch here to send an email to:\n\nbitcoinmap.cash@protonmail.com"),
                 onTap: () async {
-                  copyAddressToClipAndShowDialog(
+                  /*copyAddressToClipAndShowDialog(
                       "bitcoinmap.cash@protonmail.com", context);
                   UrlLauncher.launchEmailClient(() {
                     showAboutDialog(
@@ -349,8 +385,9 @@ void showMissingAddrDialog(BuildContext context) {
                         applicationIcon:
                             Image.asset("assets/placeholder640x480.png"),
                         children: [Text("bitcoinmap.cash@protonmail.com")]);
+
                     //TODO show dialog that there was not found any supported email client and forward the user to a sign up form
-                  });
+                  });*/
                 }));
       });
 }
@@ -407,7 +444,7 @@ Widget buildAddressDetailDialogBCH(BuildContext context) {
   var data = getBCHAddress();
   if (isAddressEmpty(data)) {
     return AlertDialog(
-      content: Text(//TODO add tags for all locations
+      content: Text(
           "This merchant does not yet accept BCH payments, please pay with DASH or explain the benefits of accepting BCH to the merchant!"),
       actions: <Widget>[buildCloseDialogButton(context)],
     );

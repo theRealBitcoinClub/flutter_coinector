@@ -23,7 +23,7 @@ class ItemInfoStackLayer extends StatelessWidget {
     return Container(
       height: height,
       child: Padding(
-        padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+        padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 0.0),
         child: ListView(
           physics: const NeverScrollableScrollPhysics(),
           children: <Widget>[
@@ -58,12 +58,9 @@ class ItemInfoStackLayer extends StatelessWidget {
         parseElementAt(splittedtags, 0) +
             parseElementAt(splittedtags, 1) +
             parseElementAt(splittedtags, 2) +
-            parseElementAt(splittedtags, 3) +
-            "   ",
+            parseElementAt(splittedtags, 3),
         style: TextStyle(
-            fontSize: 14.0,
-            fontWeight: FontWeight.w300,
-            color: Colors.white.withOpacity(0.8)));
+            fontSize: 15.0, fontWeight: FontWeight.w300, color: Colors.white));
   }
 
   String parseElementAt(splittedTags, int pos) {
@@ -72,7 +69,7 @@ class ItemInfoStackLayer extends StatelessWidget {
     if (tagIndex == 104) return "";
 
     String addSeparator = "";
-    if (pos != 0) addSeparator = " - ";
+    if (pos != 0) addSeparator = "   ";
 
     return addSeparator + Tags.tagText.elementAt(tagIndex);
   }
