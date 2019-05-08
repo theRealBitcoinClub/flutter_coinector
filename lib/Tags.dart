@@ -292,7 +292,7 @@ class Tags {
     'Burger 🍔',
     'Sandwich 🍞',
     'Muffin 🧁', //The muffin icon is invisible
-    'Brownie',
+    'Brownie 🥮',//Brownie is invisible too
     'Cake 🎂',
     'Cookie 🍪',
     '-.,12Tiramisu',
@@ -322,11 +322,11 @@ class Tags {
     'LiveDJ 🎧',
     'Terrace ☀️',
     'Seeds 🌱',
-    'Grinder',
-    'Papers',
-    'Advice',
-    'Calzone',
-    'Suppli', //TODO replace with italian
+    'Grinder 🍌',
+    'Papers 🚬',
+    'Advice 🌴',
+    'Calzone 🥟',
+    ',.-1Suppli',
     'MakeUp 🤡',
     'Gifts 🎁',
     'Tapas 🍠',
