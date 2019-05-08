@@ -20,7 +20,8 @@ class SuggestionList extends StatelessWidget {
     return ListView.builder(
       itemCount: suggestions.length,
       itemBuilder: (BuildContext context, int i) {
-        final SuggestionMatch match = SuggestionMatch.parseString(suggestions[i], i);
+        final SuggestionMatch match =
+            SuggestionMatch.parseString(suggestions[i], i);
         final String searchMatch = match.searchMatch;
         final String state = addSeparator(match.state);
         final String continent = addSeparator(match.continent);
@@ -29,24 +30,30 @@ class SuggestionList extends StatelessWidget {
           title: RichText(
             text: TextSpan(
               text: (isRealSuggestion(searchMatch))
-                  ? searchMatch.substring(0, query.length)
+                  ? searchMatch.isNotEmpty
+                      ? searchMatch.substring(0, query.length)
+                      : searchMatch
                   : searchMatch,
               style:
                   theme.textTheme.subhead.copyWith(fontWeight: FontWeight.bold),
               children: <TextSpan>[
                 TextSpan(
                   text: (isRealSuggestion(searchMatch))
-                      ? searchMatch.substring(query.length)
+                      ? searchMatch.isNotEmpty
+                          ? searchMatch.substring(query.length)
+                          : ''
                       : '',
                   style: theme.textTheme.subhead,
                 ),
                 TextSpan(
                   text: state,
-                  style: theme.textTheme.subhead.copyWith(color: Colors.white.withOpacity(0.5)),
+                  style: theme.textTheme.subhead
+                      .copyWith(color: Colors.white.withOpacity(0.5)),
                 ),
                 TextSpan(
                   text: continent,
-                  style: theme.textTheme.subhead.copyWith(color: Colors.white.withOpacity(0.5)),
+                  style: theme.textTheme.subhead
+                      .copyWith(color: Colors.white.withOpacity(0.5)),
                 ),
               ],
             ),
@@ -62,7 +69,7 @@ class SuggestionList extends StatelessWidget {
   }
 
   bool isRealSuggestion(String suggestion) {
-    return SearchDemoSearchDelegate.TRY_ANOTHER_WORD != suggestion &&
-        SearchDemoSearchDelegate.ENTER_ATLEAST_THREE != suggestion;
+    return SearchDemoSearchDelegate.TRY_ANOTHER_WORD != suggestion;
+    //SearchDemoSearchDelegate.ENTER_ATLEAST_THREE != suggestion;
   }
 }

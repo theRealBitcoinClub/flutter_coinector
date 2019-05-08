@@ -83,7 +83,6 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
       currentItem.toLowerCase().startsWith(pattern.toLowerCase());
 
   static const TRY_ANOTHER_WORD = 'Not found! Try another word!';
-  static const ENTER_ATLEAST_THREE = 'Enter atleast 3 characters!';
 
   _addHistoryItem(String item) async {
     List<String> historyItems = await getHistory();
@@ -119,6 +118,8 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
     //THIS METHOD IS CALLED WHEN USER HITS THE SEARCH ICON OF THE KEYBOARD LAYOUT
     close(context, null);
   }
+
+
 
   @override
   Widget buildResults(BuildContext context) {
