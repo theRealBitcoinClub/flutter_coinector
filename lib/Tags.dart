@@ -282,7 +282,6 @@ class Tags {
 
   static final tagText = const {
     '🎸🎧🎁🎸🎧🎁🎸🎧🎁-.,Bitcoin',
-    //TODO add icon code for each tag
     '🎸🎧🎁🎸🎧🎁🎸🎧🎁-.,Events',
     '🎸🎧🎁🎸🎧🎁🎸🎧🎁-.,Trading',
     'Organic 🐵',
@@ -290,7 +289,7 @@ class Tags {
     'Vegan 🐮',
     'Healthy 💓',
     'Burger 🍔',
-    'Sandwich 🍞',
+    'Sandwich 🥪',
     'Muffin 🧁', //The muffin icon is invisible
     'Brownie 🥮',//Brownie is invisible too
     'Cake 🎂',
@@ -395,7 +394,7 @@ class Tags {
     'Starter 🥠',
     'BBQ 🍗',
     'Noodle 🍜',
-    'Korean 🍜',
+    'Korean 🥟',
     'Market 🧺', //invisible item
     'Bread 🥖',
     'Bakery 🥨',

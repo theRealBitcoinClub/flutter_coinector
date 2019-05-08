@@ -447,7 +447,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                 SliverAppBar(
                     elevation: 1.5,
                     forceElevated: true,
-                    leading: buildIconButtonMap(context),
+                    leading: buildHomeButton(),
                     bottom: TabBar(
                       controller: tabController,
                       isScrollable: true,
@@ -481,6 +481,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                       }).toList(),
                     ),
                     actions: <Widget>[
+                      buildIconButtonMap(context),
                       buildIconButtonSearch(context),
                     ],
                     title: Padding(
@@ -544,6 +545,31 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   Future<bool> persistHasHitSearch() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.setBool(sharedPrefKeyHasHitSearch, true);
+  }
+
+  IconButton buildHomeButton() {
+    return IconButton(
+      tooltip: isFilterEmpty() ? 'Home' : 'Clear Filter',
+      icon: AnimatedIcon(
+        icon: isFilterEmpty()
+            ? AnimatedIcons.home_menu
+            : AnimatedIcons.close_menu,
+        color: Colors.white,
+        progress: searchDelegate.transitionAnimation,
+      ),
+      onPressed: () {
+        if (isFilterEmpty()) {
+          tabController.animateTo(0);
+          return;
+        }
+
+        updateTitle();
+
+        setState(() {
+          showUnfilteredLists();
+        });
+      },
+    );
   }
 
   Widget buildIconButtonMap(BuildContext ctx) {
@@ -715,7 +741,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                       ),
                       buildSeparator(),
                       Row(children: <Widget>[
-                        buildClearFilterButton(),
+                        buildHomeButton(),
                         const Text(
                           'Show all merchants of all categories.',
                           style: TextStyle(fontWeight: FontWeight.w300),
@@ -741,7 +767,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       buildIconButtonSearchInfo(context, false),
     ]);
   }
-
+/*
   IconButton buildClearFilterButton() {
     return IconButton(
       tooltip: 'Clear Filter',
@@ -759,7 +785,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       },
     );
   }
-
+*/
   SizedBox buildSeparator() {
     return const SizedBox(
       height: 10,
