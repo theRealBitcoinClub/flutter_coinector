@@ -20,11 +20,7 @@ After tapping the visit button on the card the user is being forwarded to the Go
 
 ## REVIEW
 
-On each card there is a REVIEW button which forwards the user to a website which opens the review action for Google Maps, so that users can give reviews easily and smooth after visiting and consuming with bitcoins. In future versions the user will earn badges/tokens for reviews and visits.
-
-## PAY
-
-After tapping the pay button the user can select the coin he wants to use for payment and then he will be shown the receiving address of the merchant. This address can be tracked to show verified progress and verfified sales to make publicity for spending. This feature can be used for home delivery too. This feature will be pimped with a built in token wallet to incentivice consumption with bitcoins. All coins spent via the app will give a certain amount of cashback to the user.
+On each card there is a REVIEW button which forwards the user to a website which opens the review action for Google Maps, so that users can give reviews easily and smooth after visiting and consuming with bitcoins. 
 
 ## programming language
 
