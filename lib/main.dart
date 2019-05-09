@@ -481,7 +481,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                       }).toList(),
                     ),
                     actions: <Widget>[
-                      buildIconButtonMap(context),
+                      //buildIconButtonMap(context),
                       buildIconButtonSearch(context),
                     ],
                     title: Padding(
@@ -572,13 +572,13 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     );
   }
 
-  Widget buildIconButtonMap(BuildContext ctx) {
+ /* Widget buildIconButtonMap(BuildContext ctx) {
     return IconButton(
         icon: Icon(Icons.map),
         onPressed: () {
           UrlLauncher.launchMapInPlayStoreFallbackToBrowser();
         });
-  }
+  }*/
 
   Widget buildIconButtonSearch(BuildContext context) {
     return searchIconBlinkAnimation != null
