@@ -228,7 +228,10 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 */
   Future<bool> calculateDistanceUpdateMerchant(Position position, Merchant m) async {
-    if (position == null) m.distance = "location not available";
+    if (position == null) {
+      m.distance = "distance not available";
+      return false;
+    }
 
     double distanceInMeters = await Geolocator().distanceBetween(
         position.latitude,
