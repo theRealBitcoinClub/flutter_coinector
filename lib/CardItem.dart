@@ -71,8 +71,6 @@ class CardItem extends StatelessWidget {
         merchant.id +
         ".gif";
 
-    //var img = loadImage(gifUrl);
-
     return Stack(
       children: <Widget>[
         Padding(
@@ -90,7 +88,7 @@ class CardItem extends StatelessWidget {
         Stack(
           children: <Widget>[
             buildGradientContainer(Colors.grey[900]),
-            /*Container(
+            Container(
               height: itemHeight,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
@@ -105,7 +103,7 @@ class CardItem extends StatelessWidget {
                         blurStyle: BlurStyle.outer)
                   ],
                   color: Colors.grey[900].withOpacity(0.8)),
-            ),*/
+            ),
             ItemInfoStackLayer(
                 item: merchant,
                 textStyleMerchantTitle: textStyle,
