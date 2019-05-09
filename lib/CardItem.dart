@@ -21,7 +21,7 @@ class CardItem extends StatelessWidget {
       @required this.animation,
       //  this.onTap,
       @required this.merchant,
-        this.position,
+      this.position,
       this.selected: false})
       : assert(animation != null),
         assert(merchant != null),
@@ -56,7 +56,6 @@ class CardItem extends StatelessWidget {
             children: <Widget>[
               buildContentStack(
                   infoBoxBackgroundColor, textStyleBody1, textStyleBody2),
-              Text(position != null ? position.toString() : "position is null"),
               buildButtonTheme(context),
             ],
           )),
@@ -73,6 +72,11 @@ class CardItem extends StatelessWidget {
 
     return Stack(
       children: <Widget>[
+        Positioned(
+          top: 180.0,
+          left: 185.0,
+          child: CircularProgressIndicator(strokeWidth: 1.5),
+        ),
         Padding(
           padding: EdgeInsets.all(0.0),
           child: FadeInImage.memoryNetwork(
@@ -110,6 +114,26 @@ class CardItem extends StatelessWidget {
                 textStyleMerchantLocation: textStyle2,
                 height: itemHeight)
           ],
+        ),
+        Positioned(
+          left: 0.0,
+          bottom: 5.0,
+          child: merchant.distance != null
+              ? Container(
+                  padding: EdgeInsets.fromLTRB(15.0, 5.0, 10.0, 5.0),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(10),
+                          bottomRight: Radius.circular(10)),
+                      color: Colors.grey[900].withOpacity(0.8)),
+                  child: Text(
+                    merchant.distance != null
+                        ? merchant.distance.toString()
+                        : "",
+                    style: textStyle2,
+                  ),
+                )
+              : Container(),
         ),
       ],
     );

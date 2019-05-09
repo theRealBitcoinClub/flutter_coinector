@@ -17,6 +17,8 @@ class Merchant {
   String location;
   String serverId;
   Place place;
+  String distance;
+  double distanceInMeters = -1;
 
   Merchant(this.id, this.x, this.y, this.name, this.type, this.reviewCount,
       this.reviewStars, this.discount, this.tags, this.location);

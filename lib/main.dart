@@ -197,14 +197,53 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     return placesList;
   }
 
-  void updateList(List destination, List tmpList) {
+  void updateList(List destination, List tmpList) async {
     for (int i = 0; i < tmpList.length; i++) {
       ListModel<Merchant> currentTmpList = tmpList[i];
       ListModel<Merchant> currentList = destination[i];
       for (int x = 0; x < currentTmpList.length; x++) {
-        currentList.insert(currentList.length, currentTmpList[x]);
+        Merchant m = currentTmpList[x];
+        //bool hasCalculated = await calculateDistanceUpdateMerchant(position, m);
+        calculateDistanceUpdateMerchant(position, m);
+        currentList.insert(currentList.length, m);
+       /* Merchant m = currentTmpList[x];
+        bool hasCalculated = await calculateDistanceUpdateMerchant(position, m);
+
+        insertItemInOrderedPosition(currentList, m);*/
       }
     }
+  }
+
+  /*
+  void insertItemInOrderedPosition(currentList, m) {
+    for (int newListPos= 0; newListPos< currentList.length; newListPos++) {
+      Merchant m2 = currentList[newListPos];
+      if (m2.distanceInMeters != -1 && m2.distanceInMeters > m.distanceInMeters) {
+        currentList.insert(newListPos, m);
+        return;
+      }
+    }
+
+    currentList.insert(currentList.length, m);
+  }
+*/
+  Future<bool> calculateDistanceUpdateMerchant(Position position, Merchant m) async {
+    if (position == null) m.distance = "location not available";
+
+    double distanceInMeters = await Geolocator().distanceBetween(
+        position.latitude,
+        position.longitude,
+        double.parse(m.x),
+        double.parse(m.y));
+
+    m.distanceInMeters = distanceInMeters;
+    m.distance = distanceInMeters.round().toString() + " meter";
+
+    if (distanceInMeters > 1000) {
+      String km = (distanceInMeters / 1000.0).toStringAsFixed(2);
+      m.distance = km + " km";
+    }
+    return true;
   }
 
   void updateListModel(List<ListModel<Merchant>> tmpList) {
