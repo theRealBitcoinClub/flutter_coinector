@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 import 'CardItem.dart';
 import 'ListModel.dart';
 import 'Merchant.dart';
+import 'package:geolocator/geolocator.dart';
 
 class CardItemBuilder {
-  List<ListModel<Merchant>>  _lists;
+  List<ListModel<Merchant>> _lists;
+  Position pos;
 
-  CardItemBuilder(lists) {
+  CardItemBuilder(lists, Position pos) {
     _lists = lists;
+    this.pos = pos;
   }
 
   CardItem _buildItem(
@@ -18,6 +21,7 @@ class CardItemBuilder {
           listModel[index] != null &&
           listModel.length > 0) {
         return CardItem(
+          position: pos,
           animation: animation,
           merchant: listModel[index],
         );
@@ -60,7 +64,6 @@ class CardItemBuilder {
       BuildContext context, int index, Animation<double> animation) {
     return _buildItem(index, animation, _lists[5]);
   }
-
 
   Widget buildItemWellness(
       BuildContext context, int index, Animation<double> animation) {

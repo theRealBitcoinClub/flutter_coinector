@@ -11,13 +11,17 @@ import 'package:transparent_image/transparent_image.dart';
 import 'ItemInfoStackLayer.dart';
 import 'Merchant.dart';
 //import 'package:flutter_advanced_networkimage/provider.dart';
+import 'package:geolocator/geolocator.dart';
 
 class CardItem extends StatelessWidget {
+  final Position position;
+
   const CardItem(
       {Key key,
       @required this.animation,
       //  this.onTap,
       @required this.merchant,
+        this.position,
       this.selected: false})
       : assert(animation != null),
         assert(merchant != null),
@@ -52,6 +56,7 @@ class CardItem extends StatelessWidget {
             children: <Widget>[
               buildContentStack(
                   infoBoxBackgroundColor, textStyleBody1, textStyleBody2),
+              Text(position != null ? position.toString() : "position is null"),
               buildButtonTheme(context),
             ],
           )),

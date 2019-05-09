@@ -15,6 +15,7 @@ import 'Tags.dart';
 //import 'package:flutter_crashlytics/flutter_crashlytics.dart';
 import 'package:permission_handler/permission_handler.dart';
 //import 'package:permission/permission.dart';
+import 'package:geolocator/geolocator.dart';
 
 class AnimatedListSample extends StatefulWidget {
   @override
@@ -137,6 +138,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   void loadAssets(
       int filterWordIndex, String locationFilter, String fileName) async {
+    updateCurrentPosition();
+    
     if (filterWordIndex == -1) {
       if (isUnfilteredList) return;
       if (unfilteredLists.length != 0) updateListModel(unfilteredLists);
@@ -325,17 +328,27 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     });
   }
 
+  Position position;
+
+  void updateCurrentPosition() {
+    //TODO show popup ask the user if he wants to see the distance of each place to his current position
+    PermissionHandler()
+        .requestPermissions([PermissionGroup.locationWhenInUse]).then(
+            (Map<PermissionGroup, PermissionStatus> p) {
+      Geolocator()
+          .getCurrentPosition(desiredAccuracy: LocationAccuracy.high)
+          .then((Position pos) {
+        setState(() {
+          position = pos;
+        });
+      });
+    });
+  }
+
   @override
   void initState() {
     super.initState();
 
-    //TODO show popup ask the user if he wants to see the distance of each place to his current position
-    /*PermissionHandler()
-        .requestPermissions([PermissionGroup.locationWhenInUse]).then(
-            (Map<PermissionGroup, PermissionStatus> p) {
-
-            });
-*/
     searchDelegate.buildHistory();
     tabController = TabController(vsync: this, length: pages.length);
     //updateTitle();
@@ -510,7 +523,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   List<Widget> buildAllTabContainer() {
-    var builder = CardItemBuilder(_lists);
+    var builder = CardItemBuilder(_lists, position);
     return [
       buildTabContainer(
           _listKeys[0], _lists[0], builder.buildItemRestaurant, pages[0].title),
@@ -572,7 +585,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     );
   }
 
- /* Widget buildIconButtonMap(BuildContext ctx) {
+  /* Widget buildIconButtonMap(BuildContext ctx) {
     return IconButton(
         icon: Icon(Icons.map),
         onPressed: () {
@@ -767,6 +780,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       buildIconButtonSearchInfo(context, false),
     ]);
   }
+
 /*
   IconButton buildClearFilterButton() {
     return IconButton(
