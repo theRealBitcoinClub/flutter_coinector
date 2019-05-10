@@ -15,7 +15,7 @@ class MyColors {
       case 4:
         return Colors.pink[400];
       case 5:
-        return Colors.lightGreen[400];
+        return Colors.green[400];
       case 99:
         return Colors.green[400];
       case 999:
@@ -37,7 +37,7 @@ class MyColors {
       case 4:
         return Colors.pink[700];
       case 5:
-        return Colors.lightGreen[800];
+        return Colors.green[800];
       case 99:
         return Colors.green[800];
       case 999:
@@ -59,7 +59,7 @@ class MyColors {
       case 4:
         return Colors.pink[800];
       case 5:
-        return Colors.lightGreen[900];
+        return Colors.green[900];
       case 99:
         return Colors.green[900];
       case 999:

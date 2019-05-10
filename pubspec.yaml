@@ -56,6 +56,13 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/marker6.png
+    - assets/marker5.png
+    - assets/marker4.png
+    - assets/marker3.png
+    - assets/marker2.png
+    - assets/marker1.png
+    - assets/marker0.png
     - assets/placeholder640x480.png
     - assets/addr.json
     - assets/am.json

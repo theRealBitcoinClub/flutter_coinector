@@ -3,46 +3,92 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async';
 import 'Merchant.dart';
 import 'ListModel.dart';
+import 'package:flutter/services.dart';
+import 'package:geolocator/geolocator.dart';
 
 class MapSample extends StatefulWidget {
-  final ListModel<Merchant> listMerchants;
+  final List<ListModel<Merchant>> allLists;
+  final Position position;
 
-  MapSample(this.listMerchants);
+  MapSample(this.allLists, this.position);
 
   @override
-  State<MapSample> createState() => MapSampleState(listMerchants);
+  State<MapSample> createState() => MapSampleState(allLists, position);
 }
 
 class MapSampleState extends State<MapSample> {
   Completer<GoogleMapController> _controller = Completer();
-  final ListModel<Merchant> listMerchants;
+  final List<ListModel<Merchant>> allLists;
+  final Position position;
 
-  static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
-    zoom: 10.4746,
+  static CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(41.4027984, 2.1600427),
+    zoom: 10,
   );
 
-  static final CameraPosition _kLake = CameraPosition(
-      bearing: 192.8334901395799,
-      target: LatLng(37.43296265331129, -122.08832357078792),
-      tilt: 59.440717697143555,
-      zoom: 19.151926040649414);
+  MapSampleState(this.allLists, this.position);
+  Set<Marker> allMarkers = Set.from([]);
 
-  MapSampleState(this.listMerchants);
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    if (position != null)
+      _kGooglePlex = CameraPosition(
+          target: LatLng(position.latitude, position.longitude), zoom: 10.0);
+
+    if (allLists != null) {
+      for (int tabCounter = 0; tabCounter < allLists.length; tabCounter++) {
+        ListModel<Merchant> listMerchants = allLists[tabCounter];
+        for (int itemCounter = 0;
+            itemCounter < listMerchants.length;
+            itemCounter++) {
+          var merchant = listMerchants[itemCounter];
+          allMarkers.add(Marker(
+              infoWindow: buildInfoWindow(merchant),
+              icon: getMarkerColor(merchant),
+              markerId: MarkerId(merchant.id),
+              position:
+                  LatLng(double.parse(merchant.x), double.parse(merchant.y))));
+        }
+      }
+    }
+  }
+
+  BitmapDescriptor getMarkerColor(Merchant m) {
+    switch (m.type) {
+      case 0:
+        return BitmapDescriptor.defaultMarkerWithHue(
+            BitmapDescriptor.hueOrange);
+      case 1:
+        return BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed);
+      case 2:
+        return BitmapDescriptor.defaultMarkerWithHue(
+            BitmapDescriptor.hueYellow);
+      case 3:
+        return BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueCyan);
+      case 4:
+        return BitmapDescriptor.defaultMarkerWithHue(
+            BitmapDescriptor.hueMagenta);
+      case 5:
+        return BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen);
+      case 6:
+        return BitmapDescriptor.defaultMarkerWithHue(
+            BitmapDescriptor.hueViolet);
+    }
+    return BitmapDescriptor.defaultMarker;
+  }
+
+  InfoWindow buildInfoWindow(Merchant merchant) {
+    return InfoWindow(
+        title: merchant.name,
+        snippet: (merchant.place != null)
+            ? merchant.place.adr.substring(merchant.place.adr.indexOf(",") + 2)
+            : merchant.location);
+  }
 
   @override
   Widget build(BuildContext context) {
-    Set<Marker> allMarkers = Set.from([]);
-    if (listMerchants != null) {
-      for (int i = 0; i < listMerchants.length; i++) {
-        var merchant = listMerchants[i];
-        allMarkers.add(Marker(
-            markerId: MarkerId(merchant.id),
-            position:
-                LatLng(double.parse(merchant.x), double.parse(merchant.y))));
-      }
-    }
-
     return new Scaffold(
       body: GoogleMap(
         compassEnabled: true,
@@ -64,6 +110,6 @@ class MapSampleState extends State<MapSample> {
 
   Future<void> _goToTheLake() async {
     final GoogleMapController controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
+    //controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
   }
 }

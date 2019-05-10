@@ -8,7 +8,6 @@ import 'package:coinector/CardItemBuilder.dart';
 import 'package:coinector/MyColors.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'ListModel.dart';
 import 'Merchant.dart';
 import 'SearchDemoSearchDelegate.dart';
@@ -18,6 +17,7 @@ import 'package:permission_handler/permission_handler.dart';
 //import 'package:permission/permission.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter/services.dart';
 
 class AnimatedListSample extends StatefulWidget {
   @override
@@ -404,7 +404,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   @override
   void initState() {
     super.initState();
-
+    SystemChrome.setEnabledSystemUIOverlays([]);
     requestCurrentPosition();
     searchDelegate.buildHistory();
     tabController = TabController(vsync: this, length: pages.length);
@@ -451,7 +451,29 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   void initListModel() {
     initListModelSeveralTimes(_lists, true);
   }
+/*
+  Future<bool> _onWillPop() {
+    SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
 
+    return showDialog(
+          context: context,
+          builder: (context) => new AlertDialog(
+                title: new Text('Closing Coinector!'),
+                content: new Text('Do you want to close Coinector?'),
+                actions: <Widget>[
+                  new FlatButton(
+                    onPressed: () => Navigator.of(context).pop(false),
+                    child: new Text('No'),
+                  ),
+                  new FlatButton(
+                    onPressed: () => Navigator.of(context).pop(true),
+                    child: new Text('Yes'),
+                  ),
+                ],
+              ),
+        ) ??
+        false;
+  }*/
   //TODO make use of theme styles everywhere and add switch theme button
 
   @override
@@ -482,8 +504,12 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
               color: Colors.white.withOpacity(0.7)),
         ),
       ),
-      home: Scaffold(
-          /*drawer: Drawer(
+      home:
+          /* new WillPopScope(
+          onWillPop: _onWillPop,
+          child:*/
+          Scaffold(
+              /*drawer: Drawer(
             child: Column(
               children: <Widget>[
                 const UserAccountsDrawerHeader(
@@ -509,29 +535,30 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
               ],
             ),
           ),*/
-          key: _scaffoldKey,
-          body: NestedScrollView(
-            headerSliverBuilder:
-                (BuildContext context, bool innerBoxIsScrolled) {
-              return <Widget>[
-                SliverAppBar(
-                    elevation: 1.5,
-                    forceElevated: true,
-                    leading: buildHomeButton(),
-                    bottom: TabBar(
-                      controller: tabController,
-                      isScrollable: true,
-                      indicator: getIndicator(),
-                      tabs: pages.map<Tab>((_Page page) {
-                        return _lists[page.tabIndex].length > 0
-                            ? Tab(
-                                icon: Icon(
-                                  page.icon,
-                                  color: MyColors.getTabColor(page.typeIndex),
-                                  size: 22,
-                                ),
-                                //text: page.text)
-                                /*child: Text(page.text,
+              key: _scaffoldKey,
+              body: NestedScrollView(
+                headerSliverBuilder:
+                    (BuildContext context, bool innerBoxIsScrolled) {
+                  return <Widget>[
+                    SliverAppBar(
+                        elevation: 2,
+                        forceElevated: true,
+                        leading: buildHomeButton(),
+                        bottom: TabBar(
+                          controller: tabController,
+                          isScrollable: true,
+                          indicator: getIndicator(),
+                          tabs: pages.map<Tab>((_Page page) {
+                            return _lists[page.tabIndex].length > 0
+                                ? Tab(
+                                    icon: Icon(
+                                      page.icon,
+                                      color:
+                                          MyColors.getTabColor(page.typeIndex),
+                                      size: 22,
+                                    ),
+                                    //text: page.text)
+                                    /*child: Text(page.text,
                                     maxLines: 1,
 
                                     overflow: TextOverflow.fade,
@@ -541,41 +568,42 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                                         .copyWith(
                                             color: MyColors.getTabColor(
                                                 page.typeIndex)))*/
-                              )
-                            : Tab(
-                                icon: Icon(
-                                page.icon,
-                                color: Colors.white.withOpacity(0.5),
-                                size: 22,
-                              ));
-                      }).toList(),
-                    ),
-                    actions: <Widget>[
-                      buildIconButtonMap(context),
-                      buildIconButtonSearch(context),
-                    ],
-                    title: Padding(
-                        padding: EdgeInsets.all(5.0),
-                        child: AnimatedSwitcher(
-                            //TODO fix animation, how to switch animted with a fade transition?
-                            duration: Duration(milliseconds: 500),
-                            child: Text(
-                              _title,
-                              style: TextStyle(
-                                  fontSize: 22.0,
-                                  fontWeight: FontWeight.w300,
-                                  fontStyle: FontStyle.normal,
-                                  color: Colors.white.withOpacity(0.7)),
-                            ))),
-                    //expandedHeight: 300.0, GOOD SPACE FOR ADS LATER
-                    floating: true,
-                    snap: true,
-                    pinned: false),
-              ];
-            },
-            body: TabBarView(
-                controller: tabController, children: buildAllTabContainer()),
-          )),
+                                  )
+                                : Tab(
+                                    icon: Icon(
+                                    page.icon,
+                                    color: Colors.white.withOpacity(0.5),
+                                    size: 22,
+                                  ));
+                          }).toList(),
+                        ),
+                        actions: <Widget>[
+                          buildIconButtonMap(context),
+                          buildIconButtonSearch(context),
+                        ],
+                        title: Padding(
+                            padding: EdgeInsets.all(5.0),
+                            child: AnimatedSwitcher(
+                                //TODO fix animation, how to switch animted with a fade transition?
+                                duration: Duration(milliseconds: 500),
+                                child: Text(
+                                  _title,
+                                  style: TextStyle(
+                                      fontSize: 22.0,
+                                      fontWeight: FontWeight.w300,
+                                      fontStyle: FontStyle.normal,
+                                      color: Colors.white.withOpacity(0.7)),
+                                ))),
+                        //expandedHeight: 300.0, GOOD SPACE FOR ADS LATER
+                        floating: true,
+                        snap: true,
+                        pinned: false),
+                  ];
+                },
+                body: TabBarView(
+                    controller: tabController,
+                    children: buildAllTabContainer()),
+              )),
     );
   }
 
@@ -587,7 +615,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
             context,
             MaterialPageRoute(
                 builder: (context) => MapSample(
-                      _lists[0],
+                      _lists, position
                     )),
           );
         });
