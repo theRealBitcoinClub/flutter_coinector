@@ -21,7 +21,7 @@ class MapSampleState extends State<MapSample> {
   final List<ListModel<Merchant>> allLists;
   final Position position;
 
-  static CameraPosition _kGooglePlex = CameraPosition(
+  static CameraPosition initialCamPos = CameraPosition(
     target: LatLng(41.4027984, 2.1600427),
     zoom: 10,
   );
@@ -34,7 +34,7 @@ class MapSampleState extends State<MapSample> {
     // TODO: implement initState
     super.initState();
     if (position != null)
-      _kGooglePlex = CameraPosition(
+      initialCamPos = CameraPosition(
           target: LatLng(position.latitude, position.longitude), zoom: 10.0);
 
     if (allLists != null) {
@@ -95,21 +95,20 @@ class MapSampleState extends State<MapSample> {
         myLocationEnabled: true,
         mapType: MapType.normal,
         markers: allMarkers,
-        initialCameraPosition: _kGooglePlex,
+        initialCameraPosition: initialCamPos,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: _goToTheLake,
-        label: Text('To the lake!'),
-        icon: Icon(Icons.directions_boat),
+        onPressed: closeMap,
+        label: Text('CLOSE'),
+        icon: Icon(Icons.close),
       ),
     );
   }
 
-  Future<void> _goToTheLake() async {
-    final GoogleMapController controller = await _controller.future;
-    //controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
+  Future<void> closeMap() async {
+    Navigator.of(context).pop();
   }
 }

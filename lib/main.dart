@@ -600,9 +600,12 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                         pinned: false),
                   ];
                 },
-                body: TabBarView(
-                    controller: tabController,
-                    children: buildAllTabContainer()),
+                body: Padding(
+                  padding: EdgeInsets.only(top: 5.0),
+                  child: TabBarView(
+                      controller: tabController,
+                      children: buildAllTabContainer()),
+                ),
               )),
     );
   }
@@ -614,9 +617,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => MapSample(
-                      _lists, position
-                    )),
+                builder: (context) => MapSample(_lists, position)),
           );
         });
   }
