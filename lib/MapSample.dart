@@ -30,6 +30,7 @@ class MapSampleState extends State<MapSample> {
   Set<Marker> allMarkers = Set.from([]);
 
   DateTime lastTap;
+  Merchant selectedMerchant;
 
   @override
   void initState() {
@@ -48,7 +49,8 @@ class MapSampleState extends State<MapSample> {
           var merchant = listMerchants[itemCounter];
           allMarkers.add(Marker(
               onTap: () {
-                /* if (lastTap != null &&
+/*
+                if (lastTap != null &&
                     new DateTime.now().millisecondsSinceEpoch -
                             lastTap.millisecondsSinceEpoch <
                         1000) {
@@ -57,7 +59,11 @@ class MapSampleState extends State<MapSample> {
                   //TODO explain the user that he has to double click to open the details
                 }
                 lastTap = new DateTime.now();*/
-                confirmShowDetails(context, merchant);
+                setState(() {
+                  selectedMerchant = merchant;
+                });
+
+                //confirmShowDetails(context, merchant);
               },
               infoWindow: buildInfoWindow(merchant),
               icon: getMarkerColor(merchant),
@@ -132,6 +138,11 @@ class MapSampleState extends State<MapSample> {
   Widget build(BuildContext context) {
     return new Scaffold(
       body: GoogleMap(
+        onTap: (LatLng) {
+          setState(() {
+            selectedMerchant = null;
+          });
+        },
         compassEnabled: true,
         myLocationEnabled: true,
         mapType: MapType.normal,
@@ -143,13 +154,13 @@ class MapSampleState extends State<MapSample> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: closeMap,
-        label: Text('CLOSE'),
-        icon: Icon(Icons.close),
+        label: Text(selectedMerchant == null ? 'CLOSE' : 'DETAILS'),
+        icon: Icon(selectedMerchant == null ? Icons.close : Icons.search),
       ),
     );
   }
 
   Future<void> closeMap() async {
-    Navigator.of(context).pop();
+    Navigator.of(context).pop(selectedMerchant);
   }
 }
