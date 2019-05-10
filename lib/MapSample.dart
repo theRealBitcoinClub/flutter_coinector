@@ -1,3 +1,4 @@
+import 'package:coinector/TagParser.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async';
@@ -129,9 +130,16 @@ class MapSampleState extends State<MapSample> {
   InfoWindow buildInfoWindow(Merchant merchant) {
     return InfoWindow(
         title: merchant.name,
-        snippet: (merchant.place != null)
-            ? merchant.place.adr.substring(merchant.place.adr.indexOf(",") + 2)
-            : merchant.location);
+        onTap: () {
+          closeMapReturnMerchant();
+        },
+        snippet: buildAdrSnippet(merchant));
+  }
+
+  String buildAdrSnippet(Merchant merchant) {
+    return (merchant.place != null)
+        ? merchant.place.adr.substring(merchant.place.adr.indexOf(",") + 2)
+        : merchant.location;
   }
 
   @override
@@ -153,14 +161,14 @@ class MapSampleState extends State<MapSample> {
         },
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: closeMap,
+        onPressed: closeMapReturnMerchant,
         label: Text(selectedMerchant == null ? 'CLOSE' : 'DETAILS'),
         icon: Icon(selectedMerchant == null ? Icons.close : Icons.search),
       ),
     );
   }
 
-  Future<void> closeMap() async {
+  Future<void> closeMapReturnMerchant() async {
     Navigator.of(context).pop(selectedMerchant);
   }
 }

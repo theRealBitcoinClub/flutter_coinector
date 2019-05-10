@@ -1,4 +1,5 @@
 import 'package:coinector/Merchant.dart';
+import 'package:coinector/TagParser.dart';
 import 'package:coinector/Tags.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -6,20 +7,20 @@ import 'package:flutter/material.dart';
 class ItemInfoStackLayer extends StatelessWidget {
   const ItemInfoStackLayer({
     Key key,
-    @required this.item,
+    @required this.merchant,
     @required this.textStyleMerchantTitle,
     @required this.textStyleMerchantLocation,
     @required this.height,
   }) : super(key: key);
 
-  final Merchant item;
+  final Merchant merchant;
   final TextStyle textStyleMerchantTitle;
   final TextStyle textStyleMerchantLocation;
   final double height;
 
   @override
   Widget build(BuildContext context) {
-    var splittedtags = item.tags.split(",");
+    var splittedtags = merchant.tags.split(",");
     return Container(
       //decoration: BoxDecoration(color: Colors.black.withOpacity(0.5)),
       height: height,
@@ -29,7 +30,7 @@ class ItemInfoStackLayer extends StatelessWidget {
           physics: const NeverScrollableScrollPhysics(),
           children: <Widget>[
             Text(
-              item.name,
+              merchant.name,
               style: textStyleMerchantTitle,
               maxLines: 1,
             ),
@@ -37,7 +38,7 @@ class ItemInfoStackLayer extends StatelessWidget {
               height: 5,
             ),
             Text(
-              item.location,
+              merchant.location,
               maxLines: 1,
               style: textStyleMerchantLocation,
             ),
@@ -45,7 +46,6 @@ class ItemInfoStackLayer extends StatelessWidget {
               height: 10,
             ),
             Row(
-              //TODO make items fit on the card
               children: <Widget>[buildTagText(splittedtags)],
             ),
           ],
@@ -56,22 +56,8 @@ class ItemInfoStackLayer extends StatelessWidget {
 
   Text buildTagText(List<String> splittedtags) {
     return Text(
-        parseElementAt(splittedtags, 0) +
-            parseElementAt(splittedtags, 1) +
-            parseElementAt(splittedtags, 2) +
-            parseElementAt(splittedtags, 3),
+        TagParser.parseTagIndexToText(splittedtags),
         style: TextStyle(
             fontSize: 15.0, fontWeight: FontWeight.w300, color: Colors.white));
-  }
-
-  String parseElementAt(splittedTags, int pos) {
-    int tagIndex = int.parse(splittedTags.elementAt(pos));
-
-    if (tagIndex == 104) return "";
-
-    String addSeparator = "";
-    if (pos != 0) addSeparator = "   ";
-
-    return addSeparator + Tags.tagText.elementAt(tagIndex);
   }
 }

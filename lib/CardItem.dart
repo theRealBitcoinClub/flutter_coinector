@@ -111,7 +111,7 @@ class CardItem extends StatelessWidget {
                   color: Colors.grey[900].withOpacity(0.8)),
             ),
             ItemInfoStackLayer(
-                item: merchant,
+                merchant: merchant,
                 textStyleMerchantTitle: textStyle,
                 textStyleMerchantLocation: textStyle2,
                 height: itemHeight)
