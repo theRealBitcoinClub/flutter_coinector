@@ -54,16 +54,16 @@ class CardItem extends StatelessWidget {
           color: actionButtonBackgroundColor,
           child: Column(
             children: <Widget>[
-              buildContentStack(
-                  infoBoxBackgroundColor, textStyleBody1, textStyleBody2),
+              buildContentStack(context, infoBoxBackgroundColor, textStyleBody1,
+                  textStyleBody2),
               buildButtonTheme(context),
             ],
           )),
     );
   }
 
-  Stack buildContentStack(
-      Color infoBoxBackgroundColor, TextStyle textStyle, TextStyle textStyle2) {
+  Stack buildContentStack(BuildContext ctx, Color infoBoxBackgroundColor,
+      TextStyle textStyle, TextStyle textStyle2) {
     var gifUrl = "http://realbitcoinclub-" +
         getServerId() +
         ".firebaseapp.com/gif/" +
@@ -74,8 +74,10 @@ class CardItem extends StatelessWidget {
       children: <Widget>[
         Positioned(
           top: 180.0,
-          left: 185.0,
-          child: CircularProgressIndicator(strokeWidth: 1.5),
+          left: MediaQuery.of(ctx).size.width / 2 - 20,
+          child: Center(
+            child: CircularProgressIndicator(strokeWidth: 1.5),
+          ),
         ),
         Padding(
           padding: EdgeInsets.all(0.0),
