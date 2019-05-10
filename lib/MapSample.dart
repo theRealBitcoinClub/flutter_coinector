@@ -162,6 +162,8 @@ class MapSampleState extends State<MapSample> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton.extended(
+        backgroundColor: Theme.of(context).backgroundColor,
+        foregroundColor: Theme.of(context).accentColor,
         onPressed: closeMapReturnMerchant,
         label: Text(selectedMerchant == null ? 'CLOSE' : 'DETAILS'),
         icon: Icon(selectedMerchant == null ? Icons.close : Icons.search),
