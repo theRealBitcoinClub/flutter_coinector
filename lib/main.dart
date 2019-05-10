@@ -405,7 +405,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   void initState() {
     super.initState();
     //SystemChrome.setEnabledSystemUIOverlays([]);
-    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
+    //SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
     requestCurrentPosition();
     searchDelegate.buildHistory();
     tabController = TabController(vsync: this, length: pages.length);
@@ -510,7 +510,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           onWillPop: _onWillPop,
           child:*/
           Scaffold(
-              /*drawer: Drawer(
+        /*drawer: Drawer(
             child: Column(
               children: <Widget>[
                 const UserAccountsDrawerHeader(
@@ -536,30 +536,28 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
               ],
             ),
           ),*/
-              key: _scaffoldKey,
-              body: NestedScrollView(
-                headerSliverBuilder:
-                    (BuildContext context, bool innerBoxIsScrolled) {
-                  return <Widget>[
-                    SliverAppBar(
-                        elevation: 2,
-                        forceElevated: true,
-                        leading: buildHomeButton(),
-                        bottom: TabBar(
-                          controller: tabController,
-                          isScrollable: true,
-                          indicator: getIndicator(),
-                          tabs: pages.map<Tab>((_Page page) {
-                            return _lists[page.tabIndex].length > 0
-                                ? Tab(
-                                    icon: Icon(
-                                      page.icon,
-                                      color:
-                                          MyColors.getTabColor(page.typeIndex),
-                                      size: 22,
-                                    ),
-                                    //text: page.text)
-                                    /*child: Text(page.text,
+        key: _scaffoldKey,
+        body: NestedScrollView(
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return <Widget>[
+              SliverAppBar(
+                  elevation: 2,
+                  forceElevated: true,
+                  leading: buildHomeButton(),
+                  bottom: TabBar(
+                    controller: tabController,
+                    isScrollable: true,
+                    indicator: getIndicator(),
+                    tabs: pages.map<Tab>((_Page page) {
+                      return _lists[page.tabIndex].length > 0
+                          ? Tab(
+                              icon: Icon(
+                                page.icon,
+                                color: MyColors.getTabColor(page.typeIndex),
+                                size: 22,
+                              ),
+                              //text: page.text)
+                              /*child: Text(page.text,
                                     maxLines: 1,
 
                                     overflow: TextOverflow.fade,
@@ -569,45 +567,46 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                                         .copyWith(
                                             color: MyColors.getTabColor(
                                                 page.typeIndex)))*/
-                                  )
-                                : Tab(
-                                    icon: Icon(
-                                    page.icon,
-                                    color: Colors.white.withOpacity(0.5),
-                                    size: 22,
-                                  ));
-                          }).toList(),
-                        ),
-                        actions: <Widget>[
-                          buildIconButtonMap(context),
-                          buildIconButtonSearch(context),
-                        ],
-                        title: Padding(
-                            padding: EdgeInsets.all(5.0),
-                            child: AnimatedSwitcher(
-                                //TODO fix animation, how to switch animted with a fade transition?
-                                duration: Duration(milliseconds: 500),
-                                child: Text(
-                                  _title,
-                                  style: TextStyle(
-                                      fontSize: 22.0,
-                                      fontWeight: FontWeight.w300,
-                                      fontStyle: FontStyle.normal,
-                                      color: Colors.white.withOpacity(0.7)),
-                                ))),
-                        //expandedHeight: 300.0, GOOD SPACE FOR ADS LATER
-                        floating: true,
-                        snap: true,
-                        pinned: false),
-                  ];
-                },
-                body: Padding(
+                            )
+                          : Tab(
+                              icon: Icon(
+                              page.icon,
+                              color: Colors.white.withOpacity(0.5),
+                              size: 22,
+                            ));
+                    }).toList(),
+                  ),
+                  actions: <Widget>[
+                    buildIconButtonMap(context),
+                    buildIconButtonSearch(context),
+                  ],
+                  title: Padding(
+                      padding: EdgeInsets.all(5.0),
+                      child: AnimatedSwitcher(
+                          //TODO fix animation, how to switch animted with a fade transition?
+                          duration: Duration(milliseconds: 500),
+                          child: Text(
+                            _title,
+                            style: TextStyle(
+                                fontSize: 22.0,
+                                fontWeight: FontWeight.w300,
+                                fontStyle: FontStyle.normal,
+                                color: Colors.white.withOpacity(0.7)),
+                          ))),
+                  //expandedHeight: 300.0, GOOD SPACE FOR ADS LATER
+                  floating: true,
+                  snap: true,
+                  pinned: false),
+            ];
+          },
+          body:
+              /*Padding(
                   padding: EdgeInsets.only(top: 5.0),
-                  child: TabBarView(
-                      controller: tabController,
-                      children: buildAllTabContainer()),
-                ),
-              )),
+                  child:*/
+              TabBarView(
+                  controller: tabController, children: buildAllTabContainer()),
+        ),
+      ),
     );
   }
 
@@ -722,7 +721,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           context: context,
           delegate: searchDelegate,
         );
-        SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
+        //SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
         if (!hasHitSearch) showInfoDialogWithCloseButton(context);
         handleSearchButtonAnimationAndPersistHit();
 
