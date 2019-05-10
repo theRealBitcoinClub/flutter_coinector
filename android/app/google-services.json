@@ -21,7 +21,7 @@
       ],
       "api_key": [
         {
-          "current_key": "x"
+          "current_key": "$google_services_api_key"
         }
       ],
       "services": {
