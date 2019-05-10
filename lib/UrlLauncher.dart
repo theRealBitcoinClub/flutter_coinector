@@ -53,7 +53,7 @@ class UrlLauncher {
 
   static void launchEmailClient(onEmailClientNotFound) async {
     var urlString =
-        "mailTo:bitcoinmap.cash@protonmail.com?subject=Coinecccctorrrrr";
+        "mailTo:trbc@bitcoinmap.cash?subject=Coinecccctorrrrr";
     var hasEmailClient = await canLaunch(urlString);
     if (hasEmailClient) {
       await launch(urlString);

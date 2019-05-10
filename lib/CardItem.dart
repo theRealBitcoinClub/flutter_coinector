@@ -352,7 +352,7 @@ void showPlaceNotFoundOnGmaps(context) {
           title: Text("Missing Google Maps link!",
               style: TextStyle(color: Colors.white)),
           content: Text(
-              "Help to grow adoption!\n\nSend the missing information to:\n\nbitcoinmap.cash@protonmail.com"),
+              "Help to grow adoption!\n\nSend the missing information to:\n\ntrbc@bitcoinmap.cash"),
         );
       });
 }
@@ -409,10 +409,10 @@ void showMissingAddrDialog(BuildContext context) {
                 Text("Missing address", style: TextStyle(color: Colors.white)),
             content: new InkWell(
                 child: Text(
-                    "This merchant has not yet provided any payment receiving address!\n\nExplain to the merchant the benefits (Proof of Adoption) of providing an address and touch here to send an email to:\n\nbitcoinmap.cash@protonmail.com"),
+                    "This merchant has not yet provided any payment receiving address!\n\nExplain to the merchant the benefits (Proof of Adoption) of providing an address and touch here to send an email to:\n\ntrbc@bitcoinmap.cash"),
                 onTap: () async {
                   /*copyAddressToClipAndShowDialog(
-                      "bitcoinmap.cash@protonmail.com", context);
+                      "trbc@bitcoinmap.cash", context);
                   UrlLauncher.launchEmailClient(() {
                     showAboutDialog(
                         context: context,
@@ -420,7 +420,7 @@ void showMissingAddrDialog(BuildContext context) {
                         applicationVersion: "v1.2.0",
                         applicationIcon:
                             Image.asset("assets/placeholder640x480.png"),
-                        children: [Text("bitcoinmap.cash@protonmail.com")]);
+                        children: [Text("trbc@bitcoinmap.cash")]);
 
                     //TODO show dialog that there was not found any supported email client and forward the user to a sign up form
                   });*/
