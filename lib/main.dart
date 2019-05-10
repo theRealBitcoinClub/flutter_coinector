@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:coinector/MapSample.dart';
 import 'package:coinector/UrlLauncher.dart';
 //import 'package:dio/dio.dart';
 import 'package:coinector/AssetLoader.dart';
@@ -16,6 +17,7 @@ import 'Tags.dart';
 import 'package:permission_handler/permission_handler.dart';
 //import 'package:permission/permission.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class AnimatedListSample extends StatefulWidget {
   @override
@@ -206,7 +208,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         //bool hasCalculated = await calculateDistanceUpdateMerchant(position, m);
         calculateDistanceUpdateMerchant(position, m);
         currentList.insert(currentList.length, m);
-       /* Merchant m = currentTmpList[x];
+        /* Merchant m = currentTmpList[x];
         bool hasCalculated = await calculateDistanceUpdateMerchant(position, m);
 
         insertItemInOrderedPosition(currentList, m);*/
@@ -227,7 +229,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     currentList.insert(currentList.length, m);
   }
 */
-  Future<bool> calculateDistanceUpdateMerchant(Position position, Merchant m) async {
+  Future<bool> calculateDistanceUpdateMerchant(
+      Position position, Merchant m) async {
     if (position == null) {
       m.distance = "distance not available";
       return false;
@@ -548,7 +551,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                       }).toList(),
                     ),
                     actions: <Widget>[
-                      //buildIconButtonMap(context),
+                      buildIconButtonMap(context),
                       buildIconButtonSearch(context),
                     ],
                     title: Padding(
@@ -574,6 +577,20 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                 controller: tabController, children: buildAllTabContainer()),
           )),
     );
+  }
+
+  Widget buildIconButtonMap(context) {
+    return IconButton(
+        icon: Icon(Icons.map),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => MapSample(
+                      _lists[0],
+                    )),
+          );
+        });
   }
 
   List<Widget> buildAllTabContainer() {
