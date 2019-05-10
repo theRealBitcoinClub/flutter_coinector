@@ -1,5 +1,5 @@
 import 'dart:async';
-
+//import 'package:onesignal/onesignal.dart';
 import 'package:coinector/MapSample.dart';
 import 'package:coinector/UrlLauncher.dart';
 //import 'package:dio/dio.dart';
@@ -400,10 +400,20 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     }
     return false;
   }
+/*
+  Future<void> initOneSignal() async {
+    bool hasPermission = await OneSignal.shared
+        .promptUserForPushNotificationPermission(fallbackToSettings: true);
 
+    if (hasPermission) {
+      OneSignal.shared.init("3cfbaca5-2b90-4f68-a1fe-98aa9a168894");
+    }
+  }
+*/
   @override
   void initState() {
     super.initState();
+    //initOneSignal();
     //SystemChrome.setEnabledSystemUIOverlays([]);
     //SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
     requestCurrentPosition();

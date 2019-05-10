@@ -160,6 +160,7 @@ class MapSampleState extends State<MapSample> {
           _controller.complete(controller);
         },
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton.extended(
         onPressed: closeMapReturnMerchant,
         label: Text(selectedMerchant == null ? 'CLOSE' : 'DETAILS'),
