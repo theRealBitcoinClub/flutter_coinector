@@ -722,6 +722,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           context: context,
           delegate: searchDelegate,
         );
+        SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
         if (!hasHitSearch) showInfoDialogWithCloseButton(context);
         handleSearchButtonAnimationAndPersistHit();
 
