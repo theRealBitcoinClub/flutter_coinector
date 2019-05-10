@@ -613,12 +613,16 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   Widget buildIconButtonMap(context) {
     return IconButton(
         icon: Icon(Icons.map),
-        onPressed: () {
-          Navigator.push(
+        onPressed: () async {
+          Merchant result = await Navigator.push(
             context,
             MaterialPageRoute(
                 builder: (context) => MapSample(_lists, position)),
           );
+          if (result != null) {
+            filterListUpdateTitle(result.name);
+            tabController.animateTo(result.type);
+          }
         });
   }
 

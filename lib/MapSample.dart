@@ -29,6 +29,8 @@ class MapSampleState extends State<MapSample> {
   MapSampleState(this.allLists, this.position);
   Set<Marker> allMarkers = Set.from([]);
 
+  DateTime lastTap;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -45,6 +47,18 @@ class MapSampleState extends State<MapSample> {
             itemCounter++) {
           var merchant = listMerchants[itemCounter];
           allMarkers.add(Marker(
+              onTap: () {
+                /* if (lastTap != null &&
+                    new DateTime.now().millisecondsSinceEpoch -
+                            lastTap.millisecondsSinceEpoch <
+                        1000) {
+                  Navigator.of(context).pop(merchant);
+                } else {
+                  //TODO explain the user that he has to double click to open the details
+                }
+                lastTap = new DateTime.now();*/
+                confirmShowDetails(context, merchant);
+              },
               infoWindow: buildInfoWindow(merchant),
               icon: getMarkerColor(merchant),
               markerId: MarkerId(merchant.id),
@@ -53,6 +67,33 @@ class MapSampleState extends State<MapSample> {
         }
       }
     }
+  }
+
+  void confirmShowDetails(BuildContext context, Merchant merchant) {
+    showDialog(
+        context: context,
+        builder: (BuildContext ctx) {
+          return AlertDialog(
+            backgroundColor: Colors.grey[900],
+            content: Text("Do you want to see the details of that place?"),
+            title: Text("Show details?", style: TextStyle(color: Colors.white)),
+            actions: <Widget>[
+              FlatButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text("NO"),
+              ),
+              FlatButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pop(merchant);
+                },
+                child: Text("YES"),
+              )
+            ],
+          );
+        });
   }
 
   BitmapDescriptor getMarkerColor(Merchant m) {
