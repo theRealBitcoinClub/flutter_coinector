@@ -11,24 +11,27 @@ import 'package:geolocator/geolocator.dart';
 class MapSample extends StatefulWidget {
   final List<ListModel<Merchant>> allLists;
   final Position position;
+  final double initialZoomLevel;
 
-  MapSample(this.allLists, this.position);
+  MapSample(this.allLists, this.position, this.initialZoomLevel);
 
   @override
-  State<MapSample> createState() => MapSampleState(allLists, position);
+  State<MapSample> createState() =>
+      MapSampleState(allLists, position, initialZoomLevel);
 }
 
 class MapSampleState extends State<MapSample> {
   Completer<GoogleMapController> _controller = Completer();
   final List<ListModel<Merchant>> allLists;
   final Position position;
+  final double initialZoomLevel;
 
   static CameraPosition initialCamPos = CameraPosition(
     target: LatLng(41.4027984, 2.1600427),
-    zoom: 10,
+    zoom: 10, //This position reflect Vila de Gracia Barcelona, Quinoa Bar
   );
 
-  MapSampleState(this.allLists, this.position);
+  MapSampleState(this.allLists, this.position, this.initialZoomLevel);
   Set<Marker> allMarkers = Set.from([]);
 
   DateTime lastTap;
@@ -41,7 +44,8 @@ class MapSampleState extends State<MapSample> {
     allMarkers.clear();
     if (position != null)
       initialCamPos = CameraPosition(
-          target: LatLng(position.latitude, position.longitude), zoom: 10.0);
+          target: LatLng(position.latitude, position.longitude),
+          zoom: initialZoomLevel);
 
     if (allLists != null) {
       var latLng;
@@ -77,7 +81,7 @@ class MapSampleState extends State<MapSample> {
         }
       }
       if (allMarkers.length == 1) {
-        initialCamPos = CameraPosition(target: latLng, zoom: 10.0);
+        initialCamPos = CameraPosition(target: latLng, zoom: 15.0);
       }
       print("markers:" + allMarkers.length.toString());
     }

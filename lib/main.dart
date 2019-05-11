@@ -81,11 +81,12 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   void loadAssets(
       int filterWordIndex, String locationFilter, String fileName) async {
-    bool hasLocation = await updateCurrentPosition();
+    updateCurrentPosition();
+    //bool hasLocation = await updateCurrentPosition(); //TODO is it necessary to wait??? maybe costs a lot of performance and getting accurate position from the last search usually is enough accuracy...
 
-    if (filterWordIndex == -1) {
+    if (filterWordIndex == -999) {
       if (isUnfilteredList) return;
-      if (unfilteredLists.length != 0) updateListModel(unfilteredLists);
+      //if (unfilteredLists.length != 0) updateListModel(unfilteredLists);
       this.isUnfilteredList = true;
     } else {
       this.isUnfilteredList = false;
@@ -103,22 +104,26 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     if (fileName == null) {
       //TODO internationalize the tags, let users search for hamburguesa instead of burger or hamburger, all should lead to the same results which then display the short term "burger"
       //TODO internationalize the app, translate the strings, let users search locations in their language (Köln a.k.a. Cologne, Colonia, Brüssel, Brussels)
-      parseAssetUpdateListModel(
-          filterWordIndex, locationFilter, 'assets/am.json', 'am');
-      parseAssetUpdateListModel(
-          filterWordIndex, locationFilter, 'assets/e.json', 'e');
-      parseAssetUpdateListModel(
-          filterWordIndex, locationFilter, 'assets/as.json', 'as');
-      parseAssetUpdateListModel(
-          filterWordIndex, locationFilter, 'assets/au.json', 'au');
+      parseAssetUpdateListModel(filterWordIndex, locationFilter,
+          'assets/am.json', 'am', fileName != null);
+      parseAssetUpdateListModel(filterWordIndex, locationFilter,
+          'assets/e.json', 'e', fileName != null);
+      parseAssetUpdateListModel(filterWordIndex, locationFilter,
+          'assets/as.json', 'as', fileName != null);
+      parseAssetUpdateListModel(filterWordIndex, locationFilter,
+          'assets/au.json', 'au', fileName != null);
     } else {
       parseAssetUpdateListModel(filterWordIndex, locationFilter,
-          'assets/' + fileName + '.json', fileName);
+          'assets/' + fileName + '.json', fileName, fileName != null);
     }
   }
 
-  Future<List<dynamic>> parseAssetUpdateListModel(int filterWordIndex,
-      String locationFilter, String assetUri, String serverId) async {
+  Future<List<dynamic>> parseAssetUpdateListModel(
+      int selectedTagIndex,
+      String locationFilter,
+      String assetUri,
+      String serverId,
+      bool isLocationSearch) async {
     var placesList = await AssetLoader.loadAndEncodeAsset(assetUri);
     initTempListModel();
     for (int i = 0; i < placesList.length; i++) {
@@ -131,8 +136,10 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         });
       });
 
-      _insertIntoTempList(m2, filterWordIndex, locationFilter);
+      _insertIntoTempList(m2, selectedTagIndex, locationFilter);
     }
+
+    if (!isLocationSearch) mapPosition = null;
 
     if (unfilteredLists.length == 0) initUnfilteredLists();
 
@@ -147,7 +154,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       for (int x = 0; x < currentTmpList.length; x++) {
         Merchant m = currentTmpList[x];
         //bool hasCalculated = await calculateDistanceUpdateMerchant(position, m);
-        calculateDistanceUpdateMerchant(position, m);
+        calculateDistanceUpdateMerchant(userPosition, m);
         currentList.insert(currentList.length, m);
         /* Merchant m = currentTmpList[x];
         bool hasCalculated = await calculateDistanceUpdateMerchant(position, m);
@@ -231,9 +238,13 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void _insertIntoTempList(Merchant m2, int filterWordIndex, String location) {
-    if (filterWordIndexDoesNotMatch(filterWordIndex, m2) &&
+    if (!isUnfilteredRequest(filterWordIndex) &&
+        filterWordIndexDoesNotMatch(filterWordIndex, m2) &&
         !_containsLocation(m2, location) &&
         !_containsTitle(m2, location)) return;
+    if (filterWordIndex == -1)
+      mapPosition =
+          Position(latitude: double.parse(m2.x), longitude: double.parse(m2.y));
 
     switch (m2.type) {
       case 0:
@@ -263,14 +274,19 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     }
   }
 
-  bool filterWordIndexDoesNotMatch(int filterWordIndex, Merchant m2) {
-    return hasFilterWordIndex(filterWordIndex) &&
-        !matchesFilteredTag(m2, filterWordIndex);
+  bool filterWordIndexDoesNotMatch(int tagFilterWordIndex, Merchant m2) {
+    return !hasFilterWordIndex(tagFilterWordIndex) ||
+        (hasFilterWordIndex(tagFilterWordIndex) &&
+            !matchesFilteredTag(m2, tagFilterWordIndex));
   }
 
   bool hasFilterWordIndex(int filterWordIndex) {
-    return filterWordIndex != null && filterWordIndex != -1;
+    return filterWordIndex != null &&
+        filterWordIndex != -1 &&
+        !isUnfilteredRequest(filterWordIndex);
   }
+
+  bool isUnfilteredRequest(int filterWordIndex) => filterWordIndex == -999;
 
   void initListModelSeveralTimes(List lists, bool keepListKeys) {
     lists.clear();
@@ -314,10 +330,10 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     });
   }
 
-  Position position;
+  Position userPosition;
+  Position mapPosition;
 
   void requestCurrentPosition() {
-    //TODO show popup ask the user if he wants to see the distance of each place to his current position
     PermissionHandler()
         .requestPermissions([PermissionGroup.locationWhenInUse]).then(
             (Map<PermissionGroup, PermissionStatus> p) {
@@ -326,7 +342,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   Future<bool> updateCurrentPosition() async {
-    //TODO show popup ask the user
     PermissionStatus sta = await PermissionHandler()
         .checkPermissionStatus(PermissionGroup.locationWhenInUse);
 
@@ -335,7 +350,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
 
       setState(() {
-        position = pos;
+        userPosition = pos;
       });
       return true;
     }
@@ -562,6 +577,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     );
   }
 
+  bool zoomMapAfterSelectLocation = false;
+
   Widget buildIconButtonMap(context) {
     return IconButton(
         icon: Icon(Icons.map),
@@ -569,7 +586,10 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           Merchant result = await Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => MapSample(_lists, position)),
+                builder: (context) => MapSample(
+                    _lists,
+                    mapPosition != null ? mapPosition : userPosition,
+                    zoomMapAfterSelectLocation ? 10.0 : 0.0)),
           );
           if (result != null) {
             filterListUpdateTitle(result.name);
@@ -579,7 +599,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   List<Widget> buildAllTabContainer() {
-    var builder = CardItemBuilder(_lists, position);
+    var builder = CardItemBuilder(_lists, userPosition);
     return [
       buildTabContainer(_listKeys[0], _lists[0], builder.buildItemRestaurant,
           Pages.pages[0].title),
@@ -632,11 +652,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           return;
         }
 
-        updateTitle();
-
-        setState(() {
-          showUnfilteredLists();
-        });
+        showUnfilteredLists();
       },
     );
   }
@@ -681,7 +697,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           filterListUpdateTitle(selected);
         } else {
           showUnfilteredLists();
-          updateTitle();
         }
       },
       tooltip: 'Search',
@@ -733,6 +748,11 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     final String search = title.split(" - ")[0];
     //if selectedItem contains separator ; it has the filename attached
     final String fileName = selectedArray.length > 1 ? selectedArray[1] : null;
+    if (fileName != null) {
+      zoomMapAfterSelectLocation = true;
+    } else {
+      zoomMapAfterSelectLocation = false;
+    }
 
     var index = _getTagIndex(selectedLocationOrTag);
     loadAssets(index, search, fileName);
@@ -744,10 +764,15 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void showUnfilteredLists() {
-    if (isFilteredList()) {
-      _searchTerm = '';
-      loadAssets(-1, null, null);
-    }
+    zoomMapAfterSelectLocation = false;
+    mapPosition = null;
+    updateTitle();
+    setState(() {
+      if (isFilteredList()) {
+        _searchTerm = '';
+        loadAssets(-999, null, null);
+      }
+    });
   }
 
   bool isFilteredList() => _searchTerm != null && _searchTerm.isNotEmpty;
@@ -866,15 +891,17 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 }
 
 int _getTagIndex(String searchTerm) {
-  Tags.tagText.contains(searchTerm);
+  //Tags.tagText.contains(searchTerm);
+  bool hasFoundTag = false;
   int i = 0;
   for (; i < Tags.tagText.length; i++) {
     if (Tags.tagText.elementAt(i) == searchTerm) {
+      hasFoundTag = true;
       break;
     }
   }
 
-  return i;
+  return hasFoundTag ? i : -1;
 }
 
 void main() {
