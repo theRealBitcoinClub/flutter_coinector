@@ -106,10 +106,12 @@ class MapSampleState extends State<MapSample> {
   BitmapDescriptor getMarkerColor(Merchant m) {
     switch (m.type) {
       case 0:
-        return BitmapDescriptor.defaultMarkerWithHue(
-            BitmapDescriptor.hueOrange);
+        //return BitmapDescriptor.defaultMarkerWithHue(
+        //   BitmapDescriptor.hueOrange);
+        return BitmapDescriptor.defaultMarkerWithHue(50.0);
       case 1:
-        return BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed);
+        return BitmapDescriptor.defaultMarkerWithHue(10.0);
+      //return BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed);
       case 2:
         return BitmapDescriptor.defaultMarkerWithHue(
             BitmapDescriptor.hueYellow);
@@ -127,9 +129,41 @@ class MapSampleState extends State<MapSample> {
     return BitmapDescriptor.defaultMarker;
   }
 
+  String getEmojiForType(int type, int emoji) {
+    switch (type) {
+      case 0:
+        return getEmo(emoji, "🥣", "🍝");
+      case 1:
+        return getEmo(emoji, "🥡", "🥨");
+      case 2:
+        return getEmo(emoji, "☕", "🍹");
+      case 3:
+        return getEmo(emoji, "🍉", "🍓");
+      case 4:
+        return getEmo(emoji, "🛌", "🏨");
+      case 5:
+        return getEmo(emoji, "🛍", "👜");
+      case 6:
+        return getEmo(emoji, "🧘", "♨");
+    }
+    return "";
+  }
+
+  String getEmo(int emoji, String emoji1, String emoji2) {
+    switch (emoji) {
+      case 1:
+        return emoji1;
+      case 2:
+        return emoji2;
+    }
+    return "";
+  }
+
   InfoWindow buildInfoWindow(Merchant merchant) {
     return InfoWindow(
-        title: merchant.name,
+        title: merchant.name +
+            " bla " +
+            TagParser.parseTagIndexToText(merchant.tags.split(",")),
         onTap: () {
           closeMapReturnMerchant();
         },

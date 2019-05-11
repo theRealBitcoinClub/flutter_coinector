@@ -104,7 +104,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
       query: query,
       suggestions: suggestions.map<String>((String i) => i).toList(),
       onSelected: (String match) {
-        String title = match.split(",")[0];
+        String title = match.split(Suggestions.separator)[0];
         query = title.split(" - ")[0];
         _addHistoryItem(match);
         close(context, match);
@@ -118,8 +118,6 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
     //THIS METHOD IS CALLED WHEN USER HITS THE SEARCH ICON OF THE KEYBOARD LAYOUT
     close(context, null);
   }
-
-
 
   @override
   Widget buildResults(BuildContext context) {

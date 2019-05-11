@@ -1,3 +1,5 @@
+import 'package:coinector/Suggestions.dart';
+
 class SuggestionMatch {
   const SuggestionMatch(
       {this.title,
@@ -26,7 +28,7 @@ class SuggestionMatch {
   }
 
   static SuggestionMatch parseString(String input, int index) {
-    var inputArray = input.split(",");
+    var inputArray = input.split(Suggestions.separator);
     var title = inputArray[0];
     var titleArray = inputArray[0].split(" - ");
     var state = titleArray.length > 1 ? titleArray[1] : null;

@@ -1,6 +1,7 @@
 import 'dart:async';
 //import 'package:onesignal/onesignal.dart';
 import 'package:coinector/MapSample.dart';
+import 'package:coinector/Suggestions.dart';
 import 'package:coinector/UrlLauncher.dart';
 //import 'package:dio/dio.dart';
 import 'package:coinector/AssetLoader.dart';
@@ -785,13 +786,14 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   bool hasNotHitSearch() => hasHitSearch == null || !hasHitSearch;
 
-  void filterListUpdateTitle(String selected) {
-    var selectedArray = selected.split(",");
+  void filterListUpdateTitle(String selectedLocationOrTag) {
+    var selectedArray = selectedLocationOrTag.split(Suggestions.separator);
     final String title = selectedArray[0];
     final String search = title.split(" - ")[0];
+    //if selectedItem contains separator ; it has the filename attached
     final String fileName = selectedArray.length > 1 ? selectedArray[1] : null;
 
-    var index = _getTagIndex(selected);
+    var index = _getTagIndex(selectedLocationOrTag);
     loadAssets(index, search, fileName);
 
     setState(() {
