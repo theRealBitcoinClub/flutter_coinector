@@ -83,7 +83,7 @@ class MapSampleState extends State<MapSample> {
       if (allMarkers.length == 1) {
         initialCamPos = CameraPosition(target: latLng, zoom: 15.0);
       }
-      print("markers:" + allMarkers.length.toString());
+      //print("markers:" + allMarkers.length.toString());
     }
   }
 

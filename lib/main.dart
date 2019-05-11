@@ -210,6 +210,13 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     updateList(_lists, tmpList, true);
   }
 
+  void animateToFirstResult() {
+    for (int i=0; i<_lists.length; i++) {
+//TODO IMPLEMENT ANIMATION TO FIRST RESULT IF ONLY ONE RESULT
+    //TODO OR ALWAYS ANIMATE TO FIRST RESULT, so users will always see the full list auto selected
+    }
+  }
+
   void initUnfilteredLists() {
     initListModelSeveralTimes(unfilteredLists, false);
     updateList(unfilteredLists, tempLists, false);
