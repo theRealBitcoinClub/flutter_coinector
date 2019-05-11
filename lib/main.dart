@@ -130,8 +130,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       Merchant m2 = Merchant.fromJson(placesList.elementAt(i));
       m2.serverId = serverId;
       //at the moment there is no PAY feature: m2.isPayEnabled = await AssetLoader.loadReceivingAddress(m2.id) != null;
-      setState(() {
-        AssetLoader.loadPlace(m2.id).then((place) {
+      AssetLoader.loadPlace(m2.id).then((place) {
+        setState(() {
           m2.place = place;
         });
       });
@@ -147,7 +147,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     return placesList;
   }
 
-  void updateList(List destination, List tmpList) async {
+  void updateList(List destination, List tmpList, bool updateState) async {
     for (int i = 0; i < tmpList.length; i++) {
       ListModel<Merchant> currentTmpList = tmpList[i];
       ListModel<Merchant> currentList = destination[i];
@@ -155,11 +155,17 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         Merchant m = currentTmpList[x];
         //bool hasCalculated = await calculateDistanceUpdateMerchant(position, m);
         calculateDistanceUpdateMerchant(userPosition, m);
-        currentList.insert(currentList.length, m);
         /* Merchant m = currentTmpList[x];
         bool hasCalculated = await calculateDistanceUpdateMerchant(position, m);
 
         insertItemInOrderedPosition(currentList, m);*/
+        if (updateState) {
+          setState(() {
+            currentList.insert(currentList.length, m);
+          });
+        } else {
+          currentList.insert(currentList.length, m);
+        }
       }
     }
   }
@@ -201,14 +207,12 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void updateListModel(List<ListModel<Merchant>> tmpList) {
-    setState(() {
-      updateList(_lists, tmpList);
-    });
+    updateList(_lists, tmpList, true);
   }
 
   void initUnfilteredLists() {
     initListModelSeveralTimes(unfilteredLists, false);
-    updateList(unfilteredLists, tempLists);
+    updateList(unfilteredLists, tempLists, false);
   }
 
   bool matchesFilteredTag(Merchant m, int filterWordIndex) {
@@ -325,9 +329,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   _handleTabSelection() {
-    setState(() {
-      if (!isFilteredList()) updateTitle();
-    });
+    if (!isFilteredList()) updateTitle();
   }
 
   Position userPosition;
@@ -623,8 +625,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   Future<bool> initHasHitSearch() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
+    var tmp = prefs.getBool(sharedPrefKeyHasHitSearch);
     setState(() {
-      var tmp = prefs.getBool(sharedPrefKeyHasHitSearch);
       hasHitSearch = tmp != null ? tmp : false;
     });
 
@@ -725,10 +727,10 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   void handleSearchButtonAnimationAndPersistHit() async {
     if (hasNotHitSearch()) {
       if (searchIconBlinkAnimationController != null) {
-        setState(() {
+        //setState(() {
           searchIconBlinkAnimationController.reset();
           //searchIconBlinkAnimationController.value = 0.0;
-        });
+        //});
       }
 
       setState(() {
@@ -767,12 +769,12 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     zoomMapAfterSelectLocation = false;
     mapPosition = null;
     updateTitle();
-    setState(() {
+    //setState(() {
       if (isFilteredList()) {
         _searchTerm = '';
         loadAssets(-999, null, null);
       }
-    });
+    //});
   }
 
   bool isFilteredList() => _searchTerm != null && _searchTerm.isNotEmpty;
