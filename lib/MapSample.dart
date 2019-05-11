@@ -1,4 +1,5 @@
 import 'package:coinector/TagParser.dart';
+import 'package:coinector/pages.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async';
@@ -37,17 +38,20 @@ class MapSampleState extends State<MapSample> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    allMarkers.clear();
     if (position != null)
       initialCamPos = CameraPosition(
           target: LatLng(position.latitude, position.longitude), zoom: 10.0);
 
     if (allLists != null) {
+      var latLng;
       for (int tabCounter = 0; tabCounter < allLists.length; tabCounter++) {
         ListModel<Merchant> listMerchants = allLists[tabCounter];
         for (int itemCounter = 0;
             itemCounter < listMerchants.length;
             itemCounter++) {
           var merchant = listMerchants[itemCounter];
+          latLng = LatLng(double.parse(merchant.x), double.parse(merchant.y));
           allMarkers.add(Marker(
               onTap: () {
 /*
@@ -69,10 +73,13 @@ class MapSampleState extends State<MapSample> {
               infoWindow: buildInfoWindow(merchant),
               icon: getMarkerColor(merchant),
               markerId: MarkerId(merchant.id),
-              position:
-                  LatLng(double.parse(merchant.x), double.parse(merchant.y))));
+              position: latLng));
         }
       }
+      if (allMarkers.length == 1) {
+        initialCamPos = CameraPosition(target: latLng, zoom: 10.0);
+      }
+      print("markers:" + allMarkers.length.toString());
     }
   }
 
@@ -162,12 +169,19 @@ class MapSampleState extends State<MapSample> {
   InfoWindow buildInfoWindow(Merchant merchant) {
     return InfoWindow(
         title: merchant.name +
-            " bla " +
-            TagParser.parseTagIndexToText(merchant.tags.split(",")),
+            ": " +
+            TagParser.parseTagIndexToText(merchant.tags.split(","))
+                .toUpperCase(),
         onTap: () {
           closeMapReturnMerchant();
         },
-        snippet: buildAdrSnippet(merchant));
+        snippet:
+            buildTypeSnippet(merchant) + " at " + buildAdrSnippet(merchant));
+  }
+
+  String buildTypeSnippet(Merchant m) {
+    return Pages.pages[m.type == 999 ? 6 : m.type]
+        .title; //type 999 gets mapped to tab 6
   }
 
   String buildAdrSnippet(Merchant merchant) {
@@ -180,7 +194,7 @@ class MapSampleState extends State<MapSample> {
   Widget build(BuildContext context) {
     return new Scaffold(
       body: GoogleMap(
-        onTap: (LatLng) {
+        onTap: (pos) {
           setState(() {
             selectedMerchant = null;
           });
@@ -189,7 +203,9 @@ class MapSampleState extends State<MapSample> {
         myLocationEnabled: true,
         mapType: MapType.normal,
         markers: allMarkers,
-        initialCameraPosition: initialCamPos,
+        initialCameraPosition: hasMarkers()
+            ? initialCamPos
+            : hasMarkers() ? allMarkers.elementAt(0).position : initialCamPos,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
@@ -204,6 +220,8 @@ class MapSampleState extends State<MapSample> {
       ),
     );
   }
+
+  bool hasMarkers() => allMarkers != null && allMarkers.length > 1;
 
   Future<void> closeMapReturnMerchant() async {
     Navigator.of(context).pop(selectedMerchant);

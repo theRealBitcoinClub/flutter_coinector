@@ -37,12 +37,5 @@ class Merchant {
   //TODO use one single source of locations, take the suggestions or the placesIDAddress as reference
         location = json['l'];
 
-  // method
-  /*Map<String, dynamic> toJson() {
-    return {
-      'name': name,
-      'age': age,
-    };
-  }*/
 
 }

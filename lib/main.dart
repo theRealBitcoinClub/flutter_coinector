@@ -18,73 +18,13 @@ import 'package:permission_handler/permission_handler.dart';
 //import 'package:permission/permission.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'pages.dart';
 import 'package:flutter/services.dart';
 
 class AnimatedListSample extends StatefulWidget {
   @override
   _AnimatedListSampleState createState() => _AnimatedListSampleState();
 }
-
-class _Page {
-  const _Page(
-      {this.text, this.icon, this.title, this.tabIndex, this.typeIndex});
-  final String text;
-  final String title;
-  final IconData icon;
-  final int tabIndex;
-  final int typeIndex;
-}
-
-const List<_Page> pages = <_Page>[
-  _Page(
-      text: 'EAT',
-      icon: Icons.restaurant,
-      title: 'RESTAURANT',
-      tabIndex: 0,
-      typeIndex: 0),
-  _Page(
-      text: 'TOGO',
-      icon: Icons.restaurant_menu,
-      title: 'TAKE-AWAY & DELIVERY',
-      tabIndex: 1,
-      typeIndex: 1),
-  _Page(
-      text: 'BAR',
-      icon: Icons.local_bar,
-      title: 'BAR, CLUB & CAFE',
-      tabIndex: 2,
-      typeIndex: 2),
-  _Page(
-      text: 'MARKET',
-      icon: Icons.shopping_cart,
-      title: 'SUPERMARKET',
-      tabIndex: 3,
-      typeIndex: 3),
-  _Page(
-      text: 'SHOP',
-      icon: Icons.shopping_basket,
-      title: 'SOUVENIR & SERVICE',
-      tabIndex: 4,
-      typeIndex: 4),
-  _Page(
-      text: 'HOTEL',
-      icon: Icons.hotel,
-      title: 'HOTEL, B&B, FLAT',
-      tabIndex: 5,
-      typeIndex: 5),
-  /*_Page(
-      text: 'ATM',
-      icon: Icons.atm,
-      title: 'TELLER & TRADER',
-      tabIndex: 6,
-      typeIndex: 99),*/
-  _Page(
-      text: 'SPA',
-      icon: Icons.spa,
-      title: 'WELLNESS & BEAUTY',
-      tabIndex: 6,
-      typeIndex: 999),
-];
 
 class _AnimatedListSampleState extends State<AnimatedListSample>
     with TickerProviderStateMixin {
@@ -335,7 +275,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   void initListModelSeveralTimes(List lists, bool keepListKeys) {
     lists.clear();
     if (keepListKeys) _listKeys.clear();
-    for (int i = 0; i < pages.length + 1; i++) {
+    for (int i = 0; i < Pages.pages.length + 1; i++) {
       if (keepListKeys) _listKeys.add(GlobalKey<AnimatedListState>());
       lists.add(ListModel<Merchant>(
         tabIndex: i,
@@ -401,6 +341,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     }
     return false;
   }
+
 /*
   Future<void> initOneSignal() async {
     bool hasPermission = await OneSignal.shared
@@ -419,7 +360,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     //SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
     requestCurrentPosition();
     searchDelegate.buildHistory();
-    tabController = TabController(vsync: this, length: pages.length);
+    tabController = TabController(vsync: this, length: Pages.pages.length);
     //updateTitle();
     tabController.addListener(_handleTabSelection);
     initListModel();
@@ -456,7 +397,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   void updateTitle() {
     setState(() {
-      _title = pages[tabController.index].title;
+      _title = Pages.pages[tabController.index].title;
     });
   }
 
@@ -559,7 +500,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                     controller: tabController,
                     isScrollable: true,
                     indicator: getIndicator(),
-                    tabs: pages.map<Tab>((_Page page) {
+                    tabs: Pages.pages.map<Tab>((Page page) {
                       return _lists[page.tabIndex].length > 0
                           ? Tab(
                               icon: Icon(
@@ -640,20 +581,20 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   List<Widget> buildAllTabContainer() {
     var builder = CardItemBuilder(_lists, position);
     return [
+      buildTabContainer(_listKeys[0], _lists[0], builder.buildItemRestaurant,
+          Pages.pages[0].title),
       buildTabContainer(
-          _listKeys[0], _lists[0], builder.buildItemRestaurant, pages[0].title),
+          _listKeys[1], _lists[1], builder.buildItemTogo, Pages.pages[1].title),
       buildTabContainer(
-          _listKeys[1], _lists[1], builder.buildItemTogo, pages[1].title),
+          _listKeys[2], _lists[2], builder.buildItemBar, Pages.pages[2].title),
+      buildTabContainer(_listKeys[3], _lists[3], builder.buildItemMarket,
+          Pages.pages[3].title),
       buildTabContainer(
-          _listKeys[2], _lists[2], builder.buildItemBar, pages[2].title),
-      buildTabContainer(
-          _listKeys[3], _lists[3], builder.buildItemMarket, pages[3].title),
-      buildTabContainer(
-          _listKeys[4], _lists[4], builder.buildItemShop, pages[4].title),
-      buildTabContainer(
-          _listKeys[5], _lists[5], builder.buildItemHotel, pages[5].title),
-      buildTabContainer(
-          _listKeys[6], _lists[6], builder.buildItemWellness, pages[6].title),
+          _listKeys[4], _lists[4], builder.buildItemShop, Pages.pages[4].title),
+      buildTabContainer(_listKeys[5], _lists[5], builder.buildItemHotel,
+          Pages.pages[5].title),
+      buildTabContainer(_listKeys[6], _lists[6], builder.buildItemWellness,
+          Pages.pages[6].title),
     ];
   }
 
