@@ -111,59 +111,30 @@ class MapSampleState extends State<MapSample> {
   }
 
   BitmapDescriptor getMarkerColor(Merchant m) {
+    const ORANGE = 20.0;
+    const YELLOW = 50.0;
+    const CYAN = 190.0;
+    const GREEN = 140.0;
+    const MAGENTA = 310.0;
+    const VIOLET = 270.0;
+
     switch (m.type) {
       case 0:
-        //return BitmapDescriptor.defaultMarkerWithHue(
-        //   BitmapDescriptor.hueOrange);
-        return BitmapDescriptor.defaultMarkerWithHue(50.0);
+        return BitmapDescriptor.defaultMarkerWithHue(ORANGE);
       case 1:
-        return BitmapDescriptor.defaultMarkerWithHue(10.0);
-      //return BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed);
+        return BitmapDescriptor.defaultMarker;
       case 2:
-        return BitmapDescriptor.defaultMarkerWithHue(
-            BitmapDescriptor.hueYellow);
+        return BitmapDescriptor.defaultMarkerWithHue(YELLOW);
       case 3:
-        return BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueCyan);
+        return BitmapDescriptor.defaultMarkerWithHue(CYAN);
       case 4:
-        return BitmapDescriptor.defaultMarkerWithHue(
-            BitmapDescriptor.hueMagenta);
+        return BitmapDescriptor.defaultMarkerWithHue(MAGENTA);
       case 5:
-        return BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen);
-      case 6:
-        return BitmapDescriptor.defaultMarkerWithHue(
-            BitmapDescriptor.hueViolet);
+        return BitmapDescriptor.defaultMarkerWithHue(GREEN);
+      case 999:
+        return BitmapDescriptor.defaultMarkerWithHue(VIOLET);
     }
     return BitmapDescriptor.defaultMarker;
-  }
-
-  String getEmojiForType(int type, int emoji) {
-    switch (type) {
-      case 0:
-        return getEmo(emoji, "🥣", "🍝");
-      case 1:
-        return getEmo(emoji, "🥡", "🥨");
-      case 2:
-        return getEmo(emoji, "☕", "🍹");
-      case 3:
-        return getEmo(emoji, "🍉", "🍓");
-      case 4:
-        return getEmo(emoji, "🛌", "🏨");
-      case 5:
-        return getEmo(emoji, "🛍", "👜");
-      case 6:
-        return getEmo(emoji, "🧘", "♨");
-    }
-    return "";
-  }
-
-  String getEmo(int emoji, String emoji1, String emoji2) {
-    switch (emoji) {
-      case 1:
-        return emoji1;
-      case 2:
-        return emoji2;
-    }
-    return "";
   }
 
   InfoWindow buildInfoWindow(Merchant merchant) {
