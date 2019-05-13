@@ -84,7 +84,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     updateCurrentPosition();
     //bool hasLocation = await updateCurrentPosition(); //TODO is it necessary to wait??? maybe costs a lot of performance and getting accurate position from the last search usually is enough accuracy...
 
-    if (filterWordIndex == -999) {
+    if (isUnfilteredSearch(filterWordIndex)) {
       if (isUnfilteredList) return;
       //if (unfilteredLists.length != 0) updateListModel(unfilteredLists);
       this.isUnfilteredList = true;
@@ -117,6 +117,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           'assets/' + fileName + '.json', fileName, fileName != null);
     }
   }
+
+  bool isUnfilteredSearch(int filterWordIndex) => filterWordIndex == -999;
 
   animateToFirstResultIfAddedCounterBiggerZero(itemCounterAdded) {
     if (itemCounterAdded > 0) {
@@ -196,7 +198,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   Future<bool> calculateDistanceUpdateMerchant(
       Position position, Merchant m) async {
     if (position == null) {
-      m.distance = "distance not available";
+      m.distance = null;
       return false;
     }
 
@@ -312,7 +314,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         !isUnfilteredRequest(filterWordIndex);
   }
 
-  bool isUnfilteredRequest(int filterWordIndex) => filterWordIndex == -999;
+  bool isUnfilteredRequest(int filterWordIndex) =>
+      isUnfilteredSearch(filterWordIndex);
 
   void initListModelSeveralTimes(List lists, bool keepListKeys) {
     lists.clear();
@@ -352,6 +355,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   _handleTabSelection() {
     if (!isFilteredList()) updateTitle();
+    //updateCurrentPosition();
   }
 
   Position userPosition;
@@ -361,7 +365,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     PermissionHandler()
         .requestPermissions([PermissionGroup.locationWhenInUse]).then(
             (Map<PermissionGroup, PermissionStatus> p) {
-      updateCurrentPosition();
+      //updateCurrentPosition();
+      //loadAssetsUnfiltered();
     });
   }
 

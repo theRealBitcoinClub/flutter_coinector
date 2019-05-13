@@ -128,15 +128,29 @@ class CardItem extends StatelessWidget {
                           topRight: Radius.circular(10),
                           bottomRight: Radius.circular(10)),
                       color: Colors.grey[900].withOpacity(0.8)),
-                  child: Text(
-                    merchant.distance != null
-                        ? merchant.distance.toString()
-                        : "",
+                  child: Text(merchant.distance.toString(),
                     style: textStyle2,
                   ),
                 )
               : Container(),
         ),
+        RatingWidgetBuilder.hasReviews(merchant)
+            ? Positioned(
+                right: 0.0,
+                bottom: 5.0,
+                child: Container(
+                  padding: EdgeInsets.fromLTRB(10.0, 5.0, 15.0, 5.0),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          bottomLeft: Radius.circular(10)),
+                      color: Colors.grey[900].withOpacity(0.8)),
+                  child:
+                      RatingWidgetBuilder.buildRatingWidgetIfReviewsAvailable(
+                          merchant, Theme.of(ctx).textTheme.body2),
+                ),
+              )
+            : SizedBox(),
       ],
     );
   }
@@ -241,13 +255,13 @@ class CardItem extends StatelessWidget {
               },
               child:*/
               //buildFlatButtonPay(context),
-              Row(children: <Widget>[
+              /* Row(children: <Widget>[
                 RatingWidgetBuilder.buildRatingWidgetIfReviewsAvailable(
                     merchant, Theme.of(context).textTheme.body2),
                 SizedBox(
                   width: 10.0,
                 )
-              ]),
+              ]),*/
               buildFlatButtonReview(context),
               buildFlatButtonVisit(context),
             ],

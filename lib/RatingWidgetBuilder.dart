@@ -17,16 +17,17 @@ class RatingWidgetBuilder {
               color: Colors.yellow[700],
               borderColor: Colors.white,
             ),
-            buildTextStarCount(m, textStyle),
+            Text(" " + convertRatingToPercentage(m.reviewStars), style: textStyle)
+            //buildTextStarCount(m, textStyle),
           ],
         ),
-        SizedBox(height: 5),
+        /*SizedBox(height: 5),
         Row(
           children: <Widget>[
             Text(convertRatingToPercentage(m.reviewStars) + " positive", //TODO add some funny names to classify the quality of the service
                 style: textStyle),
           ],
-        )
+        )*/
       ],
     );
   }
