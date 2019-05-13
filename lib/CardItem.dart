@@ -254,7 +254,7 @@ class CardItem extends StatelessWidget {
                 handleReviewClick(context, merchant);
               },
               child:*/
-              buildFlatButtonPay(context),
+              //buildFlatButtonPay(context),
               /* Row(children: <Widget>[
                 RatingWidgetBuilder.buildRatingWidgetIfReviewsAvailable(
                     merchant, Theme.of(context).textTheme.body2),
