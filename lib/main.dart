@@ -365,7 +365,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     PermissionHandler()
         .requestPermissions([PermissionGroup.locationWhenInUse]).then(
             (Map<PermissionGroup, PermissionStatus> p) {
-      //updateCurrentPosition();
+      updateCurrentPosition();
       //loadAssetsUnfiltered();
     });
   }

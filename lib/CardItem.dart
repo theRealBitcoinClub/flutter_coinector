@@ -254,7 +254,7 @@ class CardItem extends StatelessWidget {
                 handleReviewClick(context, merchant);
               },
               child:*/
-              //buildFlatButtonPay(context),
+              buildFlatButtonPay(context),
               /* Row(children: <Widget>[
                 RatingWidgetBuilder.buildRatingWidgetIfReviewsAvailable(
                     merchant, Theme.of(context).textTheme.body2),
@@ -329,7 +329,12 @@ class CardItem extends StatelessWidget {
 
   Future handlePayButton(BuildContext context) async {
     bothReceivingAddresses =
-        await AssetLoader.loadReceivingAddress(merchant.id);
+        await AssetLoader.loadReceivingAddress(merchant.id); //TODO load receiving address before creating the carditem so that the item is truly stateless
+
+    if (bothReceivingAddresses != null) {
+      merchant.isPayEnabled = true;
+    }
+
     if (merchant.isPayEnabled)
       showPayDialog(context);
     else {
@@ -423,7 +428,7 @@ void showMissingAddrDialog(BuildContext context) {
                 Text("Missing address", style: TextStyle(color: Colors.white)),
             content: new InkWell(
                 child: Text(
-                    "This merchant has not yet provided any payment receiving address!\n\nExplain to the merchant the benefits (Proof of Adoption) of providing an address and touch here to send an email to:\n\ntrbc@bitcoinmap.cash"),
+                    "This merchant has not yet provided any payment receiving address!\n\nInformation can be provided to trbc@bitcoinmap.cash"),
                 onTap: () async {
                   //TODO show dialog that there was not found any supported email client and forward the user to a sign up form
                   //TODO forward the user to the new app for moderators
@@ -450,7 +455,7 @@ Widget buildAddressDetailDialogDASH(BuildContext context) {
   if (isAddressEmpty(data)) {
     return AlertDialog(
       content: Text(
-          "This merchant does not yet accept DASH payments, please pay with BCH or explain the benefits of accepting BCH to the merchant!"),
+          "This merchant does not yet accept DASH payments, please pay with BCH or explain the benefits of accepting DASH to the merchant!"),
       actions: <Widget>[buildCloseDialogButton(context)],
     );
   } else
