@@ -14,6 +14,14 @@ class UrlLauncher {
     }
   }
 
+  static void launchURI(url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   //TODO detect IPhone and forward them to bitcoinmap.cash
   //TODO use this plugin: https://pub.dartlang.org/packages/launch_review
   //LaunchReview.launch(writeReview: false,iOSAppId: "585027354");

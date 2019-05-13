@@ -411,19 +411,8 @@ void showMissingAddrDialog(BuildContext context) {
                 child: Text(
                     "This merchant has not yet provided any payment receiving address!\n\nExplain to the merchant the benefits (Proof of Adoption) of providing an address and touch here to send an email to:\n\ntrbc@bitcoinmap.cash"),
                 onTap: () async {
-                  /*copyAddressToClipAndShowDialog(
-                      "trbc@bitcoinmap.cash", context);
-                  UrlLauncher.launchEmailClient(() {
-                    showAboutDialog(
-                        context: context,
-                        applicationName: "Coinector",
-                        applicationVersion: "v1.2.0",
-                        applicationIcon:
-                            Image.asset("assets/placeholder640x480.png"),
-                        children: [Text("trbc@bitcoinmap.cash")]);
-
-                    //TODO show dialog that there was not found any supported email client and forward the user to a sign up form
-                  });*/
+                  //TODO show dialog that there was not found any supported email client and forward the user to a sign up form
+                  //TODO forward the user to the new app for moderators
                 }));
       });
 }
@@ -458,6 +447,7 @@ Widget buildAddressDetailDialogDASH(BuildContext context) {
             child: new Text(data),
             onTap: () {
               copyAddressToClipAndShowDialog(data, context);
+              UrlLauncher.launchURI(data);
               //launch(data);
             }),
         actions: [buildCloseDialogButton(context)]);
@@ -493,6 +483,7 @@ Widget buildAddressDetailDialogBCH(BuildContext context) {
           child: new Text(getBCHAddress()),
           onTap: () {
             copyAddressToClipAndShowDialog(data, context);
+            UrlLauncher.launchURI(data);
             //launch(data);
           }),
     );

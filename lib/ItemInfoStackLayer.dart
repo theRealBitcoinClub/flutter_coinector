@@ -1,6 +1,7 @@
 import 'package:coinector/Merchant.dart';
 import 'package:coinector/TagParser.dart';
 import 'package:coinector/Tags.dart';
+import 'package:coinector/main.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -55,8 +56,7 @@ class ItemInfoStackLayer extends StatelessWidget {
   }
 
   Text buildTagText(List<String> splittedtags) {
-    return Text(
-        TagParser.parseTagIndexToText(splittedtags),
+    return Text(TagParser.parseTagIndexToText(splittedtags),
         style: TextStyle(
             fontSize: 15.0, fontWeight: FontWeight.w300, color: Colors.white));
   }

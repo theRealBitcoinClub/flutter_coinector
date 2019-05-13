@@ -23,12 +23,12 @@ import 'package:flutter/services.dart';
 
 class AnimatedListSample extends StatefulWidget {
   @override
-  _AnimatedListSampleState createState() => _AnimatedListSampleState();
+  AnimatedListSampleState createState() => AnimatedListSampleState();
 }
 
-class _AnimatedListSampleState extends State<AnimatedListSample>
+class AnimatedListSampleState extends State<AnimatedListSample>
     with TickerProviderStateMixin {
-  final SearchDemoSearchDelegate searchDelegate = SearchDemoSearchDelegate();
+  static final SearchDemoSearchDelegate searchDelegate = SearchDemoSearchDelegate();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final List<GlobalKey<AnimatedListState>> _listKeys = [];
   TabController tabController;
@@ -406,7 +406,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
             content: Text(
                 "Search your favorite food:\n\n  🍔 Burger     🍰 Dessert\n\n  🥗 Salad      🐮 Vegan\n\n  🇮🇹 Italian      🍕 Pizza"),
             title:
-                Text("Hint of the day", style: TextStyle(color: Colors.white)),
+                Text("Are you hungry?", style: TextStyle(color: Colors.white)),
             actions: <Widget>[
               FlatButton(
                 onPressed: () {
@@ -428,29 +428,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   void initListModel() {
     initListModelSeveralTimes(_lists, true);
   }
-/*
-  Future<bool> _onWillPop() {
-    SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
-
-    return showDialog(
-          context: context,
-          builder: (context) => new AlertDialog(
-                title: new Text('Closing Coinector!'),
-                content: new Text('Do you want to close Coinector?'),
-                actions: <Widget>[
-                  new FlatButton(
-                    onPressed: () => Navigator.of(context).pop(false),
-                    child: new Text('No'),
-                  ),
-                  new FlatButton(
-                    onPressed: () => Navigator.of(context).pop(true),
-                    child: new Text('Yes'),
-                  ),
-                ],
-              ),
-        ) ??
-        false;
-  }*/
   //TODO make use of theme styles everywhere and add switch theme button
 
   @override
