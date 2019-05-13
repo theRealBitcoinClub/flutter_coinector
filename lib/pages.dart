@@ -38,13 +38,13 @@ class Pages {
     Page(
         text: 'SHOP',
         icon: Icons.shopping_basket,
-        title: 'SHOP, FASHION',
+        title: 'SHOP & FASHION',
         tabIndex: 4,
         typeIndex: 4),
     Page(
         text: 'HOTEL',
         icon: Icons.hotel,
-        title: 'HOTEL',
+        title: 'HOTEL & BnB',
         tabIndex: 5,
         typeIndex: 5),
     /*_Page(

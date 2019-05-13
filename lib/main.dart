@@ -23,12 +23,12 @@ import 'package:flutter/services.dart';
 
 class AnimatedListSample extends StatefulWidget {
   @override
-  AnimatedListSampleState createState() => AnimatedListSampleState();
+  _AnimatedListSampleState createState() => _AnimatedListSampleState();
 }
 
-class AnimatedListSampleState extends State<AnimatedListSample>
+class _AnimatedListSampleState extends State<AnimatedListSample>
     with TickerProviderStateMixin {
-  static final SearchDemoSearchDelegate searchDelegate = SearchDemoSearchDelegate();
+  final SearchDemoSearchDelegate searchDelegate = SearchDemoSearchDelegate();
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final List<GlobalKey<AnimatedListState>> _listKeys = [];
   TabController tabController;
@@ -118,6 +118,12 @@ class AnimatedListSampleState extends State<AnimatedListSample>
     }
   }
 
+  animateToFirstResultIfAddedCounterBiggerZero(itemCounterAdded) {
+    if (itemCounterAdded > 0) {
+      animateToFirstResult();
+    }
+  }
+
   Future<List<dynamic>> parseAssetUpdateListModel(
       int selectedTagIndex,
       String locationFilter,
@@ -147,7 +153,9 @@ class AnimatedListSampleState extends State<AnimatedListSample>
     return placesList;
   }
 
-  void updateList(List destination, List tmpList, bool updateState) async {
+  Future<int> updateList(
+      List destination, List tmpList, bool updateState) async {
+    var totalAdded = 0;
     for (int i = 0; i < tmpList.length; i++) {
       ListModel<Merchant> currentTmpList = tmpList[i];
       ListModel<Merchant> currentList = destination[i];
@@ -166,8 +174,10 @@ class AnimatedListSampleState extends State<AnimatedListSample>
         } else {
           currentList.insert(currentList.length, m);
         }
+        totalAdded++;
       }
     }
+    return totalAdded;
   }
 
   /*
@@ -207,13 +217,18 @@ class AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void updateListModel(List<ListModel<Merchant>> tmpList) {
-    updateList(_lists, tmpList, true);
+    updateList(_lists, tmpList, true)
+        .then(animateToFirstResultIfAddedCounterBiggerZero);
   }
 
   void animateToFirstResult() {
-    for (int i=0; i<_lists.length; i++) {
-//TODO IMPLEMENT ANIMATION TO FIRST RESULT IF ONLY ONE RESULT
-    //TODO OR ALWAYS ANIMATE TO FIRST RESULT, so users will always see the full list auto selected
+    for (int i = 0; i < _lists.length; i++) {
+      ListModel<Merchant> model = _lists[i];
+      for (int x = 0; x < model.length; x++) {
+        Merchant m = model[x];
+        tabController.animateTo(m.type);
+        return;
+      }
     }
   }
 
@@ -388,7 +403,7 @@ class AnimatedListSampleState extends State<AnimatedListSample>
     //updateTitle();
     tabController.addListener(_handleTabSelection);
     initListModel();
-    //loadAssets(-1, null, null);
+    loadAssetsUnfiltered();
     //initBlinkAnimation();
     if (hasNotHitSearch()) {
       initHasHitSearch().then((hasHit) {
@@ -396,6 +411,8 @@ class AnimatedListSampleState extends State<AnimatedListSample>
       });
     }
   }
+
+  void loadAssetsUnfiltered() => loadAssets(-999, null, null);
 
   void showInfoDialogWithCloseButton(BuildContext context) {
     showDialog(
@@ -496,7 +513,7 @@ class AnimatedListSampleState extends State<AnimatedListSample>
               SliverAppBar(
                   elevation: 2,
                   forceElevated: true,
-                  leading: buildHomeButton(),
+                  leading: buildHomeButton(context),
                   bottom: TabBar(
                     controller: tabController,
                     isScrollable: true,
@@ -531,7 +548,6 @@ class AnimatedListSampleState extends State<AnimatedListSample>
                   ),
                   actions: <Widget>[
                     buildIconButtonMap(context),
-                    buildIconButtonSearch(context),
                   ],
                   title: Padding(
                       padding: EdgeInsets.all(5.0),
@@ -575,7 +591,9 @@ class AnimatedListSampleState extends State<AnimatedListSample>
                 builder: (context) => MapSample(
                     _lists,
                     mapPosition != null ? mapPosition : userPosition,
-                    zoomMapAfterSelectLocation ? 10.0 : 0.0)),
+                    zoomMapAfterSelectLocation
+                        ? 10.0
+                        : userPosition != null ? 5.0 : 0.0)),
           );
           if (result != null) {
             filterListUpdateTitle(result.name);
@@ -622,22 +640,21 @@ class AnimatedListSampleState extends State<AnimatedListSample>
     return prefs.setBool(sharedPrefKeyHasHitSearch, true);
   }
 
-  IconButton buildHomeButton() {
+  Widget buildHomeButton(context) {
+    return isFilterEmpty()
+        ? buildIconButtonSearch(context)
+        : buildIconButtonClearFilter();
+  }
+
+  IconButton buildIconButtonClearFilter() {
     return IconButton(
-      tooltip: isFilterEmpty() ? 'Home' : 'Clear Filter',
+      tooltip: 'Clear Filter',
       icon: AnimatedIcon(
-        icon: isFilterEmpty()
-            ? AnimatedIcons.home_menu
-            : AnimatedIcons.close_menu,
+        icon: AnimatedIcons.close_menu,
         color: Colors.white,
         progress: searchDelegate.transitionAnimation,
       ),
       onPressed: () {
-        if (isFilterEmpty()) {
-          tabController.animateTo(0);
-          return;
-        }
-
         showUnfilteredLists();
       },
     );
@@ -688,7 +705,7 @@ class AnimatedListSampleState extends State<AnimatedListSample>
       tooltip: 'Search',
     );
   }
-
+/*
   Widget buildIconButtonSearchInfo(
       BuildContext context, bool showSearchAnimation) {
     return Transform.rotate(
@@ -706,14 +723,14 @@ class AnimatedListSampleState extends State<AnimatedListSample>
           },
           tooltip: 'Touch the search button on the top right.',
         ));
-  }
+  }*/
 
   void handleSearchButtonAnimationAndPersistHit() async {
     if (hasNotHitSearch()) {
       if (searchIconBlinkAnimationController != null) {
         //setState(() {
-          searchIconBlinkAnimationController.reset();
-          //searchIconBlinkAnimationController.value = 0.0;
+        searchIconBlinkAnimationController.reset();
+        //searchIconBlinkAnimationController.value = 0.0;
         //});
       }
 
@@ -754,10 +771,10 @@ class AnimatedListSampleState extends State<AnimatedListSample>
     mapPosition = null;
     updateTitle();
     //setState(() {
-      if (isFilteredList()) {
-        _searchTerm = '';
-        loadAssets(-999, null, null);
-      }
+    if (isFilteredList()) {
+      _searchTerm = '';
+      loadAssetsUnfiltered();
+    }
     //});
   }
 
@@ -781,7 +798,8 @@ class AnimatedListSampleState extends State<AnimatedListSample>
           )
         : Padding(
             padding: EdgeInsets.fromLTRB(25.0, 10.0, 25.0, 0.0),
-            child: isFilterEmpty()
+            child:
+                /*isFilterEmpty()
                 ? Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
@@ -793,48 +811,49 @@ class AnimatedListSampleState extends State<AnimatedListSample>
                           child: buildSearchHintRow('SEARCH'),
                         )
                       ])
-                : Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      /*Text(
+                : */
+                Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                /*Text(
                         cat.toString().toUpperCase(),
                         textScaleFactor: 1.5,
                       ),*/
-                      buildSeparator(),
-                      buildSeparator(),
-                      Text(
-                        'There are no matches in this category.',
-                        style: TextStyle(fontWeight: FontWeight.w400),
-                      ),
-                      buildSeparator(),
-                      buildSeparator(),
-                      Row(
-                        children: <Widget>[
-                          Padding(
-                            padding: EdgeInsets.all(10.0),
-                            child: /*IconButton(icon: */ Icon(
-                                Icons.arrow_upward),
-                          ),
-                          const Text(
-                            'Hit a colored icon to see matches.',
-                            style: TextStyle(fontWeight: FontWeight.w300),
-                          )
-                        ],
-                      ),
-                      buildSeparator(),
-                      Row(children: <Widget>[
-                        buildHomeButton(),
-                        const Text(
-                          'Show all merchants of all categories.',
-                          style: TextStyle(fontWeight: FontWeight.w300),
-                        )
-                      ]),
-                      buildSeparator(),
-                      buildSearchHintRow('Filter for locations or tags.'),
-                    ],
-                  ));
+                buildSeparator(),
+                buildSeparator(),
+                Text(
+                  'There are no matches in this category.',
+                  style: TextStyle(fontWeight: FontWeight.w400),
+                ),
+                buildSeparator(),
+                buildSeparator(),
+                Row(
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: /*IconButton(icon: */ Icon(Icons.arrow_upward),
+                    ),
+                    const Text(
+                      'Hit a colored icon to see matches.',
+                      style: TextStyle(fontWeight: FontWeight.w300),
+                    )
+                  ],
+                ),
+                buildSeparator(),
+                Row(children: <Widget>[
+                  buildHomeButton(context),
+                  const Text(
+                    'Show all merchants of all categories.',
+                    style: TextStyle(fontWeight: FontWeight.w300),
+                  )
+                ]),
+                /*buildSeparator(),
+                      buildSearchHintRow('Filter for locations or tags.'),*/
+              ],
+            ));
   }
 
+  /*
   Row buildSearchHintRow(final String text) {
     return Row(children: <Widget>[
       IconButton(
@@ -848,7 +867,7 @@ class AnimatedListSampleState extends State<AnimatedListSample>
       ),
       buildIconButtonSearchInfo(context, false),
     ]);
-  }
+  }*/
 
 /*
   IconButton buildClearFilterButton() {
