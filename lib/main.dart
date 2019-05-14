@@ -55,7 +55,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     final CurvedAnimation curve = CurvedAnimation(
         parent: searchIconBlinkAnimationController, curve: Curves.decelerate);
     searchIconBlinkAnimation =
-        ColorTween(begin: Colors.white, end: Colors.red[800]).animate(curve);
+        ColorTween(begin: Colors.white, end: Colors.lightGreen).animate(curve);
     searchIconBlinkAnimation.addStatusListener((status) {
       /*if (hasHitSearch) {
         searchIconBlinkAnimationController.reset();
@@ -85,6 +85,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     //bool hasLocation = await updateCurrentPosition(); //TODO is it necessary to wait??? maybe costs a lot of performance and getting accurate position from the last search usually is enough accuracy...
 
     if (isUnfilteredSearch(filterWordIndex)) {
+      updateDistanceToAllMerchantsIfNotDoneYet();
       if (isUnfilteredList) return;
       //if (unfilteredLists.length != 0) updateListModel(unfilteredLists);
       this.isUnfilteredList = true;
@@ -209,12 +210,16 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         double.parse(m.y));
 
     m.distanceInMeters = distanceInMeters;
-    m.distance = distanceInMeters.round().toString() + " meter";
+    var distance = distanceInMeters.round().toString() + " meter";
 
     if (distanceInMeters > 1000) {
       String km = (distanceInMeters / 1000.0).toStringAsFixed(2);
-      m.distance = km + " km";
+      distance = km + " km";
     }
+
+    setState(() {
+      m.distance = distance;
+    });
     return true;
   }
 
@@ -355,7 +360,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   _handleTabSelection() {
     if (!isFilteredList()) updateTitle();
-    //updateCurrentPosition();
+    initCurrentPositionIfNotInitialized();
+    updateDistanceToAllMerchantsIfNotDoneYet();
   }
 
   Position userPosition;
@@ -366,8 +372,16 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         .requestPermissions([PermissionGroup.locationWhenInUse]).then(
             (Map<PermissionGroup, PermissionStatus> p) {
       updateCurrentPosition();
+      updateDistanceToAllMerchantsIfNotDoneYet();
       //loadAssetsUnfiltered();
     });
+  }
+
+  void initCurrentPositionIfNotInitialized() async {
+    if (userPosition != null)
+      return;
+
+    updateCurrentPosition();
   }
 
   Future<bool> updateCurrentPosition() async {
@@ -432,13 +446,30 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
             actions: <Widget>[
               FlatButton(
                 onPressed: () {
-                  Navigator.of(context).pop();
+                  Navigator.of(ctx).pop();
                 },
                 child: Text("CLOSE"),
               )
             ],
           );
         });
+  }
+
+  void updateDistanceToAllMerchantsIfNotDoneYet() {
+    if (userPosition == null)
+      return;
+    
+    for (int i = 0; i < _lists.length; i++) {
+      ListModel<Merchant> model = _lists[i];
+      for (int x = 0; x < model.length; x++) {
+        Merchant m = model[x];
+        
+        if (m.distance != null)
+          return;
+        
+        calculateDistanceUpdateMerchant(userPosition, m);
+      }
+    }
   }
 
   void updateTitle() {
@@ -600,6 +631,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                         ? 10.0
                         : userPosition != null ? 5.0 : 0.0)),
           );
+          updateDistanceToAllMerchantsIfNotDoneYet();
           if (result != null) {
             filterListUpdateTitle(result.name);
             tabController.animateTo(result.type);
