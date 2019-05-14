@@ -18,6 +18,7 @@ import 'package:permission_handler/permission_handler.dart';
 //import 'package:permission/permission.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:synchronized/synchronized.dart';
 import 'pages.dart';
 import 'package:flutter/services.dart';
 
@@ -165,37 +166,57 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       for (int x = 0; x < currentTmpList.length; x++) {
         Merchant m = currentTmpList[x];
         //bool hasCalculated = await calculateDistanceUpdateMerchant(position, m);
-        calculateDistanceUpdateMerchant(userPosition, m);
-        /* Merchant m = currentTmpList[x];
-        bool hasCalculated = await calculateDistanceUpdateMerchant(position, m);
+        //calculateDistanceUpdateMerchant(userPosition, m);
 
-        insertItemInOrderedPosition(currentList, m);*/
-        if (updateState) {
+        var lock = Lock();
+// ...
+        lock.synchronized(() async {
+          bool hasCalculated =
+          await calculateDistanceUpdateMerchant(userPosition, m);
+          // do some stuff
+          // ...
+
+          if (hasCalculated)
+            insertItemInOrderedPosition(currentList, m, updateState);
+          else
+            insertListItem(updateState, currentList, currentList.length, m);
+        });
+        /*if (updateState) {
           setState(() {
             currentList.insert(currentList.length, m);
           });
         } else {
           currentList.insert(currentList.length, m);
-        }
+        }*/
         totalAdded++;
       }
     }
     return totalAdded;
   }
 
-  /*
-  void insertItemInOrderedPosition(currentList, m) {
-    for (int newListPos= 0; newListPos< currentList.length; newListPos++) {
+  void insertItemInOrderedPosition(currentList, m, updateState) {
+    for (int newListPos = 0; newListPos < currentList.length; newListPos++) {
       Merchant m2 = currentList[newListPos];
-      if (m2.distanceInMeters != -1 && m2.distanceInMeters > m.distanceInMeters) {
-        currentList.insert(newListPos, m);
+      if (m2.distanceInMeters != -1 &&
+          m2.distanceInMeters > m.distanceInMeters) {
+        insertListItem(updateState, currentList, newListPos, m);
         return;
       }
     }
 
-    currentList.insert(currentList.length, m);
+    insertListItem(updateState, currentList, currentList.length, m);
   }
-*/
+
+  void insertListItem(updateState, currentList, int newListPos, m) {
+    if (updateState) {
+      setState(() {
+        currentList.insert(newListPos, m);
+      });
+    } else {
+      currentList.insert(newListPos, m);
+    }
+  }
+
   Future<bool> calculateDistanceUpdateMerchant(
       Position position, Merchant m) async {
     if (position == null) {
@@ -229,6 +250,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void animateToFirstResult() {
+    //only if the current tab does not contain  result
+    if (_lists[tabController.index].length != 0) return;
+
     for (int i = 0; i < _lists.length; i++) {
       ListModel<Merchant> model = _lists[i];
       for (int x = 0; x < model.length; x++) {
@@ -378,8 +402,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void initCurrentPositionIfNotInitialized() async {
-    if (userPosition != null)
-      return;
+    if (userPosition != null) return;
 
     updateCurrentPosition();
   }
@@ -456,17 +479,15 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void updateDistanceToAllMerchantsIfNotDoneYet() {
-    if (userPosition == null)
-      return;
-    
+    if (userPosition == null) return;
+
     for (int i = 0; i < _lists.length; i++) {
       ListModel<Merchant> model = _lists[i];
       for (int x = 0; x < model.length; x++) {
         Merchant m = model[x];
-        
-        if (m.distance != null)
-          return;
-        
+
+        if (m.distance != null) return;
+
         calculateDistanceUpdateMerchant(userPosition, m);
       }
     }
