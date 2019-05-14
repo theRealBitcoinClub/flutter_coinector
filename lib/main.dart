@@ -122,12 +122,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   bool isUnfilteredSearch(int filterWordIndex) => filterWordIndex == -999;
 
-  animateToFirstResultIfAddedCounterBiggerZero(itemCounterAdded) {
-    if (itemCounterAdded > 0) {
-      animateToFirstResult();
-    }
-  }
-
   Future<List<dynamic>> parseAssetUpdateListModel(
       int selectedTagIndex,
       String locationFilter,
@@ -160,34 +154,27 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   Future<int> updateList(
       List destination, List tmpList, bool updateState) async {
     var totalAdded = 0;
+    bool hasAnimated = false;
     for (int i = 0; i < tmpList.length; i++) {
       ListModel<Merchant> currentTmpList = tmpList[i];
       ListModel<Merchant> currentList = destination[i];
       for (int x = 0; x < currentTmpList.length; x++) {
         Merchant m = currentTmpList[x];
-        //bool hasCalculated = await calculateDistanceUpdateMerchant(position, m);
-        //calculateDistanceUpdateMerchant(userPosition, m);
-
         var lock = Lock();
-// ...
         lock.synchronized(() async {
           bool hasCalculated =
-          await calculateDistanceUpdateMerchant(userPosition, m);
-          // do some stuff
-          // ...
+              await calculateDistanceUpdateMerchant(userPosition, m);
 
           if (hasCalculated)
             insertItemInOrderedPosition(currentList, m, updateState);
           else
             insertListItem(updateState, currentList, currentList.length, m);
+
+          if (!hasAnimated) {
+            hasAnimated = true;
+            animateToFirstResult(m);
+          }
         });
-        /*if (updateState) {
-          setState(() {
-            currentList.insert(currentList.length, m);
-          });
-        } else {
-          currentList.insert(currentList.length, m);
-        }*/
         totalAdded++;
       }
     }
@@ -245,13 +232,18 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void updateListModel(List<ListModel<Merchant>> tmpList) {
-    updateList(_lists, tmpList, true)
-        .then(animateToFirstResultIfAddedCounterBiggerZero);
+    updateList(_lists, tmpList, true);
   }
 
-  void animateToFirstResult() {
-    //only if the current tab does not contain  result
-    if (_lists[tabController.index].length != 0) return;
+  void animateToFirstResult(merchant) async {
+    if (tabController.indexIsChanging) return;
+    //TODO only if the current tab does not contain  result
+    //if (currentTabContainsResult()) return;
+
+    if (merchant != null) {
+      tabController.animateTo(merchant.type);
+      return;
+    }
 
     for (int i = 0; i < _lists.length; i++) {
       ListModel<Merchant> model = _lists[i];
@@ -262,6 +254,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       }
     }
   }
+
+  /*bool currentTabContainsResult() => _lists[tabController.index].length != 0; This does not work because we call it async and we never know which is the last entry added to the list so we never know if a tab is really empty*/
 
   void initUnfilteredLists() {
     initListModelSeveralTimes(unfilteredLists, false);
@@ -757,6 +751,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         if (selected != null /*&& selected != _lastIntegerSelected*/) {
           filterListUpdateTitle(selected);
         } else {
+          updateDistanceToAllMerchantsIfNotDoneYet();
           showUnfilteredLists();
         }
       },
