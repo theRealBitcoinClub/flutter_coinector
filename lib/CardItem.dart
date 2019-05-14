@@ -169,7 +169,7 @@ class CardItem extends StatelessWidget {
           gifUrl,
           //TODO is header necessary? header: "",
           header:  {'':''},
-          fallbackAssetImage: "assets/placeholder640x480.png",
+          fallbackAssetImage: "assets/placeholder640x480.jpg",
           useDiskCache: true,
           cacheRule: CacheRule(maxAge: const Duration(days: 7)),
         ),
@@ -193,7 +193,7 @@ class CardItem extends StatelessWidget {
   }
 
   Widget onLoadImageFailed() {
-    final img = "assets/placeholder640x480.png";
+    final img = "assets/placeholder640x480.jpg";
     return FadeInImage.assetNetwork(placeholder: img, image: img);
   }
 

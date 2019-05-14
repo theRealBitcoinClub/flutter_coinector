@@ -65,7 +65,7 @@ flutter:
     - assets/marker2.png
     - assets/marker1.png
     - assets/marker0.png
-    - assets/placeholder640x480.png
+    - assets/placeholder640x480.jpg
     - assets/addr.json
     - assets/am.json
     - assets/am-ven.json

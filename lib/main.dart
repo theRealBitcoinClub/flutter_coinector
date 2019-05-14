@@ -753,7 +753,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         : buildIconButtonSearchContainer(context);
   }
 
-  IconButton buildIconButtonSearchContainer(BuildContext context) {
+  IconButton buildIconButtonSearchContainer(BuildContext ctx) {
     return IconButton(
       icon: AnimatedIcon(
           color: hasHitSearch != null &&
@@ -764,11 +764,12 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           icon: AnimatedIcons.search_ellipsis),
       onPressed: () async {
         final String selected = await showSearch<String>(
-          context: context,
+          context: ctx,
           delegate: searchDelegate,
         );
         //SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
-        if (!hasHitSearch) showInfoDialogWithCloseButton(context);
+        if (!hasHitSearch) showInfoDialogWithCloseButton(ctx); //TODO show always and atleast once, not dependent on has hit search
+        //TODO ask users to rate the app
         handleSearchButtonAnimationAndPersistHit();
 
         if (selected != null /*&& selected != _lastIntegerSelected*/) {
