@@ -635,23 +635,45 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   Widget buildIconButtonMap(context) {
     return IconButton(
         icon: Icon(Icons.map),
-        onPressed: () async {
-          Merchant result = await Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (context) => MapSample(
-                    _lists,
-                    mapPosition != null ? mapPosition : userPosition,
-                    zoomMapAfterSelectLocation
-                        ? 10.0
-                        : userPosition != null ? 5.0 : 0.0)),
-          );
-          updateDistanceToAllMerchantsIfNotDoneYet();
-          if (result != null) {
-            filterListUpdateTitle(result.name);
-            tabController.animateTo(result.type);
-          }
+        onPressed: () {
+          handleMapButtonClick(context);
         });
+  }
+
+  void handleMapButtonClick(context) async {
+    Merchant result = await Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => MapSample(
+              _lists,
+              mapPosition != null ? mapPosition : userPosition,
+              zoomMapAfterSelectLocation
+                  ? 10.0
+                  : userPosition != null ? 5.0 : 0.0)),
+    );
+    updateDistanceToAllMerchantsIfNotDoneYet();
+    if (result != null) {
+      filterListUpdateTitle(result.name);
+      tabController.animateTo(result.type);
+      //showSnackBar("Showing selected merchant: " + result.name);
+    } else {
+      showUnfilteredLists();
+      showSnackBar("Showing unfiltered list...");
+    }
+  }
+
+  void showSnackBar(String msg) {
+    _scaffoldKey.currentState.showSnackBar(SnackBar(
+      duration: Duration(milliseconds: 1500),
+      content: Text(
+        msg,
+        style: TextStyle(
+            fontSize: 18.0,
+            fontWeight: FontWeight.w400,
+            color: Colors.grey[900]),
+      ),
+      backgroundColor: Colors.yellow[700],
+    ));
   }
 
   List<Widget> buildAllTabContainer() {
@@ -695,10 +717,10 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   Widget buildHomeButton(context) {
     return isFilterEmpty()
         ? buildIconButtonSearch(context)
-        : buildIconButtonClearFilter();
+        : buildIconButtonClearFilter(context);
   }
 
-  IconButton buildIconButtonClearFilter() {
+  IconButton buildIconButtonClearFilter(ctx) {
     return IconButton(
       tooltip: 'Clear Filter',
       icon: AnimatedIcon(
@@ -708,6 +730,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       ),
       onPressed: () {
         showUnfilteredLists();
+        showSnackBar("Showing unfiltered list...");
       },
     );
   }
@@ -811,12 +834,23 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     }
 
     var index = _getTagIndex(selectedLocationOrTag);
+    showMatchingSnackBar(fileName, search, index);
+
     loadAssets(index, search, fileName);
 
     setState(() {
       _searchTerm = search;
       _title = search;
     });
+  }
+
+  void showMatchingSnackBar(String fileName, String search, int index) {
+    if (fileName != null)
+      showSnackBar("Filtered by location: " + search);
+    else if (index != -1 && fileName == null)
+      showSnackBar("Filtered by tag: " + search);
+    else
+      showSnackBar("Merchant: " + search);
   }
 
   void showUnfilteredLists() {

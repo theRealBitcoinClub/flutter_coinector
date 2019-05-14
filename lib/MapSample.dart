@@ -35,7 +35,7 @@ class MapSampleState extends State<MapSample> {
   Set<Marker> allMarkers = Set.from([]);
 
   DateTime lastTap;
-  Merchant selectedMerchant;
+  //Merchant selectedMerchant;
 
   @override
   void initState() {
@@ -58,6 +58,8 @@ class MapSampleState extends State<MapSample> {
           latLng = LatLng(double.parse(merchant.x), double.parse(merchant.y));
           allMarkers.add(Marker(
               onTap: () {
+                //showSnackBar("Tap the infowindow to show the merchants details.");
+                //showSnackBar("Tap the route icon (bottom right) to start the navigation.");
 /*
                 if (lastTap != null &&
                     new DateTime.now().millisecondsSinceEpoch -
@@ -68,9 +70,9 @@ class MapSampleState extends State<MapSample> {
                   //TODO explain the user that he has to double click to open the details
                 }
                 lastTap = new DateTime.now();*/
-                setState(() {
+                /*setState(() {
                   selectedMerchant = merchant;
-                });
+                });*/
 
                 //confirmShowDetails(context, merchant);
               },
@@ -148,7 +150,7 @@ class MapSampleState extends State<MapSample> {
             TagParser.parseTagIndexToText(merchant.tags.split(","))
                 .toUpperCase(),
         onTap: () {
-          closeMapReturnMerchant();
+          closeMapReturnMerchant(merchant);
         },
         snippet:
             buildTypeSnippet(merchant) + " at " + buildAdrSnippet(merchant));
@@ -164,6 +166,10 @@ class MapSampleState extends State<MapSample> {
         ? merchant.place.adr.substring(merchant.place.adr.indexOf(",") + 2)
         : merchant.location;
   }
+/*
+  void showSnackBar(String msg) {
+    Scaffold.of(context).showSnackBar(SnackBar(content: Text(msg)));
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -171,7 +177,7 @@ class MapSampleState extends State<MapSample> {
       body: GoogleMap(
         onTap: (pos) {
           setState(() {
-            selectedMerchant = null;
+            //selectedMerchant = null;
           });
         },
         compassEnabled: true,
@@ -189,16 +195,21 @@ class MapSampleState extends State<MapSample> {
       floatingActionButton: FloatingActionButton.extended(
         backgroundColor: Theme.of(context).backgroundColor,
         foregroundColor: Theme.of(context).accentColor,
-        onPressed: closeMapReturnMerchant,
-        label: Text(selectedMerchant == null ? 'CLOSE' : 'DETAILS'),
-        icon: Icon(selectedMerchant == null ? Icons.close : Icons.search),
+        onPressed: closeMapResetMerchant,
+        label: Text('CLOSE'),
+        icon: Icon(Icons.close),
       ),
     );
   }
 
   bool hasMarkers() => allMarkers != null && allMarkers.length > 1;
 
-  Future<void> closeMapReturnMerchant() async {
-    Navigator.of(context).pop(selectedMerchant);
+  Future<void> closeMapResetMerchant() async {
+    //selectedMerchant = null;
+    Navigator.of(context).pop();
+  }
+
+  Future<void> closeMapReturnMerchant(merchant) async {
+    Navigator.of(context).pop(merchant);
   }
 }
