@@ -768,7 +768,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           delegate: searchDelegate,
         );
         //SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
-        if (!hasHitSearch) showInfoDialogWithCloseButton(ctx); //TODO show always and atleast once, not dependent on has hit search
+        //if (!hasHitSearch) showInfoDialogWithCloseButton(ctx); //TODO show info dialog always and atleast once, not dependent on has hit search
         //TODO ask users to rate the app
         handleSearchButtonAnimationAndPersistHit();
 
