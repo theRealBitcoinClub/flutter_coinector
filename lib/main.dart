@@ -1,5 +1,5 @@
 import 'dart:async';
-//import 'package:onesignal/onesignal.dart';
+import 'package:onesignal/onesignal.dart';
 import 'package:coinector/MapSample.dart';
 import 'package:coinector/Suggestions.dart';
 import 'package:coinector/AssetLoader.dart';
@@ -405,20 +405,19 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     return false;
   }
 
-/*
-  Future<void> initOneSignal() async {
-    bool hasPermission = await OneSignal.shared
-        .promptUserForPushNotificationPermission(fallbackToSettings: true);
+  initOneSignal() async {
+    OneSignal.shared.init("3cfbaca5-2b90-4f68-a1fe-98aa9a168894");
 
-    if (hasPermission) {
-      OneSignal.shared.init("3cfbaca5-2b90-4f68-a1fe-98aa9a168894");
-    }
+    OneSignal.shared
+        .setInFocusDisplayType(OSNotificationDisplayType.notification);
+    OneSignal.shared
+        .promptUserForPushNotificationPermission(fallbackToSettings: true);
   }
-*/
+
   @override
   void initState() {
     super.initState();
-    //initOneSignal();
+    initOneSignal();
     requestCurrentPosition();
     searchDelegate.buildHistory();
     tabController = TabController(vsync: this, length: Pages.pages.length);
