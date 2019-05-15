@@ -6,8 +6,8 @@
 
     <item
         android:gravity="center"
-        android:width="320px"
-        android:height="240px" android:drawable="@drawable/placeholder640x480" />
+        android:width="800px"
+        android:height="600px" android:drawable="@drawable/placeholder640x480" />
 
     <!-- You can insert your own image assets here -->
     <!--item>

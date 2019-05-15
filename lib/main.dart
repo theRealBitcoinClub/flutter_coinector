@@ -2,8 +2,6 @@ import 'dart:async';
 //import 'package:onesignal/onesignal.dart';
 import 'package:coinector/MapSample.dart';
 import 'package:coinector/Suggestions.dart';
-import 'package:coinector/UrlLauncher.dart';
-//import 'package:dio/dio.dart';
 import 'package:coinector/AssetLoader.dart';
 import 'package:coinector/CardItemBuilder.dart';
 import 'package:coinector/MyColors.dart';
@@ -15,9 +13,7 @@ import 'SearchDemoSearchDelegate.dart';
 import 'Tags.dart';
 //import 'package:flutter_crashlytics/flutter_crashlytics.dart';
 import 'package:permission_handler/permission_handler.dart';
-//import 'package:permission/permission.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:synchronized/synchronized.dart';
 import 'pages.dart';
 import 'package:flutter/services.dart';
@@ -35,17 +31,17 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   TabController tabController;
   bool _customIndicator = false;
   List<ListModel<Merchant>> _lists = [];
-  //final dio = new Dio(); // for http requests
   List<Merchant> names = new List<Merchant>(); // names we get from API
   List<ListModel<Merchant>> tempLists = [];
   List<ListModel<Merchant>> unfilteredLists = [];
-//  Response response;
   String _title = "Coinector";
   bool isUnfilteredList = false;
   bool
       hasHitSearch; //TODO count user activity by how often he hits search, how much he interacts with the app, reward him for that with badges
   var sharedPrefKeyHasHitSearch = "sharedPrefKeyHasHitSearch";
   String _searchTerm;
+  Position userPosition;
+  Position mapPosition;
 
   Animation<Color> searchIconBlinkAnimation;
   AnimationController searchIconBlinkAnimationController;
@@ -58,10 +54,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     searchIconBlinkAnimation =
         ColorTween(begin: Colors.white, end: Colors.lightGreen).animate(curve);
     searchIconBlinkAnimation.addStatusListener((status) {
-      /*if (hasHitSearch) {
-        searchIconBlinkAnimationController.reset();
-        return;
-      }*/
       if (status == AnimationStatus.completed) {
         searchIconBlinkAnimationController.reverse();
       } else if (status == AnimationStatus.dismissed) {
@@ -382,16 +374,12 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     updateDistanceToAllMerchantsIfNotDoneYet();
   }
 
-  Position userPosition;
-  Position mapPosition;
-
   void requestCurrentPosition() {
     PermissionHandler()
         .requestPermissions([PermissionGroup.locationWhenInUse]).then(
             (Map<PermissionGroup, PermissionStatus> p) {
       updateCurrentPosition();
       updateDistanceToAllMerchantsIfNotDoneYet();
-      //loadAssetsUnfiltered();
     });
   }
 
@@ -431,16 +419,12 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   void initState() {
     super.initState();
     //initOneSignal();
-    //SystemChrome.setEnabledSystemUIOverlays([]);
-    //SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
     requestCurrentPosition();
     searchDelegate.buildHistory();
     tabController = TabController(vsync: this, length: Pages.pages.length);
-    //updateTitle();
     tabController.addListener(_handleTabSelection);
     initListModel();
     loadAssetsUnfiltered();
-    //initBlinkAnimation();
     if (hasNotHitSearch()) {
       initHasHitSearch().then((hasHit) {
         if (!hasHit) initBlinkAnimation();
@@ -756,8 +740,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   IconButton buildIconButtonSearchContainer(BuildContext ctx) {
     return IconButton(
       icon: AnimatedIcon(
-          color: hasHitSearch != null &&
-                  !hasHitSearch //TODO refactor this to use the function hasNotHitSearch
+          color: searchIconBlinkAnimation != null && hasNotHitSearch()
               ? searchIconBlinkAnimation.value
               : Colors.white,
           progress: searchDelegate.transitionAnimation,
@@ -767,12 +750,13 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           context: ctx,
           delegate: searchDelegate,
         );
-        //SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]);
-        //if (!hasHitSearch) showInfoDialogWithCloseButton(ctx); //TODO show info dialog always and atleast once, not dependent on has hit search
+        if (hasNotHitSearch()) {
+          showInfoDialogWithCloseButton(ctx);
+          handleSearchButtonAnimationAndPersistHit();
+        }
         //TODO ask users to rate the app
-        handleSearchButtonAnimationAndPersistHit();
 
-        if (selected != null /*&& selected != _lastIntegerSelected*/) {
+        if (selected != null) {
           filterListUpdateTitle(selected);
         } else {
           updateDistanceToAllMerchantsIfNotDoneYet();
@@ -782,42 +766,17 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       tooltip: 'Search',
     );
   }
-/*
-  Widget buildIconButtonSearchInfo(
-      BuildContext context, bool showSearchAnimation) {
-    return Transform.rotate(
-        angle: 44.6,
-        child: IconButton(
-          color: Colors.white70,
-          //iconSize: 40.0,
-          icon: Icon(
-              //color: Colors.white,
-              //progress: searchDelegate.transitionAnimation,
-              Icons.arrow_upward),
-          onPressed: () {
-            //showInfoDialogWithCloseButton(context);
-            //initBlinkAnimation();
-          },
-          tooltip: 'Touch the search button on the top right.',
-        ));
-  }*/
 
   void handleSearchButtonAnimationAndPersistHit() async {
-    if (hasNotHitSearch()) {
-      if (searchIconBlinkAnimationController != null) {
-        //setState(() {
-        searchIconBlinkAnimationController.reset();
-        //searchIconBlinkAnimationController.value = 0.0;
-        //});
-      }
-
-      setState(() {
-        hasHitSearch = true;
-      });
-
-      persistHasHitSearch();
-      //initHasHitSearch();
+    if (searchIconBlinkAnimationController != null) {
+      searchIconBlinkAnimationController.reset();
     }
+
+    setState(() {
+      hasHitSearch = true;
+    });
+
+    persistHasHitSearch();
   }
 
   bool hasNotHitSearch() => hasHitSearch == null || !hasHitSearch;
@@ -858,26 +817,18 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     zoomMapAfterSelectLocation = false;
     mapPosition = null;
     updateTitle();
-    //setState(() {
     if (isFilteredList()) {
       _searchTerm = '';
       loadAssetsUnfiltered();
     }
-    //});
   }
 
   bool isFilteredList() => _searchTerm != null && _searchTerm.isNotEmpty;
-
-  /* Widget buildLa() {
-    showInfoDialogWithCloseButton(context);
-    return buildSearchHintRow('Touch the search icon');
-  }*/
 
   Widget buildTabContainer(var listKey, var list, var builderMethod, var cat) {
     return (list != null && list.length > 0)
         ? Padding(
             child: AnimatedList(
-              //padding: EdgeInsets.fromLTRB(5.0, 10.0, 5.0, 5.0),
               key: listKey,
               initialItemCount: list.length,
               itemBuilder: builderMethod,
@@ -886,34 +837,14 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           )
         : Padding(
             padding: EdgeInsets.fromLTRB(25.0, 10.0, 25.0, 0.0),
-            child:
-                /*isFilterEmpty()
-                ? Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                        SizedBox(
-                          height: 30.0,
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 30.0),
-                          child: buildSearchHintRow('SEARCH'),
-                        )
-                      ])
-                : */
-                Column(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                /*Text(
-                        cat.toString().toUpperCase(),
-                        textScaleFactor: 1.5,
-                      ),*/
-                buildSeparator(),
                 buildSeparator(),
                 Text(
                   'There are no matches in this category.',
                   style: TextStyle(fontWeight: FontWeight.w400),
                 ),
-                buildSeparator(),
                 buildSeparator(),
                 Row(
                   children: <Widget>[
@@ -935,56 +866,20 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                     style: TextStyle(fontWeight: FontWeight.w300),
                   )
                 ]),
-                /*buildSeparator(),
-                      buildSearchHintRow('Filter for locations or tags.'),*/
               ],
             ));
   }
 
-  /*
-  Row buildSearchHintRow(final String text) {
-    return Row(children: <Widget>[
-      IconButton(
-        onPressed: null,
-        icon: Icon(Icons.search),
-      ),
-      Text(
-        text,
-        overflow: TextOverflow.fade,
-        style: TextStyle(fontWeight: FontWeight.w300),
-      ),
-      buildIconButtonSearchInfo(context, false),
-    ]);
-  }*/
-
-/*
-  IconButton buildClearFilterButton() {
-    return IconButton(
-      tooltip: 'Clear Filter',
-      icon: AnimatedIcon(
-        icon: AnimatedIcons.close_menu,
-        color: Colors.white,
-        progress: searchDelegate.transitionAnimation,
-      ),
-      onPressed: () {
-        updateTitle();
-
-        setState(() {
-          showUnfilteredLists();
-        });
-      },
-    );
-  }
-*/
   SizedBox buildSeparator() {
     return const SizedBox(
-      height: 10,
+      height: 20,
     );
   }
 }
 
 int _getTagIndex(String searchTerm) {
-  //Tags.tagText.contains(searchTerm);
+  if (!Tags.tagText.contains(searchTerm)) return -1;
+
   bool hasFoundTag = false;
   int i = 0;
   for (; i < Tags.tagText.length; i++) {
