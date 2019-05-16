@@ -12,7 +12,7 @@ This app provides a horizontally and vertically scrollable list of card items co
 
 It provides a search action (top right action bar), which lets the user search for various tags, locations, brands or common phrases.
 
-On the card of each merchant the user can tap 3 different action buttons to VISIT, REVIEW or PAY.
+On the card of each merchant the user can tap 2 different action buttons to VISIT or REVIEW the shop.
 
 ## VISIT
 
