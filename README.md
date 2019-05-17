@@ -1,3 +1,11 @@
+# Google Play
+
+https://play.google.com/store/apps/details?id=cash.bitcoinmap.coinector
+
+# Build Status
+
+[![Codemagic build status](https://api.codemagic.io/apps/5c883f703bcac0000cbf2083/5c883f703bcac0000cbf2082/status_badge.svg)](https://codemagic.io/apps/5c883f703bcac0000cbf2083/5c883f703bcac0000cbf2082/latest_build)
+
 # Support
 
 If you like this app you can positively influence the programmer to develop more similar free open source apps by donating to:
