@@ -1,3 +1,11 @@
+# Google Play
+
+https://play.google.com/store/apps/details?id=cash.bitcoinmap.coinector
+
+# Build Status
+
+[![Codemagic build status](https://api.codemagic.io/apps/5c883f703bcac0000cbf2083/5c883f703bcac0000cbf2082/status_badge.svg)](https://codemagic.io/apps/5c883f703bcac0000cbf2083/5c883f703bcac0000cbf2082/latest_build)
+
 # Support
 
 If you like this app you can positively influence the programmer to develop more similar free open source apps by donating to:
@@ -12,7 +20,7 @@ This app provides a horizontally and vertically scrollable list of card items co
 
 It provides a search action (top right action bar), which lets the user search for various tags, locations, brands or common phrases.
 
-On the card of each merchant the user can tap 3 different action buttons to VISIT, REVIEW or PAY.
+On the card of each merchant the user can tap 2 different action buttons to VISIT or REVIEW the shop.
 
 ## VISIT
 
