@@ -43,6 +43,9 @@
             <meta-data
                 android:name="io.flutter.app.android.SplashScreenUntilFirstFrame"
                 android:value="true" />
+            <!--meta-data
+                android:name="io.fabric.ApiKey"
+                android:value="x" /-->
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -52,6 +55,6 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="$geo_api_key" />
+            android:value="AIzaSyAVDl8Ng3iT4xfX2r6Fj1SvJJvndz73JOI" />
     </application>
 </manifest>

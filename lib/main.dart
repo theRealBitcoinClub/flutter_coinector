@@ -11,6 +11,7 @@ import 'ListModel.dart';
 import 'Merchant.dart';
 import 'SearchDemoSearchDelegate.dart';
 import 'Tags.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 //import 'package:flutter_crashlytics/flutter_crashlytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -429,6 +430,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   @override
   void initState() {
     super.initState();
+    //TEST CRASHLYTICS Crashlytics.instance.crash();
     initOneSignalPushMessages();
     requestCurrentPosition();
     searchDelegate.buildHistory();
@@ -914,6 +916,16 @@ int _getTagIndex(String searchTerm) {
 }
 
 void main() {
+  // Set `enableInDevMode` to true to see reports while in debug mode
+  // This is only to be used for confirming that reports are being
+  // submitted as expected. It is not intended to be used for everyday
+  // development.
+  //Crashlytics.instance.enableInDevMode = true;
+
+  // Pass all uncaught errors to Crashlytics.
+  FlutterError.onError = (FlutterErrorDetails details) {
+    Crashlytics.instance.onError(details);
+  };
   runApp(AnimatedListSample());
 }
 
