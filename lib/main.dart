@@ -410,6 +410,15 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
     OneSignal.shared
         .setInFocusDisplayType(OSNotificationDisplayType.notification);
+
+    /*Permission.
+    PermissionHandler()
+        .requestPermissions([PermissionGroup.]).then(
+            (Map<PermissionGroup, PermissionStatus> p) {
+          updateCurrentPosition();
+          updateDistanceToAllMerchantsIfNotDoneYet();
+        });*/
+
     OneSignal.shared
         .promptUserForPushNotificationPermission(fallbackToSettings: true);
   }
@@ -437,18 +446,28 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     showDialog(
         context: context,
         builder: (BuildContext ctx) {
+          var color = Colors.white;
+          var textStyle = TextStyle(color: color);
           return AlertDialog(
             backgroundColor: Colors.grey[900],
             content: Text(
-                "Search your favorite food:\n\n  🍔 Burger     🍰 Dessert\n\n  🥗 Salad      🐮 Vegan\n\n  🇮🇹 Italian      🍕 Pizza"),
-            title:
-                Text("Are you hungry?", style: TextStyle(color: Colors.white)),
+                "Search your favorite food:\n\n  🍔 Burger     🍰 Dessert\n\n  🥗 Salad      🐮 Vegan\n\n  🇮🇹 Italian      🍕 Pizza",
+                style: textStyle),
+            title: Text("Are you hungry?", style: textStyle),
             actions: <Widget>[
               FlatButton(
                 onPressed: () {
                   Navigator.of(ctx).pop();
                 },
-                child: Text("CLOSE"),
+                child: Row(
+                  children: <Widget>[
+                    Icon(
+                      Icons.close,
+                      color: color,
+                    ),
+                    Text(" CLOSE", style: textStyle)
+                  ],
+                ),
               )
             ],
           );

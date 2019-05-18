@@ -33,6 +33,35 @@ class CardItem extends StatelessWidget {
   final bool selected;
   final double itemHeight = 95;
 
+  FlatButton buildSendEmailButton(BuildContext context) {
+    return FlatButton(
+      child: Row(
+        children: <Widget>[Icon(Icons.alternate_email), Text(' SEND EMAIL')],
+      ),
+      onPressed: () {
+        Navigator.of(context).pop();
+        UrlLauncher.launchEmailClient(merchant, () {
+          //TODO show snackbar if email client not available
+        });
+      },
+    );
+  }
+
+  void showPlaceNotFoundOnGmaps(context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext ctx) {
+          return AlertDialog(
+            actions: [buildSendEmailButton(ctx), buildCloseDialogButton(ctx)],
+            //TODO Optimize by offering a form to submit the data
+            title: Text("Missing Google Maps link!",
+                style: TextStyle(color: Colors.white)),
+            content: Text(
+                "Help to grow adoption!\n\nSend the missing information to:\n\ntrbc@bitcoinmap.cash"),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     TextStyle textStyleBody1 = Theme.of(context).textTheme.body1;
@@ -128,7 +157,8 @@ class CardItem extends StatelessWidget {
                           topRight: Radius.circular(10),
                           bottomRight: Radius.circular(10)),
                       color: Colors.grey[900].withOpacity(0.8)),
-                  child: Text(merchant.distance.toString(),
+                  child: Text(
+                    merchant.distance.toString(),
                     style: textStyle2,
                   ),
                 )
@@ -273,22 +303,20 @@ class CardItem extends StatelessWidget {
     return FlatButton(
       child: Column(
         children: <Widget>[
-          buildIcon(
-              Icons.directions_run, getToggleColor(merchant.place != null)),
+          buildIcon(Icons.directions_run, Colors.white),
           buildSpacer(),
           Text(
             'VISIT',
-            style: TextStyle(
-                fontSize: 14, color: getToggleColor(merchant.place != null)),
+            style: TextStyle(fontSize: 14, color: Colors.white),
           )
         ],
       ),
       onPressed: () {
         if (merchant.place == null) {
-          showPlaceNotFoundOnGmaps(context);
-          return;
+          UrlLauncher.launchCoordinatesUrl(context, merchant);
+        } else {
+          UrlLauncher.launchVisitUrl(context, merchant);
         }
-        UrlLauncher.launchVisitUrl(context, merchant.place);
       },
     );
   }
@@ -309,7 +337,15 @@ class CardItem extends StatelessWidget {
     );
   }
 
-  FlatButton buildFlatButtonReview(BuildContext context) {
+  void handleReviewClick(context) async {
+    if (merchant.place == null) {
+      showPlaceNotFoundOnGmaps(context);
+      return;
+    }
+    UrlLauncher.launchReviewUrl(context, merchant.place);
+  }
+
+  FlatButton buildFlatButtonReview(BuildContext ctx) {
     return FlatButton(
       child: Column(
         children: <Widget>[
@@ -322,14 +358,14 @@ class CardItem extends StatelessWidget {
         ],
       ),
       onPressed: () {
-        handleReviewClick(context, merchant);
+        handleReviewClick(ctx);
       },
     );
   }
 
   Future handlePayButton(BuildContext context) async {
-    bothReceivingAddresses =
-        await AssetLoader.loadReceivingAddress(merchant.id); //TODO load receiving address before creating the carditem so that the item is truly stateless
+    bothReceivingAddresses = await AssetLoader.loadReceivingAddress(merchant
+        .id); //TODO load receiving address before creating the carditem so that the item is truly stateless
 
     if (bothReceivingAddresses != null) {
       merchant.isPayEnabled = true;
@@ -360,21 +396,6 @@ class CardItem extends StatelessWidget {
 var bothReceivingAddresses;
 
 bool isPlaceMissing(Place place) => place == null || place.placesId.isEmpty;
-
-void showPlaceNotFoundOnGmaps(context) {
-  showDialog(
-      context: context,
-      builder: (BuildContext ctx) {
-        return AlertDialog(
-          actions: [buildCloseDialogButton(ctx)],
-          //TODO Optimize by offering a form to submit the data
-          title: Text("Missing Google Maps link!",
-              style: TextStyle(color: Colors.white)),
-          content: Text(
-              "Help to grow adoption!\n\nSend the missing information to:\n\ntrbc@bitcoinmap.cash"),
-        );
-      });
-}
 
 showPayDialog(BuildContext context) async {
   showDialog(
@@ -526,12 +547,4 @@ void copyAddressToClipAndShowDialog(String data, BuildContext context) {
           );
         });
   });
-}
-
-void handleReviewClick(context, merchant) async {
-  if (merchant.place == null) {
-    showPlaceNotFoundOnGmaps(context);
-    return;
-  }
-  UrlLauncher.launchReviewUrl(context, merchant.place);
 }

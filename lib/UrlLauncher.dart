@@ -1,4 +1,6 @@
 import 'package:url_launcher/url_launcher.dart';
+
+import 'Merchant.dart';
 //import 'package:launch_review/launch_review.dart';
 
 class UrlLauncher {
@@ -7,11 +9,7 @@ class UrlLauncher {
     //LaunchReview.launch();
     var url =
         'https://play.google.com/store/apps/details?id=club.therealbitcoin.bchmap';
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
+    launchURI(url);
   }
 
   static void launchURI(url) async {
@@ -29,8 +27,7 @@ class UrlLauncher {
   //                    iOSAppId: "585027354");
 
   static void launchMapInPlayStoreFallbackToBrowser() async {
-    var url =
-        'market://details?id=club.therealbitcoin.bchmap';
+    var url = 'market://details?id=club.therealbitcoin.bchmap';
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -40,28 +37,28 @@ class UrlLauncher {
 
   static void launchReviewUrl(context, place) async {
     var url =
-        'https://search.google.com/local/writereview?placeid=' + place.placesId;
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
+        'http://search.google.com/local/writereview?placeid=' + place.placesId;
+    launchURI(url);
   }
 
-//TODO setup various servers to host images, for each dataset one
-  static void launchVisitUrl(context, place) async {
-    var url = 'https://goo.gl/maps/' + place.shareId;
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      //TODO show a message to the user, his internet connection might be off
-      throw 'Could not launch $url';
-    }
+  static void launchCoordinatesUrl(context, Merchant merchant) async {
+    var url = buildGoogleMapsSearchQueryUrl(merchant);
+    launchURI(url);
   }
 
-  static void launchEmailClient(onEmailClientNotFound) async {
-    var urlString =
-        "mailTo:trbc@bitcoinmap.cash?subject=Coinecccctorrrrr";
+  static String buildGoogleMapsSearchQueryUrl(Merchant merchant) =>
+      'http://www.google.com/maps/search/?api=1&query=' +
+      merchant.x +
+      ',' +
+      merchant.y;
+
+  static void launchVisitUrl(context, Merchant merchant) async {
+    var url = buildGoogleMapsSearchQueryUrl(merchant) + '&query_place_id=' + merchant.place.placesId;
+    launchURI(url);
+  }
+
+  static void launchEmailClient(Merchant m, onEmailClientNotFound) async {
+    var urlString = "mailto:trbc@bitcoinmap.cash?subject=Update Coinector: " + m.id;
     var hasEmailClient = await canLaunch(urlString);
     if (hasEmailClient) {
       await launch(urlString);
