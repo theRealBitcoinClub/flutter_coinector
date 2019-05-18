@@ -12,6 +12,7 @@ import 'Merchant.dart';
 import 'SearchDemoSearchDelegate.dart';
 import 'Tags.dart';
 //import 'package:flutter_crashlytics/flutter_crashlytics.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:synchronized/synchronized.dart';
@@ -405,11 +406,58 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     return false;
   }
 
+  //final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+
+  Future<void> initPlatformState() async {
+    OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
+
+    var settings = {
+      OSiOSSettings.autoPrompt: false,
+      OSiOSSettings.promptBeforeOpeningPushUrl: true
+    };
+
+    OneSignal.shared.setNotificationReceivedHandler((notification) {
+      this.setState(() {
+        print("Received notification: \n${notification.jsonRepresentation().replaceAll("\\n", "\n")}");
+      });
+    });
+
+    OneSignal.shared
+        .setNotificationOpenedHandler((OSNotificationOpenedResult result) {
+      this.setState(() {
+        print("Opened notification: \n${result.notification.jsonRepresentation().replaceAll("\\n", "\n")}");
+      });
+    });
+
+    OneSignal.shared
+        .setSubscriptionObserver((OSSubscriptionStateChanges changes) {
+      print("SUBSCRIPTION STATE CHANGED: ${changes.jsonRepresentation()}");
+    });
+
+    OneSignal.shared.setPermissionObserver((OSPermissionStateChanges changes) {
+      print("PERMISSION STATE CHANGED: ${changes.jsonRepresentation()}");
+    });
+
+    OneSignal.shared.setEmailSubscriptionObserver(
+            (OSEmailSubscriptionStateChanges changes) {
+          print("EMAIL SUBSCRIPTION STATE CHANGED ${changes.jsonRepresentation()}");
+        });
+
+    // NOTE: Replace with your own app ID from https://www.onesignal.com
+    await OneSignal.shared
+        .init("3cfbaca5-2b90-4f68-a1fe-98aa9a168894", iOSSettings: settings);
+
+    OneSignal.shared
+        .setInFocusDisplayType(OSNotificationDisplayType.notification);
+
+  }
+
   initOneSignal() async {
     OneSignal.shared.init("3cfbaca5-2b90-4f68-a1fe-98aa9a168894");
 
     OneSignal.shared
         .setInFocusDisplayType(OSNotificationDisplayType.notification);
+    //_firebaseMessaging.requestNotificationPermissions();
 
     /*Permission.
     PermissionHandler()
@@ -426,7 +474,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   @override
   void initState() {
     super.initState();
-    initOneSignal();
+    initPlatformState();
+    //initOneSignal();
     requestCurrentPosition();
     searchDelegate.buildHistory();
     tabController = TabController(vsync: this, length: Pages.pages.length);
