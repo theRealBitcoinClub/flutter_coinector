@@ -25,7 +25,7 @@
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-                <category android:name="com.example.gcm" />
+                <category android:name="cash.bitcoinmap.coinector.gcm" />
             </intent-filter>
         </receiver>
         <service android:name=".GcmIntentService" />
