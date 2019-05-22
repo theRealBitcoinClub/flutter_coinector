@@ -140,12 +140,12 @@ packages:
     source: hosted
     version: "0.5.13"
   image:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
       name: image
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.1"
+    version: "2.0.7"
   location_permissions:
     dependency: transitive
     description:

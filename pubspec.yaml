@@ -49,9 +49,12 @@ dev_dependencies:
     sdk: flutter
 
 flutter_icons:
-  image_path: "assets/ic_launcher.png"
+  image_path: "assets/web_hi_res_512.png"
   android: true
   ios: true
+
+dependency_overrides:
+  image: 2.0.7
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
 
