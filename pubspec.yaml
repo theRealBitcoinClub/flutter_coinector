@@ -17,6 +17,7 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  flutter_launcher_icons: ^0.7.0
   permission_handler: ^3.0.1
   synchronized: ^2.1.0
   firebase_messaging: ^5.0.1+1
@@ -47,7 +48,10 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
+flutter_icons:
+  image_path: "assets/ic_launcher.png"
+  android: true
+  ios: true
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
 
