@@ -1,5 +1,5 @@
-name: coinector
-description: Coinnect the world.
+name: Coinector
+description: Coinnect the coimunity.
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -17,7 +17,7 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
-  flutter_launcher_icons: ^0.7.0
+  #flutter_launcher_icons: ^0.7.0
   permission_handler: ^3.0.1
   synchronized: ^2.1.0
   firebase_messaging: ^5.0.1+1
@@ -48,10 +48,10 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-flutter_icons:
-  image_path: "assets/web_hi_res_512.png"
-  android: true
-  ios: true
+#flutter_icons:
+#  image_path: "assets/web_hi_res_512.png"
+#  android: true
+#  ios: true
 
 dependency_overrides:
   image: 2.0.7
