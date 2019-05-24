@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'AddPlaceTagSearchDelegate.dart';
+
 class AddNewPlaceWidget extends StatefulWidget {
   final int selectedType;
   final Color accentColor;
@@ -26,12 +28,16 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   final Color accentColor;
   final String typeTitle;
   final Color actionBarColor;
+  final AddPlaceTagSearchDelegate searchTagsDelegate =
+      AddPlaceTagSearchDelegate();
   static const TEXT_COLOR = Colors.white;
 
   String inputName;
   String inputAdr;
   bool showInputAdr = false;
   bool showInputTags = false;
+
+  List<String> allSelectedTags = [];
 
   _AddNewPlaceWidgetState(
       this.selectedType, this.accentColor, this.typeTitle, this.actionBarColor);
@@ -44,23 +50,24 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         backgroundColor: actionBarColor,
         title: Text("ADD: " + typeTitle),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(25.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            buildColumnName(),
-            wrapBuildColumnAdr(),
-            wrapBuildColumnTag()
-          ],
-        ),
-      ),
+      body: Builder(
+          builder: (ctx) => Padding(
+                padding: EdgeInsets.all(25.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    buildColumnName(),
+                    wrapBuildColumnAdr(),
+                    wrapBuildColumnTag(ctx)
+                  ],
+                ),
+              )),
     );
   }
 
-  RenderObjectWidget wrapBuildColumnTag() =>
-      (showInputTags ? buildColumnTag() : buildEmptyPaddingAsPlaceholder());
+  RenderObjectWidget wrapBuildColumnTag(ctx) =>
+      (showInputTags ? buildColumnTag(ctx) : buildEmptyPaddingAsPlaceholder());
 
   RenderObjectWidget wrapBuildColumnAdr() =>
       (showInputAdr ? buildColumnAdr() : buildEmptyPaddingAsPlaceholder());
@@ -90,7 +97,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     );
   }
 
-  Column buildColumnTag() {
+  Column buildColumnTag(ctx) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -105,9 +112,26 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           style: textStyleHint(),
         ),
         SizedBox(height: 10.0),
-        buildSearchTagButton()
+        buildSearchTagButton(ctx),
+        SizedBox(height: 10.0),
+        wrapBuildSelectedTagsList()
       ],
     );
+  }
+
+  Widget wrapBuildSelectedTagsList() {
+    return allSelectedTags.length > 0
+          ? Row(
+              //scrollDirection: Axis.horizontal,
+              children: buildTagsRow(),
+            )
+          : buildEmptyPaddingAsPlaceholder();
+  }
+
+  List<Text> buildTagsRow() {
+    return allSelectedTags.map<Text>((String tag) {
+      return Text(tag + "  ");
+    }).toList();
   }
 
   Column buildColumnAdr() {
@@ -129,9 +153,17 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     );
   }
 
-  RaisedButton buildSearchTagButton() {
+  RaisedButton buildSearchTagButton(ctx) {
     return RaisedButton(
-      onPressed: () {},
+      onPressed: () async {
+        final String selected = await showSearch<String>(
+          context: ctx,
+          delegate: searchTagsDelegate,
+        );
+        if (selected == null || selected.isEmpty) return;
+
+        addSelectedTag(selected);
+      },
       textColor: TEXT_COLOR,
       color: actionBarColor,
       splashColor: accentColor,
@@ -192,5 +224,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     }
 
     this.inputName = input;
+  }
+
+  void addSelectedTag(String selected) {
+    setState(() {
+      allSelectedTags.add(selected);
+    });
   }
 }

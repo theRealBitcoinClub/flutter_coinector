@@ -26,7 +26,11 @@ class SuggestionList extends StatelessWidget {
         final String state = addSeparator(match.state);
         final String continent = addSeparator(match.continent);
         return ListTile(
-          leading: query.isEmpty ? const Icon(Icons.history) : const Icon(null),
+          leading: query.isEmpty
+              ? match.fileName.isEmpty
+                  ? const Icon(Icons.history)
+                  : const Icon(Icons.location_searching)
+              : const Icon(null),
           title: RichText(
             text: TextSpan(
               text: (isRealSuggestion(searchMatch))
@@ -70,6 +74,5 @@ class SuggestionList extends StatelessWidget {
 
   bool isRealSuggestion(String suggestion) {
     return SearchDemoSearchDelegate.TRY_ANOTHER_WORD != suggestion;
-    //SearchDemoSearchDelegate.ENTER_ATLEAST_THREE != suggestion;
   }
 }
