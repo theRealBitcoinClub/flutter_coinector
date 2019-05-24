@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -8,6 +10,11 @@ import 'ListModel.dart';
 import 'Merchant.dart';
 import 'TagParser.dart';
 import 'pages.dart';
+import 'dart:math';
+
+var sharedPrefKeyCounterToastGeneral = "sharedPrefKeyCounterGeneralToast";
+var sharedPrefKeyCounterToastSpecific = "sharedPrefKeyCounterGeneralToast";
+const initialZoomFallbackWhenPositionIsProvided = 15.0;
 
 class MapSample extends StatefulWidget {
   final List<ListModel<Merchant>> allLists;
@@ -26,8 +33,10 @@ class MapSampleState extends State<MapSample> {
   final List<ListModel<Merchant>> allLists;
   final Position position;
   final double initialZoomLevel;
+  int counterToastGeneral = 0;
+  int counterToastSpecific = 0;
 
-  static CameraPosition initialCamPos = CameraPosition(
+  static CameraPosition initialCamPosFallback = CameraPosition(
     target: LatLng(41.4027984, 2.1600427),
     zoom: 10, //This position reflect Vila de Gracia Barcelona, Quinoa Bar
   );
@@ -35,16 +44,51 @@ class MapSampleState extends State<MapSample> {
   MapSampleState(this.allLists, this.position, this.initialZoomLevel);
   Set<Marker> allMarkers = Set.from([]);
 
-  DateTime lastTap;
-  //Merchant selectedMerchant;
+  Future<void> initToastCounter() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    counterToastGeneral = getCounterFromPrefsWithDefaultValue(
+        prefs, sharedPrefKeyCounterToastGeneral);
+    counterToastSpecific = getCounterFromPrefsWithDefaultValue(
+        prefs, sharedPrefKeyCounterToastSpecific);
+
+   // print("init toast counter general/specific:" + counterToastGeneral.toString() + "/" + counterToastSpecific.toString());
+  }
+
+  Future<void> incrementAndPersistToastCounterGeneral() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    counterToastGeneral = getCounterFromPrefsWithDefaultValue(
+        prefs, sharedPrefKeyCounterToastGeneral);
+    setState(() {
+      counterToastGeneral++;
+    });
+    prefs.setInt(sharedPrefKeyCounterToastGeneral, counterToastGeneral);
+   // print("increment toast counter general/specific:" + counterToastGeneral.toString() + "/" + counterToastSpecific.toString());
+  }
+
+  int getCounterFromPrefsWithDefaultValue(SharedPreferences prefs, key) {
+    var counterTmp = prefs.getInt(key);
+    return counterTmp != null ? counterTmp : 0;
+  }
+
+  Future<void> incrementAndPersistToastCounterSpecific() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    counterToastSpecific = getCounterFromPrefsWithDefaultValue(
+        prefs, sharedPrefKeyCounterToastSpecific);
+    setState(() {
+      counterToastSpecific++;
+    });
+    prefs.setInt(sharedPrefKeyCounterToastGeneral, counterToastSpecific);
+  //  print("increment toast counter general/specific:" + counterToastGeneral.toString() + "/" + counterToastSpecific.toString());
+  }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+    initToastCounter();
     allMarkers.clear();
     if (position != null)
-      initialCamPos = CameraPosition(
+      initialCamPosFallback = CameraPosition(
           target: LatLng(position.latitude, position.longitude),
           zoom: initialZoomLevel);
 
@@ -59,23 +103,10 @@ class MapSampleState extends State<MapSample> {
           latLng = LatLng(double.parse(merchant.x), double.parse(merchant.y));
           allMarkers.add(Marker(
               onTap: () {
-                //showSnackBar("Tap the infowindow to show the merchants details.");
-                //showSnackBar("Tap the route icon (bottom right) to start the navigation.");
-/*
-                if (lastTap != null &&
-                    new DateTime.now().millisecondsSinceEpoch -
-                            lastTap.millisecondsSinceEpoch <
-                        1000) {
-                  Navigator.of(context).pop(merchant);
-                } else {
-                  //TODO explain the user that he has to double click to open the details
-                }
-                lastTap = new DateTime.now();*/
-                /*setState(() {
-                  selectedMerchant = merchant;
-                });*/
-
-                //confirmShowDetails(context, merchant);
+              //  print("tap toast counter general/specific:" + counterToastGeneral.toString() + "/" + counterToastSpecific.toString());
+                if (counterToastSpecific > 9) return;
+                Fluttertoast.cancel();
+                showToast(getMerchantSpecificToastHint);
               },
               infoWindow: buildInfoWindow(merchant),
               icon: getMarkerColor(merchant),
@@ -84,10 +115,51 @@ class MapSampleState extends State<MapSample> {
         }
       }
       if (allMarkers.length == 1) {
-        initialCamPos = CameraPosition(target: latLng, zoom: 15.0);
+        initialCamPosFallback = CameraPosition(
+            target: latLng, zoom: initialZoomFallbackWhenPositionIsProvided);
       }
       //print("markers:" + allMarkers.length.toString());
     }
+  }
+
+  void showToast(msgProvider) {
+    var rng = new Random();
+    int hintNumber = 3;
+    var nextInt = rng.nextInt(hintNumber);
+    Fluttertoast.showToast(
+        msg: msgProvider(hintNumber),
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIos: 3,
+        backgroundColor: Colors.primaries[nextInt*2].withOpacity(0.8),
+        textColor: Colors.white,
+        fontSize: 14.0);
+  }
+
+  String getGeneralToastHint(nextInt, totalHintCounter) {
+    incrementAndPersistToastCounterGeneral();
+    switch (counterToastGeneral % totalHintCounter) {
+      case 0:
+        return "MARKER: Tap any marker to see more information of that merchant.";
+      case 1:
+        return "LOCATION: Tap the location button (top right) to zoom to your location.";
+      case 2:
+        return "CLOSE: Tap the close button to see the complete list of all merchants worldwide.";
+    }
+    return "";
+  }
+
+  String getMerchantSpecificToastHint(totalHintCounter) {
+    incrementAndPersistToastCounterSpecific();
+    switch (counterToastSpecific % totalHintCounter) {
+      case 0:
+        return "DETAILS: Tap the info box to see the details of that merchant.";
+      case 1:
+        return "ROUTE: Tap the route button on the bottom right, to navigate to that merchant.";
+      case 2:
+        return "MAP: Tap the map, to close the info box.";
+    }
+    return "";
   }
 
   void confirmShowDetails(BuildContext context, Merchant merchant) {
@@ -167,30 +239,31 @@ class MapSampleState extends State<MapSample> {
         ? merchant.place.adr.substring(merchant.place.adr.indexOf(",") + 2)
         : merchant.location;
   }
-/*
-  void showSnackBar(String msg) {
-    Scaffold.of(context).showSnackBar(SnackBar(content: Text(msg)));
-  }*/
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      body: GoogleMap(
-        onTap: (pos) {
-          setState(() {
-            //selectedMerchant = null;
-          });
-        },
-        compassEnabled: true,
-        myLocationEnabled: true,
-        mapType: MapType.normal,
-        markers: allMarkers,
-        initialCameraPosition: hasMarkers()
-            ? initialCamPos
-            : hasMarkers() ? allMarkers.elementAt(0).position : initialCamPos,
-        onMapCreated: (GoogleMapController controller) {
-          _controller.complete(controller);
-        },
+      body: Padding(
+        padding: EdgeInsets.only(top: 25.0),
+        child: GoogleMap(
+          onTap: (pos) {
+          //  print("tap toast counter general/specific:" + counterToastGeneral.toString() + "/" + counterToastSpecific.toString());
+            if (counterToastGeneral > 9) return;
+            showToast(getGeneralToastHint);
+          },
+          compassEnabled: true,
+          myLocationEnabled: true,
+          mapType: MapType.normal,
+          markers: allMarkers,
+          initialCameraPosition: hasMarkers()
+              ? initialCamPosFallback
+              : hasMarkers()
+                  ? allMarkers.elementAt(0).position
+                  : initialCamPosFallback,
+          onMapCreated: (GoogleMapController controller) {
+            _controller.complete(controller);
+          },
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton.extended(
@@ -206,11 +279,16 @@ class MapSampleState extends State<MapSample> {
   bool hasMarkers() => allMarkers != null && allMarkers.length > 1;
 
   Future<void> closeMapResetMerchant() async {
-    //selectedMerchant = null;
+    close();
     Navigator.of(context).pop();
   }
 
+  void close() {
+    Fluttertoast.cancel();
+  }
+
   Future<void> closeMapReturnMerchant(merchant) async {
+    close();
     Navigator.of(context).pop(merchant);
   }
 }
