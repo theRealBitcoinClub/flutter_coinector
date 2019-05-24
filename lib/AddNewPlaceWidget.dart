@@ -89,10 +89,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         ),
         SizedBox(height: 10.0),
         Text(
-          "(Use the same name as in Google Maps)",
+          "Use the same name as in Google Maps",
           style: textStyleHint(),
         ),
-        buildTextField(50, updateInputName),
+        buildTextField(Icons.title, 50, "name", updateInputName),
       ],
     );
   }
@@ -108,7 +108,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         ),
         SizedBox(height: 10.0),
         Text(
-          "(Hit the button and select a tag from the list)",
+          "Hit the button, scroll the list, select a tag",
           style: textStyleHint(),
         ),
         SizedBox(height: 10.0),
@@ -121,11 +121,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   Widget wrapBuildSelectedTagsList() {
     return allSelectedTags.length > 0
-          ? Row(
-              //scrollDirection: Axis.horizontal,
-              children: buildTagsRow(),
-            )
-          : buildEmptyPaddingAsPlaceholder();
+        ? Row(
+            //scrollDirection: Axis.horizontal,
+            children: buildTagsRow(),
+          )
+        : buildEmptyPaddingAsPlaceholder();
   }
 
   List<Text> buildTagsRow() {
@@ -145,10 +145,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         ),
         SizedBox(height: 10.0),
         Text(
-          "(Street + Number, State, Country)",
+          "Street + Number, State, Country",
           style: textStyleHint(),
         ),
-        buildTextField(50, updateInputAdr),
+        buildTextField(Icons.local_post_office, 50, "address", updateInputAdr),
       ],
     );
   }
@@ -173,9 +173,15 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     );
   }
 
-  TextField buildTextField(maxLength, updateInputCallback) {
+  TextField buildTextField(icon, maxLength, String label, updateInputCallback) {
     return TextField(
-      cursorColor: accentColor,
+      decoration: InputDecoration(
+          icon: Icon(icon),
+          contentPadding: EdgeInsets.all(10.0),
+          border:
+              UnderlineInputBorder(borderSide: BorderSide(color: accentColor)),
+          labelText: "Insert " + label + " here."),
+      cursorColor: Colors.white70,
       textCapitalization: TextCapitalization.words,
       textInputAction: TextInputAction.next,
       maxLengthEnforced: true,
