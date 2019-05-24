@@ -135,9 +135,9 @@ class MapSampleState extends State<MapSample> {
   String getGeneralToastHint(totalHintCounter) {
     switch (counterToastGeneral % totalHintCounter) {
       case 0:
-        return "MARKER: Tap any marker to see more information of that merchant.";
+        return "MARKER: Tap any marker to see more information of that selected place.";
       case 1:
-        return "LOCATION: Tap the location button (top right) to zoom to your location.";
+        return "LOCATION: Tap the location button (top right) to zoom to your current location.";
       case 2:
         return "CLOSE: Tap the close button (bottom) to see the complete list of all places worldwide.";
     }
@@ -147,11 +147,11 @@ class MapSampleState extends State<MapSample> {
   String getMerchantSpecificToastHint(totalHintCounter) {
     switch (counterToastSpecific % totalHintCounter) {
       case 0:
-        return "DETAILS: Tap the info box to see the details of that merchant.";
+        return "DETAILS: Tap the info box to load the details of that place.";
       case 1:
-        return "ROUTE: Tap the route button on the bottom right, to navigate to that merchant.";
+        return "ROUTE: Tap the route button (bottom right), to navigate to the selected place.";
       case 2:
-        return "MAP: Tap the map, to close the info box of the merchant.";
+        return "MAP: Tap the map at any free space, to close the info box of a selected place.";
     }
     return "";
   }
