@@ -12,8 +12,8 @@ import 'TagParser.dart';
 import 'pages.dart';
 import 'dart:math';
 
-var sharedPrefKeyCounterToastGeneral = "sharedPrefKeyCounterGeneralToast";
-var sharedPrefKeyCounterToastSpecific = "sharedPrefKeyCounterGeneralToast";
+var sharedPrefKeyCounterToastGeneral = "sharedPrefKeyCounterToastGeneral";
+var sharedPrefKeyCounterToastSpecific = "sharedPrefKeyCounterToastSpecific";
 const initialZoomFallbackWhenPositionIsProvided = 15.0;
 
 class MapSample extends StatefulWidget {
@@ -63,23 +63,21 @@ class MapSampleState extends State<MapSample> {
   }
 
   Future incrementAndPersistToastCounterGeneral() async {
-    var prefsKey = sharedPrefKeyCounterToastGeneral;
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    counterToastGeneral = getCounterFromPrefsWithDefaultValue(prefs, prefsKey);
+    counterToastGeneral = getCounterFromPrefsWithDefaultValue(prefs, sharedPrefKeyCounterToastGeneral);
     setState(() {
       counterToastGeneral++;
     });
-    prefs.setInt(prefsKey, counterToastGeneral);
+    prefs.setInt(sharedPrefKeyCounterToastGeneral, counterToastGeneral);
   }
 
   Future incrementAndPersistToastCounterSpecific() async {
-    var prefsKey = sharedPrefKeyCounterToastSpecific;
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    counterToastSpecific = getCounterFromPrefsWithDefaultValue(prefs, prefsKey);
+    counterToastSpecific = getCounterFromPrefsWithDefaultValue(prefs, sharedPrefKeyCounterToastSpecific);
     setState(() {
       counterToastSpecific++;
     });
-    prefs.setInt(prefsKey, counterToastSpecific);
+    prefs.setInt(sharedPrefKeyCounterToastSpecific, counterToastSpecific);
   }
 
   @override
@@ -103,7 +101,7 @@ class MapSampleState extends State<MapSample> {
           latLng = LatLng(double.parse(merchant.x), double.parse(merchant.y));
           allMarkers.add(Marker(
               onTap: () {
-                if (counterToastSpecific > SHOW_HINT_MAX_COUNTER) return;
+                if (counterToastSpecific >= SHOW_HINT_MAX_COUNTER) return;
                 showToast(counterToastSpecific, getMerchantSpecificToastHint);
                 incrementAndPersistToastCounterSpecific();
               },
@@ -243,7 +241,7 @@ class MapSampleState extends State<MapSample> {
         padding: EdgeInsets.only(top: 25.0),
         child: GoogleMap(
           onTap: (pos) {
-            if (counterToastGeneral > SHOW_HINT_MAX_COUNTER) return;
+            if (counterToastGeneral >= SHOW_HINT_MAX_COUNTER) return;
             showToast(counterToastGeneral, getGeneralToastHint);
             incrementAndPersistToastCounterGeneral();
           },
