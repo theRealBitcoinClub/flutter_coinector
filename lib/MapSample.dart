@@ -57,28 +57,29 @@ class MapSampleState extends State<MapSample> {
         prefs, sharedPrefKeyCounterToastSpecific);
   }
 
-  Future<void> incrementAndPersistToastCounterGeneral() async {
-    await incrementAndPersist(
-        counterToastGeneral, sharedPrefKeyCounterToastGeneral);
-  }
-
   int getCounterFromPrefsWithDefaultValue(SharedPreferences prefs, key) {
     var counterTmp = prefs.getInt(key);
     return counterTmp != null ? counterTmp : 0;
   }
 
-  Future<void> incrementAndPersistToastCounterSpecific() async {
-    await incrementAndPersist(
-        counterToastSpecific, sharedPrefKeyCounterToastSpecific);
+  Future incrementAndPersistToastCounterGeneral() async {
+    var prefsKey = sharedPrefKeyCounterToastGeneral;
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    counterToastGeneral = getCounterFromPrefsWithDefaultValue(prefs, prefsKey);
+    setState(() {
+      counterToastGeneral++;
+    });
+    prefs.setInt(prefsKey, counterToastGeneral);
   }
 
-  Future incrementAndPersist(counterVar, prefsKey) async {
+  Future incrementAndPersistToastCounterSpecific() async {
+    var prefsKey = sharedPrefKeyCounterToastSpecific;
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    counterVar = getCounterFromPrefsWithDefaultValue(prefs, prefsKey);
+    counterToastSpecific = getCounterFromPrefsWithDefaultValue(prefs, prefsKey);
     setState(() {
-      counterVar++;
+      counterToastSpecific++;
     });
-    prefs.setInt(prefsKey, counterVar);
+    prefs.setInt(prefsKey, counterToastSpecific);
   }
 
   @override
@@ -152,7 +153,7 @@ class MapSampleState extends State<MapSample> {
       case 1:
         return "ROUTE: Tap the route button on the bottom right, to navigate to that merchant.";
       case 2:
-        return "MAP: Tap the map, to close the info box.";
+        return "MAP: Tap the map, to close the info box of the merchant.";
     }
     return "";
   }
