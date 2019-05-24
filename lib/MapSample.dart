@@ -55,19 +55,11 @@ class MapSampleState extends State<MapSample> {
         prefs, sharedPrefKeyCounterToastGeneral);
     counterToastSpecific = getCounterFromPrefsWithDefaultValue(
         prefs, sharedPrefKeyCounterToastSpecific);
-
-    // print("init toast counter general/specific:" + counterToastGeneral.toString() + "/" + counterToastSpecific.toString());
   }
 
   Future<void> incrementAndPersistToastCounterGeneral() async {
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-    counterToastGeneral = getCounterFromPrefsWithDefaultValue(
-        prefs, sharedPrefKeyCounterToastGeneral);
-    setState(() {
-      counterToastGeneral++;
-    });
-    prefs.setInt(sharedPrefKeyCounterToastGeneral, counterToastGeneral);
-    // print("increment toast counter general/specific:" + counterToastGeneral.toString() + "/" + counterToastSpecific.toString());
+    await incrementAndPersist(
+        counterToastGeneral, sharedPrefKeyCounterToastGeneral);
   }
 
   int getCounterFromPrefsWithDefaultValue(SharedPreferences prefs, key) {
@@ -76,14 +68,17 @@ class MapSampleState extends State<MapSample> {
   }
 
   Future<void> incrementAndPersistToastCounterSpecific() async {
+    await incrementAndPersist(
+        counterToastSpecific, sharedPrefKeyCounterToastSpecific);
+  }
+
+  Future incrementAndPersist(counterVar, prefsKey) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    counterToastSpecific = getCounterFromPrefsWithDefaultValue(
-        prefs, sharedPrefKeyCounterToastSpecific);
+    counterVar = getCounterFromPrefsWithDefaultValue(prefs, prefsKey);
     setState(() {
-      counterToastSpecific++;
+      counterVar++;
     });
-    prefs.setInt(sharedPrefKeyCounterToastGeneral, counterToastSpecific);
-    //  print("increment toast counter general/specific:" + counterToastGeneral.toString() + "/" + counterToastSpecific.toString());
+    prefs.setInt(prefsKey, counterVar);
   }
 
   @override
@@ -107,9 +102,9 @@ class MapSampleState extends State<MapSample> {
           latLng = LatLng(double.parse(merchant.x), double.parse(merchant.y));
           allMarkers.add(Marker(
               onTap: () {
-                //  print("tap toast counter general/specific:" + counterToastGeneral.toString() + "/" + counterToastSpecific.toString());
                 if (counterToastSpecific > SHOW_HINT_MAX_COUNTER) return;
-                showToast(getMerchantSpecificToastHint);
+                showToast(counterToastSpecific, getMerchantSpecificToastHint);
+                incrementAndPersistToastCounterSpecific();
               },
               infoWindow: buildInfoWindow(merchant),
               icon: getMarkerColor(merchant),
@@ -121,26 +116,24 @@ class MapSampleState extends State<MapSample> {
         initialCamPosFallback = CameraPosition(
             target: latLng, zoom: initialZoomFallbackWhenPositionIsProvided);
       }
-      //print("markers:" + allMarkers.length.toString());
     }
   }
 
-  void showToast(msgProvider) {
+  void showToast(showToastCount, msgProvider) {
     Fluttertoast.cancel();
-    var rng = new Random();
-    var nextInt = rng.nextInt(HINT_COUNT_TOTAL);
     Fluttertoast.showToast(
         msg: msgProvider(HINT_COUNT_TOTAL),
         toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.CENTER,
         timeInSecForIos: 3,
-        backgroundColor: Colors.primaries[nextInt * 3].withOpacity(0.8),
+        backgroundColor: Colors
+            .primaries[(showToastCount % HINT_COUNT_TOTAL) * 2]
+            .withOpacity(0.8),
         textColor: Colors.white,
         fontSize: 14.0);
   }
 
   String getGeneralToastHint(totalHintCounter) {
-    incrementAndPersistToastCounterGeneral();
     switch (counterToastGeneral % totalHintCounter) {
       case 0:
         return "MARKER: Tap any marker to see more information of that merchant.";
@@ -153,7 +146,6 @@ class MapSampleState extends State<MapSample> {
   }
 
   String getMerchantSpecificToastHint(totalHintCounter) {
-    incrementAndPersistToastCounterSpecific();
     switch (counterToastSpecific % totalHintCounter) {
       case 0:
         return "DETAILS: Tap the info box to see the details of that merchant.";
@@ -250,9 +242,9 @@ class MapSampleState extends State<MapSample> {
         padding: EdgeInsets.only(top: 25.0),
         child: GoogleMap(
           onTap: (pos) {
-            //  print("tap toast counter general/specific:" + counterToastGeneral.toString() + "/" + counterToastSpecific.toString());
             if (counterToastGeneral > SHOW_HINT_MAX_COUNTER) return;
-            showToast(getGeneralToastHint);
+            showToast(counterToastGeneral, getGeneralToastHint);
+            incrementAndPersistToastCounterGeneral();
           },
           compassEnabled: true,
           myLocationEnabled: true,
