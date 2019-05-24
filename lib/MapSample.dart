@@ -41,6 +41,10 @@ class MapSampleState extends State<MapSample> {
     zoom: 10, //This position reflect Vila de Gracia Barcelona, Quinoa Bar
   );
 
+  static const int HINT_COUNT_TOTAL = 3;
+
+  static const SHOW_HINT_MAX_COUNTER = HINT_COUNT_TOTAL * 2;
+
   MapSampleState(this.allLists, this.position, this.initialZoomLevel);
   Set<Marker> allMarkers = Set.from([]);
 
@@ -52,7 +56,7 @@ class MapSampleState extends State<MapSample> {
     counterToastSpecific = getCounterFromPrefsWithDefaultValue(
         prefs, sharedPrefKeyCounterToastSpecific);
 
-   // print("init toast counter general/specific:" + counterToastGeneral.toString() + "/" + counterToastSpecific.toString());
+    // print("init toast counter general/specific:" + counterToastGeneral.toString() + "/" + counterToastSpecific.toString());
   }
 
   Future<void> incrementAndPersistToastCounterGeneral() async {
@@ -63,7 +67,7 @@ class MapSampleState extends State<MapSample> {
       counterToastGeneral++;
     });
     prefs.setInt(sharedPrefKeyCounterToastGeneral, counterToastGeneral);
-   // print("increment toast counter general/specific:" + counterToastGeneral.toString() + "/" + counterToastSpecific.toString());
+    // print("increment toast counter general/specific:" + counterToastGeneral.toString() + "/" + counterToastSpecific.toString());
   }
 
   int getCounterFromPrefsWithDefaultValue(SharedPreferences prefs, key) {
@@ -79,7 +83,7 @@ class MapSampleState extends State<MapSample> {
       counterToastSpecific++;
     });
     prefs.setInt(sharedPrefKeyCounterToastGeneral, counterToastSpecific);
-  //  print("increment toast counter general/specific:" + counterToastGeneral.toString() + "/" + counterToastSpecific.toString());
+    //  print("increment toast counter general/specific:" + counterToastGeneral.toString() + "/" + counterToastSpecific.toString());
   }
 
   @override
@@ -103,9 +107,8 @@ class MapSampleState extends State<MapSample> {
           latLng = LatLng(double.parse(merchant.x), double.parse(merchant.y));
           allMarkers.add(Marker(
               onTap: () {
-              //  print("tap toast counter general/specific:" + counterToastGeneral.toString() + "/" + counterToastSpecific.toString());
-                if (counterToastSpecific > 9) return;
-                Fluttertoast.cancel();
+                //  print("tap toast counter general/specific:" + counterToastGeneral.toString() + "/" + counterToastSpecific.toString());
+                if (counterToastSpecific > SHOW_HINT_MAX_COUNTER) return;
                 showToast(getMerchantSpecificToastHint);
               },
               infoWindow: buildInfoWindow(merchant),
@@ -123,20 +126,20 @@ class MapSampleState extends State<MapSample> {
   }
 
   void showToast(msgProvider) {
+    Fluttertoast.cancel();
     var rng = new Random();
-    int hintNumber = 3;
-    var nextInt = rng.nextInt(hintNumber);
+    var nextInt = rng.nextInt(HINT_COUNT_TOTAL);
     Fluttertoast.showToast(
-        msg: msgProvider(hintNumber),
+        msg: msgProvider(HINT_COUNT_TOTAL),
         toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.CENTER,
         timeInSecForIos: 3,
-        backgroundColor: Colors.primaries[nextInt*2].withOpacity(0.8),
+        backgroundColor: Colors.primaries[nextInt * 3].withOpacity(0.8),
         textColor: Colors.white,
         fontSize: 14.0);
   }
 
-  String getGeneralToastHint(nextInt, totalHintCounter) {
+  String getGeneralToastHint(totalHintCounter) {
     incrementAndPersistToastCounterGeneral();
     switch (counterToastGeneral % totalHintCounter) {
       case 0:
@@ -144,7 +147,7 @@ class MapSampleState extends State<MapSample> {
       case 1:
         return "LOCATION: Tap the location button (top right) to zoom to your location.";
       case 2:
-        return "CLOSE: Tap the close button to see the complete list of all merchants worldwide.";
+        return "CLOSE: Tap the close button (bottom) to see the complete list of all places worldwide.";
     }
     return "";
   }
@@ -247,8 +250,8 @@ class MapSampleState extends State<MapSample> {
         padding: EdgeInsets.only(top: 25.0),
         child: GoogleMap(
           onTap: (pos) {
-          //  print("tap toast counter general/specific:" + counterToastGeneral.toString() + "/" + counterToastSpecific.toString());
-            if (counterToastGeneral > 9) return;
+            //  print("tap toast counter general/specific:" + counterToastGeneral.toString() + "/" + counterToastSpecific.toString());
+            if (counterToastGeneral > SHOW_HINT_MAX_COUNTER) return;
             showToast(getGeneralToastHint);
           },
           compassEnabled: true,
@@ -279,16 +282,22 @@ class MapSampleState extends State<MapSample> {
   bool hasMarkers() => allMarkers != null && allMarkers.length > 1;
 
   Future<void> closeMapResetMerchant() async {
-    close();
+    cancelToasts();
     Navigator.of(context).pop();
   }
 
-  void close() {
+  @override
+  void dispose() {
+    cancelToasts();
+    super.dispose();
+  }
+
+  void cancelToasts() {
     Fluttertoast.cancel();
   }
 
   Future<void> closeMapReturnMerchant(merchant) async {
-    close();
+    cancelToasts();
     Navigator.of(context).pop(merchant);
   }
 }
