@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 
 import 'CardItem.dart';
 import 'ListModel.dart';
 import 'Merchant.dart';
-import 'package:geolocator/geolocator.dart';
 
 class CardItemBuilder {
   List<ListModel<Merchant>> _lists;

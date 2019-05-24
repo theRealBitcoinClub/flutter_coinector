@@ -1,9 +1,8 @@
-import 'package:coinector/Merchant.dart';
-import 'package:coinector/TagParser.dart';
-import 'package:coinector/Tags.dart';
-import 'package:coinector/main.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+import 'Merchant.dart';
+import 'TagParser.dart';
 
 class ItemInfoStackLayer extends StatelessWidget {
   const ItemInfoStackLayer({

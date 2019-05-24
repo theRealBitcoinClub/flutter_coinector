@@ -1,7 +1,8 @@
 import 'dart:convert';
 
-import 'package:coinector/Place.dart';
 import 'package:flutter/services.dart';
+
+import 'Place.dart';
 
 class AssetLoader {
   static List<dynamic> assetsAm;

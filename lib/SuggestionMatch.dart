@@ -1,4 +1,4 @@
-import 'package:coinector/Suggestions.dart';
+import 'Suggestions.dart';
 
 class SuggestionMatch {
   const SuggestionMatch(

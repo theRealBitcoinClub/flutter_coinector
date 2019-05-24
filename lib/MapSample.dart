@@ -1,12 +1,13 @@
-import 'package:coinector/TagParser.dart';
-import 'package:coinector/pages.dart';
-import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async';
-import 'Merchant.dart';
-import 'ListModel.dart';
-import 'package:flutter/services.dart';
+
+import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+import 'ListModel.dart';
+import 'Merchant.dart';
+import 'TagParser.dart';
+import 'pages.dart';
 
 class MapSample extends StatefulWidget {
   final List<ListModel<Merchant>> allLists;

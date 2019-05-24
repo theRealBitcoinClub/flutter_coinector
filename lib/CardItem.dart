@@ -1,17 +1,17 @@
 import 'package:clipboard_manager/clipboard_manager.dart';
-import 'package:coinector/AssetLoader.dart';
-import 'package:coinector/CustomBoxShadow.dart';
-import 'package:coinector/MyColors.dart';
-import 'package:coinector/Place.dart';
-import 'package:coinector/RatingWidgetBuilder.dart';
-import 'package:coinector/UrlLauncher.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:transparent_image/transparent_image.dart';
+
+import 'AssetLoader.dart';
+import 'CustomBoxShadow.dart';
 import 'ItemInfoStackLayer.dart';
 import 'Merchant.dart';
-//import 'package:flutter_advanced_networkimage/provider.dart';
-import 'package:geolocator/geolocator.dart';
+import 'MyColors.dart';
+import 'Place.dart';
+import 'RatingWidgetBuilder.dart';
+import 'UrlLauncher.dart';
 
 class CardItem extends StatelessWidget {
   final Position position;

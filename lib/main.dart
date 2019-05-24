@@ -1,24 +1,24 @@
 import 'dart:async';
-import 'package:onesignal/onesignal.dart';
-import 'package:coinector/MapSample.dart';
-import 'package:coinector/Suggestions.dart';
-import 'package:coinector/AssetLoader.dart';
-import 'package:coinector/CardItemBuilder.dart';
-import 'package:coinector/MyColors.dart';
-import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'ListModel.dart';
-import 'Merchant.dart';
-import 'SearchDemoSearchDelegate.dart';
-import 'Tags.dart';
+
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-//import 'package:flutter_crashlytics/flutter_crashlytics.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:permission_handler/permission_handler.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:synchronized/synchronized.dart';
-import 'pages.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:onesignal/onesignal.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:synchronized/synchronized.dart';
+
+import 'AssetLoader.dart';
+import 'CardItemBuilder.dart';
+import 'ListModel.dart';
+import 'MapSample.dart';
+import 'Merchant.dart';
+import 'MyColors.dart';
+import 'SearchDemoSearchDelegate.dart';
+import 'Suggestions.dart';
+import 'Tags.dart';
+import 'pages.dart';
 
 class AnimatedListSample extends StatefulWidget {
   @override
