@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';
 
@@ -37,7 +38,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   bool showInputAdr = false;
   bool showInputTags = false;
 
-  List<String> allSelectedTags = [];
+  Set<String> allSelectedTags = Set.from([]);
 
   _AddNewPlaceWidgetState(
       this.selectedType, this.accentColor, this.typeTitle, this.actionBarColor);
@@ -153,9 +154,26 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     );
   }
 
+  void showToastMaxTagCountReached() {
+    Fluttertoast.cancel();
+    Fluttertoast.showToast(
+        msg: "4 tags are enough! Thank you!",
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIos: 3,
+        backgroundColor: Colors.red[800].withOpacity(0.8),
+        textColor: Colors.white,
+        fontSize: 14.0);
+  }
+
   RaisedButton buildSearchTagButton(ctx) {
     return RaisedButton(
       onPressed: () async {
+        if (allSelectedTags.length >= 4) {
+          showToastMaxTagCountReached();
+          return;
+        }
+
         final String selected = await showSearch<String>(
           context: ctx,
           delegate: searchTagsDelegate,
@@ -168,7 +186,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       color: actionBarColor,
       splashColor: accentColor,
       child: Row(
-        children: <Widget>[Icon(Icons.search), Text("CHOOSE TAGS")],
+        children: <Widget>[Icon(Icons.search), Text("CHOOSE TAGS (max 4)")],
       ),
     );
   }
