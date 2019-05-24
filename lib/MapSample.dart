@@ -10,7 +10,6 @@ import 'ListModel.dart';
 import 'Merchant.dart';
 import 'TagParser.dart';
 import 'pages.dart';
-import 'dart:math';
 
 var sharedPrefKeyCounterToastGeneral = "sharedPrefKeyCounterToastGeneral";
 var sharedPrefKeyCounterToastSpecific = "sharedPrefKeyCounterToastSpecific";
@@ -264,7 +263,7 @@ class MapSampleState extends State<MapSample> {
         backgroundColor: Theme.of(context).backgroundColor,
         foregroundColor: Theme.of(context).accentColor,
         onPressed: closeMapResetMerchant,
-        label: Text('CLOSE'),
+        label: Text('CLOSE MAP'),
         icon: Icon(Icons.close),
       ),
     );

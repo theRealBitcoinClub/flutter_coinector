@@ -19,6 +19,7 @@ class MyColors {
       case 99:
         return Colors.green[400];
       case 999:
+      case 6: //Add this case to work with tabindex
         return Colors.deepPurple[400];
     }
     return null;
@@ -41,6 +42,7 @@ class MyColors {
       case 99:
         return Colors.green[800];
       case 999:
+      case 6: //Add this case to work with tabindex
         return Colors.purple[700];
     }
     return null;

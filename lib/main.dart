@@ -9,6 +9,7 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:synchronized/synchronized.dart';
 
+import 'AddNewPlaceWidget.dart';
 import 'AssetLoader.dart';
 import 'CardItemBuilder.dart';
 import 'ListModel.dart';
@@ -496,9 +497,20 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   void updateTitle() {
     setState(() {
-      _title = Pages.pages[tabController.index].title;
+      _title = getTitleOfSelectedTab();
     });
   }
+
+  String getTitleOfSelectedTab() => Pages.pages[tabController.index].title;
+
+  Color getColorOfSelectedTab() =>
+      MyColors.getCardInfoBoxBackgroundColor(tabController.index);
+
+  Color getAccentColorOfSelectedTab() =>
+      MyColors.getTabColor(tabController.index);
+
+  Color getDarkColorOfSelectedTab() =>
+      MyColors.getCardActionButtonBackgroundColor(tabController.index);
 
   void initListModel() {
     initListModelSeveralTimes(_lists, true);
@@ -533,45 +545,27 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
               color: Colors.white.withOpacity(0.7)),
         ),
       ),
-      home:
-          /* new WillPopScope(
-          onWillPop: _onWillPop,
-          child:*/
-          Scaffold(
-        /*drawer: Drawer(
-            child: Column(
-              children: <Widget>[
-                const UserAccountsDrawerHeader(
-                  accountName: Text('Peter Widget'),
-                  accountEmail: Text('peter.widget@example.com'),
-                  /*currentAccountPicture: CircleAvatar(
-                    backgroundImage: AssetImage(
-                      'people/square/peter.png',
-                      package: 'flutter_gallery_assets',
-                    ),
-                  ),*/
-                  margin: EdgeInsets.zero,
-                ),
-                /*MediaQuery.removePadding(
-                  context: context,
-                  // DrawerHeader consumes top MediaQuery padding.
-                  removeTop: true,
-                  child: const ListTile(
-                    leading: Icon(Icons.payment),
-                    title: Text('Placeholder'),
-                  ),
-                ),*/
-              ],
-            ),
-          ),*/
+      home: Scaffold(
         key: _scaffoldKey,
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: Builder(
+          builder: (builderCtx) => FloatingActionButton.extended(
+              backgroundColor: getColorOfSelectedTab(),
+              foregroundColor: Colors.white,
+              onPressed: () {
+                openAddNewPlaceWidget(builderCtx);
+              },
+              label: Text('ADD ' + getTitleOfSelectedTab()),
+              icon: Icon(Icons.add_location)),
+        ),
         body: NestedScrollView(
-          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          headerSliverBuilder:
+              (BuildContext buildCtx, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
                   elevation: 2,
                   forceElevated: true,
-                  leading: buildHomeButton(context),
+                  leading: buildHomeButton(buildCtx),
                   bottom: TabBar(
                     controller: tabController,
                     isScrollable: true,
@@ -605,7 +599,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                     }).toList(),
                   ),
                   actions: <Widget>[
-                    buildIconButtonMap(context),
+                    buildIconButtonMap(buildCtx),
                   ],
                   title: Padding(
                       padding: EdgeInsets.all(5.0),
@@ -897,6 +891,21 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     return const SizedBox(
       height: 20,
     );
+  }
+
+  void openAddNewPlaceWidget(BuildContext ctx) async {
+    Merchant result = await Navigator.push(
+      ctx,
+      MaterialPageRoute(
+          builder: (context) => AddNewPlaceWidget(
+                selectedType: tabController.index,
+                accentColor: getAccentColorOfSelectedTab(),
+                actionBarColor: getDarkColorOfSelectedTab(),
+                typeTitle: getTitleOfSelectedTab(),
+              )),
+    );
+    updateDistanceToAllMerchantsIfNotDoneYet();
+    showSnackBar("You are Satoshi Nakamoto!");
   }
 }
 
