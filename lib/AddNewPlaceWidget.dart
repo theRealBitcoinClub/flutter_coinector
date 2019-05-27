@@ -58,14 +58,17 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       body: Builder(
           builder: (ctx) => Padding(
                 padding: EdgeInsets.all(25.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    buildColumnName(),
-                    wrapBuildColumnAdr(),
-                    wrapBuildColumnTag(ctx)
-                  ],
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      buildColumnName(),
+                      wrapBuildColumnAdr(),
+                      wrapBuildColumnTag(ctx),
+                      wrapBuildSelectedTagsList()
+                    ],
+                  ),
                 ),
               )),
     );
@@ -121,24 +124,26 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         ),
         SizedBox(height: 10.0),
         buildSearchTagButton(ctx),
-        SizedBox(height: 10.0),
-        wrapBuildSelectedTagsList()
+        SizedBox(height: 10.0)
       ],
     );
   }
 
   Widget wrapBuildSelectedTagsList() {
     return allSelectedTags.length > 0
-        ? Row(
-            //scrollDirection: Axis.horizontal,
+        ? Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: buildTagsRow(),
           )
         : buildEmptyPaddingAsPlaceholder();
   }
 
-  List<Text> buildTagsRow() {
-    return allSelectedTags.map<Text>((String tag) {
-      return Text(tag + "  ");
+  List<Widget> buildTagsRow() {
+    return allSelectedTags.map<Widget>((String tag) {
+      return Padding(
+        padding: EdgeInsets.all(5.0),
+        child: Text(tag + "  "),
+      );
     }).toList();
   }
 
@@ -176,10 +181,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   RaisedButton buildSearchTagButton(ctx) {
     return RaisedButton(
       onPressed: () async {
-        if (allSelectedTags.length >= 4) {
+        /*if (allSelectedTags.length >= 4) {
           Toaster.showToastMaxTagCountReached();
           return;
-        }
+        }*/
 
         final String selected = await showSearch<String>(
           context: ctx,
@@ -192,6 +197,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         if (allSelectedTags.length >= 4) {
           setState(() {
             showSubmitBtn = true;
+            showInputTags = false;
           });
         }
       },
@@ -272,6 +278,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   String buildJsonToSubmitViaEmail() {
     return '{"name":"' +
         inputName +
+        '","type":"' +
+        typeTitle +
         '","address":"' +
         inputAdr +
         '","tags":"[' +
