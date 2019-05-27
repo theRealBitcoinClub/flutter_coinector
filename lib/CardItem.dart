@@ -1,6 +1,7 @@
 import 'package:clipboard_manager/clipboard_manager.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:transparent_image/transparent_image.dart';
 
@@ -11,6 +12,7 @@ import 'Merchant.dart';
 import 'MyColors.dart';
 import 'Place.dart';
 import 'RatingWidgetBuilder.dart';
+import 'Toaster.dart';
 import 'UrlLauncher.dart';
 
 class CardItem extends StatelessWidget {
@@ -40,8 +42,8 @@ class CardItem extends StatelessWidget {
       ),
       onPressed: () {
         Navigator.of(context).pop();
-        UrlLauncher.launchEmailClient(merchant, () {
-          //TODO show snackbar if email client not available
+        UrlLauncher.launchEmailClientUpdatePaymentDetails(merchant, () {
+          Toaster.showToastEmailNotConfigured();
         });
       },
     );

@@ -45,6 +45,16 @@ class Tag {
     ]
   ];
 
+  static int findTagIndex(String tag) {
+    for (int i = 0; i < tagText.length; i++) {
+      String item = tagText.elementAt(i);
+      if (item == tag) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
   //Only if the tag is totally unused, that means there are zero results when searching inside the app, then it can be replaced by another tag
 
   static final tagText = const {

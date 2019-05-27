@@ -53,17 +53,30 @@ class UrlLauncher {
       merchant.y;
 
   static void launchVisitUrl(context, Merchant merchant) async {
-    var url = buildGoogleMapsSearchQueryUrl(merchant) + '&query_place_id=' + merchant.place.placesId;
+    var url = buildGoogleMapsSearchQueryUrl(merchant) +
+        '&query_place_id=' +
+        merchant.place.placesId;
     launchURI(url);
   }
 
-  static void launchEmailClient(Merchant m, onEmailClientNotFound) async {
-    var urlString = "mailto:trbc@bitcoinmap.cash?subject=Update Coinector: " + m.id;
-    var hasEmailClient = await canLaunch(urlString);
-    if (hasEmailClient) {
+  static void launchEmailClientAddPlace(String content, onEmailClientNotFound) {
+    var urlString =
+        "mailto:trbc@bitcoinmap.cash?subject=Add Place Coinector&body=" +
+            content;
+    _launchEmail(urlString, onEmailClientNotFound);
+  }
+
+  static Future _launchEmail(String urlString, onEmailClientNotFound) async {
+    if (await canLaunch(urlString)) {
       await launch(urlString);
     } else {
       onEmailClientNotFound();
     }
+  }
+
+  static void launchEmailClientUpdatePaymentDetails(Merchant m, onEmailClientNotFound) {
+    var urlString =
+        "mailto:trbc@bitcoinmap.cash?subject=Update Coinector: " + m.id;
+    _launchEmail(urlString, onEmailClientNotFound);
   }
 }

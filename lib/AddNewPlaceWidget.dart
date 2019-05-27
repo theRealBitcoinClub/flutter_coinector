@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';
+import 'Toaster.dart';
+import 'UrlLauncher.dart';
 
 class AddNewPlaceWidget extends StatefulWidget {
   final int selectedType;
@@ -35,6 +36,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   String inputName;
   String inputAdr;
+  bool showSubmitBtn = false;
   bool showInputAdr = false;
   bool showInputTags = false;
 
@@ -72,6 +74,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   RenderObjectWidget wrapBuildColumnAdr() =>
       (showInputAdr ? buildColumnAdr() : buildEmptyPaddingAsPlaceholder());
+
+  RenderObjectWidget wrapBuildSubmitBtn() =>
+      (showSubmitBtn ? buildSubmitBtn() : buildEmptyPaddingAsPlaceholder());
 
   Padding buildEmptyPaddingAsPlaceholder() {
     return Padding(
@@ -135,6 +140,18 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     }).toList();
   }
 
+  Widget buildSubmitBtn() {
+    return FloatingActionButton.extended(
+        onPressed: () {
+          UrlLauncher.launchEmailClientAddPlace(buildJsonToSubmitViaEmail(),
+              () {
+            Toaster.showToastEmailNotConfigured();
+          });
+        },
+        icon: Icon(Icons.send),
+        label: Text(" SEND"));
+  }
+
   Column buildColumnAdr() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -154,23 +171,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     );
   }
 
-  void showToastMaxTagCountReached() {
-    Fluttertoast.cancel();
-    Fluttertoast.showToast(
-        msg: "4 tags are enough! Thank you!",
-        toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.CENTER,
-        timeInSecForIos: 3,
-        backgroundColor: Colors.red[800].withOpacity(0.8),
-        textColor: Colors.white,
-        fontSize: 14.0);
-  }
-
   RaisedButton buildSearchTagButton(ctx) {
     return RaisedButton(
       onPressed: () async {
         if (allSelectedTags.length >= 4) {
-          showToastMaxTagCountReached();
+          Toaster.showToastMaxTagCountReached();
           return;
         }
 
@@ -254,5 +259,25 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     setState(() {
       allSelectedTags.add(selected);
     });
+  }
+
+  String buildJsonToSubmitViaEmail() {
+    return '{"name":"' +
+        inputName +
+        '","address":"' +
+        inputAdr +
+        '","tags":"[' +
+        buildJsonTag(allSelectedTags.elementAt(0)) +
+        "," +
+        buildJsonTag(allSelectedTags.elementAt(1)) +
+        "," +
+        buildJsonTag(allSelectedTags.elementAt(2)) +
+        "," +
+        buildJsonTag(allSelectedTags.elementAt(3)) +
+        "]}";
+  }
+
+  String buildJsonTag(tag) {
+    return '{"tag":"' + tag + '", "id":"' + Tags.findTagIndex(tag) + '"}';
   }
 }

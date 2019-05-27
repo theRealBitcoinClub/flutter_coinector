@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'SuggestionList.dart';
-import 'Tags.dart';
+import 'Tag.dart';
 
 class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
   final Set<String> suggestionsFromTags = Set.from(Tag.tagText);
@@ -52,8 +52,9 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    Iterable<String> suggestions =
-        query.isEmpty ? cleanSuggestions(suggestionsFromTags) : _getSuggestions(query);
+    Iterable<String> suggestions = query.isEmpty
+        ? /*cleanSuggestions(*/ suggestionsFromTags
+        : _getSuggestions(query);
 
     return SuggestionList(
       query: query,
@@ -91,7 +92,7 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
       ),
     ];
   }
-
+/*
   Iterable<String> cleanSuggestions(Iterable<String> suggestions) {
     List<String> cleanSuggestions = [];
     suggestions.forEach((String suggestion) {
@@ -100,5 +101,5 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
       }
     });
     return cleanSuggestions;
-  }
+  } */
 }

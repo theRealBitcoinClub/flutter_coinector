@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'SuggestionList.dart';
 import 'Suggestions.dart';
-import 'Tags.dart';
+import 'Tag.dart';
 
 class SearchDemoSearchDelegate extends SearchDelegate<String> {
   final Set<String> _historyBackup = Set.from(Suggestions.locations);

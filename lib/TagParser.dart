@@ -1,4 +1,4 @@
-import 'Tags.dart';
+import 'Tag.dart';
 
 class TagParser {
   static String parseTagIndexToText(List<String> splittedtags) {

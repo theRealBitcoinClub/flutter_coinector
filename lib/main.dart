@@ -18,7 +18,7 @@ import 'Merchant.dart';
 import 'MyColors.dart';
 import 'SearchDemoSearchDelegate.dart';
 import 'Suggestions.dart';
-import 'Tags.dart';
+import 'Tag.dart';
 import 'pages.dart';
 
 class AnimatedListSample extends StatefulWidget {
