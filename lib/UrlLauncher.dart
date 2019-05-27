@@ -61,7 +61,7 @@ class UrlLauncher {
 
   static void launchEmailClientAddPlace(String content, onEmailClientNotFound) {
     var urlString =
-        "mailto:trbc@bitcoinmap.cash?subject=Add Place Coinector&body=" +
+        "mailto:trbc@bitcoinmap.cash?subject=Add Place Coinector&body=Welcome to bitcoinmap.cash!\n\nSend this E-Mail now to submit the place!\n\nWe will notify you as soon as the place is available inside the app!\n\nDo not modify the content of this E-Mail!\n\nTo add any further details please send another E-Mail to trbc@bitcoinmap.cash!\n\nYou are Satoshi nakamoto!\n\nThanks!\n\n" +
             content;
     _launchEmail(urlString, onEmailClientNotFound);
   }
@@ -74,7 +74,8 @@ class UrlLauncher {
     }
   }
 
-  static void launchEmailClientUpdatePaymentDetails(Merchant m, onEmailClientNotFound) {
+  static void launchEmailClientUpdatePaymentDetails(
+      Merchant m, onEmailClientNotFound) {
     var urlString =
         "mailto:trbc@bitcoinmap.cash?subject=Update Coinector: " + m.id;
     _launchEmail(urlString, onEmailClientNotFound);

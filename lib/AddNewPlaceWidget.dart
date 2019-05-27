@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';
+import 'Tag.dart';
 import 'Toaster.dart';
 import 'UrlLauncher.dart';
 
@@ -49,6 +50,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[900],
+      floatingActionButton: wrapBuildSubmitBtn(),
       appBar: AppBar(
         backgroundColor: actionBarColor,
         title: Text("ADD: " + typeTitle),
@@ -69,13 +71,13 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     );
   }
 
-  RenderObjectWidget wrapBuildColumnTag(ctx) =>
+  Widget wrapBuildColumnTag(ctx) =>
       (showInputTags ? buildColumnTag(ctx) : buildEmptyPaddingAsPlaceholder());
 
-  RenderObjectWidget wrapBuildColumnAdr() =>
+  Widget wrapBuildColumnAdr() =>
       (showInputAdr ? buildColumnAdr() : buildEmptyPaddingAsPlaceholder());
 
-  RenderObjectWidget wrapBuildSubmitBtn() =>
+  Widget wrapBuildSubmitBtn() =>
       (showSubmitBtn ? buildSubmitBtn() : buildEmptyPaddingAsPlaceholder());
 
   Padding buildEmptyPaddingAsPlaceholder() {
@@ -186,6 +188,12 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         if (selected == null || selected.isEmpty) return;
 
         addSelectedTag(selected);
+
+        if (allSelectedTags.length >= 4) {
+          setState(() {
+            showSubmitBtn = true;
+          });
+        }
       },
       textColor: TEXT_COLOR,
       color: actionBarColor,
@@ -278,6 +286,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   String buildJsonTag(tag) {
-    return '{"tag":"' + tag + '", "id":"' + Tags.findTagIndex(tag) + '"}';
+    return '{"tag":"' +
+        tag +
+        '", "id":"' +
+        Tag.findTagIndex(tag).toString() +
+        '"}';
   }
 }
