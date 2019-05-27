@@ -55,9 +55,9 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
   _getSuggestions(String pattern) {
     List<String> matches = new List();
 
-    addMatches(pattern, matches, Tags.tagText);
+    addMatches(pattern, matches, Tag.tagText);
     addMatches(pattern, matches, Suggestions.locations);
-    addMatches(pattern, matches, Tags.titleTags);
+    addMatches(pattern, matches, Tag.titleTags);
 
     if (matches.length == 0) {
       matches.add(TRY_ANOTHER_WORD);

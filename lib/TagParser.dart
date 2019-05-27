@@ -16,6 +16,6 @@ class TagParser {
     String addSeparator = "";
     if (pos != 0) addSeparator = "   ";
 
-    return addSeparator + Tags.tagText.elementAt(tagIndex);
+    return addSeparator + Tag.tagText.elementAt(tagIndex);
   }
 }

@@ -4,7 +4,7 @@ import 'SuggestionList.dart';
 import 'Tags.dart';
 
 class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
-  final Set<String> suggestionsFromTags = Set.from(Tags.tagText);
+  final Set<String> suggestionsFromTags = Set.from(Tag.tagText);
 
   @override
   Widget buildLeading(BuildContext context) {
@@ -23,7 +23,7 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
   _getSuggestions(String pattern) {
     List<String> matches = new List();
 
-    addMatches(pattern, matches, Tags.tagText);
+    addMatches(pattern, matches, Tag.tagText);
 
     if (matches.length == 0) {
       matches.add(TRY_ANOTHER_WORD);
