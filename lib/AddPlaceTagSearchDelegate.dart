@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'SearchDemoSearchDelegate.dart';
 import 'SuggestionList.dart';
 import 'Tag.dart';
 
@@ -26,7 +27,7 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
     addMatches(pattern, matches, Tag.tagText);
 
     if (matches.length == 0) {
-      matches.add(TRY_ANOTHER_WORD);
+      matches.add(SearchDemoSearchDelegate.TRY_ANOTHER_WORD);
     }
 
     return matches;
@@ -48,13 +49,16 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
   bool startsWith(String currentItem, String pattern) =>
       currentItem.toLowerCase().startsWith(pattern.toLowerCase());
 
-  static const TRY_ANOTHER_WORD = 'Not found! Try another word!';
+  static const YOU_CAN_SCROLL = "You can scroll this list!";
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    Iterable<String> suggestions = query.isEmpty
-        ? /*cleanSuggestions(*/ suggestionsFromTags
-        : _getSuggestions(query);
+    List<String> suggestions = [YOU_CAN_SCROLL];
+    if (query.isEmpty) {
+      suggestions.addAll(suggestionsFromTags);
+    } else {
+      suggestions = _getSuggestions(query);
+    }
 
     return SuggestionList(
       query: query,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'AddPlaceTagSearchDelegate.dart';
 import 'SearchDemoSearchDelegate.dart';
 import 'SuggestionMatch.dart';
 
@@ -28,7 +29,9 @@ class SuggestionList extends StatelessWidget {
         return ListTile(
           leading: query.isEmpty
               ? match.fileName.isEmpty
-                  ? const Icon(Icons.history)
+                  ? !isRealSuggestion(searchMatch)
+                      ? const Icon(Icons.warning)
+                      : const Icon(Icons.history)
                   : const Icon(Icons.location_searching)
               : const Icon(null),
           title: RichText(
@@ -73,6 +76,7 @@ class SuggestionList extends StatelessWidget {
   }
 
   bool isRealSuggestion(String suggestion) {
-    return SearchDemoSearchDelegate.TRY_ANOTHER_WORD != suggestion;
+    return SearchDemoSearchDelegate.TRY_ANOTHER_WORD != suggestion &&
+        AddPlaceTagSearchDelegate.YOU_CAN_SCROLL != suggestion;
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';
+import 'Dialogs.dart';
 import 'Tag.dart';
 import 'Toaster.dart';
 import 'UrlLauncher.dart';
@@ -114,7 +115,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         Text(
-          "Choose tags that describe your products/service.",
+          "OK, now choose four words that best describe your products/service.",
           style: textStyleLabel(),
         ),
         SizedBox(height: 10.0),
@@ -139,10 +140,12 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   List<Widget> buildTagsRow() {
+    var counter = 0;
     return allSelectedTags.map<Widget>((String tag) {
+      counter++;
       return Padding(
         padding: EdgeInsets.all(5.0),
-        child: Text(tag + "  "),
+        child: Text(counter.toString() + " - " + tag + "  "),
       );
     }).toList();
   }
@@ -150,6 +153,19 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   Widget buildSubmitBtn() {
     return FloatingActionButton.extended(
         onPressed: () {
+          if (inputName.length < 5) {
+            Toaster.showAddName();
+            return;
+          }
+          if (inputAdr.length < 20) {
+            Toaster.showAddFullAdr();
+            return;
+          }
+          if (allSelectedTags.length < 4) {
+            Toaster.showAddExactlyFourTags();
+            return;
+          }
+
           UrlLauncher.launchEmailClientAddPlace(buildJsonToSubmitViaEmail(),
               () {
             Toaster.showToastEmailNotConfigured();
@@ -181,10 +197,13 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   RaisedButton buildSearchTagButton(ctx) {
     return RaisedButton(
       onPressed: () async {
-        /*if (allSelectedTags.length >= 4) {
-          Toaster.showToastMaxTagCountReached();
+        if (allSelectedTags.length >= 4) {
+          Toaster.showToastMaxTagsReached();
+          Dialogs.confirmShowResetTags(ctx, () {
+            allSelectedTags = Set.from([]);
+          });
           return;
-        }*/
+        }
 
         final String selected = await showSearch<String>(
           context: ctx,
@@ -192,20 +211,43 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         );
         if (selected == null || selected.isEmpty) return;
 
+        int sizeBefore = allSelectedTags.length;
+
         addSelectedTag(selected);
+        if (sizeBefore == allSelectedTags.length)
+          Toaster.showWarning(
+              "You selected the same tag twice! Please choose again!");
+
+        showSubmitBtn = true;
 
         if (allSelectedTags.length >= 4) {
           setState(() {
-            showSubmitBtn = true;
             showInputTags = false;
           });
         }
       },
       textColor: TEXT_COLOR,
       color: actionBarColor,
+      shape: StadiumBorder(
+          side: BorderSide(
+              color: TEXT_COLOR, style: BorderStyle.solid, width: 1.0)),
       splashColor: accentColor,
-      child: Row(
-        children: <Widget>[Icon(Icons.search), Text("CHOOSE TAGS (max 4)")],
+      child: Padding(
+        padding: EdgeInsets.all(10.0),
+        child: Row(
+          children: <Widget>[
+            Icon(Icons.search),
+            allSelectedTags.length == 0
+                ? Text("   TOUCH HERE TO CHOOSE A TAG")
+                : allSelectedTags.length == 1
+                    ? Text("   CHOOSE ANOTHER TAG")
+                    : allSelectedTags.length == 2
+                        ? Text("   CHOOSE THIRD TAG")
+                        : allSelectedTags.length == 3
+                            ? Text("   CHOOSE LAST TAG")
+                            : Text("   RESET TAGS")
+          ],
+        ),
       ),
     );
   }
@@ -276,7 +318,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   String buildJsonToSubmitViaEmail() {
-    return '{"name":"' +
+    return Uri.encodeComponent('{"name":"' +
         inputName +
         '","type":"' +
         typeTitle +
@@ -284,13 +326,13 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         inputAdr +
         '","tags":"[' +
         buildJsonTag(allSelectedTags.elementAt(0)) +
-        "," +
+        ',' +
         buildJsonTag(allSelectedTags.elementAt(1)) +
-        "," +
+        ',' +
         buildJsonTag(allSelectedTags.elementAt(2)) +
-        "," +
+        ',' +
         buildJsonTag(allSelectedTags.elementAt(3)) +
-        "]}";
+        ']}');
   }
 
   String buildJsonTag(tag) {

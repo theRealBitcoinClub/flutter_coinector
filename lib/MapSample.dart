@@ -100,32 +100,6 @@ class MapSampleState extends State<MapSample> {
         await Toaster.initToastCounter(sharedPrefKeyCounterToastGeneral);
   }
 
-  void confirmShowDetails(BuildContext context, Merchant merchant) {
-    showDialog(
-        context: context,
-        builder: (BuildContext ctx) {
-          return AlertDialog(
-            backgroundColor: Colors.grey[900],
-            content: Text("Do you want to see the details of that place?"),
-            title: Text("Show details?", style: TextStyle(color: Colors.white)),
-            actions: <Widget>[
-              FlatButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text("NO"),
-              ),
-              FlatButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                  Navigator.of(context).pop(merchant);
-                },
-                child: Text("YES"),
-              )
-            ],
-          );
-        });
-  }
 
   BitmapDescriptor getMarkerColor(Merchant m) {
     const ORANGE = 20.0;

@@ -3,10 +3,18 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Toaster {
+  static void showToastMaxTagsReached() {
+    showWarning("Four tags are enough! Thank you!");
+  }
+
   static void showToastEmailNotConfigured() {
+    showWarning("E-Mail client not configured?!");
+  }
+
+  static void showWarning(message) {
     Fluttertoast.cancel();
     Fluttertoast.showToast(
-        msg: "E-Mail client not configured?!",
+        msg: message,
         toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.CENTER,
         timeInSecForIos: 3,
@@ -15,16 +23,16 @@ class Toaster {
         fontSize: 14.0);
   }
 
-  static void showToastMaxTagCountReached() {
-    Fluttertoast.cancel();
-    Fluttertoast.showToast(
-        msg: "4 tags are enough! Thank you!",
-        toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.CENTER,
-        timeInSecForIos: 3,
-        backgroundColor: Colors.red[800].withOpacity(0.8),
-        textColor: Colors.white,
-        fontSize: 14.0);
+  static void showAddName() {
+    showWarning("Please enter a name with atleast 5 characters!");
+  }
+
+  static void showAddExactlyFourTags() {
+    showWarning("Please add exactly four tags!");
+  }
+
+  static void showAddFullAdr() {
+    showWarning("Please enter the FULL ADDRESS: Street, Number, State & Country!");
   }
 
   static void showInstructionToast(
@@ -35,10 +43,14 @@ class Toaster {
         toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.CENTER,
         timeInSecForIos: 3,
-        backgroundColor: Colors.primaries[(showToastCount % hintCountTotal) * 2]
-            .withOpacity(0.8),
+        backgroundColor: getBackGroundColor(showToastCount, hintCountTotal),
         textColor: Colors.white,
         fontSize: 14.0);
+  }
+
+  static Color getBackGroundColor(showToastCount, hintCountTotal) {
+    return Colors.primaries[(showToastCount % hintCountTotal) * 2]
+          .withOpacity(0.8);
   }
 
   static Future<int> initToastCounter(prefKey) async {
@@ -70,7 +82,8 @@ class Toaster {
     return "";
   }
 
-  static String getMerchantSpecificToastHint(counterToastSpecific, totalHintCounter) {
+  static String getMerchantSpecificToastHint(
+      counterToastSpecific, totalHintCounter) {
     switch (counterToastSpecific % totalHintCounter) {
       case 0:
         return "DETAILS: Tap the info box to load the details of that place.";
