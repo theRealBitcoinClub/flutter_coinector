@@ -894,7 +894,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void openAddNewPlaceWidget(BuildContext ctx) async {
-    Merchant result = await Navigator.push(
+    await Navigator.push(
       ctx,
       MaterialPageRoute(
           builder: (context) => AddNewPlaceWidget(

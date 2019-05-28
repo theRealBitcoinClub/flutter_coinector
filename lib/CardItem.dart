@@ -1,7 +1,6 @@
 import 'package:clipboard_manager/clipboard_manager.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:transparent_image/transparent_image.dart';
 
