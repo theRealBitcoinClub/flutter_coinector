@@ -39,10 +39,14 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   String inputName;
   String inputAdr;
   bool showSubmitBtn = false;
+  bool showInputDASHyBCH = false;
   bool showInputAdr = false;
   bool showInputTags = false;
 
   Set<String> allSelectedTags = Set.from([]);
+
+  String inputBCH = "";
+  String inputDASH = "";
 
   _AddNewPlaceWidgetState(
       this.selectedType, this.accentColor, this.typeTitle, this.actionBarColor);
@@ -80,6 +84,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   Widget wrapBuildColumnAdr() =>
       (showInputAdr ? buildColumnAdr() : buildEmptyPaddingAsPlaceholder());
+
+  Widget wrapBuildColumnDASHyBCH() => (showInputDASHyBCH
+      ? buildColumnDASHyBCH()
+      : buildEmptyPaddingAsPlaceholder());
 
   Widget wrapBuildSubmitBtn() =>
       (showSubmitBtn ? buildSubmitBtn() : buildEmptyPaddingAsPlaceholder());
@@ -175,6 +183,37 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         label: Text(" SEND"));
   }
 
+  Column buildColumnDASHyBCH() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          "What is your DASH wallet receiving address?",
+          style: textStyleLabel(),
+        ),
+        SizedBox(height: 10.0),
+        Text(
+          "Open your DASH wallet, go to the receive view and use the share function (top right)",
+          style: textStyleHint(),
+        ),
+        buildTextField(
+            Icons.local_atm, 60, "DASH address", updateInputDASH),
+        Text(
+          "What is your BCH wallet receiving address?",
+          style: textStyleLabel(),
+        ),
+        SizedBox(height: 10.0),
+        Text(
+          "Open your BCH wallet, go to the receive view and use the share/copy function (top right)",
+          style: textStyleHint(),
+        ),
+        buildTextField(
+            Icons.attach_money, 70, "BCH address", updateInputBCH),
+      ],
+    );
+  }
+
   Column buildColumnAdr() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -219,12 +258,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
               "You selected the same tag twice! Please choose again!");
 
         showSubmitBtn = true;
-
-        if (allSelectedTags.length >= 4) {
-          setState(() {
-            showInputTags = false;
-          });
-        }
       },
       textColor: TEXT_COLOR,
       color: actionBarColor,
@@ -295,6 +328,14 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     });
   }
 
+  void updateInputBCH(String input) {
+    this.inputBCH = input;
+  }
+
+  void updateInputDASH(String input) {
+    this.inputDASH = input;
+  }
+
   void updateInputAdr(String input) {
     if (input.length > 20) {
       showInputTag();
@@ -321,6 +362,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     return Uri.encodeComponent('{"name":"' +
         inputName +
         '","type":"' +
+        inputBCH +
+        '","bch":"' +
+        inputDASH +
+        '","dash":"' +
         typeTitle +
         '","address":"' +
         inputAdr +
