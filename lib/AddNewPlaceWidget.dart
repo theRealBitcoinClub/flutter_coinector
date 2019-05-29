@@ -15,6 +15,17 @@ const DURATION_OPACITY_FADE_SUBMIT_BTN = Duration(milliseconds: 10000);
 const INPUT_DASH_POS = 550.0;
 const INPUT_TAGS_POS = 200.0;
 
+const int MIN_INPUT_ADR = 20;
+const int MIN_INPUT_NAME = 5;
+const int MIN_INPUT_TAGS = 4;
+const int MIN_INPUT_BCHyDASH = 32;
+const int MAX_INPUT_ADR = 50;
+const int MAX_INPUT_NAME = 50;
+const int MAX_INPUT_DASH = 36; //dash:XintDskT8uV59N9HNvbpJ27nKNtbyHiyUn
+const int MAX_INPUT_BCH =
+    54; //bitcoincash:qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a
+const int MAX_INPUT_TAGS = 4;
+
 class AddNewPlaceWidget extends StatefulWidget {
   final int selectedType;
   final Color accentColor;
@@ -57,18 +68,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   String inputBCH = "";
   String inputDASH = "";
-
-  static const int MIN_INPUT_ADR = 20;
-  static const int MIN_INPUT_NAME = 5;
-  static const int MIN_INPUT_TAGS = 4;
-  static const int MIN_INPUT_BCHyDASH = 32;
-  static const int MAX_INPUT_ADR = 50;
-  static const int MAX_INPUT_NAME = 50;
-  static const int MAX_INPUT_DASH =
-      36; //dash:XintDskT8uV59N9HNvbpJ27nKNtbyHiyUn
-  static const int MAX_INPUT_BCH =
-      54; //bitcoincash:qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a
-  static const int MAX_INPUT_TAGS = 4;
 
   var scrollController = ScrollController();
 
@@ -143,8 +142,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   bool hasInputAllTags() => allSelectedTags.length == 4;
 
-  //TODO use animated size to expand the item smoothly instead of occupying all the space directly
-
   Widget wrapBuildColumnDASHyBCH() => AnimatedOpacity(
       curve: DEFAULT_ANIMATION_CURVE,
       duration: DEFAULT_DURATION_OPACITY_FADE,
@@ -199,7 +196,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         ),
         buildSizedBoxSeparator(),
         Text(
-          "Hit the button, scroll the list, select a tag",
+          "Hit the button, scroll the list, choose a tag",
           style: textStyleHint(),
         ),
         buildSizedBoxSeparator(),
@@ -209,11 +206,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     );
   }
 
-  //TODO add ANYPAY receiving EMAIL address so they can send information
-  //TODO create anypay@bitcoinmap.cash with autorespond to explain the sign up process and what is the benefit (cashback)
-  //TODO create autorespond email that sends a PDF with QR Code (Or make that information available inside the app)
-  //TODO create autorespond email for BCH and DASH (forward the email serverside to coinmap.org, accetbitcoin.cash, bitcoin.com not clientside)
   //TODO translate all tags to spanish, japanese, french and german
+  //TODO email service in atleast 3 languages, English, Spanish, German
 
   Widget wrapBuildSelectedTagsList() {
     return allSelectedTags.length > 0
@@ -289,9 +283,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           }
 
           UrlLauncher.launchEmailClientAddPlace(
-              inputDASH.length > MIN_INPUT_BCHyDASH,
-              inputBCH.length > MIN_INPUT_BCHyDASH,
-              buildJsonToSubmitViaEmail(), () {
+              inputDASH, inputBCH, buildJsonToSubmitViaEmail(), () {
             Toaster.showToastEmailNotConfigured();
           });
         },

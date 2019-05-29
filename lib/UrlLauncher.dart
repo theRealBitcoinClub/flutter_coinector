@@ -1,8 +1,9 @@
+import 'AddNewPlaceWidget.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 
 import 'Merchant.dart';
 import 'Toaster.dart';
-//import 'package:launch_review/launch_review.dart';
 
 class UrlLauncher {
   static void launchMapInBrowser() async {
@@ -68,16 +69,21 @@ class UrlLauncher {
     return hasInput ? ",en-bch@therealbitcoin.club" : "";
   }
 
-  static void launchEmailClientAddPlace(bool hasInputDASH, bool hasInputBCH,
+  static void launchEmailClientAddPlace(String inputDASH, String inputBCH,
       String content, onEmailClientNotFound) async {
     var urlString =
         "mailto:en-bmap.cash@therealbitcoin.club,en-anypay@therealbitcoin.club" +
-            getDASHReceiverAdr(hasInputDASH) +
-            getBCHReceiverAdr(hasInputBCH) +
-            "?subject=Add Place Coinector&body=Welcome to bitcoinmap.cash!\n\nSend this E-Mail now to submit the place!\n\nWe will notify you as soon as the place is available inside the app!\n\nDo not modify the content of this E-Mail!\n\nTo add any further details please send another E-Mail to trbc@bitcoinmap.cash!\n\nYou are Satoshi Nakamoto!\n\nThanks!\n\n" +
+            (hasInput(inputDASH)
+                ? getDASHReceiverAdr(hasInput(inputDASH))
+                : getBCHReceiverAdr(hasInput(inputBCH))) +
+            "?subject=" +
+            (hasInput(inputDASH) ? inputDASH : inputBCH) +
+            "&body=Welcome to bitcoinmap.cash!\n\nSend this E-Mail now to submit the place!\n\nWe will notify you as soon as the place is available inside the app!\n\nDo not modify the content of this E-Mail!\n\nTo add any further details please send another E-Mail to trbc@bitcoinmap.cash!\n\nYou are Satoshi Nakamoto!\n\nThanks!\n\n" +
             content;
     await _launchEmail(urlString, onEmailClientNotFound);
   }
+
+  static bool hasInput(String input) => input.length > MIN_INPUT_BCHyDASH;
 
   static Future _launchEmail(String urlString, onEmailClientNotFound) async {
     Toaster.showToastLaunchingEmailClient();
