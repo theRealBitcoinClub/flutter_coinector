@@ -6,6 +6,15 @@ import 'Tag.dart';
 import 'Toaster.dart';
 import 'UrlLauncher.dart';
 
+const OPACITY_ITEM_VALIDATED = 0.5;
+const OPACITY_ITEM_DEACTIVATED = 0.0;
+const DEFAULT_DURATION_SCROLL_ANIMATION = Duration(milliseconds: 3000);
+const DEFAULT_ANIMATION_CURVE = Curves.decelerate;
+const DEFAULT_DURATION_OPACITY_FADE = Duration(milliseconds: 5000);
+const DURATION_OPACITY_FADE_SUBMIT_BTN = Duration(milliseconds: 10000);
+const INPUT_DASH_POS = 550.0;
+const INPUT_TAGS_POS = 200.0;
+
 class AddNewPlaceWidget extends StatefulWidget {
   final int selectedType;
   final Color accentColor;
@@ -35,6 +44,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   final AddPlaceTagSearchDelegate searchTagsDelegate =
       AddPlaceTagSearchDelegate();
   static const TEXT_COLOR = Colors.white;
+  FocusNode focusNodeInputDASH;
 
   String inputName;
   String inputAdr;
@@ -60,8 +70,24 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       54; //bitcoincash:qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a
   static const int MAX_INPUT_TAGS = 4;
 
+  var scrollController = ScrollController();
+
   _AddNewPlaceWidgetState(
       this.selectedType, this.accentColor, this.typeTitle, this.actionBarColor);
+
+  @override
+  void initState() {
+    super.initState();
+    focusNodeInputDASH = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    // Clean up the focus node when the Form is disposed
+    focusNodeInputDASH.dispose();
+
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,15 +102,16 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           builder: (ctx) => Padding(
                 padding: EdgeInsets.all(25.0),
                 child: SingleChildScrollView(
+                  controller: scrollController,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      buildColumnName(),
+                      wrapBuildColumnName(),
                       wrapBuildColumnAdr(),
                       wrapBuildColumnTag(ctx),
                       wrapBuildSelectedTagsList(),
-                      wrapBuildColumnDASHyBCH()
+                      wrapBuildColumnDASHyBCH(),
                     ],
                   ),
                 ),
@@ -92,18 +119,46 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     );
   }
 
-  Widget wrapBuildColumnTag(ctx) =>
-      (showInputTags ? buildColumnTag(ctx) : buildEmptyPaddingAsPlaceholder());
+  Widget wrapBuildColumnName() => AnimatedOpacity(
+      curve: DEFAULT_ANIMATION_CURVE,
+      duration: DEFAULT_DURATION_OPACITY_FADE,
+      opacity: showInputAdr ? OPACITY_ITEM_VALIDATED : 1.0,
+      child: buildColumnName());
 
-  Widget wrapBuildColumnAdr() =>
-      (showInputAdr ? buildColumnAdr() : buildEmptyPaddingAsPlaceholder());
+  Widget wrapBuildColumnTag(ctx) => AnimatedOpacity(
+      curve: DEFAULT_ANIMATION_CURVE,
+      duration: DEFAULT_DURATION_OPACITY_FADE,
+      opacity: !showInputTags
+          ? OPACITY_ITEM_DEACTIVATED
+          : hasInputAllTags() ? OPACITY_ITEM_VALIDATED : 1.0,
+      child: buildColumnTag(ctx));
 
-  Widget wrapBuildColumnDASHyBCH() => (showInputDASHyBCH
-      ? buildColumnDASHyBCH()
-      : buildEmptyPaddingAsPlaceholder());
+  Widget wrapBuildColumnAdr() => AnimatedOpacity(
+      curve: DEFAULT_ANIMATION_CURVE,
+      duration: DEFAULT_DURATION_OPACITY_FADE,
+      opacity: !showInputAdr
+          ? OPACITY_ITEM_DEACTIVATED
+          : showInputTags ? OPACITY_ITEM_VALIDATED : 1.0,
+      child: buildColumnAdr());
 
-  Widget wrapBuildSubmitBtn() =>
-      (showSubmitBtn ? buildSubmitBtn() : buildEmptyPaddingAsPlaceholder());
+  bool hasInputAllTags() => allSelectedTags.length == 4;
+
+  //TODO use animated size to expand the item smoothly instead of occupying all the space directly
+
+  Widget wrapBuildColumnDASHyBCH() => AnimatedOpacity(
+      curve: DEFAULT_ANIMATION_CURVE,
+      duration: DEFAULT_DURATION_OPACITY_FADE,
+      opacity: !showInputDASHyBCH ? OPACITY_ITEM_DEACTIVATED : 1.0,
+      child: buildColumnDASHyBCH());
+
+  Widget wrapBuildSubmitBtn() => AnimatedOpacity(
+        curve: DEFAULT_ANIMATION_CURVE,
+        duration: DURATION_OPACITY_FADE_SUBMIT_BTN,
+        opacity: showSubmitBtn
+            ? allSelectedTags.length == MIN_INPUT_TAGS ? 1.0 : 0.5
+            : 0.0,
+        child: buildSubmitBtn(),
+      );
 
   Padding buildEmptyPaddingAsPlaceholder() {
     return Padding(
@@ -125,7 +180,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           "Use the same name as in Google Maps",
           style: textStyleHint(),
         ),
-        buildTextField(Icons.title, MAX_INPUT_NAME, "name", updateInputName),
+        buildTextField(
+            null, 0.1, Icons.title, MAX_INPUT_NAME, "name", updateInputName),
+        buildSizedBoxSeparator(),
       ],
     );
   }
@@ -135,6 +192,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
+        buildSizedBoxSeparator(multiplier: 5.0),
         Text(
           "OK, now choose four words that best describe your products/service.",
           style: textStyleLabel(),
@@ -151,22 +209,62 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     );
   }
 
+  //TODO FADE IN THE COLUMNS SLOWLY WITH EXPAND AND FADE ANIMATION
+  //TODO OR SORT THE INPUT THE OTHER WAY AROUND AGAIN
+  //TODO OR BETTER SHOW THE INPUT AS UNCHANGEABLE AND OFFER A BACK BUTTON
+  //TODO REACT ON USER INPUT NEXT KEYBOARD
+  //TODO add ANYPAY receiving EMAIL address so they can send information
+  //TODO create anypay@bitcoinmap.cash with autorespond to explain the sign up process and what is the benefit (cashback)
+  //TODO create autorespond email that sends a PDF with QR Code (Or make that information available inside the app)
+  //TODO create autorespond email for BCH and DASH (forward the email serverside to coinmap.org, accetbitcoin.cash, bitcoin.com not clientside)
+  //TODO translate all tags to spanish, japanese, french and german
+
   Widget wrapBuildSelectedTagsList() {
     return allSelectedTags.length > 0
-        ? Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: buildTagsRow(),
+        ? SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: AnimatedOpacity(
+              curve: DEFAULT_ANIMATION_CURVE,
+              duration: DEFAULT_DURATION_OPACITY_FADE,
+              opacity: hasInputAllTags() ? OPACITY_ITEM_VALIDATED : 1.0,
+              child: Padding(
+                padding: EdgeInsets.only(bottom: 0.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    buildAnimatedOpacityTag(0),
+                    buildAnimatedOpacityTag(1),
+                    buildAnimatedOpacityTag(2),
+                    buildAnimatedOpacityTag(3),
+                  ],
+                ),
+              ),
+            ),
           )
         : buildEmptyPaddingAsPlaceholder();
   }
 
+  AnimatedOpacity buildAnimatedOpacityTag(index) {
+    return AnimatedOpacity(
+        curve: DEFAULT_ANIMATION_CURVE,
+        duration: DEFAULT_DURATION_OPACITY_FADE,
+        opacity: hasTagWithThatIndexThenShowIt(index),
+        child: Padding(
+          padding: EdgeInsets.only(bottom: 10.0),
+          child: Text(allSelectedTags.length <= index
+              ? ""
+              : allSelectedTags.elementAt(index) + "  "),
+        ));
+  }
+
+  double hasTagWithThatIndexThenShowIt(index) =>
+      allSelectedTags.length > index ? 1.0 : 0.0;
+
   List<Widget> buildTagsRow() {
-    var counter = 0;
     return allSelectedTags.map<Widget>((String tag) {
-      counter++;
       return Padding(
         padding: EdgeInsets.only(bottom: 10.0),
-        child: Text(counter.toString() + " - " + tag + "  "),
+        child: Text(tag + "  "),
       );
     }).toList();
   }
@@ -174,6 +272,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   Widget buildSubmitBtn() {
     return FloatingActionButton.extended(
         onPressed: () async {
+          if (!showSubmitBtn) return;
+
           if (inputName.length < MIN_INPUT_NAME) {
             Toaster.showAddName();
             return;
@@ -192,14 +292,13 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             return;
           }
 
-          await UrlLauncher.launchEmailClientAddPlace(
+          UrlLauncher.launchEmailClientAddPlace(
               inputDASH.length > MIN_INPUT_BCHyDASH,
               inputBCH.length > MIN_INPUT_BCHyDASH,
               buildJsonToSubmitViaEmail(), () {
             Toaster.showToastEmailNotConfigured();
           });
-          Toaster.showToastThanksForSubmitting();
-        }, -
+        },
         icon: Icon(Icons.send),
         label: Text(" SEND"));
   }
@@ -209,28 +308,36 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
+        buildSizedBoxSeparator(multiplier: 5.0),
         Text(
           "What is your DASH wallet receiving address?",
           style: textStyleLabel(),
         ),
         buildSizedBoxSeparator(),
         Text(
-          "Open your DASH wallet, go to the receive view and use the share function (top right)",
+          "1: Open your DASH wallet! 2: Choose receive to see the QR-Code! 3: Select share/copy! 4: Paste the address here!",
           style: textStyleHint(),
         ),
-        buildTextField(Icons.monetization_on, MAX_INPUT_DASH, "DASH address",
+        buildTextField(
+            focusNodeInputDASH,
+            INPUT_DASH_POS,
+            Icons.monetization_on,
+            MAX_INPUT_DASH,
+            "DASH address",
             updateInputDASH),
+        buildSizedBoxSeparator(multiplier: 2.0),
         Text(
           "What is your BCH wallet receiving address?",
           style: textStyleLabel(),
         ),
         buildSizedBoxSeparator(),
         Text(
-          "Open your BCH wallet, go to the receive view and use the share/copy function (top right)",
+          "1: Open your BCH wallet! 2: Choose receive to see the QR-Code! 3: Select share/copy! 4: Paste the address here!",
           style: textStyleHint(),
         ),
-        buildTextField(Icons.monetization_on, MAX_INPUT_BCH, "BCH address",
-            updateInputBCH),
+        buildTextField(null, 700.0, Icons.monetization_on, MAX_INPUT_BCH,
+            "BCH address", updateInputBCH),
+        buildSizedBoxSeparator(multiplier: 5.0),
       ],
     );
   }
@@ -240,6 +347,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
+        buildSizedBoxSeparator(multiplier: 5.0),
         Text(
           "What is the postal address?",
           style: textStyleLabel(),
@@ -249,19 +357,24 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           "Street + Number, State, Country",
           style: textStyleHint(),
         ),
-        buildTextField(
-            Icons.local_post_office, MAX_INPUT_ADR, "address", updateInputAdr),
+        buildTextField(null, 150.0, Icons.local_post_office, MAX_INPUT_ADR,
+            "address", updateInputAdr),
       ],
     );
   }
 
-  SizedBox buildSizedBoxSeparator() => SizedBox(height: 10.0);
+  SizedBox buildSizedBoxSeparator({multiplier = 1.0}) =>
+      SizedBox(height: 10.0 * multiplier);
 
   void handleAddTagButton(ctx) async {
     if (allSelectedTags.length >= MIN_INPUT_TAGS) {
       Toaster.showToastMaxTagsReached();
       Dialogs.confirmShowResetTags(ctx, () {
-        allSelectedTags = Set.from([]);
+        setState(() {
+          allSelectedTags = Set.from([]);
+          showInputDASHyBCH = false;
+          showSubmitBtn = false;
+        });
       });
       return;
     }
@@ -275,15 +388,34 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     int sizeBefore = allSelectedTags.length;
 
     addSelectedTag(selected);
-    if (sizeBefore == allSelectedTags.length)
+    //TODO do not show items in the list which have already been selected
+    if (sizeBefore == allSelectedTags.length) {
       Toaster.showWarning(
           "You selected the same tag twice! Please choose again!");
+      return;
+    }
 
-    if (allSelectedTags.length == MAX_INPUT_TAGS) showInputDASHyBCH = true;
+    if (allSelectedTags.length == MAX_INPUT_TAGS) {
+      setState(() {
+        showInputDASHyBCH = true;
+      });
+      FocusScope.of(ctx).requestFocus(focusNodeInputDASH);
+      scrollController.jumpTo(INPUT_DASH_POS);
+    } else {
+      scrollController.jumpTo(INPUT_TAGS_POS);
+    }
 
     setState(() {
       showSubmitBtn = true;
     });
+  }
+
+  void scrollToWithAnimation(pos) {
+    if (scrollController.positions.isNotEmpty) {
+      scrollController.animateTo(pos,
+          duration: DEFAULT_DURATION_SCROLL_ANIMATION,
+          curve: DEFAULT_ANIMATION_CURVE);
+    }
   }
 
   RaisedButton buildSearchTagButton(ctx) {
@@ -317,8 +449,14 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     );
   }
 
-  TextField buildTextField(icon, maxLength, String label, updateInputCallback) {
+  TextField buildTextField(focusNode, onTapScrollToThisPosition, icon,
+      maxLength, String label, updateInputCallback) {
     return TextField(
+      focusNode: focusNode,
+      //onSubmitted: updateInputCallback("c0mpl3te"),
+      onTap: () {
+        scrollToWithAnimation(onTapScrollToThisPosition);
+      },
       decoration: InputDecoration(
           icon: Icon(icon),
           contentPadding: buildEdgeInsetsTextField(),
@@ -356,7 +494,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     });
   }
 
+  //TODO listen to the duration of not receiving input and show the next field after 5 seconds of inactivity
+
   void showInputTag() {
+    scrollToWithAnimation(INPUT_TAGS_POS);
     setState(() {
       showInputTags = true;
     });
@@ -379,6 +520,13 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void updateInputName(String input) {
+    if (input == "c0mpl3te") {
+      scrollToWithAnimation(150.0);
+      return;
+    }
+
+    //TODO FIX THAT LOCATION IS AVAILABLE AT THE BEGINNING BY USNG SHARED PREFS TO save LOCATION!!
+
     if (input.length > MIN_INPUT_NAME) {
       showInputAddress();
     }

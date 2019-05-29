@@ -863,26 +863,32 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                   style: TextStyle(fontWeight: FontWeight.w400),
                 ),
                 buildSeparator(),
-                Row(
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.all(10.0),
-                      child: /*IconButton(icon: */ Icon(Icons.arrow_upward),
-                    ),
-                    const Text(
-                      'Hit a colored icon to see matches.',
-                      style: TextStyle(fontWeight: FontWeight.w300),
-                    )
-                  ],
-                ),
+                SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: /*IconButton(icon: */ Icon(Icons.arrow_upward),
+                        ),
+                        const Text(
+                          'Hit a colored icon to see matches.',
+                          style: TextStyle(fontWeight: FontWeight.w300),
+                        )
+                      ],
+                    )),
                 buildSeparator(),
-                Row(children: <Widget>[
-                  buildHomeButton(context),
-                  const Text(
-                    'Show all merchants of all categories.',
-                    style: TextStyle(fontWeight: FontWeight.w300),
-                  )
-                ]),
+                SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: <Widget>[
+                        buildHomeButton(context),
+                        const Text(
+                          'Show all merchants of all categories.',
+                          style: TextStyle(fontWeight: FontWeight.w300),
+                        )
+                      ],
+                    )),
               ],
             ));
   }

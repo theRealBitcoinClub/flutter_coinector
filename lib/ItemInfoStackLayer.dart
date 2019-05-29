@@ -29,25 +29,31 @@ class ItemInfoStackLayer extends StatelessWidget {
         child: ListView(
           physics: const NeverScrollableScrollPhysics(),
           children: <Widget>[
-            Text(
-              merchant.name,
-              style: textStyleMerchantTitle,
-              maxLines: 1,
-            ),
+            SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Text(
+                  merchant.name,
+                  style: textStyleMerchantTitle,
+                  maxLines: 1,
+                )),
             const SizedBox(
               height: 5,
             ),
-            Text(
-              merchant.location,
-              maxLines: 1,
-              style: textStyleMerchantLocation,
-            ),
+            SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Text(
+                  merchant.location,
+                  maxLines: 1,
+                  style: textStyleMerchantLocation,
+                )),
             const SizedBox(
               height: 10,
             ),
-            Row(
-              children: <Widget>[buildTagText(splittedtags)],
-            ),
+            SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: <Widget>[buildTagText(splittedtags)],
+                )),
           ],
         ),
       ),

@@ -3,9 +3,11 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Toaster {
+  static const DEFAULT_BACKGROUND_OPACITY = 0.9;
   static const double DEFAULT_FONT_SIZE = 14.0;
   static const Color DEFAULT_TEXT_COLOR = Colors.white;
-  static Color DEFAULT_BACKGROUND_COLOR = Colors.red[800].withOpacity(0.8);
+  static Color DEFAULT_BACKGROUND_COLOR =
+      Colors.red[900].withOpacity(DEFAULT_BACKGROUND_OPACITY);
   static const int DEFAULT_TIME_FOR_IOS = 3;
   static const Toast DEFAULT_TIME_FOR_ANDROID = Toast.LENGTH_LONG;
   static const ToastGravity DEFAULT_TOAST_GRAVITY = ToastGravity.CENTER;
@@ -20,10 +22,6 @@ class Toaster {
 
   static void showToastEmailNotConfigured() {
     showWarning("E-Mail client not configured?!");
-  }
-
-  static void showToastThanksForSubmitting() {
-    showWarning("Thank you for growing adoption!");
   }
 
   static void showWarning(message) {
@@ -68,7 +66,7 @@ class Toaster {
 
   static Color getBackGroundColor(showToastCount, hintCountTotal) {
     return Colors.primaries[(showToastCount % hintCountTotal) * 2]
-        .withOpacity(0.8);
+        .withOpacity(DEFAULT_BACKGROUND_OPACITY);
   }
 
   static Future<int> initToastCounter(prefKey) async {

@@ -23,6 +23,8 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
     );
   }
 
+  //TODO make all button press async by default: onPressed: () async {
+
   buildHistory() async {
     List<String> historyItems = await getHistory();
     if (historyItems == null || historyItems.isEmpty) return;
