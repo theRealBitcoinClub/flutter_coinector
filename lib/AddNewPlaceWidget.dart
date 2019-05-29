@@ -209,10 +209,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     );
   }
 
-  //TODO FADE IN THE COLUMNS SLOWLY WITH EXPAND AND FADE ANIMATION
-  //TODO OR SORT THE INPUT THE OTHER WAY AROUND AGAIN
-  //TODO OR BETTER SHOW THE INPUT AS UNCHANGEABLE AND OFFER A BACK BUTTON
-  //TODO REACT ON USER INPUT NEXT KEYBOARD
   //TODO add ANYPAY receiving EMAIL address so they can send information
   //TODO create anypay@bitcoinmap.cash with autorespond to explain the sign up process and what is the benefit (cashback)
   //TODO create autorespond email that sends a PDF with QR Code (Or make that information available inside the app)
@@ -368,7 +364,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   void handleAddTagButton(ctx) async {
     if (allSelectedTags.length >= MIN_INPUT_TAGS) {
-      Toaster.showToastMaxTagsReached();
       Dialogs.confirmShowResetTags(ctx, () {
         setState(() {
           allSelectedTags = Set.from([]);

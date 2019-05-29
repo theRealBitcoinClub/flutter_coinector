@@ -16,10 +16,6 @@ class Toaster {
     showWarning("Please select your favorite E-Mail client!");
   }
 
-  static void showToastMaxTagsReached() {
-    showWarning("Four tags are enough! Thank you!");
-  }
-
   static void showToastEmailNotConfigured() {
     showWarning("E-Mail client not configured?!");
   }

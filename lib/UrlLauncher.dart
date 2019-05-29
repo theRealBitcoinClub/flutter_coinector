@@ -61,19 +61,21 @@ class UrlLauncher {
   }
 
   static String getDASHReceiverAdr(hasInput) {
-    return hasInput ? ",info@discoverdash.com" : "";
+    return hasInput ? ",en-dash@therealbitcoin.club" : "";
   }
+
   static String getBCHReceiverAdr(hasInput) {
-    return hasInput ? ",info@acceptbitcoin.cash,info@bitcoin.com,jbrack14@gmail.com" : "";
+    return hasInput ? ",en-bch@therealbitcoin.club" : "";
   }
 
   static void launchEmailClientAddPlace(bool hasInputDASH, bool hasInputBCH,
       String content, onEmailClientNotFound) async {
-    var urlString = "mailto:bmap.cash@therealbitcoin.club" +
-        getDASHReceiverAdr(hasInputDASH) +
-        getBCHReceiverAdr(hasInputBCH) +
-        "?subject=Add Place Coinector&body=Welcome to bitcoinmap.cash!\n\nSend this E-Mail now to submit the place!\n\nWe will notify you as soon as the place is available inside the app!\n\nDo not modify the content of this E-Mail!\n\nTo add any further details please send another E-Mail to trbc@bitcoinmap.cash!\n\nYou are Satoshi Nakamoto!\n\nThanks!\n\n" +
-        content;
+    var urlString =
+        "mailto:en-bmap.cash@therealbitcoin.club,en-anypay@therealbitcoin.club" +
+            getDASHReceiverAdr(hasInputDASH) +
+            getBCHReceiverAdr(hasInputBCH) +
+            "?subject=Add Place Coinector&body=Welcome to bitcoinmap.cash!\n\nSend this E-Mail now to submit the place!\n\nWe will notify you as soon as the place is available inside the app!\n\nDo not modify the content of this E-Mail!\n\nTo add any further details please send another E-Mail to trbc@bitcoinmap.cash!\n\nYou are Satoshi Nakamoto!\n\nThanks!\n\n" +
+            content;
     await _launchEmail(urlString, onEmailClientNotFound);
   }
 
