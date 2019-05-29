@@ -232,6 +232,182 @@ class Tag {
     'Latte ☕'
   };
 
+
+  static final tagTextSpanish = const {
+    'Picante 🌶️', //0
+    'Salado 🥨',
+    'Acido 😜',
+    'Ecologico 🐵',
+    'Vegetariano 🥕', //4
+    'Vegano 🐮',
+    'Saludable 💓',
+    'Hamburguesa 🍔',
+    'Bocadillo 🥪',
+    'Muffin 🧁', //9 The muffin icon is invisible
+    'Brownie 🥮', //10 Brownie is invisible too
+    'Tarta 🎂',
+    'Galletas 🍪',
+    'Arabic 🥙',
+    'Pizza 🍕', //14
+    'Ensalada 🥗',
+    'Jugo 🥤',
+    'Fruta 🍓',
+    'Helado 🍦',
+    'Crudo 🥦', //19
+    'Bolsa 👜',
+    'Cosmetica 💅',
+    'Tatuaje ♣',
+    'Piercing 🌀',
+    'Souvenir 🎁', //24
+    'Hatha 🧘',
+    'Vinyasa 🧘',
+    'Masaje 💆',
+    'Upcycled 🌲',
+    'Coffee ☕', //29
+    'SinGluten 🌽',
+    'Cokteles 🍹',
+    'Cerveza 🍺',
+    'Musica 🎵',
+    'Chino 🍜', //34
+    'Pato 🍱',
+    'Rock 🎸',
+    'EnVivo 🎧',
+    'Teraza ☀️',
+    'Semillas 🌱', //39
+    'Grinder 🍌',
+    'Papeles 🚬',
+    'Consejos 🌴',
+    'Calzone 🥟',
+    'Falafel 🥙', //44
+    'MakeUp 🤡',
+    'Regalos 🎁',
+    'Tapas 🍠',
+    'Copas 🍹',
+    'Piadina 🌮', //49
+    'Queso 🧀',
+    'Granos 🌾',
+    'Moda 👗',
+    'Justo 🤗',
+    'Mujer 👩', //54
+    'Bebida 🍹',
+    'Tele 📺',
+    'Retro 🦄',
+    'Feta 🐐',
+    'DASH ₿', //59
+    'BTC ₿',
+    'BCH ₿',
+    'BSV ₿',
+    'ETH ₿',
+    'Perro 🌭', //64
+    'Rapido ⏩',
+    'Kosher 🦄',
+    'Sushi 🍣',
+    'Moto 🛵',
+    'Coche 🚘', //69
+    'LTC ₿',
+    'Pollo 🐔',
+    'Conejo 🐰',
+    'Patata 🥔',
+    'Kumpir 🥔', //74
+    'Kebap 🐄',
+    'ATM 🏦',
+    'Gyros 🐖',
+    'Coco 🥥',
+    'Llevar 📦', //79
+    'Meditacion 🧘',
+    'Vino 🍷',
+    'Champagne 🥂',
+    'Alcool 🍾',
+    'Booze 🥃', //84
+    'Pancakes 🥞', //You cant remove because we use fixed indexes, but replace with another string that is unlikely to be typed in by the user
+    'Croissant 🥐',
+    'Palomas 🍿',
+    'SoftIce 🍦',
+    'Dango 🍡',
+    'BnB 🛏️', //90
+    'Haircut ✂️',
+    'Dulce 🍭',
+    'Beleza 💅',
+    'Miso 🍱',
+    'Chocolate 🍫', //95
+    'Riso 🍚',
+    'Mariscos 🦀',
+    'Hostel 🛏️',
+    'Patatas 🍟',
+    'Pescado 🐟', //100
+    'Fritas 🍟',
+    'Italiano 🇮🇹',
+    'Whiskey 🥃',
+    'Ron 🥃', //This is number 104 the no tag indicator, currently not used
+    'Bourbon 🥃', //105
+    'Liquor 🥃',
+    'Hombres ♂️',
+    'Pasta 🍝',
+    'Dessert 🍬', //109
+    'Starter 🥠', //110
+    'Barbacoa 🍗',
+    'Noodle 🍜',
+    'Korean 🥟',
+    'Mercado 🧺', //114 invisible item
+    'Pan 🥖',
+    'Panaderia 🥨',
+    'Cafe ☕',
+    'Juegos 🎮',
+    'Caramelo 🍿', //119
+    'Elegante 🕴️',
+    'Piano 🎹',
+    'Brunch 🍱',
+    'Nachos 🌽',
+    'Almuerzo 🥡',
+    'Desayuno 🥐', //125
+    'HappyHour 🥳', //hidden item
+    'Noche 🌜',
+    'Mexicano 🇲🇽',
+    'Burrito 🌯',
+    'Tortilla 🌮', //130
+    'Indonesian 🇮🇩',
+    'Deporte 🏆',
+    'Pasteles 🥧',
+    'Bistro 🍲',
+    'Sopa 🥣', //135
+    'Te 🍵',
+    'Cebolla',
+    'Steak 🥩',
+    'Zumo 🥤',
+    'Empanadas 🥟', //140
+    'Cena 🍽️',
+    'Bonbon 🍭',
+    'Frito 🍳',
+    'Omelette 🥚',
+    'Gin 🍸', //145 TODO search returns all places in Ginza...
+    'Donas 🍩',
+    'Entrega 🚚',
+    'Copas ☕',
+    'Filtro',
+    'Juice 🍊', //150
+    'Vietnamese 🇻🇳',
+    'Pie 🥮', //invisible item
+    'Unagi 🐡',
+    'Greek 🇬🇷',
+    'Japanese 🇯🇵', //155
+    'Tacos 🌮',
+    'Kombucha 🍵',
+    'Indian 🇮🇳',
+    'Nan 🥪', //TODO search returns all places inclusind Nan...
+    'Club 🎶', //160
+    'Honey 🍯',
+    'Pool 🎱',
+    'Hotel 🏨',
+    'Pork 🥓',
+    'Ribs 🍖', //165
+    'Kava 🍵',
+    'Chai 🍵',
+    'Izzy 🍵',
+    'Matcha 🍵',
+    'Oden 🍢', //170
+    'Latte ☕'
+  };
+
   static final titleTags = const {
     'Muerde La Carne',
     'Caffe Meranto',

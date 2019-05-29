@@ -3,6 +3,17 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Toaster {
+  static const double DEFAULT_FONT_SIZE = 14.0;
+  static const Color DEFAULT_TEXT_COLOR = Colors.white;
+  static Color DEFAULT_BACKGROUND_COLOR = Colors.red[800].withOpacity(0.8);
+  static const int DEFAULT_TIME_FOR_IOS = 3;
+  static const Toast DEFAULT_TIME_FOR_ANDROID = Toast.LENGTH_LONG;
+  static const ToastGravity DEFAULT_TOAST_GRAVITY = ToastGravity.CENTER;
+
+  static void showToastLaunchingEmailClient() {
+    showWarning("Please select your favorite E-Mail client!");
+  }
+
   static void showToastMaxTagsReached() {
     showWarning("Four tags are enough! Thank you!");
   }
@@ -11,16 +22,13 @@ class Toaster {
     showWarning("E-Mail client not configured?!");
   }
 
+  static void showToastThanksForSubmitting() {
+    showWarning("Thank you for growing adoption!");
+  }
+
   static void showWarning(message) {
     Fluttertoast.cancel();
-    Fluttertoast.showToast(
-        msg: message,
-        toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.CENTER,
-        timeInSecForIos: 3,
-        backgroundColor: Colors.red[800].withOpacity(0.8),
-        textColor: Colors.white,
-        fontSize: 14.0);
+    showToast(message, DEFAULT_BACKGROUND_COLOR);
   }
 
   static void showAddName() {
@@ -31,26 +39,36 @@ class Toaster {
     showWarning("Please add exactly four tags!");
   }
 
+  static void showAddAtleastOneReceivingAddress() {
+    showWarning("Please add atleast a DASH or a BCH address!");
+  }
+
   static void showAddFullAdr() {
-    showWarning("Please enter the FULL ADDRESS: Street, Number, State & Country!");
+    showWarning(
+        "Please enter the FULL ADDRESS: Street, Number, State & Country!");
   }
 
   static void showInstructionToast(
       showToastCount, hintCountTotal, msgProvider) {
     Fluttertoast.cancel();
+    showToast(msgProvider(showToastCount, hintCountTotal),
+        getBackGroundColor(showToastCount, hintCountTotal));
+  }
+
+  static void showToast(msgProvider, backgroundColorProvider) {
     Fluttertoast.showToast(
-        msg: msgProvider(showToastCount, hintCountTotal),
-        toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.CENTER,
-        timeInSecForIos: 3,
-        backgroundColor: getBackGroundColor(showToastCount, hintCountTotal),
-        textColor: Colors.white,
-        fontSize: 14.0);
+        msg: msgProvider,
+        toastLength: DEFAULT_TIME_FOR_ANDROID,
+        gravity: DEFAULT_TOAST_GRAVITY,
+        timeInSecForIos: DEFAULT_TIME_FOR_IOS,
+        backgroundColor: backgroundColorProvider,
+        textColor: DEFAULT_TEXT_COLOR,
+        fontSize: DEFAULT_FONT_SIZE);
   }
 
   static Color getBackGroundColor(showToastCount, hintCountTotal) {
     return Colors.primaries[(showToastCount % hintCountTotal) * 2]
-          .withOpacity(0.8);
+        .withOpacity(0.8);
   }
 
   static Future<int> initToastCounter(prefKey) async {

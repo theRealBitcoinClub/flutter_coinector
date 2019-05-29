@@ -1,6 +1,7 @@
 import 'package:url_launcher/url_launcher.dart';
 
 import 'Merchant.dart';
+import 'Toaster.dart';
 //import 'package:launch_review/launch_review.dart';
 
 class UrlLauncher {
@@ -59,17 +60,25 @@ class UrlLauncher {
     launchURI(url);
   }
 
+  static String getDASHReceiverAdr(hasInput) {
+    return hasInput ? ",info@discoverdash.com" : "";
+  }
+  static String getBCHReceiverAdr(hasInput) {
+    return hasInput ? ",info@acceptbitcoin.cash,info@bitcoin.com,jbrack14@gmail.com" : "";
+  }
 
-  //TODO Let user select the coins he accepts and select email recipients accordingly: ,info@acceptbitcoin.cash,info@bitcoin.com,info@discoverdash.com
-
-  static void launchEmailClientAddPlace(String content, onEmailClientNotFound) {
-    var urlString =
-        "mailto:bmap.cash@therealbitcoin.club?subject=Add Place Coinector&body=Welcome to bitcoinmap.cash!\n\nSend this E-Mail now to submit the place!\n\nWe will notify you as soon as the place is available inside the app!\n\nDo not modify the content of this E-Mail!\n\nTo add any further details please send another E-Mail to trbc@bitcoinmap.cash!\n\nYou are Satoshi Nakamoto!\n\nThanks!\n\n" +
-            content;
-    _launchEmail(urlString, onEmailClientNotFound);
+  static void launchEmailClientAddPlace(bool hasInputDASH, bool hasInputBCH,
+      String content, onEmailClientNotFound) async {
+    var urlString = "mailto:bmap.cash@therealbitcoin.club" +
+        getDASHReceiverAdr(hasInputDASH) +
+        getBCHReceiverAdr(hasInputBCH) +
+        "?subject=Add Place Coinector&body=Welcome to bitcoinmap.cash!\n\nSend this E-Mail now to submit the place!\n\nWe will notify you as soon as the place is available inside the app!\n\nDo not modify the content of this E-Mail!\n\nTo add any further details please send another E-Mail to trbc@bitcoinmap.cash!\n\nYou are Satoshi Nakamoto!\n\nThanks!\n\n" +
+        content;
+    await _launchEmail(urlString, onEmailClientNotFound);
   }
 
   static Future _launchEmail(String urlString, onEmailClientNotFound) async {
+    Toaster.showToastLaunchingEmailClient();
     if (await canLaunch(urlString)) {
       await launch(urlString);
     } else {

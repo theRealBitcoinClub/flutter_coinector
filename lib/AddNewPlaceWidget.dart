@@ -48,6 +48,18 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   String inputBCH = "";
   String inputDASH = "";
 
+  static const int MIN_INPUT_ADR = 20;
+  static const int MIN_INPUT_NAME = 5;
+  static const int MIN_INPUT_TAGS = 4;
+  static const int MIN_INPUT_BCHyDASH = 32;
+  static const int MAX_INPUT_ADR = 50;
+  static const int MAX_INPUT_NAME = 50;
+  static const int MAX_INPUT_DASH =
+      36; //dash:XintDskT8uV59N9HNvbpJ27nKNtbyHiyUn
+  static const int MAX_INPUT_BCH =
+      54; //bitcoincash:qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a
+  static const int MAX_INPUT_TAGS = 4;
+
   _AddNewPlaceWidgetState(
       this.selectedType, this.accentColor, this.typeTitle, this.actionBarColor);
 
@@ -71,7 +83,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                       buildColumnName(),
                       wrapBuildColumnAdr(),
                       wrapBuildColumnTag(ctx),
-                      wrapBuildSelectedTagsList()
+                      wrapBuildSelectedTagsList(),
+                      wrapBuildColumnDASHyBCH()
                     ],
                   ),
                 ),
@@ -107,12 +120,12 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           "What is the name of that place?",
           style: textStyleLabel(),
         ),
-        SizedBox(height: 10.0),
+        buildSizedBoxSeparator(),
         Text(
           "Use the same name as in Google Maps",
           style: textStyleHint(),
         ),
-        buildTextField(Icons.title, 50, "name", updateInputName),
+        buildTextField(Icons.title, MAX_INPUT_NAME, "name", updateInputName),
       ],
     );
   }
@@ -126,14 +139,14 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           "OK, now choose four words that best describe your products/service.",
           style: textStyleLabel(),
         ),
-        SizedBox(height: 10.0),
+        buildSizedBoxSeparator(),
         Text(
           "Hit the button, scroll the list, select a tag",
           style: textStyleHint(),
         ),
-        SizedBox(height: 10.0),
+        buildSizedBoxSeparator(),
         buildSearchTagButton(ctx),
-        SizedBox(height: 10.0)
+        buildSizedBoxSeparator()
       ],
     );
   }
@@ -152,7 +165,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     return allSelectedTags.map<Widget>((String tag) {
       counter++;
       return Padding(
-        padding: EdgeInsets.all(5.0),
+        padding: EdgeInsets.only(bottom: 10.0),
         child: Text(counter.toString() + " - " + tag + "  "),
       );
     }).toList();
@@ -160,25 +173,33 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   Widget buildSubmitBtn() {
     return FloatingActionButton.extended(
-        onPressed: () {
-          if (inputName.length < 5) {
+        onPressed: () async {
+          if (inputName.length < MIN_INPUT_NAME) {
             Toaster.showAddName();
             return;
           }
-          if (inputAdr.length < 20) {
+          if (inputAdr.length < MIN_INPUT_ADR) {
             Toaster.showAddFullAdr();
             return;
           }
-          if (allSelectedTags.length < 4) {
+          if (allSelectedTags.length < MIN_INPUT_TAGS) {
             Toaster.showAddExactlyFourTags();
             return;
           }
+          if (inputBCH.length < MIN_INPUT_BCHyDASH &&
+              inputDASH.length < MIN_INPUT_BCHyDASH) {
+            Toaster.showAddAtleastOneReceivingAddress();
+            return;
+          }
 
-          UrlLauncher.launchEmailClientAddPlace(buildJsonToSubmitViaEmail(),
-              () {
+          await UrlLauncher.launchEmailClientAddPlace(
+              inputDASH.length > MIN_INPUT_BCHyDASH,
+              inputBCH.length > MIN_INPUT_BCHyDASH,
+              buildJsonToSubmitViaEmail(), () {
             Toaster.showToastEmailNotConfigured();
           });
-        },
+          Toaster.showToastThanksForSubmitting();
+        }, -
         icon: Icon(Icons.send),
         label: Text(" SEND"));
   }
@@ -192,24 +213,24 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           "What is your DASH wallet receiving address?",
           style: textStyleLabel(),
         ),
-        SizedBox(height: 10.0),
+        buildSizedBoxSeparator(),
         Text(
           "Open your DASH wallet, go to the receive view and use the share function (top right)",
           style: textStyleHint(),
         ),
-        buildTextField(
-            Icons.local_atm, 60, "DASH address", updateInputDASH),
+        buildTextField(Icons.monetization_on, MAX_INPUT_DASH, "DASH address",
+            updateInputDASH),
         Text(
           "What is your BCH wallet receiving address?",
           style: textStyleLabel(),
         ),
-        SizedBox(height: 10.0),
+        buildSizedBoxSeparator(),
         Text(
           "Open your BCH wallet, go to the receive view and use the share/copy function (top right)",
           style: textStyleHint(),
         ),
-        buildTextField(
-            Icons.attach_money, 70, "BCH address", updateInputBCH),
+        buildTextField(Icons.monetization_on, MAX_INPUT_BCH, "BCH address",
+            updateInputBCH),
       ],
     );
   }
@@ -223,41 +244,52 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           "What is the postal address?",
           style: textStyleLabel(),
         ),
-        SizedBox(height: 10.0),
+        buildSizedBoxSeparator(),
         Text(
           "Street + Number, State, Country",
           style: textStyleHint(),
         ),
-        buildTextField(Icons.local_post_office, 50, "address", updateInputAdr),
+        buildTextField(
+            Icons.local_post_office, MAX_INPUT_ADR, "address", updateInputAdr),
       ],
     );
   }
 
+  SizedBox buildSizedBoxSeparator() => SizedBox(height: 10.0);
+
+  void handleAddTagButton(ctx) async {
+    if (allSelectedTags.length >= MIN_INPUT_TAGS) {
+      Toaster.showToastMaxTagsReached();
+      Dialogs.confirmShowResetTags(ctx, () {
+        allSelectedTags = Set.from([]);
+      });
+      return;
+    }
+
+    final String selected = await showSearch<String>(
+      context: ctx,
+      delegate: searchTagsDelegate,
+    );
+    if (selected == null || selected.isEmpty) return;
+
+    int sizeBefore = allSelectedTags.length;
+
+    addSelectedTag(selected);
+    if (sizeBefore == allSelectedTags.length)
+      Toaster.showWarning(
+          "You selected the same tag twice! Please choose again!");
+
+    if (allSelectedTags.length == MAX_INPUT_TAGS) showInputDASHyBCH = true;
+
+    setState(() {
+      showSubmitBtn = true;
+    });
+  }
+
   RaisedButton buildSearchTagButton(ctx) {
     return RaisedButton(
-      onPressed: () async {
-        if (allSelectedTags.length >= 4) {
-          Toaster.showToastMaxTagsReached();
-          Dialogs.confirmShowResetTags(ctx, () {
-            allSelectedTags = Set.from([]);
-          });
-          return;
-        }
-
-        final String selected = await showSearch<String>(
-          context: ctx,
-          delegate: searchTagsDelegate,
-        );
-        if (selected == null || selected.isEmpty) return;
-
-        int sizeBefore = allSelectedTags.length;
-
-        addSelectedTag(selected);
-        if (sizeBefore == allSelectedTags.length)
-          Toaster.showWarning(
-              "You selected the same tag twice! Please choose again!");
-
-        showSubmitBtn = true;
+      onPressed: () {
+        handleAddTagButton(ctx);
       },
       textColor: TEXT_COLOR,
       color: actionBarColor,
@@ -266,7 +298,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
               color: TEXT_COLOR, style: BorderStyle.solid, width: 1.0)),
       splashColor: accentColor,
       child: Padding(
-        padding: EdgeInsets.all(10.0),
+        padding: buildEdgeInsetsTextField(),
         child: Row(
           children: <Widget>[
             Icon(Icons.search),
@@ -289,7 +321,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     return TextField(
       decoration: InputDecoration(
           icon: Icon(icon),
-          contentPadding: EdgeInsets.all(10.0),
+          contentPadding: buildEdgeInsetsTextField(),
           border:
               UnderlineInputBorder(borderSide: BorderSide(color: accentColor)),
           labelText: "Insert " + label + " here."),
@@ -303,6 +335,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       style: textStyleInput(),
     );
   }
+
+  EdgeInsets buildEdgeInsetsTextField() => EdgeInsets.all(10.0);
 
   TextStyle textStyleInput() =>
       TextStyle(color: TEXT_COLOR, fontWeight: FontWeight.w300);
@@ -337,7 +371,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void updateInputAdr(String input) {
-    if (input.length > 20) {
+    if (input.length > MIN_INPUT_ADR) {
       showInputTag();
     }
 
@@ -345,7 +379,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void updateInputName(String input) {
-    if (input.length > 5) {
+    if (input.length > MIN_INPUT_NAME) {
       showInputAddress();
     }
 
@@ -362,11 +396,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     return Uri.encodeComponent('{"name":"' +
         inputName +
         '","type":"' +
-        inputBCH +
-        '","bch":"' +
-        inputDASH +
-        '","dash":"' +
         typeTitle +
+        '","bch":"' +
+        inputBCH +
+        '","dash":"' +
+        inputDASH +
         '","address":"' +
         inputAdr +
         '","tags":"[' +
