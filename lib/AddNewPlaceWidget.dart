@@ -179,7 +179,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         ),
         buildTextField(
             null, 0.1, Icons.title, MAX_INPUT_NAME, "name", updateInputName),
-        buildSizedBoxSeparator(),
       ],
     );
   }
@@ -189,7 +188,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-        buildSizedBoxSeparator(multiplier: 5.0),
+        buildSizedBoxSeparator(multiplier: 3.0),
         Text(
           "OK, now choose four words that best describe your products/service.",
           style: textStyleLabel(),
@@ -201,7 +200,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         ),
         buildSizedBoxSeparator(),
         buildSearchTagButton(ctx),
-        buildSizedBoxSeparator()
       ],
     );
   }
@@ -296,7 +294,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-        buildSizedBoxSeparator(multiplier: 5.0),
+        buildSizedBoxSeparator(multiplier: 3.0),
         Text(
           "What is your DASH wallet receiving address?",
           style: textStyleLabel(),
@@ -335,7 +333,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-        buildSizedBoxSeparator(multiplier: 5.0),
+        buildSizedBoxSeparator(multiplier: 3.0),
         Text(
           "What is the postal address?",
           style: textStyleLabel(),

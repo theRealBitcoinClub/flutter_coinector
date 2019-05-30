@@ -83,6 +83,8 @@ class UrlLauncher {
     await _launchEmail(urlString, onEmailClientNotFound);
   }
 
+  //TODO CREATE LIGHTWEIGHT SIGN UP VERSION OF COINECTOR/BMAP.CASH
+
   static bool hasInput(String input) => input.length > MIN_INPUT_BCHyDASH;
 
   static Future _launchEmail(String urlString, onEmailClientNotFound) async {
