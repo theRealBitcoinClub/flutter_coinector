@@ -462,8 +462,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     if (position != null && position.isNotEmpty) {
       setState(() {
         userPosition = Position(
-            longitude: parseDouble(position, 0),
-            latitude: parseDouble(position, 1));
+            latitude: parseDouble(position, 0),
+            longitude: parseDouble(position, 1));
       });
     }
 
