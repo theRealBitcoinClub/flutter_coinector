@@ -37,6 +37,8 @@ dependencies:
   google_maps_flutter: ^0.5.13
   url_launcher: ^5.0.2
   geolocator: ^4.0.3
+  crypto: ^2.0.6
+  path_provider: ^1.1.0
   onesignal: ^1.1.0
   flutter:
     sdk: flutter

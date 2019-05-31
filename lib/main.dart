@@ -92,6 +92,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     if (response == null)
       response =
           await dio.get('https://raw.githubusercontent.com/theRealBitcoinClub/BITCOINMAP.CASH---Browser-PWA/master/public/places8.json');
+          //TODO load all files from server and save them locally
           //TODO get data from server, add push notifications for new spots, in that case apps looses offline capabilities...
          //TODO manually confirm places, create gif with online tools, upload it to github, once inside of github and reviewed it is published on the map
           //TODO get data from server, additionally to the places which are hardcoded, simply load another additional list which gets synced each month with a new release of the app
