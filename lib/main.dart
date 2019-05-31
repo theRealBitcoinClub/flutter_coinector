@@ -465,6 +465,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       userPosition = Position(
           longitude: parseDouble(position, 0),
           latitude: parseDouble(position, 1));
+      loadAssetsUnfiltered();
+      requestCurrentPosition();
     });
   }
 
@@ -477,12 +479,10 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     //TEST CRASHLYTICS Crashlytics.instance.crash();
     initLastSavedPos();
     initOneSignalPushMessages();
-    requestCurrentPosition();
     searchDelegate.buildHistory();
     tabController = TabController(vsync: this, length: Pages.pages.length);
     tabController.addListener(_handleTabSelection);
     initListModel();
-    loadAssetsUnfiltered();
     if (hasNotHitSearch()) {
       initHasHitSearch().then((hasHit) {
         if (!hasHit) initBlinkAnimation();
