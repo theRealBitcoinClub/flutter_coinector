@@ -1425,33 +1425,33 @@ class Tag {
     'Süßigk. 🍭',
     'Fritiert 🍳',
     '🍔🍔🍔Omelette 🥚',
-    'Gin 🍸', //145
-    'Donut 🍩',
-    'Delivery 🚚',
-    'Cups ☕',
-    'Filter',
-    'Juice 🍊', //150
-    'Vietnamese 🇻🇳',
-    'Pie 🥮', //invisible item
-    'Unagi 🐡',
-    'Greek 🇬🇷',
-    'Japanese 🇯🇵', //155
-    'Tacos 🌮',
-    'Kombucha 🍵',
-    'Indian 🇮🇳',
-    'Nan 🥪', //
-    'Club 🎶', //160
-    'Honey 🍯',
-    'Pool 🎱',
-    'Hotel 🏨',
-    'Pork 🥓',
-    'Ribs 🍖', //165
-    'Kava 🍵',
-    'Chai 🍵',
-    'Izzy 🍵',
-    'Matcha 🍵',
-    'Oden 🍢', //170
-    'Latte ☕'
+    '🍔🍔🍔Gin 🍸', //145
+    '🍔🍔🍔Donut 🍩',
+    'Lieferung 🚚',
+    'Tassen ☕',
+    '🍔🍔🍔Filter',
+    'Saft 🍊', //150
+    'Vietnam. 🇻🇳',
+    'Kuchen 🥮', //invisible item
+    '🍔🍔🍔Unagi 🐡',
+    'Griech. 🇬🇷',
+    'Japan. 🇯🇵', //155
+    '🍔🍔🍔Tacos 🌮',
+    '🍔🍔🍔Kombucha 🍵',
+    'Indien 🇮🇳',
+    '🍔🍔🍔Nan 🥪', //
+    '🍔🍔🍔Club 🎶', //160
+    'Honig 🍯',
+    'Billard 🎱',
+    '🍔🍔🍔Hotel 🏨',
+    'Schwein 🥓',
+    'Rippchen 🍖', //165
+    '🍔🍔🍔Kava 🍵',
+    '🍔🍔🍔Chai 🍵',
+    '🍔🍔🍔Izzy 🍵',
+    '🍔🍔🍔Matcha 🍵',
+    '🍔🍔🍔Oden 🍢', //170
+    'Milch ☕'
   };
 
   static final tagTextES = const {
