@@ -12,6 +12,7 @@ import 'package:synchronized/synchronized.dart';
 import 'AddNewPlaceWidget.dart';
 import 'AssetLoader.dart';
 import 'CardItemBuilder.dart';
+import 'FileCache.dart';
 import 'ListModel.dart';
 import 'MapSample.dart';
 import 'Merchant.dart';
@@ -97,24 +98,59 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
          //TODO manually confirm places, create gif with online tools, upload it to github, once inside of github and reviewed it is published on the map
           //TODO get data from server, additionally to the places which are hardcoded, simply load another additional list which gets synced each month with a new release of the app
   */
+    try {
+      FileCache.initLastVersion(() async {
+        //has new version
+        if (fileName != null) {
+          loadFromWebAndPersistCache(fileName);
+        } else {
+          loadFromWebAndPersistCache('am');
+          loadFromWebAndPersistCache('as');
+          loadFromWebAndPersistCache('au');
+          loadFromWebAndPersistCache('as-jap');
+          loadFromWebAndPersistCache('am-ven-car');
+          loadFromWebAndPersistCache('am-ven');
+          loadFromWebAndPersistCache('e');
+          loadFromWebAndPersistCache('e-spa');
+        }
+      });
+    } catch (e) {
+      FileCache.forceUpdateNextTime();
+    }
 
     initListModel();
 
     if (fileName == null) {
-      //TODO internationalize the tags, let users search for hamburguesa instead of burger or hamburger, all should lead to the same results which then display the short term "burger"
       //TODO internationalize the app, translate the strings, let users search locations in their language (Köln a.k.a. Cologne, Colonia, Brüssel, Brussels)
-      parseAssetUpdateListModel(filterWordIndex, locationFilter,
-          'assets/am.json', 'am', fileName != null);
-      parseAssetUpdateListModel(filterWordIndex, locationFilter,
-          'assets/e.json', 'e', fileName != null);
-      parseAssetUpdateListModel(filterWordIndex, locationFilter,
-          'assets/as.json', 'as', fileName != null);
-      parseAssetUpdateListModel(filterWordIndex, locationFilter,
-          'assets/au.json', 'au', fileName != null);
+      loadAndParseAsset(filterWordIndex, locationFilter, 'am');
+      loadAndParseAsset(filterWordIndex, locationFilter, 'as');
+      loadAndParseAsset(filterWordIndex, locationFilter, 'au');
+      loadAndParseAsset(filterWordIndex, locationFilter, 'e');
     } else {
-      parseAssetUpdateListModel(filterWordIndex, locationFilter,
-          'assets/' + fileName + '.json', fileName, fileName != null);
+      loadAndParseAsset(filterWordIndex, locationFilter, fileName);
     }
+  }
+
+  Future loadFromWebAndPersistCache(String fileName) async {
+    String latestContent = await FileCache.getLatestContentFromWeb(fileName);
+    FileCache.writeCache(fileName, latestContent);
+  }
+
+  Future loadAndParseAsset(
+      int filterWordIndex, String locationFilter, String fileName) async {
+    String cachedAsset = await getCachedAssetWithDefaultFallback(fileName);
+    parseAssetUpdateListModel(filterWordIndex, locationFilter,
+        AssetLoader.decodeJSON(cachedAsset), fileName, fileName != null);
+  }
+
+  Future<String> getCachedAssetWithDefaultFallback(String fileName) async {
+    String cachedAsset = await FileCache.readCache(fileName);
+    if (cachedAsset == null || cachedAsset.isEmpty) {
+      cachedAsset =
+          await AssetLoader.loadString('assets/' + fileName + '.json');
+      FileCache.writeCache(fileName, cachedAsset);
+    }
+    return cachedAsset;
   }
 
   bool isUnfilteredSearch(int filterWordIndex) => filterWordIndex == -999;
@@ -122,10 +158,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   Future<List<dynamic>> parseAssetUpdateListModel(
       int selectedTagIndex,
       String locationFilter,
-      String assetUri,
+      List places,
       String serverId,
       bool isLocationSearch) async {
-    var placesList = await AssetLoader.loadAndDecodeAsset(assetUri);
     initTempListModel();
     for (int i = 0; i < placesList.length; i++) {
       Merchant m2 = Merchant.fromJson(placesList.elementAt(i));

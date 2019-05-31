@@ -16,6 +16,10 @@ class AssetLoader {
   static List addresses;
   static List places;
 
+  static dynamic decodeJSON(String input) {
+    return json.decode(input);
+  }
+
   static void putDecodedAssetInCache(String key, List<dynamic> asset) {
     switch (key) {
       case "assets/am.json":
@@ -81,11 +85,13 @@ class AssetLoader {
     //List<dynamic> cached = getDecodedCachedAsset(fileName);
     //if (cached != null) return cached;
 
-    String asset = await rootBundle.loadString(fileName, cache: true);
+    String asset = await loadString(fileName);
     var decoded = json.decode(asset);
     //putDecodedAssetInCache(fileName, decoded);
     return decoded;
   }
+
+  static Future<String> loadString(String fileName) async => rootBundle.loadString(fileName, cache: true);
 
   static Future<String> loadReceivingAddress(String id) async {
     var addresses = await AssetLoader.loadAndDecodeAsset("assets/addr.json");

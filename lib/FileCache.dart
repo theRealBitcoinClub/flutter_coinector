@@ -1,41 +1,69 @@
 import 'dart:io';
 
 import 'package:path_provider/path_provider.dart';
-import 'dart:convert';
-import 'package:crypto/crypto.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:dio/dio.dart';
+
 const _kNotificationsPrefs = "initLastVersionKey";
 
+/*
+* Strategy would be to load contents from File if available,
+* then check the version in the background and update file contents in the background,
+* if new data is downloaded notify the user about it,
+* offer him to restart the app to load the new data.
+*
+* */
+
 class FileCache {
-  static Future<String> initLastVersion() async {
+  static Future<String> getLatestContentFromWeb(String fileName) async {
+    var response = await new Dio().get(
+        'https://raw.githubusercontent.com/theRealBitcoinClub/flutter_coinector/master/assets/' +
+            fileName +
+            '.json');
+    return response.data;
+  }
+
+  static Future<void> initLastVersion(onHasNewVersionCallback) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    return getCounterFromPrefsWithDefaultValue(prefs, _kNotificationsPrefs);
+    var currentVersion = int.parse(
+        getLastVersionNumberFromPrefsWithDefaultValue(
+            prefs, _kNotificationsPrefs));
+    var response = await new Dio().get(
+        'https://raw.githubusercontent.com/theRealBitcoinClub/flutter_coinector/master/dataUpdateIncrementVersion.txt');
+    var newVersion = int.parse(response.data);
+    if (newVersion > currentVersion) {
+      persistCacheVersionCounter(newVersion);
+      onHasNewVersionCallback();
+    }
   }
 
-  static String getCounterFromPrefsWithDefaultValue(SharedPreferences prefs, key) {
-    var lastCheckSum = prefs.getString(key);
-    return lastCheckSum != null ? lastCheckSum : 0;
+  static String getLastVersionNumberFromPrefsWithDefaultValue(
+      SharedPreferences prefs, key) {
+    var lastVersion = prefs.getString(key);
+    return lastVersion != null ? lastVersion : 0;
   }
 
-  static Future incrementAndPersistToastCounter(sharedPrefKey) async {
+  static Future forceUpdateNextTime() async {
+    persistCacheVersionCounter("0");
+  }
+
+  static Future persistCacheVersionCounter(versionNumber) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    var checkSum =
-    getCounterFromPrefsWithDefaultValue(prefs, sharedPrefKey);
-    prefs.setString(sharedPrefKey, checkSum);
+    prefs.setString(_kNotificationsPrefs, versionNumber);
   }
 
-  Future<String> get _localPath async {
+  static Future<String> get _localPath async {
     final directory = await getApplicationDocumentsDirectory();
 
     return directory.path;
   }
 
-  Future<File> localFile(String fileName) async {
+  static Future<File> localFile(String fileName) async {
     final path = await _localPath;
     return File('$path/' + fileName + '.txt');
   }
 
-  Future<String> readCache(String fileName) async {
+  static Future<String> readCache(String fileName) async {
     try {
       final file = await localFile(fileName);
       return await file.readAsString();
@@ -44,7 +72,7 @@ class FileCache {
     }
   }
 
-  Future<File> writeCache(String fileName, String content) async {
+  static Future<File> writeCache(String fileName, String content) async {
     final file = await localFile(fileName);
     // Write the file
     return file.writeAsString(content, flush: true);
