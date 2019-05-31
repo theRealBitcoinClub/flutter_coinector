@@ -4,6 +4,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:dio/dio.dart';
 
+import 'AssetLoader.dart';
+
 const _kNotificationsPrefs = "initLastVersionKey";
 
 /*
@@ -69,6 +71,27 @@ class FileCache {
     } catch (e) {
       return "";
     }
+  }
+
+  static Future loadAndDecodeAsset(String fileName) async {
+    String cachedAsset = await getCachedAssetWithDefaultFallback(fileName);
+    var decoded = AssetLoader.decodeJSON(cachedAsset);
+    return decoded;
+  }
+
+  static Future<String> getCachedAssetWithDefaultFallback(String fileName) async {
+    String cachedAsset = await FileCache.readCache(fileName);
+    if (cachedAsset == null || cachedAsset.isEmpty) {
+      cachedAsset =
+      await AssetLoader.loadString('assets/' + fileName + '.json');
+      FileCache.writeCache(fileName, cachedAsset);
+    }
+    return cachedAsset;
+  }
+
+  static Future loadFromWebAndPersistCache(String fileName) async {
+    String latestContent = await FileCache.getLatestContentFromWeb(fileName);
+    await FileCache.writeCache(fileName, latestContent);
   }
 
   static Future<File> writeCache(String fileName, String content) async {

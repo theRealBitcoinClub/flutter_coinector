@@ -102,18 +102,17 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       FileCache.initLastVersion(() async {
         //has new version
         if (fileName != null) {
-          await loadFromWebAndPersistCache(fileName);
+          FileCache.loadFromWebAndPersistCache(fileName);
         } else {
-          await loadFromWebAndPersistCache('am');
-          await loadFromWebAndPersistCache('as');
-          await loadFromWebAndPersistCache('au');
-          await loadFromWebAndPersistCache('as-jap');
-          await loadFromWebAndPersistCache('am-ven-car');
-          await loadFromWebAndPersistCache('am-ven');
-          await loadFromWebAndPersistCache('e');
-          await loadFromWebAndPersistCache('e-spa');
+          FileCache.loadFromWebAndPersistCache('am');
+          FileCache.loadFromWebAndPersistCache('as');
+          FileCache.loadFromWebAndPersistCache('au');
+          FileCache.loadFromWebAndPersistCache('as-jap');
+          FileCache.loadFromWebAndPersistCache('am-ven-car');
+          FileCache.loadFromWebAndPersistCache('am-ven');
+          FileCache.loadFromWebAndPersistCache('e');
+          FileCache.loadFromWebAndPersistCache('e-spa');
         }
-        loadAndParseAllPlaces(filterWordIndex, locationFilter);
       });
     } catch (e) {
       FileCache.forceUpdateNextTime();
@@ -136,26 +135,11 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     loadAndParseAsset(filterWordIndex, locationFilter, 'e');
   }
 
-  Future loadFromWebAndPersistCache(String fileName) async {
-    String latestContent = await FileCache.getLatestContentFromWeb(fileName);
-    await FileCache.writeCache(fileName, latestContent);
-  }
-
   Future loadAndParseAsset(
       int filterWordIndex, String locationFilter, String fileName) async {
-    String cachedAsset = await getCachedAssetWithDefaultFallback(fileName);
-    parseAssetUpdateListModel(filterWordIndex, locationFilter,
-        AssetLoader.decodeJSON(cachedAsset), fileName, fileName != null);
-  }
-
-  Future<String> getCachedAssetWithDefaultFallback(String fileName) async {
-    String cachedAsset = await FileCache.readCache(fileName);
-    if (cachedAsset == null || cachedAsset.isEmpty) {
-      cachedAsset =
-          await AssetLoader.loadString('assets/' + fileName + '.json');
-      FileCache.writeCache(fileName, cachedAsset);
-    }
-    return cachedAsset;
+    var decoded = await FileCache.loadAndDecodeAsset(fileName);
+    parseAssetUpdateListModel(
+        filterWordIndex, locationFilter, decoded, fileName, fileName != null);
   }
 
   bool isUnfilteredSearch(int filterWordIndex) => filterWordIndex == -999;
