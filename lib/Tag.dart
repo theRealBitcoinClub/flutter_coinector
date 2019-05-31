@@ -763,171 +763,171 @@ class Tag {
     'Vegetarian 🥕', //4
     'Vegan 🐮',
     'Sehat 💓',
-    'Burger 🍔',
-    'Sandwich 🥪',
-    'Muffin 🧁', //9 The muffin icon is invisible
-    'Brownie 🥮', //10 Brownie is invisible too
-    'Cake 🎂',
-    'Cookie 🍪',
-    'Arabic 🥙',
-    'Pizza 🍕', //14
-    'Salad 🥗',
-    'Smoothie 🥤',
-    'Fruit 🍓',
-    'IceCream 🍦',
-    'Raw 🥦', //19
-    'Handbag 👜',
-    'Cosmetic 💅',
-    'Tattoo ♣',
-    'Piercing 🌀',
-    'Souvenir 🎁', //24
-    'Hatha 🧘',
-    'Vinyasa 🧘',
-    'Massage 💆',
-    'Upcycled 🌲',
-    'Coffee ☕', //29
-    'NoGluten 🌽',
-    'Cocktails 🍹',
-    'Beer 🍺',
-    'Music 🎵',
-    'Chinese 🍜', //34
-    'Duck 🍱',
-    'Rock 🎸',
-    'LiveDJ 🎧',
-    'Terrace ☀️',
-    'Seeds 🌱', //39
-    'Grinder 🍌',
-    'Papers 🚬',
-    'Advice 🌴',
-    'Calzone 🥟',
-    'Falafel 🥙', //44
-    'MakeUp 🤡',
-    'Gifts 🎁',
-    'Tapas 🍠',
-    'Copas 🍹',
-    'Piadina 🌮', //49
-    'Cheese 🧀',
-    'Grains 🌾',
-    'Fashion 👗',
-    'Fair 🤗',
-    'Women 👩', //54
-    'Drinks 🍹',
-    'TV 📺',
-    'Retro 🦄',
-    'Feta 🐐',
-    'DASH ₿', //59
-    'BTC ₿',
-    'BCH ₿',
-    'BSV ₿',
-    'ETH ₿',
-    'HotDog 🌭', //64
-    'Fast ⏩',
-    'Kosher 🦄',
-    'Sushi 🍣',
-    'Moto 🛵',
-    'Coche 🚘', //69
-    'LTC ₿',
-    'Chicken 🐔',
-    'Rabbit 🐰',
-    'Potato 🥔',
-    'Kumpir 🥔', //74
-    'Kebap 🐄',
-    'ATM 🏦',
-    'Gyros 🐖',
-    'Coconut 🥥',
-    'ToGo 📦', //79
-    'Meditation 🧘',
-    'Wine 🍷',
-    'Champagne 🥂',
-    'Alcohol 🍾',
-    'Booze 🥃', //84
-    'Pancakes 🥞', //You cant remove because we use fixed indexes, but replace with another string that is unlikely to be typed in by the user
-    'Croissant 🥐',
-    'Popcorn 🍿',
-    'SoftIce 🍦',
-    'Dango 🍡',
-    'BnB 🛏️', //90
-    'Haircut ✂️',
-    'Candy 🍭',
-    'Beauty 💅',
-    'Miso 🍱',
-    'Chocolate 🍫', //95
-    'Rice 🍚',
-    'Seafood 🦀',
-    'Hostel 🛏️',
-    'Fries 🍟',
-    'Fish 🐟', //100
-    'Chips 🍟',
-    'Italian 🇮🇹',
-    'Whiskey 🥃',
-    'Rum 🥃', //This is number 104 the no tag indicator, currently not used
-    'Bourbon 🥃', //105
-    'Liquor 🥃',
-    'Men ♂️',
-    'Pasta 🍝',
-    'Dessert 🍬', //109
-    'Starter 🥠', //110
-    'BBQ 🍗',
-    'Noodle 🍜',
-    'Korean 🥟',
-    'Market 🧺', //114 invisible item
-    'Bread 🥖',
-    'Bakery 🥨',
-    'Cafe ☕',
-    'Games 🎮',
-    'Snacks 🍿', //119
-    'Elegant 🕴️',
-    'Piano 🎹',
-    'Brunch 🍱',
-    'Nachos 🌽',
-    'Lunch 🥡',
-    'Breakfast 🥐', //125
-    'HappyHour 🥳', //hidden item
-    'LateNight 🌜',
-    'Mexican 🇲🇽',
-    'Burrito 🌯',
-    'Tortilla 🌮', //130
-    'Indonesian 🇮🇩',
-    'Sports 🏆',
-    'Pastry 🥧',
-    'Bistro 🍲',
-    'Soup 🥣', //135
-    'Tea 🍵',
-    'Onion',
-    'Steak 🥩',
-    'Shakes 🥤',
-    'Empanadas 🥟', //140
-    'Dinner 🍽️',
-    'Sweet 🍭',
-    'Fried 🍳',
-    'Omelette 🥚',
-    'Gin 🍸', //145
-    'Donut 🍩',
-    'Delivery 🚚',
-    'Cups ☕',
-    'Filter',
-    'Juice 🍊', //150
-    'Vietnamese 🇻🇳',
-    'Pie 🥮', //invisible item
-    'Unagi 🐡',
-    'Greek 🇬🇷',
-    'Japanese 🇯🇵', //155
-    'Tacos 🌮',
-    'Kombucha 🍵',
-    'Indian 🇮🇳',
+    '🍔🍔🍔Burger 🍔',
+    '🍔🍔🍔Sandwich 🥪',
+    '🍔🍔🍔Muffin 🧁', //9 The muffin icon is invisible
+    '🍔🍔🍔Brownie 🥮', //10 Brownie is invisible too
+    'Kue 🎂',
+    '🍔🍔🍔Cookie 🍪',
+    'Arab 🥙',
+    '🍔🍔🍔Pizza 🍕', //14
+    '🍔🍔🍔Salad 🥗',
+    '🍔🍔🍔Smoothie 🥤',
+    'Buah 🍓',
+    '🍔🍔🍔IceCream 🍦',
+    '🍔🍔🍔Raw 🥦', //19
+    'TasTangan 👜',
+    'Kosmetik 💅',
+    'Tato ♣',
+    'Menusuk 🌀',
+    '🍔🍔🍔Souvenir 🎁', //24
+    '🍔🍔🍔Hatha 🧘',
+    '🍔🍔🍔Vinyasa 🧘',
+    'Pijat 💆',
+    'Diperbaiki 🌲',
+    'Kopi ☕', //29
+    '🍔🍔🍔NoGluten 🌽',
+    'Koktail 🍹',
+    'Bir 🍺',
+    'Musik 🎵',
+    'Cina 🍜', //34
+    'Bebek 🍱',
+    '🍔🍔🍔Rock 🎸',
+    '🍔🍔🍔LiveDJ 🎧',
+    'Teras ☀️',
+    'Benih 🌱', //39
+    '🍔🍔🍔Grinder 🍌',
+    'Makalah 🚬',
+    'Saran 🌴',
+    '🍔🍔🍔Calzone 🥟',
+    '🍔🍔🍔Falafel 🥙', //44
+    '🍔🍔🍔MakeUp 🤡',
+    'Hadiah 🎁',
+    '🍔🍔🍔Tapas 🍠',
+    '🍔🍔🍔Copas 🍹',
+    '🍔🍔🍔Piadina 🌮', //49
+    'Keju 🧀',
+    '🍔🍔🍔Grains 🌾',
+    'Mode 👗',
+    'Adil 🤗',
+    'Perempuan 👩', //54
+    'Minuman 🍹',
+    '🍔🍔🍔TV 📺',
+    '🍔🍔🍔Retro 🦄',
+    '🍔🍔🍔Feta 🐐',
+    '🍔🍔🍔DASH ₿', //59
+    '🍔🍔🍔BTC ₿',
+    '🍔🍔🍔BCH ₿',
+    '🍔🍔🍔BSV ₿',
+    '🍔🍔🍔ETH ₿',
+    '🍔🍔🍔HotDog 🌭', //64
+    'Cepat ⏩',
+    '🍔🍔🍔Kosher 🦄',
+    '🍔🍔🍔Sushi 🍣',
+    '🍔🍔🍔Moto 🛵',
+    '🍔🍔🍔Coche 🚘', //69
+    '🍔🍔🍔LTC ₿',
+    'Ayam 🐔',
+    'Kelinci 🐰',
+    'Kentang 🥔',
+    '🍔🍔🍔Kumpir 🥔', //74
+    '🍔🍔🍔Kebap 🐄',
+    '🍔🍔🍔ATM 🏦',
+    '🍔🍔🍔Gyros 🐖',
+    'Kelapa 🥥',
+    '🍔🍔🍔ToGo 📦', //79
+    'Meditasi 🧘',
+    'Anggur 🍷',
+    'Sampanye 🥂',
+    'Alkohol 🍾',
+    'MinumanKeras 🥃', //84
+    '🍔🍔🍔Pancakes 🥞', //You cant remove because we use fixed indexes, but replace with another string that is unlikely to be typed in by the user
+    '🍔🍔🍔Croissant 🥐',
+    '🍔🍔🍔Popcorn 🍿',
+    '🍔🍔🍔SoftIce 🍦',
+    '🍔🍔🍔Dango 🍡',
+    '🍔🍔🍔BnB 🛏️', //90
+    'Potongan ✂️',
+    'Permen 🍭',
+    'Kecantikan 💅',
+    '🍔🍔🍔Miso 🍱',
+    'Cokelat 🍫', //95
+    'Beras 🍚',
+    'MakananLaut 🦀',
+    '🍔🍔🍔Hostel 🛏️',
+    '🍔🍔🍔Goreng 🍟',
+    'Ikan 🐟', //100
+    'Keripik 🍟',
+    'Italia 🇮🇹',
+    'Wiski 🥃',
+    '🍔🍔🍔Rum 🥃', //This is number 104 the no tag indicator, currently not used
+    '🍔🍔🍔Bourbon 🥃', //105
+    '🍔🍔🍔Liquor 🥃',
+    'Pria ♂️',
+    '🍔🍔🍔Pasta 🍝',
+    'MakananPenutup 🍬', //109
+    'Pemula 🥠', //110
+    '🍔🍔🍔BBQ 🍗',
+    'Mie 🍜',
+    'Korea 🥟',
+    'Pasar 🧺', //114 invisible item
+    'Roti 🥖',
+    'TokoRoti 🥨',
+    'Kafe ☕',
+    'Game 🎮',
+    'MakananRingan 🍿', //119
+    'Elegan 🕴️',
+    '🍔🍔🍔Piano 🎹',
+    '🍔🍔🍔Brunch 🍱',
+    '🍔🍔🍔Nachos 🌽',
+    'MakanSiang 🥡',
+    'Sarapan 🥐', //125
+    '🍔🍔🍔HappyHour 🥳', //hidden item
+    '🍔🍔🍔LateNight 🌜',
+    'Meksiko 🇲🇽',
+    '🍔🍔🍔Burrito 🌯',
+    '🍔🍔🍔Tortilla 🌮', //130
+    'Indonesia 🇮🇩',
+    'Olahraga 🏆',
+    '🍔🍔🍔Pastry 🥧',
+    '🍔🍔🍔Bistro 🍲',
+    'Sup 🥣', //135
+    'Teh 🍵',
+    'Bawang',
+    '🍔🍔🍔Steak 🥩',
+    'Getar 🥤',
+    '🍔🍔🍔Empanadas 🥟', //140
+    'MakanMalam 🍽️',
+    'Manis 🍭',
+    'Goreng 🍳',
+    'Omelet 🥚',
+    '🍔🍔🍔Gin 🍸', //145
+    'Donat 🍩',
+    'Pengiriman 🚚',
+    'Piala ☕',
+    '🍔🍔🍔Filter',
+    'Jus 🍊', //150
+    'Vietnam 🇻🇳',
+    'Pai 🥮', //invisible item
+    '🍔🍔🍔Unagi 🐡',
+    'BahasaYunani 🇬🇷',
+    'Jepang 🇯🇵', //155
+    '🍔🍔🍔Tacos 🌮',
+    '🍔🍔🍔Kombucha 🍵',
+    'India 🇮🇳',
     'Nan 🥪', //
-    'Club 🎶', //160
-    'Honey 🍯',
-    'Pool 🎱',
-    'Hotel 🏨',
-    'Pork 🥓',
-    'Ribs 🍖', //165
-    'Kava 🍵',
-    'Chai 🍵',
-    'Izzy 🍵',
-    'Matcha 🍵',
-    'Oden 🍢', //170
-    'Latte ☕'
+    'Klub 🎶', //160
+    'Sayang 🍯',
+    '🍔🍔🍔Pool 🎱',
+    '🍔🍔🍔Hotel 🏨',
+    'Babi 🥓',
+    'Iga 🍖', //165
+    '🍔🍔🍔Kava 🍵',
+    '🍔🍔🍔Chai 🍵',
+    '🍔🍔🍔Izzy 🍵',
+    '🍔🍔🍔Matcha 🍵',
+    '🍔🍔🍔Oden 🍢', //170
+    '🍔🍔🍔Latte ☕'
   };
 
   static final tagTextIT = const {
