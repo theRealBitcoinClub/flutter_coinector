@@ -102,17 +102,18 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       FileCache.initLastVersion(() async {
         //has new version
         if (fileName != null) {
-          loadFromWebAndPersistCache(fileName);
+          await loadFromWebAndPersistCache(fileName);
         } else {
-          loadFromWebAndPersistCache('am');
-          loadFromWebAndPersistCache('as');
-          loadFromWebAndPersistCache('au');
-          loadFromWebAndPersistCache('as-jap');
-          loadFromWebAndPersistCache('am-ven-car');
-          loadFromWebAndPersistCache('am-ven');
-          loadFromWebAndPersistCache('e');
-          loadFromWebAndPersistCache('e-spa');
+          await loadFromWebAndPersistCache('am');
+          await loadFromWebAndPersistCache('as');
+          await loadFromWebAndPersistCache('au');
+          await loadFromWebAndPersistCache('as-jap');
+          await loadFromWebAndPersistCache('am-ven-car');
+          await loadFromWebAndPersistCache('am-ven');
+          await loadFromWebAndPersistCache('e');
+          await loadFromWebAndPersistCache('e-spa');
         }
+        loadAndParseAllPlaces(filterWordIndex, locationFilter);
       });
     } catch (e) {
       FileCache.forceUpdateNextTime();
@@ -122,18 +123,22 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
     if (fileName == null) {
       //TODO internationalize the app, translate the strings, let users search locations in their language (Köln a.k.a. Cologne, Colonia, Brüssel, Brussels)
-      loadAndParseAsset(filterWordIndex, locationFilter, 'am');
-      loadAndParseAsset(filterWordIndex, locationFilter, 'as');
-      loadAndParseAsset(filterWordIndex, locationFilter, 'au');
-      loadAndParseAsset(filterWordIndex, locationFilter, 'e');
+      loadAndParseAllPlaces(filterWordIndex, locationFilter);
     } else {
       loadAndParseAsset(filterWordIndex, locationFilter, fileName);
     }
   }
 
+  void loadAndParseAllPlaces(int filterWordIndex, String locationFilter) {
+    loadAndParseAsset(filterWordIndex, locationFilter, 'am');
+    loadAndParseAsset(filterWordIndex, locationFilter, 'as');
+    loadAndParseAsset(filterWordIndex, locationFilter, 'au');
+    loadAndParseAsset(filterWordIndex, locationFilter, 'e');
+  }
+
   Future loadFromWebAndPersistCache(String fileName) async {
     String latestContent = await FileCache.getLatestContentFromWeb(fileName);
-    FileCache.writeCache(fileName, latestContent);
+    await FileCache.writeCache(fileName, latestContent);
   }
 
   Future loadAndParseAsset(

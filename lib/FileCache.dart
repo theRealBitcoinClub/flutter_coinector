@@ -30,9 +30,8 @@ class FileCache {
             prefs, _kNotificationsPrefs));
     var response = await new Dio().get(
         'https://raw.githubusercontent.com/theRealBitcoinClub/flutter_coinector/master/dataUpdateIncrementVersion.txt');
-    var newVersion = int.parse(response.data);
-    if (newVersion > currentVersion) {
-      persistCacheVersionCounter(newVersion);
+    if (int.parse(response.data) > currentVersion) {
+      persistCacheVersionCounter(response.data);
       onHasNewVersionCallback();
     }
   }
@@ -40,14 +39,14 @@ class FileCache {
   static String getLastVersionNumberFromPrefsWithDefaultValue(
       SharedPreferences prefs, key) {
     var lastVersion = prefs.getString(key);
-    return lastVersion != null ? lastVersion : 0;
+    return lastVersion != null ? lastVersion : "0";
   }
 
   static Future forceUpdateNextTime() async {
     persistCacheVersionCounter("0");
   }
 
-  static Future persistCacheVersionCounter(versionNumber) async {
+  static Future persistCacheVersionCounter(String versionNumber) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString(_kNotificationsPrefs, versionNumber);
   }

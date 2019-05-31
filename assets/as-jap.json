@@ -1,37 +1,4 @@
 [{"p":"numazukoginza", "x":"35.674296","y":"139.768588","n":"Sushi-Bar Numazuko Ginza 1st - 回転寿司酒場 銀座沼津港","t":"0","c":"293","s":"3.6", "d":"0", "a":"104,104,104,104", "l":"1 Chome-8-19 Ginza, Chuo City, Tokyo, Japan"}
 ,{"p":"mezzo", "x":"35.6625396","y":"139.7332497","n":"MEZZO Luxury Bar & Lounge","t":"2","c":"86","s":"4.0", "d":"0", "a":"31,33,82,160", "l":"5 Chome-1 Roppongi, Minato City, Tokyo, Japan"}
 ,{"p":"daikanyama", "x":"35.64827","y":"139.7036586","n":"daikanyama O'KOK","t":"0","c":"33","s":"4.4", "d":"0", "a":"104,104,104,104", "l":"2 Chome−21−15 Ebisunishi, Shibuya City, Tokyo, Japan"}
-,{"p":"cafedeperle", "x":"35.669106","y":"139.761887","n":"Cafe de Perle - カフェ・ド・ペルル","t":"2","c":"6","s":"4.3", "d":"0", "a":"81,82,83,84", "l":"7 Chome−7−9, Ginza, Chuo City, Tokyo, Japan"}
-,{"p":"twodogstaproom", "x":"35.6626594","y":"139.7352281","n":"Two Dogs Taproom トゥー·ドッグス·タップルーム","t":"0","c":"241","s":"4.2", "d":"0", "a":"14,32,31,8", "l":"Japan, Tokyo, Minato City, Roppongi, 3 Chome−15−24"}
-,{"p":"thepinkcowakasaka", "x":"35.6720966","y":"139.7397304","n":"The Pink Cow Akasaka - 赤坂 The Pink Cow (ピンクカウ)","t":"0","c":"57","s":"4.5", "d":"0", "a":"14,100,96,31", "l":"2 Chome-7-5 Akasaka, Minato City, Tokyo, Japan"}
-,{"p":"downtownb", "x":"35.665032","y":"139.736647","n":"Downtown B's Indian Kitchen - ダウンタウン ビーズ","t":"0","c":"357","s":"4.7", "d":"0", "a":"158,159,71,135", "l":"3 Chome-4 Roppongi, Minato City, Tokyo, Japan"}
-,{"p":"fline", "x":"35.6333881","y":"139.6611829","n":"f,line - エフライン","t":"4","c":"3","s":"5.0", "d":"0", "a":"104,104,104,104", "l":"4 Chome-4-4-3 Kamiuma, Setagaya City, Tokyo, Japan"}
-,{"p":"kagurazaka", "x":"35.706609","y":"139.731268","n":"Kagurazaka aka be e tasuki - 神楽坂 あかべえ 襷｜神楽坂 焼き鳥 ワイン 日本酒","t":"0","c":"17","s":"4.1", "d":"0", "a":"104,104,104,104", "l":"6 Chome-3 Yamabukicho, Shinjuku City, Tokyo, Japan"}
-,{"p":"newsalsasudada", "x":"35.6616764","y":"139.7351021","n":"New Salsa Sudada - サルサスダーダ","t":"2","c":"33","s":"4.1", "d":"0", "a":"31,32,33,160", "l":"5 Chome-16-5 Roppongi, Minato City, Tokyo, Japan"}
-,{"p":"goodheavens", "x":"35.6589099","y":"139.6676123","n":"Good Heavens","t":"0","c":"87","s":"4.4", "d":"0", "a":"104,104,104,104", "l":"Japan, Tokyo, Setagaya City, Daizawa5 Chome−32−"}
-,{"p":"kandakirari", "x":"35.6930112","y":"139.7731941","n":"Kanda Kirari - 輝きらり","t":"0","c":"40","s":"4.0", "d":"0", "a":"155,67,100,97", "l":"Japan, Tokyo, Chiyoda City, Kanda Konyacho"}
-,{"p":"bargolden", "x":"35.6308575","y":"139.6843618","n":"ゴールデン - Bar Golden","t":"2","c":"3","s":"3.3", "d":"0", "a":"31,32,83,119", "l":"2 Chome-40-10 Chuocho, Meguro City, Tokyo, Japan"}
-,{"p":"glutenfree", "x":"35.664605","y":"139.736968","n":"Gluten Free 61 cafe & bar - グルテンフリー61 カフェ&バ","t":"0","c":"60","s":"4.8", "d":"0", "a":"6,15,30,108", "l":"3 Chome-4-４番地６号 Roppongi, Minato City, Tokyo, Japan"}
-,{"p":"330bar", "x":"35.6480452","y":"139.7104592","n":"私を恵比寿に連れてって 330BAR","t":"2","c":"16","s":"3.2", "d":"0", "a":"31,32,33,81", "l":"Japan, Tokyo, Shibuya City, Ebisu, 1 Chome−7−4"}
-,{"p":"rakantokyo", "x":"35.6632748","y":"139.7329313","n":"RAKAN Tokyo - Nightclub","t":"2","c":"1","s":"5.0", "d":"0", "a":"31,33,82,160", "l":"Tokyo, Japan, Asia"}
-,{"p":"greekbar", "x":"35.7034722","y":"139.5996424","n":"Greek bar ギリシャ小町三丁目","t":"0","c":"15","s":"4.6", "d":"0", "a":"154,143,15,8", "l":"3 Chome-11 Nishiogiminami, Suginami City, Tokyo, Japan"}
-,{"p":"kawashou", "x":"35.946634","y":"139.831329","n":"Kawashou うなぎ 川昌 - Unagi","t":"0","c":"173","s":"4.2", "d":"0", "a":"100,142,143,153", "l":"1511-2 Kanasugi, Matsubushi, Saitama, Japan"}
-,{"p":"soulfoodhouse", "x":"35.655364","y":"139.734573","n":"Soul Food House","t":"0","c":"316","s":"4.6", "d":"0", "a":"97,143,7,15", "l":"Japan, Tokyo, Minato City, Azabujuban, 2 Chome−8−１０"}
-,{"p":"lacocinadegaston", "x":"35.6873575","y":"139.7798908","n":"ラ コシーナ デ ゲン - la cocina de gaston","t":"0","c":"30","s":"4.6", "d":"0", "a":"97,15,100,138", "l":"Japan, Kanagawa, Kamakura, Yuigahama, 1 Chome−12−7"}
-,{"p":"riceplus", "x":"35.6553945","y":"139.694185","n":"RicePlus（ライスプラス）","t":"0","c":"7","s":"4.9", "d":"0", "a":"29,31,32,119", "l":"Japan, Tokyo, Shibuya City, Maruyamacho, 28−8"}
-,{"p":"hackersbar", "x":"35.6644485","y":"139.7305855","n":"Hackers Bar","t":"2","c":"57","s":"4.4", "d":"0", "a":"31,32,81,82", "l":"Japan, Tokyo, Minato City, Roppongi, 7 Chome−12−3"}
-,{"p":"gyozashack", "x":"35.643273","y":"139.6701459","n":"GYOZA SHACK","t":"0","c":"52","s":"3.9", "d":"0", "a":"97,100,143,15", "l":"2 Chome-13-10 Sangenjaya, Setagaya City, Tokyo, Japan"}
-,{"p":"yakinikutamura", "x":"34.700377","y":"135.542964","n":"Yakiniku Tamura - 北海道の旬 焼肉たむら","t":"0","c":"82","s":"3.2", "d":"0", "a":"111,67,112,138", "l":"2 Chome-7-3 Marunouchi, Chiyoda City, Tokyo, Japan"}
-,{"p":"osarucoffee", "x":"34.6637216","y":"135.4954944","n":"オサル コーヒー Osaru Coffee","t":"2","c":"88","s":"4.5", "d":"0", "a":"29,8,109,142", "l":" 1 Chome-7-15 Motomachi, Naniwa Ward, Osaka, Japan"}
-,{"p":"unityface", "x":"34.5321509","y":"135.4955319","n":"喫茶・軽食 ユニティーフェイス - Unity Faith","t":"0","c":"9","s":"4.3", "d":"0", "a":"29,31,135,119", "l":"Japan, Osaka, Sakai, Naka Ward, Fukaishimizucho, 3835"}
-,{"p":"engaro", "x":"34.702269","y":"135.487596","n":"ENGARO organic & hair clinic 大阪市北区大淀南オーガニック美容室","t":"4","c":"5","s":"4.8", "d":"0", "a":"104,104,104,104", "l":"Japan, Osaka, Kita Ward, 北区1 Chome−10"}
-,{"p":"cafebarcoins", "x":"34.6595934","y":"135.5059829","n":"仮想通貨カフェ＆バーＣＯＩＮＳ","t":"2","c":"9","s":"4.6", "d":"0", "a":"29,31,32,33", "l":"Japan, Osaka, Chuo Ward, Souemoncho, 5−6"}
-,{"p":"04village", "x":"34.6550227","y":"135.5084907","n":"０４ ｖｉｌｌａｇｅ なんば","t":"5","c":"93","s":"4.3", "d":"0", "a":"60,61,90,98", "l":"Japan, Osaka, Naniwa Ward, Shimodera, 3 Chome−12−9"}
-,{"p":"trianglecoffee", "x":"34.665282","y":"135.505369","n":"cycle&cafe TRI⊿NGLE COFFEE トライアングルコーヒー","t":"2","c":"7","s":"5.0", "d":"0", "a":"29,145,142,31", "l":"1-22 Nanbasennichimae, Chuo Ward, Osaka, Japan"}
-,{"p":"bitcafe", "x":"34.6725595","y":"135.4904279","n":"bit cafe","t":"2","c":"22","s":"4.0", "d":"0", "a":"29,109,64,15", "l":"Japan, Osaka, 大阪市西区 Nishi Ward, Minamihorie, 2 Chome−13−17 bit cafe"}
-,{"p":"slices", "x":"34.6702486","y":"135.4996966","n":"Slices Pizza Restaurant - スライシーズ","t":"0","c":"123","s":"4.2", "d":"0", "a":"14,15,31,109", "l":"2 Chome-3-21 Nishishinsaibashi, Chuo Ward, Osaka, Japan"}
-,{"p":"toripao", "x":"34.697499","y":"135.4851051","n":"toripao - 鶏料理pao","t":"0","c":"7","s":"3.9", "d":"0", "a":"71,94,96,135", "l":"Japan, Osaka, Fukushima Ward, Fukushima, 7 Chome−7−番7号"}
-,{"p":"nazimichi", "x":"34.6620575","y":"135.4971423","n":"ナジミチヂミ Izakaya Restaurant","t":"0","c":"23","s":"4.7", "d":"0", "a":"113,67,99,15", "l":"Japan, Osaka, Naniwa Ward, Motomachi, 2 Chome−7−1"}
-,{"p":"ajinoya2", "x":"34.6680903","y":"135.5006587","n":"Ajinoya 2nd Shop - 味乃家 2号店","t":"0","c":"62","s":"3.7", "d":"0", "a":"100,112,142,144", "l":"Japan, Osaka, Chuo Ward, Nanba, 1 Chome−７−13"}
-,{"p":"yakinikutamurafukuoka", "x":"33.5878136","y":"130.3941922","n":"炭火焼肉たむら福岡店 - Yakiniku Tamura Fukuoka","t":"0","c":"29","s":"3.8", "d":"0", "a":"111,67,112,138", "l":"Japan, Fukuoka, Chuo Ward, Daimyo, 1 Chome−12−39"}
-,{"p":"yakinikutamuranagasaki", "x":"32.8258168","y":"129.84688","n":"炭火焼肉たむら 長崎店 - Yakiniku Tamura Nagasaki","t":"0","c":"63","s":"3.3", "d":"0", "a":"111,67,112,138", "l":"Japan, Nagasaki, Togitsu, Nodago, 48-13"}]
+,{"p":"cafedeperle", "x":"35.669106","y":"139.761887","n":"Cafe de Perle - カフェ・ド・ペルル","t":"2","c":"6","s":"4.3", "d":"0", "a":"81,82,83,84", "l":"7 Chome−7−9, Ginza, Chuo City, Tokyo, Japan"}]
