@@ -919,10 +919,24 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 int _getTagIndex(String searchTerm) {
   if (!Tag.tagText.contains(searchTerm)) return -1;
 
+  int result = -1;
+  if ((result = findTagIndex(searchTerm, Tag.tagText)) == -1)
+    if ((result = findTagIndex(searchTerm, Tag.tagTextES)) == -1)
+      if ((result = findTagIndex(searchTerm, Tag.tagTextDE)) == -1)
+        if ((result = findTagIndex(searchTerm, Tag.tagTextFR)) == -1)
+        if ((result = findTagIndex(searchTerm, Tag.tagTextIT)) == -1)
+          if ((result = findTagIndex(searchTerm, Tag.tagTextINDONESIA)) == -1)
+            if ((result = findTagIndex(searchTerm, Tag.tagTextJP1)) == -1)
+              result = findTagIndex(searchTerm, Tag.tagTextJP2);
+
+  return result;
+}
+
+int findTagIndex(String searchTerm, tags) {
   bool hasFoundTag = false;
   int i = 0;
-  for (; i < Tag.tagText.length; i++) {
-    if (Tag.tagText.elementAt(i) == searchTerm) {
+  for (; i < tags.length; i++) {
+    if (tags.elementAt(i) == searchTerm) {
       hasFoundTag = true;
       break;
     }

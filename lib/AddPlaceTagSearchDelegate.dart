@@ -106,4 +106,5 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
     });
     return cleanSuggestions;
   } */
+//TODO Whenever a country specific suggestions startsWith "🍔🍔🍔" you should use the english variant instead
 }

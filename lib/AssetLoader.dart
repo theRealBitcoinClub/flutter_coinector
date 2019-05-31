@@ -118,6 +118,7 @@ class AssetLoader {
 
   //TODO remove shareID from placesId asset to boost load time
   //TODO split contents in one file for each continent
+  //TODO generate PDF file within flutter to create immediatly after submitting
   Future<Place> loadPlace(String id) async {
     if (placesIdCache == null) {
       var response = await new Dio().get(
