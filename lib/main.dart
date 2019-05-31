@@ -21,6 +21,9 @@ import 'SearchDemoSearchDelegate.dart';
 import 'Suggestions.dart';
 import 'Tag.dart';
 import 'pages.dart';
+import 'package:flutter_i18n/flutter_i18n_delegate.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class AnimatedListSample extends StatefulWidget {
   @override
@@ -565,6 +568,22 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: [
+        FlutterI18nDelegate(
+            useCountryCode: false, fallbackFile: 'en', path: "assets/i18n"),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate
+      ],
+      supportedLocales: [
+        const Locale('de', 'DE'),
+        const Locale('it', 'IT'),
+        const Locale('es', 'ES'),
+        const Locale('en', 'US'),
+        const Locale('ja', 'JP'),
+        const Locale('id', 'ID'),
+        const Locale('ja', 'JP'),
+        const Locale('fr', 'FR')
+      ],
       theme: ThemeData(
         // Define the default Brightness and Colors
         brightness: Brightness.dark,

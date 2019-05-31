@@ -36,6 +36,7 @@ dependencies:
   smooth_star_rating: ^1.0.2
   google_maps_flutter: ^0.5.13
   url_launcher: ^5.0.2
+  flutter_i18n: ^0.6.3
   geolocator: ^4.0.3
   crypto: ^2.0.6
   path_provider: ^1.1.0
@@ -72,6 +73,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/i18n/
     - assets/marker6.png
     - assets/marker5.png
     - assets/marker4.png
