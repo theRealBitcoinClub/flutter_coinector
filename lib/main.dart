@@ -34,6 +34,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   TabController tabController;
   bool _customIndicator = false;
   List<ListModel<Merchant>> _lists = [];
+  var assetLoader = AssetLoader();
   List<Merchant> names = new List<Merchant>(); // names we get from API
   List<ListModel<Merchant>> tempLists = [];
   List<ListModel<Merchant>> unfilteredLists = [];
@@ -78,7 +79,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   void loadAssets(
       int filterWordIndex, String locationFilter, String fileName) async {
     updateCurrentPosition();
-    //bool hasLocation = await updateCurrentPosition(); //TODO is it necessary to wait??? maybe costs a lot of performance and getting accurate position from the last search usually is enough accuracy...
 
     if (isUnfilteredSearch(filterWordIndex)) {
       updateDistanceToAllMerchantsIfNotDoneYet();
@@ -91,8 +91,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 /*
     if (response == null)
       response =
-          await dio.get('https://realbitcoinclub.firebaseapp.com/places8.json');
+          await dio.get('https://raw.githubusercontent.com/theRealBitcoinClub/BITCOINMAP.CASH---Browser-PWA/master/public/places8.json');
           //TODO get data from server, add push notifications for new spots, in that case apps looses offline capabilities...
+         //TODO manually confirm places, create gif with online tools, upload it to github, once inside of github and reviewed it is published on the map
           //TODO get data from server, additionally to the places which are hardcoded, simply load another additional list which gets synced each month with a new release of the app
   */
 
@@ -123,13 +124,13 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       String assetUri,
       String serverId,
       bool isLocationSearch) async {
-    var placesList = await AssetLoader.loadAndEncodeAsset(assetUri);
+    var placesList = await AssetLoader.loadAndDecodeAsset(assetUri);
     initTempListModel();
     for (int i = 0; i < placesList.length; i++) {
       Merchant m2 = Merchant.fromJson(placesList.elementAt(i));
       m2.serverId = serverId;
       //at the moment there is no PAY feature: m2.isPayEnabled = await AssetLoader.loadReceivingAddress(m2.id) != null;
-      AssetLoader.loadPlace(m2.id).then((place) {
+      assetLoader.loadPlace(m2.id).then((place) {
         setState(() {
           m2.place = place;
         });

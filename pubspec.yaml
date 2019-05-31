@@ -30,7 +30,7 @@ dependencies:
   clipboard_manager: ^0.0.4
   #flutter_typeahead: ^1.4.0
   shared_preferences: ^0.5.2
-  #dio: ^2.1.0
+  dio: ^2.1.0
   firebase_crashlytics: ^0.0.4+3
   transparent_image: ^1.0.0
   smooth_star_rating: ^1.0.2

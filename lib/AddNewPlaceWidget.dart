@@ -216,7 +216,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
               duration: DEFAULT_DURATION_OPACITY_FADE,
               opacity: hasInputAllTags() ? OPACITY_ITEM_VALIDATED : 1.0,
               child: Padding(
-                padding: EdgeInsets.only(bottom: 0.0),
+                padding: EdgeInsets.only(top: 10.0),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

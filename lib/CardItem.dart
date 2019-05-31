@@ -94,11 +94,16 @@ class CardItem extends StatelessWidget {
 
   Stack buildContentStack(BuildContext ctx, Color infoBoxBackgroundColor,
       TextStyle textStyle, TextStyle textStyle2) {
-    var gifUrl = "http://realbitcoinclub-" +
+    /*var gifUrl = "http://realbitcoinclub-" +
         getServerId() +
         ".firebaseapp.com/gif/" +
         merchant.id +
-        ".gif";
+        ".gif";*/
+
+    var gifUrl =
+        'https://github.com/theRealBitcoinClub/BITCOINMAP.CASH---Browser-PWA/raw/master/public/img/app/' +
+            merchant.id +
+            ".gif";
 
     return Stack(
       children: <Widget>[

@@ -1,5 +1,5 @@
 import 'dart:convert';
-
+import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 
 import 'Place.dart';
@@ -77,7 +77,7 @@ class AssetLoader {
     return null;
   }
 
-  static Future<List<dynamic>> loadAndEncodeAsset(final String fileName) async {
+  static Future<List<dynamic>> loadAndDecodeAsset(final String fileName) async {
     //List<dynamic> cached = getDecodedCachedAsset(fileName);
     //if (cached != null) return cached;
 
@@ -88,7 +88,7 @@ class AssetLoader {
   }
 
   static Future<String> loadReceivingAddress(String id) async {
-    var addresses = await AssetLoader.loadAndEncodeAsset("assets/addr.json");
+    var addresses = await AssetLoader.loadAndDecodeAsset("assets/addr.json");
 
     String addr;
     addresses.forEach((item) {
@@ -113,11 +113,21 @@ class AssetLoader {
     });
     return addr;
   }*/
-  static Future<Place> loadPlace(String id) async {
-    var places = await AssetLoader.loadAndEncodeAsset("assets/placesId.json");
+  var placesIdCache;
+
+
+  //TODO remove shareID from placesId asset to boost load time
+  //TODO split contents in one file for each continent
+  Future<Place> loadPlace(String id) async {
+    if (placesIdCache == null) {
+      var response = await new Dio().get(
+          'https://raw.githubusercontent.com/theRealBitcoinClub/flutter_coinector/master/assets/placesId.json');
+      placesIdCache = json.decode(response.data);
+    }
+    //var p = await AssetLoader.loadAndDecodeAsset("assets/placesId.json");
 
     Place result;
-    places.forEach((item) {
+    placesIdCache.forEach((item) {
       var itemId = item['p'];
       if (itemId == id) {
         result = Place.fromJson(item);
