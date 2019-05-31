@@ -155,15 +155,15 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   bool isUnfilteredSearch(int filterWordIndex) => filterWordIndex == -999;
 
-  Future<List<dynamic>> parseAssetUpdateListModel(
+  Future<void> parseAssetUpdateListModel(
       int selectedTagIndex,
       String locationFilter,
       List places,
       String serverId,
       bool isLocationSearch) async {
     initTempListModel();
-    for (int i = 0; i < placesList.length; i++) {
-      Merchant m2 = Merchant.fromJson(placesList.elementAt(i));
+    for (int i = 0; i < places.length; i++) {
+      Merchant m2 = Merchant.fromJson(places.elementAt(i));
       m2.serverId = serverId;
       //at the moment there is no PAY feature: m2.isPayEnabled = await AssetLoader.loadReceivingAddress(m2.id) != null;
       assetLoader.loadPlace(m2.id).then((place) {
@@ -180,7 +180,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     if (unfilteredLists.length == 0) initUnfilteredLists();
 
     updateListModel(tempLists);
-    return placesList;
   }
 
   Future<int> updateList(
