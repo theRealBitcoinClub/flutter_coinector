@@ -459,15 +459,16 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   initLastSavedPos() async {
     var position = await getLatestSavedPosition();
-    if (position == null || position.isEmpty) return;
+    if (position != null && position.isNotEmpty) {
+      setState(() {
+        userPosition = Position(
+            longitude: parseDouble(position, 0),
+            latitude: parseDouble(position, 1));
+      });
+    }
 
-    setState(() {
-      userPosition = Position(
-          longitude: parseDouble(position, 0),
-          latitude: parseDouble(position, 1));
-      loadAssetsUnfiltered();
-      requestCurrentPosition();
-    });
+    loadAssetsUnfiltered();
+    requestCurrentPosition();
   }
 
   double parseDouble(String position, int piece) =>
