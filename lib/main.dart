@@ -44,6 +44,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   bool
       hasHitSearch; //TODO count user activity by how often he hits search, how much he interacts with the app, reward him for that with badges
   var sharedPrefKeyHasHitSearch = "sharedPrefKeyHasHitSearch";
+  var sharedPrefKeyLastLocation = "dsfdsfdsfdsfwer3e3r3";
   String _searchTerm;
   Position userPosition;
   Position mapPosition;
@@ -425,6 +426,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       Position pos = await Geolocator()
           .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
 
+      saveLatestSavedPosition(
+          pos.latitude.toString() + ";" + pos.longitude.toString());
+
       setState(() {
         userPosition = pos;
       });
@@ -453,10 +457,25 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         .promptUserForPushNotificationPermission(fallbackToSettings: true);
   }
 
+  initLastSavedPos() async {
+    var position = await getLatestSavedPosition();
+    if (position == null || position.isEmpty) return;
+
+    setState(() {
+      userPosition = Position(
+          longitude: parseDouble(position, 0),
+          latitude: parseDouble(position, 1));
+    });
+  }
+
+  double parseDouble(String position, int piece) =>
+      double.parse(position.split(";")[piece]);
+
   @override
   void initState() {
     super.initState();
     //TEST CRASHLYTICS Crashlytics.instance.crash();
+    initLastSavedPos();
     initOneSignalPushMessages();
     requestCurrentPosition();
     searchDelegate.buildHistory();
@@ -723,6 +742,16 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   bool isFilterEmpty() => _searchTerm == null || _searchTerm.isEmpty;
+
+  Future<void> saveLatestSavedPosition(String value) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString(sharedPrefKeyLastLocation, value);
+  }
+
+  Future<String> getLatestSavedPosition() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString(sharedPrefKeyLastLocation);
+  }
 
   Future<bool> initHasHitSearch() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
