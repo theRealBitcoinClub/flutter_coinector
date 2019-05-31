@@ -58,6 +58,13 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
     List<String> matches = new List();
 
     addMatches(pattern, matches, Tag.tagText);
+    addMatches(pattern, matches, Tag.tagTextDE);
+    addMatches(pattern, matches, Tag.tagTextES);
+    addMatches(pattern, matches, Tag.tagTextFR);
+    addMatches(pattern, matches, Tag.tagTextIT);
+    addMatches(pattern, matches, Tag.tagTextJP1);
+    addMatches(pattern, matches, Tag.tagTextJP2);
+    addMatches(pattern, matches, Tag.tagTextINDONESIA);
     addMatches(pattern, matches, Suggestions.locations);
     addMatches(pattern, matches, Tag.titleTags);
 

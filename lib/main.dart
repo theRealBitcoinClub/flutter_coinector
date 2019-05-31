@@ -811,7 +811,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       zoomMapAfterSelectLocation = false;
     }
 
-    var index = _getTagIndex(selectedLocationOrTag);
+    var index = Tag.getTagIndex(selectedLocationOrTag);
     showMatchingSnackBar(fileName, search, index);
 
     loadAssets(index, search, fileName);
@@ -914,35 +914,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     updateDistanceToAllMerchantsIfNotDoneYet();
     showSnackBar("You are Satoshi Nakamoto!");
   }
-}
-
-int _getTagIndex(String searchTerm) {
-  if (!Tag.tagText.contains(searchTerm)) return -1;
-
-  int result = -1;
-  if ((result = findTagIndex(searchTerm, Tag.tagText)) == -1)
-    if ((result = findTagIndex(searchTerm, Tag.tagTextES)) == -1)
-      if ((result = findTagIndex(searchTerm, Tag.tagTextDE)) == -1)
-        if ((result = findTagIndex(searchTerm, Tag.tagTextFR)) == -1)
-        if ((result = findTagIndex(searchTerm, Tag.tagTextIT)) == -1)
-          if ((result = findTagIndex(searchTerm, Tag.tagTextINDONESIA)) == -1)
-            if ((result = findTagIndex(searchTerm, Tag.tagTextJP1)) == -1)
-              result = findTagIndex(searchTerm, Tag.tagTextJP2);
-
-  return result;
-}
-
-int findTagIndex(String searchTerm, tags) {
-  bool hasFoundTag = false;
-  int i = 0;
-  for (; i < tags.length; i++) {
-    if (tags.elementAt(i) == searchTerm) {
-      hasFoundTag = true;
-      break;
-    }
-  }
-
-  return hasFoundTag ? i : -1;
 }
 
 void main() {

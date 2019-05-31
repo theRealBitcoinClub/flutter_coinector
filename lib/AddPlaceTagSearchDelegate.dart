@@ -5,8 +5,6 @@ import 'SuggestionList.dart';
 import 'Tag.dart';
 
 class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
-  final Set<String> suggestionsFromTags = Set.from(Tag.tagText);
-
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
@@ -25,6 +23,13 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
     List<String> matches = new List();
 
     addMatches(pattern, matches, Tag.tagText);
+    addMatches(pattern, matches, Tag.tagTextES);
+    addMatches(pattern, matches, Tag.tagTextDE);
+    addMatches(pattern, matches, Tag.tagTextFR);
+    addMatches(pattern, matches, Tag.tagTextIT);
+    addMatches(pattern, matches, Tag.tagTextINDONESIA);
+    addMatches(pattern, matches, Tag.tagTextJP1);
+    addMatches(pattern, matches, Tag.tagTextJP2);
 
     if (matches.length == 0) {
       matches.add(SearchDemoSearchDelegate.TRY_ANOTHER_WORD);
@@ -55,7 +60,15 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
   Widget buildSuggestions(BuildContext context) {
     List<String> suggestions = [YOU_CAN_SCROLL];
     if (query.isEmpty) {
-      suggestions.addAll(suggestionsFromTags);
+      suggestions.addAll(Tag.tagText);
+      //TODO show the device language FIRST
+      suggestions.addAll(cleanSuggestions(Tag.tagTextES));
+      suggestions.addAll(cleanSuggestions(Tag.tagTextDE));
+      suggestions.addAll(cleanSuggestions(Tag.tagTextFR));
+      suggestions.addAll(cleanSuggestions(Tag.tagTextIT));
+      suggestions.addAll(cleanSuggestions(Tag.tagTextINDONESIA));
+      suggestions.addAll(cleanSuggestions(Tag.tagTextJP1));
+      suggestions.addAll(cleanSuggestions(Tag.tagTextJP2));
     } else {
       suggestions = _getSuggestions(query);
     }
@@ -96,15 +109,15 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
       ),
     ];
   }
-/*
+
   Iterable<String> cleanSuggestions(Iterable<String> suggestions) {
     List<String> cleanSuggestions = [];
     suggestions.forEach((String suggestion) {
-      if (!suggestion.contains("🎸🎧🎁")) {
+      if (!suggestion.contains("🍔🍔🍔")) {
         cleanSuggestions.add(suggestion);
       }
     });
     return cleanSuggestions;
-  } */
+  }
 //TODO Whenever a country specific suggestions startsWith "🍔🍔🍔" you should use the english variant instead
 }

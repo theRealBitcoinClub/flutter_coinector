@@ -45,10 +45,35 @@ class Tag {
     ]
   ];
 
-  static int findTagIndex(String tag) {
-    for (int i = 0; i < tagText.length; i++) {
-      String item = tagText.elementAt(i);
-      if (item == tag) {
+
+
+ static int getTagIndex(String searchTerm) {
+    if (!Tag.tagText.contains(searchTerm) &&
+        !Tag.tagTextES.contains(searchTerm) &&
+        !Tag.tagTextDE.contains(searchTerm) &&
+        !Tag.tagTextFR.contains(searchTerm) &&
+        !Tag.tagTextIT.contains(searchTerm) &&
+        !Tag.tagTextINDONESIA.contains(searchTerm) &&
+        !Tag.tagTextJP1.contains(searchTerm) &&
+        !Tag.tagTextJP2.contains(searchTerm)) return -1;
+
+    int result = -1;
+    if ((result = findTagIndex(searchTerm, Tag.tagText)) == -1)
+      if ((result = findTagIndex(searchTerm, Tag.tagTextES)) == -1)
+        if ((result = findTagIndex(searchTerm, Tag.tagTextDE)) == -1)
+          if ((result = findTagIndex(searchTerm, Tag.tagTextFR)) == -1)
+            if ((result = findTagIndex(searchTerm, Tag.tagTextIT)) == -1)
+              if ((result = findTagIndex(searchTerm, Tag.tagTextINDONESIA)) == -1)
+                if ((result = findTagIndex(searchTerm, Tag.tagTextJP1)) == -1)
+                  result = findTagIndex(searchTerm, Tag.tagTextJP2);
+
+    return result;
+  }
+
+  static int findTagIndex(String searchTerm, tags) {
+    for (int i = 0; i < tags.length; i++) {
+      String item = tags.elementAt(i);
+      if (item == searchTerm) {
         return i;
       }
     }
@@ -581,7 +606,6 @@ class Tag {
     'Oden 🍢',
     'Latte ☕'
   };*/
-  //TODO capitalize the first letter?! during output?
   static final tagTextJP2 = const {
     'supaishī 🌶️ ',
     'shioaji no 🥨',
@@ -697,7 +721,7 @@ class Tag {
     '🍔🍔🍔men',
     'Kankoku-go 🥟',
     'māketto 🧺',
-    'pan 🥖',
+    '🍔🍔🍔pan 🥖',
     'panyasan',
     'kafe ☕',
     'gēmu',
@@ -1861,7 +1885,6 @@ class Tag {
     'Truck',
     'Cerveceria',
     'Dulces',
-    'Hamburguesas',
     'Tentacion',
     'Delicias',
     'Pasteles',

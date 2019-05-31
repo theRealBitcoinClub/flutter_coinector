@@ -551,7 +551,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     return '{"tag":"' +
         tag +
         '", "id":"' +
-        Tag.findTagIndex(tag).toString() +
+        Tag.getTagIndex(tag).toString() +
         '"}';
   }
 }

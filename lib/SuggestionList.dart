@@ -15,6 +15,8 @@ class SuggestionList extends StatelessWidget {
     return input != null && input.isNotEmpty ? " - " + input : "";
   }
 
+  String capitalize(String s) => s[0].toUpperCase() + s.substring(1);
+
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = Theme.of(context);
@@ -23,7 +25,7 @@ class SuggestionList extends StatelessWidget {
       itemBuilder: (BuildContext context, int i) {
         final SuggestionMatch match =
             SuggestionMatch.parseString(suggestions[i], i);
-        final String searchMatch = match.searchMatch;
+        final String searchMatch = capitalize(match.searchMatch);
         final String state = addSeparator(match.state);
         final String continent = addSeparator(match.continent);
         return ListTile(
