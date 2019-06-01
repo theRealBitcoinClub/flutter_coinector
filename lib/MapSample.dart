@@ -161,7 +161,7 @@ class MapSampleState extends State<MapSample> {
             if (counterToastGeneral >= SHOW_HINT_MAX_COUNTER) return;
             Toaster.showInstructionToast(counterToastGeneral, HINT_COUNT_TOTAL,
                 Toaster.getGeneralToastHint);
-            setState(() {Z
+            setState(() {
               counterToastGeneral++;
             });
             Toaster.persistToastCounter(
