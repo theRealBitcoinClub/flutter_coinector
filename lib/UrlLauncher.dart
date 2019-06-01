@@ -72,13 +72,13 @@ class UrlLauncher {
   static void launchEmailClientAddPlace(String inputDASH, String inputBCH,
       String content, onEmailClientNotFound) async {
     var urlString =
-        "mailto:en-bmap.cash@therealbitcoin.club,en-anypay@therealbitcoin.club" +
+        "mailto:bitcoinmap@fire.fundersclub.com,incoming+bmap-cash-bmap-cash-12646634-issue-@incoming.gitlab.com,en-bmap.cash@therealbitcoin.club,en-anypay@therealbitcoin.club" +
             (hasInput(inputDASH)
                 ? getDASHReceiverAdr(hasInput(inputDASH))
                 : getBCHReceiverAdr(hasInput(inputBCH))) +
             "?subject=" +
             (hasInput(inputDASH) ? inputDASH : inputBCH) +
-            "&body=Welcome to bitcoinmap.cash!\n\nSend this E-Mail now to submit the place!\n\nWe will notify you as soon as the place is available inside the app!\n\nDo not modify the content of this E-Mail!\n\nTo add any further details please send another E-Mail to trbc@bitcoinmap.cash!\n\nYou are Satoshi Nakamoto!\n\nThanks!\n\n" +
+            "&body=Welcome to http://bmap.cash!\n\nYou can optionally attach Images to this email now!\n\nSend this E-Mail to submit the place!\n\nWe will notify you as soon as the place is available inside the app!\n\nDo not modify the content of this E-Mail!\n\nTo add any further details please send another E-Mail to trbc@bitcoinmap.cash!\n\nYou are Satoshi Nakamoto!\n\nThanks!\n\n" +
             content;
     await _launchEmail(urlString, onEmailClientNotFound);
   }
