@@ -21,9 +21,9 @@ import 'SearchDemoSearchDelegate.dart';
 import 'Suggestions.dart';
 import 'Tag.dart';
 import 'pages.dart';
-import 'package:flutter_i18n/flutter_i18n_delegate.dart';
+/*import 'package:flutter_i18n/flutter_i18n_delegate.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';*/
 
 class AnimatedListSample extends StatefulWidget {
   @override
@@ -567,8 +567,11 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   @override
   Widget build(BuildContext context) {
+    /*new Future.delayed(Duration.zero, () async {
+      FlutterI18n.currentLocale(context);
+    });*/
     return MaterialApp(
-      localizationsDelegates: [
+      /*localizationsDelegates: [
         FlutterI18nDelegate(
             useCountryCode: false, fallbackFile: 'en', path: "assets/i18n"),
         GlobalMaterialLocalizations.delegate,
@@ -583,7 +586,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         const Locale('id', 'ID'),
         const Locale('ja', 'JP'),
         const Locale('fr', 'FR')
-      ],
+      ],*/
       theme: ThemeData(
         // Define the default Brightness and Colors
         brightness: Brightness.dark,
@@ -622,28 +625,29 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
               label: Text('ADD ' + getTitleOfSelectedTab()),
               icon: Icon(Icons.add_location)),
         ),
-        body: NestedScrollView(
-          headerSliverBuilder:
-              (BuildContext buildCtx, bool innerBoxIsScrolled) {
-            return <Widget>[
-              SliverAppBar(
-                  elevation: 2,
-                  forceElevated: true,
-                  leading: buildHomeButton(buildCtx),
-                  bottom: TabBar(
-                    controller: tabController,
-                    isScrollable: true,
-                    indicator: getIndicator(),
-                    tabs: Pages.pages.map<Tab>((Page page) {
-                      return _lists[page.tabIndex].length > 0
-                          ? Tab(
-                              icon: Icon(
-                                page.icon,
-                                color: MyColors.getTabColor(page.typeIndex),
-                                size: 22,
-                              ),
-                              //text: page.text)
-                              /*child: Text(page.text,
+        body: new Builder(builder: (BuildContext ctx) {
+          return NestedScrollView(
+            headerSliverBuilder:
+                (BuildContext buildCtx, bool innerBoxIsScrolled) {
+              return <Widget>[
+                SliverAppBar(
+                    elevation: 2,
+                    forceElevated: true,
+                    leading: buildHomeButton(buildCtx),
+                    bottom: TabBar(
+                      controller: tabController,
+                      isScrollable: true,
+                      indicator: getIndicator(),
+                      tabs: Pages.pages.map<Tab>((Page page) {
+                        return _lists[page.tabIndex].length > 0
+                            ? Tab(
+                                icon: Icon(
+                                  page.icon,
+                                  color: MyColors.getTabColor(page.typeIndex),
+                                  size: 22,
+                                ),
+                                //text: page.text)
+                                /*child: Text(page.text,
                                     maxLines: 1,
 
                                     overflow: TextOverflow.fade,
@@ -653,44 +657,46 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                                         .copyWith(
                                             color: MyColors.getTabColor(
                                                 page.typeIndex)))*/
-                            )
-                          : Tab(
-                              icon: Icon(
-                              page.icon,
-                              color: Colors.white.withOpacity(0.5),
-                              size: 22,
-                            ));
-                    }).toList(),
-                  ),
-                  actions: <Widget>[
-                    buildIconButtonMap(buildCtx),
-                  ],
-                  title: Padding(
-                      padding: EdgeInsets.all(5.0),
-                      child: AnimatedSwitcher(
-                          //TODO fix animation, how to switch animted with a fade transition?
-                          duration: Duration(milliseconds: 500),
-                          child: Text(
-                            _title,
-                            style: TextStyle(
-                                fontSize: 22.0,
-                                fontWeight: FontWeight.w300,
-                                fontStyle: FontStyle.normal,
-                                color: Colors.white.withOpacity(0.7)),
-                          ))),
-                  //expandedHeight: 300.0, GOOD SPACE FOR ADS LATER
-                  floating: true,
-                  snap: true,
-                  pinned: false),
-            ];
-          },
-          body:
-              /*Padding(
+                              )
+                            : Tab(
+                                icon: Icon(
+                                page.icon,
+                                color: Colors.white.withOpacity(0.5),
+                                size: 22,
+                              ));
+                      }).toList(),
+                    ),
+                    actions: <Widget>[
+                      buildIconButtonMap(buildCtx),
+                    ],
+                    title: Padding(
+                        padding: EdgeInsets.all(5.0),
+                        child: AnimatedSwitcher(
+                            //TODO fix animation, how to switch animted with a fade transition?
+                            duration: Duration(milliseconds: 500),
+                            child: Text(
+                              _title,
+                              style: TextStyle(
+                                  fontSize: 22.0,
+                                  fontWeight: FontWeight.w300,
+                                  fontStyle: FontStyle.normal,
+                                  color: Colors.white.withOpacity(0.7)),
+                            ))),
+                    //expandedHeight: 300.0, GOOD SPACE FOR ADS LATER
+                    floating: true,
+                    snap: true,
+                    pinned: false),
+              ];
+            },
+            body:
+                /*Padding(
                   padding: EdgeInsets.only(top: 5.0),
                   child:*/
-              TabBarView(
-                  controller: tabController, children: buildAllTabContainer()),
-        ),
+                TabBarView(
+                    controller: tabController,
+                    children: buildAllTabContainer(ctx)),
+          );
+        }),
       ),
     );
   }
@@ -705,9 +711,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         });
   }
 
-  void handleMapButtonClick(context) async {
+  void handleMapButtonClick(ctx) async {
     Merchant result = await Navigator.push(
-      context,
+      ctx,
       MaterialPageRoute(
           builder: (context) => MapSample(
               _lists,
@@ -718,19 +724,19 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     );
     updateDistanceToAllMerchantsIfNotDoneYet();
     if (result != null) {
-      filterListUpdateTitle(result.name);
+      filterListUpdateTitle(ctx, result.name);
       tabController.animateTo(result.type);
       //showSnackBar("Showing selected merchant: " + result.name);
     } else {
-      showUnfilteredLists();
+      showUnfilteredLists(ctx);
     }
   }
 
-  void showSnackBar(String msgId, {String additionalText = ""}) {
+  void showSnackBar(ctx, String message, {String additionalText = ""}) {
     _scaffoldKey.currentState.showSnackBar(SnackBar(
       duration: Duration(milliseconds: 1500),
       content: Text(
-        FlutterI18n.translate(context, msgId) + additionalText,
+        /*FlutterI18n.translate(ctx, msgId) +*/ message + additionalText,
         style: TextStyle(
             fontSize: 18.0,
             fontWeight: FontWeight.w400,
@@ -740,22 +746,22 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     ));
   }
 
-  List<Widget> buildAllTabContainer() {
+  List<Widget> buildAllTabContainer(ctx) {
     var builder = CardItemBuilder(_lists, userPosition);
     return [
-      buildTabContainer(_listKeys[0], _lists[0], builder.buildItemRestaurant,
-          Pages.pages[0].title),
-      buildTabContainer(
-          _listKeys[1], _lists[1], builder.buildItemTogo, Pages.pages[1].title),
-      buildTabContainer(
-          _listKeys[2], _lists[2], builder.buildItemBar, Pages.pages[2].title),
-      buildTabContainer(_listKeys[3], _lists[3], builder.buildItemMarket,
+      buildTabContainer(ctx, _listKeys[0], _lists[0],
+          builder.buildItemRestaurant, Pages.pages[0].title),
+      buildTabContainer(ctx, _listKeys[1], _lists[1], builder.buildItemTogo,
+          Pages.pages[1].title),
+      buildTabContainer(ctx, _listKeys[2], _lists[2], builder.buildItemBar,
+          Pages.pages[2].title),
+      buildTabContainer(ctx, _listKeys[3], _lists[3], builder.buildItemMarket,
           Pages.pages[3].title),
-      buildTabContainer(
-          _listKeys[4], _lists[4], builder.buildItemShop, Pages.pages[4].title),
-      buildTabContainer(_listKeys[5], _lists[5], builder.buildItemHotel,
+      buildTabContainer(ctx, _listKeys[4], _lists[4], builder.buildItemShop,
+          Pages.pages[4].title),
+      buildTabContainer(ctx, _listKeys[5], _lists[5], builder.buildItemHotel,
           Pages.pages[5].title),
-      buildTabContainer(_listKeys[6], _lists[6], builder.buildItemWellness,
+      buildTabContainer(ctx, _listKeys[6], _lists[6], builder.buildItemWellness,
           Pages.pages[6].title),
     ];
   }
@@ -803,7 +809,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         progress: searchDelegate.transitionAnimation,
       ),
       onPressed: () {
-        showUnfilteredLists();
+        showUnfilteredLists(ctx);
       },
     );
   }
@@ -846,10 +852,10 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         //TODO ask users to rate the app
 
         if (selected != null) {
-          filterListUpdateTitle(selected);
+          filterListUpdateTitle(ctx, selected);
         } else {
           updateDistanceToAllMerchantsIfNotDoneYet();
-          showUnfilteredLists();
+          showUnfilteredLists(ctx);
         }
       },
       tooltip: 'Search',
@@ -870,7 +876,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   bool hasNotHitSearch() => hasHitSearch == null || !hasHitSearch;
 
-  void filterListUpdateTitle(String selectedLocationOrTag) {
+  void filterListUpdateTitle(ctx, String selectedLocationOrTag) {
     var selectedArray = selectedLocationOrTag.split(Suggestions.separator);
     final String title = selectedArray[0];
     final String search = title.split(" - ")[0];
@@ -883,7 +889,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     }
 
     var index = Tag.getTagIndex(selectedLocationOrTag);
-    showMatchingSnackBar(fileName, search, index);
+    showMatchingSnackBar(ctx, fileName, search, index);
 
     loadAssets(index, search, fileName);
 
@@ -893,16 +899,20 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     });
   }
 
-  void showMatchingSnackBar(String fileName, String search, int index) {
+  void showMatchingSnackBar(ctx, String fileName, String search, int index) {
     if (fileName != null)
-      showSnackBar("snackbar.filtered_by_location" + search);
+      //showSnackBar(ctx, "snackbar.filtered_by_location",
+      //additionalText: search);
+      showSnackBar(ctx, "Locationfilter: ", additionalText: search);
     else if (index != -1 && fileName == null)
-      showSnackBar("snackbar.filtered_by_tag" + search);
+      showSnackBar(ctx, "Tagfilter: ", additionalText: search);
+    //showSnackBar(ctx, "snackbar.filtered_by_tag", additionalText: search);
     else
-      showSnackBar("snackbar.merchant", additionalText: search);
+      showSnackBar(ctx, "Place: ", additionalText: search);
+    //showSnackBar(ctx, "snackbar.merchant", additionalText: search);
   }
 
-  void showUnfilteredLists() {
+  void showUnfilteredLists(ctx) {
     zoomMapAfterSelectLocation = false;
     mapPosition = null;
     updateTitle();
@@ -910,12 +920,14 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       _searchTerm = '';
       loadAssetsUnfiltered();
     }
-    showSnackBar("snackbar.showing_unfiltered_list");
+    //showSnackBar(ctx, "snackbar.showing_unfiltered_list");
+    showSnackBar(ctx, "Showing unfiltered list...");
   }
 
   bool isFilteredList() => _searchTerm != null && _searchTerm.isNotEmpty;
 
-  Widget buildTabContainer(var listKey, var list, var builderMethod, var cat) {
+  Widget buildTabContainer(
+      ctx, var listKey, var list, var builderMethod, var cat) {
     return (list != null && list.length > 0)
         ? Padding(
             child: AnimatedList(
@@ -932,7 +944,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
               children: <Widget>[
                 buildSeparator(),
                 Text(
-                  FlutterI18n.translate(context, "text.no_matches"),
+                  "There are no matches in this category.",
+                  //FlutterI18n.translate(ctx, "text.no_matches"),
                   style: TextStyle(fontWeight: FontWeight.w400),
                 ),
                 buildSeparator(),
@@ -945,7 +958,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                           child: /*IconButton(icon: */ Icon(Icons.arrow_upward),
                         ),
                         Text(
-                          FlutterI18n.translate(context, "text.hit_icon"),
+                          "Hit a colored icon to see matches.",
+                          //FlutterI18n.translate(ctx, "text.hit_icon"),
                           style: TextStyle(fontWeight: FontWeight.w300),
                         )
                       ],
@@ -984,7 +998,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
               )),
     );
     updateDistanceToAllMerchantsIfNotDoneYet();
-    showSnackBar("snackbar.you_are_satoshi");
+    showSnackBar(ctx, "You are Satoshi Nakamoto!");
+    //showSnackBar(ctx, "snackbar.you_are_satoshi");
   }
 }
 
