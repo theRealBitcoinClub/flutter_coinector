@@ -32,15 +32,15 @@ class SuggestionList extends StatelessWidget {
           leading: query.isEmpty
               ? match.fileName.isEmpty
                   ? !isRealSuggestion(searchMatch)
-                      ? const Icon(Icons.warning)
+                      ? null
                       : const Icon(Icons.history)
                   : const Icon(Icons.location_searching)
-              : const Icon(null),
+              : null,
           title: RichText(
             text: TextSpan(
               text: (isRealSuggestion(searchMatch))
                   ? searchMatch.isNotEmpty
-                      ? searchMatch.substring(0, query.length)
+                      ? searchMatch.substring(0, query.trim().length)
                       : searchMatch
                   : searchMatch,
               style:
@@ -49,7 +49,7 @@ class SuggestionList extends StatelessWidget {
                 TextSpan(
                   text: (isRealSuggestion(searchMatch))
                       ? searchMatch.isNotEmpty
-                          ? searchMatch.substring(query.length)
+                          ? searchMatch.substring(query.trim().length)
                           : ''
                       : '',
                   style: theme.textTheme.subhead,
@@ -79,6 +79,8 @@ class SuggestionList extends StatelessWidget {
 
   bool isRealSuggestion(String suggestion) {
     return SearchDemoSearchDelegate.TRY_ANOTHER_WORD != suggestion &&
-        AddPlaceTagSearchDelegate.YOU_CAN_SCROLL != suggestion;
+        AddPlaceTagSearchDelegate.YOU_CAN_SCROLL != suggestion &&
+        AddPlaceTagSearchDelegate.COINECTOR_SUPPORTS_MANY_LANGUAGES !=
+            suggestion;
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'AddPlaceTagSearchDelegate.dart';
 import 'SuggestionList.dart';
 import 'Suggestions.dart';
 import 'Tag.dart';
@@ -55,7 +56,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
   }
 
   _getSuggestions(String pattern) {
-    List<String> matches = new List();
+    Set<String> matches = Set.from([]);
 
     addMatches(pattern, matches, Tag.tagText);
     addMatches(pattern, matches, Tag.tagTextDE);
@@ -70,19 +71,26 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
 
     if (matches.length == 0) {
       matches.add(TRY_ANOTHER_WORD);
+    } else {
+      Set<String> moreMatches = Set.from([]);
+      moreMatches
+          .add(AddPlaceTagSearchDelegate.COINECTOR_SUPPORTS_MANY_LANGUAGES);
+      moreMatches.add(AddPlaceTagSearchDelegate.YOU_CAN_SCROLL);
+      moreMatches.addAll(matches);
+      return moreMatches;
     }
 
     return matches;
   }
 
-  void addMatches(String pattern, List<String> matches, set) {
+  void addMatches(String pattern, Set<String> matches, set) {
     for (int x = 0; x < set.length; x++) {
       addMatch(x, pattern, matches, set.elementAt(x));
     }
   }
 
   void addMatch(
-      int x, String pattern, List<String> matches, String currentItem) {
+      int x, String pattern, Set<String> matches, String currentItem) {
     if (startsWith(currentItem, pattern)) {
       matches.add(currentItem);
     }
@@ -106,8 +114,15 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    final Iterable<String> suggestions =
-        query.isEmpty ? _history : _getSuggestions(query);
+    Set<String> suggestions = query.isEmpty ? _history : _getSuggestions(query);
+
+    if (query.isEmpty) {
+      suggestions = Set.from([
+        AddPlaceTagSearchDelegate.COINECTOR_SUPPORTS_MANY_LANGUAGES,
+        AddPlaceTagSearchDelegate.YOU_CAN_SCROLL
+      ]);
+      suggestions.addAll(_history);
+    }
 
     return SuggestionList(
       query: query,
@@ -137,6 +152,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
 
   @override
   List<Widget> buildActions(BuildContext context) {
+    //FocusScope.of(context).requestFocus(new FocusNode());
     return <Widget>[
       IconButton(
         tooltip: 'Clear',

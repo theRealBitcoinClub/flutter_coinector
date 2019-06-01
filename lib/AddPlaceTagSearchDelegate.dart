@@ -55,10 +55,15 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
       currentItem.toLowerCase().startsWith(pattern.toLowerCase());
 
   static const YOU_CAN_SCROLL = "You can scroll this list!";
+  static const COINECTOR_SUPPORTS_MANY_LANGUAGES =
+      "🇪🇸 🇩🇪 🇫🇷 🇮🇹 🇬🇧 🇯🇵 🇮🇩";
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    List<String> suggestions = [YOU_CAN_SCROLL];
+    List<String> suggestions = [
+      COINECTOR_SUPPORTS_MANY_LANGUAGES,
+      YOU_CAN_SCROLL
+    ];
     if (query.isEmpty) {
       suggestions.addAll(Tag.tagText);
       //TODO show the device language FIRST
