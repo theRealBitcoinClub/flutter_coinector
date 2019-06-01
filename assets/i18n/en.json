@@ -1,15 +1,9 @@
 {
-  "title": "Test app",
-  "label": {
-    "main": "Hello {user}!"
-  },
-  "button": {
-    "clickMe": "Click here"
-  },
-  "toastMessage": "You clicked on button!",
-  "clicked": {
-    "times-0": "You clicked {times} times!",
-    "times-1": "You clicked {time} time!",
-    "times-2": "You clicked {times} times!"
-  }
+  "snackbar.showing_unfiltered_list": "Showing unfiltered list...",
+  "snackbar.merchant": "Place: ",
+  "snackbar.filtered_by_tag": "Filtered by tag: ",
+  "snackbar.filtered_by_location": "Filtered by location: ",
+  "snackbar.you_are_satoshi": "You are Satoshi Nakamoto!",
+  "text.hit_icon": "Hit a colored icon to see matches.",
+  "text.no_matches": "There are no matches in this category."
 }

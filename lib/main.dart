@@ -723,15 +723,14 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       //showSnackBar("Showing selected merchant: " + result.name);
     } else {
       showUnfilteredLists();
-      showSnackBar("Showing unfiltered list...");
     }
   }
 
-  void showSnackBar(String msg) {
+  void showSnackBar(String msgId, {String additionalText = ""}) {
     _scaffoldKey.currentState.showSnackBar(SnackBar(
       duration: Duration(milliseconds: 1500),
       content: Text(
-        msg,
+        FlutterI18n.translate(context, msgId) + additionalText,
         style: TextStyle(
             fontSize: 18.0,
             fontWeight: FontWeight.w400,
@@ -805,7 +804,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       ),
       onPressed: () {
         showUnfilteredLists();
-        showSnackBar("Showing unfiltered list...");
       },
     );
   }
@@ -897,11 +895,11 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   void showMatchingSnackBar(String fileName, String search, int index) {
     if (fileName != null)
-      showSnackBar("Filtered by location: " + search);
+      showSnackBar("snackbar.filtered_by_location" + search);
     else if (index != -1 && fileName == null)
-      showSnackBar("Filtered by tag: " + search);
+      showSnackBar("snackbar.filtered_by_tag" + search);
     else
-      showSnackBar("Merchant: " + search);
+      showSnackBar("snackbar.merchant", additionalText: search);
   }
 
   void showUnfilteredLists() {
@@ -912,6 +910,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       _searchTerm = '';
       loadAssetsUnfiltered();
     }
+    showSnackBar("snackbar.showing_unfiltered_list");
   }
 
   bool isFilteredList() => _searchTerm != null && _searchTerm.isNotEmpty;
@@ -933,7 +932,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
               children: <Widget>[
                 buildSeparator(),
                 Text(
-                  'There are no matches in this category.',
+                  FlutterI18n.translate(context, "text.no_matches"),
                   style: TextStyle(fontWeight: FontWeight.w400),
                 ),
                 buildSeparator(),
@@ -945,8 +944,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                           padding: EdgeInsets.all(10.0),
                           child: /*IconButton(icon: */ Icon(Icons.arrow_upward),
                         ),
-                        const Text(
-                          'Hit a colored icon to see matches.',
+                        Text(
+                          FlutterI18n.translate(context, "text.hit_icon"),
                           style: TextStyle(fontWeight: FontWeight.w300),
                         )
                       ],
@@ -985,7 +984,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
               )),
     );
     updateDistanceToAllMerchantsIfNotDoneYet();
-    showSnackBar("You are Satoshi Nakamoto!");
+    showSnackBar("snackbar.you_are_satoshi");
   }
 }
 
