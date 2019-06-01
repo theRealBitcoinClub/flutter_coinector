@@ -295,7 +295,7 @@ class Tag {
     '中国語🍜',
     'アヒル🍱',
     'ロック🎸',
-    'LiveDJ🎧',
+    '🍔🍔🍔LiveDJ🎧',
     'テラス☀️',
     '種子🌱',
     'グラインダー🍌',
@@ -656,7 +656,7 @@ class Tag {
     'gifuto 🎁',
     'tapasu 🍠',
     'kopasu 🍹',
-    'piadīna 🌮',
+    '🍔🍔🍔piadīna 🌮',
     'chīzu 🧀',
     'kokumotsu 🌾',
     'fasshon 👗',
@@ -665,7 +665,7 @@ class Tag {
     'nomimono 🍹',
     'terebi 📺',
     'Retoro 🦄',
-    'feta 🐐',
+    '🍔🍔🍔feta 🐐',
     '🍔🍔🍔dasshu ₿',
     '🍔🍔🍔BTC ₿',
     '🍔🍔🍔BCH ₿',
@@ -681,7 +681,7 @@ class Tag {
     'chikin 🐔',
     'usagi 🐰',
     'jagaimo 🥔',
-    'Kumpir 🥔',
+    '🍔🍔🍔Kumpir 🥔',
     'kebapu 🐄',
     '🍔🍔🍔ATM 🏦',
     'jairo 🐖',
@@ -713,7 +713,7 @@ class Tag {
     'ramu 🥃',
     'Burubon 🥃',
     'sake 🥃',
-    'men ♂ ️ ',
+    '🍔🍔🍔men ♂ ️ ',
     'pasuta 🍝',
     'dezāto 🍬',
     'sutātā 🥠',
@@ -784,8 +784,8 @@ class Tag {
     'Asin 🥨',
     'Asam 😜',
     'Organik 🐵',
-    'Vegetarian 🥕', //4
-    'Vegan 🐮',
+    '🍔🍔🍔Vegetarian 🥕', //4
+    '🍔🍔🍔Vegan 🐮',
     'Sehat 💓',
     '🍔🍔🍔Burger 🍔',
     '🍔🍔🍔Sandwich 🥪',
@@ -863,7 +863,7 @@ class Tag {
     'Meditasi 🧘',
     'Anggur 🍷',
     'Sampanye 🥂',
-    'Alkohol 🍾',
+    '🍔🍔🍔Alkohol 🍾',
     'MinumanKeras 🥃', //84
     '🍔🍔🍔Pancakes 🥞', //You cant remove because we use fixed indexes, but replace with another string that is unlikely to be typed in by the user
     '🍔🍔🍔Croissant 🥐',
@@ -1057,7 +1057,7 @@ class Tag {
     'Patatine 🍟',
     'Pesce 🐟', //100
     'Fritte 🍟',
-    'Italiano 🇮🇹',
+    '🍔🍔🍔Italiano 🇮🇹',
     'Whisky 🥃',
     '🍔🍔🍔Rum 🥃', //This is number 104 the no tag indicator, currently not used
     '🍔🍔🍔Bourbon 🥃', //105
@@ -1338,7 +1338,7 @@ class Tag {
     'GlutenFrei 🌽',
     '🍔🍔🍔Cocktails 🍹',
     'Bier 🍺',
-    'Musik 🎵',
+    '🍔🍔🍔Musik 🎵',
     'Chines. 🍜', //34
     'Ente 🍱',
     '🍔🍔🍔Rock 🎸',
