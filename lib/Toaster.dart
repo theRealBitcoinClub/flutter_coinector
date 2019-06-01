@@ -75,11 +75,9 @@ class Toaster {
     return counterTmp != null ? counterTmp : 0;
   }
 
-  static Future incrementAndPersistToastCounter(sharedPrefKey) async {
+  static Future persistToastCounter(sharedPrefKey, newCount) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    var counterToastSpecific =
-        getCounterFromPrefsWithDefaultValue(prefs, sharedPrefKey);
-    prefs.setInt(sharedPrefKey, counterToastSpecific);
+    prefs.setInt(sharedPrefKey, newCount);
   }
 
   static String getGeneralToastHint(counterToastGeneral, totalHintCounter) {

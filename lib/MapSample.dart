@@ -73,12 +73,12 @@ class MapSampleState extends State<MapSample> {
                 if (counterToastSpecific >= SHOW_HINT_MAX_COUNTER) return;
                 Toaster.showInstructionToast(counterToastSpecific,
                     HINT_COUNT_TOTAL, Toaster.getMerchantSpecificToastHint);
-                Toaster.incrementAndPersistToastCounter(
-                    sharedPrefKeyCounterToastSpecific);
 
                 setState(() {
                   counterToastSpecific++;
                 });
+                Toaster.persistToastCounter(
+                    sharedPrefKeyCounterToastSpecific, counterToastSpecific);
               },
               infoWindow: buildInfoWindow(merchant),
               icon: getMarkerColor(merchant),
@@ -99,7 +99,6 @@ class MapSampleState extends State<MapSample> {
     counterToastGeneral =
         await Toaster.initToastCounter(sharedPrefKeyCounterToastGeneral);
   }
-
 
   BitmapDescriptor getMarkerColor(Merchant m) {
     const ORANGE = 20.0;
@@ -162,12 +161,11 @@ class MapSampleState extends State<MapSample> {
             if (counterToastGeneral >= SHOW_HINT_MAX_COUNTER) return;
             Toaster.showInstructionToast(counterToastGeneral, HINT_COUNT_TOTAL,
                 Toaster.getGeneralToastHint);
-            Toaster.incrementAndPersistToastCounter(
-                sharedPrefKeyCounterToastGeneral);
-
-            setState(() {
+            setState(() {Z
               counterToastGeneral++;
             });
+            Toaster.persistToastCounter(
+                sharedPrefKeyCounterToastGeneral, counterToastGeneral);
           },
           compassEnabled: true,
           myLocationEnabled: true,
