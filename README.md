@@ -14,6 +14,8 @@ https://bitbacker.io/user/realbitcoinclub/
 BCH:qqp0kpntfxygx3e6d4mr9c5ef5ucxdcjk5zkgtevss
 DASH:XiHdw8SVoNtJqno6GnxKQS2Snxh7BTuR39
 
+https://bitcoinmap.cash/bitcoin-bch-dash-qr-code-generator?bch=qqp0kpntfxygx3e6d4mr9c5ef5ucxdcjk5zkgtevss&dash=XiHdw8SVoNtJqno6GnxKQS2Snxh7BTuR39
+
 # Coinector - Coinnect the coimunity
 
 This app provides a horizontally and vertically scrollable list of card items containing all merchants accepting BCH or DASH payments worldwide.
