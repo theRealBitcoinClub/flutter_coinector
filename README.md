@@ -4,7 +4,7 @@ https://play.google.com/store/apps/details?id=cash.bitcoinmap.coinector
 
 # Build Status
 
-[![Codemagic build status](https://api.codemagic.io/apps/5c883f703bcac0000cbf2083/5c883f703bcac0000cbf2082/status_badge.svg)](https://codemagic.io/apps/5c883f703bcac0000cbf2083/5c883f703bcac0000cbf2082/latest_build)
+[![Codemagic build status](https://api.codemagic.io/apps/5c883f703bcac0000cbf2083/5cc62bc2a9b785001a323313/status_badge.svg)](https://codemagic.io/apps/5c883f703bcac0000cbf2083/5cc62bc2a9b785001a323313/latest_build)
 
 # Support
 
