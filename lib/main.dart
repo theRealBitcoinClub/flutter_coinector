@@ -20,6 +20,7 @@ import 'MyColors.dart';
 import 'SearchDemoSearchDelegate.dart';
 import 'Suggestions.dart';
 import 'Tag.dart';
+import 'Toaster.dart';
 import 'pages.dart';
 /*import 'package:flutter_i18n/flutter_i18n_delegate.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
@@ -93,34 +94,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     } else {
       this.isUnfilteredList = false;
     }
-/*
-    if (response == null)
-      response =
-          await dio.get('https://raw.githubusercontent.com/theRealBitcoinClub/BITCOINMAP.CASH---Browser-PWA/master/public/places8.json');
-          //TODO load all files from server and save them locally
-          //TODO get data from server, add push notifications for new spots, in that case apps looses offline capabilities...
-         //TODO manually confirm places, create gif with online tools, upload it to github, once inside of github and reviewed it is published on the map
-          //TODO get data from server, additionally to the places which are hardcoded, simply load another additional list which gets synced each month with a new release of the app
-  */
-    try {
-      FileCache.initLastVersion(() async {
-        //has new version
-        if (fileName != null) {
-          FileCache.loadFromWebAndPersistCache(fileName);
-        } else {
-          FileCache.loadFromWebAndPersistCache('am');
-          FileCache.loadFromWebAndPersistCache('as');
-          FileCache.loadFromWebAndPersistCache('au');
-          FileCache.loadFromWebAndPersistCache('as-jap');
-          FileCache.loadFromWebAndPersistCache('am-ven-car');
-          FileCache.loadFromWebAndPersistCache('am-ven');
-          FileCache.loadFromWebAndPersistCache('e');
-          FileCache.loadFromWebAndPersistCache('e-spa');
-        }
-      });
-    } catch (e) {
-      FileCache.forceUpdateNextTime();
-    }
+    checkForUpdatedData();
 
     initListModel();
 
@@ -130,6 +104,32 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     } else {
       loadAndParseAsset(filterWordIndex, locationFilter, fileName);
     }
+  }
+
+  void checkForUpdatedData() {
+    try {
+      FileCache.initLastVersion(() async {
+        //has new version
+        updateAllCachedContent();
+        //TODO add toast/local push notifications for new spots
+        Toaster.showWarning("UPDATED SUCCESSFULLY! RESTART APP!");
+      });
+    } catch (e) {
+      FileCache.forceUpdateNextTime();
+    }
+  }
+
+  void updateAllCachedContent() {
+    FileCache.loadFromWebAndPersistCache('am');
+    FileCache.loadFromWebAndPersistCache('as');
+    FileCache.loadFromWebAndPersistCache('au');
+    FileCache.loadFromWebAndPersistCache('as-jap');
+    FileCache.loadFromWebAndPersistCache('am-ven-car');
+    FileCache.loadFromWebAndPersistCache('am-ven');
+    FileCache.loadFromWebAndPersistCache('e');
+    FileCache.loadFromWebAndPersistCache('e-spa');
+    FileCache.loadFromWebAndPersistCache('addr');
+    FileCache.loadFromWebAndPersistCache('placesId');
   }
 
   void loadAndParseAllPlaces(int filterWordIndex, String locationFilter) {

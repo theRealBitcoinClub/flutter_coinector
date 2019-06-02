@@ -65,6 +65,7 @@ class CardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     TextStyle textStyleBody1 = Theme.of(context).textTheme.body1;
     TextStyle textStyleBody2 = Theme.of(context).textTheme.body2;
 
@@ -342,6 +343,7 @@ class CardItem extends StatelessWidget {
       },
     );
   }
+
 
   void handleReviewClick(context) async {
     if (merchant.place == null) {

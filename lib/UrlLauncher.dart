@@ -61,6 +61,22 @@ class UrlLauncher {
     launchURI(url);
   }
 
+  static void launchQrCodeGeneratorUrl(context,
+      {String bch = "", String dash = ""}) async {
+    String targetUrl =
+        "http://bitcoinmap.cash/bitcoin-bch-dash-qr-code-generator.html";
+    if (bch.isNotEmpty) {
+      targetUrl += "?bch=" + bch;
+      if (dash.isNotEmpty) {
+        targetUrl += "&dash=" + dash;
+      }
+    } else if (dash.isNotEmpty) {
+      targetUrl += "?dash=" + dash;
+    }
+
+    launchURI(targetUrl);
+  }
+
   static String getDASHReceiverAdr(hasInput) {
     return hasInput ? ",en-dash@therealbitcoin.club" : "";
   }

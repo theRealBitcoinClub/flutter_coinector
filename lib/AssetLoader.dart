@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 
+import 'FileCache.dart';
 import 'Place.dart';
 
 class AssetLoader {
@@ -107,19 +108,10 @@ class AssetLoader {
     return addr;
   }
 
-  /*static Future<String> loadPlacesId(String id) async {
-    String addr = "";
-    List addresses =
-        await AssetLoader.loadAndEncodeAsset("assets/placesId.json");
-    addresses.forEach((item) {
-      var itemId = item['p'];
-      if (itemId == id) {
-        addr = item['id'];
-      }
-    });
-    return addr;
-  }*/
   var placesIdCache;
+
+//TODO forward the user inside the app to the sites of http://bitcoinmap.cash/qrbch?adr=fgdsg & qrdash
+  //TODO offer him a download pdf/preview button on the create page
 
 
   //TODO remove shareID from placesId asset to boost load time
@@ -127,9 +119,15 @@ class AssetLoader {
   //TODO generate PDF file within flutter to create immediatly after submitting
   Future<Place> loadPlace(String id) async {
     if (placesIdCache == null) {
-      var response = await new Dio().get(
-          'https://raw.githubusercontent.com/theRealBitcoinClub/flutter_coinector/master/assets/placesId.json');
-      placesIdCache = json.decode(response.data);
+      String data = await FileCache.getCachedAssetWithDefaultFallback("placesId");
+      if (data.isNotEmpty) {
+        placesIdCache = json.decode(data);
+      } else {
+        var response = await new Dio().get(
+            'https://raw.githubusercontent.com/theRealBitcoinClub/flutter_coinector/master/assets/placesId.json');
+        placesIdCache = json.decode(response.data);
+        FileCache.writeCache("placesId", response.data.toString());
+      }
     }
     //var p = await AssetLoader.loadAndDecodeAsset("assets/placesId.json");
 
