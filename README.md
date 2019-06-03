@@ -1,3 +1,13 @@
+# Adding places
+
+1. User can download a PDF file with QR Codes after adding a place
+2. The user who sends an Email to add a place triggers to create an Issue on Gitlab & Github:
+https://gitlab.com/bmap.cash/bmap.cash/issues & https://github.com/theRealBitcoinClub/bmap.cash/issues
+3. Places can be updated via Github repository:
+https://raw.githubusercontent.com/theRealBitcoinClub/flutter_coinector/master/assets/places
+4. Images must be added to the main repo of bmap.cash:
+https://github.com/theRealBitcoinClub/BITCOINMAP.CASH---Browser-PWA/raw/master/public/img/app/
+
 # Google Play
 
 https://play.google.com/store/apps/details?id=cash.bitcoinmap.coinector
