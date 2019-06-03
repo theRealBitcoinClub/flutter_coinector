@@ -274,8 +274,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             Toaster.showAddExactlyFourTags();
             return;
           }
-          if (inputBCH.length < MIN_INPUT_BCHyDASH &&
-              inputDASH.length < MIN_INPUT_BCHyDASH) {
+          if (!hasMinInput(inputBCH) && !hasMinInput(inputDASH)) {
             Toaster.showAddAtleastOneReceivingAddress();
             return;
           }
@@ -284,10 +283,17 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
               inputDASH, inputBCH, buildJsonToSubmitViaEmail(), () {
             Toaster.showToastEmailNotConfigured();
           });
+          Dialogs.confirmDownloadPdf(context, () {
+            UrlLauncher.launchQrCodeGeneratorUrl(
+                dash: hasMinInput(inputDASH) ? inputDASH : "",
+                bch: hasMinInput(inputBCH) ? inputBCH : "");
+          });
         },
         icon: Icon(Icons.send),
         label: Text(" SEND"));
   }
+
+  bool hasMinInput(input) => input.length > MIN_INPUT_BCHyDASH;
 
   Column buildColumnDASHyBCH() {
     return Column(

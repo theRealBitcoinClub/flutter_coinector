@@ -110,13 +110,9 @@ class AssetLoader {
 
   var placesIdCache;
 
-//TODO forward the user inside the app to the sites of http://bitcoinmap.cash/qrbch?adr=fgdsg & qrdash
   //TODO offer him a download pdf/preview button on the create page
-
-
   //TODO remove shareID from placesId asset to boost load time
   //TODO split contents in one file for each continent
-  //TODO generate PDF file within flutter to create immediatly after submitting
   Future<Place> loadPlace(String id) async {
     if (placesIdCache == null) {
       String data = await FileCache.getCachedAssetWithDefaultFallback("placesId");

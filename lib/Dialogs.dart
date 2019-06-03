@@ -1,6 +1,37 @@
 import 'package:flutter/material.dart';
 
 class Dialogs {
+  static void confirmDownloadPdf(BuildContext context, callbackYes) {
+    showDialog(
+        context: context,
+        builder: (BuildContext ctx) {
+          return AlertDialog(
+            backgroundColor: Colors.grey[900],
+            content: Text("Do you want to download a PDF file containing QR-Codes?"),
+            title: Row(
+              children: <Widget>[
+                Icon(Icons.warning),
+                Text(" QR-Codes?", style: TextStyle(color: Colors.white))
+              ],
+            ),
+            actions: <Widget>[
+              FlatButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text("NO"),
+              ),
+              FlatButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  callbackYes();
+                },
+                child: Text("YES"),
+              )
+            ],
+          );
+        });
+  }
   static void confirmShowResetTags(BuildContext context, callbackYes) {
     showDialog(
         context: context,

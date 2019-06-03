@@ -61,10 +61,9 @@ class UrlLauncher {
     launchURI(url);
   }
 
-  static void launchQrCodeGeneratorUrl(context,
-      {String bch = "", String dash = ""}) async {
+  static void launchQrCodeGeneratorUrl({String bch = "", String dash = ""}) async {
     String targetUrl =
-        "http://bitcoinmap.cash/bitcoin-bch-dash-qr-code-generator.html";
+        "http://bitcoinmap.cash/bitcoin-bch-dash-qr-code-generator";
     if (bch.isNotEmpty) {
       targetUrl += "?bch=" + bch;
       if (dash.isNotEmpty) {
