@@ -58,19 +58,19 @@ class Tag {
         !Tag.tagTextJP2.contains(searchTerm)) return -1;
 
     int result = -1;
-    if ((result = findTagIndex(searchTerm, Tag.tagText)) == -1)
-      if ((result = findTagIndex(searchTerm, Tag.tagTextES)) == -1)
-        if ((result = findTagIndex(searchTerm, Tag.tagTextDE)) == -1)
-          if ((result = findTagIndex(searchTerm, Tag.tagTextFR)) == -1)
-            if ((result = findTagIndex(searchTerm, Tag.tagTextIT)) == -1)
-              if ((result = findTagIndex(searchTerm, Tag.tagTextINDONESIA)) == -1)
-                if ((result = findTagIndex(searchTerm, Tag.tagTextJP1)) == -1)
-                  result = findTagIndex(searchTerm, Tag.tagTextJP2);
+    if ((result = _findTagIndex(searchTerm, Tag.tagText)) == -1)
+      if ((result = _findTagIndex(searchTerm, Tag.tagTextES)) == -1)
+        if ((result = _findTagIndex(searchTerm, Tag.tagTextDE)) == -1)
+          if ((result = _findTagIndex(searchTerm, Tag.tagTextFR)) == -1)
+            if ((result = _findTagIndex(searchTerm, Tag.tagTextIT)) == -1)
+              if ((result = _findTagIndex(searchTerm, Tag.tagTextINDONESIA)) == -1)
+                if ((result = _findTagIndex(searchTerm, Tag.tagTextJP1)) == -1)
+                  result = _findTagIndex(searchTerm, Tag.tagTextJP2);
 
     return result;
   }
 
-  static int findTagIndex(String searchTerm, tags) {
+  static int _findTagIndex(String searchTerm, tags) {
     for (int i = 0; i < tags.length; i++) {
       String item = tags.elementAt(i);
       if (item == searchTerm) {

@@ -362,6 +362,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       Dialogs.confirmShowResetTags(ctx, () {
         setState(() {
           allSelectedTags = Set.from([]);
+          searchTagsDelegate.alreadySelected = Set.from([]);
           showInputDASHyBCH = false;
           showSubmitBtn = false;
         });
@@ -373,17 +374,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       context: ctx,
       delegate: searchTagsDelegate,
     );
+
     if (selected == null || selected.isEmpty) return;
 
-    int sizeBefore = allSelectedTags.length;
-
     addSelectedTag(selected);
-    //TODO do not show items in the list which have already been selected
-    if (sizeBefore == allSelectedTags.length) {
-      Toaster.showWarning(
-          "You selected the same tag twice! Please choose again!");
-      return;
-    }
 
     if (allSelectedTags.length == MAX_INPUT_TAGS) {
       setState(() {
@@ -528,6 +522,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     setState(() {
       allSelectedTags.add(selected);
     });
+    searchTagsDelegate.alreadySelected.add(Tag.getTagIndex(selected));
   }
 
   String buildJsonToSubmitViaEmail() {

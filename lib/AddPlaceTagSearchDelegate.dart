@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'SearchDemoSearchDelegate.dart';
 import 'SuggestionList.dart';
 import 'Tag.dart';
+import 'Toaster.dart';
 
 class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
+  Set<int> alreadySelected = Set.from([]);
+
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
@@ -20,7 +23,7 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
   }
 
   _getSuggestions(String pattern) {
-    List<String> matches = new List();
+    Set<String> matches = Set.from([]);
 
     addMatches(pattern, matches, Tag.tagText);
     addMatches(pattern, matches, Tag.tagTextES);
@@ -38,14 +41,14 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
     return matches;
   }
 
-  void addMatches(String pattern, List<String> matches, set) {
+  void addMatches(String pattern, Set<String> matches, set) {
     for (int x = 0; x < set.length; x++) {
       addMatch(x, pattern, matches, set.elementAt(x));
     }
   }
 
   void addMatch(
-      int x, String pattern, List<String> matches, String currentItem) {
+      int x, String pattern, Set<String> matches, String currentItem) {
     if (startsWith(currentItem, pattern)) {
       matches.add(currentItem);
     }
@@ -58,40 +61,52 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
   static const COINECTOR_SUPPORTS_MANY_LANGUAGES =
       "🇪🇸 🇩🇪 🇫🇷 🇮🇹 🇬🇧 🇯🇵 🇮🇩";
 
+  Set<String> unfilteredSuggestions;
+
   @override
   Widget buildSuggestions(BuildContext context) {
-    List<String> suggestions = [
+    Set<String> suggestions = Set.from([
       COINECTOR_SUPPORTS_MANY_LANGUAGES,
       YOU_CAN_SCROLL
-    ];
-    if (query.isEmpty) {
-      suggestions.addAll(Tag.tagText);
-      //TODO show the device language FIRST
-      suggestions.addAll(cleanSuggestions(Tag.tagTextES));
-      suggestions.addAll(cleanSuggestions(Tag.tagTextDE));
-      suggestions.addAll(cleanSuggestions(Tag.tagTextFR));
-      suggestions.addAll(cleanSuggestions(Tag.tagTextIT));
-      suggestions.addAll(cleanSuggestions(Tag.tagTextINDONESIA));
-      suggestions.addAll(cleanSuggestions(Tag.tagTextJP1));
-      suggestions.addAll(cleanSuggestions(Tag.tagTextJP2));
+    ]);
+
+    if (unfilteredSuggestions != null && query.isEmpty)
+      suggestions = unfilteredSuggestions;
+    else if (query.isEmpty) {
+      addAllTagsInAllLanguages(suggestions);
+      unfilteredSuggestions = suggestions;
     } else {
-      suggestions = _getSuggestions(query);
+      suggestions = cleanSuggestions(_getSuggestions(query));
     }
 
     return SuggestionList(
       query: query,
       suggestions: suggestions.map<String>((String i) => i).toList(),
       onSelected: (String match) {
+        unfilteredSuggestions = null;
         close(context, match);
       },
     );
+  }
+
+  void addAllTagsInAllLanguages(Set<String> suggestions) {
+    suggestions.addAll(cleanSuggestions(Tag.tagText));
+    //TODO show the device language FIRST
+    suggestions.addAll(cleanSuggestions(Tag.tagTextES));
+    suggestions.addAll(cleanSuggestions(Tag.tagTextDE));
+    suggestions.addAll(cleanSuggestions(Tag.tagTextFR));
+    suggestions.addAll(cleanSuggestions(Tag.tagTextIT));
+    suggestions.addAll(cleanSuggestions(Tag.tagTextINDONESIA));
+    suggestions.addAll(cleanSuggestions(Tag.tagTextJP1));
+    suggestions.addAll(cleanSuggestions(Tag.tagTextJP2));
   }
 
   @override
   void showResults(BuildContext context) {
     //DONT SHOW ANY RESULTS HERE, SIMPLY REMOVE THE WIDGET
     //THIS METHOD IS CALLED WHEN USER HITS THE SEARCH ICON OF THE KEYBOARD LAYOUT
-    close(context, null);
+    Toaster.showWarning("Please select a suggestion from the list!");
+    //close(context, null);
   }
 
   @override
@@ -117,12 +132,27 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
 
   Iterable<String> cleanSuggestions(Iterable<String> suggestions) {
     List<String> cleanSuggestions = [];
+    int index=0;
     suggestions.forEach((String suggestion) {
       if (!suggestion.contains("🍔🍔🍔")) {
-        cleanSuggestions.add(suggestion);
+        cleanSuggestions = checkIfAlreadySelectedAndAddIfNot(index++, suggestion, cleanSuggestions);
       }
     });
     return cleanSuggestions;
   }
-//TODO Whenever a country specific suggestions startsWith "🍔🍔🍔" you should use the english variant instead
+
+  List<String> checkIfAlreadySelectedAndAddIfNot(int index, String suggestion, List<String> cleanSuggestions) {
+    alreadySelected.forEach((suggestionIndex) {
+      if (suggestionIndex != index) {
+        cleanSuggestions.add(suggestion);
+      } else {
+        print("filtered already selected item:" + suggestion + " index:" + index.toString());
+      }
+    });
+
+    if (alreadySelected.length == 0)
+      cleanSuggestions.add(suggestion);
+
+    return cleanSuggestions;
+  }
 }

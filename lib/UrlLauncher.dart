@@ -6,14 +6,6 @@ import 'Merchant.dart';
 import 'Toaster.dart';
 
 class UrlLauncher {
-  static void launchMapInBrowser() async {
-    //LaunchReview.launch(androidAppId: "club.therealbitcoin.bchmap");
-    //LaunchReview.launch();
-    var url =
-        'https://play.google.com/store/apps/details?id=club.therealbitcoin.bchmap';
-    launchURI(url);
-  }
-
   static void launchURI(url) async {
     if (await canLaunch(url)) {
       await launch(url);
@@ -27,15 +19,6 @@ class UrlLauncher {
   //LaunchReview.launch(writeReview: false,iOSAppId: "585027354");
   //LaunchReview.launch(androidAppId: "com.iyaffle.rangoli",
   //                    iOSAppId: "585027354");
-
-  static void launchMapInPlayStoreFallbackToBrowser() async {
-    var url = 'market://details?id=club.therealbitcoin.bchmap';
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      launchMapInBrowser();
-    }
-  }
 
   static void launchReviewUrl(context, place) async {
     var url =
