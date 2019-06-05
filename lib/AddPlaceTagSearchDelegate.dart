@@ -41,9 +41,10 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
     return matches;
   }
 
-  void addMatches(String pattern, Set<String> matches, set) {
-    for (int x = 0; x < set.length; x++) {
-      addMatch(x, pattern, matches, set.elementAt(x));
+  void addMatches(String pattern, Set<String> matches, sourceSet) {
+    for (int x = 0; x < sourceSet.length; x++) {
+      if (alreadySelected.contains(x)) continue;
+      addMatch(x, pattern, matches, sourceSet.elementAt(x));
     }
   }
 
@@ -65,18 +66,16 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    Set<String> suggestions = Set.from([
-      COINECTOR_SUPPORTS_MANY_LANGUAGES,
-      YOU_CAN_SCROLL
-    ]);
+    Set<String> suggestions =
+        Set.from([COINECTOR_SUPPORTS_MANY_LANGUAGES, YOU_CAN_SCROLL]);
 
     if (unfilteredSuggestions != null && query.isEmpty)
       suggestions = unfilteredSuggestions;
     else if (query.isEmpty) {
-      addAllTagsInAllLanguages(suggestions);
+      suggestions = addAllTagsInAllLanguages(suggestions);
       unfilteredSuggestions = suggestions;
     } else {
-      suggestions = cleanSuggestions(_getSuggestions(query));
+      suggestions = _getSuggestions(query);
     }
 
     return SuggestionList(
@@ -89,7 +88,7 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
     );
   }
 
-  void addAllTagsInAllLanguages(Set<String> suggestions) {
+  Set<String> addAllTagsInAllLanguages(Set<String> suggestions) {
     suggestions.addAll(cleanSuggestions(Tag.tagText));
     //TODO show the device language FIRST
     suggestions.addAll(cleanSuggestions(Tag.tagTextES));
@@ -99,6 +98,7 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
     suggestions.addAll(cleanSuggestions(Tag.tagTextINDONESIA));
     suggestions.addAll(cleanSuggestions(Tag.tagTextJP1));
     suggestions.addAll(cleanSuggestions(Tag.tagTextJP2));
+    return suggestions;
   }
 
   @override
@@ -130,29 +130,26 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
     ];
   }
 
-  Iterable<String> cleanSuggestions(Iterable<String> suggestions) {
-    List<String> cleanSuggestions = [];
-    int index=0;
+  Set<String> cleanSuggestions(Set<String> suggestions) {
+    Set<String> cleanSuggestions = Set.from([]);
+    int index = 0;
+
     suggestions.forEach((String suggestion) {
       if (!suggestion.contains("🍔🍔🍔")) {
-        cleanSuggestions = checkIfAlreadySelectedAndAddIfNot(index++, suggestion, cleanSuggestions);
+        cleanSuggestions = checkIfAlreadySelectedAndAddIfNot(
+            index, suggestion, cleanSuggestions);
       }
+      index++;
     });
     return cleanSuggestions;
   }
 
-  List<String> checkIfAlreadySelectedAndAddIfNot(int index, String suggestion, List<String> cleanSuggestions) {
-    alreadySelected.forEach((suggestionIndex) {
-      if (suggestionIndex != index) {
-        cleanSuggestions.add(suggestion);
-      } else {
-        print("filtered already selected item:" + suggestion + " index:" + index.toString());
-      }
-    });
-
-    if (alreadySelected.length == 0)
+  Set<String> checkIfAlreadySelectedAndAddIfNot(
+      int currenItemIndex, String suggestion, Set<String> cleanSuggestions) {
+    if (alreadySelected.length == 0 ||
+        !alreadySelected.contains(currenItemIndex)) {
       cleanSuggestions.add(suggestion);
-
+    }
     return cleanSuggestions;
   }
 }

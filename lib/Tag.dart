@@ -45,9 +45,7 @@ class Tag {
     ]
   ];
 
-
-
- static int getTagIndex(String searchTerm) {
+  static int getTagIndex(String searchTerm) {
     if (!Tag.tagText.contains(searchTerm) &&
         !Tag.tagTextES.contains(searchTerm) &&
         !Tag.tagTextDE.contains(searchTerm) &&
@@ -58,14 +56,18 @@ class Tag {
         !Tag.tagTextJP2.contains(searchTerm)) return -1;
 
     int result = -1;
-    if ((result = _findTagIndex(searchTerm, Tag.tagText)) == -1)
-      if ((result = _findTagIndex(searchTerm, Tag.tagTextES)) == -1)
-        if ((result = _findTagIndex(searchTerm, Tag.tagTextDE)) == -1)
-          if ((result = _findTagIndex(searchTerm, Tag.tagTextFR)) == -1)
-            if ((result = _findTagIndex(searchTerm, Tag.tagTextIT)) == -1)
-              if ((result = _findTagIndex(searchTerm, Tag.tagTextINDONESIA)) == -1)
-                if ((result = _findTagIndex(searchTerm, Tag.tagTextJP1)) == -1)
-                  result = _findTagIndex(searchTerm, Tag.tagTextJP2);
+    if ((result = _findTagIndex(searchTerm, Tag.tagText)) == -1) if ((result =
+            _findTagIndex(searchTerm, Tag.tagTextES)) ==
+        -1) if ((result =
+            _findTagIndex(searchTerm, Tag.tagTextDE)) ==
+        -1) if ((result =
+            _findTagIndex(searchTerm, Tag.tagTextFR)) ==
+        -1) if ((result =
+            _findTagIndex(searchTerm, Tag.tagTextIT)) ==
+        -1) if ((result =
+            _findTagIndex(searchTerm, Tag.tagTextINDONESIA)) ==
+        -1) if ((result = _findTagIndex(searchTerm, Tag.tagTextJP1)) == -1)
+      result = _findTagIndex(searchTerm, Tag.tagTextJP2);
 
     return result;
   }
@@ -701,14 +703,15 @@ class Tag {
     'hea katto ✂ ️ ',
     'kyandi 🍭',
     'utsukushi-sa 💅',
-    'miso 🍱',
+    '🍔🍔🍔miso 🍱',
     'chokorēto 🍫',
-    'Amerika 🍚',
+    'gohan 🍚',
     'shīfūdo 🦀',
     'hosuteru 🛏️ ',
     'furaidopoteto',
     '-gyo 🐟',
-    'chippu' 'Itaria-go 🇮🇹',
+    'chippu',
+    'Itaria-go 🇮🇹',
     'uisukī 🥃',
     'ramu 🥃',
     'Burubon 🥃',
@@ -722,7 +725,7 @@ class Tag {
     'Kankoku-go 🥟',
     'māketto 🧺',
     '🍔🍔🍔pan 🥖',
-    'panyasan',
+    'panyasan 🥖',
     'kafe ☕',
     'gēmu',
     'sunakku 🍿',
@@ -734,7 +737,7 @@ class Tag {
     'chōshoku 🥐',
     '🍔🍔🍔HappyHour 🥳',
     '🍔🍔🍔LateNight 🌜',
-    'mekishikan 🇯🇽',
+    'mekishikan 🇲🇽',
     'buritō 🌯',
     'torutīya 🌮',
     'Indoneshia-go 🇮🇩',

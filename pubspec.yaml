@@ -63,6 +63,10 @@ dev_dependencies:
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
 
+
+  flutter_localizations:
+    sdk: flutter
+
 # The following section is specific to Flutter.
 flutter:
 
