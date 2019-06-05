@@ -111,8 +111,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     try {
       FileCache.initLastVersion(() async {
         //has new version
+        Toaster.showWarning("APP UPDATED! PLEASE RESTART!");
         updateAllCachedContent();
-        Toaster.showWarning("UPDATE SUCCESS! RESTART APP!");
       });
     } catch (e) {
       FileCache.forceUpdateNextTime();
@@ -457,7 +457,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         .promptUserForPushNotificationPermission(fallbackToSettings: true);
   }
 
-  initLastSavedPos() async {
+  initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition() async {
     var position = await getLatestSavedPosition();
     if (position != null && position.isNotEmpty) {
       setState(() {
@@ -477,7 +477,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   @override
   void initState() {
     super.initState();
-    initLastSavedPos();
+    initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition();
     initOneSignalPushMessages();
     searchDelegate.buildHistory();
     tabController = TabController(vsync: this, length: Pages.pages.length);
@@ -904,14 +904,19 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     }
 
     var index = Tag.getTagIndex(selectedLocationOrTag);
-    showMatchingSnackBar(ctx, fileName, search, index);
+    showMatchingSnackBar(ctx, fileName, capitalize(search), index);
 
     loadAssets(index, search, fileName);
 
     setState(() {
       _searchTerm = search;
-      titleActionBar = search;
+      titleActionBar = capitalize(search);
     });
+  }
+
+  String capitalize(String search) {
+    return search.substring(0, 1).toUpperCase() +
+        search.substring(1, search.length);
   }
 
   void showMatchingSnackBar(ctx, String fileName, String search, int index) {

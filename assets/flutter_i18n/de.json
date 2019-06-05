@@ -10,5 +10,13 @@
   "dialog_close" : " SCHLIESSEN",
   "dialog_are_you_hungry" : "Hast du Hunger?",
   "dialog_search_favo_food" : "Suche dein Lieblingsessen:\\n\\n  \uD83C\uDF54 Burger     \uD83C\uDF70 Nachtisch\\n\\n  \uD83E\uDD57 Salat      \uD83D\uDC2E Vegan\\n\\n  \uD83C\uDDEE\uD83C\uDDF9 Ital.      \uD83C\uDF55 Pizza",
-  "floatbutton_add" : "HINZUFÜGEN: "
+  "floatbutton_add" : "HINZUFÜGEN: ",
+  "EAT" : "RESTAURANT",
+  "TOGO" : "ZUM MITNEHMEN",
+  "BAR" : "BAR, CLUB, CAFE",
+  "MARKET" : "SUPERMARKT",
+  "HOTEL" : "HOTEL & ZIMMER",
+  "SPA" : "WELLNESS & SPA",
+  "SHOP" : "EINKAUFEN & MODE",
+  "toast_update_succesfull" : "UPDATE ERFOLGREICH! APP NEUSTARTEN!"
 }

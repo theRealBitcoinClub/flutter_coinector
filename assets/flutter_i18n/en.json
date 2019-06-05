@@ -17,5 +17,6 @@
   "MARKET" : "SUPERMARKET",
   "HOTEL" : "HOTEL & BnB",
   "SPA" : "WELLNESS & SPA",
-  "SHOP" : "SHOP & FASHION"
+  "SHOP" : "SHOP & FASHION",
+  "toast_update_succesfull" : "UPDATE SUCCESS! RESTART APP!"
 }
