@@ -59,15 +59,14 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   String inputName;
   String inputAdr;
+  String inputBCH = "";
+  String inputDASH = "";
   bool showSubmitBtn = false;
   bool showInputDASHyBCH = false;
   bool showInputAdr = false;
   bool showInputTags = false;
 
   Set<String> allSelectedTags = Set.from([]);
-
-  String inputBCH = "";
-  String inputDASH = "";
 
   var scrollController = ScrollController();
 

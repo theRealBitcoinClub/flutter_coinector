@@ -43,7 +43,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   List<Merchant> names = new List<Merchant>(); // names we get from API
   List<ListModel<Merchant>> tempLists = [];
   List<ListModel<Merchant>> unfilteredLists = [];
-  String _title = "Coinector";
+  String titleActionBar = "Coinector";
+  String addButtonCategory = "Restaurant";
   bool isUnfilteredList = false;
   bool
       hasHitSearch; //TODO count user activity by how often he hits search, how much he interacts with the app, reward him for that with badges
@@ -111,8 +112,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       FileCache.initLastVersion(() async {
         //has new version
         updateAllCachedContent();
-        //TODO add toast/local push notifications for new spots
-        Toaster.showWarning("UPDATED SUCCESSFULLY! RESTART APP!");
+        Toaster.showWarning("UPDATE SUCCESS! RESTART APP!");
       });
     } catch (e) {
       FileCache.forceUpdateNextTime();
@@ -401,7 +401,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   _handleTabSelection() {
-    if (!isFilteredList()) updateTitle();
+    if (!isFilteredList()) updateTitleToCurrentlySelectedTab();
+    updateAddButtonCategory();
     initCurrentPositionIfNotInitialized();
     updateDistanceToAllMerchantsIfNotDoneYet();
   }
@@ -543,9 +544,15 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     }
   }
 
-  void updateTitle() {
+  void updateTitleToCurrentlySelectedTab() {
     setState(() {
-      _title = getTitleOfSelectedTab();
+      titleActionBar = getTitleOfSelectedTab();
+    });
+  }
+
+  void updateAddButtonCategory() {
+    setState(() {
+      addButtonCategory = getTitleOfSelectedTab();
     });
   }
 
@@ -622,7 +629,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
               onPressed: () {
                 openAddNewPlaceWidget(builderCtx);
               },
-              label: Text('ADD ' + getTitleOfSelectedTab()),
+              label: Text('ADD ' + addButtonCategory),
               icon: Icon(Icons.add_location)),
         ),
         body: new Builder(builder: (BuildContext ctx) {
@@ -675,7 +682,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                             //TODO fix animation, how to switch animted with a fade transition?
                             duration: Duration(milliseconds: 500),
                             child: Text(
-                              _title,
+                              titleActionBar,
                               style: TextStyle(
                                   fontSize: 22.0,
                                   fontWeight: FontWeight.w300,
@@ -895,7 +902,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
     setState(() {
       _searchTerm = search;
-      _title = search;
+      titleActionBar = search;
     });
   }
 
@@ -915,13 +922,13 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   void showUnfilteredLists(ctx) {
     zoomMapAfterSelectLocation = false;
     mapPosition = null;
-    updateTitle();
+    updateTitleToCurrentlySelectedTab();
     if (isFilteredList()) {
       _searchTerm = '';
       loadAssetsUnfiltered();
     }
     //showSnackBar(ctx, "snackbar.showing_unfiltered_list");
-    showSnackBar(ctx, "Showing unfiltered list...");
+    showSnackBar(ctx, "Showing all places...");
   }
 
   bool isFilteredList() => _searchTerm != null && _searchTerm.isNotEmpty;
