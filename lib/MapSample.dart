@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
@@ -53,44 +54,57 @@ class MapSampleState extends State<MapSample> {
   void initState() {
     super.initState();
     initToastCounter();
-    allMarkers.clear();
     if (position != null)
       initialCamPosFallback = CameraPosition(
           target: LatLng(position.latitude, position.longitude),
           zoom: initialZoomLevel);
-
+/*
     if (allLists != null) {
-      var latLng;
-      for (int tabCounter = 0; tabCounter < allLists.length; tabCounter++) {
-        ListModel<Merchant> listMerchants = allLists[tabCounter];
-        for (int itemCounter = 0;
-            itemCounter < listMerchants.length;
-            itemCounter++) {
-          var merchant = listMerchants[itemCounter];
-          latLng = LatLng(double.parse(merchant.x), double.parse(merchant.y));
-          allMarkers.add(Marker(
-              onTap: () {
-                if (counterToastSpecific >= SHOW_HINT_MAX_COUNTER) return;
-                Toaster.showInstructionToast(counterToastSpecific,
-                    HINT_COUNT_TOTAL, Toaster.getMerchantSpecificToastHint);
+      parseListAndZoomToSingleResult();
+    }*/
+  }
 
-                setState(() {
-                  counterToastSpecific++;
-                });
-                Toaster.persistToastCounter(
-                    sharedPrefKeyCounterToastSpecific, counterToastSpecific);
-              },
-              infoWindow: buildInfoWindow(merchant),
-              icon: getMarkerColor(merchant),
-              markerId: MarkerId(merchant.id),
-              position: latLng));
-        }
-      }
-      if (allMarkers.length == 1) {
-        initialCamPosFallback = CameraPosition(
-            target: latLng, zoom: initialZoomFallbackWhenPositionIsProvided);
+  Set<Marker> parseListAndZoomToSingleResult() {
+    allMarkers = parseListBuildMarkers();
+    if (allMarkers.length == 1) {
+      initialCamPosFallback = CameraPosition(
+          target: latLngLastParsedItem,
+          zoom: initialZoomFallbackWhenPositionIsProvided);
+    }
+    return allMarkers;
+  }
+
+  LatLng latLngLastParsedItem;
+
+  Set<Marker> parseListBuildMarkers() {
+    allMarkers.clear();
+    for (int tabCounter = 0; tabCounter < allLists.length; tabCounter++) {
+      ListModel<Merchant> listMerchants = allLists[tabCounter];
+      for (int itemCounter = 0;
+          itemCounter < listMerchants.length;
+          itemCounter++) {
+        var merchant = listMerchants[itemCounter];
+        latLngLastParsedItem =
+            LatLng(double.parse(merchant.x), double.parse(merchant.y));
+        allMarkers.add(Marker(
+            onTap: () {
+              if (counterToastSpecific >= SHOW_HINT_MAX_COUNTER) return;
+              Toaster.showInstructionToast(counterToastSpecific,
+                  HINT_COUNT_TOTAL, Toaster.getMerchantSpecificToastHint);
+
+              setState(() {
+                counterToastSpecific++;
+              });
+              Toaster.persistToastCounter(
+                  sharedPrefKeyCounterToastSpecific, counterToastSpecific);
+            },
+            infoWindow: buildInfoWindow(merchant),
+            icon: getMarkerColor(merchant),
+            markerId: MarkerId(merchant.id),
+            position: latLngLastParsedItem));
       }
     }
+    return allMarkers;
   }
 
   Future initToastCounter() async {
@@ -136,13 +150,14 @@ class MapSampleState extends State<MapSample> {
         onTap: () {
           closeMapReturnMerchant(merchant);
         },
-        snippet:
-            buildTypeSnippet(merchant) + " at " + buildAdrSnippet(merchant));
+        snippet: FlutterI18n.translate(context, buildTypeSnippet(merchant)) +
+            " at " +
+            buildAdrSnippet(merchant));
   }
 
   String buildTypeSnippet(Merchant m) {
-    return Pages.pages[m.type == 999 ? 6 : m.type]
-        .title; //type 999 gets mapped to tab 6
+    return Pages
+        .pages[m.type == 999 ? 6 : m.type].text; //type 999 gets mapped to tab 6
   }
 
   String buildAdrSnippet(Merchant merchant) {
@@ -177,6 +192,10 @@ class MapSampleState extends State<MapSample> {
                   ? allMarkers.elementAt(0).position
                   : initialCamPosFallback,
           onMapCreated: (GoogleMapController controller) {
+            var parsedMarkers = parseListAndZoomToSingleResult();
+            setState(() {
+              allMarkers = parsedMarkers;
+            });
             _controller.complete(controller);
           },
         ),
@@ -186,11 +205,13 @@ class MapSampleState extends State<MapSample> {
         backgroundColor: Theme.of(context).backgroundColor,
         foregroundColor: Theme.of(context).accentColor,
         onPressed: closeMapResetMerchant,
-        label: Text('CLOSE MAP'),
+        label: Text(FlutterI18n.translate(context, 'close_map')),
         icon: Icon(Icons.close),
       ),
     );
   }
+
+  //TODO delay the image load to avoid the exceptions on startup???
 
   bool hasMarkers() => allMarkers != null && allMarkers.length > 1;
 
@@ -212,5 +233,15 @@ class MapSampleState extends State<MapSample> {
   Future<void> closeMapReturnMerchant(merchant) async {
     cancelToasts();
     Navigator.of(context).pop(merchant);
+  }
+
+  int getTotalLengthOFAllLists() {
+    int index = 0;
+    allLists.forEach((ListModel<Merchant> merchants) {
+      for (int x = 0; x < merchants.length; x++) {
+        index++;
+      }
+    });
+    return index;
   }
 }
