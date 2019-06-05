@@ -22,9 +22,9 @@ import 'Suggestions.dart';
 import 'Tag.dart';
 import 'Toaster.dart';
 import 'pages.dart';
-/*import 'package:flutter_i18n/flutter_i18n_delegate.dart';
+import 'package:flutter_i18n/flutter_i18n_delegate.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';*/
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class AnimatedListSample extends StatefulWidget {
   @override
@@ -44,7 +44,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   List<ListModel<Merchant>> tempLists = [];
   List<ListModel<Merchant>> unfilteredLists = [];
   String titleActionBar = "Coinector";
-  String addButtonCategory = "Restaurant";
+  String addButtonCategory = "EAT";
   bool isUnfilteredList = false;
   bool
       hasHitSearch; //TODO count user activity by how often he hits search, how much he interacts with the app, reward him for that with badges
@@ -261,8 +261,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   void animateToFirstResult(merchant) async {
     if (tabController.indexIsChanging) return;
-    //TODO only if the current tab does not contain  result
-    //if (currentTabContainsResult()) return;
 
     if (merchant != null) {
       tabController.animateTo(merchant.type);
@@ -278,8 +276,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       }
     }
   }
-
-  /*bool currentTabContainsResult() => _lists[tabController.index].length != 0; This does not work because we call it async and we never know which is the last entry added to the list so we never know if a tab is really empty*/
 
   void initUnfilteredLists() {
     initListModelSeveralTimes(unfilteredLists, false);
@@ -481,7 +477,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   @override
   void initState() {
     super.initState();
-    //TEST CRASHLYTICS Crashlytics.instance.crash();
     initLastSavedPos();
     initOneSignalPushMessages();
     searchDelegate.buildHistory();
@@ -497,18 +492,20 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   void loadAssetsUnfiltered() => loadAssets(-999, null, null);
 
-  void showInfoDialogWithCloseButton(BuildContext context) {
+  void showInfoDialogWithCloseButton(BuildContext buildCtx) {
     showDialog(
-        context: context,
+        context: buildCtx,
         builder: (BuildContext ctx) {
           var color = Colors.white;
           var textStyle = TextStyle(color: color);
           return AlertDialog(
             backgroundColor: Colors.grey[900],
             content: Text(
-                "Search your favorite food:\n\n  🍔 Burger     🍰 Dessert\n\n  🥗 Salad      🐮 Vegan\n\n  🇮🇹 Italian      🍕 Pizza",
+                FlutterI18n.translate(buildCtx, "dialog_search_favo_food"),
                 style: textStyle),
-            title: Text("Are you hungry?", style: textStyle),
+            title: Text(
+                FlutterI18n.translate(buildCtx, "dialog_are_you_hungry"),
+                style: textStyle),
             actions: <Widget>[
               FlatButton(
                 onPressed: () {
@@ -520,7 +517,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                       Icons.close,
                       color: color,
                     ),
-                    Text(" CLOSE", style: textStyle)
+                    Text(FlutterI18n.translate(buildCtx, "dialog_close"),
+                        style: textStyle)
                   ],
                 ),
               )
@@ -552,7 +550,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   void updateAddButtonCategory() {
     setState(() {
-      addButtonCategory = getTitleOfSelectedTab();
+      addButtonCategory = Pages.pages[tabController.index].text;
     });
   }
 
@@ -573,27 +571,28 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   //TODO make use of theme styles everywhere and add switch theme button
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext ctxRoot) {
     /*new Future.delayed(Duration.zero, () async {
       FlutterI18n.currentLocale(context);
     });*/
+    final FlutterI18nDelegate i18nDelegate =
+        FlutterI18nDelegate(/* path: "assets/i18n" */ fallbackFile: 'en');
     return MaterialApp(
-      /*localizationsDelegates: [
-        FlutterI18nDelegate(
-            useCountryCode: false, fallbackFile: 'en', path: "assets/i18n"),
+      localizationsDelegates: [
+        i18nDelegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate
       ],
       supportedLocales: [
-        const Locale('de', 'DE'),
-        const Locale('it', 'IT'),
-        const Locale('es', 'ES'),
-        const Locale('en', 'US'),
-        const Locale('ja', 'JP'),
-        const Locale('id', 'ID'),
-        const Locale('ja', 'JP'),
-        const Locale('fr', 'FR')
-      ],*/
+        const Locale('de'),
+        const Locale('it'),
+        const Locale('es'),
+        const Locale('en'),
+        const Locale('ja'),
+        const Locale('id'),
+        const Locale('ja'),
+        const Locale('fr')
+      ],
       theme: ThemeData(
         // Define the default Brightness and Colors
         brightness: Brightness.dark,
@@ -629,13 +628,22 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
               onPressed: () {
                 openAddNewPlaceWidget(builderCtx);
               },
-              label: Text('ADD ' + addButtonCategory),
+              label: Text(FlutterI18n.translate(builderCtx, "floatbutton_add") +
+                  FlutterI18n.translate(
+                      builderCtx, addButtonCategory.toUpperCase())),
               icon: Icon(Icons.add_location)),
         ),
         body: new Builder(builder: (BuildContext ctx) {
+          //FlutterI18n.refresh(ctx, Locale("en"));
+          new Future.delayed(Duration.zero, () async {
+            await FlutterI18n.refresh(ctx, new Locale('de'));
+          });
           return NestedScrollView(
             headerSliverBuilder:
                 (BuildContext buildCtx, bool innerBoxIsScrolled) {
+              /*new Future.delayed(Duration.zero, () async {
+                await FlutterI18n.refresh(buildCtx, new Locale('de'));
+              });*/
               return <Widget>[
                 SliverAppBar(
                     elevation: 2,
@@ -710,11 +718,11 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   bool zoomMapAfterSelectLocation = false;
 
-  Widget buildIconButtonMap(context) {
+  Widget buildIconButtonMap(ctx) {
     return IconButton(
         icon: Icon(Icons.map),
         onPressed: () {
-          handleMapButtonClick(context);
+          handleMapButtonClick(ctx);
         });
   }
 
@@ -722,7 +730,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     Merchant result = await Navigator.push(
       ctx,
       MaterialPageRoute(
-          builder: (context) => MapSample(
+          builder: (buildCtx) => MapSample(
               _lists,
               mapPosition != null ? mapPosition : userPosition,
               zoomMapAfterSelectLocation
@@ -739,11 +747,11 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     }
   }
 
-  void showSnackBar(ctx, String message, {String additionalText = ""}) {
+  void showSnackBar(ctx, String msgId, {String additionalText = ""}) {
     _scaffoldKey.currentState.showSnackBar(SnackBar(
-      duration: Duration(milliseconds: 1500),
+      duration: Duration(milliseconds: 3000),
       content: Text(
-        /*FlutterI18n.translate(ctx, msgId) +*/ message + additionalText,
+        FlutterI18n.translate(ctx, msgId) + additionalText,
         style: TextStyle(
             fontSize: 18.0,
             fontWeight: FontWeight.w400,
@@ -801,10 +809,10 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     return prefs.setBool(sharedPrefKeyHasHitSearch, true);
   }
 
-  Widget buildHomeButton(context) {
+  Widget buildHomeButton(ctx) {
     return isFilterEmpty()
-        ? buildIconButtonSearch(context)
-        : buildIconButtonClearFilter(context);
+        ? buildIconButtonSearch(ctx)
+        : buildIconButtonClearFilter(ctx);
   }
 
   IconButton buildIconButtonClearFilter(ctx) {
@@ -829,14 +837,14 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         });
   }*/
 
-  Widget buildIconButtonSearch(BuildContext context) {
+  Widget buildIconButtonSearch(BuildContext ctx) {
     return searchIconBlinkAnimation != null
         ? AnimatedBuilder(
             animation: searchIconBlinkAnimation,
-            builder: (BuildContext context, Widget child) {
-              return buildIconButtonSearchContainer(context);
+            builder: (BuildContext buildCtx, Widget child) {
+              return buildIconButtonSearchContainer(ctx);
             })
-        : buildIconButtonSearchContainer(context);
+        : buildIconButtonSearchContainer(ctx);
   }
 
   IconButton buildIconButtonSearchContainer(BuildContext ctx) {
@@ -908,15 +916,12 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   void showMatchingSnackBar(ctx, String fileName, String search, int index) {
     if (fileName != null)
-      //showSnackBar(ctx, "snackbar.filtered_by_location",
-      //additionalText: search);
-      showSnackBar(ctx, "Locationfilter: ", additionalText: search);
+      showSnackBar(ctx, "snackbar_filtered_by_location",
+          additionalText: search);
     else if (index != -1 && fileName == null)
-      showSnackBar(ctx, "Tagfilter: ", additionalText: search);
-    //showSnackBar(ctx, "snackbar.filtered_by_tag", additionalText: search);
+      showSnackBar(ctx, "snackbar_filtered_by_tag", additionalText: search);
     else
-      showSnackBar(ctx, "Place: ", additionalText: search);
-    //showSnackBar(ctx, "snackbar.merchant", additionalText: search);
+      showSnackBar(ctx, "snackbar_merchant", additionalText: search);
   }
 
   void showUnfilteredLists(ctx) {
@@ -927,8 +932,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       _searchTerm = '';
       loadAssetsUnfiltered();
     }
-    //showSnackBar(ctx, "snackbar.showing_unfiltered_list");
-    showSnackBar(ctx, "Showing all places...");
+    showSnackBar(ctx, "snackbar_showing_unfiltered_list");
   }
 
   bool isFilteredList() => _searchTerm != null && _searchTerm.isNotEmpty;
@@ -951,8 +955,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
               children: <Widget>[
                 buildSeparator(),
                 Text(
-                  "There are no matches in this category.",
-                  //FlutterI18n.translate(ctx, "text.no_matches"),
+                  FlutterI18n.translate(ctx, "no_matches"),
                   style: TextStyle(fontWeight: FontWeight.w400),
                 ),
                 buildSeparator(),
@@ -965,8 +968,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                           child: /*IconButton(icon: */ Icon(Icons.arrow_upward),
                         ),
                         Text(
-                          "Hit a colored icon to see matches.",
-                          //FlutterI18n.translate(ctx, "text.hit_icon"),
+                          FlutterI18n.translate(ctx, "hit_icon"),
                           style: TextStyle(fontWeight: FontWeight.w300),
                         )
                       ],
@@ -976,9 +978,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       children: <Widget>[
-                        buildHomeButton(context),
-                        const Text(
-                          'Show all merchants of all categories.',
+                        buildHomeButton(ctx),
+                        Text(
+                          FlutterI18n.translate(ctx, "show_all_merchants"),
                           style: TextStyle(fontWeight: FontWeight.w300),
                         )
                       ],
@@ -997,7 +999,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     await Navigator.push(
       ctx,
       MaterialPageRoute(
-          builder: (context) => AddNewPlaceWidget(
+          builder: (buildCtx) => AddNewPlaceWidget(
                 selectedType: tabController.index,
                 accentColor: getAccentColorOfSelectedTab(),
                 actionBarColor: getDarkColorOfSelectedTab(),
@@ -1005,8 +1007,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
               )),
     );
     updateDistanceToAllMerchantsIfNotDoneYet();
-    showSnackBar(ctx, "You are Satoshi Nakamoto!");
-    //showSnackBar(ctx, "snackbar.you_are_satoshi");
+    showSnackBar(ctx, "snackbar_you_are_satoshi");
   }
 }
 
@@ -1015,7 +1016,7 @@ void main() {
   // This is only to be used for confirming that reports are being
   // submitted as expected. It is not intended to be used for everyday
   // development.
-  //Crashlytics.instance.enableInDevMode = true;
+  Crashlytics.instance.enableInDevMode = true;
 
   // Pass all uncaught errors to Crashlytics.
   FlutterError.onError = (FlutterErrorDetails details) {

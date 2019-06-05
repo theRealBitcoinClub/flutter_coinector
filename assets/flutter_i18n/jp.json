@@ -1,0 +1,9 @@
+{
+  "snackbar_showing_unfiltered_list": "すべての場所を表示...",
+  "snackbar_merchant": "場所: ",
+  "snackbar_filtered_by_tag": "タグフィルタ: ",
+  "snackbar_filtered_by_location": "場所フィルタ: ",
+  "snackbar_you_are_satoshi": "あなたは Satoshi Nakamoto!",
+  "hit_icon": "結果の色付きのアイコンを選択してください。",
+  "no_matches": "このカテゴリには結果がありません"
+}

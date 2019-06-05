@@ -1,0 +1,9 @@
+{
+  "snackbar_showing_unfiltered_list": "Todos los lugares...",
+  "snackbar_merchant": "Lugar: ",
+  "snackbar_filtered_by_tag": "Filtro de etiqueta: ",
+  "snackbar_filtered_by_location": "Filtro de ubicación: ",
+  "snackbar_you_are_satoshi": "Usted está Satoshi Nakamoto!",
+  "hit_icon": "Elige un icono de color con resultados.",
+  "no_matches": "No hay resultados, en esta categoría."
+}

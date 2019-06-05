@@ -1,0 +1,14 @@
+{
+  "snackbar_showing_unfiltered_list": "Zeige alle Orte...",
+  "snackbar_merchant": "Ort: ",
+  "snackbar_filtered_by_tag": "Tagfilter: ",
+  "snackbar_filtered_by_location": "Standortfilter: ",
+  "snackbar_you_are_satoshi": "Du bist Satoshi Nakamoto!",
+  "hit_icon": "Wählen Sie eine farbige Symbol mit Ergebnissen.",
+  "no_matches": "Keine Suchergebnisse, in dieser Kategorie!",
+  "show_all_merchants" : "Filter zurücksetzen, alles anzeigen.",
+  "dialog_close" : " SCHLIESSEN",
+  "dialog_are_you_hungry" : "Hast du Hunger?",
+  "dialog_search_favo_food" : "Suche dein Lieblingsessen:\\n\\n  \uD83C\uDF54 Burger     \uD83C\uDF70 Nachtisch\\n\\n  \uD83E\uDD57 Salat      \uD83D\uDC2E Vegan\\n\\n  \uD83C\uDDEE\uD83C\uDDF9 Ital.      \uD83C\uDF55 Pizza",
+  "floatbutton_add" : "HINZUFÜGEN: "
+}

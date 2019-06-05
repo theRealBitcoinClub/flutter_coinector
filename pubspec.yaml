@@ -36,7 +36,7 @@ dependencies:
   smooth_star_rating: ^1.0.2
   google_maps_flutter: ^0.5.13
   url_launcher: ^5.0.2
-  #flutter_i18n: ^0.6.3
+  flutter_i18n: ^0.6.3
   geolocator: ^4.0.3
   crypto: ^2.0.6
   path_provider: ^1.1.0
@@ -63,8 +63,7 @@ dev_dependencies:
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
 
-
-  flutter_localizations:
+flutter_localizations:
     sdk: flutter
 
 # The following section is specific to Flutter.
@@ -77,7 +76,10 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/i18n/
+    - assets/flutter_i18n/de.json
+    - assets/flutter_i18n/en.json
+    - assets/flutter_i18n/es.json
+    - assets/flutter_i18n/it.json
     - assets/marker6.png
     - assets/marker5.png
     - assets/marker4.png

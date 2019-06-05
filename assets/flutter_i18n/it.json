@@ -1,0 +1,9 @@
+{
+  "snackbar_showing_unfiltered_list": "Mostrare tutti i posti...",
+  "snackbar_merchant": "Posto: ",
+  "snackbar_filtered_by_tag": "Filtro Tag: ",
+  "snackbar_filtered_by_location": "Filtro di posizione: ",
+  "snackbar_you_are_satoshi": "Tu sei Satoshi Nakamoto!",
+  "hit_icon": "Scegli un'icona colorata con i risultati.",
+  "no_matches": "Nessun risultato, in questa categoria"
+}

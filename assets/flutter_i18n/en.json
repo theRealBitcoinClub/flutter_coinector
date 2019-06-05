@@ -1,0 +1,21 @@
+{
+  "snackbar_showing_unfiltered_list": "Showing all places...",
+  "snackbar_merchant": "Place: ",
+  "snackbar_filtered_by_tag": "Tag Filter: ",
+  "snackbar_filtered_by_location": "Location Filter: ",
+  "snackbar_you_are_satoshi": "You are Satoshi Nakamoto!",
+  "hit_icon": "Select a colored icon with results.",
+  "no_matches": "No search results, in this category.",
+  "show_all_merchants" : "Reset filter, show complete list.",
+  "dialog_close" : " CLOSE",
+  "dialog_are_you_hungry" : "Are you hungry?",
+  "dialog_search_favo_food" : "Search your favorite food:\\n\\n  \uD83C\uDF54 Burger     \uD83C\uDF70 Dessert\\n\\n  \uD83E\uDD57 Salad      \uD83D\uDC2E Vegan\\n\\n  \uD83C\uDDEE\uD83C\uDDF9 Italian      \uD83C\uDF55 Pizza",
+  "floatbutton_add" : "ADD ",
+  "EAT" : "RESTAURANT",
+  "TOGO" : "TAKE-AWAY-FOOD",
+  "BAR" : "BAR, CLUB, CAFE",
+  "MARKET" : "SUPERMARKET",
+  "HOTEL" : "HOTEL & BnB",
+  "SPA" : "WELLNESS & SPA",
+  "SHOP" : "SHOP & FASHION"
+}
