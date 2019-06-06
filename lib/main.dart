@@ -1006,7 +1006,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                 selectedType: tabController.index,
                 accentColor: getAccentColorOfSelectedTab(),
                 actionBarColor: getDarkColorOfSelectedTab(),
-                typeTitle: getTitleOfSelectedTab(),
+                typeTitle: addButtonCategory,
               )),
     );
     updateDistanceToAllMerchantsIfNotDoneYet();
