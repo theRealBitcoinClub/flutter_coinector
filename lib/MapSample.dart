@@ -58,10 +58,14 @@ class MapSampleState extends State<MapSample> {
       initialCamPosFallback = CameraPosition(
           target: LatLng(position.latitude, position.longitude),
           zoom: initialZoomLevel);
+/*
+    if (allLists != null) {
+      parseListAndZoomToSingleResult();
+    }*/
   }
 
-  Set<Marker> parseListAndZoomToSingleResult() {
-    allMarkers = parseListBuildMarkers();
+  Set<Marker> parseListAndZoomToSingleResult(ctx) {
+    allMarkers = parseListBuildMarkers(ctx);
     if (allMarkers.length == 1) {
       initialCamPosFallback = CameraPosition(
           target: latLngLastParsedItem,
@@ -72,7 +76,7 @@ class MapSampleState extends State<MapSample> {
 
   LatLng latLngLastParsedItem;
 
-  Set<Marker> parseListBuildMarkers() {
+  Set<Marker> parseListBuildMarkers(ctx) {
     if (getTotalLengthOFAllLists() == allMarkers.length) allMarkers.clear();
     for (int tabCounter = 0; tabCounter < allLists.length; tabCounter++) {
       ListModel<Merchant> listMerchants = allLists[tabCounter];
@@ -85,7 +89,7 @@ class MapSampleState extends State<MapSample> {
         allMarkers.add(Marker(
             onTap: () {
               if (counterToastSpecific >= SHOW_HINT_MAX_COUNTER) return;
-              Toaster.showInstructionToast(context, counterToastSpecific,
+              Toaster.showInstructionToast(ctx, counterToastSpecific,
                   HINT_COUNT_TOTAL, Toaster.getMerchantSpecificToastHint);
 
               setState(() {
@@ -189,7 +193,7 @@ class MapSampleState extends State<MapSample> {
                     ? allMarkers.elementAt(0).position
                     : initialCamPosFallback,
             onMapCreated: (GoogleMapController controller) {
-              var parsedMarkers = parseListAndZoomToSingleResult();
+              var parsedMarkers = parseListAndZoomToSingleResult(context);
               setState(() {
                 allMarkers = parsedMarkers;
               });
