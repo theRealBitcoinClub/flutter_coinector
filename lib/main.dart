@@ -12,6 +12,7 @@ import 'package:synchronized/synchronized.dart';
 import 'AddNewPlaceWidget.dart';
 import 'AssetLoader.dart';
 import 'CardItemBuilder.dart';
+import 'Dialogs.dart';
 import 'FileCache.dart';
 import 'ListModel.dart';
 import 'MapSample.dart';
@@ -492,41 +493,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   void loadAssetsUnfiltered() => loadAssets(-999, null, null);
 
-  void showInfoDialogWithCloseButton(BuildContext buildCtx) {
-    showDialog(
-        context: buildCtx,
-        builder: (BuildContext ctx) {
-          var color = Colors.white;
-          var textStyle = TextStyle(color: color);
-          return AlertDialog(
-            backgroundColor: Colors.grey[900],
-            content: Text(
-                FlutterI18n.translate(buildCtx, "dialog_search_favo_food"),
-                style: textStyle),
-            title: Text(
-                FlutterI18n.translate(buildCtx, "dialog_are_you_hungry"),
-                style: textStyle),
-            actions: <Widget>[
-              FlatButton(
-                onPressed: () {
-                  Navigator.of(ctx).pop();
-                },
-                child: Row(
-                  children: <Widget>[
-                    Icon(
-                      Icons.close,
-                      color: color,
-                    ),
-                    Text(FlutterI18n.translate(buildCtx, "dialog_close"),
-                        style: textStyle)
-                  ],
-                ),
-              )
-            ],
-          );
-        });
-  }
-
   void updateDistanceToAllMerchantsIfNotDoneYet() {
     if (userPosition == null) return;
 
@@ -858,7 +824,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           delegate: searchDelegate,
         );
         if (hasNotHitSearch()) {
-          showInfoDialogWithCloseButton(ctx);
+          Dialogs.showInfoDialogWithCloseButton(ctx);
           handleSearchButtonAnimationAndPersistHit();
         }
         //TODO ask users to rate the app

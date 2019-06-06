@@ -56,5 +56,9 @@
   "name" : "Name",
   "add_title" : "HINZUFÜGEN: ",
   "you_can_scroll" : "Du kannst diese Liste scrollen!",
-  "REVIEW" : "BEWERTUNG"
+  "REVIEW" : "BEWERTUNG",
+  "download_qr_code" : "Möchtest du eine PDF-Datei mit QR-Codes runterladen?",
+  "NO" : "NEIN",
+  "YES" : "JA",
+  "reset_tags_select_again" : "Möchtest du alle Schlagwörter löschen und neu auswählen?"
 }

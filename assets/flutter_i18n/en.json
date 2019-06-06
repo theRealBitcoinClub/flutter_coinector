@@ -56,5 +56,9 @@
   "name" : "name",
   "add_title" : "ADD: ",
   "you_can_scroll" : "You can scroll this list!",
-  "REVIEW" : "REVIEW"
+  "REVIEW" : "REVIEW",
+  "download_qr_code" : "Do you want to download a PDF file containing QR-Codes?",
+  "NO" : "NO",
+  "YES" : "YES",
+  "reset_tags_select_again" : "Do you want to reset all tags to select again?"
 }

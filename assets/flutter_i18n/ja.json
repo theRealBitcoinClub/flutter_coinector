@@ -56,5 +56,9 @@
   "name" : "名",
   "add_title" : "追加: ",
   "you_can_scroll" : "このリストをスクロールすることができます。",
-  "REVIEW" : "被告人"
+  "REVIEW" : "被告人",
+  "download_qr_code" : "QRコードを含むPDFファイルをダウンロードしますか？",
+  "NO" : "いいえ",
+  "YES" : "はい",
+  "reset_tags_select_again" : "もう一度選択するためにすべてのタグをリセットしますか？"
 }

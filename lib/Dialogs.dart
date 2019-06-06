@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 
 class Dialogs {
   static void confirmDownloadPdf(BuildContext context, callbackYes) {
@@ -7,8 +8,7 @@ class Dialogs {
         builder: (BuildContext ctx) {
           return AlertDialog(
             backgroundColor: Colors.grey[900],
-            content:
-                Text("Do you want to download a PDF file containing QR-Codes?"),
+            content: Text(FlutterI18n.translate(context, "download_qr_code")),
             title: Row(
               children: <Widget>[
                 Icon(Icons.warning),
@@ -20,14 +20,14 @@ class Dialogs {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text("NO"),
+                child: Text(FlutterI18n.translate(context, "NO")),
               ),
               FlatButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                   callbackYes();
                 },
-                child: Text("YES"),
+                child: Text(FlutterI18n.translate(context, "YES")),
               )
             ],
           );
@@ -40,7 +40,8 @@ class Dialogs {
         builder: (BuildContext ctx) {
           return AlertDialog(
             backgroundColor: Colors.grey[900],
-            content: Text("Do you want to reset all tags to select again?"),
+            content:
+                Text(FlutterI18n.translate(context, "reset_tags_select_again")),
             title: Row(
               children: <Widget>[
                 Icon(Icons.warning),
@@ -52,14 +53,49 @@ class Dialogs {
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: Text("NO"),
+                child: Text(FlutterI18n.translate(context, "NO")),
               ),
               FlatButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                   callbackYes();
                 },
-                child: Text("YES"),
+                child: Text(FlutterI18n.translate(context, "YES")),
+              )
+            ],
+          );
+        });
+  }
+
+  static void showInfoDialogWithCloseButton(BuildContext buildCtx) {
+    showDialog(
+        context: buildCtx,
+        builder: (BuildContext ctx) {
+          var color = Colors.white;
+          var textStyle = TextStyle(color: color);
+          return AlertDialog(
+            backgroundColor: Colors.grey[900],
+            content: Text(
+                FlutterI18n.translate(buildCtx, "dialog_search_favo_food"),
+                style: textStyle),
+            title: Text(
+                FlutterI18n.translate(buildCtx, "dialog_are_you_hungry"),
+                style: textStyle),
+            actions: <Widget>[
+              FlatButton(
+                onPressed: () {
+                  Navigator.of(ctx).pop();
+                },
+                child: Row(
+                  children: <Widget>[
+                    Icon(
+                      Icons.close,
+                      color: color,
+                    ),
+                    Text(FlutterI18n.translate(buildCtx, "dialog_close"),
+                        style: textStyle)
+                  ],
+                ),
               )
             ],
           );
@@ -69,7 +105,10 @@ class Dialogs {
   static FlatButton buildCloseDialogButton(BuildContext context) {
     return FlatButton(
       child: Row(
-        children: <Widget>[Icon(Icons.close), Text(' CLOSE')],
+        children: <Widget>[
+          Icon(Icons.close),
+          Text(FlutterI18n.translate(context, "dialog_close"))
+        ],
       ),
       onPressed: () {
         Navigator.of(context).pop();
@@ -77,14 +116,14 @@ class Dialogs {
     );
   }
 
-
-  static Color getToggleColor(isEnabled) => isEnabled ? Colors.white : Colors.white54;
+  static Color getToggleColor(isEnabled) =>
+      isEnabled ? Colors.white : Colors.white54;
 
   static Icon buildIcon(final icon, final color) => Icon(
-    icon,
-    size: 25,
-    color: color,
-  );
+        icon,
+        size: 25,
+        color: color,
+      );
 
   static SizedBox buildSpacer() {
     return const SizedBox(

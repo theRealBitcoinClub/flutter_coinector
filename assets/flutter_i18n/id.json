@@ -56,5 +56,9 @@
   "name" : "nama",
   "add_title" : "MENAMBAHKAN: ",
   "you_can_scroll" : "Anda dapat menggulir daftar ini!",
-  "REVIEW" : "ULASAN"
+  "REVIEW" : "ULASAN",
+  "download_qr_code" : "Apakah Anda ingin mengunduh file PDF yang berisi QR-Codes?",
+  "NO" : "TIDAK",
+  "YES" : "IYA NIH",
+  "reset_tags_select_again" : "Apakah Anda ingin mengatur ulang semua tag untuk memilih lagi?"
 }
