@@ -586,9 +586,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         const Locale('it'),
         const Locale('es'),
         const Locale('en'),
-        const Locale('ja'),
+        const Locale('jp'),
         const Locale('id'),
-        const Locale('ja'),
         const Locale('fr')
       ],
       theme: ThemeData(
@@ -946,10 +945,11 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         ? Padding(
             child: AnimatedList(
               key: listKey,
+              padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 60.0),
               initialItemCount: list.length,
               itemBuilder: builderMethod,
             ),
-            padding: EdgeInsets.all(0.0),
+            padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
           )
         : Padding(
             padding: EdgeInsets.fromLTRB(25.0, 10.0, 25.0, 0.0),

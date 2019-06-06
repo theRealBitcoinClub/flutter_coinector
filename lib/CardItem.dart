@@ -81,7 +81,7 @@ class CardItem extends StatelessWidget {
     return SizedBox(
       child: Card(
           clipBehavior: Clip.none,
-          margin: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 30.0),
+          margin: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 20.0),
           elevation: 10.0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0),
