@@ -682,7 +682,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                       buildIconButtonMap(buildCtx),
                     ],
                     title: Padding(
-                        padding: EdgeInsets.all(5.0),
+                        padding: EdgeInsets.all(0.0),
                         child: AnimatedSwitcher(
                             //TODO fix animation, how to switch animted with a fade transition?
                             duration: Duration(milliseconds: 500),
@@ -952,7 +952,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
             padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
           )
         : Padding(
-            padding: EdgeInsets.fromLTRB(25.0, 10.0, 25.0, 0.0),
+            padding: EdgeInsets.fromLTRB(25.0, 0.0, 25.0, 0.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[

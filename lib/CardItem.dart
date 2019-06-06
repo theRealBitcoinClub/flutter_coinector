@@ -81,8 +81,9 @@ class CardItem extends StatelessWidget {
     return SizedBox(
       child: Card(
           clipBehavior: Clip.none,
-          margin: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 20.0),
-          elevation: 10.0,
+          margin:
+              EdgeInsets.only(top: 0.0, left: 10.0, right: 10.0, bottom: 20.0),
+          elevation: 0.0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0),
           ),
@@ -129,6 +130,7 @@ class CardItem extends StatelessWidget {
           children: <Widget>[
             buildGradientContainer(Colors.grey[900]),
             Container(
+              margin: EdgeInsets.all(0.0),
               height: itemHeight,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(

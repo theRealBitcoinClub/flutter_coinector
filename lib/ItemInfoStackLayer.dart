@@ -22,40 +22,37 @@ class ItemInfoStackLayer extends StatelessWidget {
   Widget build(BuildContext context) {
     var splittedtags = merchant.tags.split(",");
     return Container(
-      //decoration: BoxDecoration(color: Colors.black.withOpacity(0.5)),
       height: height,
-      child: Padding(
+      child: ListView(
         padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 0.0),
-        child: ListView(
-          physics: const NeverScrollableScrollPhysics(),
-          children: <Widget>[
-            SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Text(
-                  merchant.name,
-                  style: textStyleMerchantTitle,
-                  maxLines: 1,
-                )),
-            const SizedBox(
-              height: 5,
-            ),
-            SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Text(
-                  merchant.location,
-                  maxLines: 1,
-                  style: textStyleMerchantLocation,
-                )),
-            const SizedBox(
-              height: 10,
-            ),
-            SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: <Widget>[buildTagText(splittedtags)],
-                )),
-          ],
-        ),
+        physics: const NeverScrollableScrollPhysics(),
+        children: <Widget>[
+          SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Text(
+                merchant.name,
+                style: textStyleMerchantTitle,
+                maxLines: 1,
+              )),
+          const SizedBox(
+            height: 5,
+          ),
+          SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Text(
+                merchant.location,
+                maxLines: 1,
+                style: textStyleMerchantLocation,
+              )),
+          const SizedBox(
+            height: 10,
+          ),
+          SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: <Widget>[buildTagText(splittedtags)],
+              )),
+        ],
       ),
     );
   }
