@@ -586,7 +586,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         const Locale('it'),
         const Locale('es'),
         const Locale('en'),
-        const Locale('jp'),
+        const Locale('ja'),
         const Locale('id'),
         const Locale('fr')
       ],
