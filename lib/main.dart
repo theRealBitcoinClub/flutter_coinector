@@ -1019,7 +1019,7 @@ void main() {
   // This is only to be used for confirming that reports are being
   // submitted as expected. It is not intended to be used for everyday
   // development.
-  Crashlytics.instance.enableInDevMode = true;
+  //Crashlytics.instance.enableInDevMode = true;
 
   // Pass all uncaught errors to Crashlytics.
   FlutterError.onError = (FlutterErrorDetails details) {
