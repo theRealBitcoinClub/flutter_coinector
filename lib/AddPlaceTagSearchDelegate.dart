@@ -92,6 +92,8 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
 
   Set<String> addAllTagsInAllLanguages(Set<String> suggestions) {
     suggestions.addAll(cleanSuggestions(Tag.tagText));
+    /*Locale myLocale = Localizations.localeOf(context);
+    print ("LOCALE:" + myLocale.countryCode + " lang:" + myLocale.languageCode);*/
     //TODO show the device language FIRST
     suggestions.addAll(cleanSuggestions(Tag.tagTextES));
     suggestions.addAll(cleanSuggestions(Tag.tagTextDE));
