@@ -9,7 +9,7 @@
   "show_all_merchants" : "Filter zurücksetzen, alles anzeigen.",
   "dialog_close" : " SCHLIESSEN",
   "dialog_are_you_hungry" : "Hast du Hunger?",
-  "dialog_search_favo_food" : "Suche dein Lieblingsessen:\\n\\n  \uD83C\uDF54 Burger     \uD83C\uDF70 Nachtisch\\n\\n  \uD83E\uDD57 Salat      \uD83D\uDC2E Vegan\\n\\n  \uD83C\uDDEE\uD83C\uDDF9 Ital.      \uD83C\uDF55 Pizza",
+  "dialog_search_favo_food" : "Suche dein Lieblingsessen:\n\n \uD83C\uDF54 Burger    \uD83C\uDF70 Nachtisch\n\n\uD83E\uDD57 Salat     \uD83D\uDC2E Vegan\n\n\uD83C\uDDEE\uD83C\uDDF9 Ital.    \uD83C\uDF55 Pizza",
   "floatbutton_add" : "HINZUFÜGEN: ",
   "EAT" : "RESTAURANT",
   "TOGO" : "ZUM MITNEHMEN",
@@ -19,5 +19,11 @@
   "SPA" : "WELLNESS & SPA",
   "SHOP" : "EINKAUFEN & MODE",
   "toast_update_succesfull" : "UPDATE ERFOLGREICH! APP NEUSTARTEN!",
-  "close_map" : "KARTE SCHLIESSEN"
+  "close_map" : "KARTE SCHLIESSEN",
+  "toast_instructions_marker" : "MARKER: Tap any marker to see more information of that selected place.",
+  "toast_instructions_location" : "LOCATION: Tap the location button (top right) to zoom to your current location.",
+  "toast_instructions_close" : "CLOSE: Tap the close button (bottom) to see the complete list of all places worldwide.",
+  "toast_instructions_details" : "DETAILS: Tap the info box to load the details of that place.",
+  "toast_instructions_route" : "ROUTE: Tap the route button (bottom right), to navigate to the selected place.",
+  "toast_instructions_map" : "MAP: Tap the map at any free space, to close the info box of a selected place."
 }

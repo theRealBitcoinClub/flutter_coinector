@@ -575,11 +575,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     /*new Future.delayed(Duration.zero, () async {
       FlutterI18n.currentLocale(context);
     });*/
-    final FlutterI18nDelegate i18nDelegate =
-        FlutterI18nDelegate(/* path: "assets/i18n" */ fallbackFile: 'en');
     return MaterialApp(
       localizationsDelegates: [
-        i18nDelegate,
+        FlutterI18nDelegate(fallbackFile: 'en'),
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate
       ],

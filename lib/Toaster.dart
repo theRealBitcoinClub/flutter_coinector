@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -43,9 +44,9 @@ class Toaster {
   }
 
   static void showInstructionToast(
-      showToastCount, hintCountTotal, msgProvider) {
+      ctx, showToastCount, hintCountTotal, msgProvider) {
     Fluttertoast.cancel();
-    showToast(msgProvider(showToastCount, hintCountTotal),
+    showToast(msgProvider(ctx, showToastCount, hintCountTotal),
         getBackGroundColor(showToastCount, hintCountTotal));
   }
 
@@ -80,27 +81,28 @@ class Toaster {
     prefs.setInt(sharedPrefKey, newCount);
   }
 
-  static String getGeneralToastHint(counterToastGeneral, totalHintCounter) {
+  static String getGeneralToastHint(
+      ctx, counterToastGeneral, totalHintCounter) {
     switch (counterToastGeneral % totalHintCounter) {
       case 0:
-        return "MARKER: Tap any marker to see more information of that selected place.";
+        return FlutterI18n.translate(ctx, "toast_instructions_marker");
       case 1:
-        return "LOCATION: Tap the location button (top right) to zoom to your current location.";
+        return FlutterI18n.translate(ctx, "toast_instructions_location");
       case 2:
-        return "CLOSE: Tap the close button (bottom) to see the complete list of all places worldwide.";
+        return FlutterI18n.translate(ctx, "toast_instructions_close");
     }
     return "";
   }
 
   static String getMerchantSpecificToastHint(
-      counterToastSpecific, totalHintCounter) {
+      ctx, counterToastSpecific, totalHintCounter) {
     switch (counterToastSpecific % totalHintCounter) {
       case 0:
-        return "DETAILS: Tap the info box to load the details of that place.";
+        return FlutterI18n.translate(ctx, "toast_instructions_details");
       case 1:
-        return "ROUTE: Tap the route button (bottom right), to navigate to the selected place.";
+        return FlutterI18n.translate(ctx, "toast_instructions_route");
       case 2:
-        return "MAP: Tap the map at any free space, to close the info box of a selected place.";
+        return FlutterI18n.translate(ctx, "toast_instructions_map");
     }
     return "";
   }

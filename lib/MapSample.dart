@@ -58,10 +58,6 @@ class MapSampleState extends State<MapSample> {
       initialCamPosFallback = CameraPosition(
           target: LatLng(position.latitude, position.longitude),
           zoom: initialZoomLevel);
-/*
-    if (allLists != null) {
-      parseListAndZoomToSingleResult();
-    }*/
   }
 
   Set<Marker> parseListAndZoomToSingleResult() {
@@ -77,7 +73,7 @@ class MapSampleState extends State<MapSample> {
   LatLng latLngLastParsedItem;
 
   Set<Marker> parseListBuildMarkers() {
-    allMarkers.clear();
+    if (getTotalLengthOFAllLists() == allMarkers.length) allMarkers.clear();
     for (int tabCounter = 0; tabCounter < allLists.length; tabCounter++) {
       ListModel<Merchant> listMerchants = allLists[tabCounter];
       for (int itemCounter = 0;
@@ -89,7 +85,7 @@ class MapSampleState extends State<MapSample> {
         allMarkers.add(Marker(
             onTap: () {
               if (counterToastSpecific >= SHOW_HINT_MAX_COUNTER) return;
-              Toaster.showInstructionToast(counterToastSpecific,
+              Toaster.showInstructionToast(context, counterToastSpecific,
                   HINT_COUNT_TOTAL, Toaster.getMerchantSpecificToastHint);
 
               setState(() {
@@ -167,48 +163,50 @@ class MapSampleState extends State<MapSample> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    return new Scaffold(
-      body: Padding(
-        padding: EdgeInsets.only(top: 25.0),
-        child: GoogleMap(
-          onTap: (pos) {
-            if (counterToastGeneral >= SHOW_HINT_MAX_COUNTER) return;
-            Toaster.showInstructionToast(counterToastGeneral, HINT_COUNT_TOTAL,
-                Toaster.getGeneralToastHint);
-            setState(() {
-              counterToastGeneral++;
-            });
-            Toaster.persistToastCounter(
-                sharedPrefKeyCounterToastGeneral, counterToastGeneral);
-          },
-          compassEnabled: true,
-          myLocationEnabled: true,
-          mapType: MapType.normal,
-          markers: allMarkers,
-          initialCameraPosition: hasMarkers()
-              ? initialCamPosFallback
-              : hasMarkers()
-                  ? allMarkers.elementAt(0).position
-                  : initialCamPosFallback,
-          onMapCreated: (GoogleMapController controller) {
-            var parsedMarkers = parseListAndZoomToSingleResult();
-            setState(() {
-              allMarkers = parsedMarkers;
-            });
-            _controller.complete(controller);
-          },
+  Widget build(BuildContext ctx) {
+    return Builder(builder: (buildCtx) {
+      return Scaffold(
+        body: Padding(
+          padding: EdgeInsets.only(top: 25.0),
+          child: GoogleMap(
+            onTap: (pos) {
+              if (counterToastGeneral >= SHOW_HINT_MAX_COUNTER) return;
+              Toaster.showInstructionToast(buildCtx, counterToastGeneral,
+                  HINT_COUNT_TOTAL, Toaster.getGeneralToastHint);
+              setState(() {
+                counterToastGeneral++;
+              });
+              Toaster.persistToastCounter(
+                  sharedPrefKeyCounterToastGeneral, counterToastGeneral);
+            },
+            compassEnabled: true,
+            myLocationEnabled: true,
+            mapType: MapType.normal,
+            markers: allMarkers,
+            initialCameraPosition: hasMarkers()
+                ? initialCamPosFallback
+                : hasMarkers()
+                    ? allMarkers.elementAt(0).position
+                    : initialCamPosFallback,
+            onMapCreated: (GoogleMapController controller) {
+              var parsedMarkers = parseListAndZoomToSingleResult();
+              setState(() {
+                allMarkers = parsedMarkers;
+              });
+              _controller.complete(controller);
+            },
+          ),
         ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton.extended(
-        backgroundColor: Theme.of(context).backgroundColor,
-        foregroundColor: Theme.of(context).accentColor,
-        onPressed: closeMapResetMerchant,
-        label: Text(FlutterI18n.translate(context, 'close_map')),
-        icon: Icon(Icons.close),
-      ),
-    );
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: FloatingActionButton.extended(
+          backgroundColor: Theme.of(ctx).backgroundColor,
+          foregroundColor: Theme.of(ctx).accentColor,
+          onPressed: closeMapResetMerchant,
+          label: Text(FlutterI18n.translate(ctx, 'close_map')),
+          icon: Icon(Icons.close),
+        ),
+      );
+    });
   }
 
   //TODO delay the image load to avoid the exceptions on startup???

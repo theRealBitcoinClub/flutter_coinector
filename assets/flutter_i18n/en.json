@@ -19,5 +19,11 @@
   "SPA" : "WELLNESS & SPA",
   "SHOP" : "SHOP & FASHION",
   "toast_update_succesfull" : "UPDATE SUCCESS! RESTART APP!",
-  "close_map" : "CLOSE MAP"
+  "close_map" : "CLOSE MAP",
+  "toast_instructions_marker" : "MARKER: Tap any marker to see more information of that selected place.",
+  "toast_instructions_location" : "LOCATION: Tap the location button (top right) to zoom to your current location.",
+  "toast_instructions_close" : "CLOSE: Tap the close button (bottom) to see the complete list of all places worldwide.",
+  "toast_instructions_details" : "DETAILS: Tap the info box to load the details of that place.",
+  "toast_instructions_route" : "ROUTE: Tap the route button (bottom right), to navigate to the selected place.",
+  "toast_instructions_map" : "MAP: Tap the map at any free space, to close the info box of a selected place."
 }
