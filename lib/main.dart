@@ -633,9 +633,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         ),
         body: new Builder(builder: (BuildContext ctx) {
           //FlutterI18n.refresh(ctx, Locale("en"));
-          new Future.delayed(Duration.zero, () async {
+          /*new Future.delayed(Duration.zero, () async {
             await FlutterI18n.refresh(ctx, new Locale('de'));
-          });
+          });*/
           return NestedScrollView(
             headerSliverBuilder:
                 (BuildContext buildCtx, bool innerBoxIsScrolled) {

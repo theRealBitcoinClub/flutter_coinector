@@ -1,3 +1,5 @@
+import 'package:flutter_i18n/flutter_i18n.dart';
+
 import 'AddNewPlaceWidget.dart';
 
 import 'package:url_launcher/url_launcher.dart';
@@ -44,7 +46,8 @@ class UrlLauncher {
     launchURI(url);
   }
 
-  static void launchQrCodeGeneratorUrl({String bch = "", String dash = ""}) async {
+  static void launchQrCodeGeneratorUrl(
+      {String bch = "", String dash = ""}) async {
     String targetUrl =
         "http://bitcoinmap.cash/bitcoin-bch-dash-qr-code-generator";
     if (bch.isNotEmpty) {
@@ -76,7 +79,8 @@ class UrlLauncher {
                 : getBCHReceiverAdr(hasInput(inputBCH))) +
             "?subject=" +
             (hasInput(inputDASH) ? inputDASH : inputBCH) +
-            "&body=Welcome to http://bmap.cash!\n\nYou can optionally attach Images to this email now!\n\nSend this E-Mail to submit the place!\n\nWe will notify you as soon as the place is available inside the app!\n\nDo not modify the content of this E-Mail!\n\nTo add any further details please send another E-Mail to trbc@bitcoinmap.cash!\n\nYou are Satoshi Nakamoto!\n\nThanks!\n\n" +
+            "&body=" +
+            FlutterI18n.translate(ctx, "email_text_add_new_place") +
             content;
     await _launchEmail(ctx, urlString, onEmailClientNotFound);
   }
@@ -85,7 +89,8 @@ class UrlLauncher {
 
   static bool hasInput(String input) => input.length > MIN_INPUT_BCHyDASH;
 
-  static Future _launchEmail(ctx, String urlString, onEmailClientNotFound) async {
+  static Future _launchEmail(
+      ctx, String urlString, onEmailClientNotFound) async {
     Toaster.showToastLaunchingEmailClient(ctx);
     if (await canLaunch(urlString)) {
       await launch(urlString);
@@ -94,10 +99,11 @@ class UrlLauncher {
     }
   }
 
-  static void launchEmailClientUpdatePaymentDetails(ctx,
-      Merchant m, onEmailClientNotFound) {
+  static void launchEmailClientUpdatePaymentDetails(
+      ctx, Merchant m, onEmailClientNotFound) {
     var urlString =
-        "mailto:trbc@bitcoinmap.cash,bitcoinmap@fire.fundersclub.com,incoming+bmap-cash-bmap-cash-12646634-issue-@incoming.gitlab.com?subject=Update Coinector: " + m.id;
+        "mailto:trbc@bitcoinmap.cash,bitcoinmap@fire.fundersclub.com,incoming+bmap-cash-bmap-cash-12646634-issue-@incoming.gitlab.com?subject=Update Coinector: " +
+            m.id;
     _launchEmail(ctx, urlString, onEmailClientNotFound);
   }
 }

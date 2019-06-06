@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';
 import 'Dialogs.dart';
@@ -94,7 +95,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       floatingActionButton: wrapBuildSubmitBtn(),
       appBar: AppBar(
         backgroundColor: actionBarColor,
-        title: Text("ADD: " + typeTitle),
+        title: Text(i18n(context, "add_title") + i18n(context, typeTitle)),
       ),
       body: Builder(
           builder: (ctx) => Padding(
@@ -105,11 +106,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      wrapBuildColumnName(),
-                      wrapBuildColumnAdr(),
+                      wrapBuildColumnName(ctx),
+                      wrapBuildColumnAdr(ctx),
                       wrapBuildColumnTag(ctx),
                       wrapBuildSelectedTagsList(),
-                      wrapBuildColumnDASHyBCH(),
+                      wrapBuildColumnDASHyBCH(ctx),
                     ],
                   ),
                 ),
@@ -117,11 +118,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     );
   }
 
-  Widget wrapBuildColumnName() => AnimatedOpacity(
+  Widget wrapBuildColumnName(ctx) => AnimatedOpacity(
       curve: DEFAULT_ANIMATION_CURVE,
       duration: DEFAULT_DURATION_OPACITY_FADE,
       opacity: showInputAdr ? OPACITY_ITEM_VALIDATED : 1.0,
-      child: buildColumnName());
+      child: buildColumnName(ctx));
 
   Widget wrapBuildColumnTag(ctx) => AnimatedOpacity(
       curve: DEFAULT_ANIMATION_CURVE,
@@ -131,21 +132,21 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           : hasInputAllTags() ? OPACITY_ITEM_VALIDATED : 1.0,
       child: buildColumnTag(ctx));
 
-  Widget wrapBuildColumnAdr() => AnimatedOpacity(
+  Widget wrapBuildColumnAdr(ctx) => AnimatedOpacity(
       curve: DEFAULT_ANIMATION_CURVE,
       duration: DEFAULT_DURATION_OPACITY_FADE,
       opacity: !showInputAdr
           ? OPACITY_ITEM_DEACTIVATED
           : showInputTags ? OPACITY_ITEM_VALIDATED : 1.0,
-      child: buildColumnAdr());
+      child: buildColumnAdr(ctx));
 
   bool hasInputAllTags() => allSelectedTags.length == 4;
 
-  Widget wrapBuildColumnDASHyBCH() => AnimatedOpacity(
+  Widget wrapBuildColumnDASHyBCH(ctx) => AnimatedOpacity(
       curve: DEFAULT_ANIMATION_CURVE,
       duration: DEFAULT_DURATION_OPACITY_FADE,
       opacity: !showInputDASHyBCH ? OPACITY_ITEM_DEACTIVATED : 1.0,
-      child: buildColumnDASHyBCH());
+      child: buildColumnDASHyBCH(ctx));
 
   Widget wrapBuildSubmitBtn() => AnimatedOpacity(
         curve: DEFAULT_ANIMATION_CURVE,
@@ -162,22 +163,22 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     );
   }
 
-  Column buildColumnName() {
+  Column buildColumnName(ctx) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         Text(
-          "What is the name of that place?",
+          i18n(ctx, "add_place_name_title"),
           style: textStyleLabel(),
         ),
         buildSizedBoxSeparator(),
         Text(
-          "Use the same name as in Google Maps",
+          i18n(ctx, "add_place_name_subtitle"),
           style: textStyleHint(),
         ),
-        buildTextField(
-            null, 0.1, Icons.title, MAX_INPUT_NAME, "name", updateInputName),
+        buildTextField(ctx, null, 0.1, Icons.title, MAX_INPUT_NAME,
+            i18n(ctx, "name"), updateInputName),
       ],
     );
   }
@@ -189,12 +190,12 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       children: <Widget>[
         buildSizedBoxSeparator(multiplier: 3.0),
         Text(
-          "OK, now choose four words that best describe your products/service.",
+          i18n(ctx, "choose_four_tags"),
           style: textStyleLabel(),
         ),
         buildSizedBoxSeparator(),
         Text(
-          "Hit the button, scroll the list, choose a tag",
+          i18n(ctx, "hit_the_button_scroll"),
           style: textStyleHint(),
         ),
         buildSizedBoxSeparator(),
@@ -278,8 +279,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             return;
           }
 
-          UrlLauncher.launchEmailClientAddPlace(ctx,
-              inputDASH, inputBCH, buildJsonToSubmitViaEmail(), () {
+          UrlLauncher.launchEmailClientAddPlace(
+              ctx, inputDASH, inputBCH, buildJsonToSubmitViaEmail(), () {
             Toaster.showToastEmailNotConfigured(ctx);
           });
           Dialogs.confirmDownloadPdf(context, () {
@@ -289,67 +290,68 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           });
         },
         icon: Icon(Icons.send),
-        label: Text(" SEND"));
+        label: Text(i18n(ctx, "send")));
   }
 
   bool hasMinInput(input) => input.length > MIN_INPUT_BCHyDASH;
 
-  Column buildColumnDASHyBCH() {
+  Column buildColumnDASHyBCH(ctx) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         buildSizedBoxSeparator(multiplier: 3.0),
         Text(
-          "What is your DASH wallet receiving address?",
+          i18n(ctx, "what_is_your_dash"),
           style: textStyleLabel(),
         ),
         buildSizedBoxSeparator(),
         Text(
-          "1: Open your DASH wallet! 2: Choose receive to see the QR-Code! 3: Select share/copy! 4: Paste the address here!",
+          i18n(ctx, "open_your_dash_wallet"),
           style: textStyleHint(),
         ),
         buildTextField(
+            ctx,
             focusNodeInputDASH,
             INPUT_DASH_POS,
             Icons.monetization_on,
             MAX_INPUT_DASH,
-            "DASH address",
+            i18n(ctx, "dash_adr"),
             updateInputDASH),
         buildSizedBoxSeparator(multiplier: 2.0),
         Text(
-          "What is your BCH wallet receiving address?",
+          i18n(ctx, "receiving_adr"),
           style: textStyleLabel(),
         ),
         buildSizedBoxSeparator(),
         Text(
-          "1: Open your BCH wallet! 2: Choose receive to see the QR-Code! 3: Select share/copy! 4: Paste the address here!",
+          i18n(ctx, "copy_adr_instructions"),
           style: textStyleHint(),
         ),
-        buildTextField(null, 700.0, Icons.monetization_on, MAX_INPUT_BCH,
-            "BCH address", updateInputBCH),
+        buildTextField(ctx, null, 700.0, Icons.monetization_on, MAX_INPUT_BCH,
+            i18n(ctx, "bch_adr"), updateInputBCH),
         buildSizedBoxSeparator(multiplier: 5.0),
       ],
     );
   }
 
-  Column buildColumnAdr() {
+  Column buildColumnAdr(ctx) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         buildSizedBoxSeparator(multiplier: 3.0),
         Text(
-          "What is the postal address?",
+          i18n(ctx, "postal_adr"),
           style: textStyleLabel(),
         ),
         buildSizedBoxSeparator(),
         Text(
-          "Street + Number, State, Country",
+          i18n(ctx, "street_number"),
           style: textStyleHint(),
         ),
-        buildTextField(null, 150.0, Icons.local_post_office, MAX_INPUT_ADR,
-            "address", updateInputAdr),
+        buildTextField(ctx, null, 150.0, Icons.local_post_office, MAX_INPUT_ADR,
+            i18n(ctx, "address"), updateInputAdr),
       ],
     );
   }
@@ -433,7 +435,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     );
   }
 
-  TextField buildTextField(focusNode, onTapScrollToThisPosition, icon,
+  TextField buildTextField(ctx, focusNode, onTapScrollToThisPosition, icon,
       maxLength, String label, updateInputCallback) {
     return TextField(
       focusNode: focusNode,
@@ -446,7 +448,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           contentPadding: buildEdgeInsetsTextField(),
           border:
               UnderlineInputBorder(borderSide: BorderSide(color: accentColor)),
-          labelText: "Insert " + label + " here."),
+          labelText:
+              i18n(ctx, "insert_hint_1") + label + i18n(ctx, "insert_hint_2")),
       cursorColor: Colors.white70,
       textCapitalization: TextCapitalization.words,
       textInputAction: TextInputAction.next,
@@ -457,6 +460,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       style: textStyleInput(),
     );
   }
+
+  String i18n(ctx, str) => FlutterI18n.translate(ctx, str);
 
   EdgeInsets buildEdgeInsetsTextField() => EdgeInsets.all(10.0);
 
