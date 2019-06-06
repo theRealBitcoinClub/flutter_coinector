@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';
 import 'SearchDemoSearchDelegate.dart';
@@ -18,8 +19,8 @@ class SuggestionList extends StatelessWidget {
   String capitalize(String s) => s[0].toUpperCase() + s.substring(1);
 
   @override
-  Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
+  Widget build(BuildContext ctx) {
+    final ThemeData theme = Theme.of(ctx);
     return ListView.builder(
       itemCount: suggestions.length,
       itemBuilder: (BuildContext context, int i) {
@@ -31,14 +32,14 @@ class SuggestionList extends StatelessWidget {
         return ListTile(
           leading: query.isEmpty
               ? match.fileName.isEmpty
-                  ? !isRealSuggestion(searchMatch)
+                  ? !isRealSuggestion(searchMatch, ctx)
                       ? null
                       : const Icon(Icons.history)
                   : const Icon(Icons.location_searching)
               : null,
           title: RichText(
             text: TextSpan(
-              text: (isRealSuggestion(searchMatch))
+              text: (isRealSuggestion(searchMatch, ctx))
                   ? searchMatch.isNotEmpty
                       ? searchMatch.substring(0, query.trim().length)
                       : searchMatch
@@ -47,7 +48,7 @@ class SuggestionList extends StatelessWidget {
                   theme.textTheme.subhead.copyWith(fontWeight: FontWeight.bold),
               children: <TextSpan>[
                 TextSpan(
-                  text: (isRealSuggestion(searchMatch))
+                  text: (isRealSuggestion(searchMatch, ctx))
                       ? searchMatch.isNotEmpty
                           ? searchMatch.substring(query.trim().length)
                           : ''
@@ -68,7 +69,7 @@ class SuggestionList extends StatelessWidget {
             ),
           ),
           onTap: () {
-            if (isRealSuggestion(searchMatch)) {
+            if (isRealSuggestion(searchMatch, context)) {
               onSelected(match.input);
             }
           },
@@ -77,9 +78,9 @@ class SuggestionList extends StatelessWidget {
     );
   }
 
-  bool isRealSuggestion(String suggestion) {
+  bool isRealSuggestion(String suggestion, ctx) {
     return SearchDemoSearchDelegate.TRY_ANOTHER_WORD != suggestion &&
-        AddPlaceTagSearchDelegate.YOU_CAN_SCROLL != suggestion &&
+        FlutterI18n.translate(ctx, "you_can_scroll") != suggestion &&
         AddPlaceTagSearchDelegate.COINECTOR_SUPPORTS_MANY_LANGUAGES !=
             suggestion;
   }

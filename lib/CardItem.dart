@@ -292,7 +292,7 @@ class CardItem extends StatelessWidget {
               Dialogs.getToggleColor(merchant.place != null)),
           Dialogs.buildSpacer(),
           Text(
-            'REVIEW',
+            FlutterI18n.translate(ctx, 'REVIEW'),
             style: TextStyle(
                 color: Dialogs.getToggleColor(merchant.place != null)),
           )

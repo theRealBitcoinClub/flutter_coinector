@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 
 import 'SearchDemoSearchDelegate.dart';
 import 'SuggestionList.dart';
@@ -58,7 +59,6 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
   bool startsWith(String currentItem, String pattern) =>
       currentItem.toLowerCase().startsWith(pattern.toLowerCase());
 
-  static const YOU_CAN_SCROLL = "You can scroll this list!";
   static const COINECTOR_SUPPORTS_MANY_LANGUAGES =
       "🇪🇸 🇩🇪 🇫🇷 🇮🇹 🇬🇧 🇯🇵 🇮🇩";
 
@@ -66,8 +66,10 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    Set<String> suggestions =
-        Set.from([COINECTOR_SUPPORTS_MANY_LANGUAGES, YOU_CAN_SCROLL]);
+    Set<String> suggestions = Set.from([
+      COINECTOR_SUPPORTS_MANY_LANGUAGES,
+      FlutterI18n.translate(context, "you_can_scroll")
+    ]);
 
     if (unfilteredSuggestions != null && query.isEmpty)
       suggestions = unfilteredSuggestions;

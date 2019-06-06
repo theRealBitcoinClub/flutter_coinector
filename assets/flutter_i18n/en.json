@@ -54,5 +54,7 @@
   "street_number" : "Street + Number, State, Country",
   "address" : "address",
   "name" : "name",
-  "add_title" : "ADD: "
+  "add_title" : "ADD: ",
+  "you_can_scroll" : "You can scroll this list!",
+  "REVIEW" : "REVIEW"
 }

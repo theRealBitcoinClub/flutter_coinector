@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';
@@ -55,7 +56,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
     return prefs.setStringList(_kNotificationsPrefs, value);
   }
 
-  _getSuggestions(String pattern) {
+  _getSuggestions(String pattern, ctx) {
     Set<String> matches = Set.from([]);
 
     addMatches(pattern, matches, Tag.tagText);
@@ -75,7 +76,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
       Set<String> moreMatches = Set.from([]);
       moreMatches
           .add(AddPlaceTagSearchDelegate.COINECTOR_SUPPORTS_MANY_LANGUAGES);
-      moreMatches.add(AddPlaceTagSearchDelegate.YOU_CAN_SCROLL);
+      moreMatches.add(FlutterI18n.translate(ctx, "you_can_scroll"));
       moreMatches.addAll(matches);
       return moreMatches;
     }
@@ -114,12 +115,13 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    Set<String> suggestions = query.isEmpty ? _history : _getSuggestions(query);
+    Set<String> suggestions =
+        query.isEmpty ? _history : _getSuggestions(query, context);
 
     if (query.isEmpty) {
       suggestions = Set.from([
         AddPlaceTagSearchDelegate.COINECTOR_SUPPORTS_MANY_LANGUAGES,
-        AddPlaceTagSearchDelegate.YOU_CAN_SCROLL
+        FlutterI18n.translate(context, "you_can_scroll")
       ]);
       suggestions.addAll(_history);
     }
