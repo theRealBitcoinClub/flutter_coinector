@@ -13,12 +13,12 @@ class Toaster {
   static const Toast DEFAULT_TIME_FOR_ANDROID = Toast.LENGTH_LONG;
   static const ToastGravity DEFAULT_TOAST_GRAVITY = ToastGravity.CENTER;
 
-  static void showToastLaunchingEmailClient() {
-    showWarning("Please select your favorite E-Mail client!");
+  static void showToastLaunchingEmailClient(ctx) {
+    showWarning(FlutterI18n.translate(ctx, "toaster_select_email_client"));
   }
 
-  static void showToastEmailNotConfigured() {
-    showWarning("E-Mail client not configured?!");
+  static void showToastEmailNotConfigured(ctx) {
+    showWarning(FlutterI18n.translate(ctx, "toaster_email_not_configured"));
   }
 
   static void showWarning(message) {
@@ -26,21 +26,21 @@ class Toaster {
     showToast(message, DEFAULT_BACKGROUND_COLOR);
   }
 
-  static void showAddName() {
-    showWarning("Please enter a name with atleast 5 characters!");
+  static void showAddName(ctx) {
+    showWarning(FlutterI18n.translate(
+        ctx, "toaster_enter_name_atleast_five_characters"));
   }
 
-  static void showAddExactlyFourTags() {
-    showWarning("Please add exactly four tags!");
+  static void showAddExactlyFourTags(ctx) {
+    showWarning(FlutterI18n.translate(ctx, "toaster_minimum_four_tags"));
   }
 
-  static void showAddAtleastOneReceivingAddress() {
-    showWarning("Please add atleast a DASH or a BCH address!");
+  static void showAddAtleastOneReceivingAddress(ctx) {
+    showWarning(FlutterI18n.translate(ctx, "toaster_atleast_one_bitcoin_adr"));
   }
 
-  static void showAddFullAdr() {
-    showWarning(
-        "Please enter the FULL ADDRESS: Street, Number, State & Country!");
+  static void showAddFullAdr(ctx) {
+    showWarning(FlutterI18n.translate(ctx, "toaster_full_adr"));
   }
 
   static void showInstructionToast(

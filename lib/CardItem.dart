@@ -1,15 +1,13 @@
-import 'package:clipboard_manager/clipboard_manager.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:transparent_image/transparent_image.dart';
-
-import 'AssetLoader.dart';
 import 'CustomBoxShadow.dart';
+import 'Dialogs.dart';
 import 'ItemInfoStackLayer.dart';
 import 'Merchant.dart';
 import 'MyColors.dart';
-import 'Place.dart';
 import 'RatingWidgetBuilder.dart';
 import 'Toaster.dart';
 import 'UrlLauncher.dart';
@@ -34,38 +32,44 @@ class CardItem extends StatelessWidget {
   final bool selected;
   final double itemHeight = 95;
 
-  FlatButton buildSendEmailButton(BuildContext context) {
+  FlatButton buildSendEmailButton(BuildContext ctx) {
     return FlatButton(
       child: Row(
-        children: <Widget>[Icon(Icons.alternate_email), Text(' SEND EMAIL')],
+        children: <Widget>[
+          Icon(Icons.alternate_email),
+          Text(FlutterI18n.translate(ctx, "send_email"))
+        ],
       ),
       onPressed: () {
-        Navigator.of(context).pop();
-        UrlLauncher.launchEmailClientUpdatePaymentDetails(merchant, () {
-          Toaster.showToastEmailNotConfigured();
+        Navigator.of(ctx).pop();
+        UrlLauncher.launchEmailClientUpdatePaymentDetails(ctx, merchant, () {
+          Toaster.showToastEmailNotConfigured(ctx);
         });
       },
     );
   }
 
-  void showPlaceNotFoundOnGmaps(context) {
+  void showPlaceNotFoundOnGmaps(ctx) {
     showDialog(
-        context: context,
-        builder: (BuildContext ctx) {
+        context: ctx,
+        builder: (BuildContext buildCtx) {
           return AlertDialog(
-            actions: [buildSendEmailButton(ctx), buildCloseDialogButton(ctx)],
+            actions: [
+              buildSendEmailButton(buildCtx),
+              Dialogs.buildCloseDialogButton(buildCtx)
+            ],
             //TODO Optimize by offering a form to submit the data
-            title: Text("Missing Google Maps link!",
+            title: Text(
+                FlutterI18n.translate(buildCtx, "dialog_missing_gmaps_title"),
                 style: TextStyle(color: Colors.white)),
             content: Text(
-                "Help to grow adoption!\n\nSend the missing information to:\n\ntrbc@bitcoinmap.cash"),
+                FlutterI18n.translate(buildCtx, "dialog_help_grow_adoption")),
           );
         });
   }
 
   @override
   Widget build(BuildContext context) {
-
     TextStyle textStyleBody1 = Theme.of(context).textTheme.body1;
     TextStyle textStyleBody2 = Theme.of(context).textTheme.body2;
 
@@ -77,7 +81,7 @@ class CardItem extends StatelessWidget {
     return SizedBox(
       child: Card(
           clipBehavior: Clip.none,
-          margin: EdgeInsets.only(left: 5.0, right: 5.0, bottom: 10.0),
+          margin: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 30.0),
           elevation: 10.0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0),
@@ -95,12 +99,6 @@ class CardItem extends StatelessWidget {
 
   Stack buildContentStack(BuildContext ctx, Color infoBoxBackgroundColor,
       TextStyle textStyle, TextStyle textStyle2) {
-    /*var gifUrl = "http://realbitcoinclub-" +
-        getServerId() +
-        ".firebaseapp.com/gif/" +
-        merchant.id +
-        ".gif";*/
-
     var gifUrl =
         'https://github.com/theRealBitcoinClub/BITCOINMAP.CASH---Browser-PWA/raw/master/public/img/app/' +
             merchant.id +
@@ -198,37 +196,6 @@ class CardItem extends StatelessWidget {
         : merchant.serverId);
   }
 
-  Widget loadImage(String gifUrl) {
-    var img;
-    /*try {
-      /*img = Image(
-        image: AdvancedNetworkImage(
-          gifUrl,
-          //TODO is header necessary? header: "",
-          header:  {'':''},
-          fallbackAssetImage: "assets/placeholder640x480.jpg",
-          useDiskCache: true,
-          cacheRule: CacheRule(maxAge: const Duration(days: 7)),
-        ),
-        fit: BoxFit.cover,
-      );*/
-      img = FadeInImage.memoryNetwork(
-        fadeInCurve: Curves.decelerate,
-        fit: BoxFit.contain,
-        fadeInDuration: Duration(milliseconds: 500),
-        placeholder: kTransparentImage,
-        //TODO offer low data version which only shows one image and loads more images on tap of carditem
-        image: gifUrl,
-        height: 320,
-        alignment: Alignment.bottomCenter,
-      );
-    } catch (e) {
-      */
-    //img = onLoadImageFailed();
-    //}
-    return img;
-  }
-
   Widget onLoadImageFailed() {
     final img = "assets/placeholder640x480.jpg";
     return FadeInImage.assetNetwork(placeholder: img, image: img);
@@ -274,31 +241,12 @@ class CardItem extends StatelessWidget {
               bottomLeft: Radius.elliptical(15, 15)),
           color: Colors.grey[900].withOpacity(0.1)),
       child: ButtonTheme.bar(
-          /*shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
-            side: BorderSide(
-                color: Colors.white, width: 1.0, style: BorderStyle.solid)),*/
-          //splashColor: Colors.white,
           padding: EdgeInsets.all(10.0),
           // make buttons use the appropriate styles for cards
           child: ButtonBar(
             mainAxisSize: MainAxisSize.max,
             alignment: MainAxisAlignment.end,
             children: <Widget>[
-              /*GestureDetector(
-
-              onTap: () {
-                handleReviewClick(context, merchant);
-              },
-              child:*/
-              //buildFlatButtonPay(context),
-              /* Row(children: <Widget>[
-                RatingWidgetBuilder.buildRatingWidgetIfReviewsAvailable(
-                    merchant, Theme.of(context).textTheme.body2),
-                SizedBox(
-                  width: 10.0,
-                )
-              ]),*/
               buildFlatButtonReview(context),
               buildFlatButtonVisit(context),
             ],
@@ -310,10 +258,10 @@ class CardItem extends StatelessWidget {
     return FlatButton(
       child: Column(
         children: <Widget>[
-          buildIcon(Icons.directions_run, Colors.white),
-          buildSpacer(),
+          Dialogs.buildIcon(Icons.directions_run, Colors.white),
+          Dialogs.buildSpacer(),
           Text(
-            'VISIT',
+            FlutterI18n.translate(context, 'VISIT'),
             style: TextStyle(fontSize: 14, color: Colors.white),
           )
         ],
@@ -328,40 +276,25 @@ class CardItem extends StatelessWidget {
     );
   }
 
-  FlatButton buildFlatButtonPay(BuildContext context) {
-    return FlatButton(
-      child: Column(
-        children: <Widget>[
-          buildIcon(Icons.payment, getToggleColor(merchant.isPayEnabled)),
-          buildSpacer(),
-          Text('PAY',
-              style: TextStyle(color: getToggleColor(merchant.isPayEnabled)))
-        ],
-      ),
-      onPressed: () {
-        handlePayButton(context);
-      },
-    );
-  }
-
-
-  void handleReviewClick(context) async {
+  void handleReviewClick(ctx) async {
     if (merchant.place == null) {
-      showPlaceNotFoundOnGmaps(context);
+      showPlaceNotFoundOnGmaps(ctx);
       return;
     }
-    UrlLauncher.launchReviewUrl(context, merchant.place);
+    UrlLauncher.launchReviewUrl(ctx, merchant.place);
   }
 
   FlatButton buildFlatButtonReview(BuildContext ctx) {
     return FlatButton(
       child: Column(
         children: <Widget>[
-          buildIcon(Icons.rate_review, getToggleColor(merchant.place != null)),
-          buildSpacer(),
+          Dialogs.buildIcon(Icons.rate_review,
+              Dialogs.getToggleColor(merchant.place != null)),
+          Dialogs.buildSpacer(),
           Text(
             'REVIEW',
-            style: TextStyle(color: getToggleColor(merchant.place != null)),
+            style: TextStyle(
+                color: Dialogs.getToggleColor(merchant.place != null)),
           )
         ],
       ),
@@ -370,189 +303,4 @@ class CardItem extends StatelessWidget {
       },
     );
   }
-
-  Future handlePayButton(BuildContext context) async {
-    bothReceivingAddresses = await AssetLoader.loadReceivingAddress(merchant
-        .id); //TODO load receiving address before creating the carditem so that the item is truly stateless
-
-    if (bothReceivingAddresses != null) {
-      merchant.isPayEnabled = true;
-    }
-
-    if (merchant.isPayEnabled)
-      showPayDialog(context);
-    else {
-      showMissingAddrDialog(context);
-    }
-  }
-
-  Color getToggleColor(isEnabled) => isEnabled ? Colors.white : Colors.white54;
-
-  Icon buildIcon(final icon, final color) => Icon(
-        icon,
-        size: 25,
-        color: color,
-      );
-
-  SizedBox buildSpacer() {
-    return const SizedBox(
-      height: 5,
-    );
-  }
-}
-
-var bothReceivingAddresses;
-
-bool isPlaceMissing(Place place) => place == null || place.placesId.isEmpty;
-
-showPayDialog(BuildContext context) async {
-  showDialog(
-    context: context,
-    builder: (BuildContext context) {
-      var isEmptyBCH = isAddressEmpty(getBCHAddress());
-      var isEmptyDASH = isAddressEmpty(getDASHAddress());
-
-      return AlertDialog(
-        //title: Text("Pay now"),
-        elevation: 10.0,
-        titlePadding: EdgeInsets.fromLTRB(30.0, 25.0, 30.0, 10.0),
-        contentPadding: EdgeInsets.fromLTRB(35.0, 20.0, 30.0, 15.0),
-        //content: Text("Dash or Bitcoin Cash?"),
-        actions: [
-          buildCloseDialogButton(context),
-          FlatButton(
-            shape: roundedRectangleBorder(),
-            child: Text("DASH"),
-            color: isEmptyDASH ? Colors.blue.withOpacity(0.3) : Colors.blue,
-            onPressed: () {
-              closeChooseDialogAndShowAddressDialog(
-                  context, buildAddressDetailDialogDASH);
-            },
-          ),
-          FlatButton(
-            shape: roundedRectangleBorder(),
-            color: isEmptyBCH ? Colors.green.withOpacity(0.3) : Colors.green,
-            child: Text("BCH"),
-            onPressed: () {
-              closeChooseDialogAndShowAddressDialog(
-                  context, buildAddressDetailDialogBCH);
-            },
-          ),
-          SizedBox(
-            width: 10,
-          )
-        ],
-      );
-    },
-  );
-}
-
-void showMissingAddrDialog(BuildContext context) {
-  showDialog(
-      context: context,
-      builder: (BuildContext ctx) {
-        return AlertDialog(
-            actions: [buildCloseDialogButton(context)],
-            title:
-                Text("Missing address", style: TextStyle(color: Colors.white)),
-            content: new InkWell(
-                child: Text(
-                    "This merchant has not yet provided any payment receiving address!\n\nInformation can be provided to trbc@bitcoinmap.cash"),
-                onTap: () async {
-                  //TODO show dialog that there was not found any supported email client and forward the user to a sign up form
-                  //TODO forward the user to the new app for moderators
-                }));
-      });
-}
-
-RoundedRectangleBorder roundedRectangleBorder() {
-  return RoundedRectangleBorder(
-      side: BorderSide.none,
-      borderRadius: BorderRadius.all(Radius.circular(5.0)));
-}
-
-void closeChooseDialogAndShowAddressDialog(BuildContext context, method) {
-  //Navigator.of(context).pop();
-  showDialog(
-    context: context,
-    builder: method,
-  );
-}
-
-Widget buildAddressDetailDialogDASH(BuildContext context) {
-  var data = getDASHAddress();
-  if (isAddressEmpty(data)) {
-    return AlertDialog(
-      content: Text(
-          "This merchant does not yet accept DASH payments, please pay with BCH or explain the benefits of accepting DASH to the merchant!"),
-      actions: <Widget>[buildCloseDialogButton(context)],
-    );
-  } else
-    return AlertDialog(
-        title: Text("DASH (donate to dashboost.org)",
-            style: TextStyle(color: Colors.white)),
-        content: new InkWell(
-            child: new Text(data),
-            onTap: () {
-              copyAddressToClipAndShowDialog(data, context);
-              UrlLauncher.launchURI(data);
-              //launch(data);
-            }),
-        actions: [buildCloseDialogButton(context)]);
-}
-
-getDASHAddress() => bothReceivingAddresses.split(",")[1];
-
-FlatButton buildCloseDialogButton(BuildContext context) {
-  return FlatButton(
-    child: Row(
-      children: <Widget>[Icon(Icons.close), Text(' CLOSE')],
-    ),
-    onPressed: () {
-      Navigator.of(context).pop();
-    },
-  );
-}
-
-Widget buildAddressDetailDialogBCH(BuildContext context) {
-  var data = getBCHAddress();
-  if (isAddressEmpty(data)) {
-    return AlertDialog(
-      content: Text(
-          "This merchant does not yet accept BCH payments, please pay with DASH or explain the benefits of accepting BCH to the merchant!"),
-      actions: <Widget>[buildCloseDialogButton(context)],
-    );
-  } else
-    return AlertDialog(
-      title: Text("BCH (donate to coinspice.io)",
-          style: TextStyle(color: Colors.white)),
-      actions: [buildCloseDialogButton(context)],
-      content: new InkWell(
-          child: new Text(getBCHAddress()),
-          onTap: () {
-            copyAddressToClipAndShowDialog(data, context);
-            UrlLauncher.launchURI(data);
-            //launch(data);
-          }),
-    );
-}
-
-bool isAddressEmpty(data) => data == '-';
-
-getBCHAddress() => bothReceivingAddresses.split(",")[0];
-
-void copyAddressToClipAndShowDialog(String data, BuildContext context) {
-  //Navigator.of(context).pop();
-  ClipboardManager.copyToClipBoard(data).then((result) {
-    showDialog(
-        context: context,
-        builder: (buildCtx) {
-          return AlertDialog(
-            content: Text(
-                "Address was copied to clipboard!\n\nOpen your favorite Wallet to send a transaction.\n\nIf you have a compatible Wallet installed it should open now!\n\nClick here to install a compatible free Wallet."),
-            title: Text("Copied to clipboard!",
-                style: TextStyle(color: Colors.white)),
-          );
-        });
-  });
 }

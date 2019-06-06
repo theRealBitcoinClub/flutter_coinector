@@ -153,7 +153,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         opacity: showSubmitBtn
             ? allSelectedTags.length == MIN_INPUT_TAGS ? 1.0 : 0.5
             : 0.0,
-        child: buildSubmitBtn(),
+        child: buildSubmitBtn(context),
       );
 
   Padding buildEmptyPaddingAsPlaceholder() {
@@ -256,31 +256,31 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     }).toList();
   }
 
-  Widget buildSubmitBtn() {
+  Widget buildSubmitBtn(ctx) {
     return FloatingActionButton.extended(
         onPressed: () async {
           if (!showSubmitBtn) return;
 
           if (inputName.length < MIN_INPUT_NAME) {
-            Toaster.showAddName();
+            Toaster.showAddName(ctx);
             return;
           }
           if (inputAdr.length < MIN_INPUT_ADR) {
-            Toaster.showAddFullAdr();
+            Toaster.showAddFullAdr(ctx);
             return;
           }
           if (allSelectedTags.length < MIN_INPUT_TAGS) {
-            Toaster.showAddExactlyFourTags();
+            Toaster.showAddExactlyFourTags(ctx);
             return;
           }
           if (!hasMinInput(inputBCH) && !hasMinInput(inputDASH)) {
-            Toaster.showAddAtleastOneReceivingAddress();
+            Toaster.showAddAtleastOneReceivingAddress(ctx);
             return;
           }
 
-          UrlLauncher.launchEmailClientAddPlace(
+          UrlLauncher.launchEmailClientAddPlace(ctx,
               inputDASH, inputBCH, buildJsonToSubmitViaEmail(), () {
-            Toaster.showToastEmailNotConfigured();
+            Toaster.showToastEmailNotConfigured(ctx);
           });
           Dialogs.confirmDownloadPdf(context, () {
             UrlLauncher.launchQrCodeGeneratorUrl(

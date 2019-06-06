@@ -67,7 +67,7 @@ class UrlLauncher {
     return hasInput ? ",en-bch@therealbitcoin.club" : "";
   }
 
-  static void launchEmailClientAddPlace(String inputDASH, String inputBCH,
+  static void launchEmailClientAddPlace(ctx, String inputDASH, String inputBCH,
       String content, onEmailClientNotFound) async {
     var urlString =
         "mailto:bitcoinmap@fire.fundersclub.com,incoming+bmap-cash-bmap-cash-12646634-issue-@incoming.gitlab.com,en-bmap.cash@therealbitcoin.club,en-anypay@therealbitcoin.club" +
@@ -78,15 +78,15 @@ class UrlLauncher {
             (hasInput(inputDASH) ? inputDASH : inputBCH) +
             "&body=Welcome to http://bmap.cash!\n\nYou can optionally attach Images to this email now!\n\nSend this E-Mail to submit the place!\n\nWe will notify you as soon as the place is available inside the app!\n\nDo not modify the content of this E-Mail!\n\nTo add any further details please send another E-Mail to trbc@bitcoinmap.cash!\n\nYou are Satoshi Nakamoto!\n\nThanks!\n\n" +
             content;
-    await _launchEmail(urlString, onEmailClientNotFound);
+    await _launchEmail(ctx, urlString, onEmailClientNotFound);
   }
 
   //TODO CREATE LIGHTWEIGHT SIGN UP VERSION OF COINECTOR/BMAP.CASH
 
   static bool hasInput(String input) => input.length > MIN_INPUT_BCHyDASH;
 
-  static Future _launchEmail(String urlString, onEmailClientNotFound) async {
-    Toaster.showToastLaunchingEmailClient();
+  static Future _launchEmail(ctx, String urlString, onEmailClientNotFound) async {
+    Toaster.showToastLaunchingEmailClient(ctx);
     if (await canLaunch(urlString)) {
       await launch(urlString);
     } else {
@@ -94,10 +94,10 @@ class UrlLauncher {
     }
   }
 
-  static void launchEmailClientUpdatePaymentDetails(
+  static void launchEmailClientUpdatePaymentDetails(ctx,
       Merchant m, onEmailClientNotFound) {
     var urlString =
-        "mailto:trbc@bitcoinmap.cash?subject=Update Coinector: " + m.id;
-    _launchEmail(urlString, onEmailClientNotFound);
+        "mailto:trbc@bitcoinmap.cash,bitcoinmap@fire.fundersclub.com,incoming+bmap-cash-bmap-cash-12646634-issue-@incoming.gitlab.com?subject=Update Coinector: " + m.id;
+    _launchEmail(ctx, urlString, onEmailClientNotFound);
   }
 }
