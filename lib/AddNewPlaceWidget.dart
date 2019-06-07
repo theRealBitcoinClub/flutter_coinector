@@ -7,14 +7,17 @@ import 'Tag.dart';
 import 'Toaster.dart';
 import 'UrlLauncher.dart';
 
-const OPACITY_ITEM_VALIDATED = 0.5;
+const OPACITY_ITEM_VALIDATED = 0.7;
 const OPACITY_ITEM_DEACTIVATED = 0.0;
 const DEFAULT_DURATION_SCROLL_ANIMATION = Duration(milliseconds: 3000);
 const DEFAULT_ANIMATION_CURVE = Curves.decelerate;
 const DEFAULT_DURATION_OPACITY_FADE = Duration(milliseconds: 5000);
 const DURATION_OPACITY_FADE_SUBMIT_BTN = Duration(milliseconds: 10000);
 const INPUT_DASH_POS = 550.0;
+const INPUT_BCH_POS = 700.0;
 const INPUT_TAGS_POS = 200.0;
+const INPUT_ADR_POS = 130.0;
+const KEYWORD_CONTROLLER_ACTION = "controller";
 
 const int MIN_INPUT_ADR = 20;
 const int MIN_INPUT_NAME = 5;
@@ -57,11 +60,26 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       AddPlaceTagSearchDelegate();
   static const TEXT_COLOR = Colors.white;
   FocusNode focusNodeInputDASH;
+  FocusNode focusNodeInputBCH;
+  FocusNode focusNodeInputAdr;
+  FocusNode focusNodeInputName;
+  TextEditingController controllerInputDASH;
+  TextEditingController controllerInputBCH;
+  TextEditingController controllerInputAdr;
+  TextEditingController controllerInputName;
 
-  String inputName;
-  String inputAdr;
+  String inputName = "";
+  String lastInputNameWithCommand = "";
+  String lastInputName = "";
+  String inputAdr = "";
+  String lastInputAdrWithCommand = "";
+  String lastInputAdr = "";
   String inputBCH = "";
+  String lastInputBCH = "";
+  String lastInputBCHWithCommand = "";
   String inputDASH = "";
+  String lastInputDASH = "";
+  String lastInputDASHWithCommand = "";
   bool showSubmitBtn = false;
   bool showInputDASHyBCH = false;
   bool showInputAdr = false;
@@ -78,12 +96,39 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   void initState() {
     super.initState();
     focusNodeInputDASH = FocusNode();
+    focusNodeInputBCH = FocusNode();
+    focusNodeInputAdr = FocusNode();
+    focusNodeInputName = FocusNode();
+
+    controllerInputDASH = TextEditingController();
+    controllerInputDASH.addListener(() {
+      updateInputDASH(KEYWORD_CONTROLLER_ACTION);
+    });
+    controllerInputBCH = TextEditingController();
+    controllerInputBCH.addListener(() {
+      updateInputBCH(KEYWORD_CONTROLLER_ACTION);
+    });
+    controllerInputAdr = TextEditingController();
+    controllerInputAdr.addListener(() {
+      updateInputAdr(KEYWORD_CONTROLLER_ACTION);
+    });
+    controllerInputName = TextEditingController();
+    controllerInputName.addListener(() {
+      updateInputName(KEYWORD_CONTROLLER_ACTION);
+    });
   }
 
   @override
   void dispose() {
     // Clean up the focus node when the Form is disposed
     focusNodeInputDASH.dispose();
+    focusNodeInputBCH.dispose();
+    focusNodeInputAdr.dispose();
+    focusNodeInputName.dispose();
+    controllerInputDASH.dispose();
+    controllerInputBCH.dispose();
+    controllerInputAdr.dispose();
+    controllerInputName.dispose();
 
     super.dispose();
   }
@@ -177,8 +222,17 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           i18n(ctx, "add_place_name_subtitle"),
           style: textStyleHint(),
         ),
-        buildTextField(ctx, null, 0.1, Icons.title, MAX_INPUT_NAME,
-            i18n(ctx, "name"), updateInputName),
+        buildTextField(
+            controllerInputName,
+            false,
+            ctx,
+            focusNodeInputName,
+            focusNodeInputAdr,
+            0.1,
+            Icons.title,
+            MAX_INPUT_NAME,
+            i18n(ctx, "name"),
+            updateInputName),
       ],
     );
   }
@@ -188,7 +242,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-        buildSizedBoxSeparator(multiplier: 3.0),
+        buildSizedBoxSeparator(multiplier: 2.0),
         Text(
           i18n(ctx, "choose_four_tags"),
           style: textStyleLabel(),
@@ -279,18 +333,22 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             return;
           }
 
-          UrlLauncher.launchEmailClientAddPlace(
-              ctx, inputDASH, inputBCH, buildJsonToSubmitViaEmail(), () {
-            Toaster.showToastEmailNotConfigured(ctx);
-          });
-          Dialogs.confirmDownloadPdf(context, () {
-            UrlLauncher.launchQrCodeGeneratorUrl(
-                dash: hasMinInput(inputDASH) ? inputDASH : "",
-                bch: hasMinInput(inputBCH) ? inputBCH : "");
-          });
+          submitData(ctx);
         },
         icon: Icon(Icons.send),
         label: Text(i18n(ctx, "send")));
+  }
+
+  void submitData(ctx) async {
+    UrlLauncher.launchEmailClientAddPlace(
+        ctx, inputDASH, inputBCH, buildJsonToSubmitViaEmail(), () {
+      Toaster.showToastEmailNotConfigured(ctx);
+    });
+    Dialogs.confirmDownloadPdf(context, () {
+      UrlLauncher.launchQrCodeGeneratorUrl(
+          dash: hasMinInput(inputDASH) ? inputDASH : "",
+          bch: hasMinInput(inputBCH) ? inputBCH : "");
+    });
   }
 
   bool hasMinInput(input) => input.length > MIN_INPUT_BCHyDASH;
@@ -300,7 +358,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-        buildSizedBoxSeparator(multiplier: 3.0),
+        buildSizedBoxSeparator(multiplier: 2.0),
         Text(
           i18n(ctx, "what_is_your_dash"),
           style: textStyleLabel(),
@@ -311,8 +369,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           style: textStyleHint(),
         ),
         buildTextField(
+            controllerInputDASH,
+            false,
             ctx,
             focusNodeInputDASH,
+            focusNodeInputBCH,
             INPUT_DASH_POS,
             Icons.monetization_on,
             MAX_INPUT_DASH,
@@ -328,8 +389,17 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           i18n(ctx, "copy_adr_instructions"),
           style: textStyleHint(),
         ),
-        buildTextField(ctx, null, 700.0, Icons.monetization_on, MAX_INPUT_BCH,
-            i18n(ctx, "bch_adr"), updateInputBCH),
+        buildTextField(
+            controllerInputBCH,
+            true,
+            ctx,
+            focusNodeInputBCH,
+            null,
+            INPUT_BCH_POS,
+            Icons.monetization_on,
+            MAX_INPUT_BCH,
+            i18n(ctx, "bch_adr"),
+            updateInputBCH),
         buildSizedBoxSeparator(multiplier: 5.0),
       ],
     );
@@ -340,7 +410,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-        buildSizedBoxSeparator(multiplier: 3.0),
+        buildSizedBoxSeparator(multiplier: 2.0),
         Text(
           i18n(ctx, "postal_adr"),
           style: textStyleLabel(),
@@ -350,8 +420,17 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           i18n(ctx, "street_number"),
           style: textStyleHint(),
         ),
-        buildTextField(ctx, null, 150.0, Icons.local_post_office, MAX_INPUT_ADR,
-            i18n(ctx, "address"), updateInputAdr),
+        buildTextField(
+            controllerInputAdr,
+            false,
+            ctx,
+            focusNodeInputAdr,
+            null,
+            INPUT_ADR_POS,
+            Icons.local_post_office,
+            MAX_INPUT_ADR,
+            i18n(ctx, "address"),
+            updateInputAdr),
       ],
     );
   }
@@ -382,9 +461,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     addSelectedTag(selected);
 
     if (allSelectedTags.length == MAX_INPUT_TAGS) {
-      setState(() {
-        showInputDASHyBCH = true;
-      });
+      showInputBCHyDASH();
       FocusScope.of(ctx).requestFocus(focusNodeInputDASH);
       scrollController.jumpTo(INPUT_DASH_POS);
     } else {
@@ -396,6 +473,18 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     });
   }
 
+  void showInputBCHyDASH() {
+    setState(() {
+      showInputDASHyBCH = true;
+    });
+  }
+
+  _fieldFocusChange(
+      BuildContext context, FocusNode currentFocus, FocusNode nextFocus) {
+    if (currentFocus != null) currentFocus.unfocus();
+    if (nextFocus != null) FocusScope.of(context).requestFocus(nextFocus);
+  }
+
   void scrollToWithAnimation(pos) {
     if (scrollController.positions.isNotEmpty) {
       scrollController.animateTo(pos,
@@ -405,6 +494,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   RaisedButton buildSearchTagButton(ctx) {
+    var iconSeparator = "   ";
+    var tagCounter = allSelectedTags.length;
     return RaisedButton(
       onPressed: () {
         handleAddTagButton(ctx);
@@ -420,26 +511,39 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         child: Row(
           children: <Widget>[
             Icon(Icons.search),
-            allSelectedTags.length == 0
-                ? Text("   TOUCH HERE TO CHOOSE A TAG")
-                : allSelectedTags.length == 1
-                    ? Text("   CHOOSE ANOTHER TAG")
-                    : allSelectedTags.length == 2
-                        ? Text("   CHOOSE THIRD TAG")
-                        : allSelectedTags.length == 3
-                            ? Text("   CHOOSE LAST TAG")
-                            : Text("   RESET TAGS")
+            tagCounter == 0
+                ? Text(
+                    iconSeparator + FlutterI18n.translate(ctx, "choose_tag_1"))
+                : tagCounter == 1
+                    ? Text(iconSeparator +
+                        FlutterI18n.translate(ctx, "choose_tag_2"))
+                    : tagCounter == 2
+                        ? Text(iconSeparator +
+                            FlutterI18n.translate(ctx, "choose_tag_3"))
+                        : tagCounter == 3
+                            ? Text(iconSeparator +
+                                FlutterI18n.translate(ctx, "choose_tag_4"))
+                            : Text(iconSeparator +
+                                FlutterI18n.translate(ctx, "choose_tag_5"))
           ],
         ),
       ),
     );
   }
 
-  TextField buildTextField(ctx, focusNode, onTapScrollToThisPosition, icon,
-      maxLength, String label, updateInputCallback) {
+  TextField buildTextField(
+      textEditingController,
+      isDone,
+      ctx,
+      focusNode,
+      nextFocusNode,
+      onTapScrollToThisPosition,
+      icon,
+      maxLength,
+      String label,
+      updateInputCallback) {
     return TextField(
       focusNode: focusNode,
-      //onSubmitted: updateInputCallback("c0mpl3te"),
       onTap: () {
         scrollToWithAnimation(onTapScrollToThisPosition);
       },
@@ -450,12 +554,13 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
               UnderlineInputBorder(borderSide: BorderSide(color: accentColor)),
           labelText:
               i18n(ctx, "insert_hint_1") + label + i18n(ctx, "insert_hint_2")),
-      cursorColor: Colors.white70,
+      cursorColor: accentColor,
       textCapitalization: TextCapitalization.words,
-      textInputAction: TextInputAction.next,
+      textInputAction: isDone ? TextInputAction.done : TextInputAction.next,
       maxLengthEnforced: true,
       maxLength: maxLength,
       maxLines: 1,
+      controller: textEditingController,
       onChanged: updateInputCallback,
       style: textStyleInput(),
     );
@@ -483,8 +588,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     });
   }
 
-  //TODO listen to the duration of not receiving input and show the next field after 5 seconds of inactivity
-
   void showInputTag() {
     scrollToWithAnimation(INPUT_TAGS_POS);
     setState(() {
@@ -493,34 +596,94 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void updateInputBCH(String input) {
-    this.inputBCH = input;
+    var hasMinInput = inputBCH.length >= MIN_INPUT_BCHyDASH;
+
+    if (hasMinInput && lastInputBCH != inputBCH) {
+      if (input == KEYWORD_CONTROLLER_ACTION &&
+          lastInputBCHWithCommand == KEYWORD_CONTROLLER_ACTION) {
+        Dialogs.confirmSendEmail(context, () {
+          submitData(context);
+        });
+        _fieldFocusChange(context, focusNodeInputBCH, null);
+        lastInputBCH = inputBCH;
+        return;
+      }
+    }
+    lastInputBCHWithCommand = input;
+    if (input != KEYWORD_CONTROLLER_ACTION) {
+      inputBCH = input.trim();
+    }
   }
 
   void updateInputDASH(String input) {
-    this.inputDASH = input;
+    var hasMinInput = inputDASH.length >= MIN_INPUT_BCHyDASH;
+
+    if (hasMinInput && lastInputDASH != inputDASH) {
+      if (input == KEYWORD_CONTROLLER_ACTION &&
+          lastInputDASHWithCommand == KEYWORD_CONTROLLER_ACTION) {
+        _fieldFocusChange(context, focusNodeInputDASH, focusNodeInputBCH);
+        scrollToWithAnimation(INPUT_BCH_POS);
+        lastInputDASH = inputDASH;
+        return;
+      }
+    }
+
+    if (input.length >= MIN_INPUT_BCHyDASH &&
+        input != KEYWORD_CONTROLLER_ACTION) {
+      Toaster.showWarning(
+          FlutterI18n.translate(context, "attract_more_customer"));
+    }
+
+    lastInputDASHWithCommand = input;
+    if (input != KEYWORD_CONTROLLER_ACTION) {
+      inputDASH = input.trim();
+    }
   }
 
   void updateInputAdr(String input) {
-    if (input.length > MIN_INPUT_ADR) {
+    var hasMinInput = inputAdr.length >= MIN_INPUT_ADR;
+
+    if (hasMinInput && lastInputAdr != inputAdr) {
+      if (input == KEYWORD_CONTROLLER_ACTION &&
+          lastInputAdrWithCommand == KEYWORD_CONTROLLER_ACTION) {
+        _fieldFocusChange(context, focusNodeInputAdr, null);
+        scrollToWithAnimation(INPUT_TAGS_POS);
+        lastInputAdr = inputAdr;
+        return;
+      }
+    }
+
+    if (input.length >= MIN_INPUT_ADR && input != KEYWORD_CONTROLLER_ACTION) {
       showInputTag();
     }
 
-    this.inputAdr = input;
+    lastInputAdrWithCommand = input;
+    if (input != KEYWORD_CONTROLLER_ACTION) {
+      inputAdr = input.trim();
+    }
   }
 
   void updateInputName(String input) {
-    if (input == "c0mpl3te") {
-      scrollToWithAnimation(150.0);
-      return;
+    var hasMinInput = inputName.length >= MIN_INPUT_NAME;
+
+    if (hasMinInput && lastInputName != inputName) {
+      if (input == KEYWORD_CONTROLLER_ACTION &&
+          lastInputNameWithCommand == KEYWORD_CONTROLLER_ACTION) {
+        _fieldFocusChange(context, null, focusNodeInputAdr);
+        scrollToWithAnimation(INPUT_ADR_POS);
+        lastInputName = inputName;
+        return;
+      }
     }
 
-    //TODO FIX THAT LOCATION IS AVAILABLE AT THE BEGINNING BY USNG SHARED PREFS TO save LOCATION!!
-
-    if (input.length > MIN_INPUT_NAME) {
+    if (input.length >= MIN_INPUT_NAME && input != KEYWORD_CONTROLLER_ACTION) {
       showInputAddress();
     }
 
-    this.inputName = input;
+    lastInputNameWithCommand = input;
+    if (input != KEYWORD_CONTROLLER_ACTION) {
+      inputName = input.trim();
+    }
   }
 
   void addSelectedTag(String selected) {

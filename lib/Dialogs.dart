@@ -2,6 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 
 class Dialogs {
+  static void confirmSendEmail(BuildContext context, callbackYes) {
+    showDialog(
+        context: context,
+        builder: (BuildContext ctx) {
+          return AlertDialog(
+            backgroundColor: Colors.grey[900],
+            content: Text(
+                FlutterI18n.translate(context, "send_email_containing_data")),
+            title: Row(
+              children: <Widget>[
+                Icon(Icons.warning),
+                Text(" Send E-Mail?", style: TextStyle(color: Colors.white))
+              ],
+            ),
+            actions: <Widget>[
+              flatButtonNo(context),
+              flatButtonYes(context, callbackYes)
+            ],
+          );
+        });
+  }
+
   static void confirmDownloadPdf(BuildContext context, callbackYes) {
     showDialog(
         context: context,
@@ -16,22 +38,30 @@ class Dialogs {
               ],
             ),
             actions: <Widget>[
-              FlatButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text(FlutterI18n.translate(context, "NO")),
-              ),
-              FlatButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                  callbackYes();
-                },
-                child: Text(FlutterI18n.translate(context, "YES")),
-              )
+              flatButtonNo(context),
+              flatButtonYes(context, callbackYes)
             ],
           );
         });
+  }
+
+  static FlatButton flatButtonYes(BuildContext context, callbackYes) {
+    return FlatButton(
+      onPressed: () {
+        Navigator.of(context).pop();
+        callbackYes();
+      },
+      child: Text(FlutterI18n.translate(context, "YES")),
+    );
+  }
+
+  static FlatButton flatButtonNo(BuildContext context) {
+    return FlatButton(
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+      child: Text(FlutterI18n.translate(context, "NO")),
+    );
   }
 
   static void confirmShowResetTags(BuildContext context, callbackYes) {
@@ -49,19 +79,8 @@ class Dialogs {
               ],
             ),
             actions: <Widget>[
-              FlatButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text(FlutterI18n.translate(context, "NO")),
-              ),
-              FlatButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                  callbackYes();
-                },
-                child: Text(FlutterI18n.translate(context, "YES")),
-              )
+              flatButtonNo(context),
+              flatButtonYes(context, callbackYes)
             ],
           );
         });

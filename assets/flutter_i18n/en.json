@@ -60,5 +60,12 @@
   "download_qr_code" : "Do you want to download a PDF file containing QR-Codes?",
   "NO" : "NO",
   "YES" : "YES",
-  "reset_tags_select_again" : "Do you want to reset all tags to select again?"
+  "reset_tags_select_again" : "Do you want to reset all tags to select again?",
+  "send_email_containing_data" : "Do you want to send us an E-Mail containing the data and get further assistance?",
+  "attract_more_customer" : "To attract more customers, you can enter a BCH address too!",
+  "choose_tag_1" : "TOUCH HERE TO CHOOSE A TAG",
+  "choose_tag_2" : "CHOOSE ANOTHER TAG",
+  "choose_tag_3" : "CHOOSE THIRD TAG",
+  "choose_tag_4" : "CHOOSE LAST TAG",
+  "choose_tag_5" : "RESET TAGS"
 }
