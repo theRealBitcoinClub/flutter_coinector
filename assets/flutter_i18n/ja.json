@@ -60,5 +60,12 @@
   "download_qr_code" : "QRコードを含むPDFファイルをダウンロードしますか？",
   "NO" : "いいえ",
   "YES" : "はい",
-  "reset_tags_select_again" : "もう一度選択するためにすべてのタグをリセットしますか？"
+  "reset_tags_select_again" : "もう一度選択するためにすべてのタグをリセットしますか？",
+  "send_email_containing_data" : "あなたは私達にデータを含むEメールを送って、さらに援助を得たいですか？",
+  "attract_more_customer" : "より多くの顧客を引き付けるために、あなたもBCHアドレスを入力することができます！",
+  "choose_tag_1" : "ここでタップ、選択タグ",
+  "choose_tag_2" : "他のタグを選択",
+  "choose_tag_3" : "3番目のタグを選択",
+  "choose_tag_4" : "最後のタグを選択",
+  "choose_tag_5" : "リセットタグ"
 }

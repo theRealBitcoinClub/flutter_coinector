@@ -60,5 +60,12 @@
   "download_qr_code" : "¿Desea descargar un archivo PDF que contiene códigos QR?",
   "NO" : "NO",
   "YES" : "SÍ",
-  "reset_tags_select_again" : "¿Desea restablecer todas las etiquetas para seleccionar de nuevo?"
+  "reset_tags_select_again" : "¿Desea restablecer todas las etiquetas para seleccionar de nuevo?",
+  "send_email_containing_data" : "¿Desea enviarnos un correo electrónico con los datos y obtener más ayuda?",
+  "attract_more_customer" : "Para atraer más clientes, ¡también puede ingresar una dirección BCH!",
+  "choose_tag_1" : "ELIJA LA ETIQUETA",
+  "choose_tag_2" : "ELIGE OTRA ETIQUETA",
+  "choose_tag_3" : "ELIGE TERCERA ETIQUETA",
+  "choose_tag_4" : "ELIGE ÚLTIMA ETIQUETA",
+  "choose_tag_5" : "RESTABLECER ETIQUETAS"
 }

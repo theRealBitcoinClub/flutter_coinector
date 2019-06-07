@@ -60,5 +60,12 @@
   "download_qr_code" : "Apakah Anda ingin mengunduh file PDF yang berisi QR-Codes?",
   "NO" : "TIDAK",
   "YES" : "IYA NIH",
-  "reset_tags_select_again" : "Apakah Anda ingin mengatur ulang semua tag untuk memilih lagi?"
+  "reset_tags_select_again" : "Apakah Anda ingin mengatur ulang semua tag untuk memilih lagi?",
+  "send_email_containing_data" : "Apakah Anda ingin mengirimi kami E-Mail yang berisi data dan mendapatkan bantuan lebih lanjut?",
+  "attract_more_customer" : "Untuk menarik lebih banyak pelanggan, Anda juga dapat memasukkan alamat BCH!",
+  "choose_tag_1" : "TAP DI SINI, PILIH TAG",
+  "choose_tag_2" : "PILIH TAG LAIN",
+  "choose_tag_3" : "PILIH TAG KETIGA",
+  "choose_tag_4" : "PILIH TAG TERAKHIR",
+  "choose_tag_5" : "RESET TAGS"
 }

@@ -60,5 +60,12 @@
   "download_qr_code" : "Möchtest du eine PDF-Datei mit QR-Codes runterladen?",
   "NO" : "NEIN",
   "YES" : "JA",
-  "reset_tags_select_again" : "Möchtest du alle Schlagwörter löschen und neu auswählen?"
+  "reset_tags_select_again" : "Möchtest du alle Schlagwörter löschen und neu auswählen?",
+  "send_email_containing_data" : "Möchten Sie uns eine E-Mail mit den Daten senden und weitere Unterstützung erhalten?",
+  "attract_more_customer" : "Um mehr Kunden anzulocken, können Sie auch eine BCH-Adresse eingeben!",
+  "choose_tag_1" : "HIER TIPPEN, TAG WÄHLEN",
+  "choose_tag_2" : "WÄHLEN SIE EINEN 2. TAG",
+  "choose_tag_3" : "WÄHLEN SIE EINEN 3. TAG",
+  "choose_tag_4" : "WÄHLEN SIE DEN 4. TAG",
+  "choose_tag_5" : "TAGS ZURÜCKSETZEN"
 }
