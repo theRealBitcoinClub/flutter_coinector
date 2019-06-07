@@ -58,7 +58,6 @@ class CardItem extends StatelessWidget {
               buildSendEmailButton(buildCtx),
               Dialogs.buildCloseDialogButton(buildCtx)
             ],
-            //TODO Optimize by offering a form to submit the data
             title: Text(
                 FlutterI18n.translate(buildCtx, "dialog_missing_gmaps_title"),
                 style: TextStyle(color: Colors.white)),
@@ -105,92 +104,116 @@ class CardItem extends StatelessWidget {
             merchant.id +
             ".gif";
 
+    var backGroundColor = Colors.grey[900].withOpacity(0.8);
     return Stack(
       children: <Widget>[
-        Positioned(
-          top: 180.0,
-          left: MediaQuery.of(ctx).size.width / 2 - 20,
-          child: Center(
-            child: CircularProgressIndicator(strokeWidth: 1.5),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.all(0.0),
-          child: FadeInImage.memoryNetwork(
-            fadeInCurve: Curves.decelerate,
-            fit: BoxFit.contain,
-            fadeInDuration: Duration(milliseconds: 500),
-            placeholder: kTransparentImage,
-            image: gifUrl,
-            height: 320,
-            alignment: Alignment.bottomCenter,
-          ),
-        ),
-        Stack(
-          children: <Widget>[
-            buildGradientContainer(Colors.grey[900]),
-            Container(
-              margin: EdgeInsets.all(0.0),
-              height: itemHeight,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.elliptical(30, 15),
-                      topLeft: Radius.circular(15.0),
-                      topRight: Radius.circular(15.0)),
-                  boxShadow: [
-                    CustomBoxShadow(
-                        color: infoBoxBackgroundColor.withOpacity(0.5),
-                        blurRadius: 3.0,
-                        offset: Offset(0.0, 0.0),
-                        blurStyle: BlurStyle.outer)
-                  ],
-                  color: Colors.grey[900].withOpacity(0.8)),
-            ),
-            ItemInfoStackLayer(
-                merchant: merchant,
-                textStyleMerchantTitle: textStyle,
-                textStyleMerchantLocation: textStyle2,
-                height: itemHeight)
-          ],
-        ),
-        Positioned(
-          left: 0.0,
-          bottom: 5.0,
-          child: merchant.distance != null
-              ? Container(
-                  padding: EdgeInsets.fromLTRB(15.0, 5.0, 10.0, 5.0),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(10),
-                          bottomRight: Radius.circular(10)),
-                      color: Colors.grey[900].withOpacity(0.8)),
-                  child: Text(
-                    merchant.distance.toString(),
-                    style: textStyle2,
-                  ),
-                )
-              : Container(),
-        ),
+        buildProgressIndicator(ctx),
+        buildImageContainer(gifUrl),
+        buildStackInfoTextWithBackgroundAndShadow(
+            infoBoxBackgroundColor, backGroundColor, textStyle, textStyle2),
+        buildPositionedContainerDistance(backGroundColor, textStyle2),
         RatingWidgetBuilder.hasReviews(merchant)
-            ? Positioned(
-                right: 0.0,
-                bottom: 5.0,
-                child: Container(
-                  padding: EdgeInsets.fromLTRB(10.0, 5.0, 15.0, 5.0),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(10),
-                          bottomLeft: Radius.circular(10)),
-                      color: Colors.grey[900].withOpacity(0.8)),
-                  child:
-                      RatingWidgetBuilder.buildRatingWidgetIfReviewsAvailable(
-                          merchant, Theme.of(ctx).textTheme.body2),
-                ),
-              )
+            ? buildPositionedContainerReviews(backGroundColor, ctx)
             : SizedBox(),
       ],
     );
   }
+
+  Positioned buildProgressIndicator(BuildContext ctx) {
+    return Positioned(
+      top: 180.0,
+      left: MediaQuery.of(ctx).size.width / 2 - 20,
+      child: Center(
+        child: CircularProgressIndicator(strokeWidth: 1.5),
+      ),
+    );
+  }
+
+  Padding buildImageContainer(String gifUrl) {
+    return Padding(
+      padding: EdgeInsets.all(0.0),
+      child: FadeInImage.memoryNetwork(
+        fadeInCurve: Curves.decelerate,
+        fit: BoxFit.contain,
+        fadeInDuration: Duration(milliseconds: 500),
+        placeholder: kTransparentImage,
+        image: gifUrl,
+        height: 320,
+        alignment: Alignment.bottomCenter,
+      ),
+    );
+  }
+
+  Stack buildStackInfoTextWithBackgroundAndShadow(Color infoBoxBackgroundColor,
+      Color backGroundColor, TextStyle textStyle, TextStyle textStyle2) {
+    return Stack(
+      children: <Widget>[
+        buildGradientContainer(Colors.grey[900]),
+        Container(
+          margin: EdgeInsets.all(0.0),
+          height: itemHeight,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.elliptical(30, 15),
+                  topLeft: Radius.circular(15.0),
+                  topRight: Radius.circular(15.0)),
+              boxShadow: [
+                CustomBoxShadow(
+                    color: infoBoxBackgroundColor.withOpacity(0.5),
+                    blurRadius: 3.0,
+                    offset: Offset(0.0, 0.0),
+                    blurStyle: BlurStyle.outer)
+              ],
+              color: backGroundColor),
+        ),
+        ItemInfoStackLayer(
+            merchant: merchant,
+            textStyleMerchantTitle: textStyle,
+            textStyleMerchantLocation: textStyle2,
+            height: itemHeight)
+      ],
+    );
+  }
+
+  Positioned buildPositionedContainerDistance(
+      Color backGroundColor, TextStyle textStyle2) {
+    return Positioned(
+      left: 0.0,
+      bottom: 5.0,
+      child: merchant.distance != null
+          ? Container(
+              padding: EdgeInsets.fromLTRB(15.0, 5.0, 10.0, 5.0),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topRight: buildRadius(), bottomRight: buildRadius()),
+                  color: backGroundColor),
+              child: Text(
+                merchant.distance.toString(),
+                style: textStyle2,
+              ),
+            )
+          : Container(),
+    );
+  }
+
+  Positioned buildPositionedContainerReviews(
+      Color backGroundColor, BuildContext ctx) {
+    return Positioned(
+      right: 0.0,
+      bottom: 5.0,
+      child: Container(
+        padding: EdgeInsets.fromLTRB(10.0, 5.0, 15.0, 5.0),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+                topLeft: buildRadius(), bottomLeft: buildRadius()),
+            color: backGroundColor),
+        child: RatingWidgetBuilder.buildRatingWidgetIfReviewsAvailable(
+            merchant, Theme.of(ctx).textTheme.body2),
+      ),
+    );
+  }
+
+  Radius buildRadius() => Radius.circular(10);
 
   String getServerId() {
     return (merchant.serverId.contains('-')

@@ -36,7 +36,7 @@
   "send_email" : " SENDE EMAIL",
   "dialog_help_grow_adoption" : "Hilf beim Bitcoin Wachstum!\n\nSende die fehlende Information an:\n\ntrbc@bitcoinmap.cash jetzt!",
   "dialog_missing_gmaps_title" : "Google Maps link nicht verfügbar!",
-  "email_text_add_new_place" : "Welcome to http://bmap.cash!\n\nYou can optionally attach Images to this email now!\n\nSend this E-Mail to submit the place!\n\nWe will notify you as soon as the place is available inside the app!\n\nDo not modify the content of this E-Mail!\n\nTo add any further details please send another E-Mail to trbc@bitcoinmap.cash!\n\nYou are Satoshi Nakamoto!\n\nThanks!\n\n",
+  "email_text_add_new_place" : "Willkommen bei http://bmap.cash!\n\nJetzt absenden um die Daten einzureichen!\n\nOptional können Sie Fotos an die E-mail anhängen!\n\nWir werden sie benachrichtigen sobald ihr Lokal in der App verfügbar ist!\n\nBitte verändern sie nichts am Inhalt dieser Email!\n\nUm weitere Details hinzuzufügen senden sie bitte eine zusätzl. Email an trbc@bitcoinmap.cash!\n\nDu bist Satoshi Nakamoto!\n\nDanke!\n\n",
   "send" : " SENDEN",
   "add_place_name_title" : "Wie nennt sich der Ort?",
   "add_place_name_subtitle" : "Benutze denselben Namen wie in Google Maps",

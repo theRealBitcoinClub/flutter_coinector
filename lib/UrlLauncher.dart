@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 
 import 'AddNewPlaceWidget.dart';
@@ -62,21 +63,28 @@ class UrlLauncher {
     launchURI(targetUrl);
   }
 
-  static String getDASHReceiverAdr(hasInput) {
-    return hasInput ? ",en-dash@therealbitcoin.club" : "";
+  static String getDASHReceiverAdr(hasInput, countryCode) {
+    return hasInput ? "," + countryCode + "-dash@therealbitcoin.club" : "";
   }
 
-  static String getBCHReceiverAdr(hasInput) {
-    return hasInput ? ",en-bch@therealbitcoin.club" : "";
+  static String getBCHReceiverAdr(hasInput, countryCode) {
+    return hasInput ? "," + countryCode + "-bch@therealbitcoin.club" : "";
   }
 
   static void launchEmailClientAddPlace(ctx, String inputDASH, String inputBCH,
       String content, onEmailClientNotFound) async {
+    Locale myLocale = Localizations.localeOf(ctx);
+    final String countryCode = myLocale.toString();
+    print("countryCode:" + countryCode);
     var urlString =
-        "mailto:bitcoinmap@fire.fundersclub.com,incoming+bmap-cash-bmap-cash-12646634-issue-@incoming.gitlab.com,en-bmap.cash@therealbitcoin.club,en-anypay@therealbitcoin.club" +
+        "mailto:bitcoinmap@fire.fundersclub.com,incoming+bmap-cash-bmap-cash-12646634-issue-@incoming.gitlab.com," +
+            countryCode +
+            "-bmap.cash@therealbitcoin.club," +
+            countryCode +
+            "-anypay@therealbitcoin.club" +
             (hasInput(inputDASH)
-                ? getDASHReceiverAdr(hasInput(inputDASH))
-                : getBCHReceiverAdr(hasInput(inputBCH))) +
+                ? getDASHReceiverAdr(hasInput(inputDASH), countryCode)
+                : getBCHReceiverAdr(hasInput(inputBCH), countryCode)) +
             "?subject=" +
             (hasInput(inputDASH) ? inputDASH : inputBCH) +
             "&body=" +
@@ -84,8 +92,6 @@ class UrlLauncher {
             content;
     await _launchEmail(ctx, urlString, onEmailClientNotFound);
   }
-
-  //TODO CREATE LIGHTWEIGHT SIGN UP VERSION OF COINECTOR/BMAP.CASH
 
   static bool hasInput(String input) => input.length > MIN_INPUT_BCHyDASH;
 
