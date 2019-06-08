@@ -110,7 +110,6 @@ class AssetLoader {
 
   var placesIdCache;
 
-  //TODO offer him a download pdf/preview button on the create page
   //TODO remove shareID from placesId asset to boost load time
   //TODO split contents in one file for each continent
   Future<Place> loadPlace(String id) async {
