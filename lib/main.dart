@@ -21,7 +21,6 @@ import 'MyColors.dart';
 import 'SearchDemoSearchDelegate.dart';
 import 'Suggestions.dart';
 import 'Tag.dart';
-import 'Toaster.dart';
 import 'pages.dart';
 import 'package:flutter_i18n/flutter_i18n_delegate.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
@@ -48,7 +47,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   String addButtonCategory = "EAT";
   bool isUnfilteredList = false;
   bool
-      hasHitSearch; //TODO count user activity by how often he hits search, how much he interacts with the app, reward him for that with badges
+      hasHitSearch; //TODO count user activity by how often he hits search, how much he interacts with the app, reward him for that with badges or BMAP tokens
   var sharedPrefKeyHasHitSearch = "sharedPrefKeyHasHitSearch";
   var sharedPrefKeyLastLocation = "dsfdsfdsfdsfwer3e3r3";
   String _searchTerm;
@@ -101,7 +100,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     initListModel();
 
     if (fileName == null) {
-      //TODO internationalize the app, translate the strings, let users search locations in their language (Köln a.k.a. Cologne, Colonia, Brüssel, Brussels)
       loadAndParseAllPlaces(filterWordIndex, locationFilter);
     } else {
       loadAndParseAsset(filterWordIndex, locationFilter, fileName);
@@ -112,7 +110,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     try {
       FileCache.initLastVersion(() async {
         //has new version
-        Toaster.showWarning("APP UPDATED! PLEASE RESTART!");
+        //Toaster.showWarning("APP UPDATED! PLEASE RESTART!");
         updateAllCachedContent();
       });
     } catch (e) {
