@@ -5,6 +5,7 @@ import 'SearchDemoSearchDelegate.dart';
 import 'SuggestionList.dart';
 import 'Tag.dart';
 import 'Toaster.dart';
+import 'UrlLauncher.dart';
 
 class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
   Set<int> alreadySelected = Set.from([]);
@@ -23,17 +24,31 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
     );
   }
 
-  _getSuggestions(String pattern) {
+  _getSuggestions(String pattern, ctx) {
     Set<String> matches = Set.from([]);
 
+    switch (UrlLauncher.getLocale(ctx)) {
+      case "de":
+        addMatches(pattern, matches, Tag.tagTextDE);
+        break;
+      case "es":
+        addMatches(pattern, matches, Tag.tagTextES);
+        break;
+      case "ja":
+        addMatches(pattern, matches, Tag.tagTextJP1);
+        addMatches(pattern, matches, Tag.tagTextJP2);
+        break;
+      case "fr":
+        addMatches(pattern, matches, Tag.tagTextFR);
+        break;
+      case "id":
+        addMatches(pattern, matches, Tag.tagTextINDONESIA);
+        break;
+      case "it":
+        addMatches(pattern, matches, Tag.tagTextIT);
+        break;
+    }
     addMatches(pattern, matches, Tag.tagText);
-    addMatches(pattern, matches, Tag.tagTextES);
-    addMatches(pattern, matches, Tag.tagTextDE);
-    addMatches(pattern, matches, Tag.tagTextFR);
-    addMatches(pattern, matches, Tag.tagTextIT);
-    addMatches(pattern, matches, Tag.tagTextINDONESIA);
-    addMatches(pattern, matches, Tag.tagTextJP1);
-    addMatches(pattern, matches, Tag.tagTextJP2);
 
     if (matches.length == 0) {
       matches.add(SearchDemoSearchDelegate.TRY_ANOTHER_WORD);
@@ -65,19 +80,19 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
   Set<String> unfilteredSuggestions;
 
   @override
-  Widget buildSuggestions(BuildContext context) {
+  Widget buildSuggestions(BuildContext ctx) {
     Set<String> suggestions = Set.from([
       COINECTOR_SUPPORTS_MANY_LANGUAGES,
-      FlutterI18n.translate(context, "you_can_scroll")
+      FlutterI18n.translate(ctx, "you_can_scroll")
     ]);
 
     if (unfilteredSuggestions != null && query.isEmpty)
       suggestions = unfilteredSuggestions;
     else if (query.isEmpty) {
-      suggestions = addAllTagsInAllLanguages(suggestions);
+      suggestions = addAllTagsInAllLanguages(suggestions, ctx);
       unfilteredSuggestions = suggestions;
     } else {
-      suggestions = _getSuggestions(query);
+      suggestions = _getSuggestions(query, ctx);
     }
 
     return SuggestionList(
@@ -85,23 +100,34 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
       suggestions: suggestions.map<String>((String i) => i).toList(),
       onSelected: (String match) {
         unfilteredSuggestions = null;
-        close(context, match);
+        close(ctx, match);
       },
     );
   }
 
-  Set<String> addAllTagsInAllLanguages(Set<String> suggestions) {
+  Set<String> addAllTagsInAllLanguages(Set<String> suggestions, ctx) {
+    switch (UrlLauncher.getLocale(ctx)) {
+      case "de":
+        suggestions.addAll(cleanSuggestions(Tag.tagTextDE));
+        break;
+      case "es":
+        suggestions.addAll(cleanSuggestions(Tag.tagTextES));
+        break;
+      case "ja":
+        suggestions.addAll(cleanSuggestions(Tag.tagTextJP1));
+        suggestions.addAll(cleanSuggestions(Tag.tagTextJP2));
+        break;
+      case "fr":
+        suggestions.addAll(cleanSuggestions(Tag.tagTextFR));
+        break;
+      case "id":
+        suggestions.addAll(cleanSuggestions(Tag.tagTextINDONESIA));
+        break;
+      case "it":
+        suggestions.addAll(cleanSuggestions(Tag.tagTextIT));
+        break;
+    }
     suggestions.addAll(cleanSuggestions(Tag.tagText));
-    /*Locale myLocale = Localizations.localeOf(context);
-    print ("LOCALE:" + myLocale.countryCode + " lang:" + myLocale.languageCode);*/
-    //TODO show the device language FIRST
-    suggestions.addAll(cleanSuggestions(Tag.tagTextES));
-    suggestions.addAll(cleanSuggestions(Tag.tagTextDE));
-    suggestions.addAll(cleanSuggestions(Tag.tagTextFR));
-    suggestions.addAll(cleanSuggestions(Tag.tagTextIT));
-    suggestions.addAll(cleanSuggestions(Tag.tagTextINDONESIA));
-    suggestions.addAll(cleanSuggestions(Tag.tagTextJP1));
-    suggestions.addAll(cleanSuggestions(Tag.tagTextJP2));
     return suggestions;
   }
 

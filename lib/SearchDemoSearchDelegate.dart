@@ -6,6 +6,7 @@ import 'AddPlaceTagSearchDelegate.dart';
 import 'SuggestionList.dart';
 import 'Suggestions.dart';
 import 'Tag.dart';
+import 'UrlLauncher.dart';
 
 class SearchDemoSearchDelegate extends SearchDelegate<String> {
   final Set<String> _historyBackup = Set.from(Suggestions.locations);
@@ -59,29 +60,41 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
   _getSuggestions(String pattern, ctx) {
     Set<String> matches = Set.from([]);
 
-    addMatches(pattern, matches, Tag.tagText);
-    addMatches(pattern, matches, Tag.tagTextDE);
-    addMatches(pattern, matches, Tag.tagTextES);
-    addMatches(pattern, matches, Tag.tagTextFR);
-    addMatches(pattern, matches, Tag.tagTextIT);
-    addMatches(pattern, matches, Tag.tagTextJP1);
-    addMatches(pattern, matches, Tag.tagTextJP2);
-    addMatches(pattern, matches, Tag.tagTextINDONESIA);
+    addCountrySpecificMatches(ctx, pattern, matches);
+
     addMatches(pattern, matches, Suggestions.locations);
     addMatches(pattern, matches, Tag.titleTags);
 
     if (matches.length == 0) {
       matches.add(TRY_ANOTHER_WORD);
-    } else {
-      Set<String> moreMatches = Set.from([]);
-      moreMatches
-          .add(AddPlaceTagSearchDelegate.COINECTOR_SUPPORTS_MANY_LANGUAGES);
-      moreMatches.add(FlutterI18n.translate(ctx, "you_can_scroll"));
-      moreMatches.addAll(matches);
-      return moreMatches;
     }
 
     return matches;
+  }
+
+  void addCountrySpecificMatches(ctx, String pattern, Set<String> matches) {
+    switch (UrlLauncher.getLocale(ctx)) {
+      case "de":
+        addMatches(pattern, matches, Tag.tagTextDE);
+        break;
+      case "es":
+        addMatches(pattern, matches, Tag.tagTextES);
+        break;
+      case "ja":
+        addMatches(pattern, matches, Tag.tagTextJP1);
+        addMatches(pattern, matches, Tag.tagTextJP2);
+        break;
+      case "fr":
+        addMatches(pattern, matches, Tag.tagTextFR);
+        break;
+      case "id":
+        addMatches(pattern, matches, Tag.tagTextINDONESIA);
+        break;
+      case "it":
+        addMatches(pattern, matches, Tag.tagTextIT);
+        break;
+    }
+    addMatches(pattern, matches, Tag.tagText);
   }
 
   void addMatches(String pattern, Set<String> matches, set) {
@@ -115,8 +128,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    Set<String> suggestions =
-        query.isEmpty ? _history : _getSuggestions(query, context);
+    Set<String> suggestions;
 
     if (query.isEmpty) {
       suggestions = Set.from([
@@ -124,6 +136,8 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
         FlutterI18n.translate(context, "you_can_scroll")
       ]);
       suggestions.addAll(_history);
+    } else {
+      suggestions = _getSuggestions(query, context);
     }
 
     return SuggestionList(

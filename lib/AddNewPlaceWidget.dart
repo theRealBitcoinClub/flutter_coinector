@@ -615,6 +615,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     }
   }
 
+  var youSaidIt = false;
+
   void updateInputDASH(String input) {
     var hasMinInput = inputDASH.length >= MIN_INPUT_BCHyDASH;
 
@@ -629,9 +631,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     }
 
     if (input.length >= MIN_INPUT_BCHyDASH &&
-        input != KEYWORD_CONTROLLER_ACTION) {
+        input != KEYWORD_CONTROLLER_ACTION &&
+        !youSaidIt) {
       Toaster.showWarning(
           FlutterI18n.translate(context, "attract_more_customer"));
+      youSaidIt = true;
     }
 
     lastInputDASHWithCommand = input;
@@ -653,7 +657,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       }
     }
 
-    if (input.length >= MIN_INPUT_ADR && input != KEYWORD_CONTROLLER_ACTION) {
+    if (!showInputTags &&
+        input.length >= MIN_INPUT_ADR &&
+        input != KEYWORD_CONTROLLER_ACTION) {
       showInputTag();
     }
 
@@ -676,7 +682,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       }
     }
 
-    if (input.length >= MIN_INPUT_NAME && input != KEYWORD_CONTROLLER_ACTION) {
+    if (!showInputAdr &&
+        input.length >= MIN_INPUT_NAME &&
+        input != KEYWORD_CONTROLLER_ACTION) {
       showInputAddress();
     }
 

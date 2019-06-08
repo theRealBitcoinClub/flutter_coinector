@@ -73,8 +73,7 @@ class UrlLauncher {
 
   static void launchEmailClientAddPlace(ctx, String inputDASH, String inputBCH,
       String content, onEmailClientNotFound) async {
-    Locale myLocale = Localizations.localeOf(ctx);
-    final String countryCode = myLocale.toString();
+    String countryCode = getLocale(ctx);
     print("countryCode:" + countryCode);
     var urlString =
         "mailto:bitcoinmap@fire.fundersclub.com,incoming+bmap-cash-bmap-cash-12646634-issue-@incoming.gitlab.com," +
@@ -91,6 +90,12 @@ class UrlLauncher {
             FlutterI18n.translate(ctx, "email_text_add_new_place") +
             content;
     await _launchEmail(ctx, urlString, onEmailClientNotFound);
+  }
+
+  static String getLocale(ctx) {
+    Locale myLocale = Localizations.localeOf(ctx);
+    final String countryCode = myLocale.toString();
+    return countryCode;
   }
 
   static bool hasInput(String input) => input.length > MIN_INPUT_BCHyDASH;
