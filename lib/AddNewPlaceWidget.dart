@@ -702,7 +702,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   String buildJsonToSubmitViaEmail() {
-    return Uri.encodeComponent('{"name":"' +
+    return Uri.encodeComponent('{"n":"' +
         inputName +
         '","type":"' +
         typeTitle +
@@ -710,7 +710,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         inputBCH +
         '","dash":"' +
         inputDASH +
-        '","address":"' +
+        '","l":"' +
         inputAdr +
         '","tags":"[' +
         buildJsonTag(allSelectedTags.elementAt(0)) +
@@ -720,7 +720,15 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         buildJsonTag(allSelectedTags.elementAt(2)) +
         ',' +
         buildJsonTag(allSelectedTags.elementAt(3)) +
-        ']}');
+        '],"a":"' +
+        Tag.getTagIndex(allSelectedTags.elementAt(0)).toString() +
+        "," +
+        Tag.getTagIndex(allSelectedTags.elementAt(1)).toString() +
+        "," +
+        Tag.getTagIndex(allSelectedTags.elementAt(2)).toString() +
+        "," +
+        Tag.getTagIndex(allSelectedTags.elementAt(3)).toString() +
+        '"}');
   }
 
   String buildJsonTag(tag) {

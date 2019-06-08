@@ -22,7 +22,7 @@
 ,{"p":"streetza360", "x":"43.068945","y":"-70.773056","n":"STREET'za 360","t":"0","c":"71","s":"4.6", "d":"0", "a":"71,99,14,15", "l":"Islington Street, Portsmouth, NH, USA"}
 ,{"p":"liarsbench", "x":"43.0725374","y":"-70.7687944","n":"Liar's Bench Beer Co","t":"2","c":"117","s":"4.6", "d":"0", "a":"32,33,38,32", "l":" Islington Street, Portsmouth, NH, USA"}
 ,{"p":"3sartspace", "x":"43.0799851","y":"-70.7629727","n":"3S Artspace","t":"2","c":"161","s":"4.7", "d":"0", "a":"29,31,32,71", "l":"Vaughan Street, Portsmouth, NH, USA"}
-,{"p":"cascadeduchocolat", "x":"42.981505","y":"70.946847","n":"La Cascade Du Chocolat","t":"1","c":"25","s":"5.0", "d":"0", "a":"29,31,32,71", "l":"109 Water St, Exeter, NH 03833, USA"}
+,{"p":"cascadeduchocolat", "x":"42.981505","y":"70.946847","n":"La Cascade Du Chocolat","t":"1","c":"25","s":"5.0", "d":"0", "a":"29,12,11,9", "l":"109 Water St, Exeter, NH 03833, USA"}
 ,{"p":"street", "x":"43.069034","y":"-70.7732358","n":"STREET eat/drink 360","t":"0","c":"668","s":"4.5", "d":"0", "a":"7,15,99,71", "l":"STREET eat/drink 360, Islington Street, Portsmouth, NH, USA"}
 ,{"p":"lamaisonnavarre", "x":"43.076224","y":"-70.760166","n":"La Maison Navarre - Pastry, Bistro, Wine Bar","t":"2","c":"219","s":"4.8", "d":"0", "a":"133,81,109,134", "l":"Congress Street, Portsmouth, NH, USA"}
 ,{"p":"fezziwig", "x":"43.0768584","y":"-70.7546156","n":"Fezziwig's Food and Fountain","t":"0","c":"100","s":"4.7", "d":"0", "a":"81,109,15,8", "l":"State Street, Portsmouth, NH, USA"}
