@@ -147,7 +147,7 @@ class Tag {
     'DASH ₿', //59
     'BTC ₿',
     'BCH ₿',
-    'BSV ₿',
+    'ANYPAY ₿',
     'ETH ₿',
     'HotDog 🌭', //64
     'Fast ⏩',
