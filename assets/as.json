@@ -37,8 +37,14 @@
 ,{"p":"yakinikutamurafukuoka", "x":"33.5878136","y":"130.3941922","n":"炭火焼肉たむら福岡店 - Yakiniku Tamura Fukuoka","t":"0","c":"29","s":"3.8", "d":"0", "a":"111,67,112,138", "l":"Japan, Fukuoka, Chuo Ward, Daimyo, 1 Chome−12−39"}
 ,{"p":"yakinikutamuranagasaki", "x":"32.8258168","y":"129.84688","n":"炭火焼肉たむら 長崎店 - Yakiniku Tamura Nagasaki","t":"0","c":"63","s":"3.3", "d":"0", "a":"111,67,112,138", "l":"Japan, Nagasaki, Togitsu, Nodago, 48-13"}
 ,{"p":"ducatuscafe", "x":"-8.684123","y":"115.1682889","n":"DUCATUS CAFE","t":"2","c":"17","s":"4.8", "d":"0", "a":"29,11,8,136", "l":"Sunset Road, Seminyak, Badung Regency, Bali, Indonesia"}
-,{"p":"ducatuscafesingapore", "x":"1.2784458","y":"103.848261","n":"Ducatus Cafe Singapore","t":"2","c":"22","s":"4.1", "d":"0", "a":"15,16,8,150", "l":"Singapore, Malaysia, Asia"}
+,{"p":"rosebakeshop", "x":"8.5070075","y":"125.9773064","n":"Rose Bakeshop","t":"1","c":"5","s":"4.6", "d":"0", "a":"61,104,104,104", "l":"Roxas St, Barangay 4, San Francisco, Agusan del Sur, Philippines"}
 ,{"p":"bunk5021", "x":"14.5634905","y":"121.0302437","n":"BUNK 5021 HOSTEL","t":"5","c":"35","s":"4.3", "d":"0", "a":"104,104,104,104", "l":"P Burgos, Makati, Metro Manila, Philippines"}
+,{"p":"orobmanila", "x":"14.574839","y":"121.007437","n":"2409 Oro-B","t":"4","c":"0","s":"0.0", "d":"0", "a":"61,104,104,104", "l":"San Andres Bukid, Metro Manila, Philippines"}
+,{"p":"fruitopia", "x":"1.3241299","y":"103.8140835","n":"Fruitopia - Hawker stall","t":"1","c":"8","s":"4.8", "d":"0", "a":"61,104,104,104", "l":"2 Adam Rd, Singapore 289876"}
+,{"p":"intermissionbar", "x":"1.3019177","y":"103.8642677","n":"Intermission Bar at The Projector","t":"2","c":"30","s":"4.6", "d":"0", "a":"61,104,104,104", "l":"6001 Beach Rd, #05-00, Singapore 199589"}
+,{"p":"thehangar", "x":"1.3004156","y":"103.8597222","n":"The Hangar","t":"2","c":"321","s":"4.0", "d":"0", "a":"61,104,104,104", "l":"25 Arab St, Singapore 199724"}
+,{"p":"meatandgreen", "x":"1.2865508","y":"103.8493014","n":"Meat And Green - Salad Shop","t":"0","c":"45","s":"4.5", "d":"0", "a":"61,104,104,104", "l":"38 Circular Rd, Singapore 049394"}
+,{"p":"ducatuscafesingapore", "x":"1.2784458","y":"103.848261","n":"Ducatus Cafe Singapore","t":"2","c":"22","s":"4.1", "d":"0", "a":"15,16,8,150", "l":"Singapore, Malaysia, Asia"}
 ,{"p":"pattayabeergarden", "x":"12.928118","y":"100.87435","n":"Pattaya Beer Garden","t":"0","c":"1878","s":"4.2", "d":"0", "a":"32,97,15,8", "l":"Beach Road, Pattaya City, Bang Lamung District, Chon Buri, Thailand"}
 ,{"p":"cocotte", "x":"13.7374603","y":"100.5700932","n":"Cocotte Soi","t":"0","c":"707","s":"4.4", "d":"0", "a":"97,138,109,71", "l":"Sukhumvit 39, Khlong Tan Nuea, Watthana, Bangkok, Thailand"}
 ,{"p":"catmosphere", "x":"18.8063742","y":"98.9580105","n":"Catmosphere Cat Cafe","t":"2","c":"290","s":"4.4", "d":"0", "a":"29,142,108,16", "l":"Huaykaew Road, Su Thep, Mueang Chiang Mai District, Chiang Mai, Thailand"}
@@ -74,21 +80,15 @@
 ,{"p":"bbqprasita", "x":"13.7141906","y":"100.5931822","n":"BBQ Prasita Ribs Food Truck","t":"1","c":"1937","s":"4.3", "d":"0", "a":"62,104,104,104", "l":"W Market, 1599 Sukhumvit Rd, Khwaeng Phra Khanong Nuea, Khet Watthana, Krung Thep Maha Nakhon, Bangkok 10110, Thailand"}
 ,{"p":"ninivegames", "x":"13.713553","y":"100.592633","n":"Ninive Games Co.Ltd.","t":"4","c":"145","s":"4.7", "d":"0", "a":"62,104,104,104", "l":"1108/13-14 Sukumvit Plus Soy 1, Pra Kanong Nua, Klong Toey, Bangkok 10110, Thailand"}
 ,{"p":"battlefieldbangkok", "x":"13.6844322","y":"100.6128806","n":"Battlefield Bangkok","t":"4","c":"123","s":"4.7", "d":"0", "a":"62,104,104,104", "l":"71 Sukhumvit 101/1 Rd, Khwaeng Bang Chak, Prakanong, Krung Thep Maha Nakhon 10260, Thailand"}
-,{"p":"rosebakeshop", "x":"8.5070075","y":"125.9773064","n":"Rose Bakeshop","t":"1","c":"5","s":"4.6", "d":"0", "a":"61,104,104,104", "l":"Roxas St, Barangay 4, San Francisco, Agusan del Sur, Philippines"}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"61,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"61,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"61,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"61,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"61,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"61,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"61,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"61,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"61,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"61,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"61,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"61,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"61,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"61,104,104,104", "l":""}
+,{"p":"multihousefamilyclub", "x":"9.786688","y":"100.003883","n":"Multi House - Family Beach Club","t":"0","c":"97","s":"4.8", "d":"0", "a":"61,104,104,104", "l":"97/3 mu 7, Chaloklum, Koh Phangan, Thailand Chaloklum Muli House, Tambon Ko Pha-ngan, Amphoe Ko Pha-ngan, Chang Wat Surat Thani 84280, Thailand"}
+,{"p":"BEACHUB", "x":"9.756502","y":"99.961923","n":"BEACHUB - 3 Star Hotel","t":"5","c":"93","s":"4.3", "d":"0", "a":"61,104,104,104", "l":"Moo 8 Koh Phangan, Thailand, Koh Phangan, Srithanu, Chang Wat Surat Thani 84280, Thailand"}
+,{"p":"onelovedome", "x":"9.7373137","y":"99.9795797","n":"One Love Dome - 3 Star Hotel","t":"5","c":"6","s":"5.0", "d":"0", "a":"61,104,104,104", "l":"Ko Pha-ngan, Ko Pha-ngan District, Surat Thani 84280, Thailand"}
+,{"p":"coincafeandbar", "x":"11.5483212","y":"104.9205696","n":"Coin Cafe & Bar","t":"0","c":"36","s":"4.6", "d":"0", "a":"61,104,104,104", "l":"#5D Eo Street 360, 12304, Phnom Penh, Cambodia"}
+,{"p":"12x12bar", "x":"13.7366519","y":"100.5854455","n":"12 × 12 Bar","t":"2","c":"53","s":"4.3", "d":"0", "a":"61,104,104,104", "l":"810/22 Thara Rom 2 Alley, Khwaeng Khlong Tan Nuea, Khet Watthana, Krung Thep Maha Nakhon 10110, Thailand"}
+,{"p":"innerbeauty", "x":"13.7896996","y":"100.5777717","n":"Inner Beauty - อินเนอร์บิวติ้ - Hair Salon","t":"999","c":"0","s":"0.0", "d":"0", "a":"61,104,104,104", "l":"Sutthisan Winitchai Rd, Khwaeng Samsen Nok, Khet Huai Khwang, Krung Thep Maha Nakhon 10310, Thailand"}
+,{"p":"pilgrimskitchen", "x":"16.559342","y":"104.746683","n":"Pilgrims kitchen & Inn","t":"5","c":"130","s":"4.3", "d":"0", "a":"61,104,104,104", "l":"Savannakhet 13000, Laos"}
+,{"p":"osakajapanese", "x":"17.9644823","y":"102.6055884","n":"Osaka - Japanese","t":"0","c":"30","s":"3.7", "d":"0", "a":"61,104,104,104", "l":"Rue Nokeokoummane, Vientiane, Laos"}
+,{"p":"satoshihouse", "x":"20.2612048","y":"100.0883656","n":"Satoshi House","t":"5","c":"2","s":"5.0", "d":"0", "a":"61,104,104,104", "l":"236 Pasakhangwaeng Waeng Chiang Rai 57150 TH, Ban Pasakhangwaeng Waeng, Amphoe Chiang Saen, Chang Wat Chiang Rai 57150, Thailand"}
 ,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"61,104,104,104", "l":""}
 ,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"61,104,104,104", "l":""}
 ,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"61,104,104,104", "l":""}
