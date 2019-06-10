@@ -1452,7 +1452,7 @@
   "p": "malibubarslovenia",
   "placesId": "ChIJ-ZQHbZ4tZUcR8VL6vENdRHo",
   "shareId": "",
-  "adr": "Ob dolenjski železnici, Ljubljana, Slovenia",
+  "adr": "Ob dolenjski železnici, Ljubljana, Slovenia"
 }, {
   "p": "pizzeriaolivaljubljana",
   "placesId": "ChIJLVnHjYotZUcR7q4Z8GXfaCk",
@@ -1509,73 +1509,318 @@
   "shareId": "",
   "adr": "Gallusovo nabrežje, Ljubljana, Slovenia"
 }, {
-  "p": "",
-  "placesId": "",
+  "p": "trappapizzeriabar",
+  "placesId": "ChIJQ2aM2z4tZUcRn8OPdxdwLto",
   "shareId": "",
-  "adr": ""
+  "adr": "Koprska ulica, Ljubljana, Slovenia"
 }, {
-  "p": "",
-  "placesId": "",
+  "p": "trappica",
+  "placesId": "ChIJndWzmhUtZUcRmXSc-F7dczY",
   "shareId": "",
-  "adr": ""
+  "adr": "Rimska cesta, Ljubljana, Slovenia"
 }, {
-  "p": "",
-  "placesId": "",
+  "p": "restavracijavilaajda",
+  "placesId": "ChIJZbaAtcyWekcRHRdZlFP5-Ys",
   "shareId": "",
-  "adr": ""
+  "adr": "Cesta svobode, Bled, Slovenia"
 }, {
-  "p": "",
-  "placesId": "",
+  "p": "wokfreshljubljana",
+  "placesId": "ChIJx9ITLjgzZUcRxnkZ0qwXy7w",
   "shareId": "",
-  "adr": ""
+  "adr": "Letališka cesta, Ljubljana, Slovenia"
 }, {
-  "p": "",
-  "placesId": "",
+  "p": "kavarnaljubljana",
+  "placesId": "ChIJ82LE5GgyZUcRn2P0kOusUxI",
   "shareId": "",
-  "adr": ""
+  "adr": "Šmartinska cesta, Ljubljana, Slovenia"
 }, {
-  "p": "",
-  "placesId": "",
+  "p": "kavarnazvezda",
+  "placesId": "ChIJ3-Zev2MtZUcRjA3dfKWduAc",
   "shareId": "",
-  "adr": ""
+  "adr": "Wolfova ulica, Ljubljana, Slovenia"
 }, {
-  "p": "",
-  "placesId": "",
+  "p": "1001darcitypark",
+  "placesId": "ChIJNa3nqEIyZUcRUPWW8MPAqQs",
   "shareId": "",
-  "adr": ""
+  "adr": "Šmartinska cesta, Ljubljana, Slovenia"
 }, {
-  "p": "",
-  "placesId": "",
+  "p": "1001darmercatorcenter",
+  "placesId": "ChIJw2rIiS_NekcRN0w8mxJyyQ0",
   "shareId": "",
-  "adr": ""
+  "adr": "Cesta Ljubljanske brigade, Ljubljana, Slovenia"
 }, {
-  "p": "",
-  "placesId": "",
+  "p": "1001darplavalaguna",
+  "placesId": "ChIJtTXGPZcyZUcRmsM9ElgARVA",
   "shareId": "",
-  "adr": ""
+  "adr": "Dunajska cesta, Ljubljana, Slovenia"
 }, {
-  "p": "",
-  "placesId": "",
+  "p": "1001dareuropark",
+  "placesId": "ChIJV8hQ-Ah3b0cR-MLPPdHFqQM",
   "shareId": "",
-  "adr": ""
+  "adr": "Pobreška cesta, Maribor, Slovenia"
 }, {
-  "p": "",
-  "placesId": "",
+  "p": "1001dardomzale",
+  "placesId": "ChIJNQTa2RU0ZUcRF9C8kNILRaw",
   "shareId": "",
-  "adr": ""
+  "adr": "Cesta talcev, Domžale, Slovenia"
 }, {
-  "p": "",
-  "placesId": "",
+  "p": "1001",
+  "placesId": "ChIJH4lOru1wZUcRgkjEzEhDWSk",
   "shareId": "",
-  "adr": ""
+  "adr": "Mariborska cesta, Celje, Slovenia"
 }, {
-  "p": "",
-  "placesId": "",
+  "p": "bazaarsmoking",
+  "placesId": "ChIJIUBZ6WQtZUcR8IdFvg4_iGE",
   "shareId": "",
-  "adr": ""
+  "adr": "Trubarjeva cesta, Ljubljana, Slovenia"
 }, {
-  "p": "",
-  "placesId": "",
+  "p": "bazaarsmokingkranj",
+  "placesId": "ChIJK6v_tx24ekcRXq3g_XE_AXo",
   "shareId": "",
-  "adr": ""
+  "adr": "Gregorčičeva ulica, Kranj, Slovenia"
+}, {
+  "p": "cebelarstvo",
+  "placesId": "ChIJ3bXfcwIuZUcRjsTeLD8CKow",
+  "shareId": "",
+  "adr": "Novo naselje, LJUBLJANA-DOBRUNJE, Slovenia"
+}, {
+  "p": "espressoljubljana",
+  "placesId": "ChIJK9U5gTUtZUcRRI7IU-FqfwE",
+  "shareId": "",
+  "adr": "Ljubljana, Fajfarjeva ulica, Ljubljana, Slovenia"
+}, {
+  "p": "estelatrgovsko",
+  "placesId": "ChIJCbE4eWcyZUcRTsx0PWWgMeU",
+  "shareId": "",
+  "adr": "Šmartinska cesta, Ljubljana, Slovenia"
+}, {
+  "p": "estelahairsalon",
+  "placesId": "ChIJt9t6Zwh3b0cRnRCffoFDVgo",
+  "shareId": "",
+  "adr": "Pobreška cesta, Maribor, Slovenia"
+}, {
+  "p": "fitnessshopbtc",
+  "placesId": "ChIJUSyy56EtZUcRBtbER6G4Wbs",
+  "shareId": "",
+  "adr": "Šmartinska, Ljubljana, Slovenia"
+}, {
+  "p": "gudshopljubljana",
+  "placesId": "ChIJ100kj2QtZUcRcMv4XzYZwqA",
+  "shareId": "",
+  "adr": "Stari trg, Ljubljana, Slovenia"
+}, {
+  "p": "hoteltriglav",
+  "placesId": "ChIJc_gFdD2RekcRBuQORYliCLc",
+  "shareId": "",
+  "adr": "Kolodvorska cesta, Bled, Slovenia"
+}, {
+  "p": "btccityljubljana",
+  "placesId": "ChIJuVWg6GcyZUcRd--6pQkWML4",
+  "shareId": "",
+  "adr": "Šmartinska cesta, Ljubljana, Slovenia"
+}, {
+  "p": "liupkabtc",
+  "placesId": "ChIJ35Yj7kIyZUcRKJcqyPFK6nQ",
+  "shareId": "",
+  "adr": "Šmartinska cesta, Ljubljana, Slovenia"
+}, {
+  "p": "vordordoo",
+  "placesId": "ChIJCbE4eWcyZUcRG6dK4wT4mgI",
+  "shareId": "",
+  "adr": "Šmartinska cesta, Ljubljana, Slovenia"
+}, {
+  "p": "gericomputer",
+  "placesId": "ChIJyTtQOIF8b0cRuTp1T-5BmU8",
+  "shareId": "",
+  "adr": "Jadranska cesta, Maribor, Slovenia"
+}, {
+  "p": "oopsboutique",
+  "placesId": "ChIJjWOGWbQtZUcR9ajqPpCabJw",
+  "shareId": "",
+  "adr": "OOOPS boutique"
+}, {
+  "p": "pivotekaza",
+  "placesId": "ChIJ6cJCEwsyZUcRfIlalhnzDog",
+  "shareId": "",
+  "adr": "Stari trg, Ljubljana, Slovenia"
+}, {
+  "p": "qvapehouse",
+  "placesId": "ChIJi_wj5LVmb0cRr6FoKFFrN9Q",
+  "shareId": "",
+  "adr": "Slomškova ulica, Ptuj, Slovenia"
+}, {
+  "p": "qvapehouseljubljana",
+  "placesId": "ChIJYwppAekzZUcRC4JMgy6R3cg",
+  "shareId": "",
+  "adr": "Miklošičeva cesta, Ljubljana, Slovenia"
+}, {
+  "p": "qvapemurska",
+  "placesId": "ChIJVRTMpPo-b0cRohCITBqtuZI",
+  "shareId": "",
+  "adr": "Ulica Štefana Kovača, Murska Sobota, Slovenia"
+}, {
+  "p": "qvapemaribor",
+  "placesId": "ChIJq04Zc6l3b0cRo9MgYItFG0Q",
+  "shareId": "",
+  "adr": "Trg svobode, Maribor, Slovenia"
+}, {
+  "p": "qvapemaribor2",
+  "placesId": "ChIJ2UneDKl3b0cRgQMXNxVwaQ4",
+  "shareId": "",
+  "adr": "Ljubljanska ulica, Maribor, Slovenia"
+}, {
+  "p": "senaflora",
+  "placesId": "ChIJbUKD2fO3ekcRLgZLTlciEe4",
+  "shareId": "",
+  "adr": "Trubarjeva cesta, Ljubljana, Slovenia"
+}, {
+  "p": "sensilabmisli",
+  "placesId": "ChIJma3nqEIyZUcR6Hi_1Q7gBC0",
+  "shareId": "",
+  "adr": "Ljubljana, Slovenia"
+}, {
+  "p": "slovenskalocalmade",
+  "placesId": "ChIJT95bM6l3b0cRNvYdZMXj3W8",
+  "shareId": "",
+  "adr": "Slovenska ulica, Maribor, Slovenia"
+}, {
+  "p": "tattoopiercingstudio",
+  "placesId": "ChIJda96wGgyZUcRPTR11kZHnz0",
+  "shareId": "",
+  "adr": "Ljubljana, Slovenia"
+}, {
+  "p": "engrotuspodjetje",
+  "placesId": "ChIJZR9cLGoyZUcRbdHpqokLMos",
+  "shareId": "",
+  "adr": "Bratislavska cesta, Ljubljana, Slovenia"
+}, {
+  "p": "planettuskranj",
+  "placesId": "ChIJ2TgxpP63ekcR2RlhsCsF71Y",
+  "shareId": "",
+  "adr": "Cesta Jaka Platiše, Kranj, Slovenia"
+}, {
+  "p": "tokoproizvodnja",
+  "placesId": "ChIJH_8azJpoe0cRFtb8O1n8ZY8",
+  "shareId": "",
+  "adr": "Ankaranska cesta, Koper - Capodistria, Slovenia"
+}, {
+  "p": "tussupermarketradvanje",
+  "placesId": "ChIJ4d2UIIl3b0cREx7tBC3pUx8",
+  "shareId": "",
+  "adr": "Streliška cesta, Maribor, Slovenia"
+}, {
+  "p": "tushipermarketmaribor",
+  "placesId": "ChIJAYlkDj53b0cRRQS1FZhUEmU",
+  "shareId": "",
+  "adr": "Ulica Veljka Vlahoviča, Maribor, Slovenia"
+}, {
+  "p": "planettusyelje",
+  "placesId": "ChIJVVtTL-1wZUcRCNVpM_3UE-s",
+  "shareId": "",
+  "adr": "Mariborska cesta, Celje, Slovenia"
+}, {
+  "p": "tussupermarketbakovska",
+  "placesId": "ChIJqePfECI_b0cR0H0OEK2hQlc",
+  "shareId": "",
+  "adr": "Bakovska ulica, Murska Sobota, Slovenia"
+}, {
+  "p": "planetnovomesto",
+  "placesId": "ChIJj1E7Dub_ZEcRLE7y1emz_bE",
+  "shareId": "",
+  "adr": "Topliška cesta, Novo mesto, Slovenia"
+}, {
+  "p": "engrotusslovenia",
+  "placesId": "ChIJX7wwonYmZUcRWr9hTJw4Xp8",
+  "shareId": "",
+  "adr": "Gasilska Cesta, Grosuplje, Slovenia"
+}, {
+  "p": "supermarketmenges",
+  "placesId": "ChIJry0yl_s0ZUcRAMsDltAEn50",
+  "shareId": "",
+  "adr": "Slovenska cesta, Mengeš, Slovenia"
+}, {
+  "p": "hipermarketmaribor",
+  "placesId": "ChIJ0dFzhL53b0cR480oson0t9w",
+  "shareId": "",
+  "adr": "Na Poljanah, Maribor, Slovenia"
+}, {
+  "p": "tussupermarketrace",
+  "placesId": "ChIJ-ZbGO417b0cR-RCiB9yOWTc",
+  "shareId": "",
+  "adr": "Ljubljanska cesta, Rače, Slovenia"
+}, {
+  "p": "tussupermarketszena",
+  "placesId": "ChIJEYftPXQVe0cR8G3q98vKHj0",
+  "shareId": "",
+  "adr": "Partizanska cesta, Sežana, Slovenia"
+}, {
+  "p": "tussuperzalec",
+  "placesId": "ChIJxYXJFgpvZUcRsZ4YpszKqtc",
+  "shareId": "",
+  "adr": "Ulica heroja Staneta, Žalec, Slovenia"
+}, {
+  "p": "vapeonshop",
+  "placesId": "ChIJHVxH3CPNekcRD_XJd2aZ2GQ",
+  "shareId": "",
+  "adr": "Trubarjeva cesta, Ljubljana, Slovenia"
+}, {
+  "p": "houseofdreamingbooks",
+  "placesId": "ChIJMUQivWItZUcRgx_nz_HjIKw",
+  "shareId": "",
+  "adr": "Trubarjeva cesta, Ljubljana, Slovenia"
+}, {
+  "p": "zalozbasanje",
+  "placesId": "ChIJ2fPYvGItZUcRzRGaF9FxmO8",
+  "shareId": "",
+  "adr": "Leskoškova cesta, Ljubljana, Slovenia"
+}, {
+  "p": "quicksilverstore",
+  "placesId": "ChIJgfftgWQtZUcRghGloQ1WwlE",
+  "shareId": "",
+  "adr": "Town Square, Ljubljana, Slovenia"
+}, {
+  "p": "Sportinaclothing",
+  "placesId": "ChIJTV42r0IyZUcRXayLVATC684",
+  "shareId": "",
+  "adr": "Šmartinska cesta, Ljubljana, Slovenia"
+}, {
+  "p": "marellagallery",
+  "placesId": "ChIJUdAFUmItZUcRct9nt53RikU",
+  "shareId": "",
+  "adr": "Prešeren Square, Ljubljana, Slovenia"
+}, {
+  "p": "morrosartoriale",
+  "placesId": "ChIJiVqYpWcyZUcRArfG2FZJ0sE",
+  "shareId": "",
+  "adr": "Ameriška ulica, Ljubljana, Slovenia"
+}, {
+  "p": "karinzatrgovino",
+  "placesId": "ChIJ7aKirQPTekcRmt3B5Wyblas",
+  "shareId": "",
+  "adr": "Tržaška cesta, Brezovica pri Ljubljani, Slovenia"
+}, {
+  "p": "peakperformancegeneralstore",
+  "placesId": "ChIJH_5GhGQtZUcRVNZ-wxM9c5Q",
+  "shareId": "",
+  "adr": "Stari trg, Ljubljana, Slovenia"
+}, {
+  "p": "polypopljubljana",
+  "placesId": "ChIJwSfpFHozZUcRzAg18Etzq20",
+  "shareId": "",
+  "adr": "Puharjeva ulica, Ljubljana, Slovenia"
+}, {
+  "p": "garderobacustomshirts",
+  "placesId": "ChIJz0XSkGkyZUcRA_aFVD_i1YM",
+  "shareId": "",
+  "adr": "Šmartinska cesta, Ljubljana, Slovenia"
+}, {
+  "p": "kartjaprodoo",
+  "placesId": "ChIJd7hd75YyZUcRkQLIMdtBcYs",
+  "shareId": "",
+  "adr": "Trgovsko Podjetje, Dunajska cesta, Ljubljana, Slovenia"
+}, {
+  "p": "frutasunderwear",
+  "placesId": "ChIJY1UlRnItZUcRYLKQlyUE3CA",
+  "shareId": "",
+  "adr": "Cankarjevo nabrežje, Ljubljana, Slovenia"
 }]

@@ -106,49 +106,66 @@
 ,{"p":"supporterspub", "x":"46.5384933","y":"15.6046681","n":"Supporters Pub","t":"2","c":"71","s":"4.6", "d":"0", "a":"70,104,104,104", "l":"Pohorska ulica 21a, 2000 Maribor, Slovenia"}
 ,{"p":"tamanorganic", "x":"46.0524669","y":"14.5048737","n":"Taman Organic","t":"0","c":"141","s":"4.6", "d":"0", "a":"70,104,104,104", "l":"Nazorjeva ulica 3, 1000 Ljubljana, Slovenia"}
 ,{"p":"tozdljubljana", "x":"46.0472018","y":"14.5060707","n":"Tozd","t":"2","c":"517","s":"4.5", "d":"0", "a":"70,104,104,104", "l":"1000, Gallusovo nabrežje 27, 1000 Ljubljana, Slovenia"}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"70,104,104,104", "l":""}]
+,{"p":"trappapizzeriabar", "x":"46.0341278","y":"14.4833585","n":"Trappa pizzeria&bar","t":"0","c":"138","s":"4.7", "d":"0", "a":"70,104,104,104", "l":"Koprska ulica 94, 1000 Ljubljana, Slovenia"}
+,{"p":"trappica", "x":"46.047389","y":"14.5012829","n":"Trappica","t":"0","c":"6","s":"5.0", "d":"0", "a":"70,104,104,104", "l":"Rimska cesta 6, 1000 Ljubljana, Slovenia"}
+,{"p":"restavracijavilaajda", "x":"46.364325","y":"14.105817","n":"Restavracija Vila Ajda Dax & apartma","t":"0","c":"287","s":"4.1", "d":"0", "a":"70,104,104,104", "l":"Cesta svobode 27, 4260 Bled, Slovenia"}
+,{"p":"wokfreshljubljana", "x":"46.0616593","y":"14.5411761","n":"Wok Fresh","t":"0","c":"18","s":"4.8", "d":"0", "a":"70,104,104,104", "l":"Letališka cesta 1, 1000 Ljubljana, Slovenia"}
+,{"p":"kavarnaljubljana", "x":"46.0648582","y":"14.5464708","n":"Kavarna Zvezda, BTC","t":"1","c":"603","s":"4.3", "d":"0", "a":"70,104,104,104", "l":"Šmartinska cesta 152, 1000 Ljubljana, Slovenia"}
+,{"p":"kavarnazvezda", "x":"46.0504985","y":"14.5050256","n":"Kavarna Zvezda","t":"2","c":"947","s":"4.4", "d":"0", "a":"70,104,104,104", "l":"Wolfova ulica 14, 1000 Ljubljana, Slovenia"}
+,{"p":"1001darcitypark", "x":"46.0668404","y":"14.5468034","n":"1001 dar, Citypark Ljubljana","t":"4","c":"2","s":"4.5", "d":"0", "a":"70,104,104,104", "l":"Šmartinska cesta 152g, 1000 Ljubljana, Slovenia"}
+,{"p":"1001darmercatorcenter", "x":"46.0874803","y":"14.4758585","n":"1001 dar, Mercator center Ljubljana","t":"4","c":"9","s":"4.4", "d":"0", "a":"70,104,104,104", "l":"Cesta Ljubljanske brigade 33, 1000 Ljubljana, Slovenia"}
+,{"p":"1001darplavalaguna", "x":"46.0646198","y":"14.5092914","n":"1001 dar, Plava laguna Ljubljana","t":"4","c":"22","s":"4.3", "d":"0", "a":"70,104,104,104", "l":"Dunajska cesta 50, 1000 Ljubljana, Slovenia"}
+,{"p":"1001dareuropark", "x":"46.5544699","y":"15.6524458","n":"1001 dar, Europark Maribor","t":"4","c":"13","s":"4.5", "d":"0", "a":"70,104,104,104", "l":"Pobreška cesta 18, 2000 Maribor, Slovenia"}
+,{"p":"1001dardomzale", "x":"46.1370541","y":"14.6007774","n":"1001 dar, Mercator center Domžale","t":"4","c":"0","s":"0.0", "d":"0", "a":"70,104,104,104", "l":"Cesta talcev 4, 1230 Domžale, Slovenia"}
+,{"p":"1001", "x":"46.2412399","y":"15.2769304","n":"1001","t":"4","c":"14","s":"4.6", "d":"0", "a":"70,104,104,104", "l":"Mariborska cesta 100, 3000 Celje, Slovenia"}
+,{"p":"bazaarsmoking", "x":"46.0521369","y":"14.5080506","n":"Bazaar Smoking shop Head&Grow","t":"4","c":"30","s":"4.6", "d":"0", "a":"70,104,104,104", "l":"Trubarjeva cesta 16, 1000 Ljubljana, Slovenia"}
+,{"p":"bazaarsmokingkranj", "x":"46.2423143","y":"14.3567408","n":"Bazaar Smoking shop Head&Grow","t":"4","c":"5","s":"4.8", "d":"0", "a":"70,104,104,104", "l":"Gregorčičeva ulica 6, 4000 Kranj, Slovenia"}
+,{"p":"cebelarstvo", "x":"46.0436518","y":"14.5807324","n":"Gregor Jere - Čebelarstvo, nosilec dopolnilne dejavnosti na kmetiji","t":"3","c":"0","s":"0.0", "d":"0", "a":"70,104,104,104", "l":"Novo naselje 5b, 1261 LJUBLJANA-DOBRUNJE, Slovenia"}
+,{"p":"espressoljubljana", "x":"46.038777","y":"14.468615","n":"Espresso trgovina in gostinstvo","t":"2","c":"19","s":"5.0", "d":"0", "a":"70,104,104,104", "l":"Fajfarjeva ulica 33, 1000 Ljubljana, Slovenia"}
+,{"p":"estelatrgovsko", "x":"46.0661856","y":"14.5443136","n":"Estela Trgovsko-Proizvodno Podjetje","t":"4","c":"32","s":"3.9", "d":"0", "a":"70,104,104,104", "l":"Šmartinska cesta 152, 1000 Ljubljana, Slovenia"}
+,{"p":"estelahairsalon", "x":"46.5543954","y":"15.6524329","n":"Estela Hair Salon","t":"999","c":"51","s":"4.1", "d":"0", "a":"70,104,104,104", "l":"Pobreška cesta 18, 2000 Maribor, Slovenia"}
+,{"p":"fitnessshopbtc", "x":"46.065644","y":"14.5435582","n":"Fitnesshop BTC","t":"4","c":"11","s":"4.8", "d":"0", "a":"70,104,104,104", "l":"Šmartinska 152, 1000 Ljubljana, Slovenia"}
+,{"p":"gudshopljubljana", "x":"46.0481236","y":"14.5059977","n":"GUD Shop","t":"4","c":"41","s":"4.4", "d":"0", "a":"70,104,104,104", "l":"Stari trg 4, 1000 Ljubljana, Slovenia"}
+,{"p":"hoteltriglav", "x":"46.3697263","y":"14.0837629","n":"Hotel Triglav Bled","t":"5","c":"195","s":"4.8", "d":"0", "a":"70,104,104,104", "l":"33, Kolodvorska cesta, 4260 Bled, Slovenia"}
+,{"p":"btccityljubljana", "x":"46.067275","y":"14.54416","n":"BTC City Ljubljana","t":"4","c":"15456","s":"4.4", "d":"0", "a":"70,104,104,104", "l":"Šmartinska cesta 152, 1000 Ljubljana, Slovenia"}
+,{"p":"liupkabtc", "x":"46.0661637","y":"14.5428172","n":"Liupka BTC - Sewing Shop","t":"4","c":"8","s":"4.5", "d":"0", "a":"70,104,104,104", "l":"Šmartinska cesta 152, 1000 Ljubljana, Slovenia"}
+,{"p":"vordordoo", "x":"46.0657648","y":"14.5429426","n":"VORDOR","t":"4","c":"2","s":"5.0", "d":"0", "a":"70,104,104,104", "l":"Šmartinska cesta 152, 1000 Ljubljana, Slovenia"}
+,{"p":"gericomputer", "x":"46.5361334","y":"15.6441945","n":"Geri computer","t":"4","c":"3","s":"5.0", "d":"0", "a":"70,104,104,104", "l":"Jadranska cesta 27, 2000 Maribor, Slovenia"}
+,{"p":"oopsboutique", "x":"46.0515885","y":"14.503347","n":"OOOPS boutique","t":"4","c":"0","s":"0.0", "d":"0", "a":"70,104,104,104", "l":"Slovenska cesta 30, 1000 Ljubljana, Slovenia"}
+,{"p":"pivotekaza", "x":"46.0480752","y":"14.5063834","n":"Pivoteka Za popen't - Beer Store","t":"4","c":"41","s":"4.8", "d":"0", "a":"70,104,104,104", "l":"Stari trg 5, 1000 Ljubljana, Slovenia"}
+,{"p":"qvapehouse", "x":"46.4212812","y":"15.8722118","n":"Q Vapehouse Ptuj - Premium Vape Shop","t":"4","c":"48","s":"4.9", "d":"0", "a":"70,104,104,104", "l":"Slomškova ulica 9, 2250 Ptuj, Slovenia"}
+,{"p":"qvapehouseljubljana", "x":"46.056219","y":"14.508116","n":"Q Vapehouse Ljubljana Ena - Premium Vape Shop","t":"4","c":"37","s":"5.0", "d":"0", "a":"70,104,104,104", "l":"Miklošičeva cesta 32, 1000 Ljubljana, Slovenia"}
+,{"p":"qvapemurska", "x":"46.6610827","y":"16.160796","n":"Q Vapehouse Murska Sobota - Premium Vape Shop","t":"4","c":"32","s":"4.8", "d":"0", "a":"70,104,104,104", "l":"Ulica Štefana Kovača 24, 9000 Murska Sobota, Slovenia"}
+,{"p":"qvapemaribor", "x":"46.560242","y":"15.6491076","n":"Q Vapehouse Maribor Ena - Premium Vape Shop","t":"4","c":"61","s":"4.8", "d":"0", "a":"70,104,104,104", "l":"Trg svobode 5, 2000 Maribor, Slovenia"}
+,{"p":"qvapemaribor2", "x":"46.545526","y":"15.6434391","n":"Q Vapehouse Maribor Dva - Premium Vape Shop","t":"4","c":"98","s":"4.8", "d":"0", "a":"70,104,104,104", "l":"Ljubljanska ulica 42, 2000 Maribor, Slovenia"}
+,{"p":"senaflora", "x":"46.0521835","y":"14.5082673","n":"Sena Flora, trgovina in proizvodnja","t":"999","c":"0","s":"0.0", "d":"0", "a":"70,104,104,104", "l":"Trubarjeva cesta 18, 1000 Ljubljana, Slovenia"}
+,{"p":"sensilabmisli", "x":"46.0682176","y":"14.5461394","n":"Sensilab - Misli zdravo -  Vitamin & Supplement","t":"4","c":"0","s":"0.0", "d":"0", "a":"70,104,104,104", "l":"152G, Citypark, nakupovalno središče Ljubljane, Šmartinska, 1000 Ljubljana, Slovenia"}
+,{"p":"slovenskalocalmade", "x":"46.5602771","y":"15.6463916","n":"Slovenska - local made","t":"4","c":"0","s":"0.0", "d":"0", "a":"70,104,104,104", "l":"Slovenska ulica 13, 2000 Maribor, Slovenia"}
+,{"p":"tattoopiercingstudio", "x":"46.064298","y":"14.545233","n":"Tattoo & Piercing Studio CULT (BTC City, hala 5, Tangram)","t":"999","c":"51","s":"4.5", "d":"0", "a":"70,104,104,104", "l":"Šmartinska 152, 1000 Ljubljana, Slovenia"}
+,{"p":"engrotuspodjetje", "x":"46.0646914","y":"14.5525824","n":"Engrotuš podjetje za trgovino, d.d., poslovna enota drogerija Tuš","t":"3","c":"73","s":"4.2", "d":"0", "a":"70,104,104,104", "l":"Bratislavska cesta 9, 1000 Ljubljana, Slovenia"}
+,{"p":"planettuskranj", "x":"46.236656","y":"14.3733715","n":"Planet Tuš Kranj","t":"3","c":"133","s":"4.2", "d":"0", "a":"70,104,104,104", "l":"Tuš hipermarket Planet Kranj, Cesta Jaka Platiše 18, 4000 Kranj, Slovenia"}
+,{"p":"tokoproizvodnja", "x":"45.5398373","y":"13.7352096","n":"Toko proizvodnja in prodaja usnjene galanterije, poslovna enota Toko planet Tuš Koper","t":"3","c":"61","s":"4.1", "d":"0", "a":"70,104,104,104", "l":"Ankaranska cesta 2, 6000 Koper - Capodistria, Slovenia"}
+,{"p":"tussupermarketradvanje", "x":"46.5346816","y":"15.6216855","n":"Tuš supermarket Radvanje Maribor","t":"3","c":"238","s":"4.2", "d":"0", "a":"70,104,104,104", "l":"Streliška cesta 24, 2000 Maribor, Slovenia"}
+,{"p":"tushipermarketmaribor", "x":"46.5477619","y":"15.6744379","n":"Tuš hipermarket Pobrežje Maribor","t":"3","c":"369","s":"4.0", "d":"0", "a":"70,104,104,104", "l":"Ulica Veljka Vlahoviča 21, 2000 Maribor, Slovenia"}
+,{"p":"planettusyelje", "x":"46.2434388","y":"15.2782233","n":"Planet Tuš Celje","t":"3","c":"2031","s":"4.3", "d":"0", "a":"70,104,104,104", "l":"Mariborska cesta 128, 3000 Celje, Slovenia"}
+,{"p":"tussupermarketbakovska", "x":"46.644211","y":"16.1671098","n":"Tuš supermarket Bakovska Murska Sobota","t":"3","c":"264","s":"4.3", "d":"0", "a":"70,104,104,104", "l":"Bakovska ulica 31a, 9000 Murska Sobota, Slovenia"}
+,{"p":"planetnovomesto", "x":"45.8026253","y":"15.1600566","n":"Tuš supermarket Planet Novo mesto","t":"3","c":"273","s":"4.1", "d":"0", "a":"70,104,104,104", "l":"Topliška cesta 2, 8000 Novo mesto, Slovenia"}
+,{"p":"engrotusslovenia", "x":"45.9518072","y":"14.6616686","n":"Engrotuš podjetje za trgovino, PE Tuš drogerija Grosuplje","t":"3","c":"303","s":"3.8", "d":"0", "a":"70,104,104,104", "l":"Gasilska Cesta 1, 1290 Grosuplje, Slovenia"}
+,{"p":"supermarketmenges", "x":"46.1566499","y":"14.569292","n":"Tuš supermarket Mengeš","t":"3","c":"341","s":"3.9", "d":"0", "a":"70,104,104,104", "l":"Slovenska cesta 85, 1234 Mengeš, Slovenia"}
+,{"p":"hipermarketmaribor", "x":"46.5524907","y":"15.6279045","n":"Tuš hipermarket Planet Maribor","t":"3","c":"859","s":"4.1", "d":"0", "a":"70,104,104,104", "l":"Na Poljanah 18, 2000 Maribor, Slovenia"}
+,{"p":"tussupermarketrace", "x":"46.4526841","y":"15.6752764","n":"Tuš Supermarket","t":"3","c":"185","s":"4.5", "d":"0", "a":"70,104,104,104", "l":"Ljubljanska cesta 13, 2327 Rače, Slovenia"}
+,{"p":"tussupermarketszena", "x":"45.7044981","y":"13.8610374","n":"Tuš supermarket Sežana","t":"3","c":"637","s":"4.1", "d":"0", "a":"70,104,104,104", "l":"Partizanska cesta 71, 6210 Sežana, Slovenia"}
+,{"p":"tussuperzalec", "x":"46.2559635","y":"15.1605131","n":"Tuš supermarket Žalec","t":"3","c":"196","s":"4.3", "d":"0", "a":"70,104,104,104", "l":"Ulica heroja Staneta 8, 3310 Žalec, Slovenia"}
+,{"p":"vapeonshop", "x":"46.0523442","y":"14.5118833","n":"VAPE ON SHOP","t":"4","c":"90","s":"4.8", "d":"0", "a":"70,104,104,104", "l":"Trubarjeva cesta 46, 1000 Ljubljana, Slovenia"}
+,{"p":"houseofdreamingbooks", "x":"46.0525759","y":"14.5096391","n":"Hiša sanjajočih knjig | House of Dreaming Books","t":"4","c":"36","s":"4.7", "d":"0", "a":"70,104,104,104", "l":"Trubarjeva cesta 29, 1000 Ljubljana, Slovenia"}
+,{"p":"zalozbasanje", "x":"46.0650381","y":"14.5567905","n":"Založba Sanje, d.o.o. | Sanje Publishing, Ltd","t":"4","c":"2","s":"5.0", "d":"0", "a":"70,104,104,104", "l":"Leskoškova cesta 12, 1000 Ljubljana, Slovenia"}
+,{"p":"quicksilverstore", "x":"46.0487707","y":"14.5062151","n":"Quicksilver Store","t":"4","c":"18","s":"3.9", "d":"0", "a":"70,104,104,104", "l":"17, Mestni trg 16, 1000 Ljubljana, Slovenia"}
+,{"p":"Sportinaclothing", "x":"46.0682176","y":"14.5461394","n":"Sportina - Clothing Store","t":"4","c":"5","s":"4.0", "d":"0", "a":"70,104,104,104", "l":"Šmartinska cesta 152g, 1000 Ljubljana, Slovenia"}
+,{"p":"marellagallery", "x":"46.0519756","y":"14.5066408","n":"Marella Gallery Store Emporium","t":"4","c":"0","s":"0.0", "d":"0", "a":"70,104,104,104", "l":"Prešernov trg 5a, 1000 Ljubljana, Slovenia"}
+,{"p":"morrosartoriale", "x":"46.0666486","y":"14.5411923","n":"MORRO SARTORIALE LJUBLJANA","t":"4","c":"3","s":"5.0", "d":"0", "a":"70,104,104,104", "l":"Ameriška ulica 8, 1000 Ljubljana, Slovenia"}
+,{"p":"karinzatrgovino", "x":"46.0243932","y":"14.4139576","n":"Karin podjetje za trgovino, storitve in zastopanje, d.o.o., Ljubljana-Brezovica, Tržaška 438","t":"3","c":"3","s":"5.0", "d":"0", "a":"70,104,104,104", "l":"Tržaška cesta 438, 1351 Brezovica pri Ljubljani, Slovenia"}
+,{"p":"peakperformancegeneralstore", "x":"46.0484196","y":"14.5061297","n":"Peak Performance General Store Ljubljana","t":"3","c":"12","s":"4.6", "d":"0", "a":"70,104,104,104", "l":"Stari trg 1, 1000 Ljubljana, Slovenia"}
+,{"p":"polypopljubljana", "x":"46.0540288","y":"14.5036553","n":"Polypop","t":"3","c":"7","s":"5.0", "d":"0", "a":"70,104,104,104", "l":"Puharjeva ulica 3, 1000 Ljubljana, Slovenia"}
+,{"p":"garderobacustomshirts", "x":"46.065844","y":"14.5496041","n":"GARDEROBA - Custom T-Shirts","t":"3","c":"9","s":"4.7", "d":"0", "a":"70,104,104,104", "l":"Šmartinska cesta 152, 1000 Ljubljana, Slovenia"}
+,{"p":"kartjaprodoo", "x":"46.0654589","y":"14.5098268","n":"Katja-Pro d.o.o., trgovsko podjetje","t":"3","c":"2","s":"5.0", "d":"0", "a":"70,104,104,104", "l":"Dunajska cesta 56, 1000 Ljubljana, Slovenia"}
+,{"p":"frutasunderwear", "x":"46.0489842","y":"14.5058362","n":"Frutas - Underwear","t":"4","c":"3","s":"5.0", "d":"0", "a":"70,104,104,104", "l":"Cankarjevo nabrežje 25, 1000 Ljubljana, Slovenia"}]
