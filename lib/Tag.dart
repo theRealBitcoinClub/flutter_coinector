@@ -147,7 +147,7 @@ class Tag {
     'DASH ₿', //59
     'BTC ₿',
     'BCH ₿',
-    'BSV ₿',
+    'ANYPAY ₿',
     'ETH ₿',
     'HotDog 🌭', //64
     'Fast ⏩',
@@ -155,7 +155,7 @@ class Tag {
     'Sushi 🍣',
     'Moto 🛵',
     'Coche 🚘', //69
-    'LTC ₿',
+    'ELIPAY ₿',
     'Chicken 🐔',
     'Rabbit 🐰',
     'Potato 🥔',
@@ -189,7 +189,7 @@ class Tag {
     'Chips 🍟',
     'Italian 🇮🇹',
     'Whiskey 🥃',
-    'Rum 🥃', //This is number 104 the no tag indicator, currently not used
+    ' - - - ', //This is number 104 the no tag indicator, currently not used //TODO hide this field from the suggestions
     'Bourbon 🥃', //105
     'Liquor 🥃',
     'Men ♂️',
@@ -364,7 +364,7 @@ class Tag {
     'チップ',
     'イタリア語🇮🇹',
     'ウイスキー🥃',
-    'ラム🥃',
+    '🍔🍔🍔ラム🥃', //NOTAG INDICATOR 104
     'ブルボン🥃',
     '酒🥃',
     'メン♂️',
@@ -539,7 +539,7 @@ class Tag {
     'Chips 🍟',
     'Italian 🇮🇹',
     'Whiskey 🥃',
-    'Rum 🥃',
+    '🍔🍔🍔ラム🥃', //NOTAG INDICATOR 104
     'Bourbon 🥃',
     'Liquor 🥃',
     'Men ♂️',
@@ -713,7 +713,7 @@ class Tag {
     'chippu',
     'Itaria-go 🇮🇹',
     'uisukī 🥃',
-    'ramu 🥃',
+    '🍔🍔🍔ラム🥃', //NOTAG INDICATOR 104
     'Burubon 🥃',
     'sake 🥃',
     '🍔🍔🍔men ♂ ️ ',
@@ -1237,7 +1237,7 @@ class Tag {
     'PommesF. 🍟',
     'Italienne 🇮🇹',
     'Whisky 🥃',
-    'Rhum 🥃', //This is number 104 the no tag indicator, currently not used
+    '🍔🍔🍔ラム🥃', //NOTAG INDICATOR 104 //This is number 104 the no tag indicator, currently not used
     '🍔🍔🍔Bourbon 🥃', //105
     'Spiritueux 🥃',
     'Hommes ♂️',
@@ -1412,7 +1412,7 @@ class Tag {
     'Pommes 🍟',
     'Ital. 🇮🇹',
     '🍔🍔🍔Whiskey 🥃',
-    '🍔🍔🍔Rum 🥃', //This is number 104 the no tag indicator, currently not used
+    '🍔🍔🍔ラム🥃', //NOTAG INDICATOR 104 //This is number 104 the no tag indicator, currently not used
     '🍔🍔🍔Bourbon 🥃', //105
     'Shots 🥃',
     'Männer ♂️',
@@ -1587,7 +1587,7 @@ class Tag {
     'Fritas 🍟',
     '🍔🍔🍔Italiano 🇮🇹',
     'Whisky 🥃',
-    'Ron 🥃', //This is number 104 the no tag indicator, currently not used
+    '🍔🍔🍔ラム🥃', //NOTAG INDICATOR 104 //This is number 104 the no tag indicator, currently not used
     'Borbón 🥃', //105
     'Licor 🥃',
     'Hombres ♂️',

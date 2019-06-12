@@ -26,4 +26,6 @@
 ,{"p":"bambule", "x":"36.014772","y":"-5.6051206","n":"Bambule Batalla - Clothing and Asseccories","t":"4","c":"6","s":"5.0", "d":"0", "a":"52,54,107,24", "l":"Calle Batalla del Salado, Tarifa, Spain"}
 ,{"p":"bambule2", "x":"36.0122788","y":"-5.6035059","n":"Bambule Sancho - Clothing and Asseccories","t":"4","c":"14","s":"4.2", "d":"0", "a":"52,54,107,24", "l":"Calle Sancho IV el Bravo, Tarifa, Spain"}
 ,{"p":"growcafe", "x":"36.0109379","y":"-5.6053444","n":"Grow Cafe - Vegetarian","t":"2","c":"39","s":"4.8", "d":"0", "a":"4,29,8,11", "l":"Calle Alcalde Juan Núñez, Tarifa, Spain"}
-,{"p":"ecobakeryglutenfree", "x":"36.01988","y":"-5.609871","n":"Eco Bakery - Gluten Free","t":"4","c":"37","s":"4.7", "d":"0", "a":"3,115,11,30", "l":"Mar Adriatico, Tarifa, Spain"}]
+,{"p":"ecobakeryglutenfree", "x":"36.01988","y":"-5.609871","n":"Eco Bakery - Gluten Free","t":"4","c":"37","s":"4.7", "d":"0", "a":"3,115,11,30", "l":"Mar Adriatico, Tarifa, Spain"}
+,{"p":"metropolisvalladolid", "x":"41.650662","y":"-4.7217846","n":"Metropolis Valladolid","t":"4","c":"48","s":"4.6", "d":"0", "a":"61,104,104,104", "l":"Calle de Fray Luis de León, 19, 47002 Valladolid, Spain"}
+,{"p":"acompanante", "x":"41.6415754","y":"-0.8893621","n":"Acompañante En BioNeuroEmoción® y Acupuntura Zaragoza","t":"999","c":"1","s":"5.0", "d":"0", "a":"61,104,104,104", "l":"Calle Madre Genoveva Torres Morales, local 16, 50006 Zaragoza, Spain"}]
