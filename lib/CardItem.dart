@@ -216,6 +216,8 @@ class CardItem extends StatelessWidget {
 
   Radius buildRadius() => Radius.circular(10);
 
+  //TODO use REGEX to improve searchalgorithm, search for matched words instead of matched anything "gin" or identify tags and dont searcg
+
   String getServerId() {
     return (merchant.serverId.contains('-')
         ? merchant.serverId.split('-')[0]
