@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:transparent_image/transparent_image.dart';
+import 'AssetLoader.dart';
 import 'CustomBoxShadow.dart';
 import 'Dialogs.dart';
 import 'ItemInfoStackLayer.dart';
@@ -293,20 +294,38 @@ class CardItem extends StatelessWidget {
       ),
       onPressed: () {
         if (merchant.place == null) {
-          UrlLauncher.launchCoordinatesUrl(context, merchant);
+          loadPlace(() {
+            if (merchant.place == null) {
+              UrlLauncher.launchCoordinatesUrl(context, merchant);
+            } else {
+              UrlLauncher.launchVisitUrl(context, merchant);
+            }
+          });
         } else {
           UrlLauncher.launchVisitUrl(context, merchant);
         }
       },
     );
+  }handleReviewClick
+
+  void loadPlace(afterLoadCallback) async {
+    new AssetLoader().loadPlace(merchant.id).then((place) {
+      merchant.place = place;
+      afterLoadCallback();
+    });
   }
 
   void handleReviewClick(ctx) async {
     if (merchant.place == null) {
-      showPlaceNotFoundOnGmaps(ctx);
-      return;
+      loadPlace(() {
+        if (merchant.place == null)
+          showPlaceNotFoundOnGmaps(ctx);
+        else
+          UrlLauncher.launchReviewUrl(ctx, merchant.place);
+      });
+    } else {
+      UrlLauncher.launchReviewUrl(ctx, merchant.place);
     }
-    UrlLauncher.launchReviewUrl(ctx, merchant.place);
   }
 
   FlatButton buildFlatButtonReview(BuildContext ctx) {

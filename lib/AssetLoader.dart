@@ -110,7 +110,6 @@ class AssetLoader {
 
   var placesIdCache;
 
-  //TODO remove shareID from placesId asset to boost load time
   //TODO split contents in one file for each continent
   Future<Place> loadPlace(String id) async {
     if (placesIdCache == null) {
@@ -131,8 +130,7 @@ class AssetLoader {
       var itemId = item['p'];
       if (itemId == id) {
         result = Place.fromJson(item);
-
-        return result.placesId;
+        return result;
       }
     });
     return result;
