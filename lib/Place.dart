@@ -1,12 +1,10 @@
 class Place {
-  Place(this.id, this.placesId, this.adr);
+  Place(this.id, this.placesId);
 
   String id;
   String placesId;
-  String adr;
 
   Place.fromJson(Map<String, dynamic> json)
       : id = json['p'],
-        placesId = json['placesId'],
-        adr = json['adr'];
+        placesId = json['placesId'];
 }

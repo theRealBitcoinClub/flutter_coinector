@@ -161,9 +161,7 @@ class MapSampleState extends State<MapSample> {
   }
 
   String buildAdrSnippet(Merchant merchant) {
-    return (merchant.place != null)
-        ? merchant.place.adr.substring(merchant.place.adr.indexOf(",") + 2)
-        : merchant.location;
+    return merchant.location;
   }
 
   @override

@@ -306,7 +306,7 @@ class CardItem extends StatelessWidget {
         }
       },
     );
-  }handleReviewClick
+  }
 
   void loadPlace(afterLoadCallback) async {
     new AssetLoader().loadPlace(merchant.id).then((place) {

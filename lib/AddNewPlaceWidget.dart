@@ -486,7 +486,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void scrollToWithAnimation(pos) {
-    if (scrollController.positions.isNotEmpty) {
+    if (scrollController.hasClients) {
       scrollController.animateTo(pos,
           duration: DEFAULT_DURATION_SCROLL_ANIMATION,
           curve: DEFAULT_ANIMATION_CURVE);
