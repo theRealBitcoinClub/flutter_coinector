@@ -76,7 +76,7 @@ class UrlLauncher {
     return hasInput ? "," + countryCode + "-bch@therealbitcoin.club" : "";
   }
 
-  static void launchEmailClientAddPlace(ctx, String inputDASH, String inputBCH,
+  static Future<void> launchEmailClientAddPlace(ctx, String inputDASH, String inputBCH,
       String content, onEmailClientNotFound) async {
     String countryCode = getLocale(ctx);
     print("countryCode:" + countryCode);

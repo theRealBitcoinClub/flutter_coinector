@@ -340,9 +340,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void submitData(ctx) async {
-    UrlLauncher.launchEmailClientAddPlace(
-        ctx, inputDASH, inputBCH, buildJsonToSubmitViaEmail(), () {
-      Toaster.showToastEmailNotConfigured(ctx);
+    Dialogs.confirmSendEmail(context, () {
+      UrlLauncher.launchEmailClientAddPlace(
+          ctx, inputDASH, inputBCH, buildJsonToSubmitViaEmail(), () {
+        Toaster.showToastEmailNotConfigured(ctx);
+      });
     });
     Dialogs.confirmDownloadPdf(context, () {
       UrlLauncher.launchQrCodeGeneratorUrl(
@@ -601,9 +603,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     if (hasMinInput && lastInputBCH != inputBCH) {
       if (input == KEYWORD_CONTROLLER_ACTION &&
           lastInputBCHWithCommand == KEYWORD_CONTROLLER_ACTION) {
-        Dialogs.confirmSendEmail(context, () {
-          submitData(context);
-        });
+        submitData(context);
         _fieldFocusChange(context, focusNodeInputBCH, null);
         lastInputBCH = inputBCH;
         return;
