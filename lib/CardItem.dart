@@ -12,7 +12,6 @@ import 'MyColors.dart';
 import 'RatingWidgetBuilder.dart';
 import 'Toaster.dart';
 import 'UrlLauncher.dart';
-import 'dart:math';
 
 class CardItem extends StatelessWidget {
   final Position position;
@@ -20,7 +19,7 @@ class CardItem extends StatelessWidget {
   const CardItem(
       {Key key,
       @required this.animation,
-      //  this.onTap,
+      @required this.index,
       @required this.merchant,
       this.position,
       this.selected: false})
@@ -29,6 +28,7 @@ class CardItem extends StatelessWidget {
         assert(selected != null),
         super(key: key);
 
+  final int index;
   final Animation<double> animation;
   final Merchant merchant;
   final bool selected;
@@ -122,15 +122,17 @@ class CardItem extends StatelessWidget {
   }
 
   Widget buildBackGroundImageFallback(BuildContext ctx) {
-    var rand = new Random();
-    var img = "assets/youaresatoshi" + rand.nextInt(2).toString() + ".gif";
-    return GestureDetector(
-        child: FadeInImage.assetNetwork(placeholder: img, image: img),
-        onTap: () {
-          Dialogs.confirmMakeDonation(ctx, () {
-            UrlLauncher.launchDonateUrl();
-          });
-        });
+    var img = "assets/youaresatoshi" + (index % 2).toString() + ".gif";
+    return Padding(
+      padding: EdgeInsets.only(top: 15.0),
+      child: GestureDetector(
+          child: FadeInImage.assetNetwork(placeholder: img, image: img),
+          onTap: () {
+            Dialogs.confirmMakeDonation(ctx, () {
+              UrlLauncher.launchDonateUrl();
+            });
+          }),
+    );
   }
 
   Widget buildImageContainer(String gifUrl) {

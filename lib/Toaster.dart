@@ -6,8 +6,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Toaster {
   static const DEFAULT_BACKGROUND_OPACITY = 0.9;
   static const double DEFAULT_FONT_SIZE = 16.0;
-  static Color DEFAULT_TEXT_COLOR = Colors.white;
-  static Color DEFAULT_BACKGROUND_COLOR = Colors.yellow[800];
+  static const Color DEFAULT_TEXT_COLOR = Colors.white;
+  static const Color DEFAULT_BACKGROUND_COLOR = Colors.amber;
   static const int DEFAULT_TIME_FOR_IOS = 3;
   static const Toast DEFAULT_TIME_FOR_ANDROID = Toast.LENGTH_LONG;
   static const ToastGravity DEFAULT_TOAST_GRAVITY = ToastGravity.CENTER;
