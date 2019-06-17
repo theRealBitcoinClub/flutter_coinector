@@ -38,11 +38,11 @@ The app features a native Google Maps view with markers in different colors acco
 
 ## ADD PLACES
 
-1. The user who sends an Email to add a place triggers to create an Issue on Gitlab & Github:
+1. The user who sends an Email to add a place, triggers an automated action, which creates an Issue on Gitlab & Github:
 https://gitlab.com/bmap.cash/bmap.cash/issues & https://github.com/theRealBitcoinClub/bmap.cash/issues
-2. Places can be updated via Github repository:
-https://raw.githubusercontent.com/theRealBitcoinClub/flutter_coinector/master/assets/places
-3. Images must be added to the main repo of bmap.cash:
+2. Places can be updated via Github repository, they are sorted by continent and can be broken down in finer groups if necessary as the database grows:
+https://github.com/theRealBitcoinClub/flutter_coinector/tree/master/assets
+3. Images must be added to the main repo of bmap.cash in GIF format 640x480:
 https://github.com/theRealBitcoinClub/BITCOINMAP.CASH---Browser-PWA/raw/master/public/img/app/
 
 ## QR-Code PDF download
