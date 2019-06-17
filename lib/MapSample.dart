@@ -202,8 +202,8 @@ class MapSampleState extends State<MapSample> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: FloatingActionButton.extended(
-          backgroundColor: Theme.of(ctx).backgroundColor,
-          foregroundColor: Theme.of(ctx).accentColor,
+          backgroundColor: Colors.white70,
+          foregroundColor: Theme.of(ctx).backgroundColor,
           onPressed: closeMapResetMerchant,
           label: Text(FlutterI18n.translate(ctx, 'close_map')),
           icon: Icon(Icons.close),
