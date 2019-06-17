@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 
 class Dialogs {
-  static void confirmMakeDonation(BuildContext context, callbackYes) {
+  static void confirmMakeDonation(BuildContext buildCtx, callbackYes) {
     showDialog(
-        context: context,
+        context: buildCtx,
         builder: (BuildContext ctx) {
           return AlertDialog(
             backgroundColor: Colors.grey[900],
             content: Text(
-                FlutterI18n.translate(context, "make_donation_text")),
+                FlutterI18n.translate(buildCtx, "make_donation_text")),
             title: Row(
               children: <Widget>[
                 Icon(Icons.done_outline),
@@ -17,8 +17,8 @@ class Dialogs {
               ],
             ),
             actions: <Widget>[
-              flatButtonNo(context),
-              flatButtonYes(context, callbackYes)
+              flatButtonNo(buildCtx),
+              flatButtonYes(buildCtx, callbackYes)
             ],
           );
         });

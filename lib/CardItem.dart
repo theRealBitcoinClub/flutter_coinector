@@ -99,7 +99,7 @@ class CardItem extends StatelessWidget {
     );
   }
 
-  Stack buildContentStack(BuildContext ctx, Color infoBoxBackgroundColor,
+  Widget buildContentStack(BuildContext ctx, Color infoBoxBackgroundColor,
       TextStyle textStyle, TextStyle textStyle2) {
     var gifUrl =
         'https://github.com/theRealBitcoinClub/BITCOINMAP.CASH---Browser-PWA/raw/master/public/img/app/' +
@@ -107,31 +107,31 @@ class CardItem extends StatelessWidget {
             ".gif";
 
     var backGroundColor = Colors.grey[900].withOpacity(0.8);
-    return Stack(
-      children: <Widget>[
-        buildBackGroundImageFallback(ctx),
-        buildImageContainer(gifUrl),
-        buildStackInfoTextWithBackgroundAndShadow(
-            infoBoxBackgroundColor, backGroundColor, textStyle, textStyle2),
-        buildPositionedContainerDistance(backGroundColor, textStyle2),
-        RatingWidgetBuilder.hasReviews(merchant)
-            ? buildPositionedContainerReviews(backGroundColor, ctx)
-            : SizedBox(),
-      ],
-    );
+    return GestureDetector(
+        child: Stack(
+          children: <Widget>[
+            buildBackGroundImageFallback(ctx),
+            buildImageContainer(gifUrl),
+            buildStackInfoTextWithBackgroundAndShadow(
+                infoBoxBackgroundColor, backGroundColor, textStyle, textStyle2),
+            buildPositionedContainerDistance(backGroundColor, textStyle2),
+            RatingWidgetBuilder.hasReviews(merchant)
+                ? buildPositionedContainerReviews(backGroundColor, ctx)
+                : SizedBox(),
+          ],
+        ),
+        onTap: () {
+          Dialogs.confirmMakeDonation(ctx, () {
+            UrlLauncher.launchDonateUrl();
+          });
+        });
   }
 
   Widget buildBackGroundImageFallback(BuildContext ctx) {
     var img = "assets/youaresatoshi" + (index % 2).toString() + ".gif";
     return Padding(
       padding: EdgeInsets.only(top: 15.0),
-      child: GestureDetector(
-          child: FadeInImage.assetNetwork(placeholder: img, image: img),
-          onTap: () {
-            Dialogs.confirmMakeDonation(ctx, () {
-              UrlLauncher.launchDonateUrl();
-            });
-          }),
+      child: FadeInImage.assetNetwork(placeholder: img, image: img),
     );
   }
 
