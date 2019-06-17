@@ -12,6 +12,7 @@ import 'MyColors.dart';
 import 'RatingWidgetBuilder.dart';
 import 'Toaster.dart';
 import 'UrlLauncher.dart';
+import 'dart:math';
 
 class CardItem extends StatelessWidget {
   final Position position;
@@ -108,7 +109,7 @@ class CardItem extends StatelessWidget {
     var backGroundColor = Colors.grey[900].withOpacity(0.8);
     return Stack(
       children: <Widget>[
-        buildProgressIndicator(ctx),
+        buildBackGroundImageFallback(ctx),
         buildImageContainer(gifUrl),
         buildStackInfoTextWithBackgroundAndShadow(
             infoBoxBackgroundColor, backGroundColor, textStyle, textStyle2),
@@ -120,28 +121,21 @@ class CardItem extends StatelessWidget {
     );
   }
 
-  Positioned buildProgressIndicator(BuildContext ctx) {
-    return Positioned(
-      top: 180.0,
-      left: MediaQuery.of(ctx).size.width / 2 - 20,
-      child: Center(
-        child: CircularProgressIndicator(strokeWidth: 1.5),
-      ),
-    );
+  Widget buildBackGroundImageFallback(BuildContext ctx) {
+    var rand = new Random();
+    var img = "assets/youaresatoshi" + rand.nextInt(2).toString() + ".gif";
+    return FadeInImage.assetNetwork(placeholder: img, image: img);
   }
 
-  Padding buildImageContainer(String gifUrl) {
-    return Padding(
-      padding: EdgeInsets.all(0.0),
-      child: FadeInImage.memoryNetwork(
-        fadeInCurve: Curves.decelerate,
-        fit: BoxFit.contain,
-        fadeInDuration: Duration(milliseconds: 500),
-        placeholder: kTransparentImage,
-        image: gifUrl,
-        height: 320,
-        alignment: Alignment.bottomCenter,
-      ),
+  Widget buildImageContainer(String gifUrl) {
+    return FadeInImage.memoryNetwork(
+      fadeInCurve: Curves.decelerate,
+      fit: BoxFit.contain,
+      fadeInDuration: Duration(milliseconds: 500),
+      placeholder: kTransparentImage,
+      image: gifUrl,
+      height: 320,
+      alignment: Alignment.bottomCenter,
     );
   }
 
@@ -222,11 +216,6 @@ class CardItem extends StatelessWidget {
     return (merchant.serverId.contains('-')
         ? merchant.serverId.split('-')[0]
         : merchant.serverId);
-  }
-
-  Widget onLoadImageFailed() {
-    final img = "assets/placeholder640x480.jpg";
-    return FadeInImage.assetNetwork(placeholder: img, image: img);
   }
 
   Container buildGradientContainer(Color infoBoxBackgroundColor) {
