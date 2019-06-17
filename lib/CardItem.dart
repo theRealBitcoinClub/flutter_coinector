@@ -124,7 +124,13 @@ class CardItem extends StatelessWidget {
   Widget buildBackGroundImageFallback(BuildContext ctx) {
     var rand = new Random();
     var img = "assets/youaresatoshi" + rand.nextInt(2).toString() + ".gif";
-    return FadeInImage.assetNetwork(placeholder: img, image: img);
+    return GestureDetector(
+        child: FadeInImage.assetNetwork(placeholder: img, image: img),
+        onTap: () {
+          Dialogs.confirmMakeDonation(ctx, () {
+            UrlLauncher.launchDonateUrl();
+          });
+        });
   }
 
   Widget buildImageContainer(String gifUrl) {

@@ -67,5 +67,6 @@
   "choose_tag_2" : "SCEGLI ALTRO TAG",
   "choose_tag_3" : "SCEGLI TERZO TAG",
   "choose_tag_4" : "SCEGLI L'ULTIMO TAG",
-  "choose_tag_5" : "RESETTA TAGS"
+  "choose_tag_5" : "RESETTA TAGS",
+  "make_donation_text" : "Vorresti sostenere questa app con una donazione BCH o DASH ?!"
 }

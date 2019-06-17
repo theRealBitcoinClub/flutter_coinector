@@ -67,5 +67,6 @@
   "choose_tag_2" : "PILIH TAG LAIN",
   "choose_tag_3" : "PILIH TAG KETIGA",
   "choose_tag_4" : "PILIH TAG TERAKHIR",
-  "choose_tag_5" : "RESET TAGS"
+  "choose_tag_5" : "RESET TAGS",
+  "make_donation_text" : "Apakah Anda ingin mendukung aplikasi ini dengan sumbangan BCH atau DASH ?!"
 }
