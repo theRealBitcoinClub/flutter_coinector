@@ -334,13 +334,11 @@ class CardItem extends StatelessWidget {
     return FlatButton(
       child: Column(
         children: <Widget>[
-          Dialogs.buildIcon(Icons.rate_review,
-              Dialogs.getToggleColor(merchant.place != null)),
+          Dialogs.buildIcon(Icons.rate_review, Colors.white),
           Dialogs.buildSpacer(),
           Text(
             FlutterI18n.translate(ctx, 'REVIEW'),
-            style: TextStyle(
-                color: Dialogs.getToggleColor(merchant.place != null)),
+            style: TextStyle(color: Colors.white),
           )
         ],
       ),
