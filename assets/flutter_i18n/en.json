@@ -67,5 +67,6 @@
   "choose_tag_2" : "CHOOSE ANOTHER TAG",
   "choose_tag_3" : "CHOOSE THIRD TAG",
   "choose_tag_4" : "CHOOSE LAST TAG",
-  "choose_tag_5" : "RESET TAGS"
+  "choose_tag_5" : "RESET TAGS",
+  "make_donation_text" : "Would you like to support this app with a BCH or DASH donation?!"
 }

@@ -340,9 +340,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void submitData(ctx) async {
-    UrlLauncher.launchEmailClientAddPlace(
-        ctx, inputDASH, inputBCH, buildJsonToSubmitViaEmail(), () {
-      Toaster.showToastEmailNotConfigured(ctx);
+    Dialogs.confirmSendEmail(context, () {
+      UrlLauncher.launchEmailClientAddPlace(
+          ctx, inputDASH, inputBCH, buildJsonToSubmitViaEmail(), () {
+        Toaster.showToastEmailNotConfigured(ctx);
+      });
     });
     Dialogs.confirmDownloadPdf(context, () {
       UrlLauncher.launchQrCodeGeneratorUrl(
@@ -486,7 +488,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void scrollToWithAnimation(pos) {
-    if (scrollController.positions.isNotEmpty) {
+    if (scrollController.hasClients) {
       scrollController.animateTo(pos,
           duration: DEFAULT_DURATION_SCROLL_ANIMATION,
           curve: DEFAULT_ANIMATION_CURVE);
@@ -601,9 +603,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     if (hasMinInput && lastInputBCH != inputBCH) {
       if (input == KEYWORD_CONTROLLER_ACTION &&
           lastInputBCHWithCommand == KEYWORD_CONTROLLER_ACTION) {
-        Dialogs.confirmSendEmail(context, () {
-          submitData(context);
-        });
+        submitData(context);
         _fieldFocusChange(context, focusNodeInputBCH, null);
         lastInputBCH = inputBCH;
         return;
@@ -611,7 +611,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     }
     lastInputBCHWithCommand = input;
     if (input != KEYWORD_CONTROLLER_ACTION) {
-      inputBCH = input.trim();
+      inputBCH = input;
     }
   }
 
@@ -640,7 +640,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
     lastInputDASHWithCommand = input;
     if (input != KEYWORD_CONTROLLER_ACTION) {
-      inputDASH = input.trim();
+      inputDASH = input;
     }
   }
 
@@ -665,7 +665,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
     lastInputAdrWithCommand = input;
     if (input != KEYWORD_CONTROLLER_ACTION) {
-      inputAdr = input.trim();
+      inputAdr = input;
     }
   }
 
@@ -690,7 +690,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
     lastInputNameWithCommand = input;
     if (input != KEYWORD_CONTROLLER_ACTION) {
-      inputName = input.trim();
+      inputName = input;
     }
   }
 
@@ -703,15 +703,15 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   String buildJsonToSubmitViaEmail() {
     return Uri.encodeComponent('{"n":"' +
-        inputName +
+        inputName.trim() +
         '","type":"' +
-        typeTitle +
+        typeTitle.trim() +
         '","bch":"' +
-        inputBCH +
+        inputBCH.trim() +
         '","dash":"' +
-        inputDASH +
+        inputDASH.trim() +
         '","l":"' +
-        inputAdr +
+        inputAdr.trim() +
         '","tags":"[' +
         buildJsonTag(allSelectedTags.elementAt(0)) +
         ',' +

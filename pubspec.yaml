@@ -19,25 +19,25 @@ environment:
 dependencies:
   fluttertoast: ^3.1.0
   #flutter_launcher_icons: ^0.7.0
-  permission_handler: ^3.0.1
+  permission_handler: ^3.1.0
   synchronized: ^2.1.0
-  firebase_messaging: ^5.0.1+1
+  firebase_messaging: ^5.0.3
   #permission: ^0.1.1
   #flutter_advanced_networkimage: any
   #launch_review: 2.0.0
   #flutter_crashlytics: 1.0.0
-  firebase_core: ^0.4.0+1
+  firebase_core: ^0.4.0+5
   clipboard_manager: ^0.0.4
   #flutter_typeahead: ^1.4.0
-  shared_preferences: ^0.5.2
-  dio: ^2.1.0
-  firebase_crashlytics: ^0.0.4+3
+  shared_preferences: ^0.5.3+1
+  dio: ^2.1.7
+  firebase_crashlytics: ^0.0.4+5
   transparent_image: ^1.0.0
-  smooth_star_rating: ^1.0.2
-  google_maps_flutter: ^0.5.13
-  url_launcher: ^5.0.2
+  smooth_star_rating: ^1.0.3
+  google_maps_flutter: ^0.5.16
+  url_launcher: ^5.0.3
   flutter_i18n: ^0.6.3
-  geolocator: ^4.0.3
+  geolocator: ^5.0.1
   crypto: ^2.0.6
   path_provider: ^1.1.0
   onesignal: ^1.1.0
@@ -46,7 +46,7 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^0.1.2
+  #cupertino_icons: ^0.1.2
 
 dev_dependencies:
   flutter_test:
@@ -63,12 +63,12 @@ dev_dependencies:
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
 
-flutter_localizations:
-    sdk: flutter
+#ALREADY INSIDE i18n plugin
+#flutter_localizations:
+ ##   sdk: flutter
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -76,6 +76,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/youaresatoshi0.gif
+    - assets/youaresatoshi1.gif
     - assets/flutter_i18n/
     - assets/marker6.png
     - assets/marker5.png

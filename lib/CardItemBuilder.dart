@@ -21,6 +21,7 @@ class CardItemBuilder {
           listModel[index] != null &&
           listModel.length > 0) {
         return CardItem(
+          index: index,
           position: pos,
           animation: animation,
           merchant: listModel[index],
@@ -78,6 +79,7 @@ class CardItemBuilder {
   static Widget buildRemovedItem(
       Merchant item, BuildContext context, Animation<double> animation) {
     return CardItem(
+      index: 0,
       animation: animation,
       merchant: item,
       selected: false,

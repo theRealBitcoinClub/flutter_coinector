@@ -67,5 +67,6 @@
   "choose_tag_2" : "ELIGE OTRA ETIQUETA",
   "choose_tag_3" : "ELIGE TERCERA ETIQUETA",
   "choose_tag_4" : "ELIGE ÚLTIMA ETIQUETA",
-  "choose_tag_5" : "RESTABLECER ETIQUETAS"
+  "choose_tag_5" : "RESTABLECER ETIQUETAS",
+  "make_donation_text" : "¿Te gustaría apoyar esta aplicación con una donación de BCH o DASH?"
 }

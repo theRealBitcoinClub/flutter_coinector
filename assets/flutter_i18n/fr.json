@@ -67,5 +67,6 @@
   "choose_tag_2" : "CHOISISSEZ AUTRE ÉTIQUETTE",
   "choose_tag_3" : "CHOISISSEZ TROISIÈME ÉTIQUETTE",
   "choose_tag_4" : "CHOISISSEZ DERNIÈRE ÉTIQUETTE",
-  "choose_tag_5" : "RÉINITIALISER ÉTIQUETTES"
+  "choose_tag_5" : "RÉINITIALISER ÉTIQUETTES",
+  "make_donation_text" : "Souhaitez-vous soutenir cette application avec un don BCH ou DASH?!"
 }

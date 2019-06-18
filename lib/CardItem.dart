@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:transparent_image/transparent_image.dart';
+import 'AssetLoader.dart';
 import 'CustomBoxShadow.dart';
 import 'Dialogs.dart';
 import 'ItemInfoStackLayer.dart';
@@ -18,7 +19,7 @@ class CardItem extends StatelessWidget {
   const CardItem(
       {Key key,
       @required this.animation,
-      //  this.onTap,
+      @required this.index,
       @required this.merchant,
       this.position,
       this.selected: false})
@@ -27,6 +28,7 @@ class CardItem extends StatelessWidget {
         assert(selected != null),
         super(key: key);
 
+  final int index;
   final Animation<double> animation;
   final Merchant merchant;
   final bool selected;
@@ -97,7 +99,7 @@ class CardItem extends StatelessWidget {
     );
   }
 
-  Stack buildContentStack(BuildContext ctx, Color infoBoxBackgroundColor,
+  Widget buildContentStack(BuildContext ctx, Color infoBoxBackgroundColor,
       TextStyle textStyle, TextStyle textStyle2) {
     var gifUrl =
         'https://github.com/theRealBitcoinClub/BITCOINMAP.CASH---Browser-PWA/raw/master/public/img/app/' +
@@ -105,42 +107,47 @@ class CardItem extends StatelessWidget {
             ".gif";
 
     var backGroundColor = Colors.grey[900].withOpacity(0.8);
-    return Stack(
-      children: <Widget>[
-        buildProgressIndicator(ctx),
-        buildImageContainer(gifUrl),
-        buildStackInfoTextWithBackgroundAndShadow(
-            infoBoxBackgroundColor, backGroundColor, textStyle, textStyle2),
-        buildPositionedContainerDistance(backGroundColor, textStyle2),
-        RatingWidgetBuilder.hasReviews(merchant)
-            ? buildPositionedContainerReviews(backGroundColor, ctx)
-            : SizedBox(),
-      ],
+    return GestureDetector(
+        child: Stack(
+          children: <Widget>[
+            buildBackGroundImageFallback(ctx),
+            buildImageContainer(gifUrl),
+            buildStackInfoTextWithBackgroundAndShadow(
+                infoBoxBackgroundColor, backGroundColor, textStyle, textStyle2),
+            buildPositionedContainerDistance(backGroundColor, textStyle2),
+            RatingWidgetBuilder.hasReviews(merchant)
+                ? buildPositionedContainerReviews(backGroundColor, ctx)
+                : SizedBox(),
+          ],
+        ),
+        onTap: () {
+          Dialogs.confirmMakeDonation(ctx, () {
+            UrlLauncher.launchDonateUrl();
+          });
+        });
+  }
+
+  Widget buildBackGroundImageFallback(BuildContext ctx) {
+    var img = "assets/youaresatoshi" + (index % 2).toString() + ".gif";
+    return FadeInImage.assetNetwork(
+      fadeInCurve: Curves.decelerate,
+      fadeInDuration: Duration(milliseconds: 3000),
+      placeholder: img,
+      image: img,
+      height: 320,
+      alignment: Alignment.bottomCenter,
     );
   }
 
-  Positioned buildProgressIndicator(BuildContext ctx) {
-    return Positioned(
-      top: 180.0,
-      left: MediaQuery.of(ctx).size.width / 2 - 20,
-      child: Center(
-        child: CircularProgressIndicator(strokeWidth: 1.5),
-      ),
-    );
-  }
-
-  Padding buildImageContainer(String gifUrl) {
-    return Padding(
-      padding: EdgeInsets.all(0.0),
-      child: FadeInImage.memoryNetwork(
-        fadeInCurve: Curves.decelerate,
-        fit: BoxFit.contain,
-        fadeInDuration: Duration(milliseconds: 500),
-        placeholder: kTransparentImage,
-        image: gifUrl,
-        height: 320,
-        alignment: Alignment.bottomCenter,
-      ),
+  Widget buildImageContainer(String gifUrl) {
+    return FadeInImage.memoryNetwork(
+      fadeInCurve: Curves.decelerate,
+      fit: BoxFit.contain,
+      fadeInDuration: Duration(milliseconds: 500),
+      placeholder: kTransparentImage,
+      image: gifUrl,
+      height: 320,
+      alignment: Alignment.bottomCenter,
     );
   }
 
@@ -215,15 +222,12 @@ class CardItem extends StatelessWidget {
 
   Radius buildRadius() => Radius.circular(10);
 
+  //TODO use REGEX to improve searchalgorithm, search for matched words instead of matched anything "gin" or identify tags and dont searcg
+
   String getServerId() {
     return (merchant.serverId.contains('-')
         ? merchant.serverId.split('-')[0]
         : merchant.serverId);
-  }
-
-  Widget onLoadImageFailed() {
-    final img = "assets/placeholder640x480.jpg";
-    return FadeInImage.assetNetwork(placeholder: img, image: img);
   }
 
   Container buildGradientContainer(Color infoBoxBackgroundColor) {
@@ -293,7 +297,13 @@ class CardItem extends StatelessWidget {
       ),
       onPressed: () {
         if (merchant.place == null) {
-          UrlLauncher.launchCoordinatesUrl(context, merchant);
+          loadPlace(() {
+            if (merchant.place == null) {
+              UrlLauncher.launchCoordinatesUrl(context, merchant);
+            } else {
+              UrlLauncher.launchVisitUrl(context, merchant);
+            }
+          });
         } else {
           UrlLauncher.launchVisitUrl(context, merchant);
         }
@@ -301,25 +311,35 @@ class CardItem extends StatelessWidget {
     );
   }
 
+  void loadPlace(afterLoadCallback) async {
+    new AssetLoader().loadPlace(merchant.id).then((place) {
+      merchant.place = place;
+      afterLoadCallback();
+    });
+  }
+
   void handleReviewClick(ctx) async {
     if (merchant.place == null) {
-      showPlaceNotFoundOnGmaps(ctx);
-      return;
+      loadPlace(() {
+        if (merchant.place == null)
+          showPlaceNotFoundOnGmaps(ctx);
+        else
+          UrlLauncher.launchReviewUrl(ctx, merchant.place);
+      });
+    } else {
+      UrlLauncher.launchReviewUrl(ctx, merchant.place);
     }
-    UrlLauncher.launchReviewUrl(ctx, merchant.place);
   }
 
   FlatButton buildFlatButtonReview(BuildContext ctx) {
     return FlatButton(
       child: Column(
         children: <Widget>[
-          Dialogs.buildIcon(Icons.rate_review,
-              Dialogs.getToggleColor(merchant.place != null)),
+          Dialogs.buildIcon(Icons.rate_review, Colors.white),
           Dialogs.buildSpacer(),
           Text(
             FlutterI18n.translate(ctx, 'REVIEW'),
-            style: TextStyle(
-                color: Dialogs.getToggleColor(merchant.place != null)),
+            style: TextStyle(color: Colors.white),
           )
         ],
       ),

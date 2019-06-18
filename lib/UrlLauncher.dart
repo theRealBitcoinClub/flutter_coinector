@@ -17,6 +17,11 @@ class UrlLauncher {
     }
   }
 
+  static void launchDonateUrl() async {
+    var url = 'https://bitcoinmap.cash/bitcoin-bch-dash-qr-code-generator?bch=qqp0kpntfxygx3e6d4mr9c5ef5ucxdcjk5zkgtevss&dash=XiHdw8SVoNtJqno6GnxKQS2Snxh7BTuR39';
+    launchURI(url);
+  }
+
   //TODO detect IPhone and forward them to bitcoinmap.cash
   //TODO use this plugin: https://pub.dartlang.org/packages/launch_review
   //LaunchReview.launch(writeReview: false,iOSAppId: "585027354");
@@ -71,7 +76,7 @@ class UrlLauncher {
     return hasInput ? "," + countryCode + "-bch@therealbitcoin.club" : "";
   }
 
-  static void launchEmailClientAddPlace(ctx, String inputDASH, String inputBCH,
+  static Future<void> launchEmailClientAddPlace(ctx, String inputDASH, String inputBCH,
       String content, onEmailClientNotFound) async {
     String countryCode = getLocale(ctx);
     print("countryCode:" + countryCode);

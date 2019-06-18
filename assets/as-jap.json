@@ -22,7 +22,7 @@
 ,{"p":"hackersbar", "x":"35.6644485","y":"139.7305855","n":"Hackers Bar","t":"2","c":"57","s":"4.4", "d":"0", "a":"31,32,81,82", "l":"Japan, Tokyo, Minato City, Roppongi, 7 Chome−12−3"}
 ,{"p":"gyozashack", "x":"35.643273","y":"139.6701459","n":"GYOZA SHACK","t":"0","c":"52","s":"3.9", "d":"0", "a":"97,100,143,15", "l":"2 Chome-13-10 Sangenjaya, Setagaya City, Tokyo, Japan"}
 ,{"p":"yakinikutamura", "x":"34.700377","y":"135.542964","n":"Yakiniku Tamura - 北海道の旬 焼肉たむら","t":"0","c":"82","s":"3.2", "d":"0", "a":"111,67,112,138", "l":"2 Chome-7-3 Marunouchi, Chiyoda City, Tokyo, Japan"}
-,{"p":"osarucoffee", "x":"34.6637216","y":"135.4954944","n":"オサル コーヒー Osaru Coffee","t":"2","c":"88","s":"4.5", "d":"0", "a":"29,8,109,142", "l":" 1 Chome-7-15 Motomachi, Naniwa Ward, Osaka, Japan"}
+,{"p":"osarucoffee", "x":"34.6637216","y":"135.4954944","n":"オサル コーヒー Osaru Coffee","t":"2","c":"88","s":"4.5", "d":"0", "a":"29,8,109,142", "l":"1 Chome-7-15 Motomachi, Naniwa Ward, Osaka, Japan"}
 ,{"p":"unityface", "x":"34.5321509","y":"135.4955319","n":"喫茶・軽食 ユニティーフェイス - Unity Faith","t":"0","c":"9","s":"4.3", "d":"0", "a":"29,31,135,119", "l":"Japan, Osaka, Sakai, Naka Ward, Fukaishimizucho, 3835"}
 ,{"p":"engaro", "x":"34.702269","y":"135.487596","n":"ENGARO organic & hair clinic 大阪市北区大淀南オーガニック美容室","t":"4","c":"5","s":"4.8", "d":"0", "a":"104,104,104,104", "l":"Japan, Osaka, Kita Ward, 北区1 Chome−10"}
 ,{"p":"cafebarcoins", "x":"34.6595934","y":"135.5059829","n":"仮想通貨カフェ＆バーＣＯＩＮＳ","t":"2","c":"9","s":"4.6", "d":"0", "a":"29,31,32,33", "l":"Japan, Osaka, Chuo Ward, Souemoncho, 5−6"}
@@ -49,7 +49,6 @@
 ,{"p":"v2tokyo", "x":"35.6639015","y":"139.7306322","n":"V2 TOKYO","t":"2","c":"379","s":"4.0", "d":"0", "a":"61,104,104,104", "l":"7-chōme-13-7 Roppongi, Minato City, Tōkyō-to 106-0032, Japan"}
 ,{"p":"memoriesbar", "x":"35.6635542","y":"139.7333784","n":"MEMORIES BAR","t":"2","c":"0","s":"0.0", "d":"0", "a":"61,104,104,104", "l":"Japan, 〒106-0032 Tōkyō-to, Minato City, Roppongi, 3-chōme−10−11 青木ビル6F"}
 ,{"p":"wallstreet", "x":"35.6621986","y":"139.7351789","n":"WALL STREET GRILL& BAR","t":"2","c":"2","s":"5.0", "d":"0", "a":"61,104,104,104", "l":"陽光セントラルビル六本木 １F, 3-chōme-15-22 丁目 Roppongi, Minato City, Tōkyō-to 106-0032, Japan"}
-,{"p":"newsalsasudada", "x":"35.6616764","y":"139.7351021","n":"New Salsa Sudada - サルサスダーダ ","t":"2","c":"36","s":"4.1", "d":"0", "a":"61,104,104,104", "l":"Japan, 〒106-0032 Tokyo, Minato City, Roppongi, 5 Chome−16−5 インペリアル六本木 Forum 2F"}
 ,{"p":"secretbeautysalon", "x":"35.6715746","y":"139.7697616","n":"ハイパーナイフ 本格リンパ 美容矯正専門店 銀座Secret Beauty Salon","t":"999","c":"5","s":"4.8", "d":"0", "a":"61,104,104,104", "l":"Japan, 〒104-0061 Tokyo, Chuo City, Ginza, 2 Chome−13−１６ アヴァンティーク銀座２丁目参番館"}
-,{"p":"ramenshopjinambo", "x":"35.7200756","y":"139.6525785","n":"Ramen Shop Jinambo 6-chōme-3-4 Nogata","t":"3","c":"0","s":"0.0", "d":"0", "a":"61,104,104,104", "l":" Nakano City, Tōkyō-to 165-0027, Japan "}
+,{"p":"ramenshopjinambo", "x":"35.7200756","y":"139.6525785","n":"Ramen Shop Jinambo 6-chōme-3-4 Nogata","t":"3","c":"0","s":"0.0", "d":"0", "a":"61,104,104,104", "l":"Nakano City, Tōkyō-to 165-0027, Japan "}
 ,{"p":"coaster", "x":"35.6573733","y":"139.6676032","n":"Coaster クラフトビール＆キッチン","t":"0","c":"44","s":"4.4", "d":"0", "a":"61,104,104,104", "l":"Japan, 〒155-0032 Tokyo, Setagaya City, Daizawa, 5 Chome−19−１３, Kosei Haimu, １F"}]

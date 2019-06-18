@@ -2,6 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 
 class Dialogs {
+  static void confirmMakeDonation(BuildContext buildCtx, callbackYes) {
+    showDialog(
+        context: buildCtx,
+        builder: (BuildContext ctx) {
+          return AlertDialog(
+            backgroundColor: Colors.grey[900],
+            content: Text(
+                FlutterI18n.translate(buildCtx, "make_donation_text")),
+            title: Row(
+              children: <Widget>[
+                Icon(Icons.done_outline),
+                Text(" Support adoption?", style: TextStyle(color: Colors.white))
+              ],
+            ),
+            actions: <Widget>[
+              flatButtonNo(buildCtx),
+              flatButtonYes(buildCtx, callbackYes)
+            ],
+          );
+        });
+  }
   static void confirmSendEmail(BuildContext context, callbackYes) {
     showDialog(
         context: context,
@@ -12,7 +33,7 @@ class Dialogs {
                 FlutterI18n.translate(context, "send_email_containing_data")),
             title: Row(
               children: <Widget>[
-                Icon(Icons.warning),
+                Icon(Icons.email),
                 Text(" Send E-Mail?", style: TextStyle(color: Colors.white))
               ],
             ),
@@ -33,7 +54,7 @@ class Dialogs {
             content: Text(FlutterI18n.translate(context, "download_qr_code")),
             title: Row(
               children: <Widget>[
-                Icon(Icons.warning),
+                Icon(Icons.file_download),
                 Text(" QR-Codes?", style: TextStyle(color: Colors.white))
               ],
             ),
