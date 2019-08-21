@@ -56,13 +56,14 @@
 ,{"p":"zicoshaircuts", "x":"42.8790815","y":"-72.5615456","n":"Zico's Haircuts","t":"999","c":"16","s":"4.1", "d":"0", "a":"62,104,104,104", "l":"896 Putney Rd #8, Brattleboro, VT 05301, USA"}
 ,{"p":"bangkokexpress", "x":"39.106399","y":"-84.51482","n":"Bangkok Express Thai Restaurant","t":"0","c":"83","s":"3.5", "d":"0", "a":"62,104,104,104", "l":"12 W Court St, Cincinnati, OH 45202, USA"}
 ,{"p":"salonsibell", "x":"30.495536","y":"-97.6539311","n":"Salon Sibell","t":"999","c":"21","s":"4.8", "d":"0", "a":"62,104,104,104", "l":"2051 Gattis School Rd #190, Round Rock, TX 78664, USA"}
-,{"p":"laughingfrogs", "x":"37.7188648","y":"-122.0780632","n":"Laughing Frogs Health Consultant","t":"999","c":"1","s":"5.0", "d":"0", "a":"62,104,104,104", "l":"laughingfrogs.com"}
+,{"p":"laughingfrogs", "x":"37.7188648","y":"-122.0780632","n":"Laughing Frogs Health Consultant","t":"999","c":"1","s":"5.0", "d":"0", "a":"62,104,104,104", "l*":"laughingfrogs.com"}
 ,{"p":"verdepistache", "x":"16.848293","y":"-99.8482528","n":"Verde Vegan Verde Pistache","t":"0","c":"13","s":"3.8", "d":"0", "a":"62,104,104,104", "l":"Capitán James Cook 61, Costa Azul, 39850 Acapulco de Juárez, Gro., Mexico"}
 ,{"p":"solnicoyano", "x":"10.1414111","y":"-85.4514847","n":"Tienda y Zapatería Sol Nicoyano","t":"4","c":"4","s":"3.8", "d":"0", "a":"62,104,104,104", "l":"150, Calle 2, Provincia de Guanacaste, Nicoya, Costa Rica"}
 ,{"p":"birdhouse", "x":"6.2458486","y":"-75.589631","n":"Bird House Kitchen & Drinks","t":"0","c":"22","s":"5.0", "d":"0", "a":"62,104,104,104", "l":"Cq. 3 ## 70 - 35, Medellín, Antioquia, Colombia"}
 ,{"p":"florentinahostel", "x":"6.2130451","y":"-75.5731279","n":"Florentina Hostel","t":"5","c":"42","s":"4.5", "d":"0", "a":"62,104,104,104", "l":"Cra. 43e ## 11- 31, Medellín, Antioquia, Colombia"}
 ,{"p":"sigalavaca2", "x":"6.173515","y":"-75.585546","n":"Siga La Vaca 2","t":"2","c":"132","s":"4.0", "d":"0", "a":"62,104,104,104", "l":"Dg. 40, Envigado, Antioquia, Colombia"}
 ,{"p":"silvestrefusiongourmet", "x":"6.2133075","y":"-75.5708059","n":"Silvestre Fusión Gourmet","t":"0","c":"79","s":"4.6", "d":"0", "a":"62,104,104,104", "l":"Cl. 12 ##43b 26, Medellín, Antioquia, Colombia"}
+,{"p":"murphysdiner", "x":"42.9855489","y":"-71.4635307","n":"Murphy's Diner - American Restaurant","t":"0","c":"283","s":"3.8", "d":"0", "a":"62,104,104,104", "l":"516 Elm St, Manchester, NH 03101, USA"}
 ,{"p":"murphystaproom", "x":"42.985186","y":"-71.4634037","n":"Murphy's Taproom - Airy saloon with a deep beer list","t":"0","c":"543","s":"4.0", "d":"0", "a":"32,33,38,32", "l":"494 Elm St, Manchester, NH 03101, USA"}
 ,{"p":"street", "x":"43.069034","y":"-70.7732358","n":"STREET eat/drink 360","t":"0","c":"668","s":"4.5", "d":"0", "a":"7,15,99,71", "l":"STREET eat/drink 360, Islington Street, Portsmouth, NH, USA"}
 ,{"p":"lamaisonnavarre", "x":"43.076224","y":"-70.760166","n":"La Maison Navarre - Pastry, Bistro, Wine Bar","t":"2","c":"219","s":"4.8", "d":"0", "a":"133,81,109,134", "l":"Congress Street, Portsmouth, NH, USA"}
