@@ -146,7 +146,6 @@
 ,{"p":"livingtea2", "x":"33.1877799","y":"-117.3748915","n":"Living Tea Kombucha Oceanside","t":"2","c":"50","s":"4.8", "d":"0", "a":"59,104,104,104", "l":"302 Wisconsin Ave, Oceanside, CA 92054, USA"}
 ,{"p":"theradler", "x":"41.9244245","y":"-87.6996207","n":"The Radler","t":"2","c":"560","s":"4.4", "d":"0", "a":"59,104,104,104", "l":"2375 N Milwaukee Ave, Chicago, IL 60647, USA"}
 ,{"p":"sociedaddelcafe", "x":"10.4981441","y":"-66.8430445","n":"Cafetería Sociedad del Café","t":"2","c":"172","s":"4.7", "d":"0", "a":"59,104,104,104", "l":"Avenida Francisco de Miranda, Caracas 1060, Miranda, Venezuela"}
-,{"p":"creapizza", "x":"6.17526","y":"-75.583033","n":"Crea Pizza","t":"0","c":"22","s":"4.5", "d":"0", "a":"59,104,104,104", "l":"# 32 C SUR 31, Dg. 32d, Envigado, Antioquia, Colombia"}
 ,{"p":"bonappetit", "x":"10.494118","y":"-66.8780864","n":"Bon Appetit - C.C. City Market nivel Feria","t":"2","c":"1","s":"2.0", "d":"0", "a":"59,104,104,104", "l":"Calle Unión, Bulevar de Sabana Grande, Caracas 1050, Distrito Capital, Venezuela"}
 ,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
 ,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
@@ -190,6 +189,20 @@
 ,{"p":"tiendaderejagris", "x":"6.2249052","y":"-75.5857862","n":"Tienda la Reja Gris","t":"3","c":"0","s":"0.0", "d":"0", "a":"59,104,104,104", "l":"Cl. 24 #65e-13, Medellín, Antioquia, Colombia"}
 ,{"p":"costillasburgers", "x":"6.2467243","y":"-75.5924468","n":"Costillas & Burgers","t":"0","c":"103","s":"4.3", "d":"0", "a":"59,104,104,104", "l":"Cl. 40 ##73-4, Medellín, Antioquia, Colombia"}
 ,{"p":"fastdog", "x":"6.2457927","y":"-75.5888287","n":"Fast Dog","t":"0","c":"12","s":"3.9", "d":"0", "a":"59,104,104,104", "l":"Cq. 3 #69-38, Medellín, Antioquia, Colombia"}
+,{"p":"creapizza", "x":"6.17526","y":"-75.583033","n":"Crea Pizza","t":"0","c":"22","s":"4.5", "d":"0", "a":"59,104,104,104", "l":"# 32 C SUR 31, Dg. 32d, Envigado, Antioquia, Colombia"}
+,{"p":"mandalascoffee", "x":"6.1684038","y":"-75.5840134","n":"Mandalas coffee","t":"2","c":"0","s":"0.0", "d":"0", "a":"59,104,104,104", "l":"Cl. 37 Sur ##37-33, Envigado, Antioquia, Colombia"}
+,{"p":"laplacita", "x":"6.2442952","y":"-75.5810773","n":"La Placita Grocery","t":"0","c":"29","s":"4.7", "d":"0", "a":"59,104,104,104", "l":"Cra. 63b #42-4, Medellín, Antioquia, Colombia"}
+,{"p":"lacamerata", "x":"6.256334","y":"-75.5804785","n":"La Camerata Arte 1979","t":"2","c":"15","s":"4.5", "d":"0", "a":"59,104,104,104", "l":"27, Cl. 51 #64C, Medellín, Antioquia, Colombia"}
+,{"p":"lmdistribuidora", "x":"6.1697852","y":"-75.5846356","n":"Distribuidora L&M","t":"4","c":"0","s":"0.0", "d":"0", "a":"59,104,104,104", "l":"Cl. 36 Sur ##39-38, Envigado, Antioquia, Colombia"}
+,{"p":"orangegrill", "x":"6.2563608","y":"-75.5787331","n":"Orange Grill - Orange CE","t":"0","c":"0","s":"0.0", "d":"0", "a":"59,104,104,104", "l":"Cra. 64b ##61-66, Medellín, Antioquia, Colombia"}
+,{"p":"mercadosdelrancho", "x":"6.2520578","y":"-75.6084825","n":"Mercados Del Rancho","t":"3","c":"1","s":"5.0", "d":"0", "a":"59,104,104,104", "l":"Cl. 43 ##90-50, Medellín, Antioquia, Colombia"}
+,{"p":"rellenitas", "x":"6.1750926","y":"-75.5839805","n":"Rellenitas D'","t":"0","c":"29","s":"4.6", "d":"0", "a":"59,104,104,104", "l":"Dg. 32d ##32B-09, Envigado, Antioquia, Colombia"}
+,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
+,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
+,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
+,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
+,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
+,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
 ,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
 ,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
 ,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
