@@ -16,6 +16,7 @@
 ,{"p":"kamoma", "x":"41.4014862","y":"2.1568869","n":"Kamoma - Spritz Bar","t":"2","c":"41","s":"4.1", "d":"0", "a":"47,31,32,33", "l":"Plaça del Sol, Barcelona, Spain"}
 ,{"p":"akash", "x":"41.4083532","y":"2.1597298","n":"Perruqueria Akash","t":"4","c":"7","s":"4.9", "d":"0", "a":"91,65,107,57", "l":"Carrer de la Providència, Barcelona, Spain"}
 ,{"p":"ChIJh2A7VL2ipBIRIxR3Ylnot50", "x":"41.4006341","y":"2.155889","n":"Sincronia Yoga","t":"999","c":"23","s":"4.8", "d":"0", "a":"25,26,27,80", "l":"Gracia, Carrer de Pere Serafí, Barcelona, Spain"}
+,{"p":"frankfurtlapubilla", "x":"41.3927823","y":"2.1865209","n":"Frankfurt La Pubilla","t":"0","c":"135","s":"3.7", "d":"0", "a":"59,104,104,104", "l":"Carrer de Buenaventura Muñoz, 44, 08018 Barcelona, España"}
 ,{"p":"polloexpress", "x":"38.5419413","y":"-0.1272807","n":"Pollo Expresss","t":"0","c":"184","s":"4.5", "d":"0", "a":"71,72,73,65", "l":"Benidorm, Spain, Europe"}
 ,{"p":"polloexpressgourmet", "x":"38.5372292","y":"-0.1425705","n":"Pollo Expresss Gourmet","t":"0","c":"78","s":"4.1", "d":"0", "a":"71,72,67,18", "l":"Benidorm, Spain, Europe"}
 ,{"p":"ecocentersupermercado", "x":"36.0141","y":"-5.6053","n":"Supermercado Ecologico - Eco Center Tarifa","t":"4","c":"326","s":"4.5", "d":"0", "a":"3,4,17,51", "l":"Calle San Sebastián, Tarifa, Spain"}
@@ -274,19 +275,18 @@
 ,{"p":"diepizzaschmiede", "x":"50.9709185","y":"11.0223341","n":"Die PizzaSchmiede","t":"0","c":"90","s":"4.7", "d":"0", "a":"59,104,104,104", "l":"Walkmühlstraße 1, 99084 Erfurt, Alemania"}
 ,{"p":"bistroambrunnen", "x":"49.2604647","y":"8.4840387","n":"Bistro Am Brunnen","t":"0","c":"43","s":"4.5", "d":"0", "a":"59,104,104,104", "l":"Adlerstraße 7, 68794 Oberhausen-Rheinhausen, Alemania"}
 ,{"p":"kaufdahoam", "x":"7.9182987","y":"13.7990771","n":"kaufdahoam.at OG","t":"3","c":"9","s":"4.9", "d":"0", "a":"59,104,104,104", "l":"Theatergasse 6, 4810 Gmunden, Austria"}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
+,{"p":"downtherabbithole", "x":"35.897482","y":"14.489838","n":"Down The Rabbit Hole","t":"2","c":"129","s":"4.7", "d":"0", "a":"59,104,104,104", "l":"64 Triq Rue D'Argens, L-Imsida, Malta"}
+,{"p":"toscanini", "x":"7.9049399","y":"14.1225136","n":"Toscanini | Pizza & Pasta","t":"0","c":"203","s":"4.5", "d":"0", "a":"59,104,104,104", "l":"Hauptpl. 14, 4560 Kirchdorf an der Krems, Austria"}
+,{"p":"tavernezumgriechen", "x":"47.9603619","y":"14.1342582","n":"Taverne zum Griechen","t":"0","c":"178","s":"4.5", "d":"0", "a":"59,104,104,104", "l":"Jageredt 2, 4542 Jageredt, Austria"}
+,{"p":"bellacosa", "x":"51.500603","y":"-0.012168","n":"Bella Cosa Restaurant, Canary Wharf","t":"0","c":"195","s":"4.5", "d":"0", "a":"59,104,104,104", "l":"Drewry House 213 Marsh Wall, Isle of Dogs, London E14 9FJ, Reino Unido"}
+,{"p":"adegbreitfuss", "x":"47.9406455","y":"13.2240245","n":"ADEG Mario Breitfuß","t":"3","c":"92","s":"4.4", "d":"0", "a":"59,104,104,104", "l":"Salzburgerstraße 11, 5202 Neumarkt am Wallersee, Austria"}
+,{"p":"steaksbarrestaurant", "x":"48.1585158","y":"14.028528","n":"STEAK'S BAR Restaurant","t":"0","c":"87","s":"4.5", "d":"0", "a":"59,104,104,104", "l":"Adlerstraße 1, 4600 Wels, Austria"}
+,{"p":"aristonimbiss", "x":"49.447962","y":"11.069924","n":"Ariston Imbiss und Grillrestaurant","t":"0","c":"38","s":"4.2", "d":"0", "a":"59,104,104,104", "l":"Engelhardsgasse 25, 90402 Nürnberg, Alemania"}
+,{"p":"t1katusebaar", "x":"59.4247059","y":"24.7952341","n":"T1 Katusebaar","t":"2","c":"4311","s":"4.2", "d":"0", "a":"59,104,104,104", "l":"Peterburi tee 2, 11415 Tallinn, Estonia"}
+,{"p":"fibo", "x":"59.4247695","y":"24.7952823","n":"Fibo","t":"0","c":"49","s":"3.6", "d":"0", "a":"59,104,104,104", "l":"Peterburi tee 2h, 11415 Tallinn, Estonia"}
+,{"p":"cremeria", "x":"59.4288382","y":"24.7424361","n":"Cremeria - Pizza & Cannoli Vinoteek","t":"0","c":"52","s":"4.9", "d":"0", "a":"59,104,104,104", "l":"Pärnu maantee 46, 10119 Tallinn, Estonia"}
+,{"p":"grandshisha", "x":"59.4384562","y":"24.7542951","n":"Grand Shisha - Cocteleria","t":"2","c":"132","s":"4.4", "d":"0", "a":"59,104,104,104", "l":"Mere puiestee 4, 10111 Tallinn, Estonia"}
+,{"p":"pancho", "x":"48.2189846","y":"16.3814159","n":"Restaurant Pancho","t":"0","c":"504","s":"3.9", "d":"0", "a":"59,104,104,104", "l":"Blumauergasse 1, 1020 Wien, Austria"}
 ,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
 ,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
 ,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}

@@ -117,10 +117,9 @@
 ,{"p":"kismetrestaurantlounge", "x":"-8.51189","y":"115.264006","n":"Kismet Restaurant and Lounge","t":"0","c":"624","s":"4.5", "d":"0", "a":"59,104,104,104", "l":"Jl. Goutama Sel. No.27X, Ubud, Kecamatan Ubud, Kabupaten Gianyar, Bali 80571, Indonesia"}
 ,{"p":"pregame", "x":"13.7434457","y":"100.5561131","n":"PreGame - A Cheap Bar","t":"2","c":"4","s":"4.5", "d":"0", "a":"59,104,104,104", "l":"23/6 Sukhumvit Soi 11, Khlong Toei, Khet Watthana, Krung Thep Maha Nakhon 10110, Tailandia"}
 ,{"p":"limlaongow", "x":"13.7448092","y":"100.5337207","n":"LIM-LAO-NGOW","t":"0","c":"90","s":"3.9", "d":"0", "a":"59,104,104,104", "l":"388 Rama I Rd, Khwaeng Pathum Wan, Khet Pathum Wan, Krung Thep Maha Nakhon 10330, Tailandia"}
-,{"p":"quaintbangkok", "x":"13.724432","y":"100.583324","n":"Quaint Bangkok","t":"0","c":"183","s":"4.4", "d":"0", "a":"59,104,104,104", "l":"23 ซอย สุขุมวิท 61 Khwaeng Khlong Tan Nuea, Khet Watthana, Krung Thep Maha Nakhon 10110, Tailandia"}
-,{"p":"hachebistro", "x":"10.5031157","y":"-66.8312804","n":"Hache Bistro","t":"0","c":"76","s":"4.3", "d":"0", "a":"59,104,104,104", "l":"Dentro de Centro Cultural Los Galpones, Transversal 8, Avenida Sucre, Caracas 1071, Miranda"}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
-,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
+,{"p":"localtimebangkok", "x":"13.7157913","y":"100.5921968","n":"Local Time Bangkok Hostel","t":"5","c":"38","s":"4.7", "d":"0", "a":"59,104,104,104", "l":"28/2 Sukhumvit 69 Alley, Khwaeng Phra Khanong Nuea, Khet Watthana, Krung Thep Maha Nakhon 10110, Tailandia"}
+,{"p":"localtimebangkok", "x":"13.7157913","y":"100.5921968","n":"Local Time Bangkok Cafe","t":"2","c":"38","s":"4.7", "d":"0", "a":"59,104,104,104", "l":"28/2 Sukhumvit 69 Alley, Khwaeng Phra Khanong Nuea, Khet Watthana, Krung Thep Maha Nakhon 10110, Tailandia"}
+,{"p":"okinawarestaurantkinjo", "x":"13.715394","y":"100.591923","n":"Okinawa Restaurant Kinjo - โอกินาว่า คินโจ","t":"0","c":"570","s":"4.3", "d":"0", "a":"59,104,104,104", "l":"24/1 Sukhumvit 69 Alley, Khwaeng Phra Khanong Nuea, Khet Watthana, Krung Thep Maha Nakhon 10110, Tailandia"}
 ,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
 ,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
 ,{"p":"", "x":"","y":"","n":"","t":"","c":"","s":"", "d":"0", "a":"59,104,104,104", "l":""}
