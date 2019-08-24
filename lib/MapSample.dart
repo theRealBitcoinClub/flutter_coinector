@@ -143,7 +143,6 @@ class MapSampleState extends State<MapSample> {
   }
 
   InfoWindow buildInfoWindow(Merchant merchant) {
-    print(merchant.name);
     return InfoWindow(
         title: merchant.name +
             ": " +
