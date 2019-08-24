@@ -16,6 +16,7 @@
 ,{"p":"kamoma", "x":"41.4014862","y":"2.1568869","n":"Kamoma - Spritz Bar","t":"2","c":"41","s":"4.1", "d":"0", "a":"47,31,32,33", "l":"Plaça del Sol, Barcelona, Spain"}
 ,{"p":"akash", "x":"41.4083532","y":"2.1597298","n":"Perruqueria Akash","t":"4","c":"7","s":"4.9", "d":"0", "a":"91,65,107,57", "l":"Carrer de la Providència, Barcelona, Spain"}
 ,{"p":"ChIJh2A7VL2ipBIRIxR3Ylnot50", "x":"41.4006341","y":"2.155889","n":"Sincronia Yoga","t":"999","c":"23","s":"4.8", "d":"0", "a":"25,26,27,80", "l":"Gracia, Carrer de Pere Serafí, Barcelona, Spain"}
+,{"p":"frankfurtlapubilla", "x":"41.3927823","y":"2.1865209","n":"Frankfurt La Pubilla","t":"0","c":"135","s":"3.7", "d":"0", "a":"59,104,104,104", "l":"Carrer de Buenaventura Muñoz, 44, 08018 Barcelona, España"}
 ,{"p":"polloexpress", "x":"38.5419413","y":"-0.1272807","n":"Pollo Expresss","t":"0","c":"184","s":"4.5", "d":"0", "a":"71,72,73,65", "l":"Benidorm, Spain, Europe"}
 ,{"p":"polloexpressgourmet", "x":"38.5372292","y":"-0.1425705","n":"Pollo Expresss Gourmet","t":"0","c":"78","s":"4.1", "d":"0", "a":"71,72,67,18", "l":"Benidorm, Spain, Europe"}
 ,{"p":"ecocentersupermercado", "x":"36.0141","y":"-5.6053","n":"Supermercado Ecologico - Eco Center Tarifa","t":"4","c":"326","s":"4.5", "d":"0", "a":"3,4,17,51", "l":"Calle San Sebastián, Tarifa, Spain"}
@@ -236,4 +237,53 @@
 ,{"p":"oneforall", "x":"54.6805365","y":"25.2949025","n":"One for All","t":"0","c":"349","s":"4.5", "d":"0", "a":"61,104,104,104", "l":"Užupio g. 10, Vilnius 01200, Lithuania"}
 ,{"p":"crankshop", "x":"54.6732649","y":"25.277415","n":"Crank Shop - Clothing","t":"4","c":"31","s":"3.9", "d":"0", "a":"61,104,104,104", "l":"Kauno g. 5, Vilnius 03215, Lithuania"}
 ,{"p":"apgerbi", "x":"56.2059966","y":"25.3036956","n":"DGS Apģērbi - Second Hand","t":"4","c":"0","s":"0.0", "d":"0", "a":"61,104,104,104", "l":"Pasta iela 30, Nereta, Neretas pagasts, LV-5118, Latvia"}
-,{"p":"eirovins", "x":"57.5389741","y":"25.4233329","n":"EIROVĪNS, Vīnu Lielveikals - WINE","t":"4","c":"1","s":"4.0", "d":"0", "a":"61,104,104,104", "l":"Rīgas iela 4, Valmiera, LV-4201, Latvia"}]
+,{"p":"eirovins", "x":"57.5389741","y":"25.4233329","n":"EIROVĪNS, Vīnu Lielveikals - WINE","t":"4","c":"1","s":"4.0", "d":"0", "a":"61,104,104,104", "l":"Rīgas iela 4, Valmiera, LV-4201, Latvia"}
+,{"p":"thekyberthandori", "x":"51.2955219","y":"-0.2149833","n":"The Khyber Tandoori","t":"0","c":"23","s":"4.3", "d":"0", "a":"59,104,104,104", "l":"2 Waterhouse Ln, Banstead, Tadworth KT20 6EB, UK"}
+,{"p":"barkonyak", "x":"59.4420131","y":"24.7486648","n":"Bar Konyak - The Three Sisters Boutique Hotel","t":"2","c":"0","s":"0.0", "d":"0", "a":"59,104,104,104", "l":"Pikk 71, 10133 Tallinn, Estonia"}
+,{"p":"givirubinstein", "x":"50.4242183","y":"30.5417788","n":"Givi Rubinstein - Гіві Рубінштейн","t":"0","c":"640","s":"4.5", "d":"0", "a":"59,104,104,104", "l":"Yevhena Konovaltsia St, 44, Kyiv, Ucrania, 01133"}
+,{"p":"richarddahmswine", "x":"50.03737","y":"10.24546","n":"Richard Dahms Wine","t":"4","c":"5","s":"4.6", "d":"0", "a":"59,104,104,104", "l":"August-Borsig-Straße 8, 97526 Sennfeld, Germany"}
+,{"p":"bbq", "x":"50.5078804","y":"30.7942794","n":"BBQ","t":"0","c":"178","s":"4.1", "d":"0", "a":"59,104,104,104", "l":"Haharina St, 28, Brovary, Kyivs'ka oblast, Ucrania, 07402"}
+,{"p":"mistertwister", "x":"50.3679289","y":"30.4584454","n":"Mister Twister, Містер Твістер ","t":"0","c":"420","s":"4.4", "d":"0", "a":"59,104,104,104", "l":"Akademika Hlushkova Ave, 13Б, Kyiv, Ucrania, 02000"}
+,{"p":"pestocafe1", "x":"50.4364887","y":"30.592804","n":"Pesto Cafe - Rusanivska Embankment","t":"0","c":"1422","s":"4.3", "d":"0", "a":"59,104,104,104", "l":"Rusanivska Embankment, 8, Kyiv, Ucrania, 02000"}
+,{"p":"pestocafe2", "x":"50.4566893","y":"30.365129","n":"Pesto Cafe - VMB Shopping Mall","t":"0","c":"1919","s":"4.3", "d":"0", "a":"59,104,104,104", "l":"Peremohy Ave, 136, Kyiv, Ucrania, 03115"}
+,{"p":"pestocafe3", "x":"50.5085288","y":"30.5064802","n":"Pesto Cafe - Heroiv Stalinhrada","t":"0","c":"1109","s":"4.4", "d":"0", "a":"59,104,104,104", "l":"Heroiv Stalinhrada Ave, 27, Kyiv, Ucrania, 02000"}
+,{"p":"pestocafe4", "x":"50.4495983","y":"30.5259633","n":"Pesto Cafe - Instytutska","t":"0","c":"1047","s":"4.3", "d":"0", "a":"59,104,104,104", "l":"Instytutska St, 2, Kyiv, Ucrania, 02000"}
+,{"p":"pestocafe5", "x":"50.4077881","y":"30.6227459","n":"Pesto Cafe - Anny Akhmatovoi","t":"0","c":"1279","s":"4.4", "d":"0", "a":"59,104,104,104", "l":"Anny Akhmatovoi St, 30, Kyiv, Ucrania, 02000"}
+,{"p":"pestocafe6", "x":"50.4227216","y":"30.4643664","n":"Pesto Cafe - Lobanovskyi","t":"0","c":"507","s":"4.1", "d":"0", "a":"59,104,104,104", "l":"Lobanovskyi Ave, 4д, Kyiv, Ucrania, 02000"}
+,{"p":"pestocafe7", "x":"50.4451725","y":"30.4439262","n":"Pesto cafe - ТЦ Аркадия - Borshchahivska","t":"0","c":"1181","s":"4.4", "d":"0", "a":"59,104,104,104", "l":"ТЦ Аркадия, Borshchahivska St, 154, 2 этаж, Kyiv, Ucrania, 03056"}
+,{"p":"pestocafe8", "x":"50.4862353","y":"30.519432","n":"Pesto Cafe - Stepana Bandery","t":"0","c":"408","s":"4.5", "d":"0", "a":"59,104,104,104", "l":"Stepana Bandery Avenue, 34В, Kyiv, Ucrania, 04655"}
+,{"p":"pestocafe9", "x":"50.3989969","y":"30.617117","n":"Pesto Cafe - Песто Кафе - Dniprovska Embankment","t":"0","c":"889","s":"4.4", "d":"0", "a":"59,104,104,104", "l":"Dniprovska Embankment, 33, Kyiv, Ucrania, 02000"}
+,{"p":"perfettograno", "x":"50.466163","y":"30.357296","n":"Perfetto Grano","t":"0","c":"1","s":"5.0", "d":"0", "a":"59,104,104,104", "l":"Akademika Palladina Ave, 32/34, Kyiv, Ucrania, 02000"}
+,{"p":"bryusli", "x":"50.437454","y":"30.500891","n":"Bruce Lee - Bryus Li - Брюс Лі ","t":"0","c":"401","s":"3.9", "d":"0", "a":"59,104,104,104", "l":"Zhylianska St, 55, Kyiv, Ucrania, 01032"}
+,{"p":"kitsch", "x":"54.6803388","y":"25.2935636","n":"Kitsch Restaurant Gallery","t":"0","c":"108","s":"4.7", "d":"0", "a":"59,104,104,104", "l":"Užupio g. 4, Vilnius 01200, Lituania"}
+,{"p":"thetownsteakhouse", "x":"54.6877212","y":"25.2758431","n":"The Town Restaurant - Town Steakhouse","t":"0","c":"413","s":"4.6", "d":"0", "a":"59,104,104,104", "l":"01104, Gedimino pr. 26, Vilnius 01104, Lituania"}
+,{"p":"licateum", "x":"54.6788463","y":"25.2772906","n":"De Licateum shop","t":"3","c":"10","s":"5.0", "d":"0", "a":"59,104,104,104", "l":"Pylimo g. 19, Vilnius 01141, Lituania"}
+,{"p":"varenychnakatyusha", "x":"50.44287","y":"30.5214412","n":"Varenychna Katyusha - Варенична Катюша","t":"0","c":"2267","s":"4.2", "d":"0", "a":"59,104,104,104", "l":"Khreschatyk St, 29/1, Kyiv, Ucrania, 02000"}
+,{"p":"3bcafe", "x":"50.4666321","y":"30.5157119","n":"3B Cafe","t":"0","c":"3862","s":"4.4", "d":"0", "a":"59,104,104,104", "l":"Khoryva St, 23, Kyiv, Ucrania, 04071"}
+,{"p":"sugarcoffeebar", "x":"50.4509591","y":"30.5226018","n":"_sugar_coffeebar","t":"2","c":"6","s":"5.0", "d":"0", "a":"59,104,104,104", "l":"м, Maidan Nezalezhnosti, 1, Kyiv, Ucrania, 02000"}
+,{"p":"chateaurobertdoms", "x":"50.448281","y":"30.522007","n":"Chateau Robert Doms","t":"2","c":"2210","s":"4.2", "d":"0", "a":"59,104,104,104", "l":"Khreschatyk St, 24, Kyiv, Ucrania, 01000"}
+,{"p":"iconbar", "x":"50.407705","y":"30.6079986","n":"IconBar","t":"0","c":"29","s":"4.7", "d":"0", "a":"59,104,104,104", "l":"Днепровская набережная 21 А, Kyiv, Ucrania, 02000"}
+,{"p":"unitcafe", "x":"50.4688082","y":"30.4629056","n":"UNIT Cafe","t":"2","c":"270","s":"4.5", "d":"0", "a":"59,104,104,104", "l":"Dorohozhytska St, 3, Kyiv, Ucrania, 04119"}
+,{"p":"kanareyka", "x":"50.4576989","y":"30.4877529","n":"Kanareyka - Канарейка","t":"0","c":"569","s":"4.5", "d":"0", "a":"59,104,104,104", "l":"Sichovykh Striltsiv St, 76, Kyiv, Ucrania, 04050"}
+,{"p":"uptowncoffeebar", "x":"51.3312167","y":"12.3740951","n":"Uptown Coffee Bar","t":"2","c":"157","s":"4.6", "d":"0", "a":"59,104,104,104", "l":"Riemannstraße 44, 04107 Leipzig, Alemania"}
+,{"p":"taygerpizzabar", "x":"50.4516311","y":"30.4442428","n":"Tayger Pizza Bar - Тайгер Піца Бар","t":"0","c":"4182","s":"4.0", "d":"0", "a":"59,104,104,104", "l":"Vadyma Hetmana St, 4, Kyiv, Ucrania, 02000"}
+,{"p":"paneevino", "x":"54.6806493","y":"25.2963554","n":"Pane e Vino","t":"0","c":"22","s":"4.4", "d":"0", "a":"59,104,104,104", "l":"Užupio g. 13, Vilnius 01202, Lituania"}
+,{"p":"steakforbreak", "x":"54.717939","y":"25.29968","n":"Steak For Break","t":"0","c":"72","s":"4.5", "d":"0", "a":"59,104,104,104", "l":"Kareivių g. 11B, Vilnius 09109, Lituania"}
+,{"p":"hoeksfish", "x":"53.1763549","y":"5.4140672","n":"Hoek's Fish & Food in 360","t":"0","c":"0","s":"0.0", "d":"0", "a":"59,104,104,104", "l":"Waddenpromenade 3, 8861 NT Harlingen, Países Bajos"}
+,{"p":"liquidbar", "x":"48.8316078","y":"12.9585127","n":"LIQUID - Bar & Lounge","t":"2","c":"82","s":"3.9", "d":"0", "a":"59,104,104,104", "l":"Hans-Krämer-Straße 31, 94469 Deggendorf, Alemania"}
+,{"p":"isenburgerimbiss", "x":"50.047858","y":"8.682822","n":"IsenBurger Imbiss","t":"1","c":"15","s":"4.8", "d":"0", "a":"59,104,104,104", "l":"Schleussnerstraße 56A, 63263 Neu-Isenburg, Alemania"}
+,{"p":"diepizzaschmiede", "x":"50.9709185","y":"11.0223341","n":"Die PizzaSchmiede","t":"0","c":"90","s":"4.7", "d":"0", "a":"59,104,104,104", "l":"Walkmühlstraße 1, 99084 Erfurt, Alemania"}
+,{"p":"bistroambrunnen", "x":"49.2604647","y":"8.4840387","n":"Bistro Am Brunnen","t":"0","c":"43","s":"4.5", "d":"0", "a":"59,104,104,104", "l":"Adlerstraße 7, 68794 Oberhausen-Rheinhausen, Alemania"}
+,{"p":"kaufdahoam", "x":"7.9182987","y":"13.7990771","n":"kaufdahoam.at OG","t":"3","c":"9","s":"4.9", "d":"0", "a":"59,104,104,104", "l":"Theatergasse 6, 4810 Gmunden, Austria"}
+,{"p":"downtherabbithole", "x":"35.897482","y":"14.489838","n":"Down The Rabbit Hole","t":"2","c":"129","s":"4.7", "d":"0", "a":"59,104,104,104", "l":"64 Triq Rue D'Argens, L-Imsida, Malta"}
+,{"p":"toscanini", "x":"7.9049399","y":"14.1225136","n":"Toscanini | Pizza & Pasta","t":"0","c":"203","s":"4.5", "d":"0", "a":"59,104,104,104", "l":"Hauptpl. 14, 4560 Kirchdorf an der Krems, Austria"}
+,{"p":"tavernezumgriechen", "x":"47.9603619","y":"14.1342582","n":"Taverne zum Griechen","t":"0","c":"178","s":"4.5", "d":"0", "a":"59,104,104,104", "l":"Jageredt 2, 4542 Jageredt, Austria"}
+,{"p":"bellacosa", "x":"51.500603","y":"-0.012168","n":"Bella Cosa Restaurant, Canary Wharf","t":"0","c":"195","s":"4.5", "d":"0", "a":"59,104,104,104", "l":"Drewry House 213 Marsh Wall, Isle of Dogs, London E14 9FJ, Reino Unido"}
+,{"p":"adegbreitfuss", "x":"47.9406455","y":"13.2240245","n":"ADEG Mario Breitfuß","t":"3","c":"92","s":"4.4", "d":"0", "a":"59,104,104,104", "l":"Salzburgerstraße 11, 5202 Neumarkt am Wallersee, Austria"}
+,{"p":"steaksbarrestaurant", "x":"48.1585158","y":"14.028528","n":"STEAK'S BAR Restaurant","t":"0","c":"87","s":"4.5", "d":"0", "a":"59,104,104,104", "l":"Adlerstraße 1, 4600 Wels, Austria"}
+,{"p":"aristonimbiss", "x":"49.447962","y":"11.069924","n":"Ariston Imbiss und Grillrestaurant","t":"0","c":"38","s":"4.2", "d":"0", "a":"59,104,104,104", "l":"Engelhardsgasse 25, 90402 Nürnberg, Alemania"}
+,{"p":"t1katusebaar", "x":"59.4247059","y":"24.7952341","n":"T1 Katusebaar","t":"2","c":"4311","s":"4.2", "d":"0", "a":"59,104,104,104", "l":"Peterburi tee 2, 11415 Tallinn, Estonia"}
+,{"p":"fibo", "x":"59.4247695","y":"24.7952823","n":"Fibo","t":"0","c":"49","s":"3.6", "d":"0", "a":"59,104,104,104", "l":"Peterburi tee 2h, 11415 Tallinn, Estonia"}
+,{"p":"cremeria", "x":"59.4288382","y":"24.7424361","n":"Cremeria - Pizza & Cannoli Vinoteek","t":"0","c":"52","s":"4.9", "d":"0", "a":"59,104,104,104", "l":"Pärnu maantee 46, 10119 Tallinn, Estonia"}
+,{"p":"grandshisha", "x":"59.4384562","y":"24.7542951","n":"Grand Shisha - Cocteleria","t":"2","c":"132","s":"4.4", "d":"0", "a":"59,104,104,104", "l":"Mere puiestee 4, 10111 Tallinn, Estonia"}
+,{"p":"pancho", "x":"48.2189846","y":"16.3814159","n":"Restaurant Pancho","t":"0","c":"504","s":"3.9", "d":"0", "a":"59,104,104,104", "l":"Blumauergasse 1, 1020 Wien, Austria"}]
