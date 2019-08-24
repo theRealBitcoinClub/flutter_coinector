@@ -58,7 +58,7 @@
 ,{"p":"zicoshaircuts","x":"42.8790815","y":"-72.5615456","n":"Zico's Haircuts","t":"999","c":"16","s":"4.1","d":"0","a":"62,59,61,104","l":"896 Putney Rd #8, Brattleboro, VT 05301, USA"}
 ,{"p":"bangkokexpress","x":"39.106399","y":"-84.51482","n":"Bangkok Express Thai Restaurant","t":"0","c":"83","s":"3.5","d":"0","a":"62,59,61,104","l":"12 W Court St, Cincinnati, OH 45202, USA"}
 ,{"p":"salonsibell","x":"30.495536","y":"-97.6539311","n":"Salon Sibell","t":"999","c":"21","s":"4.8","d":"0","a":"62,59,61,104","l":"2051 Gattis School Rd #190, Round Rock, TX 78664, USA"}
-,{"p":"laughingfrogs","x":"37.7188648","y":"-122.0780632","n":"Laughing Frogs Health Consultant","t":"999","c":"1","s":"5.0","d":"0","a":"62,59,61,104", "l*":"laughingfrogs.com"}
+,{"p":"laughingfrogs","x":"37.7188648","y":"-122.0780632","n":"Laughing Frogs Health Consultant","t":"999","c":"1","s":"5.0","d":"0","a":"62,59,61,104", "l":"laughingfrogs.com"}
 ,{"p":"verdepistache","x":"16.848293","y":"-99.8482528","n":"Verde Vegan Verde Pistache","t":"0","c":"13","s":"3.8","d":"0","a":"62,59,61,104","l":"Capitán James Cook 61, Costa Azul, 39850 Acapulco de Juárez, Gro., Mexico"}
 ,{"p":"solnicoyano","x":"10.1414111","y":"-85.4514847","n":"Tienda y Zapatería Sol Nicoyano","t":"4","c":"4","s":"3.8","d":"0","a":"62,59,61,104","l":"150, Calle 2, Provincia de Guanacaste, Nicoya, Costa Rica"}
 ,{"p":"birdhouse","x":"6.2458486","y":"-75.589631","n":"Bird House Kitchen & Drinks","t":"0","c":"22","s":"5.0","d":"0","a":"62,59,61,104","l":"Cq. 3 ## 70 - 35, Medellín, Antioquia, Colombia"}
@@ -141,7 +141,7 @@
 ,{"p":"bonappetit","x":"10.494118","y":"-66.8780864","n":"Bon Appetit - C.C. City Market nivel Feria","t":"2","c":"1","s":"2.0","d":"0","a":"59,104,104,104","l":"Calle Unión, Bulevar de Sabana Grande, Caracas 1050, Distrito Capital, Venezuela"}
 ,{"p":"planetsandwich","x":"10.4974977","y":"-66.8229553","n":"Planet Sandwich","t":"0","c":"0","s":"0.0","d":"0","a":"59,104,104,104","l":"Final Calle Imboca, Caracas, Miranda, 1071, Venezuela"}
 ,{"p":"hachebistro","x":"10.5031157","y":"-66.8312804","n":"Hache Bistro","t":"0","c":"76","s":"4.3","d":"0","a":"59,104,104,104","l":"Dentro de Centro Cultural Los Galpones, Transversal 8, Avenida Sucre, Caracas 1071, Miranda"}
-,{"p":"churchchickenlacascada","x":"10.3551461","y":"-67.0024613","n":"Church's Chicken","t":"0","c":"11","s":"3.5","d":"0","a":"59,104,104,104","l":"Centro Comercial Ciudad “La Cascada”, Nivel Feria, Local Local: N2-13, Carretera Panamericana, Municipio Carrizal, Miranda"}
+,{"p":"churchchickenlacascada","x":"10.3551461","y":"-67.0024613","n":"Church's Chicken","t":"0","c":"11","s":"3.5","d":"0","a":"59,104,104,104","l":"Centro Comercial Ciudad La Cascada, Nivel Feria, Local Local: N2-13, Carretera Panamericana, Municipio Carrizal, Miranda"}
 ,{"p":"elcafedelaluna","x":"4.6292099","y":"-74.0754013","n":"El Cafe De La Luna Lela","t":"2","c":"223","s":"4.3","d":"0","a":"59,104,104,104","l":"111311, Cra. 24 ###39a-09, Bogotá, Cundinamarca, Colombia"}
 ,{"p":"latiendita","x":"6.2090826","y":"-75.5682565","n":"La tiendita del lleras","t":"4","c":"10","s":"5.0","d":"0","a":"59,104,104,104","l":"a 9-27 Carrera 40, Medellín, Antioquia, Colombia"}
 ,{"p":"licoreravillareal","x":"6.2472898","y":"-75.5901794","n":"Licorera Villarreal.","t":"4","c":"4","s":"5.0","d":"0","a":"59,104,104,104","l":"Cl. 41A #70-126, Medellín, Antioquia, Colombia"}
