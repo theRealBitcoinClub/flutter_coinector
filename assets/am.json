@@ -165,8 +165,8 @@
 ,{"p":"cafelemans","x":"10.5057958","y":"-66.8999469","n":"Cafe Le Mans","t":"2","c":"12","s":"4.7","d":"0","a":"29,12,11,9","l":"Avenida Vollmer, Caracas, Capital District, Venezuela"}
 ,{"p":"gold2020","x":"10.507029","y":"-66.9087953","n":"Distribuidora GOLD 2020 alimentos frutas supermercado","t":"3","c":"1","s":"5.0","d":"0","a":"59,61,104,104","l":"Avenida Fuerzas Armadas, Caracas 1010, Distrito Capital, Venezuela"}
 ,{"p":"crowndonuts","x":"10.4961772","y":"-66.8542148","n":"Crown Donuts","t":"1","c":"10","s":"4.9","d":"0","a":"59,104,104,104","l":"Mercado Municipal de Chacao, Calle Cecilio Acosta, Pueblo de Chacao Diagonal a la entrada del estacionamiento del, Caracas 1060, Miranda, Venezuela"}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
+,{"p":"nonnabella","x":"10.4912958","y":"-66.8691137","n":"Nonna Bella Sabana Grande","t":"0","c":"341","s":"4.2","d":"0","a":"59,104,104,104","l":"Bulevar de Sabana Grande, Caracas 1060, Distrito Capital"}
+,{"p":"churchchickenccamericas","x":"10.4589722","y":"66.8292446","n":"Texas Chicken","t":"0","c":"30","s":"3.5","d":"0","a":"59,104,104,104","l":"Caracas 1061, Distrito Capital"}
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
@@ -317,13 +317,8 @@
 ,{"p":"paellasnacks","x":"6.2103259","y":"-75.571404","n":"Paella Snack's","t":"0","c":"3","s":"4.7","d":"0","a":"59,104,104,104","l":"Cra. 43b ## 09 - 19, Medellín, Antioquia, Colombia"}
 ,{"p":"latineria","x":"6.2099726","y":"-75.5713607","n":"Latinería","t":"2","c":"585","s":"4.6","d":"0","a":"59,104,104,104","l":"Cl. 9 #43b 17, Medellín, Antioquia, Colombia"}
 ,{"p":"bambuburguer","x":"7.8437879","y":"-72.4696897","n":"Bambu Burguer Fast Food","t":"0","c":"0","s":"0.0","d":"0","a":"59,104,104,104","l":"Calle 17 #12-55 Barrio La Palmita, Villa Del Rosario, Norte de Santander, Colombia"}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
+,{"p":"mrfoods","x":"6.242876","y":"-75.6014311","n":"Mr Foods","t":"0","c":"9","s":"5.0","d":"0","a":"59,104,104,104","l":"Cl. 35 ##80a-36, Medellín, Antioquia, Colombia"}
+,{"p":"costillaslastrada","x":"6.203519","y":"-75.5717753","n":"Costillas & Burgers Mercado La Strada","t":"0","c":"2","s":"3.0","d":"0","a":"59,104,104,104","l":"Carrera 43a#1sur #150, Medellín, Antioquia, Colombia"}
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
