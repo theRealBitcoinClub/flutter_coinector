@@ -252,7 +252,6 @@
 ,{"p":"gradkavana","x":"45.3244234","y":"14.4414565","n":"GRAD kavana&bar","t":"2","c":"320","s":"4.6","d":"0","a":"61,104,104,104","l":"Ul. Riva Boduli 7b, 51000, Rijeka, Croatia"}
 ,{"p":"ostoja","x":"53.7709277","y":"22.6237117","n":"Ostoja Stacze Domki Letniskowe - 3 Star","t":"5","c":"29","s":"4.8","d":"0","a":"61,104,104,104","l":"Stacze, 19-314 Stacze, Poland"}
 ,{"p":"taisykla","x":"54.644168","y":"25.048549","n":"MB Elektronikos Taisykla - efix.it","t":"4","c":"15","s":"5.0","d":"0","a":"61,104,104,104","l":"Geležinkelio g. 34, Lentvaris 25116, Lithuania"}
-,{"p":"steakforbreak","x":"54.717939","y":"25.29968","n":"Steak For Break","t":"0","c":"67","s":"4.5","d":"0","a":"61,104,104,104","l":"Kareivių g. 11B, Vilnius 09109, Lithuania"}
 ,{"p":"unitedcolors","x":"54.7143335","y":"25.2741592","n":"United colors of Benetton","t":"4","c":"1","s":"5.0","d":"0","a":"61,104,104,104","l":"Ozo g. 18, Vilnius 08243, Lithuania"}
 ,{"p":"sothys","x":"54.6899893","y":"25.2759129","n":"SOTHYS ir MAHLER atstovybė IR SOTHYS Vilnius grožio namai","t":"4","c":"1","s":"5.0","d":"0","a":"61,104,104,104","l":"A. Jakšto g. 8, Vilnius 01105, Lithuania"}
 ,{"p":"townrestaurant","x":"54.6877212","y":"25.2758431","n":"The Town Restaurant","t":"0","c":"387","s":"4.6","d":"0","a":"61,104,104,104","l":"01104, Gedimino pr. 26, Vilnius 01104, Lithuania"}
@@ -325,8 +324,8 @@
 ,{"p":"tabaktrafik","x":"48.2111653","y":"14.2880403","n":"Tabak Trafik / Inh. Angelika Hager","t":"4","c":"5","s":"4.4","d":"0","a":"59,104,104,104","l":"Anton-Bruckner-Straße 12, 4052 Ansfelden, Austria"}
 ,{"p":"brandl","x":"48.218639","y":"14.278707","n":"Brandl","t":"5","c":"94","s":"4.3","d":"0","a":"59,104,104,104","l":"Audorfer Str. 15, 4052 Ansfelden, Austria"}
 ,{"p":"thenetwork","x":"35.9245885","y":"14.4889471","n":"The Network (St Julians, Malta)","t":"2","c":"82","s":"4.7","d":"0","a":"59,104,104,104","l":"Unit 1, The Axis complex, Triq San Gorg, St. Julians, Paceville STJ 3201, Malta, Malta"}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
+,{"p":"rusnesdegalai","x":"55.2929337","y":"21.3717489","n":"Rusnes degalai - Fishing & Rooms","t":"5","c":"8","s":"4.0","d":"0","a":"59,104,104,104","l":"6, K. Donelaičio g., Rusnė 99350, Lithuania"}
+,{"p":"bettysplace","x":"-0.4213193","y":"36.949959","n":"Betgty's Place","t":"0","c":"80","s":"3.5","d":"0","a":"59,104,104,104","l":"Kimathi Nyeri KE, Kenya"}
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
