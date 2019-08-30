@@ -264,7 +264,6 @@
 ,{"p":"gaspars","x":"54.6785681","y":"25.2780131","n":"Gaspars","t":"0","c":"411","s":"4.7","d":"0","a":"61,104,104,104","l":"Pylimo g. 23, Vilnius 01141, Lithuania"}
 ,{"p":"zenoteca","x":"54.6810082","y":"25.2993709","n":"Zenoteca, Itališko vyno namai","t":"4","c":"17","s":"4.9","d":"0","a":"61,104,104,104","l":"Užupio g. 25, Vilnius 01202, Lithuania"}
 ,{"p":"kolekcija","x":"54.6802167","y":"25.2939073","n":"Kolekcija","t":"4","c":"8","s":"5.0","d":"0","a":"61,104,104,104","l":"Užupio g. 7-2, Vilnius 01200, Lithuania"}
-,{"p":"kitsch","x":"54.6803388","y":"25.2935636","n":"Kitsch Restaurant Gallery","t":"0","c":"99","s":"4.7","d":"0","a":"61,104,104,104","l":"Užupio g. 4, Vilnius 01200, Lithuania"}
 ,{"p":"oneforall","x":"54.6805365","y":"25.2949025","n":"One for All","t":"0","c":"349","s":"4.5","d":"0","a":"61,104,104,104","l":"Užupio g. 10, Vilnius 01200, Lithuania"}
 ,{"p":"crankshop","x":"54.6732649","y":"25.277415","n":"Crank Shop - Clothing","t":"4","c":"31","s":"3.9","d":"0","a":"61,104,104,104","l":"Kauno g. 5, Vilnius 03215, Lithuania"}
 ,{"p":"apgerbi","x":"56.2059966","y":"25.3036956","n":"DGS Apģērbi - Second Hand","t":"4","c":"0","s":"0.0","d":"0","a":"61,104,104,104","l":"Pasta iela 30, Nereta, Neretas pagasts, LV-5118, Latvia"}
@@ -284,9 +283,12 @@
 ,{"p":"pestocafe7","x":"50.4451725","y":"30.4439262","n":"Pesto cafe - ТЦ Аркадия - Borshchahivska","t":"0","c":"1181","s":"4.4","d":"0","a":"59,104,104,104","l":"ТЦ Аркадия, Borshchahivska St, 154, 2 этаж, Kyiv, Ukraine, 03056"}
 ,{"p":"pestocafe8","x":"50.4862353","y":"30.519432","n":"Pesto Cafe - Stepana Bandery","t":"0","c":"408","s":"4.5","d":"0","a":"59,104,104,104","l":"Stepana Bandery Avenue, 34В, Kyiv, Ukraine, 04655"}
 ,{"p":"pestocafe9","x":"50.3989969","y":"30.617117","n":"Pesto Cafe - Песто Кафе - Dniprovska Embankment","t":"0","c":"889","s":"4.4","d":"0","a":"59,104,104,104","l":"Dniprovska Embankment, 33, Kyiv, Ukraine, 02000"}
+,{"p":"pestocafe10","x":"50.5046665","y":"30.4374407","n":"Pesto Cafe - ТЦ Орнамент, Pravdy Ave","t":"0","c":"1277","s":"4.4","d":"0","a":"59,104,104,104","l":"ТЦ Орнамент, Pravdy Ave, 58А, 2 этаж, Kyiv, Ukraine, 04074"}
+,{"p":"pestocafe11","x":"50.4292674","y":"30.3573478","n":"Pesto Cafe - Velyka Okruzhna Doroha","t":"0","c":"302","s":"4.7","d":"0","a":"59,104,104,104","l":"Velyka Okruzhna Doroha, 4, Petropavlivska Borshchahivka, Kyivs'ka oblast, Ukraine, 08130"}
+,{"p":"pestocafe12","x":"50.4714132","y":"30.4778732","n":"Pesto Cafe - Tts Promenada Tsentr","t":"0","c":"255","s":"4.5","d":"0","a":"59,104,104,104","l":"Tts Promenada Tsentr, Ovrutska St, Kyiv, Ukraine, 04107"}
 ,{"p":"perfettograno","x":"50.466163","y":"30.357296","n":"Perfetto Grano","t":"0","c":"1","s":"5.0","d":"0","a":"59,104,104,104","l":"Akademika Palladina Ave, 32/34, Kyiv, Ukraine, 02000"}
 ,{"p":"bryusli","x":"50.437454","y":"30.500891","n":"Bruce Lee - Bryus Li - Брюс Лі ","t":"0","c":"401","s":"3.9","d":"0","a":"59,104,104,104","l":"Zhylianska St, 55, Kyiv, Ukraine, 01032"}
-,{"p":"kitsch","x":"54.6803388","y":"25.2935636","n":"Kitsch Restaurant Gallery","t":"0","c":"108","s":"4.7","d":"0","a":"59,104,104,104","l":"Užupio g. 4, Vilnius 01200, Lituania"}
+,{"p":"kitsch","x":"54.6803388","y":"25.2935636","n":"Kitsch Restaurant Gallery","t":"0","c":"108","s":"4.7","d":"0","a":"59,61,104,104","l":"Užupio g. 4, Vilnius 01200, Lituania"}
 ,{"p":"thetownsteakhouse","x":"54.6877212","y":"25.2758431","n":"The Town Restaurant - Town Steakhouse","t":"0","c":"413","s":"4.6","d":"0","a":"59,104,104,104","l":"01104, Gedimino pr. 26, Vilnius 01104, Lituania"}
 ,{"p":"licateum","x":"54.6788463","y":"25.2772906","n":"De Licateum shop","t":"3","c":"10","s":"5.0","d":"0","a":"59,104,104,104","l":"Pylimo g. 19, Vilnius 01141, Lituania"}
 ,{"p":"varenychnakatyusha","x":"50.44287","y":"30.5214412","n":"Varenychna Katyusha - Варенична Катюша","t":"0","c":"2267","s":"4.2","d":"0","a":"59,104,104,104","l":"Khreschatyk St, 29/1, Kyiv, Ukraine, 02000"}
@@ -326,10 +328,10 @@
 ,{"p":"thenetwork","x":"35.9245885","y":"14.4889471","n":"The Network (St Julians, Malta)","t":"2","c":"82","s":"4.7","d":"0","a":"59,104,104,104","l":"Unit 1, The Axis complex, Triq San Gorg, St. Julians, Paceville STJ 3201, Malta, Malta"}
 ,{"p":"rusnesdegalai","x":"55.2929337","y":"21.3717489","n":"Rusnes degalai - Fishing & Rooms","t":"5","c":"8","s":"4.0","d":"0","a":"59,104,104,104","l":"6, K. Donelaičio g., Rusnė 99350, Lithuania"}
 ,{"p":"bettysplace","x":"-0.4213193","y":"36.949959","n":"Betgty's Place","t":"0","c":"80","s":"3.5","d":"0","a":"59,104,104,104","l":"Kimathi Nyeri KE, Kenya"}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
+,{"p":"ts","x":"50.4547261","y":"30.4606911","n":"TS кофейня","t":"2","c":"10","s":"4.9","d":"0","a":"59,104,104,104","l":"Bohdana Havrylyshyna St, 7, Kyiv, Ukraine, 04116"}
+,{"p":"katyusha","x":"50.4335826","y":"30.5157092","n":"Katyusha - Варенична Катюша","t":"0","c":"1643","s":"4.0","d":"0","a":"59,104,104,104","l":"Velyka Vasylkivska St, 60, Kyiv, Ukraine, 02000"}
+,{"p":"KatyushaVarenichnaya","x":"50.4428781","y":"30.5476193","n":"Katyusha Varenichnaya","t":"0","c":"1956","s":"3.7","d":"0","a":"59,104,104,104","l":"вулиця Мазепы , 5а, Київ, 0, Kyiv, Ukraine, 01015"}
+,{"p":"kiteboarding","x":"27.4204562","y":"33.6722392","n":"Kiteboarding Club El Gouna (KBC El Gouna)","t":"999","c":"80","s":"4.8","d":"0","a":"59,104,104,104","l":"Buzzha Beach / Northern Mangroovy Beach, Kite Center Rd, Hurghada, Red Sea Governorate 84513, Egypt"}
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}

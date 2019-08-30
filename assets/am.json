@@ -88,12 +88,12 @@
 ,{"p":"lanayferme","x":"40.299661","y":"-111.647183","n":"La Nay Ferme","t":"3","c":"13","s":"4.2","d":"0","a":"59,104,104,104","l":"4800 E Lawn Dr, Provo, UT 84604, USA"}
 ,{"p":"pexpeppers","x":"38.2357379","y":"-104.6325228","n":"PexPeppers Hot Sauce LLC","t":"4","c":"12","s":"4.6","d":"0","a":"59,104,104,104","l":"1808 Logan Ave, Pueblo, CO 81004, USA"}
 ,{"p":"williamsconfectionary","x":"29.5487152","y":"-98.3443965","n":"Williams Confectionery Crafts","t":"1","c":"361","s":"4.7","d":"0","a":"59,104,104,104","l":"12107 Toepperwein Rd #5A, Live Oak, TX 78233, USA"}
-,{"p":"cubcoffee","x":"47.6169365","y":"-122.1812102","n":"Cub Coffee","t":"2","c":"9","s":"5.0","d":"0","a":"59,104,104,104","l":"11909 NE 8th St, Bellevue, WA 98005, EE. UU."}
-,{"p":"lapastaseattle","x":"47.695104","y":"-122.290449","n":"La Pasta Seattle","t":"0","c":"27","s":"4.6","d":"0","a":"59,104,104,104","l":"9118 35th Ave NE, Seattle, WA 98115, EE. UU."}
-,{"p":"williamsconfectionary","x":"29.5487152","y":"-98.3443965","n":"Williams Confectionery Crafts","t":"0","c":"362","s":"4.7","d":"0","a":"59,104,104,104","l":"12107 Toepperwein Rd #5A, Live Oak, TX 78233, EE. UU.roxb"}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
+,{"p":"cubcoffee","x":"47.6169365","y":"-122.1812102","n":"Cub Coffee","t":"2","c":"9","s":"5.0","d":"0","a":"59,104,104,104","l":"11909 NE 8th St, Bellevue, WA 98005, USA"}
+,{"p":"lapastaseattle","x":"47.695104","y":"-122.290449","n":"La Pasta Seattle","t":"0","c":"27","s":"4.6","d":"0","a":"59,104,104,104","l":"9118 35th Ave NE, Seattle, WA 98115, USA"}
+,{"p":"williamsconfectionary","x":"29.5487152","y":"-98.3443965","n":"Williams Confectionery Crafts","t":"0","c":"362","s":"4.7","d":"0","a":"59,104,104,104","l":"12107 Toepperwein Rd #5A, Live Oak, TX 78233, USA"}
+,{"p":"hotdogsbbq","x":"42.9303977","y":"-72.2814372","n":"Hot Hogs BBQ","t":"1","c":"7","s":"4.7","d":"0","a":"59,104,104,104","l":"100 Emerald St, Keene, NH 03431, USA"}
+,{"p":"yokattack","x":"-24.211498","y":"151.902691","n":"Yok Attack Thai Restaurant","t":"0","c":"51","s":"3.1","d":"0","a":"59,104,104,104","l":"Endeavour Plaza, Captain Cook Dr, Agnes Water QLD 4677, Australia"}
+,{"p":"thaiwirat","x":"-27.4574993","y":"153.0339202","n":"Thai Wi-Rat","t":"0","c":"103","s":"3.8","d":"0","a":"59,104,104,104","l":"270-292 Brunswick St, Fortitude Valley QLD 4006, Australia"}
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
@@ -183,17 +183,17 @@
 ,{"p":"candyshopcrunchy","x":"10.5033146","y":"-66.9007015","n":"CANDY SHOP CRUNCHY - C.C. Parque Caracas","t":"4","c":"8","s":"4.5","d":"0","a":"59,61,104,104","l":"AV ESTE 0 CON SUR 21, NIVEL PLANTA BAJA LOCAL 61 A 2 ALADO DE BURGER KING, 1010, Distrito Capital, Venezuela"}
 ,{"p":"dfrutatucafe","x":"10.5033146","y":"-66.9007015","n":"D FRUTA TU CAFE - C.C. Parque Caracas","t":"2","c":"2","s":"5.0","d":"0","a":"59,61,104,104","l":"AV ESTE 0 CON SUR 21, NIVEL PLATA BAJA LOCAL 24 FERIA DEL CENTRO COMERCIA ENTRADA POR BURGER KING, Caracas 1010, Distrito Capital, Venezuela"}
 ,{"p":"papeleriaaraguaney","x":"10.5028051","y":"-66.9007967","n":"PAPELERIA ARAGUANEY - C.C. Parque Caracas","t":"4","c":"1","s":"5.0","d":"0","a":"59,61,104,104","l":"AV ESTE 0 CON SUR 21, NIVEL PLATA BAJA LOCAL 57 ALADO DE BURGER KING, Caracas 1010, Distrito Capital, Venezuela"}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
+,{"p":"lacofuteria","x":"10.4493961","y":"-66.8808935","n":"La Cotuferia","t":"1","c":"4","s":"4.3","d":"0","a":"59,104,104,104","l":"Galerias Prados Del Este, Caracas 1080, Miranda, Venezuela"}
 ,{"p":"ferradiniccct","x":"10.4850004","y":"-66.8552104","n":"Ferradini C.C.C.T","t":"4","c":"1","s":"5.0","d":"0","a":"59,104,104,104","l":"Caracas 1064, Capital District, Venezuela"}
 ,{"p":"trakielrecreo","x":"10.4926647","y":"-66.8774512","n":"Traki - Clothing","t":"4","c":"1047","s":"3.8","d":"0","a":"59,104,104,104","l":"Avenida Casanova, Centro Comercial El Recreo, Caracas 1050, Venezuela"}
 ,{"p":"trakielrecreo","x":"10.4926647","y":"-66.8774512","n":"Traki - Supermarket","t":"3","c":"1047","s":"3.8","d":"0","a":"59,104,104,104","l":"Avenida Casanova, Centro Comercial El Recreo, Caracas 1050, Venezuela"}
 ,{"p":"lanegra","x":"10.4894038","y":"-66.9172629","n":"La Negra Repostería Artesanal","t":"3","c":"5","s":"4.4","d":"0","a":"59,104,104,104","l":"Av. Guzman Blanco, Caracas 1020, Capital District, Venezuela"}
 ,{"p":"naturalitico","x":"10.3749922","y":"-66.9601768","n":"Naturalitico","t":"1","c":"14","s":"4.5","d":"0","a":"59,104,104,104","l":"Av. Francisco Salias, Complejo Cultural y Deportivo, San Antonio de Los Altos 1204, Miranda, Venezuela"}
 ,{"p":"fajitasexpressca","x":"10.0600684","y":"-69.346178","n":"Fajitas Express c.a.","t":"0","c":"74","s":"4.7","d":"0","a":"59,104,104,104","l":"Carrera 15, Barquisimeto 3001, Lara, Venezuela"}
-,{"p":"laborguesa","x":"10.4740323","y":"-66.564027","n":"La Borguesa, Gourmet Burguer & Grill","t":"0","c":"56","s":"4.2","d":"0","a":"59,104,104,104","l":"Calle principal, C.C. Villa Ávila, nivel PS, Local 16, Urbanización, Guatire 1221, Miranda"}
+,{"p":"laborguesa","x":"10.4740323","y":"-66.564027","n":"La Borguesa, Gourmet Burguer & Grill","t":"0","c":"56","s":"4.2","d":"0","a":"59,104,104,104","l":"Calle principal, C.C. Villa Ávila, nivel PS, Local 16, Urbanización, Guatire 1221, Miranda, Venezuela"}
 ,{"p":"avilaburger","x":"10.5051236","y":"-66.8432283","n":"Avila Burger Los Palos Grandes","t":"0","c":"776","s":"4.5","d":"0","a":"59,104,104,104","l":"Av. Transversal 6, Caracas 1060, Miranda, Venezuela"}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
+,{"p":"accademia","x":"10.5014651","y":"-66.8491358","n":"Accademia del Caffé Carbone Espresso","t":"4","c":"86","s":"4.8","d":"0","a":"59,104,104,104","l":"Altamira, Avenida 6, Entre Transversal 5 y 3, Caracas 1060, Miranda, Venezuela"}
+,{"p":"donmanuelgrill","x":"10.5958674","y":"-66.9519972","n":"Don Manuel Grill","t":"0","c":"238","s":"4.6","d":"0","a":"59,104,104,104","l":"Calle Los Baños, Maiquetía 1161, Vargas, Venezuela"}
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
@@ -208,12 +208,12 @@
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
+,{"p":"surfranchhotelresort","x":"11.249599","y":"-85.842958","n":"Surf Ranch Hotel & Resort","t":"5","c":"251","s":"3.5","d":"0","a":"59,104,104,104","l":"San Juan del Sur, Nicaragua"}
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
+,{"p":"brunpanaderia","x":"8.9764589","y":"-79.5203753","n":"Brun Panadería, Pastelería & café","t":"2","c":"26","s":"4.5","d":"0","a":"59,104,104,104","l":"Avenida Balboa Centro comercial balboa boutiques, Panamá, Panama"}
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
 ,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
