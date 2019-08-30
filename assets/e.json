@@ -1,5 +1,4 @@
 [{"p":"lalima","x":"41.4059946","y":"2.1567663","n":"La Lima, comedor vegano","t":"0","c":"11","s":"5.0","d":"0","a":"3,5,6,11","l":"Carrer de l'Alzina, Barcelona, Spain"}
-,{"p":"pancho","x":"48.2189846","y":"16.3814159","n":"Restaurant Pancho","t":"0","c":"504","s":"3.9","d":"0","a":"59,104,104,104","l":"Blumauergasse 1, 1020 Wien, Austria"}
 ,{"p":"pasticceria","x":"41.4047427","y":"2.1559692","n":"La Pasticceria di Gracia","t":"1","c":"93","s":"4.5","d":"0","a":"9,10,12,11","l":"Carrer de Verdi, Barcelona, Spain"}
 ,{"p":"lavermu","x":"41.4000891","y":"2.1568007","n":"La Vermu - Bar and Tapas","t":"2","c":"473","s":"4.2","d":"0","a":"31,32,33,36","l":"Carrer de Sant Domènec, Barcelona, Spain"}
 ,{"p":"ChIJayYeJpaipBIR8ZbTZO4x7dM","x":"41.4006901","y":"2.1579717","n":"Gelatology - We make Gelato great again!","t":"1","c":"109","s":"4.9","d":"1","a":"18,29,32,33","l":"Carrer de Martínez de la Rosa, Barcelona, Spain"}
@@ -29,14 +28,25 @@
 ,{"p":"bambule2","x":"36.0122788","y":"-5.6035059","n":"Bambule Sancho - Clothing and Asseccories","t":"4","c":"14","s":"4.2","d":"0","a":"52,54,107,24","l":"Calle Sancho IV el Bravo, Tarifa, Spain"}
 ,{"p":"growcafe","x":"36.0109379","y":"-5.6053444","n":"Grow Cafe - Vegetarian","t":"2","c":"39","s":"4.8","d":"0","a":"4,29,8,11","l":"Calle Alcalde Juan Núñez, Tarifa, Spain"}
 ,{"p":"ecobakeryglutenfree","x":"36.01988","y":"-5.609871","n":"Eco Bakery - Gluten Free","t":"4","c":"37","s":"4.7","d":"0","a":"3,115,11,30","l":"Mar Adriatico, Tarifa, Spain"}
+,{"p":"metropolisvalladolid","x":"41.650662","y":"-4.7217846","n":"Metropolis Valladolid","t":"4","c":"48","s":"4.6","d":"0","a":"61,104,104,104","l":"Calle de Fray Luis de León, 19, 47002 Valladolid, Spain"}
+,{"p":"acompanante","x":"41.6415754","y":"-0.8893621","n":"Acompañante En BioNeuroEmoción® y Acupuntura Zaragoza","t":"999","c":"1","s":"5.0","d":"0","a":"61,104,104,104","l":"Calle Madre Genoveva Torres Morales, local 16, 50006 Zaragoza, Spain"}
+,{"p":"anastasia","x":"41.368927","y":"-8.7635631","n":"Anastacia Delicatesses","t":"0","c":"78","s":"4.4","d":"0","a":"61,104,104,104","l":"Porto de Mar, 4490-000 Póvoa de Varzim, Portugal"}
+,{"p":"lojaportugueza","x":"38.7091671","y":"-9.1352209","n":"Loja Portugueza da Baixa","t":"4","c":"8","s":"3.4","d":"0","a":"59,104,104,104","l":"R. dos Fanqueiros 32, 1100-231 Lisboa, Portugal"}
 ,{"p":"deuxpointzero","x":"48.8685002","y":"2.3542593","n":"Deux Point Zero","t":"2","c":"241","s":"4.0","d":"0","a":"31,32,33,76","l":"Rue Blondel, Paris, France"}
 ,{"p":"llscafe","x":"51.5590909","y":"-0.1785917","n":"LLS Cafe Deli","t":"0","c":"92","s":"4.5","d":"0","a":"8,15,14,135","l":"Heath Street, London, England, UK"}
+,{"p":"bellacosa","x":"51.500603","y":"-0.012168","n":"Bella Cosa Restaurant, Canary Wharf","t":"0","c":"195","s":"4.5","d":"0","a":"59,104,104,104","l":"Drewry House 213 Marsh Wall, Isle of Dogs, London E14 9FJ, UK"}
 ,{"p":"brewdogcanarywharf","x":"51.5044668","y":"-0.0150128","n":"BrewDog Canary Wharf","t":"2","c":"98","s":"4.4","d":"0","a":"7,32,31,33","l":"Churchill Place, London, England, UK"}
 ,{"p":"westlandcoffee","x":"51.528216","y":"-0.090584","n":"Westland Coffee & Wine","t":"2","c":"57","s":"4.6","d":"0","a":"29,8,32,81","l":"Westland Place, London, England, UK"}
 ,{"p":"nincomsoup","x":"51.52567","y":"-0.087561","n":"Nincomsoup","t":"0","c":"96","s":"4.2","d":"0","a":"135,29,119,136","l":"Nincomsoup, London, England, UK"}
+,{"p":"dreambags","x":"51.5280867","y":"-0.0778415","n":"DreamBags JaguarShoes","t":"2","c":"294","s":"4.1","d":"0","a":"61,104,104,104","l":"32-36 Kingsland Rd, London E2 8DA, UK"}
+,{"p":"dawsontattoo","x":"53.3724517","y":"-2.5814423","n":"The Dawson Tattoo Company","t":"999","c":"15","s":"5.0","d":"0","a":"61,104,104,104","l":"19A London Rd, Warrington WA4 6SG, UK"}
+,{"p":"scymoreinn","x":"53.144159","y":"-1.558522","n":"The Sycamore Inn","t":"2","c":"105","s":"4.5","d":"0","a":"61,104,104,104","l":"9 Sycamore Rd, Matlock DE4 3HZ, UK"}
+,{"p":"harlequien","x":"53.3062959","y":"-3.7398696","n":"Harlequin Puppet Theatre","t":"999","c":"0","s":"0.0","d":"0","a":"61,104,104,104","l":"Cayley Promenade, Rhos on Sea, Colwyn Bay LL28 4EP, UK"}
 ,{"p":"thecoffeebean","x":"53.2737949","y":"-3.2220382","n":"Sarahs Coffee, The Coffee Bean","t":"4","c":"1","s":"5.0","d":"0","a":"29,40,148,149","l":"The Mews, Holywell, England, UK"}
 ,{"p":"thecornercafe","x":"53.3087543","y":"-3.7404846","n":"The Corner Cafe","t":"2","c":"94","s":"4.7","d":"0","a":"29,8,125,152","l":" Rhos Road, Rhos on Sea, Colwyn Bay, England, UK"}
 ,{"p":"thegreenroom","x":"52.0258816","y":"-1.1499362","n":"The Green Room","t":"2","c":"224","s":"4.6","d":"0","a":"8,38,109,15","l":"Bridge Street, Brackley, England, UK"}
+,{"p":"thekyberthandori","x":"51.2955219","y":"-0.2149833","n":"The Khyber Tandoori","t":"0","c":"23","s":"4.3","d":"0","a":"59,104,104,104","l":"2 Waterhouse Ln, Banstead, Tadworth KT20 6EB, UK"}
+,{"p":"mrwolfs","x":"51.4538348","y":"-2.594218","n":"Mr Wolfs","t":"2","c":"546","s":"4.1","d":"0","a":"62,104,104,104","l":"32 St Nicholas St, Bristol BS1 1TG, UK"}
 ,{"p":"chaoscoffeebar","x":"60.388109","y":"5.325569","n":"Chaos Coffee Bar / Kafe Chaos","t":"2","c":"76","s":"4.5","d":"0","a":"29,8,31,142","l":"Fosswinckels gate, Bergen, Norway"}
 ,{"p":"tonyscoffeebar","x":"57.6975382","y":"11.9861658","n":"Tonys coffeebar","t":"2","c":"79","s":"4.8","d":"0","a":"29,8,142,125","l":"Skånegatan, Gothenburg, Sweden"}
 ,{"p":"mamasbanh","x":"52.5311","y":"13.43435","n":"Mamas Banh | Vietnamese Tapas","t":"0","c":"182","s":"4.7","d":"0","a":"151,71,15,112","l":"Prenzlauer Berg, Hufelandstraße, Berlin, Germany"}
@@ -55,37 +65,17 @@
 ,{"p":"veeskaffee","x":"48.1365268","y":"11.5750891","n":"Vee's Kaffee & Bohnen GmbH","t":"4","c":"77","s":"4.6","d":"0","a":"59,104,104,104","l":"Rindermarkt 17, 80331 München, Germany"}
 ,{"p":"szenedrinks","x":"48.1304085","y":"11.5726174","n":"Szenedrinks GmbH","t":"4","c":"101","s":"4.6","d":"0","a":"59,104,104,104","l":"Fraunhoferstraße 12, 80469 München, Germany"}
 ,{"p":"murnauer","x":"48.1248578","y":"11.6060717","n":"Murnauer Kaffeerösterei - Cafebar im Werk 3","t":"2","c":"19","s":"4.3","d":"0","a":"59,104,104,104","l":"Atelierstraße 12, 81671 München, Germany"}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"lojaportugueza","x":"38.7091671","y":"-9.1352209","n":"Loja Portugueza da Baixa","t":"4","c":"8","s":"3.4","d":"0","a":"59,104,104,104","l":"R. dos Fanqueiros 32, 1100-231 Lisboa, Portugal"}
-,{"p":"babette","x":"48.1976759","y":"16.364697","n":"Babette's Spice and Books","t":"4","c":"23","s":"4.8","d":"0","a":"59,104,104,104","l":"Schleifmühlgasse 17, 1040 Wien, Austria"}
+,{"p":"richarddahmswine","x":"50.03737","y":"10.24546","n":"Richard Dahms Wine","t":"4","c":"5","s":"4.6","d":"0","a":"59,104,104,104","l":"August-Borsig-Straße 8, 97526 Sennfeld, Germany"}
+,{"p":"nailsberlin","x":"52.5276716","y":"13.4011124","n":"Studio 358 - Nails Berlin","t":"999","c":"54","s":"4.1","d":"0","a":"61,104,104,104","l":"Auguststraße 35, 10119 Berlin, Germany"}
+,{"p":"bekechanticafe","x":"52.55413","y":"13.37466","n":"bekech Anti Café","t":"2","c":"207","s":"4.7","d":"0","a":"61,104,104,104","l":"Exerzierstraße 14, 13357 Berlin, Germany"}
+,{"p":"mamasbanh2","x":"52.489843","y":"13.3543736","n":"Mamas Banh | Schöneberg","t":"0","c":"57","s":"4.5","d":"0","a":"61,104,104,104","l":"Grunewaldstraße 81, 10823 Berlin, Germany"}
 ,{"p":"allnutbelgrade","x":"44.814838","y":"20.461738","n":"All Nut","t":"4","c":"13","s":"4.9","d":"0","a":"59,104,104,104","l":"lokal 25, Чумићево сокаче 2, Beograd 11000, Serbia"}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
-,{"p":"","x":"","y":"","n":"","t":"","c":"","s":"","d":"0","a":"59,104,104,104","l":""}
 ,{"p":"wayusa","x":"50.0602087","y":"14.4501185","n":"Wayusa - Chocolate","t":"4","c":"0","s":"0.0","d":"0","a":"59,104,104,104","l":"ulice Kloboučnická, 140 00 Praha 4-Nusle, Czechia"}
 ,{"p":"tavernapizza","x":"50.162967","y":"16.2732019","n":"Taverna Pizza&Pinsa Romana","t":"0","c":"261","s":"3.8","d":"0","a":"31,32,14,97","l":"Balbínova, Rychnov nad Kněžnou, Czechia"}
 ,{"p":"pizzapirat","x":"45.5260364","y":"13.5684371","n":"Gostisce Pirat, Robin Vogric, s.p.","t":"0","c":"413","s":"4.5","d":"0","a":"100,108,112,97","l":"Župančičeva ulica, Piran - Pirano, Slovenia"}
-,{"p":"newmarket","x":"7.5175268","y":"4.5124965","n":"New Market","t":"5","c":"73","s":"3.9","d":"0","a":"62,104,104,104","l":"GG96+2X Ife, Nigeria"}
-,{"p":"zoescuisine","x":"7.5006349","y":"4.5152892","n":"Zoe's Cuisine - Restaurant","t":"0","c":"0","s":"0.0","d":"0","a":"62,104,104,104","l":"Ede Rd, Ife, Nigeria"}
-,{"p":"kayschippy","x":"7.5190229","y":"4.5218396","n":"Kays Chippy Ife","t":"1","c":"13","s":"3.4","d":"0","a":"62,104,104,104","l":"Obafemi Awolowo University, Road 5, Ife, Nigeria"}
-,{"p":"halsadamhostel","x":"7.5027423","y":"4.509311","n":"Halsadam Hostel Damico","t":"5","c":"33","s":"3.7","d":"0","a":"62,104,104,104","l":"Ede Road, Ife, Nigeria"}
-,{"p":"mraziz","x":"8.9039687","y":"-2.2636554","n":"Mr Aziz and Co Grocery Store","t":"3","c":"0","s":"0.0","d":"0","a":"62,104,104,104","l":"Wa-Bole Rd, Bamahu, Ghana"}
-,{"p":"abubakari","x":"8.6518083","y":"0.0023314","n":"Abubakari Drug Store","t":"4","c":"0","s":"0.0","d":"0","a":"62,104,104,104","l":"Wulensi, Ghana"}
 ,{"p":"caseybar","x":"35.9058188","y":"14.4933268","n":"Casey's Bar","t":"2","c":"212","s":"4.5","d":"0","a":"62,104,104,104","l":"306 Triq D'Argens, Il-Gżira, Malta"}
-,{"p":"mrwolfs","x":"51.4538348","y":"-2.594218","n":"Mr Wolfs","t":"2","c":"546","s":"4.1","d":"0","a":"62,104,104,104","l":"32 St Nicholas St, Bristol BS1 1TG, UK"}
 ,{"p":"realmenbarber","x":"53.217099","y":"6.567894","n":"Real Men Barber - Echte Mannen Kapper","t":"999","c":"76","s":"4.3","d":"0","a":"62,104,104,104","l":"Hoogstraatje 6, 9711 LN Groningen, Netherlands"}
 ,{"p":"eyeofsauron","x":"55.871865","y":"37.5352293","n":"Eye of Sauron - Око Саурона","t":"2","c":"0","s":"0.0","d":"0","a":"62,104,104,104","l":"Beskudnikovskiy Bul'var, 59Ас23, Moskva, Russia, 127486"}
-,{"p":"kolariks","x":"48.2132759","y":"16.4035807","n":"Kolariks Luftburg","t":"0","c":"943","s":"3.9","d":"0","a":"62,104,104,104","l":"Prater 128, 1020 Wien, Austria"}
 ,{"p":"arosbar","x":"46.2463513","y":"15.2619767","n":"AROS BAR","t":"2","c":"22","s":"4.1","d":"0","a":"70,104,104,104","l":"Ulica Mesta Grevenbroich 13, 3000 Celje, Slovenia"}
 ,{"p":"babika","x":"46.0346341","y":"14.4549299","n":"Babica in B2 restavracija","t":"0","c":"65","s":"4.2","d":"0","a":"70,104,104,104","l":"200, Tržaška cesta, 1000 Ljubljana, Slovenia"}
 ,{"p":"asanchilllounge","x":"46.0727448","y":"14.4683854","n":"ASAN Chill & Lounge Room","t":"2","c":"90","s":"4.7","d":"0","a":"70,104,104,104","l":"Kogovškova ulica 22, 1000 Ljubljana, Slovenia"}
@@ -204,25 +194,16 @@
 ,{"p":"frutasunderwear","x":"46.0489842","y":"14.5058362","n":"Frutas - Underwear","t":"4","c":"3","s":"5.0","d":"0","a":"70,104,104,104","l":"Cankarjevo nabrežje 25, 1000 Ljubljana, Slovenia"}
 ,{"p":"olabicoffee","x":"37.069148","y":"37.367908","n":"olabi coffee","t":"2","c":"228","s":"4.2","d":"0","a":"61,104,104,104","l":"İncili Pınar Mahallesi, Gazi Muhtar Paşa Blv. No:24, 27090 Şehitkamil/Gaziantep, Turkey"}
 ,{"p":"skaptobara","x":"42.699675","y":"23.32657","n":"Skaptobara","t":"0","c":"1635","s":"4.5","d":"0","a":"61,104,104,104","l":"ul. Iskar 11А, 1000 Sofia Center, Sofia, Bulgaria"}
-,{"p":"metropolisvalladolid","x":"41.650662","y":"-4.7217846","n":"Metropolis Valladolid","t":"4","c":"48","s":"4.6","d":"0","a":"61,104,104,104","l":"Calle de Fray Luis de León, 19, 47002 Valladolid, Spain"}
-,{"p":"acompanante","x":"41.6415754","y":"-0.8893621","n":"Acompañante En BioNeuroEmoción® y Acupuntura Zaragoza","t":"999","c":"1","s":"5.0","d":"0","a":"61,104,104,104","l":"Calle Madre Genoveva Torres Morales, local 16, 50006 Zaragoza, Spain"}
-,{"p":"anastasia","x":"41.368927","y":"-8.7635631","n":"Anastacia Delicatesses","t":"0","c":"78","s":"4.4","d":"0","a":"61,104,104,104","l":"Porto de Mar, 4490-000 Póvoa de Varzim, Portugal"}
 ,{"p":"salzkeller","x":"46.844933","y":"9.506379","n":"SalzKeller - Medical Floating Spa Chur","t":"999","c":"25","s":"5.0","d":"0","a":"61,104,104,104","l":"Triststrasse 8, 7000 Chur, Switzerland"}
 ,{"p":"greenpack","x":"47.484151","y":"9.088154","n":"Greenpack.ch GmbH Growshop","t":"4","c":"3","s":"4.0","d":"0","a":"61,104,104,104","l":"Hasenloo 881, 9514 Wuppenau, Switzerland"}
 ,{"p":"mimatraiteur","x":"48.6807926","y":"2.5025884","n":"Mima Traiteur - Catering","t":"1","c":"0","s":"0.0","d":"0","a":"61,104,104,104","l":"mima-traiteur.fr"}
 ,{"p":"belmobile","x":"50.8627797","y":"4.3424214","n":"Belmobile.be - Rachat et Réparation smartphone Bruxelles, tablette, GSM, Iphone","t":"4","c":"95","s":"4.8","d":"0","a":"61,104,104,104","l":"Rue Ulens 88, 1080 Molenbeek-Saint-Jean, Belgium"}
-,{"p":"dreambags","x":"51.5280867","y":"-0.0778415","n":"DreamBags JaguarShoes","t":"2","c":"294","s":"4.1","d":"0","a":"61,104,104,104","l":"32-36 Kingsland Rd, London E2 8DA, UK"}
-,{"p":"scymoreinn","x":"53.144159","y":"-1.558522","n":"The Sycamore Inn","t":"2","c":"105","s":"4.5","d":"0","a":"61,104,104,104","l":"9 Sycamore Rd, Matlock DE4 3HZ, UK"}
-,{"p":"dawsontattoo","x":"53.3724517","y":"-2.5814423","n":"The Dawson Tattoo Company","t":"999","c":"15","s":"5.0","d":"0","a":"61,104,104,104","l":"19A London Rd, Warrington WA4 6SG, UK"}
-,{"p":"harlequien","x":"53.3062959","y":"-3.7398696","n":"Harlequin Puppet Theatre","t":"999","c":"0","s":"0.0","d":"0","a":"61,104,104,104","l":"Cayley Promenade, Rhos on Sea, Colwyn Bay LL28 4EP, UK"}
 ,{"p":"barbaluppo","x":"42.762447","y":"11.1136787","n":"Il Barbaluppolo","t":"2","c":"4","s":"5.0","d":"0","a":"61,104,104,104","l":"Via Aurelio Saffi, 7, 58100 Grosseto GR, Italy"}
 ,{"p":"lacasinadialice","x":"43.543127","y":"10.313984","n":"Ristorante La Casina di Alice","t":"0","c":"242","s":"4.5","d":"0","a":"61,104,104,104","l":"Via Leonardo Cambini, 14, 57125 Livorno LI, Italy"}
 ,{"p":"eticoh","x":"44.0480737","y":"8.2142382","n":"Eticoh • Soul food lab","t":"0","c":"68","s":"4.5","d":"0","a":"61,104,104,104","l":"Piazza Domenico Trincheri, 7, 17031 Albenga SV, Italy"}
 ,{"p":"seapalaca","x":"44.0479738","y":"8.213205","n":"Suite & breakfast \"at the Sea Palace\"","t":"5","c":"18","s":"4.5","d":"0","a":"61,104,104,104","l":"Vico Sant'Eulalia, 5, 17031 Albenga SV, Italy"}
 ,{"p":"hotelraphael","x":"41.8999364","y":"12.4720937","n":"Hotel Raphaël - 5 Star","t":"5","c":"179","s":"4.5","d":"0","a":"61,104,104,104","l":"Largo Febo, 2, 00186 Roma RM, Italy"}
 ,{"p":"materterrae","x":"41.8999912","y":"12.4721365","n":"Mater Terrae - Haute Cuisine","t":"0","c":"24","s":"4.5","d":"0","a":"61,104,104,104","l":"Largo Febo, 2, 00186 Roma RM, Italy"}
-,{"p":"bekechanticafe","x":"52.55413","y":"13.37466","n":"bekech Anti Café","t":"2","c":"207","s":"4.7","d":"0","a":"61,104,104,104","l":"Exerzierstraße 14, 13357 Berlin, Germany"}
-,{"p":"mamasbanh2","x":"52.489843","y":"13.3543736","n":"Mamas Banh | Schöneberg","t":"0","c":"57","s":"4.5","d":"0","a":"61,104,104,104","l":"Grunewaldstraße 81, 10823 Berlin, Germany"}
 ,{"p":"veganbeat","x":"37.9753112","y":"23.7284616","n":"Vegan Beat","t":"0","c":"234","s":"4.9","d":"0","a":"61,104,104,104","l":"Pandrosou 7-15, Athina 105 56, Greece"}
 ,{"p":"limebistrot","x":"37.977341","y":"23.710073","n":"Lime Bistro (vegan & gluten free restaurant)","t":"0","c":"361","s":"4.3","d":"0","a":"61,104,104,104","l":"Dekeleon 23, Athina 118 54, Greece"}
 ,{"p":"foreverars","x":"56.7984796","y":"9.5181936","n":"Forever Aars","t":"4","c":"1","s":"5.0","d":"0","a":"61,104,104,104","l":"Kærvej 91, 9600 Aars, Denmark"}
@@ -237,17 +218,12 @@
 ,{"p":"inetbarbarby","x":"59.4123769","y":"17.8636007","n":"Inet Barkarby","t":"4","c":"202","s":"4.4","d":"0","a":"61,104,104,104","l":"Barkarbyvägen 33, 177 44 Järfälla, Sweden"}
 ,{"p":"webhallen3","x":"59.4938268","y":"17.924458","n":"Webhallen","t":"4","c":"875","s":"4.5","d":"0","a":"61,104,104,104","l":"Bergkällavägen 26, 192 79 Sollentuna, Sweden"}
 ,{"p":"inetmalmoe","x":"55.602473","y":"13.0025923","n":"Inet Malmö Computer","t":"4","c":"494","s":"4.5","d":"0","a":"61,104,104,104","l":"Lilla Nygatan 7, 211 38 Malmö, Sweden"}
-,{"p":"nailsberlin","x":"52.5276716","y":"13.4011124","n":"Studio 358 - Nails Berlin","t":"999","c":"54","s":"4.1","d":"0","a":"61,104,104,104","l":"Auguststraße 35, 10119 Berlin, Germany"}
 ,{"p":"kafekamen","x":"50.088495","y":"14.396196","n":"Kafe U Zelených kamen","t":"2","c":"229","s":"4.8","d":"0","a":"61,104,104,104","l":"Úvoz 1/169/6, 118 00 Praha 1-Malá Strana, Czechia"}
 ,{"p":"sklep","x":"50.134725","y":"19.640651","n":"Sklep Internetowy KomBo Computer","t":"4","c":"1","s":"2.0","d":"0","a":"61,104,104,104","l":"Długa 14, 32-065 Krzeszowice, Poland"}
 ,{"p":"paralelna","x":"48.1597829","y":"17.1234214","n":"Paralelná Polis","t":"2","c":"72","s":"4.8","d":"0","a":"61,104,104,104","l":"Kominárska 1552/3c, 831 04 Bratislava, Slovakia"}
-,{"p":"tianveg","x":"48.2052787","y":"16.374579","n":"TIAN - Vegetarian","t":"0","c":"373","s":"4.5","d":"0","a":"61,104,104,104","l":"Himmelpfortgasse 23, 1010 Wien, Austria"}
-,{"p":"tienbistro","x":"48.2030385","y":"16.3550373","n":"Tian Bistro am Spittelberg","t":"0","c":"452","s":"4.4","d":"0","a":"61,104,104,104","l":"Schrankgasse 4, 1070 Wien, Austria"}
 ,{"p":"doblo","x":"47.4980988","y":"19.0609816","n":"DOBLO Wine Bar and Shop","t":"2","c":"778","s":"4.6","d":"0","a":"61,104,104,104","l":"Budapest, Dob u. 20, 1072 Hungary"}
 ,{"p":"brewdogbudapest","x":"47.4981464","y":"19.0554914","n":"BrewDog Budapest","t":"2","c":"305","s":"4.1","d":"0","a":"61,104,104,104","l":"Budapest, Anker köz 1-3, 1061 Hungary"}
 ,{"p":"oldshepherd","x":"46.7704109","y":"23.5882721","n":"Old Shepherd","t":"2","c":"575","s":"4.6","d":"0","a":"61,104,104,104","l":"Strada Matei Corvin Nr 2, Cluj-Napoca 400000, Romania"}
-,{"p":"veghotel","x":"46.716836","y":"13.306043","n":"Weissenseerhofs - vegetarisches Genusshotel","t":"5","c":"86","s":"4.4","d":"0","a":"61,104,104,104","l":"Neusach 18, 9762 Weissensee, Austria"}
-,{"p":"hausangela","x":"46.916227","y":"12.329993","n":"Haus Angela","t":"5","c":"17","s":"4.8","d":"0","a":"61,104,104,104","l":"Unterrotte 58, 9963, Austria"}
 ,{"p":"designhotel","x":"45.3557831","y":"14.3270922","n":"Design hotel i restoran Navis","t":"5","c":"395","s":"4.6","d":"0","a":"61,104,104,104","l":"Ul. Ivana Matetića Ronjgova 10, 51410, Opatija, Croatia"}
 ,{"p":"gradkavana","x":"45.3244234","y":"14.4414565","n":"GRAD kavana&bar","t":"2","c":"320","s":"4.6","d":"0","a":"61,104,104,104","l":"Ul. Riva Boduli 7b, 51000, Rijeka, Croatia"}
 ,{"p":"ostoja","x":"53.7709277","y":"22.6237117","n":"Ostoja Stacze Domki Letniskowe - 3 Star","t":"5","c":"29","s":"4.8","d":"0","a":"61,104,104,104","l":"Stacze, 19-314 Stacze, Poland"}
@@ -268,10 +244,10 @@
 ,{"p":"crankshop","x":"54.6732649","y":"25.277415","n":"Crank Shop - Clothing","t":"4","c":"31","s":"3.9","d":"0","a":"61,104,104,104","l":"Kauno g. 5, Vilnius 03215, Lithuania"}
 ,{"p":"apgerbi","x":"56.2059966","y":"25.3036956","n":"DGS Apģērbi - Second Hand","t":"4","c":"0","s":"0.0","d":"0","a":"61,104,104,104","l":"Pasta iela 30, Nereta, Neretas pagasts, LV-5118, Latvia"}
 ,{"p":"eirovins","x":"57.5389741","y":"25.4233329","n":"EIROVĪNS, Vīnu Lielveikals - WINE","t":"4","c":"1","s":"4.0","d":"0","a":"61,104,104,104","l":"Rīgas iela 4, Valmiera, LV-4201, Latvia"}
-,{"p":"thekyberthandori","x":"51.2955219","y":"-0.2149833","n":"The Khyber Tandoori","t":"0","c":"23","s":"4.3","d":"0","a":"59,104,104,104","l":"2 Waterhouse Ln, Banstead, Tadworth KT20 6EB, UK"}
-,{"p":"barkonyak","x":"59.4420131","y":"24.7486648","n":"Bar Konyak - The Three Sisters Boutique Hotel","t":"2","c":"0","s":"0.0","d":"0","a":"59,104,104,104","l":"Pikk 71, 10133 Tallinn, Estonia"}
 ,{"p":"givirubinstein","x":"50.4242183","y":"30.5417788","n":"Givi Rubinstein - Гіві Рубінштейн","t":"0","c":"640","s":"4.5","d":"0","a":"59,104,104,104","l":"Yevhena Konovaltsia St, 44, Kyiv, Ukraine, 01133"}
-,{"p":"richarddahmswine","x":"50.03737","y":"10.24546","n":"Richard Dahms Wine","t":"4","c":"5","s":"4.6","d":"0","a":"59,104,104,104","l":"August-Borsig-Straße 8, 97526 Sennfeld, Germany"}
+,{"p":"ts","x":"50.4547261","y":"30.4606911","n":"TS кофейня","t":"2","c":"10","s":"4.9","d":"0","a":"59,104,104,104","l":"Bohdana Havrylyshyna St, 7, Kyiv, Ukraine, 04116"}
+,{"p":"katyusha","x":"50.4335826","y":"30.5157092","n":"Katyusha - Варенична Катюша","t":"0","c":"1643","s":"4.0","d":"0","a":"59,104,104,104","l":"Velyka Vasylkivska St, 60, Kyiv, Ukraine, 02000"}
+,{"p":"KatyushaVarenichnaya","x":"50.4428781","y":"30.5476193","n":"Katyusha Varenichnaya","t":"0","c":"1956","s":"3.7","d":"0","a":"59,104,104,104","l":"вулиця Мазепы , 5а, Київ, 0, Kyiv, Ukraine, 01015"}
 ,{"p":"bbq","x":"50.5078804","y":"30.7942794","n":"BBQ","t":"0","c":"178","s":"4.1","d":"0","a":"59,104,104,104","l":"Haharina St, 28, Brovary, Kyivs'ka oblast, Ukraine, 07402"}
 ,{"p":"mistertwister","x":"50.3679289","y":"30.4584454","n":"Mister Twister, Містер Твістер ","t":"0","c":"420","s":"4.4","d":"0","a":"59,104,104,104","l":"Akademika Hlushkova Ave, 13Б, Kyiv, Ukraine, 02000"}
 ,{"p":"pestocafe1","x":"50.4364887","y":"30.592804","n":"Pesto Cafe - Rusanivska Embankment","t":"0","c":"1422","s":"4.3","d":"0","a":"59,104,104,104","l":"Rusanivska Embankment, 8, Kyiv, Ukraine, 02000"}
@@ -302,20 +278,21 @@
 ,{"p":"paneevino","x":"54.6806493","y":"25.2963554","n":"Pane e Vino","t":"0","c":"22","s":"4.4","d":"0","a":"59,104,104,104","l":"Užupio g. 13, Vilnius 01202, Lituania"}
 ,{"p":"steakforbreak","x":"54.717939","y":"25.29968","n":"Steak For Break","t":"0","c":"72","s":"4.5","d":"0","a":"59,104,104,104","l":"Kareivių g. 11B, Vilnius 09109, Lituania"}
 ,{"p":"hoeksfish","x":"53.1763549","y":"5.4140672","n":"Hoek's Fish & Food in 360","t":"0","c":"0","s":"0.0","d":"0","a":"59,104,104,104","l":"Waddenpromenade 3, 8861 NT Harlingen, Netherlands"}
-,{"p":"kaufdahoam","x":"7.9182987","y":"13.7990771","n":"kaufdahoam.at OG","t":"3","c":"9","s":"4.9","d":"0","a":"59,104,104,104","l":"Theatergasse 6, 4810 Gmunden, Austria"}
 ,{"p":"downtherabbithole","x":"35.897482","y":"14.489838","n":"Down The Rabbit Hole","t":"2","c":"129","s":"4.7","d":"0","a":"59,104,104,104","l":"64 Triq Rue D'Argens, L-Imsida, Malta"}
+,{"p":"kaufdahoam","x":"7.9182987","y":"13.7990771","n":"kaufdahoam.at OG","t":"3","c":"9","s":"4.9","d":"0","a":"59,104,104,104","l":"Theatergasse 6, 4810 Gmunden, Austria"}
 ,{"p":"toscanini","x":"7.9049399","y":"14.1225136","n":"Toscanini | Pizza & Pasta","t":"0","c":"203","s":"4.5","d":"0","a":"59,104,104,104","l":"Hauptpl. 14, 4560 Kirchdorf an der Krems, Austria"}
+,{"p":"tianveg","x":"48.2052787","y":"16.374579","n":"TIAN - Vegetarian","t":"0","c":"373","s":"4.5","d":"0","a":"61,104,104,104","l":"Himmelpfortgasse 23, 1010 Wien, Austria"}
+,{"p":"tienbistro","x":"48.2030385","y":"16.3550373","n":"Tian Bistro am Spittelberg","t":"0","c":"452","s":"4.4","d":"0","a":"61,104,104,104","l":"Schrankgasse 4, 1070 Wien, Austria"}
+,{"p":"kolariks","x":"48.2132759","y":"16.4035807","n":"Kolariks Luftburg","t":"0","c":"943","s":"3.9","d":"0","a":"62,104,104,104","l":"Prater 128, 1020 Wien, Austria"}
+,{"p":"pancho","x":"48.2189846","y":"16.3814159","n":"Restaurant Pancho","t":"0","c":"504","s":"3.9","d":"0","a":"59,104,104,104","l":"Blumauergasse 1, 1020 Wien, Austria"}
+,{"p":"babette","x":"48.1976759","y":"16.364697","n":"Babette's Spice and Books","t":"4","c":"23","s":"4.8","d":"0","a":"59,104,104,104","l":"Schleifmühlgasse 17, 1040 Wien, Austria"}
+,{"p":"veghotel","x":"46.716836","y":"13.306043","n":"Weissenseerhofs - vegetarisches Genusshotel","t":"5","c":"86","s":"4.4","d":"0","a":"61,104,104,104","l":"Neusach 18, 9762 Weissensee, Austria"}
+,{"p":"hausangela","x":"46.916227","y":"12.329993","n":"Haus Angela","t":"5","c":"17","s":"4.8","d":"0","a":"61,104,104,104","l":"Unterrotte 58, 9963, Austria"}
 ,{"p":"tavernezumgriechen","x":"47.9603619","y":"14.1342582","n":"Taverne zum Griechen","t":"0","c":"178","s":"4.5","d":"0","a":"59,104,104,104","l":"Jageredt 2, 4542 Jageredt, Austria"}
-,{"p":"bellacosa","x":"51.500603","y":"-0.012168","n":"Bella Cosa Restaurant, Canary Wharf","t":"0","c":"195","s":"4.5","d":"0","a":"59,104,104,104","l":"Drewry House 213 Marsh Wall, Isle of Dogs, London E14 9FJ, UK"}
 ,{"p":"adegbreitfuss","x":"47.9406455","y":"13.2240245","n":"ADEG Mario Breitfuß","t":"3","c":"92","s":"4.4","d":"0","a":"59,104,104,104","l":"Salzburgerstraße 11, 5202 Neumarkt am Wallersee, Austria"}
 ,{"p":"steaksbarrestaurant","x":"48.1585158","y":"14.028528","n":"STEAK'S BAR Restaurant","t":"0","c":"87","s":"4.5","d":"0","a":"59,104,104,104","l":"Adlerstraße 1, 4600 Wels, Austria"}
-,{"p":"t1katusebaar","x":"59.4247059","y":"24.7952341","n":"T1 Katusebaar","t":"2","c":"4311","s":"4.2","d":"0","a":"59,104,104,104","l":"Peterburi tee 2, 11415 Tallinn, Estonia"}
-,{"p":"fibo","x":"59.4247695","y":"24.7952823","n":"Fibo","t":"0","c":"49","s":"3.6","d":"0","a":"59,104,104,104","l":"Peterburi tee 2h, 11415 Tallinn, Estonia"}
-,{"p":"cremeria","x":"59.4288382","y":"24.7424361","n":"Cremeria - Pizza & Cannoli Vinoteek","t":"0","c":"52","s":"4.9","d":"0","a":"59,104,104,104","l":"Pärnu maantee 46, 10119 Tallinn, Estonia"}
-,{"p":"grandshisha","x":"59.4384562","y":"24.7542951","n":"Grand Shisha - Cocteleria","t":"2","c":"132","s":"4.4","d":"0","a":"59,104,104,104","l":"Mere puiestee 4, 10111 Tallinn, Estonia"}
 ,{"p":"sportland","x":"47.9854685","y":"13.8178001","n":"Cafe Restaurant Sportland","t":"0","c":"19","s":"4.5","d":"0","a":"59,104,104,104","l":"Obertshausener Str. 2, 4663 Laakirchen, Austria"}
 ,{"p":"summerstage","x":"48.2208965","y":"16.3680876","n":"Summer Stage","t":"0","c":"1077","s":"4.2","d":"0","a":"59,104,104,104","l":"Rossauer Lände 17, 1090 Wien, Austria"}
-,{"p":"trukitchen","x":"59.4483515","y":"24.7113834","n":"Tru Kitchen","t":"0","c":"40","s":"4.9","d":"0","a":"59,104,104,104","l":"Kopli 25, 10412 Tallinn, Estonia"}
 ,{"p":"ennswerk","x":"48.2101488","y":"14.4782957","n":"Ennswerk","t":"0","c":"210","s":"4.2","d":"0","a":"59,104,104,104","l":"Forstbergstraße 3, 4470 Enns, Austria"}
 ,{"p":"pergwerk","x":"48.2490598","y":"14.6369772","n":"Pergwerk","t":"0","c":"521","s":"4.4","d":"0","a":"59,104,104,104","l":"Herrenstraße 28, 4320 Perg, Austria"}
 ,{"p":"roxmusicbarlinz","x":"48.3052095","y":"14.2898474","n":"Rox Musicbar & Grill Linz","t":"0","c":"783","s":"4.3","d":"0","a":"59,104,104,104","l":"Graben 18, 4020 Linz, Austria"}
@@ -326,11 +303,20 @@
 ,{"p":"jukeboxamericandiner","x":"48.358006","y":"14.473141","n":"Jukebox American Diner","t":"0","c":"548","s":"4.6","d":"0","a":"59,104,104,104","l":"Betriebsstraße 3, 4210 Radingdorf, Austria"}
 ,{"p":"tabaktrafik","x":"48.2111653","y":"14.2880403","n":"Tabak Trafik / Inh. Angelika Hager","t":"4","c":"5","s":"4.4","d":"0","a":"59,104,104,104","l":"Anton-Bruckner-Straße 12, 4052 Ansfelden, Austria"}
 ,{"p":"brandl","x":"48.218639","y":"14.278707","n":"Brandl","t":"5","c":"94","s":"4.3","d":"0","a":"59,104,104,104","l":"Audorfer Str. 15, 4052 Ansfelden, Austria"}
+,{"p":"trukitchen","x":"59.4483515","y":"24.7113834","n":"Tru Kitchen","t":"0","c":"40","s":"4.9","d":"0","a":"59,104,104,104","l":"Kopli 25, 10412 Tallinn, Estonia"}
+,{"p":"barkonyak","x":"59.4420131","y":"24.7486648","n":"Bar Konyak - The Three Sisters Boutique Hotel","t":"2","c":"0","s":"0.0","d":"0","a":"59,104,104,104","l":"Pikk 71, 10133 Tallinn, Estonia"}
+,{"p":"t1katusebaar","x":"59.4247059","y":"24.7952341","n":"T1 Katusebaar","t":"2","c":"4311","s":"4.2","d":"0","a":"59,104,104,104","l":"Peterburi tee 2, 11415 Tallinn, Estonia"}
+,{"p":"fibo","x":"59.4247695","y":"24.7952823","n":"Fibo","t":"0","c":"49","s":"3.6","d":"0","a":"59,104,104,104","l":"Peterburi tee 2h, 11415 Tallinn, Estonia"}
+,{"p":"cremeria","x":"59.4288382","y":"24.7424361","n":"Cremeria - Pizza & Cannoli Vinoteek","t":"0","c":"52","s":"4.9","d":"0","a":"59,104,104,104","l":"Pärnu maantee 46, 10119 Tallinn, Estonia"}
+,{"p":"grandshisha","x":"59.4384562","y":"24.7542951","n":"Grand Shisha - Cocteleria","t":"2","c":"132","s":"4.4","d":"0","a":"59,104,104,104","l":"Mere puiestee 4, 10111 Tallinn, Estonia"}
 ,{"p":"thenetwork","x":"35.9245885","y":"14.4889471","n":"The Network (St Julians, Malta)","t":"2","c":"82","s":"4.7","d":"0","a":"59,104,104,104","l":"Unit 1, The Axis complex, Triq San Gorg, St. Julians, Paceville STJ 3201, Malta, Malta"}
 ,{"p":"rusnesdegalai","x":"55.2929337","y":"21.3717489","n":"Rusnes degalai - Fishing & Rooms","t":"5","c":"8","s":"4.0","d":"0","a":"59,104,104,104","l":"6, K. Donelaičio g., Rusnė 99350, Lithuania"}
 ,{"p":"bettysplace","x":"-0.4213193","y":"36.949959","n":"Betgty's Place","t":"0","c":"80","s":"3.5","d":"0","a":"59,104,104,104","l":"Kimathi Nyeri KE, Kenya"}
-,{"p":"ts","x":"50.4547261","y":"30.4606911","n":"TS кофейня","t":"2","c":"10","s":"4.9","d":"0","a":"59,104,104,104","l":"Bohdana Havrylyshyna St, 7, Kyiv, Ukraine, 04116"}
-,{"p":"katyusha","x":"50.4335826","y":"30.5157092","n":"Katyusha - Варенична Катюша","t":"0","c":"1643","s":"4.0","d":"0","a":"59,104,104,104","l":"Velyka Vasylkivska St, 60, Kyiv, Ukraine, 02000"}
-,{"p":"KatyushaVarenichnaya","x":"50.4428781","y":"30.5476193","n":"Katyusha Varenichnaya","t":"0","c":"1956","s":"3.7","d":"0","a":"59,104,104,104","l":"вулиця Мазепы , 5а, Київ, 0, Kyiv, Ukraine, 01015"}
 ,{"p":"kiteboarding","x":"27.4204562","y":"33.6722392","n":"Kiteboarding Club El Gouna (KBC El Gouna)","t":"999","c":"80","s":"4.8","d":"0","a":"59,104,104,104","l":"Buzzha Beach / Northern Mangroovy Beach, Kite Center Rd, Hurghada, Red Sea Governorate 84513, Egypt"}
-,{"p":"bigkitchennigeria","x":"4.7631188","y":"7.0213741","n":"Big Kitchen Nigeria","t":"0","c":"43","s":"4.1","d":"0","a":"59,104,104,104","l":"Takoradi Street, Port Harcourt, Nigeria"}]
+,{"p":"bigkitchennigeria","x":"4.7631188","y":"7.0213741","n":"Big Kitchen Nigeria","t":"0","c":"43","s":"4.1","d":"0","a":"59,104,104,104","l":"Takoradi Street, Port Harcourt, Nigeria"}
+,{"p":"newmarket","x":"7.5175268","y":"4.5124965","n":"New Market","t":"5","c":"73","s":"3.9","d":"0","a":"62,104,104,104","l":"GG96+2X Ife, Nigeria"}
+,{"p":"zoescuisine","x":"7.5006349","y":"4.5152892","n":"Zoe's Cuisine - Restaurant","t":"0","c":"0","s":"0.0","d":"0","a":"62,104,104,104","l":"Ede Rd, Ife, Nigeria"}
+,{"p":"kayschippy","x":"7.5190229","y":"4.5218396","n":"Kays Chippy Ife","t":"1","c":"13","s":"3.4","d":"0","a":"62,104,104,104","l":"Obafemi Awolowo University, Road 5, Ife, Nigeria"}
+,{"p":"halsadamhostel","x":"7.5027423","y":"4.509311","n":"Halsadam Hostel Damico","t":"5","c":"33","s":"3.7","d":"0","a":"62,104,104,104","l":"Ede Road, Ife, Nigeria"}
+,{"p":"mraziz","x":"8.9039687","y":"-2.2636554","n":"Mr Aziz and Co Grocery Store","t":"3","c":"0","s":"0.0","d":"0","a":"62,104,104,104","l":"Wa-Bole Rd, Bamahu, Ghana"}
+,{"p":"abubakari","x":"8.6518083","y":"0.0023314","n":"Abubakari Drug Store","t":"4","c":"0","s":"0.0","d":"0","a":"62,104,104,104","l":"Wulensi, Ghana"}]

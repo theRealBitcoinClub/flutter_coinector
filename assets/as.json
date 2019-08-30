@@ -55,7 +55,6 @@
 ,{"p":"ramenshopjinambo","x":"35.7200756","y":"139.6525785","n":"Ramen Shop Jinambo 6-chōme-3-4 Nogata","t":"3","c":"0","s":"0.0","d":"0","a":"61,104,104,104","l":"Nakano City, Tōkyō-to 165-0027, Japan "}
 ,{"p":"coaster","x":"35.6573733","y":"139.6676032","n":"Coaster クラフトビール＆キッチン","t":"0","c":"44","s":"4.4","d":"0","a":"61,104,104,104","l":"Japan, 〒155-0032 Tokyo, Setagaya City, Daizawa, 5 Chome−19−１３, Kosei Haimu, １F"}
 ,{"p":"malaychan","x":"35.730472","y":"139.706181","n":"Malaychan - キッチンマレーチャン","t":"0","c":"138","s":"3.9","d":"0","a":"59,104,104,104","l":"3 Chome-22-6 Nishiikebukuro, Toshima City, Tokyo 171-0021, Japan"}
-,{"p":"ducatuscafe","x":"-8.684123","y":"115.1682889","n":"DUCATUS CAFE","t":"2","c":"17","s":"4.8","d":"0","a":"29,11,8,136","l":"Sunset Road, Seminyak, Badung Regency, Bali, Indonesia"}
 ,{"p":"rosebakeshop","x":"8.5070075","y":"125.9773064","n":"Rose Bakeshop","t":"1","c":"5","s":"4.6","d":"0","a":"61,104,104,104","l":"Roxas St, Barangay 4, San Francisco, Agusan del Sur, Philippines"}
 ,{"p":"bunk5021","x":"14.5634905","y":"121.0302437","n":"BUNK 5021 HOSTEL","t":"5","c":"35","s":"4.3","d":"0","a":"104,104,104,104","l":"P Burgos, Makati, Metro Manila, Philippines"}
 ,{"p":"orobmanila","x":"14.574839","y":"121.007437","n":"2409 Oro-B","t":"4","c":"0","s":"0.0","d":"0","a":"61,104,104,104","l":"San Andres Bukid, Metro Manila, Philippines"}
@@ -63,13 +62,9 @@
 ,{"p":"intermissionbar","x":"1.3019177","y":"103.8642677","n":"Intermission Bar at The Projector","t":"2","c":"30","s":"4.6","d":"0","a":"61,104,104,104","l":"6001 Beach Rd, #05-00, Singapore 199589"}
 ,{"p":"thehangar","x":"1.3004156","y":"103.8597222","n":"The Hangar","t":"2","c":"321","s":"4.0","d":"0","a":"61,104,104,104","l":"25 Arab St, Singapore 199724"}
 ,{"p":"meatandgreen","x":"1.2865508","y":"103.8493014","n":"Meat And Green - Salad Shop","t":"0","c":"45","s":"4.5","d":"0","a":"61,104,104,104","l":"38 Circular Rd, Singapore 049394"}
-,{"p":"ducatuscafesingapore","x":"1.2784458","y":"103.848261","n":"Ducatus Cafe Singapore","t":"2","c":"22","s":"4.1","d":"0","a":"15,16,8,150","l":"Singapore, Malaysia, Asia"}
 ,{"p":"pattayabeergarden","x":"12.928118","y":"100.87435","n":"Pattaya Beer Garden","t":"0","c":"1878","s":"4.2","d":"0","a":"32,97,15,8","l":"Beach Road, Pattaya City, Bang Lamung District, Chon Buri, Thailand"}
 ,{"p":"cocotte","x":"13.7374603","y":"100.5700932","n":"Cocotte Soi","t":"0","c":"707","s":"4.4","d":"0","a":"97,138,109,71","l":"Sukhumvit 39, Khlong Tan Nuea, Watthana, Bangkok, Thailand"}
 ,{"p":"catmosphere","x":"18.8063742","y":"98.9580105","n":"Catmosphere Cat Cafe","t":"2","c":"290","s":"4.4","d":"0","a":"29,142,108,16","l":"Huaykaew Road, Su Thep, Mueang Chiang Mai District, Chiang Mai, Thailand"}
-,{"p":"cryptokonix","x":"30.036797","y":"73.996707","n":"CryptoKonix - Consultant","t":"999","c":"2","s":"5.0","d":"0","a":"62,104,104,104","l":"Jandwala, hunwanta, Abohar, Punjab 152132, India"}
-,{"p":"qamara","x":"6.0814119","y":"102.2072121","n":"QAMARO COKLAT - Chocolate Shop","t":"0","c":"0.0","s":"0","d":"0","a":"62,104,104,104","l":"Kampung Wakaf Merah, Kampung Tendong, 17030 Pasir Mas, Kelantan, Malaysia"}
-,{"p":"baencafe","x":"5.332393","y":"100.217897","n":"Baen Cafe Power Of Sedekah","t":"0","c":"2","s":"4.5","d":"0","a":"62,104,104,104","l":"11000 Balik Pulau, Penang, Malaysia"}
 ,{"p":"hareandhounds","x":"13.8014183","y":"100.5479621","n":"Hare and Hounds Clothing","t":"4","c":"0","s":"0.0","d":"0","a":"62,104,104,104","l":"587/10 Kamphaeng Phet 2 Rd, Krung Thep Maha Nakhon 10900, Bangkok, Thailand"}
 ,{"p":"veenaclothingshop","x":"13.7989305","y":"100.5502288","n":"Veena Clothing Shop - Chatuchak Weekend Market - ตลาดนัดจตุจักร","t":"4","c":"26667","s":"4.4","d":"0","a":"62,104,104,104","l":"สวนจตุจักร Kamphaeng Phet 2 Rd, แขวง ลาดยาว Khet Chatuchak, Krung Thep Maha Nakhon 10900, Bangkok, Thailand"}
 ,{"p":"mustachebar","x":"13.7733091","y":"100.5714829","n":"Mustache Bar","t":"2","c":"67","s":"4.2","d":"0","a":"62,104,104,104","l":"544 5 Ratchadaphisek 7 Alley, Khwaeng Din Daeng, Khet Din Daeng, Krung Thep Maha Nakhon 10400, Bangkok, Thailand"}
@@ -101,7 +96,6 @@
 ,{"p":"multihousefamilyclub","x":"9.786688","y":"100.003883","n":"Multi House - Family Beach Club","t":"0","c":"97","s":"4.8","d":"0","a":"61,104,104,104","l":"97/3 mu 7, Chaloklum, Koh Phangan, Thailand Chaloklum Muli House, Tambon Ko Pha-ngan, Amphoe Ko Pha-ngan, Chang Wat Surat Thani 84280, Thailand"}
 ,{"p":"BEACHUB","x":"9.756502","y":"99.961923","n":"BEACHUB - 3 Star Hotel","t":"5","c":"93","s":"4.3","d":"0","a":"61,104,104,104","l":"Moo 8 Koh Phangan, Thailand, Koh Phangan, Srithanu, Chang Wat Surat Thani 84280, Thailand"}
 ,{"p":"onelovedome","x":"9.7373137","y":"99.9795797","n":"One Love Dome - 3 Star Hotel","t":"5","c":"6","s":"5.0","d":"0","a":"61,104,104,104","l":"Ko Pha-ngan, Ko Pha-ngan District, Surat Thani 84280, Thailand"}
-,{"p":"coincafeandbar","x":"11.5483212","y":"104.9205696","n":"Coin Cafe & Bar","t":"0","c":"36","s":"4.6","d":"0","a":"61,104,104,104","l":"#5D Eo Street 360, 12304, Phnom Penh, Cambodia"}
 ,{"p":"12x12bar","x":"13.7366519","y":"100.5854455","n":"12 × 12 Bar","t":"2","c":"53","s":"4.3","d":"0","a":"61,104,104,104","l":"810/22 Thara Rom 2 Alley, Khwaeng Khlong Tan Nuea, Khet Watthana, Krung Thep Maha Nakhon 10110, Thailand"}
 ,{"p":"innerbeauty","x":"13.7896996","y":"100.5777717","n":"Inner Beauty - อินเนอร์บิวติ้ - Hair Salon","t":"999","c":"0","s":"0.0","d":"0","a":"61,104,104,104","l":"Sutthisan Winitchai Rd, Khwaeng Samsen Nok, Khet Huai Khwang, Krung Thep Maha Nakhon 10310, Thailand"}
 ,{"p":"satoshihouse","x":"20.2612048","y":"100.0883656","n":"Satoshi House","t":"5","c":"2","s":"5.0","d":"0","a":"61,104,104,104","l":"236 Pasakhangwaeng Waeng Chiang Rai 57150 TH, Ban Pasakhangwaeng Waeng, Amphoe Chiang Saen, Chang Wat Chiang Rai 57150, Thailand"}
@@ -125,12 +119,18 @@
 ,{"p":"osakajapanese","x":"17.9644823","y":"102.6055884","n":"Osaka - Japanese","t":"0","c":"30","s":"3.7","d":"0","a":"61,104,104,104","l":"Rue Nokeokoummane, Vientiane, Laos"}
 ,{"p":"discountstore","x":"24.789712","y":"93.9145154","n":"DISCOUNT STORE Clothing","t":"4","c":"67","s":"4.3","d":"0","a":"61,104,104,104","l":"Lukram Leirak Rd, Mayaikoibi, Imphal, Manipur 795001, India"}
 ,{"p":"radhakrishna","x":"21.1930898","y":"72.8412773","n":"Radha Krishna Textile Market","t":"4","c":"7","s":"4.3","d":"0","a":"61,104,104,104","l":"J 2703-4, Ring Road, Moti Begumwadi, Surat, Gujarat 395010, India"}
+,{"p":"cryptokonix","x":"30.036797","y":"73.996707","n":"CryptoKonix - Consultant","t":"999","c":"2","s":"5.0","d":"0","a":"62,104,104,104","l":"Jandwala, hunwanta, Abohar, Punjab 152132, India"}
 ,{"p":"craftbrewandco","x":"22.2814932","y":"114.153489","n":"Craft Brew & Co.","t":"0","c":"62","s":"3.7","d":"0","a":"61,104,104,104","l":"17 Old Bailey St, Central, Hong Kong"}
 ,{"p":"gardenmeow","x":"22.2833022","y":"114.1520564","n":"Garden Meow - 喵一下","t":"2","c":"143","s":"4.0","d":"0","a":"61,104,104,104","l":"Hong Kong, Central, 鴨巴甸街35號元創方B座地下HG01-HG05室"}
 ,{"p":"olivierisrael","x":"32.0718606","y":"34.7691912","n":"L'Olivier","t":"2","c":"49","s":"4.1","d":"0","a":"61,104,104,104","l":"Yona HaNavi St 48, Tel Aviv-Yafo, Israel"}
 ,{"p":"nonnoangelopizza","x":"32.087664","y":"34.7731046","n":"Nonno Angelo Pizza","t":"0","c":"214","s":"4.4","d":"0","a":"61,104,104,104","l":"Ben Yehuda St 147, Tel Aviv-Yafo, 6340309, Israel"}
 ,{"p":"eduardosrestaurant","x":"32.8189315","y":"34.999972","n":"Eduardo's Restaurant","t":"0","c":"129","s":"4.6","d":"0","a":"61,104,104,104","l":"Derech HaAtsma'ut 37, Haifa, Israel"}
 ,{"p":"bitcoincoffeebar","x":"10.76731","y":"106.693444","n":"B Coffee and Bar","t":"2","c":"24","s":"4.0","d":"0","a":"59,104,104,104","l":"74 Bùi Viện, Phường Phạm Ngũ Lão, Quận 1, Hồ Chí Minh, Vietnam"}
+,{"p":"ducatuscafe","x":"-8.684123","y":"115.1682889","n":"DUCATUS CAFE","t":"2","c":"17","s":"4.8","d":"0","a":"29,11,8,136","l":"Sunset Road, Seminyak, Badung Regency, Bali, Indonesia"}
 ,{"p":"kismetrestaurantlounge","x":"-8.51189","y":"115.264006","n":"Kismet Restaurant and Lounge","t":"0","c":"624","s":"4.5","d":"0","a":"59,104,104,104","l":"Jl. Goutama Sel. No.27X, Ubud, Kecamatan Ubud, Kabupaten Gianyar, Bali 80571, Indonesia"}
 ,{"p":"anggerikmall","x":"3.071168","y":"101.5198705","n":"Street Food Trucks - Anggerik Mall - Nart Jaya Enterprise","t":"1","c":"0","s":"0.0","d":"0","a":"59,104,104,104","l":"no 1-3 first floor UTC Selangor/Anggerik Mall, Seksyen 14, 40000 Shah Alam, Selangor, Malaysia"}
+,{"p":"ducatuscafesingapore","x":"1.2784458","y":"103.848261","n":"Ducatus Cafe Singapore","t":"2","c":"22","s":"4.1","d":"0","a":"15,16,8,150","l":"Singapore, Malaysia, Asia"}
+,{"p":"qamara","x":"6.0814119","y":"102.2072121","n":"QAMARO COKLAT - Chocolate Shop","t":"0","c":"0.0","s":"0","d":"0","a":"62,104,104,104","l":"Kampung Wakaf Merah, Kampung Tendong, 17030 Pasir Mas, Kelantan, Malaysia"}
+,{"p":"baencafe","x":"5.332393","y":"100.217897","n":"Baen Cafe Power Of Sedekah","t":"0","c":"2","s":"4.5","d":"0","a":"62,104,104,104","l":"11000 Balik Pulau, Penang, Malaysia"}
+,{"p":"coincafeandbar","x":"11.5483212","y":"104.9205696","n":"Coin Cafe & Bar","t":"0","c":"36","s":"4.6","d":"0","a":"61,104,104,104","l":"#5D Eo Street 360, 12304, Phnom Penh, Cambodia"}
 ,{"p":"aubergedusoleil","x":"10.6067083","y":"104.1803797","n":"Auberge du Soleil","t":"5","c":"102","s":"4.5","d":"0","a":"59,104,104,104","l":"23 Street 728, Krong Kampot, Cambodia"}]
