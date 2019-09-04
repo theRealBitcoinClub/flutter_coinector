@@ -736,6 +736,9 @@
 ,{"p":"loveeat","x":"10.4967713","y":"-66.8456325","n":"Loveeat - Centro Plaza","t":"0","c":"2","s":"5.0","d":"0","a":"59,104,104,104","l":"Centro Plaza, Edificio Atlantic, Av Andrés Bello, Caracas 1060, Miranda, Venezuela"}
 ,{"p":"budaremaison","x":"10.4979761","y":"-66.8464915","n":"Budare Maison - Centro Plaza","t":"2","c":"1","s":"5.0","d":"0","a":"59,104,104,104","l":"Av. Fco. de Miranda Centro Comercial Centro Plaza, Caracas 1060, Distrito Capital, Venezuela"}
 ,{"p":"farmarato","x":"10.4702021","y":"-66.9473225","n":"Farmacia Farmarato","t":"4","c":"6","s":"4.3","d":"0","a":"59,104,104,104","l":"Calle San José, Caracas 1020, Distrito Capital, Venezuela"}
+,{"p":"lavanderia","x":"10.5103714","y":"-66.9121","n":"Lavanderia Washing Service","t":"999","c":"1","s":"5.0","d":"0","a":"59,104,104,104","l":"Avenida Norte 1, Caracas 1010, Distrito Capital, Venezuela"}
+,{"p":"coffeecigarettes","x":"10.5100101","y":"-66.91342","n":"[Puesto] - Cafe - Cigarillos","t":"1","c":"1","s":"5.0","d":"0","a":"59,104,104,104","l":"Av. Este 5 cruze Av. Norte, Otro lado de la Plaza Las Mercedes, Caracas, Venezuela"}
+,{"p":"dulcefresh","x":"10.5075552","y":"-66.9138663","n":"[Puesto] - Tartas y Catalinas","t":"1","c":"1","s":"5.0","d":"0","a":"59,104,104,104","l":"Av. Urdaneta cruze Av. Norte, Otro lado de la sede SUNACRIP, Caracas, Venezuela"}
 ,{"p":"bolosazoncostena","x":"6.1762556","y":"-75.5838155","n":"Bololó Sazón Costeña","t":"0","c":"214","s":"4.4","d":"0","a":"59,104,104,104","l":"Transversal 31 Sur # 32D - 21, Envigado, Antioquia, Colombia"}
 ,{"p":"puntonaranja","x":"6.2512262","y":"-75.5821656","n":"PUNTO NARANJA","t":"3","c":"22","s":"3.8","d":"0","a":"59,104,104,104","l":"Cra. 64 #45A-12, Medellín, Antioquia, Colombia"}
 ,{"p":"chezalice","x":"6.1736829","y":"-75.58481","n":"CHEZ ALICE ATELIER GOURMET","t":"0","c":"67","s":"4.8","d":"0","a":"59,104,104,104","l":"Tv. 33 Sur #3353, Envigado, Antioquia, Colombia"}
