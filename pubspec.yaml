@@ -34,13 +34,15 @@ dependencies:
   firebase_crashlytics: ^0.0.4+5
   transparent_image: ^1.0.0
   smooth_star_rating: ^1.0.3
-  google_maps_flutter: ^0.5.16
+  google_maps_flutter: ^0.5.21
   url_launcher: ^5.0.3
   flutter_i18n: ^0.6.3
   geolocator: ^5.0.1
   crypto: ^2.0.6
   path_provider: ^1.1.0
-  onesignal: ^1.1.0
+  onesignal_flutter: ^2.1.0
+  geohash: ^0.2.1
+  clustering_google_maps: ^0.1.2
   flutter:
     sdk: flutter
 

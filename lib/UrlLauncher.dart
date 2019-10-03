@@ -41,9 +41,9 @@ class UrlLauncher {
 
   static String buildGoogleMapsSearchQueryUrl(Merchant merchant) =>
       'http://www.google.com/maps/search/?api=1&query=' +
-      merchant.x +
+      merchant.x.toString() +
       ',' +
-      merchant.y;
+      merchant.y.toString();
 
   static void launchVisitUrl(context, Merchant merchant) async {
     var url = buildGoogleMapsSearchQueryUrl(merchant) +
