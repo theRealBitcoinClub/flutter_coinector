@@ -25,8 +25,8 @@ import 'pages.dart';
 import 'package:flutter_i18n/flutter_i18n_delegate.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:geohash/geohash.dart';
-import 'package:clustering_google_maps/clustering_google_maps.dart';
+//import 'package:geohash/geohash.dart';
+//import 'package:clustering_google_maps/clustering_google_maps.dart';
 
 class AnimatedListSample extends StatefulWidget {
   @override

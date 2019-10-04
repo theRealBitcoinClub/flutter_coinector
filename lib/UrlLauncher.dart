@@ -18,7 +18,8 @@ class UrlLauncher {
   }
 
   static void launchDonateUrl() async {
-    var url = 'https://bitcoinmap.cash/bitcoin-bch-dash-qr-code-generator?bch=qqp0kpntfxygx3e6d4mr9c5ef5ucxdcjk5zkgtevss&dash=XiHdw8SVoNtJqno6GnxKQS2Snxh7BTuR39';
+    var url =
+        'https://bitcoinmap.cash/bitcoin-bch-dash-qr-code-generator?bch=qqp0kpntfxygx3e6d4mr9c5ef5ucxdcjk5zkgtevss&dash=XiHdw8SVoNtJqno6GnxKQS2Snxh7BTuR39';
     launchURI(url);
   }
 
@@ -76,24 +77,23 @@ class UrlLauncher {
     return hasInput ? "," + countryCode + "-bch@therealbitcoin.club" : "";
   }
 
-  static Future<void> launchEmailClientAddPlace(ctx, String inputDASH, String inputBCH,
-      String content, onEmailClientNotFound) async {
+  static Future<void> launchEmailClientAddPlace(ctx, String inputDASH,
+      String inputBCH, String content, onEmailClientNotFound) async {
     String countryCode = getLocale(ctx);
-    print("countryCode:" + countryCode);
-    var urlString =
-        "mailto:bitcoinmap@fire.fundersclub.com,incoming+bmap-cash-bmap-cash-12646634-issue-@incoming.gitlab.com," +
-            countryCode +
-            "-bmap.cash@therealbitcoin.club," +
-            countryCode +
-            "-anypay@therealbitcoin.club" +
-            (hasInput(inputDASH)
-                ? getDASHReceiverAdr(hasInput(inputDASH), countryCode)
-                : getBCHReceiverAdr(hasInput(inputBCH), countryCode)) +
-            "?subject=" +
-            (hasInput(inputDASH) ? inputDASH : inputBCH) +
-            "&body=" +
-            FlutterI18n.translate(ctx, "email_text_add_new_place") +
-            content;
+    //print("countryCode:" + countryCode);
+    var urlString = "mailto:" +
+        countryCode +
+        "-bmap.cash@therealbitcoin.club," +
+        /*countryCode +
+        "-anypay@therealbitcoin.club" +*/
+        /*(hasInput(inputDASH)
+            ? getDASHReceiverAdr(hasInput(inputDASH), countryCode)
+            : getBCHReceiverAdr(hasInput(inputBCH), countryCode)) +*/
+        "?subject=" +
+        (hasInput(inputDASH) ? inputDASH : inputBCH) +
+        "&body=" +
+        FlutterI18n.translate(ctx, "email_text_add_new_place") +
+        content;
     await _launchEmail(ctx, urlString, onEmailClientNotFound);
   }
 

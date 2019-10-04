@@ -47,6 +47,8 @@ class MapSampleState extends State<MapSample> {
 
   static const SHOW_HINT_MAX_COUNTER = HINT_COUNT_TOTAL * 2;
 
+  GoogleMapController _googleMapController;
+
   MapSampleState(this.allLists, this.position, this.initialZoomLevel);
   Set<Marker> allMarkers = Set.from([]);
 
@@ -66,8 +68,8 @@ class MapSampleState extends State<MapSample> {
     }*/
   }
 
-  Set<Marker> parseListAndZoomToSingleResult(ctx) {
-    allMarkers = parseListBuildMarkers(ctx);
+  Future<Set<Marker>> parseListAndZoomToSingleResult(ctx) async {
+    allMarkers = await parseListBuildMarkers(ctx);
     if (allMarkers.length == 1) {
       initialCamPosFallback = CameraPosition(
           target: latLngLastParsedItem,
@@ -78,8 +80,11 @@ class MapSampleState extends State<MapSample> {
 
   LatLng latLngLastParsedItem;
 
-  Set<Marker> parseListBuildMarkers(ctx) {
-    if (getTotalLengthOFAllLists() == allMarkers.length) allMarkers.clear();
+  Future<Set<Marker>> parseListBuildMarkers(ctx) async {
+    //if (getTotalLengthOFAllLists() == allMarkers.length) allMarkers.clear();
+    allMarkers.clear();
+    final latLngBounds = await _googleMapController.getVisibleRegion();
+    //print("LATLNG:" + latLngBounds.contains(LatLng(42.0, -111.0)).toString());
     for (int tabCounter = 0; tabCounter < allLists.length; tabCounter++) {
       ListModel<Merchant> listMerchants = allLists[tabCounter];
       for (int itemCounter = 0;
@@ -87,22 +92,23 @@ class MapSampleState extends State<MapSample> {
           itemCounter++) {
         var merchant = listMerchants[itemCounter];
         latLngLastParsedItem = LatLng(merchant.x, merchant.y);
-        allMarkers.add(Marker(
-            onTap: () {
-              if (counterToastSpecific >= SHOW_HINT_MAX_COUNTER) return;
-              Toaster.showInstructionToast(ctx, counterToastSpecific,
-                  HINT_COUNT_TOTAL, Toaster.getMerchantSpecificToastHint);
+        if (latLngBounds.contains(latLngLastParsedItem))
+          allMarkers.add(Marker(
+              onTap: () {
+                if (counterToastSpecific >= SHOW_HINT_MAX_COUNTER) return;
+                Toaster.showInstructionToast(ctx, counterToastSpecific,
+                    HINT_COUNT_TOTAL, Toaster.getMerchantSpecificToastHint);
 
-              setState(() {
-                counterToastSpecific++;
-              });
-              Toaster.persistToastCounter(
-                  sharedPrefKeyCounterToastSpecific, counterToastSpecific);
-            },
-            infoWindow: buildInfoWindow(merchant),
-            icon: getMarkerColor(merchant),
-            markerId: MarkerId(merchant.id),
-            position: latLngLastParsedItem));
+                setState(() {
+                  counterToastSpecific++;
+                });
+                Toaster.persistToastCounter(
+                    sharedPrefKeyCounterToastSpecific, counterToastSpecific);
+              },
+              infoWindow: buildInfoWindow(merchant),
+              icon: getMarkerColor(merchant),
+              markerId: MarkerId(merchant.id),
+              position: latLngLastParsedItem));
       }
     }
     return allMarkers;
@@ -191,15 +197,15 @@ class MapSampleState extends State<MapSample> {
                 : hasMarkers()
                     ? allMarkers.elementAt(0).position
                     : initialCamPosFallback,
-            onCameraIdle: () {
-
-            },
-            onMapCreated: (GoogleMapController controller) {
-              controller.setMapStyle(MAP_STYLE);
-              var parsedMarkers = parseListAndZoomToSingleResult(context);
+            onCameraIdle: () async {
+              var parsedMarkers = await parseListAndZoomToSingleResult(context);
               setState(() {
                 allMarkers = parsedMarkers;
               });
+            },
+            onMapCreated: (GoogleMapController controller) {
+              _googleMapController = controller;
+              controller.setMapStyle(MAP_STYLE);
               _controller.complete(controller);
             },
           ),

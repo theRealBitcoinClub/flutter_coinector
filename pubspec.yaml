@@ -41,8 +41,6 @@ dependencies:
   crypto: ^2.0.6
   path_provider: ^1.1.0
   onesignal_flutter: ^2.1.0
-  geohash: ^0.2.1
-  clustering_google_maps: ^0.1.2
   flutter:
     sdk: flutter
 
