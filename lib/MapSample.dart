@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+//import 'package:place_picker/place_picker.dart';
 
 import 'ListModel.dart';
 import 'Merchant.dart';
@@ -79,6 +80,15 @@ class MapSampleState extends State<MapSample> {
   }
 
   LatLng latLngLastParsedItem;
+
+  /*void _showPlacePicker() async {
+    LocationResult result = await Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) =>
+            PlacePicker("YOUR API KEY")));
+
+    // Handle the result in your way
+    print(result);
+  }*/
 
   Future<Set<Marker>> parseListBuildMarkers(ctx) async {
     //if (getTotalLengthOFAllLists() == allMarkers.length) allMarkers.clear();

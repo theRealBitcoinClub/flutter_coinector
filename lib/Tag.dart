@@ -147,7 +147,7 @@ class Tag {
     'DASH ₿', //59
     'BTC ₿',
     'BCH ₿',
-    'ANYPAY ₿',
+    'Anypay ₿',
     'ETH ₿',
     'HotDog 🌭', //64
     'Fast ⏩',
@@ -155,7 +155,7 @@ class Tag {
     'Sushi 🍣',
     'Moto 🛵',
     'Coche 🚘', //69
-    'ELIPAY ₿',
+    'Elipay ₿',
     'Chicken 🐔',
     'Rabbit 🐰',
     'Potato 🥔',
@@ -256,7 +256,13 @@ class Tag {
     'Izzy 🍵',
     'Matcha 🍵',
     'Oden 🍢', //170
-    'Latte ☕'
+    'Latte ☕',
+    'DashText ₿',
+    'CoinTigo ₿',
+    'CoinText ₿',
+    'Salamantex ₿',
+    'CryptoBuyer ₿',
+    'XPay ₿'
   };
 
   static final tagTextJP1 = const {
@@ -431,7 +437,13 @@ class Tag {
     'イジー🍵',
     '抹茶🍵',
     'おでん🍢',
-    'ラテ☕'
+    'ラテ☕',
+    '🍔🍔🍔DashText ₿',
+    '🍔🍔🍔CoinTigo ₿',
+    '🍔🍔🍔CoinText ₿',
+    '🍔🍔🍔Salamantex ₿',
+    '🍔🍔🍔CryptoBuyer ₿',
+    '🍔🍔🍔XPay ₿'
   };
   /*
   static final tagTextJP1 = const {
@@ -780,7 +792,13 @@ class Tag {
     'ijī 🍵',
     '🍔🍔🍔matcha 🍵',
     'oden 🍢',
-    'rate ☕'
+    'rate ☕',
+    '🍔🍔🍔DashText ₿',
+    '🍔🍔🍔CoinTigo ₿',
+    '🍔🍔🍔CoinText ₿',
+    '🍔🍔🍔Salamantex ₿',
+    '🍔🍔🍔CryptoBuyer ₿',
+    '🍔🍔🍔XPay ₿'
   };
   static final tagTextINDONESIA = const {
     'Pedas 🌶️', //0
@@ -954,7 +972,13 @@ class Tag {
     '🍔🍔🍔Izzy 🍵',
     '🍔🍔🍔Matcha 🍵',
     '🍔🍔🍔Oden 🍢', //170
-    '🍔🍔🍔Latte ☕'
+    '🍔🍔🍔Latte ☕',
+    '🍔🍔🍔DashText ₿',
+    '🍔🍔🍔CoinTigo ₿',
+    '🍔🍔🍔CoinText ₿',
+    '🍔🍔🍔Salamantex ₿',
+    '🍔🍔🍔CryptoBuyer ₿',
+    '🍔🍔🍔XPay ₿'
   };
 
   static final tagTextIT = const {
@@ -1129,7 +1153,13 @@ class Tag {
     '🍔🍔🍔Izzy 🍵',
     '🍔🍔🍔Matcha 🍵',
     '🍔🍔🍔Oden 🍢', //170
-    '🍔🍔🍔Latte ☕'
+    '🍔🍔🍔Latte ☕',
+    '🍔🍔🍔DashText ₿',
+    '🍔🍔🍔CoinTigo ₿',
+    '🍔🍔🍔CoinText ₿',
+    '🍔🍔🍔Salamantex ₿',
+    '🍔🍔🍔CryptoBuyer ₿',
+    '🍔🍔🍔XPay ₿'
   };
 
   static final tagTextFR = const {
@@ -1304,7 +1334,13 @@ class Tag {
     '🍔🍔🍔Izzy 🍵',
     '🍔🍔🍔Matcha 🍵',
     '🍔🍔🍔Oden 🍢', //170
-    'Lait ☕'
+    'Lait ☕',
+    '🍔🍔🍔DashText ₿',
+    '🍔🍔🍔CoinTigo ₿',
+    '🍔🍔🍔CoinText ₿',
+    '🍔🍔🍔Salamantex ₿',
+    '🍔🍔🍔CryptoBuyer ₿',
+    '🍔🍔🍔XPay ₿'
   };
 
   static final tagTextDE = const {
@@ -1479,7 +1515,13 @@ class Tag {
     '🍔🍔🍔Izzy 🍵',
     '🍔🍔🍔Matcha 🍵',
     '🍔🍔🍔Oden 🍢', //170
-    'Milch ☕'
+    'Milch ☕',
+    '🍔🍔🍔DashText ₿',
+    '🍔🍔🍔CoinTigo ₿',
+    '🍔🍔🍔CoinText ₿',
+    '🍔🍔🍔Salamantex ₿',
+    '🍔🍔🍔CryptoBuyer ₿',
+    '🍔🍔🍔XPay ₿'
   };
 
   static final tagTextES = const {
@@ -1654,7 +1696,13 @@ class Tag {
     '🍔🍔🍔Izzy 🍵',
     '🍔🍔🍔Matcha 🍵',
     '🍔🍔🍔Oden 🍢', //170
-    '🍔🍔🍔Latte ☕'
+    '🍔🍔🍔Latte ☕',
+    '🍔🍔🍔DashText ₿',
+    '🍔🍔🍔CoinTigo ₿',
+    '🍔🍔🍔CoinText ₿',
+    '🍔🍔🍔Salamantex ₿',
+    '🍔🍔🍔CryptoBuyer ₿',
+    '🍔🍔🍔XPay ₿'
   };
 
   static final titleTags = const {
@@ -1892,8 +1940,6 @@ class Tag {
     'Delicias',
     'Pasteles',
     'Pasteleria',
-    'Panaderia',
-    'Subway', //TODO BLINK REVIEW BUTTON like the search button
-    'Papa John',
+    'Panaderia', //TODO BLINK REVIEW & LOCATE BUTTON like the search button
   };
 }

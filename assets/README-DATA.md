@@ -12,8 +12,8 @@ as-jap-tok.json <- Asia-Japan-Tokyo
 au-nsw-sid.json <- Australia-New South Wales-Sidney (All states beginning with new are sorted differently)
 a-nha-por.json <- America-New Hampshire-Portsmouth (U.S.A. does not exist in this database because it is a military not regional classification, just like NATO or EU which is not Europe)
 af-nig-lag.json <- Africa, Nigeria, Lagos
-europe.json <- Europe (contains an array of all the filenames within europe)
-america-json <- America
+e.json <- Europe (contains an array of all the filenames within europe)
+am.json <- America
 e-spa.json <- Europe, Spain (contains an array of all the filenames within spain)
 
 ## Search algorithm

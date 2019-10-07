@@ -17,6 +17,7 @@ environment:
   sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
+  #place_picker: ^0.9.9
   fluttertoast: ^3.1.0
   #flutter_launcher_icons: ^0.7.0
   permission_handler: ^3.1.0
@@ -76,16 +77,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/youaresatoshi0.gif
-    - assets/youaresatoshi1.gif
     - assets/flutter_i18n/
-    - assets/marker6.png
-    - assets/marker5.png
-    - assets/marker4.png
-    - assets/marker3.png
-    - assets/marker2.png
-    - assets/marker1.png
-    - assets/marker0.png
     - assets/placeholder640x480.jpg
     - assets/addr.json
     - assets/am.json

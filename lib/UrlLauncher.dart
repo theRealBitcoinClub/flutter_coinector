@@ -118,7 +118,8 @@ class UrlLauncher {
   static void launchEmailClientUpdatePaymentDetails(
       ctx, Merchant m, onEmailClientNotFound) {
     var urlString =
-        "mailto:trbc@bitcoinmap.cash,bitcoinmap@fire.fundersclub.com,incoming+bmap-cash-bmap-cash-12646634-issue-@incoming.gitlab.com?subject=Update Coinector: " +
+        "mailto:trbc@bitcoinmap.cash?subject=Update Coinector: " +
+            //"mailto:trbc@bitcoinmap.cash,bitcoinmap@fire.fundersclub.com,incoming+bmap-cash-bmap-cash-12646634-issue-@incoming.gitlab.com?subject=Update Coinector: " +
             m.id;
     _launchEmail(ctx, urlString, onEmailClientNotFound);
   }
