@@ -208,10 +208,7 @@ class MapSampleState extends State<MapSample> {
                     ? allMarkers.elementAt(0).position
                     : initialCamPosFallback,
             onCameraIdle: () async {
-              var parsedMarkers = await parseListAndZoomToSingleResult(context);
-              setState(() {
-                allMarkers = parsedMarkers;
-              });
+              _parseAndUpdateMarkers();
             },
             onMapCreated: (GoogleMapController controller) {
               _googleMapController = controller;
@@ -229,6 +226,13 @@ class MapSampleState extends State<MapSample> {
           icon: Icon(Icons.close),
         ),
       );
+    });
+  }
+
+  _parseAndUpdateMarkers() async {
+    var parsedMarkers = await parseListAndZoomToSingleResult(context);
+    setState(() {
+      allMarkers = parsedMarkers;
     });
   }
 
