@@ -258,9 +258,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     );
   }
 
-  //TODO translate all tags to spanish, japanese, french and german
-  //TODO email service in atleast 3 languages, English, Spanish, German
-
   Widget wrapBuildSelectedTagsList() {
     return allSelectedTags.length > 0
         ? SingleChildScrollView(
@@ -340,17 +337,17 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void submitData(ctx) async {
-    Dialogs.confirmSendEmail(context, () {
-      UrlLauncher.launchEmailClientAddPlace(
-          ctx, inputDASH, inputBCH, buildJsonToSubmitViaEmail(), () {
-        Toaster.showToastEmailNotConfigured(ctx);
-      });
+    //Dialogs.confirmSendEmail(context, () {
+    UrlLauncher.launchEmailClientAddPlace(
+        ctx, inputDASH, inputBCH, buildJsonToSubmitViaEmail(), () {
+      Toaster.showToastEmailNotConfigured(ctx);
     });
-    Dialogs.confirmDownloadPdf(context, () {
+    //});
+    /*Dialogs.confirmDownloadPdf(context, () {
       UrlLauncher.launchQrCodeGeneratorUrl(
           dash: hasMinInput(inputDASH) ? inputDASH : "",
           bch: hasMinInput(inputBCH) ? inputBCH : "");
-    });
+    });*/
   }
 
   bool hasMinInput(input) => input.length > MIN_INPUT_BCHyDASH;

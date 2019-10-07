@@ -128,10 +128,11 @@ class CardItem extends StatelessWidget {
   }
 
   Widget buildBackGroundImageFallback(BuildContext ctx) {
-    var img = "assets/youaresatoshi" + (index % 2).toString() + ".gif";
+    //var img = "assets/youaresatoshi" + (index % 2).toString() + ".gif";
+    var img = "assets/placeholder640x480.jpg";
     return FadeInImage.assetNetwork(
       fadeInCurve: Curves.decelerate,
-      fadeInDuration: Duration(milliseconds: 3000),
+      fadeInDuration: Duration(milliseconds: 300),
       placeholder: img,
       image: img,
       height: 320,

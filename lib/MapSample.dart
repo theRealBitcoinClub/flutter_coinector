@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+//import 'package:place_picker/place_picker.dart';
 
 import 'ListModel.dart';
 import 'Merchant.dart';
@@ -15,7 +16,8 @@ import 'pages.dart';
 var sharedPrefKeyCounterToastGeneral = "sharedPrefKeyCounterToastGeneral2";
 var sharedPrefKeyCounterToastSpecific = "sharedPrefKeyCounterToastSpecific2";
 const initialZoomFallbackWhenPositionIsProvided = 15.0;
-const String MAP_STYLE = '[{"elementType":"geometry","stylers":[{"color":"#212121"}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"elementType":"labels.text.fill","stylers":[{"color":"#757575"}]},{"elementType":"labels.text.stroke","stylers":[{"color":"#212121"}]},{"featureType":"administrative","elementType":"geometry","stylers":[{"color":"#757575"},{"visibility":"off"}]},{"featureType":"administrative.country","elementType":"labels.text.fill","stylers":[{"color":"#9e9e9e"}]},{"featureType":"administrative.land_parcel","stylers":[{"visibility":"off"}]},{"featureType":"administrative.locality","elementType":"labels.text.fill","stylers":[{"color":"#bdbdbd"}]},{"featureType":"poi","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels.text.fill","stylers":[{"color":"#757575"}]},{"featureType":"poi.park","stylers":[{"visibility":"on"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#181818"}]},{"featureType":"poi.park","elementType":"labels.text.fill","stylers":[{"color":"#616161"}]},{"featureType":"poi.park","elementType":"labels.text.stroke","stylers":[{"color":"#1b1b1b"}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"color":"#2c2c2c"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"color":"#8a8a8a"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#373737"}]},{"featureType":"road.highway","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#3c3c3c"}]},{"featureType":"road.highway.controlled_access","stylers":[{"visibility":"off"}]},{"featureType":"road.highway.controlled_access","elementType":"geometry","stylers":[{"color":"#4e4e4e"}]},{"featureType":"road.local","elementType":"labels.text.fill","stylers":[{"color":"#616161"}]},{"featureType":"transit","stylers":[{"visibility":"on"}]},{"featureType":"transit","elementType":"labels.text.fill","stylers":[{"color":"#757575"}]},{"featureType":"transit.station.airport","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"}]},{"featureType":"water","elementType":"labels.text.fill","stylers":[{"color":"#3d3d3d"}]}]';
+const String MAP_STYLE =
+    '[{"elementType":"geometry","stylers":[{"color":"#212121"}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"elementType":"labels.text.fill","stylers":[{"color":"#757575"}]},{"elementType":"labels.text.stroke","stylers":[{"color":"#212121"}]},{"featureType":"administrative","elementType":"geometry","stylers":[{"color":"#757575"},{"visibility":"off"}]},{"featureType":"administrative.country","elementType":"labels.text.fill","stylers":[{"color":"#9e9e9e"}]},{"featureType":"administrative.land_parcel","stylers":[{"visibility":"off"}]},{"featureType":"administrative.locality","elementType":"labels.text.fill","stylers":[{"color":"#bdbdbd"}]},{"featureType":"poi","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels.text.fill","stylers":[{"color":"#757575"}]},{"featureType":"poi.park","stylers":[{"visibility":"on"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#181818"}]},{"featureType":"poi.park","elementType":"labels.text.fill","stylers":[{"color":"#616161"}]},{"featureType":"poi.park","elementType":"labels.text.stroke","stylers":[{"color":"#1b1b1b"}]},{"featureType":"road","elementType":"geometry.fill","stylers":[{"color":"#2c2c2c"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"color":"#8a8a8a"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#373737"}]},{"featureType":"road.highway","stylers":[{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#3c3c3c"}]},{"featureType":"road.highway.controlled_access","stylers":[{"visibility":"off"}]},{"featureType":"road.highway.controlled_access","elementType":"geometry","stylers":[{"color":"#4e4e4e"}]},{"featureType":"road.local","elementType":"labels.text.fill","stylers":[{"color":"#616161"}]},{"featureType":"transit","stylers":[{"visibility":"on"}]},{"featureType":"transit","elementType":"labels.text.fill","stylers":[{"color":"#757575"}]},{"featureType":"transit.station.airport","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#000000"}]},{"featureType":"water","elementType":"labels.text.fill","stylers":[{"color":"#3d3d3d"}]}]';
 
 class MapSample extends StatefulWidget {
   final List<ListModel<Merchant>> allLists;
@@ -46,6 +48,8 @@ class MapSampleState extends State<MapSample> {
 
   static const SHOW_HINT_MAX_COUNTER = HINT_COUNT_TOTAL * 2;
 
+  GoogleMapController _googleMapController;
+
   MapSampleState(this.allLists, this.position, this.initialZoomLevel);
   Set<Marker> allMarkers = Set.from([]);
 
@@ -65,8 +69,8 @@ class MapSampleState extends State<MapSample> {
     }*/
   }
 
-  Set<Marker> parseListAndZoomToSingleResult(ctx) {
-    allMarkers = parseListBuildMarkers(ctx);
+  Future<Set<Marker>> parseListAndZoomToSingleResult(ctx) async {
+    allMarkers = await parseListBuildMarkers(ctx);
     if (allMarkers.length == 1) {
       initialCamPosFallback = CameraPosition(
           target: latLngLastParsedItem,
@@ -77,32 +81,44 @@ class MapSampleState extends State<MapSample> {
 
   LatLng latLngLastParsedItem;
 
-  Set<Marker> parseListBuildMarkers(ctx) {
-    if (getTotalLengthOFAllLists() == allMarkers.length) allMarkers.clear();
+  /*void _showPlacePicker() async {
+    LocationResult result = await Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) =>
+            PlacePicker("YOUR API KEY")));
+
+    // Handle the result in your way
+    print(result);
+  }*/
+
+  Future<Set<Marker>> parseListBuildMarkers(ctx) async {
+    //if (getTotalLengthOFAllLists() == allMarkers.length) allMarkers.clear();
+    allMarkers.clear();
+    final latLngBounds = await _googleMapController.getVisibleRegion();
+    //print("LATLNG:" + latLngBounds.contains(LatLng(42.0, -111.0)).toString());
     for (int tabCounter = 0; tabCounter < allLists.length; tabCounter++) {
       ListModel<Merchant> listMerchants = allLists[tabCounter];
       for (int itemCounter = 0;
           itemCounter < listMerchants.length;
           itemCounter++) {
         var merchant = listMerchants[itemCounter];
-        latLngLastParsedItem =
-            LatLng(double.parse(merchant.x), double.parse(merchant.y));
-        allMarkers.add(Marker(
-            onTap: () {
-              if (counterToastSpecific >= SHOW_HINT_MAX_COUNTER) return;
-              Toaster.showInstructionToast(ctx, counterToastSpecific,
-                  HINT_COUNT_TOTAL, Toaster.getMerchantSpecificToastHint);
+        latLngLastParsedItem = LatLng(merchant.x, merchant.y);
+        if (latLngBounds.contains(latLngLastParsedItem))
+          allMarkers.add(Marker(
+              onTap: () {
+                if (counterToastSpecific >= SHOW_HINT_MAX_COUNTER) return;
+                Toaster.showInstructionToast(ctx, counterToastSpecific,
+                    HINT_COUNT_TOTAL, Toaster.getMerchantSpecificToastHint);
 
-              setState(() {
-                counterToastSpecific++;
-              });
-              Toaster.persistToastCounter(
-                  sharedPrefKeyCounterToastSpecific, counterToastSpecific);
-            },
-            infoWindow: buildInfoWindow(merchant),
-            icon: getMarkerColor(merchant),
-            markerId: MarkerId(merchant.id),
-            position: latLngLastParsedItem));
+                setState(() {
+                  counterToastSpecific++;
+                });
+                Toaster.persistToastCounter(
+                    sharedPrefKeyCounterToastSpecific, counterToastSpecific);
+              },
+              infoWindow: buildInfoWindow(merchant),
+              icon: getMarkerColor(merchant),
+              markerId: MarkerId(merchant.id),
+              position: latLngLastParsedItem));
       }
     }
     return allMarkers;
@@ -191,12 +207,12 @@ class MapSampleState extends State<MapSample> {
                 : hasMarkers()
                     ? allMarkers.elementAt(0).position
                     : initialCamPosFallback,
+            onCameraIdle: () async {
+              _parseAndUpdateMarkers();
+            },
             onMapCreated: (GoogleMapController controller) {
+              _googleMapController = controller;
               controller.setMapStyle(MAP_STYLE);
-              var parsedMarkers = parseListAndZoomToSingleResult(context);
-              setState(() {
-                allMarkers = parsedMarkers;
-              });
               _controller.complete(controller);
             },
           ),
@@ -210,6 +226,13 @@ class MapSampleState extends State<MapSample> {
           icon: Icon(Icons.close),
         ),
       );
+    });
+  }
+
+  _parseAndUpdateMarkers() async {
+    var parsedMarkers = await parseListAndZoomToSingleResult(context);
+    setState(() {
+      allMarkers = parsedMarkers;
     });
   }
 

@@ -4,7 +4,7 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:onesignal/onesignal.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:synchronized/synchronized.dart';
@@ -25,6 +25,8 @@ import 'pages.dart';
 import 'package:flutter_i18n/flutter_i18n_delegate.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+//import 'package:geohash/geohash.dart';
+//import 'package:clustering_google_maps/clustering_google_maps.dart';
 
 class AnimatedListSample extends StatefulWidget {
   @override
@@ -229,11 +231,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       return false;
     }
 
-    double distanceInMeters = await Geolocator().distanceBetween(
-        position.latitude,
-        position.longitude,
-        double.parse(m.x),
-        double.parse(m.y));
+    double distanceInMeters = await Geolocator()
+        .distanceBetween(position.latitude, position.longitude, m.x, m.y);
 
     m.distanceInMeters = distanceInMeters;
     var distance = distanceInMeters.round().toString() + " meter";
@@ -308,8 +307,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         !_containsLocation(m2, location) &&
         !_containsTitle(m2, location)) return;
     if (filterWordIndex == -1)
-      mapPosition =
-          Position(latitude: double.parse(m2.x), longitude: double.parse(m2.y));
+      mapPosition = Position(latitude: m2.x, longitude: m2.y);
 
     switch (m2.type) {
       case 0:
