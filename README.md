@@ -8,9 +8,6 @@ https://play.google.com/store/apps/details?id=cash.bitcoinmap.coinector
 
 # Support
 
-If you like this app you can positively influence the programmer to develop more similar free open source apps by donating to:
-https://bitbacker.io/user/realbitcoinclub/
-
 BCH:qqp0kpntfxygx3e6d4mr9c5ef5ucxdcjk5zkgtevss
 DASH:XiHdw8SVoNtJqno6GnxKQS2Snxh7BTuR39
 
