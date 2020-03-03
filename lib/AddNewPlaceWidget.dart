@@ -337,11 +337,13 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void submitData(ctx) async {
+    UrlLauncher.launchSubmitForm();
     //Dialogs.confirmSendEmail(context, () {
+    /*
     UrlLauncher.launchEmailClientAddPlace(
         ctx, inputDASH, inputBCH, buildJsonToSubmitViaEmail(), () {
       Toaster.showToastEmailNotConfigured(ctx);
-    });
+    });*/
     //});
     /*Dialogs.confirmDownloadPdf(context, () {
       UrlLauncher.launchQrCodeGeneratorUrl(

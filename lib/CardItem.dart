@@ -121,9 +121,10 @@ class CardItem extends StatelessWidget {
           ],
         ),
         onTap: () {
+          /*
           Dialogs.confirmMakeDonation(ctx, () {
             UrlLauncher.launchDonateUrl();
-          });
+          */
         });
   }
 

@@ -53,6 +53,10 @@ class UrlLauncher {
     launchURI(url);
   }
 
+  static void launchSubmitForm() {
+    launchURI("http://bitcoinmap.cash/submit");
+  }
+
   static void launchQrCodeGeneratorUrl(
       {String bch = "", String dash = ""}) async {
     String targetUrl =
@@ -82,15 +86,18 @@ class UrlLauncher {
     String countryCode = getLocale(ctx);
     //print("countryCode:" + countryCode);
     var urlString = "mailto:" +
+        "trbc@bitcoinmap.cash" +
+        /*
         countryCode +
         "-bmap.cash@therealbitcoin.club," +
-        /*countryCode +
+        countryCode +
         "-anypay@therealbitcoin.club" +*/
         /*(hasInput(inputDASH)
             ? getDASHReceiverAdr(hasInput(inputDASH), countryCode)
             : getBCHReceiverAdr(hasInput(inputBCH), countryCode)) +*/
         "?subject=" +
-        (hasInput(inputDASH) ? inputDASH : inputBCH) +
+        "Add Place Coinector" +
+        /* (hasInput(inputDASH) ? inputDASH : inputBCH) +*/
         "&body=" +
         FlutterI18n.translate(ctx, "email_text_add_new_place") +
         content;
@@ -117,10 +124,9 @@ class UrlLauncher {
 
   static void launchEmailClientUpdatePaymentDetails(
       ctx, Merchant m, onEmailClientNotFound) {
-    var urlString =
-        "mailto:trbc@bitcoinmap.cash?subject=Update Coinector: " +
-            //"mailto:trbc@bitcoinmap.cash,bitcoinmap@fire.fundersclub.com,incoming+bmap-cash-bmap-cash-12646634-issue-@incoming.gitlab.com?subject=Update Coinector: " +
-            m.id;
+    var urlString = "mailto:trbc@bitcoinmap.cash?subject=Update Coinector: " +
+        //"mailto:trbc@bitcoinmap.cash,bitcoinmap@fire.fundersclub.com,incoming+bmap-cash-bmap-cash-12646634-issue-@incoming.gitlab.com?subject=Update Coinector: " +
+        m.id;
     _launchEmail(ctx, urlString, onEmailClientNotFound);
   }
 }
