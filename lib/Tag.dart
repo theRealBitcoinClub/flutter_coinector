@@ -144,7 +144,7 @@ class Tag {
     'TV 📺',
     'Retro 🦄',
     'Feta 🐐',
-    'DASH ₿', //59
+    'DASH Ð', //59
     'BTC ₿',
     'BCH ₿',
     'Anypay ₿',
@@ -257,7 +257,7 @@ class Tag {
     'Matcha 🍵',
     'Oden 🍢', //170
     'Latte ☕',
-    'DashText ₿',
+    'DASHText Ð',
     'CoinTigo ₿',
     'CoinText ₿',
     'Salamantex ₿',
@@ -438,7 +438,7 @@ class Tag {
     '抹茶🍵',
     'おでん🍢',
     'ラテ☕',
-    '🍔🍔🍔DashText ₿',
+    '🍔🍔🍔DASHText Ð',
     '🍔🍔🍔CoinTigo ₿',
     '🍔🍔🍔CoinText ₿',
     '🍔🍔🍔Salamantex ₿',
@@ -506,7 +506,7 @@ class Tag {
     'TV 📺',
     'Retro 🦄',
     'Feta 🐐',
-    'DASH ₿',
+    'DASH Ð',
     'BTC ₿',
     'BCH ₿',
     'BSV ₿',
@@ -793,7 +793,7 @@ class Tag {
     '🍔🍔🍔matcha 🍵',
     'oden 🍢',
     'rate ☕',
-    '🍔🍔🍔DashText ₿',
+    '🍔🍔🍔DASHText Ð',
     '🍔🍔🍔CoinTigo ₿',
     '🍔🍔🍔CoinText ₿',
     '🍔🍔🍔Salamantex ₿',
@@ -860,7 +860,7 @@ class Tag {
     '🍔🍔🍔TV 📺',
     '🍔🍔🍔Retro 🦄',
     '🍔🍔🍔Feta 🐐',
-    '🍔🍔🍔DASH ₿', //59
+    '🍔🍔🍔DASH Ð', //59
     '🍔🍔🍔BTC ₿',
     '🍔🍔🍔BCH ₿',
     '🍔🍔🍔BSV ₿',
@@ -973,7 +973,7 @@ class Tag {
     '🍔🍔🍔Matcha 🍵',
     '🍔🍔🍔Oden 🍢', //170
     '🍔🍔🍔Latte ☕',
-    '🍔🍔🍔DashText ₿',
+    '🍔🍔🍔DASHText Ð',
     '🍔🍔🍔CoinTigo ₿',
     '🍔🍔🍔CoinText ₿',
     '🍔🍔🍔Salamantex ₿',
@@ -1041,7 +1041,7 @@ class Tag {
     'Tivù 📺',
     'Retrò 🦄',
     '🍔🍔🍔Feta 🐐',
-    '🍔🍔🍔DASH ₿', //59
+    '🍔🍔🍔DASH Ð', //59
     '🍔🍔🍔BTC ₿',
     '🍔🍔🍔BCH ₿',
     '🍔🍔🍔BSV ₿',
@@ -1154,7 +1154,7 @@ class Tag {
     '🍔🍔🍔Matcha 🍵',
     '🍔🍔🍔Oden 🍢', //170
     '🍔🍔🍔Latte ☕',
-    '🍔🍔🍔DashText ₿',
+    '🍔🍔🍔DASHText Ð',
     '🍔🍔🍔CoinTigo ₿',
     '🍔🍔🍔CoinText ₿',
     '🍔🍔🍔Salamantex ₿',
@@ -1222,7 +1222,7 @@ class Tag {
     'Télé 📺',
     'Rétro 🦄',
     '🍔🍔🍔Feta 🐐',
-    '🍔🍔🍔DASH ₿', //59
+    '🍔🍔🍔DASH Ð', //59
     '🍔🍔🍔BTC ₿',
     '🍔🍔🍔BCH ₿',
     '🍔🍔🍔BSV ₿',
@@ -1335,7 +1335,7 @@ class Tag {
     '🍔🍔🍔Matcha 🍵',
     '🍔🍔🍔Oden 🍢', //170
     'Lait ☕',
-    '🍔🍔🍔DashText ₿',
+    '🍔🍔🍔DASHText Ð',
     '🍔🍔🍔CoinTigo ₿',
     '🍔🍔🍔CoinText ₿',
     '🍔🍔🍔Salamantex ₿',
@@ -1403,7 +1403,7 @@ class Tag {
     'Fernseher 📺',
     '🍔🍔🍔Retro 🦄',
     'Ziegenkäse 🐐',
-    'DASH ₿', //59
+    'DASH Ð', //59
     'BTC ₿',
     'BCH ₿',
     'BSV ₿',
@@ -1516,7 +1516,7 @@ class Tag {
     '🍔🍔🍔Matcha 🍵',
     '🍔🍔🍔Oden 🍢', //170
     'Milch ☕',
-    '🍔🍔🍔DashText ₿',
+    '🍔🍔🍔DASHText Ð',
     '🍔🍔🍔CoinTigo ₿',
     '🍔🍔🍔CoinText ₿',
     '🍔🍔🍔Salamantex ₿',
@@ -1584,7 +1584,7 @@ class Tag {
     'Tele 📺',
     '🍔🍔🍔Retro 🦄',
     '🍔🍔🍔Feta 🐐',
-    'DASH ₿', //59
+    'DASH Ð', //59
     '🍔🍔🍔BTC ₿',
     '🍔🍔🍔BCH ₿',
     '🍔🍔🍔BSV ₿',
@@ -1697,7 +1697,7 @@ class Tag {
     '🍔🍔🍔Matcha 🍵',
     '🍔🍔🍔Oden 🍢', //170
     '🍔🍔🍔Latte ☕',
-    '🍔🍔🍔DashText ₿',
+    '🍔🍔🍔DASHText Ð',
     '🍔🍔🍔CoinTigo ₿',
     '🍔🍔🍔CoinText ₿',
     '🍔🍔🍔Salamantex ₿',

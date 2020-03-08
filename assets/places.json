@@ -385,7 +385,7 @@
 ,{"p":"jokersbar","x":"37.9147985","y":"139.0619746","n":"JOKER'S BAR","t":"2","c":"4","s":"4.0","d":"0","a":"127,33,32,31","l":"1 Chome-6-9 Higashiodori, Chuo Ward, Niigata, 950-0087, Japan"}
 ,{"p":"coworkingtokyo","x":"35.6680691","y":"139.7320423","n":"Coworking Tokyo Chapter - ninetytwo13","t":"999","c":"26","s":"4.5","d":"0","a":"59,60,61,104","l":"9 Chome-2-13 Akasaka, Tokyo, 107-0052, Japan"}
 ,{"p":"sonidos","x":"35.6624155","y":"139.7349178","n":"Sonidos Bar Roppongi ソニドスバー六本木","t":"2","c":"28","s":"4.3","d":"0","a":"127,33,32,31","l":"SHIMOJOU building B1F 3-14-8, Roppongi, Minayo-ku, Tokyo 106-0031, Japan"}
-,{"p":"ramenjinanbodos","x":"35.7384871","y":"139.662336","n":"Ramen - 麺処 次男房 桜台店","t":"0","c":"45","s":"4.0","d":"0","a":"135,100,97,104","l":"1 Chome-4-7 Sakuradai, Nerima City, Tokyo 176-0002"}
+,{"p":"ramenjinanbodos","x":"35.7384871","y":"139.662336","n":"Ramen - 麺処 次男房 桜台店","t":"0","c":"45","s":"4.0","d":"0","a":"135,100,97,104","l":"1 Chome-4-7 Sakuradai, Nerima City, Tokyo 176-0002, Japan"}
 ,{"p":"ramenjinanbo","x":"35.7201679","y":"139.65248","n":"Ramen - 鶏白湯ラーメン麺処 次男房","t":"0","c":"135","s":"4.4","d":"0","a":"135,100,97,104","l":"6 Chome-3-4 Nogata, Nakano City, Tokyo 165-0027, Japan"}
 ,{"p":"dotblue","x":"35.6698022","y":"139.732995","n":"dot&blue","t":"2","c":"58","s":"4.3","d":"0","a":"127,33,32,31","l":"Japan, 〒107-0052 Tokyo, Minato City, Akasaka, 7 Chome−9−7 バルビゾン74 1F"}
 ,{"p":"numberfive","x":"35.662842","y":"139.7335174","n":"No.5","t":"2","c":"21","s":"4.0","d":"0","a":"61,31,104,104","l":"Japan, 〒106-0032 Tokyo, Minato City, Roppongi, 3 Chome−12−5 STELLA六本木 5F"}
@@ -864,7 +864,6 @@
 ,{"p":"pollosdonguillo","x":"6.2464803","y":"-75.5924626","n":"Pollos Don Guillo Laureles","t":"0","c":"9","s":"4.4","d":"0","a":"59,104,104,104","l":"Cl. 40 #03, Medellín, Antioquia, Colombia"}
 ,{"p":"elcompy","x":"6.2472358","y":"-75.590331","n":"El Compy Delicias venezolanas","t":"0","c":"61","s":"4.4","d":"0","a":"59,104,104,104","l":"#70-201 a, Cl. 41A ##70-130, Medellín, Antioquia, Colombia"}
 ,{"p":"tremendaspapitas","x":"6.2483173","y":"-75.5924451","n":"Tremendas Papitas Increíbles","t":"0","c":"2","s":"5.0","d":"0","a":"59,104,104,104","l":"Cra. 73 ##42-15, Medellín, Antioquia, Colombia"}
-,{"p":"tiendaderejagris","x":"6.2249052","y":"-75.5857862","n":"Tienda la Reja Gris","t":"3","c":"0","s":"0.0","d":"0","a":"59,104,104,104","l":"Cl. 24 #65e-13, Medellín, Antioquia, Colombia"}
 ,{"p":"costillasburgers","x":"6.2467243","y":"-75.5924468","n":"Costillas & Burgers","t":"0","c":"103","s":"4.3","d":"0","a":"59,104,104,104","l":"Cl. 40 ##73-4, Medellín, Antioquia, Colombia"}
 ,{"p":"fastdog","x":"6.2457927","y":"-75.5888287","n":"Fast Dog","t":"0","c":"12","s":"3.9","d":"0","a":"59,104,104,104","l":"Cq. 3 #69-38, Medellín, Antioquia, Colombia"}
 ,{"p":"creapizza","x":"6.17526","y":"-75.583033","n":"Crea Pizza","t":"0","c":"22","s":"4.5","d":"0","a":"59,104,104,104","l":"# 32 C SUR 31, Dg. 32d, Envigado, Antioquia, Colombia"}
