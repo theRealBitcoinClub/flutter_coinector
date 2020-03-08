@@ -21,6 +21,7 @@ import 'MyColors.dart';
 import 'SearchDemoSearchDelegate.dart';
 import 'Suggestions.dart';
 import 'Tag.dart';
+import 'UrlLauncher.dart';
 import 'pages.dart';
 import 'package:flutter_i18n/flutter_i18n_delegate.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
@@ -956,7 +957,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void openAddNewPlaceWidget(BuildContext ctx) async {
-    await Navigator.push(
+    UrlLauncher.launchSubmitForm();
+    /*await Navigator.push(
       ctx,
       MaterialPageRoute(
           builder: (buildCtx) => AddNewPlaceWidget(
@@ -967,7 +969,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
               )),
     );
     updateDistanceToAllMerchantsIfNotDoneYet();
-    showSnackBar(ctx, "snackbar_you_are_satoshi");
+    showSnackBar(ctx, "snackbar_you_are_satoshi");*/
   }
 }
 
