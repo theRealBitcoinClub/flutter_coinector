@@ -1,5 +1,6 @@
-[{"p":"gringoloco","x":"-28.0012452","y":"153.4309136","n":"Gringo Loco Cantina","t":"2","c":"168","s":"3.6","d":"0","a":"156,129,138,31","l":"Esplanade, Surfers Paradise QLD, Australia"}
-,{"p":"charlato","x":"43.5681747","y":"172.7590154","n":"Charlato","t":"1","c":"21","s":"5.0","d":"0","a":"61,104,104,104","l":"23 Marriner St, Sumner, Christchurch 8081, New Zealand"}
+[
+  ,{"p":"gringoloco","x":"-28.0012452","y":"153.4309136","n":"Gringo Loco Cantina","t":"2","c":"168","s":"3.6","d":"0","a":"156,129,138,31","l":"Esplanade, Surfers Paradise QLD, Australia"}
+,{"p":"charlato","x":"-43.5681747","y":"172.7590154","n":"Charlato","t":"1","c":"21","s":"5.0","d":"0","a":"60,61,59,104","l":"23 Marriner St, Sumner, Christchurch 8081, New Zealand"}
 ,{"p":"restaurant1903","x":"-31.9444011","y":"115.8634259","n":"1903 Restaurant","t":"0","c":"116","s":"4.3","d":"0","a":"67,100,97,143","l":"Robinson Avenue, Perth WA, Australia"}
 ,{"p":"urbanpizza","x":"-33.885727","y":"151.177249","n":"Urban Pizza Bar","t":"1","c":"83","s":"4.4","d":"0","a":"14,102,109,110","l":"Layton Street, Camperdown NSW, Australia"}
 ,{"p":"verucasalt","x":"-37.885791","y":"144.987916","n":"Veruca Salt","t":"0","c":"84","s":"4.5","d":"0","a":"8,9,11,124","l":"Ormond Road, Elwood VIC, Australia"}
@@ -41,29 +42,29 @@
 ,{"p":"altbrew","x":"-19.2617703","y":"146.815679","n":"Alt Brew","t":"2","c":"3","s":"4.0","d":"0","a":"8,99,29,109","l":"Flinders Street, Townsville City QLD, Australia"}
 ,{"p":"thewatermark","x":"-19.2479035","y":"146.812666","n":"The Watermark Townsville Restaurant & Hotel","t":"0","c":"624","s":"4.3","d":"0","a":"100,97,138,163","l":"The Strand, North Ward QLD, Australia"}
 ,{"p":"thedownunderbar","x":"-16.9212842","y":"145.7754019","n":"The Downunder Bar","t":"2","c":"134","s":"4.5","d":"0","a":"31,32,162,132","l":"Lake Street, Cairns City QLD, Australia"}
-,{"p":"moksharoom","x":"-19.260168","y":"146.8195679","n":"Moksha Room Hair & Beauty","t":"999","c":"11","s":"4.5","d":"0","a":"61,104,104,104","l":"Shop 4/2 Dibbs St, South Townsville QLD 4810, Australia"}
-,{"p":"conviniencestore489","x":"-19.2625694","y":"146.8143262","n":"489 Convenience Store Pty Ltd","t":"3","c":"0","s":"0.0","d":"0","a":"61,104,104,104","l":"489 Flinders St, Townsville QLD 4810, Australia"}
-,{"p":"missiontworepair","x":"-19.2618979","y":"146.8152576","n":"Mission 2 Repair","t":"4","c":"13","s":"4.3","d":"0","a":"61,104,104,104","l":"440 Flinders St, Townsville QLD 4810, Australia"}
-,{"p":"swaggerandjaxx","x":"-19.2662925","y":"146.8102876","n":"Swagger and Jaxx Barber And Coffee","t":"4","c":"44","s":"4.7","d":"0","a":"61,104,104,104","l":"1/679 Flinders St, Townsville QLD 4810, Australia"}
-,{"p":"grandcentralcafe","x":"-19.2671078","y":"146.8114545","n":"Grand Central Cafe","t":"2","c":"8","s":"4.1","d":"0","a":"61,104,104,104","l":"10 Little Fletcher St, Townsville QLD 4810, Australia"}
-,{"p":"stripescoffee","x":"-19.265611","y":"146.7962433","n":"Stripes Coffee","t":"2","c":"23","s":"4.7","d":"0","a":"61,104,104,104","l":"20 Echlin St, West End QLD 4810, Australia"}
-,{"p":"aitkenvalebeautyspot","x":"-19.2971564","y":"146.7693873","n":"Aitkenvale Beauty Spot","t":"999","c":"18","s":"4.9","d":"0","a":"61,104,104,104","l":"260 Ross River Rd, Aitkenvale QLD 4814, Australia"}
-,{"p":"annandaleminimart","x":"-19.3139397","y":"146.7713191","n":"Annandale Mini Mart & Newsagency","t":"3","c":"1","s":"2.0","d":"0","a":"61,104,104,104","l":"56 Yolanda Dr, Annandale QLD 4814, Australia"}
-,{"p":"australianwarfightercoffee","x":"-19.3170437","y":"146.7910452","n":"Australian warfighter coffee","t":"2","c":"0","s":"0.0","d":"0","a":"61,104,104,104","l":"Shop 3, Annandale Shopping Centre, 67 MacArthur Dr, Annandale QLD 4814, Australia"}
-,{"p":"townsvillehelivopters","x":"-19.2440397","y":"146.77583","n":"Townsville Helicopters","t":"999","c":"13","s":"4.7","d":"0","a":"61,104,104,104","l":"153 Old Common Rd, Rowes Bay QLD 4814, Australia"}
-,{"p":"australianlaundries","x":"-19.272882","y":"146.760418","n":"Australian Laundries Pty Ltd","t":"999","c":"3","s":"3.7","d":"0","a":"61,104,104,104","l":"369 Bayswater Rd, Garbutt QLD 4812, Australia"}
-,{"p":"xfittropics","x":"-19.2351477","y":"146.6983311","n":"Crossfit Tropics","t":"999","c":"7","s":"5.0","d":"0","a":"61,104,104,104","l":"89 Barramundi Circuit, Burdell QLD 4818, Australia"}
-,{"p":"slapandpickle","x":"-16.9231245","y":"145.7741742","n":"Slap and Pickle Sandwich & Tapas Bar","t":"2","c":"51","s":"4.7","d":"0","a":"61,104,104,104","l":"62 Shields St, Cairns City QLD 4870, Australia"}
-,{"p":"blvktempletattoo","x":"-16.922754","y":"145.7756783","n":"Blvk Temple Tattoo","t":"999","c":"38","s":"4.8","d":"0","a":"61,104,104,104","l":"Shop 3/87 Lake St, Cairns City QLD 4870, Australia"}
-,{"p":"australianway","x":"-27.386369","y":"153.119478","n":"Australian Way","t":"4","c":"0","s":"0.0","d":"0","a":"61,104,104,104","l":"Shop 4C20 Departures Lvl 4 Brisbane International Airport, Eagle Farm QLD 4009, Australia"}
-,{"p":"carryonluggage","x":"-27.4040072","y":"153.1093885","n":"Carry On Luggage Store","t":"4","c":"1","s":"1.0","d":"0","a":"61,104,104,104","l":"Shop 4L01 Departures Level, Brisbane Intenational Airport, Eagle Farm QLD 4009, Australia"}
-,{"p":"jamrocjamaican","x":"-28.045365","y":"153.407605","n":"JAMROC Jamaican Jerk Chicken","t":"0","c":"97","s":"4.6","d":"0","a":"61,104,104,104","l":"Q Super Centre c51a Corner of Bermuda &, Markeri St, Mermaid Waters QLD 4218, Australia"}
-,{"p":"blackmarkettattoo","x":"-28.0786845","y":"153.3894605","n":"Blackmarket Tattoo Co | Gold Coast Tattoo Studio","t":"999","c":"76","s":"5.0","d":"0","a":"61,104,104,104","l":"1/76 Robina Town Centre Dr, Robina QLD 4226, Australia"}
-,{"p":"createbyrencounter","x":"-33.8307092","y":"151.2238517","n":"CREATE by ReNCOUNTER - Hair Salon","t":"999","c":"0","s":"0.0","d":"0","a":"61,104,104,104","l":"shop 1/3-5 Waters Rd, Neutral Bay NSW 2089, Australia"}
-,{"p":"vrcorner","x":"-33.885529","y":"151.202483","n":"VR Corner","t":"999","c":"51","s":"4.1","d":"0","a":"61,104,104,104","l":"49 Regent St, Chippendale NSW 2008, Australia"}
-,{"p":"cintacottage","x":"-38.3683307","y":"145.7049483","n":"Cinta Cottage","t":"5","c":"5","s":"5.0","d":"0","a":"61,104,104,104","l":"15 Victoria Rd, Loch VIC 3945, Australia"}
-,{"p":"hansasteakgrill","x":"-38.007529","y":"145.095691","n":"Hansa’s Steak & Grill","t":"0","c":"117","s":"4.7","d":"0","a":"61,104,104,104","l":"24 Percy St, Mordialloc VIC 3195, Australia"}
-,{"p":"sensuspa","x":"-37.8152048","y":"144.9565878","n":"Sensu Spa","t":"999","c":"72","s":"4.6","d":"0","a":"61,104,104,104","l":"T03/570 Bourke St, Melbourne VIC 3000, Australia"}
+,{"p":"moksharoom","x":"-19.260168","y":"146.8195679","n":"Moksha Room Hair & Beauty","t":"999","c":"11","s":"4.5","d":"0","a":"60,61,59,104","l":"Shop 4/2 Dibbs St, South Townsville QLD 4810, Australia"}
+,{"p":"conviniencestore489","x":"-19.2625694","y":"146.8143262","n":"489 Convenience Store Pty Ltd","t":"3","c":"0","s":"0.0","d":"0","a":"60,61,59,104","l":"489 Flinders St, Townsville QLD 4810, Australia"}
+,{"p":"missiontworepair","x":"-19.2618979","y":"146.8152576","n":"Mission 2 Repair","t":"4","c":"13","s":"4.3","d":"0","a":"60,61,59,104","l":"440 Flinders St, Townsville QLD 4810, Australia"}
+,{"p":"swaggerandjaxx","x":"-19.2662925","y":"146.8102876","n":"Swagger and Jaxx Barber And Coffee","t":"4","c":"44","s":"4.7","d":"0","a":"60,61,59,104","l":"1/679 Flinders St, Townsville QLD 4810, Australia"}
+,{"p":"grandcentralcafe","x":"-19.2671078","y":"146.8114545","n":"Grand Central Cafe","t":"2","c":"8","s":"4.1","d":"0","a":"60,61,59,104","l":"10 Little Fletcher St, Townsville QLD 4810, Australia"}
+,{"p":"stripescoffee","x":"-19.265611","y":"146.7962433","n":"Stripes Coffee","t":"2","c":"23","s":"4.7","d":"0","a":"60,61,59,104","l":"20 Echlin St, West End QLD 4810, Australia"}
+,{"p":"aitkenvalebeautyspot","x":"-19.2971564","y":"146.7693873","n":"Aitkenvale Beauty Spot","t":"999","c":"18","s":"4.9","d":"0","a":"60,61,59,104","l":"260 Ross River Rd, Aitkenvale QLD 4814, Australia"}
+,{"p":"annandaleminimart","x":"-19.3139397","y":"146.7713191","n":"Annandale Mini Mart & Newsagency","t":"3","c":"1","s":"2.0","d":"0","a":"60,61,59,104","l":"56 Yolanda Dr, Annandale QLD 4814, Australia"}
+,{"p":"australianwarfightercoffee","x":"-19.3170437","y":"146.7910452","n":"Australian warfighter coffee","t":"2","c":"0","s":"0.0","d":"0","a":"60,61,59,104","l":"Shop 3, Annandale Shopping Centre, 67 MacArthur Dr, Annandale QLD 4814, Australia"}
+,{"p":"townsvillehelivopters","x":"-19.2440397","y":"146.77583","n":"Townsville Helicopters","t":"999","c":"13","s":"4.7","d":"0","a":"60,61,59,104","l":"153 Old Common Rd, Rowes Bay QLD 4814, Australia"}
+,{"p":"australianlaundries","x":"-19.272882","y":"146.760418","n":"Australian Laundries Pty Ltd","t":"999","c":"3","s":"3.7","d":"0","a":"60,61,59,104","l":"369 Bayswater Rd, Garbutt QLD 4812, Australia"}
+,{"p":"xfittropics","x":"-19.2351477","y":"146.6983311","n":"Crossfit Tropics","t":"999","c":"7","s":"5.0","d":"0","a":"60,61,59,104","l":"89 Barramundi Circuit, Burdell QLD 4818, Australia"}
+,{"p":"slapandpickle","x":"-16.9231245","y":"145.7741742","n":"Slap and Pickle Sandwich & Tapas Bar","t":"2","c":"51","s":"4.7","d":"0","a":"60,61,59,104","l":"62 Shields St, Cairns City QLD 4870, Australia"}
+,{"p":"blvktempletattoo","x":"-16.922754","y":"145.7756783","n":"Blvk Temple Tattoo","t":"999","c":"38","s":"4.8","d":"0","a":"60,61,59,104","l":"Shop 3/87 Lake St, Cairns City QLD 4870, Australia"}
+,{"p":"australianway","x":"-27.386369","y":"153.119478","n":"Australian Way","t":"4","c":"0","s":"0.0","d":"0","a":"60,61,59,104","l":"Shop 4C20 Departures Lvl 4 Brisbane International Airport, Eagle Farm QLD 4009, Australia"}
+,{"p":"carryonluggage","x":"-27.4040072","y":"153.1093885","n":"Carry On Luggage Store","t":"4","c":"1","s":"1.0","d":"0","a":"60,61,59,104","l":"Shop 4L01 Departures Level, Brisbane Intenational Airport, Eagle Farm QLD 4009, Australia"}
+,{"p":"jamrocjamaican","x":"-28.045365","y":"153.407605","n":"JAMROC Jamaican Jerk Chicken","t":"0","c":"97","s":"4.6","d":"0","a":"60,61,59,104","l":"Q Super Centre c51a Corner of Bermuda &, Markeri St, Mermaid Waters QLD 4218, Australia"}
+,{"p":"blackmarkettattoo","x":"-28.0786845","y":"153.3894605","n":"Blackmarket Tattoo Co | Gold Coast Tattoo Studio","t":"999","c":"76","s":"5.0","d":"0","a":"60,61,59,104","l":"1/76 Robina Town Centre Dr, Robina QLD 4226, Australia"}
+,{"p":"createbyrencounter","x":"-33.8307092","y":"151.2238517","n":"CREATE by ReNCOUNTER - Hair Salon","t":"999","c":"0","s":"0.0","d":"0","a":"60,61,59,104","l":"shop 1/3-5 Waters Rd, Neutral Bay NSW 2089, Australia"}
+,{"p":"vrcorner","x":"-33.885529","y":"151.202483","n":"VR Corner","t":"999","c":"51","s":"4.1","d":"0","a":"60,61,59,104","l":"49 Regent St, Chippendale NSW 2008, Australia"}
+,{"p":"cintacottage","x":"-38.3683307","y":"145.7049483","n":"Cinta Cottage","t":"5","c":"5","s":"5.0","d":"0","a":"60,61,59,104","l":"15 Victoria Rd, Loch VIC 3945, Australia"}
+,{"p":"hansasteakgrill","x":"-38.007529","y":"145.095691","n":"Hansa’s Steak & Grill","t":"0","c":"117","s":"4.7","d":"0","a":"60,61,59,104","l":"24 Percy St, Mordialloc VIC 3195, Australia"}
+,{"p":"sensuspa","x":"-37.8152048","y":"144.9565878","n":"Sensu Spa","t":"999","c":"72","s":"4.6","d":"0","a":"60,61,59,104","l":"T03/570 Bourke St, Melbourne VIC 3000, Australia"}
 ,{"p":"baguettemenot","x":"-31.946842","y":"115.8255113","n":"Baguette Me Not","t":"0","c":"77","s":"4.6","d":"0","a":"59,104,104,104","l":"Unit 3/420 Hay St, Subiaco WA 6008, Australia"}
 ,{"p":"thewinedoctor","x":"-33.877267","y":"151.204406","n":"The Wine Doctor","t":"4","c":"14","s":"4.6","d":"0","a":"59,104,104,104","l":"Suite 5, Level 5 383/377 Sussex St, Sydney NSW 2000, Australia"}
 ,{"p":"cafe935","x":"-31.9889582","y":"115.9056771","n":"Cafe935","t":"2","c":"88","s":"4.1","d":"0","a":"59,104,104,104","l":"935 Albany Hwy, East Victoria Park WA 6101, Australia"}
