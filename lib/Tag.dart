@@ -155,7 +155,7 @@ class Tag {
     'Sushi 🍣',
     'Moto 🛵',
     'Coche 🚘', //69
-    'Elipay ₿',
+    'GoCrypto ₿',
     'Chicken 🐔',
     'Rabbit 🐰',
     'Potato 🥔',
