@@ -608,7 +608,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                       controller: tabController,
                       isScrollable: true,
                       indicator: getIndicator(),
-                      tabs: Pages.pages.map<Tab>((Page page) {
+                      tabs: Pages.pages.map<Tab>((Pagee page) {
                         return _lists[page.tabIndex].length > 0
                             ? Tab(
                                 icon: Icon(
