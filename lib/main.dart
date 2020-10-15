@@ -1,10 +1,11 @@
 import 'dart:async';
+//import 'dart:html';
 
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:onesignal_flutter/onesignal_flutter.dart';
+//import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:synchronized/synchronized.dart';
@@ -232,7 +233,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       return false;
     }
 
-    double distanceInMeters = await Geolocator()
+    double distanceInMeters = await GeolocatorPlatform.instance
         .distanceBetween(position.latitude, position.longitude, m.x, m.y);
 
     m.distanceInMeters = distanceInMeters;
@@ -416,7 +417,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         .checkPermissionStatus(PermissionGroup.locationWhenInUse);
 
     if (sta == PermissionStatus.granted) {
-      Position pos = await Geolocator()
+      Position pos = await GeolocatorPlatform.instance
           .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
 
       saveLatestSavedPosition(
@@ -430,7 +431,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     return false;
   }
 
-  Future<void> initOneSignalPushMessages() async {
+ /* Future<void> initOneSignalPushMessages() async {
     //OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
 
     var settings = {
@@ -448,7 +449,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
     OneSignal.shared
         .promptUserForPushNotificationPermission(fallbackToSettings: true);
-  }
+  }*/
 
   initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition() async {
     var position = await getLatestSavedPosition();
@@ -471,7 +472,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   void initState() {
     super.initState();
     initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition();
-    initOneSignalPushMessages();
+    //initOneSignalPushMessages();
     searchDelegate.buildHistory();
     tabController = TabController(vsync: this, length: Pages.pages.length);
     tabController.addListener(_handleTabSelection);
@@ -535,7 +536,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     });*/
     return MaterialApp(
       localizationsDelegates: [
-        FlutterI18nDelegate(fallbackFile: 'en'),
+        FlutterI18nDelegate(),
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate
       ],
@@ -682,6 +683,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void handleMapButtonClick(ctx) async {
+    //TODO forward users to bitcoinmap.cash if app is started in web
+    //if (Platform.)
+
     Merchant result = await Navigator.push(
       ctx,
       MaterialPageRoute(
@@ -984,5 +988,6 @@ void main() {
   FlutterError.onError = (FlutterErrorDetails details) {
     Crashlytics.instance.onError(details);
   };
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(AnimatedListSample());
 }

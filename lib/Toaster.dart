@@ -8,7 +8,7 @@ class Toaster {
   static const double DEFAULT_FONT_SIZE = 16.0;
   static const Color DEFAULT_TEXT_COLOR = Colors.white;
   static const Color DEFAULT_BACKGROUND_COLOR = Colors.amber;
-  static const int DEFAULT_TIME_FOR_IOS = 3;
+  static const int DEFAULT_TIME_FOR_IOS_AND_WEB = 3;
   static const Toast DEFAULT_TIME_FOR_ANDROID = Toast.LENGTH_LONG;
   static const ToastGravity DEFAULT_TOAST_GRAVITY = ToastGravity.CENTER;
 
@@ -54,7 +54,7 @@ class Toaster {
         msg: msgProvider,
         toastLength: DEFAULT_TIME_FOR_ANDROID,
         gravity: DEFAULT_TOAST_GRAVITY,
-        timeInSecForIos: DEFAULT_TIME_FOR_IOS,
+        timeInSecForIosWeb: DEFAULT_TIME_FOR_IOS_AND_WEB,
         backgroundColor: backgroundColorProvider,
         textColor: DEFAULT_TEXT_COLOR,
         fontSize: DEFAULT_FONT_SIZE);

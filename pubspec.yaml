@@ -11,37 +11,38 @@ description: Coinnect the coimunity.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.5.7+24
+version: 3.6.3+1235
 
 environment:
   sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
   #place_picker: ^0.9.9
-  fluttertoast: ^3.1.0
+  fluttertoast: ^7.1.1
   #flutter_launcher_icons: ^0.7.0
   permission_handler: ^3.1.0
-  synchronized: ^2.1.0
+  permission_handler_platform_interface: ^2.0.1
+  synchronized: ^2.2.0+2
   firebase_messaging: ^5.0.3
+  firebase_core: ^0.4.0+5
+  firebase_crashlytics: ^0.0.4+5
   #permission: ^0.1.1
   #flutter_advanced_networkimage: any
   #launch_review: 2.0.0
   #flutter_crashlytics: 1.0.0
-  firebase_core: ^0.4.0+5
-  clipboard_manager: ^0.0.4
+  #clipboard_manager: ^0.0.4
   #flutter_typeahead: ^1.4.0
-  shared_preferences: ^0.5.3+1
-  dio: ^3.0.9
-  firebase_crashlytics: ^0.0.4+5
+  shared_preferences: ^0.5.12+2
+  dio: ^3.0.10
   transparent_image: ^1.0.0
-  smooth_star_rating: ^1.0.3
-  google_maps_flutter: ^0.5.28+1
-  url_launcher: ^5.0.3
-  flutter_i18n: ^0.6.3
-  geolocator: ^5.0.1
-  crypto: ^2.0.6
-  path_provider: ^1.1.0
-  onesignal_flutter: ^2.1.0
+  smooth_star_rating: ^1.1.1
+  google_maps_flutter: ^1.0.3
+  url_launcher: ^5.7.4
+  flutter_i18n: ^0.20.0
+  geolocator: ^6.0.0+4
+  crypto: ^2.1.5
+  path_provider: ^1.6.21
+  #onesignal_flutter: ^2.1.0
   flutter:
     sdk: flutter
 
