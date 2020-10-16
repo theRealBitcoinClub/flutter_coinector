@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:dio/dio.dart';
@@ -54,7 +55,7 @@ class FileCache {
   }
 
   static Future<String> get _localPath async {
-    final directory = await getApplicationDocumentsDirectory();
+    final directory = await getTemporaryDirectory();
 
     return directory.path;
   }
@@ -75,6 +76,7 @@ class FileCache {
 
   static Future loadAndDecodeAsset(String fileName) async {
     String cachedAsset = await getCachedAssetWithDefaultFallback(fileName);
+    debugPrint("cachedAsset:" + cachedAsset);
     var decoded = AssetLoader.decodeJSON(cachedAsset);
     return decoded;
   }

@@ -399,13 +399,11 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     updateDistanceToAllMerchantsIfNotDoneYet();
   }
 
-  void requestCurrentPosition() {
-    PermissionHandler()
-        .requestPermissions([PermissionGroup.locationWhenInUse]).then(
-            (Map<PermissionGroup, PermissionStatus> p) {
+  void requestCurrentPosition() async {
+    if (await Permission.locationWhenInUse.isGranted) {
       updateCurrentPosition();
       updateDistanceToAllMerchantsIfNotDoneYet();
-    });
+    }
   }
 
   void initCurrentPositionIfNotInitialized() async {
@@ -415,10 +413,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   Future<bool> updateCurrentPosition() async {
-    PermissionStatus sta = await PermissionHandler()
-        .checkPermissionStatus(PermissionGroup.locationWhenInUse);
-
-    if (sta == PermissionStatus.granted) {
+    if (await Permission.locationWhenInUse.isGranted) {
       Position pos = await GeolocatorPlatform.instance
           .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
 

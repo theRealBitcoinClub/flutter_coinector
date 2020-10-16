@@ -133,10 +133,12 @@ class CardItem extends StatelessWidget {
     var img = "assets/placeholder640x480.jpg";
     return FadeInImage.assetNetwork(
       fadeInCurve: Curves.decelerate,
+      fit: BoxFit.cover,
       fadeInDuration: Duration(milliseconds: 300),
       placeholder: img,
       image: img,
-      height: 320,
+      width: 640,
+      height: 360,
       alignment: Alignment.bottomCenter,
     );
   }
@@ -145,11 +147,11 @@ class CardItem extends StatelessWidget {
     return FadeInImage.memoryNetwork(
       fadeInCurve: Curves.decelerate,
       fit: BoxFit.cover,
-      width: 640,
       fadeInDuration: Duration(milliseconds: 500),
       placeholder: kTransparentImage,
       image: gifUrl,
-      height: 320,
+      width: 640,
+      height: 360,
       alignment: Alignment.bottomCenter,
     );
   }

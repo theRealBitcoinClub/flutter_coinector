@@ -20,8 +20,8 @@ dependencies:
   #place_picker: ^0.9.9
   fluttertoast: ^7.1.1
   #flutter_launcher_icons: ^0.7.0
-  permission_handler: ^3.1.0
-  permission_handler_platform_interface: ^2.0.1
+  permission_handler: ^5.0.1+1
+  #permission_handler_platform_interface: ^2.0.1
   synchronized: ^2.2.0+2
   firebase_messaging: ^5.0.3
   firebase_core: ^0.4.0+5

@@ -12,6 +12,7 @@ class RatingWidgetBuilder {
             SmoothStarRating(
               allowHalfRating: true,
               starCount: 5,
+              isReadOnly: true,
               rating: double.parse(m.reviewStars),
               size: 15.0,
               color: Colors.yellow[700],
