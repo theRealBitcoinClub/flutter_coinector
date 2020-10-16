@@ -144,7 +144,8 @@ class CardItem extends StatelessWidget {
   Widget buildImageContainer(String gifUrl) {
     return FadeInImage.memoryNetwork(
       fadeInCurve: Curves.decelerate,
-      fit: BoxFit.contain,
+      fit: BoxFit.cover,
+      width: 640,
       fadeInDuration: Duration(milliseconds: 500),
       placeholder: kTransparentImage,
       image: gifUrl,
@@ -209,9 +210,9 @@ class CardItem extends StatelessWidget {
       Color backGroundColor, BuildContext ctx) {
     return Positioned(
       right: 0.0,
-      bottom: 5.0,
+      bottom: 60.0,
       child: Container(
-        padding: EdgeInsets.fromLTRB(10.0, 5.0, 15.0, 5.0),
+        padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
                 topLeft: buildRadius(), bottomLeft: buildRadius()),
@@ -262,7 +263,7 @@ class CardItem extends StatelessWidget {
       decoration: BoxDecoration(
           boxShadow: [
             CustomBoxShadow(
-                color: Colors.white.withOpacity(0.5),
+                color: Colors.black.withOpacity(0.5),
                 blurRadius: 1.0,
                 offset: Offset(0.0, 0.0),
                 blurStyle: BlurStyle.outer)

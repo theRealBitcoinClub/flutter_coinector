@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:clipboard_manager/clipboard_manager.dart';
+//import 'package:clipboard_manager/clipboard_manager.dart';
 
 import 'Merchant.dart';
 import 'Place.dart';
@@ -28,7 +28,7 @@ class Pay {
 
   void copyAddressToClipAndShowDialog(String data, BuildContext context) {
     //Navigator.of(context).pop();
-    ClipboardManager.copyToClipBoard(data).then((result) {
+   /* ClipboardManager.copyToClipBoard(data).then((result) {
       showDialog(
           context: context,
           builder: (buildCtx) {
@@ -39,7 +39,7 @@ class Pay {
                   style: TextStyle(color: Colors.white)),
             );
           });
-    });
+    });*/
   }
 
   Widget buildAddressDetailDialogBCH(BuildContext context) {

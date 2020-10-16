@@ -57,6 +57,10 @@ class UrlLauncher {
     launchURI("http://bitcoinmap.cash/submit");
   }
 
+  static void launchBitcoinMap() {
+    launchURI("http://bitcoinmap.cash");
+  }
+
   static void launchQrCodeGeneratorUrl(
       {String bch = "", String dash = ""}) async {
     String targetUrl =

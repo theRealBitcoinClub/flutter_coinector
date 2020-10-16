@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:flutter/material.dart';
+import 'dart:io' show Platform;
 //import 'dart:html';
 
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
@@ -683,26 +685,30 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void handleMapButtonClick(ctx) async {
-    //TODO forward users to bitcoinmap.cash if app is started in web
-    //if (Platform.)
-
-    Merchant result = await Navigator.push(
-      ctx,
-      MaterialPageRoute(
-          builder: (buildCtx) => MapSample(
-              _lists,
-              mapPosition != null ? mapPosition : userPosition,
-              zoomMapAfterSelectLocation
-                  ? 10.0
-                  : userPosition != null ? 5.0 : 0.0)),
-    );
-    updateDistanceToAllMerchantsIfNotDoneYet();
-    if (result != null) {
-      filterListUpdateTitle(ctx, result.name);
-      tabController.animateTo(result.type);
-      //showSnackBar("Showing selected merchant: " + result.name);
-    } else {
-      showUnfilteredLists(ctx);
+    try {
+      if (Platform.isAndroid && Platform.isIOS) {
+        Merchant result = await Navigator.push(
+          ctx,
+          MaterialPageRoute(
+              builder: (buildCtx) => MapSample(
+                  _lists,
+                  mapPosition != null ? mapPosition : userPosition,
+                  zoomMapAfterSelectLocation
+                      ? 10.0
+                      : userPosition != null ? 5.0 : 0.0)),
+        );
+        updateDistanceToAllMerchantsIfNotDoneYet();
+        if (result != null) {
+          filterListUpdateTitle(ctx, result.name);
+          tabController.animateTo(result.type);
+          //showSnackBar("Showing selected merchant: " + result.name);
+        } else {
+          showUnfilteredLists(ctx);
+        }
+      }
+    } catch (e) {
+      //forward users to bitcoinmap.cash if app is started in web
+      UrlLauncher.launchBitcoinMap();
     }
   }
 
