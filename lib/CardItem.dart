@@ -273,7 +273,7 @@ class CardItem extends StatelessWidget {
       decoration: BoxDecoration(
           boxShadow: [
             CustomBoxShadow(
-                color: Colors.white.withOpacity(0.9),
+                color: Colors.black.withOpacity(0.65),
                 blurRadius: 1.0,
                 offset: Offset(0.0, 0.0),
                 blurStyle: BlurStyle.outer)
