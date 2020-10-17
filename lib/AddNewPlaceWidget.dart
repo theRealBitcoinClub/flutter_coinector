@@ -1,3 +1,4 @@
+import 'package:Coinector/translator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 
@@ -513,18 +514,18 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             Icon(Icons.search),
             tagCounter == 0
                 ? Text(
-                    iconSeparator + FlutterI18n.translate(ctx, "choose_tag_1"))
+                    iconSeparator + Translator.translate(ctx, "choose_tag_1"))
                 : tagCounter == 1
                     ? Text(iconSeparator +
-                        FlutterI18n.translate(ctx, "choose_tag_2"))
+                        Translator.translate(ctx, "choose_tag_2"))
                     : tagCounter == 2
                         ? Text(iconSeparator +
-                            FlutterI18n.translate(ctx, "choose_tag_3"))
+                            Translator.translate(ctx, "choose_tag_3"))
                         : tagCounter == 3
                             ? Text(iconSeparator +
-                                FlutterI18n.translate(ctx, "choose_tag_4"))
+                                Translator.translate(ctx, "choose_tag_4"))
                             : Text(iconSeparator +
-                                FlutterI18n.translate(ctx, "choose_tag_5"))
+                                Translator.translate(ctx, "choose_tag_5"))
           ],
         ),
       ),
@@ -566,7 +567,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     );
   }
 
-  String i18n(ctx, str) => FlutterI18n.translate(ctx, str);
+  String i18n(ctx, str) => Translator.translate(ctx, str);
 
   EdgeInsets buildEdgeInsetsTextField() => EdgeInsets.all(10.0);
 
@@ -632,7 +633,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         input != KEYWORD_CONTROLLER_ACTION &&
         !youSaidIt) {
       Toaster.showWarning(
-          FlutterI18n.translate(context, "attract_more_customer"));
+          Translator.translate(context, "attract_more_customer"));
       youSaidIt = true;
     }
 

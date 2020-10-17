@@ -1,3 +1,4 @@
+import 'package:Coinector/translator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -133,7 +134,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
     if (query.isEmpty) {
       suggestions = Set.from([
         AddPlaceTagSearchDelegate.COINECTOR_SUPPORTS_MANY_LANGUAGES,
-        FlutterI18n.translate(context, "you_can_scroll")
+        Translator.translate(context, "you_can_scroll")
       ]);
       suggestions.addAll(_history);
     } else {

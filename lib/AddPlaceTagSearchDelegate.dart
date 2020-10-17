@@ -1,3 +1,4 @@
+import 'package:Coinector/translator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 
@@ -83,7 +84,7 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
   Widget buildSuggestions(BuildContext ctx) {
     Set<String> suggestions = Set.from([
       COINECTOR_SUPPORTS_MANY_LANGUAGES,
-      FlutterI18n.translate(ctx, "you_can_scroll")
+      Translator.translate(ctx, "you_can_scroll")
     ]);
 
     if (unfilteredSuggestions != null && query.isEmpty)

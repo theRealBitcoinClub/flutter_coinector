@@ -1,3 +1,4 @@
+import 'package:Coinector/translator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 
@@ -9,7 +10,7 @@ class Dialogs {
           return AlertDialog(
             backgroundColor: Colors.grey[900],
             content: Text(
-                FlutterI18n.translate(buildCtx, "make_donation_text")),
+                Translator.translate(buildCtx, "make_donation_text")),
             title: Row(
               children: <Widget>[
                 Icon(Icons.done_outline),
@@ -30,7 +31,7 @@ class Dialogs {
           return AlertDialog(
             backgroundColor: Colors.grey[900],
             content: Text(
-                FlutterI18n.translate(context, "send_email_containing_data")),
+                Translator.translate(context, "send_email_containing_data")),
             title: Row(
               children: <Widget>[
                 Icon(Icons.email),
@@ -51,7 +52,7 @@ class Dialogs {
         builder: (BuildContext ctx) {
           return AlertDialog(
             backgroundColor: Colors.grey[900],
-            content: Text(FlutterI18n.translate(context, "download_qr_code")),
+            content: Text(Translator.translate(context, "download_qr_code")),
             title: Row(
               children: <Widget>[
                 Icon(Icons.file_download),
@@ -72,7 +73,7 @@ class Dialogs {
         Navigator.of(context).pop();
         callbackYes();
       },
-      child: Text(FlutterI18n.translate(context, "YES")),
+      child: Text(Translator.translate(context, "YES")),
     );
   }
 
@@ -81,7 +82,7 @@ class Dialogs {
       onPressed: () {
         Navigator.of(context).pop();
       },
-      child: Text(FlutterI18n.translate(context, "NO")),
+      child: Text(Translator.translate(context, "NO")),
     );
   }
 
@@ -92,7 +93,7 @@ class Dialogs {
           return AlertDialog(
             backgroundColor: Colors.grey[900],
             content:
-                Text(FlutterI18n.translate(context, "reset_tags_select_again")),
+                Text(Translator.translate(context, "reset_tags_select_again")),
             title: Row(
               children: <Widget>[
                 Icon(Icons.warning),
@@ -116,10 +117,10 @@ class Dialogs {
           return AlertDialog(
             backgroundColor: Colors.grey[900],
             content: Text(
-                FlutterI18n.translate(buildCtx, "dialog_search_favo_food"),
+                Translator.translate(buildCtx, "dialog_search_favo_food"),
                 style: textStyle),
             title: Text(
-                FlutterI18n.translate(buildCtx, "dialog_are_you_hungry"),
+                Translator.translate(buildCtx, "dialog_are_you_hungry"),
                 style: textStyle),
             actions: <Widget>[
               FlatButton(
@@ -132,7 +133,7 @@ class Dialogs {
                       Icons.close,
                       color: color,
                     ),
-                    Text(FlutterI18n.translate(buildCtx, "dialog_close"),
+                    Text(Translator.translate(buildCtx, "dialog_close"),
                         style: textStyle)
                   ],
                 ),
@@ -147,7 +148,7 @@ class Dialogs {
       child: Row(
         children: <Widget>[
           Icon(Icons.close),
-          Text(FlutterI18n.translate(context, "dialog_close"))
+          Text(Translator.translate(context, "dialog_close"))
         ],
       ),
       onPressed: () {

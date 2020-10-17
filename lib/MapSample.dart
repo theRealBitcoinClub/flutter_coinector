@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:Coinector/translator.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
@@ -167,7 +168,7 @@ class MapSampleState extends State<MapSample> {
         onTap: () {
           closeMapReturnMerchant(merchant);
         },
-        snippet: FlutterI18n.translate(context, buildTypeSnippet(merchant)) +
+        snippet: Translator.translate(context, buildTypeSnippet(merchant)) +
             " at " +
             buildAdrSnippet(merchant));
   }
@@ -222,7 +223,7 @@ class MapSampleState extends State<MapSample> {
           backgroundColor: Colors.white70,
           foregroundColor: Theme.of(ctx).backgroundColor,
           onPressed: closeMapResetMerchant,
-          label: Text(FlutterI18n.translate(ctx, 'close_map')),
+          label: Text(Translator.translate(ctx, 'close_map')),
           icon: Icon(Icons.close),
         ),
       );

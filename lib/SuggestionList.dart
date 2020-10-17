@@ -1,3 +1,4 @@
+import 'package:Coinector/translator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 
@@ -80,7 +81,7 @@ class SuggestionList extends StatelessWidget {
 
   bool isRealSuggestion(String suggestion, ctx) {
     return SearchDemoSearchDelegate.TRY_ANOTHER_WORD != suggestion &&
-        FlutterI18n.translate(ctx, "you_can_scroll") != suggestion &&
+        Translator.translate(ctx, "you_can_scroll") != suggestion &&
         AddPlaceTagSearchDelegate.COINECTOR_SUPPORTS_MANY_LANGUAGES !=
             suggestion;
   }

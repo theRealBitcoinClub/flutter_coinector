@@ -1,3 +1,4 @@
+import 'package:Coinector/translator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 
@@ -103,7 +104,7 @@ class UrlLauncher {
         "Add Place Coinector" +
         /* (hasInput(inputDASH) ? inputDASH : inputBCH) +*/
         "&body=" +
-        FlutterI18n.translate(ctx, "email_text_add_new_place") +
+        Translator.translate(ctx, "email_text_add_new_place") +
         content;
     await _launchEmail(ctx, urlString, onEmailClientNotFound);
   }

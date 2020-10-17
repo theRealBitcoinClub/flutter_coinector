@@ -1,3 +1,4 @@
+import 'package:Coinector/translator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -13,11 +14,11 @@ class Toaster {
   static const ToastGravity DEFAULT_TOAST_GRAVITY = ToastGravity.CENTER;
 
   static void showToastLaunchingEmailClient(ctx) {
-    showWarning(FlutterI18n.translate(ctx, "toaster_select_email_client"));
+    showWarning(Translator.translate(ctx, "toaster_select_email_client"));
   }
 
   static void showToastEmailNotConfigured(ctx) {
-    showWarning(FlutterI18n.translate(ctx, "toaster_email_not_configured"));
+    showWarning(Translator.translate(ctx, "toaster_email_not_configured"));
   }
 
   static void showWarning(message) {
@@ -26,20 +27,20 @@ class Toaster {
   }
 
   static void showAddName(ctx) {
-    showWarning(FlutterI18n.translate(
+    showWarning(Translator.translate(
         ctx, "toaster_enter_name_atleast_five_characters"));
   }
 
   static void showAddExactlyFourTags(ctx) {
-    showWarning(FlutterI18n.translate(ctx, "toaster_minimum_four_tags"));
+    showWarning(Translator.translate(ctx, "toaster_minimum_four_tags"));
   }
 
   static void showAddAtleastOneReceivingAddress(ctx) {
-    showWarning(FlutterI18n.translate(ctx, "toaster_atleast_one_bitcoin_adr"));
+    showWarning(Translator.translate(ctx, "toaster_atleast_one_bitcoin_adr"));
   }
 
   static void showAddFullAdr(ctx) {
-    showWarning(FlutterI18n.translate(ctx, "toaster_full_adr"));
+    showWarning(Translator.translate(ctx, "toaster_full_adr"));
   }
 
   static void showInstructionToast(
@@ -84,11 +85,11 @@ class Toaster {
       ctx, counterToastGeneral, totalHintCounter) {
     switch (counterToastGeneral % totalHintCounter) {
       case 0:
-        return FlutterI18n.translate(ctx, "toast_instructions_marker");
+        return Translator.translate(ctx, "toast_instructions_marker");
       case 1:
-        return FlutterI18n.translate(ctx, "toast_instructions_location");
+        return Translator.translate(ctx, "toast_instructions_location");
       case 2:
-        return FlutterI18n.translate(ctx, "toast_instructions_close");
+        return Translator.translate(ctx, "toast_instructions_close");
     }
     return "";
   }
@@ -97,11 +98,11 @@ class Toaster {
       ctx, counterToastSpecific, totalHintCounter) {
     switch (counterToastSpecific % totalHintCounter) {
       case 0:
-        return FlutterI18n.translate(ctx, "toast_instructions_details");
+        return Translator.translate(ctx, "toast_instructions_details");
       case 1:
-        return FlutterI18n.translate(ctx, "toast_instructions_route");
+        return Translator.translate(ctx, "toast_instructions_route");
       case 2:
-        return FlutterI18n.translate(ctx, "toast_instructions_map");
+        return Translator.translate(ctx, "toast_instructions_map");
     }
     return "";
   }
