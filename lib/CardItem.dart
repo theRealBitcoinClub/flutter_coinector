@@ -133,7 +133,7 @@ class CardItem extends StatelessWidget {
     var img = "assets/placeholder640x480.jpg";
     return FadeInImage.assetNetwork(
       fadeInCurve: Curves.decelerate,
-      fit: BoxFit.cover,
+      fit: BoxFit.contain,
       fadeInDuration: Duration(milliseconds: 300),
       placeholder: img,
       image: img,
@@ -146,7 +146,7 @@ class CardItem extends StatelessWidget {
   Widget buildImageContainer(String gifUrl) {
     return FadeInImage.memoryNetwork(
       fadeInCurve: Curves.decelerate,
-      fit: BoxFit.cover,
+      fit: BoxFit.contain,
       fadeInDuration: Duration(milliseconds: 500),
       placeholder: kTransparentImage,
       image: gifUrl,

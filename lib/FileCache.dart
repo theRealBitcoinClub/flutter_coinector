@@ -76,7 +76,7 @@ class FileCache {
 
   static Future loadAndDecodeAsset(String fileName) async {
     String cachedAsset = await getCachedAssetWithDefaultFallback(fileName);
-    debugPrint("cachedAsset:" + cachedAsset);
+    //debugPrint("cachedAsset:" + cachedAsset);
     var decoded = AssetLoader.decodeJSON(cachedAsset);
     return decoded;
   }
