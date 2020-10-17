@@ -1,3 +1,4 @@
+import 'package:Coinector/translator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
@@ -14,32 +15,29 @@ import 'Toaster.dart';
 import 'UrlLauncher.dart';
 
 class CardItem extends StatelessWidget {
-  final Position position;
-
   const CardItem(
       {Key key,
       @required this.animation,
       @required this.index,
       @required this.merchant,
-      this.position,
       this.selected: false})
       : assert(animation != null),
         assert(merchant != null),
-        assert(selected != null),
+        assert(index != null),
         super(key: key);
 
   final int index;
   final Animation<double> animation;
   final Merchant merchant;
   final bool selected;
-  final double itemHeight = 95;
+  final double itemHeightInfoText = 95;
 
   FlatButton buildSendEmailButton(BuildContext ctx) {
     return FlatButton(
       child: Row(
         children: <Widget>[
           Icon(Icons.alternate_email),
-          Text(FlutterI18n.translate(ctx, "send_email"))
+          Text(Translator.translate(ctx, "send_email"))
         ],
       ),
       onPressed: () {
@@ -61,10 +59,10 @@ class CardItem extends StatelessWidget {
               Dialogs.buildCloseDialogButton(buildCtx)
             ],
             title: Text(
-                FlutterI18n.translate(buildCtx, "dialog_missing_gmaps_title"),
+                Translator.translate(buildCtx, "dialog_missing_gmaps_title"),
                 style: TextStyle(color: Colors.white)),
             content: Text(
-                FlutterI18n.translate(buildCtx, "dialog_help_grow_adoption")),
+                Translator.translate(buildCtx, "dialog_help_grow_adoption")),
           );
         });
   }
@@ -163,7 +161,7 @@ class CardItem extends StatelessWidget {
         buildGradientContainer(Colors.grey[900]),
         Container(
           margin: EdgeInsets.all(0.0),
-          height: itemHeight,
+          height: itemHeightInfoText,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
                   bottomLeft: Radius.elliptical(30, 15),
@@ -182,7 +180,7 @@ class CardItem extends StatelessWidget {
             merchant: merchant,
             textStyleMerchantTitle: textStyle,
             textStyleMerchantLocation: textStyle2,
-            height: itemHeight)
+            height: itemHeightInfoText)
       ],
     );
   }
@@ -245,7 +243,7 @@ class CardItem extends StatelessWidget {
 
   Container buildGradientContainer(Color infoBoxBackgroundColor) {
     return Container(
-      height: itemHeight,
+      height: itemHeightInfoText,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
             topLeft: Radius.circular(15.0),
@@ -304,7 +302,7 @@ class CardItem extends StatelessWidget {
           Dialogs.buildIcon(Icons.directions_run, Colors.white),
           Dialogs.buildSpacer(),
           Text(
-            FlutterI18n.translate(context, 'VISIT'),
+            Translator.translate(context, 'VISIT'),
             style: TextStyle(fontSize: 14, color: Colors.white),
           )
         ],
@@ -356,7 +354,7 @@ class CardItem extends StatelessWidget {
           Dialogs.buildIcon(Icons.rate_review, Colors.white),
           Dialogs.buildSpacer(),
           Text(
-            FlutterI18n.translate(ctx, 'REVIEW'),
+            Translator.translate(ctx, 'REVIEW'),
             style: TextStyle(color: Colors.white),
           )
         ],

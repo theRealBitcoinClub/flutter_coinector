@@ -7,24 +7,22 @@ import 'Merchant.dart';
 
 class CardItemBuilder {
   List<ListModel<Merchant>> _lists;
-  Position pos;
 
-  CardItemBuilder(lists, Position pos) {
+  CardItemBuilder(lists) {
     _lists = lists;
-    this.pos = pos;
   }
 
   CardItem _buildItem(
       int index, Animation<double> animation, ListModel<Merchant> listModel) {
     try {
+      var currentListModel = listModel[index];
       if (listModel != null &&
-          listModel[index] != null &&
+          currentListModel != null &&
           listModel.length > 0) {
         return CardItem(
           index: index,
-          position: pos,
           animation: animation,
-          merchant: listModel[index],
+          merchant: currentListModel
         );
       }
     } catch (e) {

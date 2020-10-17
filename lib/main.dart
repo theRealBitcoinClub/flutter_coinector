@@ -1,8 +1,11 @@
 import 'dart:async';
+import 'package:Coinector/translator.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
 //import 'dart:html';
 
+import 'package:Coinector/locationJs.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -40,7 +43,7 @@ class AnimatedListSample extends StatefulWidget {
 class _AnimatedListSampleState extends State<AnimatedListSample>
     with TickerProviderStateMixin {
   final SearchDemoSearchDelegate searchDelegate = SearchDemoSearchDelegate();
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  var _scaffoldKey = GlobalKey<ScaffoldState>();
   final List<GlobalKey<AnimatedListState>> _listKeys = [];
   TabController tabController;
   bool _customIndicator = false;
@@ -360,7 +363,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     lists.clear();
     if (keepListKeys) _listKeys.clear();
     for (int i = 0; i < Pages.pages.length + 1; i++) {
-      if (keepListKeys) _listKeys.add(GlobalKey<AnimatedListState>());
+      if (keepListKeys) _listKeys.add(GlobalKey<AnimatedListState>(debugLabel: "Scaffoldkey Listmodel no." + i.toString()));
       lists.add(ListModel<Merchant>(
         tabIndex: i,
         listKey: (keepListKeys) ? _listKeys[i] : GlobalKey<AnimatedListState>(),
@@ -400,6 +403,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void requestCurrentPosition() async {
+    if(kIsWeb) {
+     return null;
+    }
     if (await Permission.locationWhenInUse.isGranted) {
       updateCurrentPosition();
       updateDistanceToAllMerchantsIfNotDoneYet();
@@ -409,23 +415,51 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   void initCurrentPositionIfNotInitialized() async {
     if (userPosition != null) return;
 
+    //TODO check if that call is correct, might make sense to request permission always if necesssary?
     updateCurrentPosition();
   }
+/*
+  successGetWebCoordinates(GeolocationPosition pos) {
+    try {
+      Position p = pos.mapToPosition();
+      setLatestPosition(p);
+      print(pos.coords.latitude);
+      print(pos.coords.longitude);
+    } catch (ex) {
+      print("Exception thrown : " + ex.toString());
+    }
+  }
+
+  void _getCurrentLocationWeb() async {
+    if (kIsWeb) {
+      getCurrentPositionWeb((pos) {
+        return successGetWebCoordinates(pos);
+      });
+    }
+  }*/
 
   Future<bool> updateCurrentPosition() async {
+    if(kIsWeb) {
+      //_getCurrentLocationWeb();
+      return false;
+    }
     if (await Permission.locationWhenInUse.isGranted) {
       Position pos = await GeolocatorPlatform.instance
           .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
 
-      saveLatestSavedPosition(
-          pos.latitude.toString() + ";" + pos.longitude.toString());
-
-      setState(() {
-        userPosition = pos;
-      });
+      setLatestPosition(pos);
       return true;
     }
     return false;
+  }
+
+  void setLatestPosition(Position pos) {
+    saveLatestSavedPosition(
+        pos.latitude.toString() + ";" + pos.longitude.toString());
+    
+    setState(() {
+      userPosition = pos;
+    });
   }
 
  /* Future<void> initOneSignalPushMessages() async {
@@ -529,7 +563,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   @override
   Widget build(BuildContext ctxRoot) {
     /*new Future.delayed(Duration.zero, () async {
-      FlutterI18n.currentLocale(context);
+      Translator.currentLocale(context);
     });*/
     return MaterialApp(
       localizationsDelegates: [
@@ -581,21 +615,21 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
               onPressed: () {
                 openAddNewPlaceWidget(builderCtx);
               },
-              label: Text(FlutterI18n.translate(builderCtx, "floatbutton_add") +
-                  FlutterI18n.translate(
+              label: Text(Translator.translate(builderCtx, "floatbutton_add") +
+                  Translator.translate(
                       builderCtx, addButtonCategory.toUpperCase())),
               icon: Icon(Icons.add_location)),
         ),
         body: new Builder(builder: (BuildContext ctx) {
-          //FlutterI18n.refresh(ctx, Locale("en"));
+          //Translator.refresh(ctx, Locale("en"));
           /*new Future.delayed(Duration.zero, () async {
-            await FlutterI18n.refresh(ctx, new Locale('de'));
+            await Translator.refresh(ctx, new Locale('de'));
           });*/
           return NestedScrollView(
             headerSliverBuilder:
                 (BuildContext buildCtx, bool innerBoxIsScrolled) {
               /*new Future.delayed(Duration.zero, () async {
-                await FlutterI18n.refresh(buildCtx, new Locale('de'));
+                await Translator.refresh(buildCtx, new Locale('de'));
               });*/
               return <Widget>[
                 SliverAppBar(
@@ -711,7 +745,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     _scaffoldKey.currentState.showSnackBar(SnackBar(
       duration: Duration(milliseconds: 3000),
       content: Text(
-        FlutterI18n.translate(ctx, msgId) + additionalText,
+        Translator.translate(ctx, msgId) + additionalText,
         style: TextStyle(
             fontSize: 18.0,
             fontWeight: FontWeight.w400,
@@ -722,7 +756,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   List<Widget> buildAllTabContainer(ctx) {
-    var builder = CardItemBuilder(_lists, userPosition);
+    var builder = CardItemBuilder(_lists);
     return [
       buildTabContainer(ctx, _listKeys[0], _lists[0],
           builder.buildItemRestaurant, Pages.pages[0].title),
@@ -921,7 +955,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
               children: <Widget>[
                 buildSeparator(),
                 Text(
-                  FlutterI18n.translate(ctx, "no_matches"),
+                  Translator.translate(ctx, "no_matches"),
                   style: TextStyle(fontWeight: FontWeight.w400),
                 ),
                 buildSeparator(),
@@ -934,7 +968,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                           child: /*IconButton(icon: */ Icon(Icons.arrow_upward),
                         ),
                         Text(
-                          FlutterI18n.translate(ctx, "hit_icon"),
+                          Translator.translate(ctx, "hit_icon"),
                           style: TextStyle(fontWeight: FontWeight.w300),
                         )
                       ],
@@ -946,7 +980,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                       children: <Widget>[
                         buildHomeButton(ctx),
                         Text(
-                          FlutterI18n.translate(ctx, "show_all_merchants"),
+                          Translator.translate(ctx, "show_all_merchants"),
                           style: TextStyle(fontWeight: FontWeight.w300),
                         )
                       ],
