@@ -10,9 +10,9 @@ import 'Merchant.dart';
 import 'Toaster.dart';
 
 class UrlLauncher {
-  static void launchURI(url) async {
+  static void launchURI(url, {bool forceWebView = false}) async {
     if (await canLaunch(url)) {
-      await launch(url);
+      await launch(url, forceWebView: forceWebView, enableJavaScript: true);
     } else {
       throw 'Could not launch $url';
     }
@@ -55,7 +55,7 @@ class UrlLauncher {
   }
 
   static void launchSubmitForm() {
-    launchURI("http://bitcoinmap.cash/submit");
+    launchURI("http://bitcoinmap.cash/submit", forceWebView: true);
   }
 
   static void launchBitcoinMap() {
