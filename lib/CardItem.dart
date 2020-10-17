@@ -114,7 +114,7 @@ class CardItem extends StatelessWidget {
             buildImageContainer(gifUrl),
             buildStackInfoTextWithBackgroundAndShadow(
                 infoBoxBackgroundColor, backGroundColor, textStyle, textStyle2),
-            buildPositionedContainerDistance(backGroundColor, textStyle2),
+            buildPositionedContainerDistance(ctx, backGroundColor, textStyle2),
             RatingWidgetBuilder.hasReviews(merchant)
                 ? buildPositionedContainerReviews(backGroundColor, ctx)
                 : SizedBox(),
@@ -138,7 +138,7 @@ class CardItem extends StatelessWidget {
       placeholder: img,
       image: img,
       width: 640,
-      height: 360,
+      height: 390,
       alignment: Alignment.bottomCenter,
     );
   }
@@ -151,7 +151,7 @@ class CardItem extends StatelessWidget {
       placeholder: kTransparentImage,
       image: gifUrl,
       width: 640,
-      height: 360,
+      height: 390,
       alignment: Alignment.bottomCenter,
     );
   }
@@ -187,23 +187,27 @@ class CardItem extends StatelessWidget {
     );
   }
 
-  Positioned buildPositionedContainerDistance(
+  Positioned buildPositionedContainerDistance(BuildContext ctx,
       Color backGroundColor, TextStyle textStyle2) {
     return Positioned(
-      left: 0.0,
-      bottom: 5.0,
+      right: 0.0,
+      bottom: 73.0,
       child: merchant.distance != null
-          ? Container(
+          ? GestureDetector(
+          onTap: () {
+            _handleButtonVisit(ctx);
+          },
+          child: Container(
               padding: EdgeInsets.fromLTRB(15.0, 5.0, 10.0, 5.0),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
-                      topRight: buildRadius(), bottomRight: buildRadius()),
+                      topLeft: buildRadius(), bottomLeft: buildRadius()),
                   color: backGroundColor),
               child: Text(
                 merchant.distance.toString(),
                 style: textStyle2,
               ),
-            )
+            ))
           : Container(),
     );
   }
@@ -211,18 +215,22 @@ class CardItem extends StatelessWidget {
   Positioned buildPositionedContainerReviews(
       Color backGroundColor, BuildContext ctx) {
     return Positioned(
-      right: 0.0,
-      bottom: 60.0,
-      child: Container(
-        padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-                topLeft: buildRadius(), bottomLeft: buildRadius()),
-            color: backGroundColor),
-        child: RatingWidgetBuilder.buildRatingWidgetIfReviewsAvailable(
-            merchant, Theme.of(ctx).textTheme.body2),
-      ),
-    );
+        right: 0.0,
+        bottom: 45.0,
+        child: GestureDetector(
+          onTap: () {
+            handleReviewClick(ctx);
+          },
+          child: Container(
+            padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    topLeft: buildRadius(), bottomLeft: buildRadius()),
+                color: backGroundColor),
+            child: RatingWidgetBuilder.buildRatingWidgetIfReviewsAvailable(
+                merchant, Theme.of(ctx).textTheme.body2),
+          ),
+        ));
   }
 
   Radius buildRadius() => Radius.circular(10);
@@ -265,7 +273,7 @@ class CardItem extends StatelessWidget {
       decoration: BoxDecoration(
           boxShadow: [
             CustomBoxShadow(
-                color: Colors.black.withOpacity(0.5),
+                color: Colors.white.withOpacity(0.9),
                 blurRadius: 1.0,
                 offset: Offset(0.0, 0.0),
                 blurStyle: BlurStyle.outer)
@@ -278,6 +286,7 @@ class CardItem extends StatelessWidget {
           padding: EdgeInsets.all(10.0),
           // make buttons use the appropriate styles for cards
           child: ButtonBar(
+            buttonPadding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
             mainAxisSize: MainAxisSize.max,
             alignment: MainAxisAlignment.end,
             children: <Widget>[
@@ -301,19 +310,23 @@ class CardItem extends StatelessWidget {
         ],
       ),
       onPressed: () {
+        _handleButtonVisit(context);
+      },
+    );
+  }
+
+  void _handleButtonVisit(BuildContext context) {
+    if (merchant.place == null) {
+      loadPlace(() {
         if (merchant.place == null) {
-          loadPlace(() {
-            if (merchant.place == null) {
-              UrlLauncher.launchCoordinatesUrl(context, merchant);
-            } else {
-              UrlLauncher.launchVisitUrl(context, merchant);
-            }
-          });
+          UrlLauncher.launchCoordinatesUrl(context, merchant);
         } else {
           UrlLauncher.launchVisitUrl(context, merchant);
         }
-      },
-    );
+      });
+    } else {
+      UrlLauncher.launchVisitUrl(context, merchant);
+    }
   }
 
   void loadPlace(afterLoadCallback) async {

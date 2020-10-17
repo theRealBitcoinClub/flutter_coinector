@@ -681,7 +681,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   void handleMapButtonClick(ctx) async {
     try {
-      if (Platform.isAndroid && Platform.isIOS) {
+      if (Platform.isAndroid || Platform.isIOS) {
         Merchant result = await Navigator.push(
           ctx,
           MaterialPageRoute(
