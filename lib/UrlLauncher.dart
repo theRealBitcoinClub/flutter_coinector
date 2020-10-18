@@ -1,11 +1,8 @@
 import 'package:Coinector/translator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_i18n/flutter_i18n.dart';
-
-import 'AddNewPlaceWidget.dart';
-
 import 'package:url_launcher/url_launcher.dart';
 
+import 'AddNewPlaceWidget.dart';
 import 'Merchant.dart';
 import 'Toaster.dart';
 

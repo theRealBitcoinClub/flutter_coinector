@@ -1,6 +1,5 @@
 import 'package:Coinector/translator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';

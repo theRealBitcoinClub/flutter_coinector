@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+
+import 'AssetLoader.dart';
+import 'Dialogs.dart';
 //import 'package:clipboard_manager/clipboard_manager.dart';
 
 import 'Merchant.dart';
 import 'Place.dart';
-import 'AssetLoader.dart';
-import 'Dialogs.dart';
 import 'UrlLauncher.dart';
 
 class Pay {

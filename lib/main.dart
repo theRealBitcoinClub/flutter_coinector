@@ -1,27 +1,22 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:Coinector/translator.dart';
+import 'dart:io' show Platform;
 
+import 'package:Coinector/translator.dart';
 //import 'package:device_preview/device_preview.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'dart:io' show Platform;
-
-//import 'dart:html';
-
-import 'package:Coinector/locationJs.dart';
-//import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
+import 'package:flutter_i18n/flutter_i18n_delegate.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:geolocator/geolocator.dart';
-
 //import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:synchronized/synchronized.dart' as synchro;
 
-import 'AddNewPlaceWidget.dart';
 import 'AssetLoader.dart';
 import 'CardItemBuilder.dart';
 import 'Dialogs.dart';
@@ -35,9 +30,6 @@ import 'Suggestions.dart';
 import 'Tag.dart';
 import 'UrlLauncher.dart';
 import 'pages.dart';
-import 'package:flutter_i18n/flutter_i18n_delegate.dart';
-import 'package:flutter_i18n/flutter_i18n.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 //import 'package:geohash/geohash.dart';
 //import 'package:clustering_google_maps/clustering_google_maps.dart';
