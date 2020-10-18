@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:Coinector/translator.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
@@ -10,10 +12,11 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
+
 //import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:synchronized/synchronized.dart';
+import 'package:synchronized/synchronized.dart' as synchro;
 
 import 'AddNewPlaceWidget.dart';
 import 'AssetLoader.dart';
@@ -32,6 +35,7 @@ import 'pages.dart';
 import 'package:flutter_i18n/flutter_i18n_delegate.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+
 //import 'package:geohash/geohash.dart';
 //import 'package:clustering_google_maps/clustering_google_maps.dart';
 
@@ -187,7 +191,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       ListModel<Merchant> currentList = destination[i];
       for (int x = 0; x < currentTmpList.length; x++) {
         Merchant m = currentTmpList[x];
-        var lock = Lock();
+        var lock = synchro.Lock();
         lock.synchronized(() async {
           bool hasCalculated =
               await calculateDistanceUpdateMerchant(userPosition, m);
@@ -363,7 +367,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     lists.clear();
     if (keepListKeys) _listKeys.clear();
     for (int i = 0; i < Pages.pages.length + 1; i++) {
-      if (keepListKeys) _listKeys.add(GlobalKey<AnimatedListState>(debugLabel: "Scaffoldkey Listmodel no." + i.toString()));
+      if (keepListKeys)
+        _listKeys.add(GlobalKey<AnimatedListState>(
+            debugLabel: "Scaffoldkey Listmodel no." + i.toString()));
       lists.add(ListModel<Merchant>(
         tabIndex: i,
         listKey: (keepListKeys) ? _listKeys[i] : GlobalKey<AnimatedListState>(),
@@ -403,8 +409,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void requestCurrentPosition() async {
-    if(kIsWeb) {
-     return null;
+    if (kIsWeb) {
+      return null;
     }
     if (await Permission.locationWhenInUse.isGranted) {
       updateCurrentPosition();
@@ -418,13 +424,14 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     //TODO check if that call is correct, might make sense to request permission always if necesssary?
     updateCurrentPosition();
   }
+
 /*
   successGetWebCoordinates(GeolocationPosition pos) {
     try {
       Position p = pos.mapToPosition();
       setLatestPosition(p);
-      print(pos.coords.latitude);
-      print(pos.coords.longitude);
+      debugPrint("\n\n\n\n\n\n\n\n#####################################\n\n\n\n\n\n\n\n" + pos.coords.latitude.toString());
+      debugPrint(pos.coords.longitude.toString());
     } catch (ex) {
       print("Exception thrown : " + ex.toString());
     }
@@ -436,14 +443,14 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         return successGetWebCoordinates(pos);
       });
     }
-  }*/
-
+  }
+*/
   Future<bool> updateCurrentPosition() async {
-    if(kIsWeb) {
+    if (kIsWeb) {
       //_getCurrentLocationWeb();
-      return false;
-    }
-    if (await Permission.locationWhenInUse.isGranted) {
+      setLatestPosition(await _getCoarseLocationViaIP());
+      return true;
+    } else if (await Permission.locationWhenInUse.isGranted) {
       Position pos = await GeolocatorPlatform.instance
           .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
 
@@ -456,13 +463,13 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   void setLatestPosition(Position pos) {
     saveLatestSavedPosition(
         pos.latitude.toString() + ";" + pos.longitude.toString());
-    
+
     setState(() {
       userPosition = pos;
     });
   }
 
- /* Future<void> initOneSignalPushMessages() async {
+  /* Future<void> initOneSignalPushMessages() async {
     //OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
 
     var settings = {
@@ -558,6 +565,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   void initListModel() {
     initListModelSeveralTimes(_lists, true);
   }
+
   //TODO make use of theme styles everywhere and add switch theme button
 
   @override
@@ -724,7 +732,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                   mapPosition != null ? mapPosition : userPosition,
                   zoomMapAfterSelectLocation
                       ? 10.0
-                      : userPosition != null ? 5.0 : 0.0)),
+                      : userPosition != null
+                          ? 5.0
+                          : 0.0)),
         );
         updateDistanceToAllMerchantsIfNotDoneYet();
         if (result != null) {
@@ -1009,6 +1019,14 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     );
     updateDistanceToAllMerchantsIfNotDoneYet();
     showSnackBar(ctx, "snackbar_you_are_satoshi");*/
+  }
+
+  Future<Position> _getCoarseLocationViaIP() async {
+    var response = await new Dio().get('https://geolocation-db.com/json/');
+    var responseJSON = json.decode(response.data);
+    return new Position(
+        longitude: responseJSON['longitude'],
+        latitude: responseJSON['latitude']);
   }
 }
 
