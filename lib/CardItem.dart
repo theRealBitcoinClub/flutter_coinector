@@ -136,7 +136,7 @@ class CardItem extends StatelessWidget {
       placeholder: img,
       image: img,
       width: 640,
-      height: kIsWeb ? 460 : 390,
+      height: 390,
       alignment: Alignment.bottomCenter,
     );
   }
@@ -149,7 +149,7 @@ class CardItem extends StatelessWidget {
       placeholder: kTransparentImage,
       image: gifUrl,
       width: 640,
-      height: kIsWeb ? 460 : 390,
+      height: 390,
       alignment: Alignment.bottomCenter,
     );
   }
@@ -189,7 +189,7 @@ class CardItem extends StatelessWidget {
       Color backGroundColor, TextStyle textStyle2) {
     return Positioned(
       right: 0.0,
-      bottom:  kIsWeb ? 95 : 73.0,
+      bottom:  kIsWeb ? 80 : 73.0,
       child: merchant.distance != null
           ? GestureDetector(
           onTap: () {
@@ -214,7 +214,7 @@ class CardItem extends StatelessWidget {
       Color backGroundColor, BuildContext ctx) {
     return Positioned(
         right: 0.0,
-        bottom: kIsWeb ? 65 : 45.0,
+        bottom: kIsWeb ? 50 : 45.0,
         child: GestureDetector(
           onTap: () {
             handleReviewClick(ctx);
