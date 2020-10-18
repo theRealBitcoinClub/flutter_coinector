@@ -147,8 +147,8 @@ class CardItem extends StatelessWidget {
       Positioned(
         child: Loading(
             color: Colors.white, indicator: BallGridPulseIndicator(), size: 40),
-        left: 230.0,
-        top: 300,
+        left: kIsWeb ? 230 : 190,
+        bottom: kIsWeb ? 40 : 45,
       ),
       FadeInImage.memoryNetwork(
         fadeInCurve: Curves.decelerate,

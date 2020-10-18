@@ -39,6 +39,7 @@ dependencies:
   #desktop_window: ^0.3.0
   #js: ^0.6.2
   #http: ^0.12.2
+  in_app_review: ^0.2.1+1
   transparent_image: ^1.0.0
   smooth_star_rating: ^1.1.1
   google_maps_flutter: ^1.0.3
