@@ -1,8 +1,8 @@
 import 'package:Coinector/translator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_i18n/flutter_i18n.dart';
-import 'package:geolocator/geolocator.dart';
+import 'package:loading/indicator/ball_grid_pulse_indicator.dart';
+import 'package:loading/loading.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'AssetLoader.dart';
 import 'CustomBoxShadow.dart';
@@ -131,7 +131,7 @@ class CardItem extends StatelessWidget {
     var img = "assets/placeholder640x480.jpg";
     return FadeInImage.assetNetwork(
       fadeInCurve: Curves.decelerate,
-      fit:  BoxFit.contain,
+      fit: BoxFit.contain,
       fadeInDuration: Duration(milliseconds: 300),
       placeholder: img,
       image: img,
@@ -142,16 +142,24 @@ class CardItem extends StatelessWidget {
   }
 
   Widget buildImageContainer(String gifUrl) {
-    return FadeInImage.memoryNetwork(
-      fadeInCurve: Curves.decelerate,
-      fit: BoxFit.contain,
-      fadeInDuration: Duration(milliseconds: 500),
-      placeholder: kTransparentImage,
-      image: gifUrl,
-      width: 640,
-      height: 390,
-      alignment: Alignment.bottomCenter,
-    );
+    return Stack(children: <Widget>[
+      Positioned(
+        child: Loading(
+            color: Colors.white, indicator: BallGridPulseIndicator(), size: 40),
+        left: 230.0,
+        top: 300,
+      ),
+      FadeInImage.memoryNetwork(
+        fadeInCurve: Curves.decelerate,
+        fit: BoxFit.contain,
+        fadeInDuration: Duration(milliseconds: 500),
+        placeholder: kTransparentImage,
+        image: gifUrl,
+        width: 640,
+        height: 390,
+        alignment: Alignment.bottomCenter,
+      )
+    ]);
   }
 
   Stack buildStackInfoTextWithBackgroundAndShadow(Color infoBoxBackgroundColor,
@@ -185,27 +193,27 @@ class CardItem extends StatelessWidget {
     );
   }
 
-  Positioned buildPositionedContainerDistance(BuildContext ctx,
-      Color backGroundColor, TextStyle textStyle2) {
+  Positioned buildPositionedContainerDistance(
+      BuildContext ctx, Color backGroundColor, TextStyle textStyle2) {
     return Positioned(
       right: 0.0,
-      bottom:  kIsWeb ? 80 : 73.0,
+      bottom: kIsWeb ? 80 : 73.0,
       child: merchant.distance != null
           ? GestureDetector(
-          onTap: () {
-            _handleButtonVisit(ctx);
-          },
-          child: Container(
-              padding: EdgeInsets.fromLTRB(15.0, 5.0, 10.0, 5.0),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topLeft: buildRadius(), bottomLeft: buildRadius()),
-                  color: backGroundColor),
-              child: Text(
-                merchant.distance.toString(),
-                style: textStyle2,
-              ),
-            ))
+              onTap: () {
+                _handleButtonVisit(ctx);
+              },
+              child: Container(
+                padding: EdgeInsets.fromLTRB(15.0, 5.0, 10.0, 5.0),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                        topLeft: buildRadius(), bottomLeft: buildRadius()),
+                    color: backGroundColor),
+                child: Text(
+                  merchant.distance.toString(),
+                  style: textStyle2,
+                ),
+              ))
           : Container(),
     );
   }

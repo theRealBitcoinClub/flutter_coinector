@@ -1,14 +1,17 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:Coinector/translator.dart';
+
+//import 'package:device_preview/device_preview.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
+
 //import 'dart:html';
 
 import 'package:Coinector/locationJs.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+//import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
@@ -1038,9 +1041,9 @@ void main() {
   //Crashlytics.instance.enableInDevMode = true;
 
   // Pass all uncaught errors to Crashlytics.
-  FlutterError.onError = (FlutterErrorDetails details) {
+  /*FlutterError.onError = (FlutterErrorDetails details) {
     Crashlytics.instance.onError(details);
-  };
+  };*/
   WidgetsFlutterBinding.ensureInitialized();
   runApp(AnimatedListSample());
 }

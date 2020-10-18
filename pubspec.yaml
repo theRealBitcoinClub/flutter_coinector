@@ -19,21 +19,24 @@ environment:
 dependencies:
   #place_picker: ^0.9.9
   fluttertoast: ^7.1.1
-  #flutter_launcher_icons: ^0.7.0
   permission_handler: ^5.0.1+1
-  #permission_handler_platform_interface: ^2.0.1
   synchronized: ^2.2.0+2
-  firebase_messaging: ^5.0.3
-  firebase_core: ^0.4.0+5
-  firebase_crashlytics: ^0.0.4+5
-  #permission: ^0.1.1
+  #firebase_messaging: ^5.0.3
+  #firebase_core: ^0.4.0+5
+  #firebase_crashlytics: ^0.0.4+5
   #flutter_advanced_networkimage: any
   #launch_review: 2.0.0
   #flutter_crashlytics: 1.0.0
   #clipboard_manager: ^0.0.4
   #flutter_typeahead: ^1.4.0
+  #awesome_dialog: ^1.2.1
+  #confetti: ^0.5.4+1
+  loading: ^1.0.2
   shared_preferences: ^0.5.12+2
   dio: ^3.0.10
+  #device_preview: ^0.4.8
+  #responsive_framework: ^0.0.9
+  #desktop_window: ^0.3.0
   #js: ^0.6.2
   #http: ^0.12.2
   transparent_image: ^1.0.0
