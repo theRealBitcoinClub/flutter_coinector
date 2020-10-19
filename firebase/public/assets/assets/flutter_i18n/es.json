@@ -1,4 +1,6 @@
 {
+  "snachbar_device_location_unavailable": "No hay GPS!",
+  "snackbar_error_internet": "No hay Internet!",
   "snackbar_showing_unfiltered_list": "Todos los lugares...",
   "snackbar_merchant": "Lugar: ",
   "snackbar_filtered_by_tag": "Filtro de etiqueta: ",

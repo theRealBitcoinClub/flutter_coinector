@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io' show Platform;
+import 'dart:io';
+import 'package:awesome_dialog/awesome_dialog.dart';
 
 import 'package:in_app_review/in_app_review.dart';
+import 'package:connectivity/connectivity.dart';
 
 import 'package:Coinector/translator.dart';
 
@@ -20,6 +22,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:synchronized/synchronized.dart' as synchro;
+import 'package:url_launcher/url_launcher.dart';
 
 import 'AssetLoader.dart';
 import 'CardItemBuilder.dart';
@@ -89,6 +92,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   @override
   void dispose() {
+    if (subscription != null)
+      subscription.cancel();
+
     tabController.dispose();
     if (searchIconBlinkAnimationController != null)
       searchIconBlinkAnimationController.dispose();
@@ -411,9 +417,15 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     if (kIsWeb) {
       return null;
     }
-    if (await Permission.locationWhenInUse.isGranted) {
-      updateCurrentPosition();
-      updateDistanceToAllMerchantsIfNotDoneYet();
+    try {
+      LocationPermission p = await Geolocator.requestPermission();
+      if (p == LocationPermission.whileInUse ||
+          p == LocationPermission.always) {
+        updateCurrentPosition();
+        updateDistanceToAllMerchantsIfNotDoneYet();
+      }
+    } catch (e) {
+      FlutterError.presentError(e);
     }
   }
 
@@ -445,18 +457,21 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 */
   Future<bool> updateCurrentPosition() async {
-    if (kIsWeb) {
-      //_getCurrentLocationWeb();
-      setLatestPosition(await _getCoarseLocationViaIP());
-      return true;
-    } else if (await Permission.locationWhenInUse.isGranted) {
+    //ALWAYS GET LOCATION VIA IP FIRST TO HAVE SOMETHING AT STARTUP
+    //if (kIsWeb) {
+    //_getCurrentLocationWeb();
+    setLatestPosition(await _getCoarseLocationViaIP());
+    //return true;
+    // } else {
+    if (!kIsWeb && await Permission.locationWhenInUse.isGranted) {
       Position pos = await GeolocatorPlatform.instance
           .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
 
       setLatestPosition(pos);
-      return true;
     }
-    return false;
+    return true;
+    //}
+    //return false;
   }
 
   void setLatestPosition(Position pos) {
@@ -505,9 +520,14 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   double parseDouble(String position, int piece) =>
       double.parse(position.split(";")[piece]);
 
+  StreamSubscription subscription;
+
   @override
   void initState() {
     super.initState();
+    subscription = Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {
+      checkInternetConnectivity();
+    });
     initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition();
     //initOneSignalPushMessages();
     searchDelegate.buildHistory();
@@ -572,6 +592,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     /*new Future.delayed(Duration.zero, () async {
       Translator.currentLocale(context);
     });*/
+    checkInternetConnectivity();
     return MaterialApp(
         localizationsDelegates: [
           FlutterI18nDelegate(),
@@ -636,6 +657,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
               /*new Future.delayed(Duration.zero, () async {
             await Translator.refresh(ctx, new Locale('de'));
           });*/
+
               return NestedScrollView(
                 headerSliverBuilder:
                     (BuildContext buildCtx, bool innerBoxIsScrolled) {
@@ -1062,6 +1084,43 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     return new Position(
         longitude: responseJSON['longitude'],
         latitude: responseJSON['latitude']);
+  }
+
+  void checkInternetConnectivity() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile) {
+      // I am connected to a mobile network.
+    } else if (connectivityResult == ConnectivityResult.wifi) {
+      // I am connected to a wifi network.
+      try {
+        Response response =
+            await Dio().get('https://google.com').catchError((e) {
+          showWarning();
+        });
+        if (response == null || response.statusCode != HttpStatus.ok) {
+          showWarning();
+        }
+      } catch (e) {
+        showWarning();
+      }
+    } else {
+      showWarning();
+    }
+  }
+
+  void showWarning() {
+    /*new AwesomeDialog(
+            context: context,
+            title: "Internet",
+            desc: "Activate internet!!!",
+            dialogType: DialogType.WARNING,
+            animType: AnimType.BOTTOMSLIDE,
+            btnOkOnPress: () {
+              //dismiss
+            }).show();*/
+    //Dialogs.showInfoDialogWithCloseButton(context);
+
+    showSnackBar(context, "", additionalText: "Internet Error!");
   }
 }
 

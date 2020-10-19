@@ -29,7 +29,7 @@ dependencies:
   #flutter_crashlytics: 1.0.0
   #clipboard_manager: ^0.0.4
   #flutter_typeahead: ^1.4.0
-  #awesome_dialog: ^1.2.1
+  awesome_dialog: ^1.2.1
   #confetti: ^0.5.4+1
   loading: ^1.0.2
   shared_preferences: ^0.5.12+2
@@ -39,13 +39,14 @@ dependencies:
   #desktop_window: ^0.3.0
   #js: ^0.6.2
   #http: ^0.12.2
+  connectivity: ^0.4.9+5
   in_app_review: ^0.2.1+1
   transparent_image: ^1.0.0
   smooth_star_rating: ^1.1.1
   google_maps_flutter: ^1.0.3
   url_launcher: ^5.7.4
   flutter_i18n: ^0.20.0
-  geolocator: ^6.0.0+4
+  geolocator: ^6.1.0
   crypto: ^2.1.5
   path_provider: ^1.6.21
   #onesignal_flutter: ^2.1.0
