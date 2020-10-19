@@ -1073,9 +1073,10 @@ void main() {
   //Crashlytics.instance.enableInDevMode = true;
 
   // Pass all uncaught errors to Crashlytics.
-  /*FlutterError.onError = (FlutterErrorDetails details) {
-    Crashlytics.instance.onError(details);
-  };*/
+  FlutterError.onError = (FlutterErrorDetails details) {
+    //Crashlytics.instance.onError(details);
+    //just ignore the errors for now to have less library dependencies
+  };
   WidgetsFlutterBinding.ensureInitialized();
   runApp(AnimatedListSample());
 }
