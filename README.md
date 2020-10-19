@@ -1,6 +1,14 @@
-# Google Play
+# Web
 
-https://play.google.com/store/apps/details?id=cash.bitcoinmap.coinector
+https://coinector.app
+
+# Android
+
+https://bitcoinmap.cash/coinector
+
+# IPhone
+
+https://bitcoinmap.cash/iphone
 
 # Build Status
 
@@ -11,13 +19,17 @@ https://play.google.com/store/apps/details?id=cash.bitcoinmap.coinector
 BCH:qqp0kpntfxygx3e6d4mr9c5ef5ucxdcjk5zkgtevss
 DASH:XiHdw8SVoNtJqno6GnxKQS2Snxh7BTuR39
 
-[CLICK HERE TO DONATE WITH QR CODES](https://bitcoinmap.cash/bitcoin-bch-dash-qr-code-generator?bch=qqp0kpntfxygx3e6d4mr9c5ef5ucxdcjk5zkgtevss&dash=XiHdw8SVoNtJqno6GnxKQS2Snxh7BTuR39)
+https://cointr.ee/bmap (Please send an email to trbc@bitcoinmap.cash to verify that the donation arrived)
+
+[CLICK HERE TO DONATE BCH or DASH WITH QR CODES](https://bitcoinmap.cash/bitcoin-bch-dash-qr-code-generator?bch=qqp0kpntfxygx3e6d4mr9c5ef5ucxdcjk5zkgtevss&dash=XiHdw8SVoNtJqno6GnxKQS2Snxh7BTuR39)
 
 # Coinector - Coinnect the coimunity
 
-This app provides a horizontally and vertically scrollable list of card items containing all Restaurants, Bars, Supermarkets, Hotels, Shops & Spas accepting BCH or DASH payments worldwide.
+This app provides a horizontally and vertically scrollable list of card items containing all Restaurants, Bars, Supermarkets, Hotels, Shops & Spas accepting BCH, BTC or DASH payments worldwide.
 
-It provides a search action (top right action bar), which lets the user search for various tags, locations, brands or common phrases.
+## ACTIONS
+
+It provides a search action (top left action bar), which lets the user search for various tags, locations, brands or common phrases.
 
 On the card of each merchant the user can tap 2 different action buttons to VISIT or REVIEW the shop.
 
@@ -33,7 +45,13 @@ On each card there is a REVIEW button which forwards the user to a website which
 
 The app features a native Google Maps view with markers in different colors according to their category.
 
+In the web version of this app the map functionality links to http://bitcoinmap.cash
+
 ## ADD PLACES
+
+Currently the add places functionality has been simplified and is using this Google Form: http://bitcoinmap.cash/submit
+
+We might re-activate the more complex approach as soon as the demand justifies the efforts.
 
 1. The user who sends an Email to add a place, triggers an automated action, which creates an Issue on Gitlab & Github:
 https://gitlab.com/bmap.cash/bmap.cash/issues & https://github.com/theRealBitcoinClub/bmap.cash/issues
@@ -44,19 +62,13 @@ https://github.com/theRealBitcoinClub/BITCOINMAP.CASH---Browser-PWA/raw/master/p
 
 ## QR-Code PDF download
 
+(currently deactived as this feature was not used a lot)
+
 User can download a PDF file with QR Codes after adding a place
 
 ## Programming language
 
 This project is written in dart using the flutter framework.
-
-## Release
-
-So far there is a compiled version available in the Play Store:
-https://play.google.com/store?id=cash.bitcoinmap.coinector
-
-We are looking for someone with an apple-id who would like to release the IPhone version.
-If you would like to publish that app, please open an issue here on Github or send us an email or message via the website of http://bitcoinmap.cash!
 
 ## Licence
 
