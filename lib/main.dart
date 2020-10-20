@@ -43,7 +43,7 @@ class AnimatedListSample extends StatefulWidget {
 
 var lastWarningInMillis = 0;
 
-void checkInternetConnectivityShowSnackbar(ctx) async {
+void checkInternetConnectivityShowSnackbar(ctx, _onError) async {
 //DONT CHECK MORE THAN EVERY 9 SECONDS
   var milliSecondsNow = DateTime.now().millisecondsSinceEpoch;
   if (lastWarningInMillis != 0 &&
@@ -57,30 +57,30 @@ void checkInternetConnectivityShowSnackbar(ctx) async {
 // I am connected to a mobile network.
   } else if (connectivityResult == ConnectivityResult.wifi) {
 // I am connected to a wifi network.
-    checkConnectionWithRequest(() {
-      _showInternetErrorSnackbar(ctx);
+    checkConnectionWithRequest(ctx, () {
+      _onError(ctx);
     });
   } else {
-    _showInternetErrorSnackbar(ctx);
+    _onError(ctx);
   }
 }
 
-Future checkConnectionWithRequest(_onError) async {
+Future checkConnectionWithRequest(ctx, _onError) async {
   try {
     Response response = await Dio().get('https://google.com').catchError((e) {
-      _onError();
+      _onError(ctx);
     });
     if (response == null || response.statusCode != HttpStatus.ok) {
-      _onError();
+      _onError(ctx);
     }
   } catch (e) {
-    _onError();
+    _onError(ctx);
   }
 }
 
 void _showInternetErrorSnackbar(ctx) {
 //Double check internet connection before showing error
-  checkConnectionWithRequest(() {
+  checkConnectionWithRequest(ctx, (abc) {
     ctx.showSnackBar(ctx.context, "", additionalText: "Internet Error!");
   });
 /*new AwesomeDialog(
@@ -578,7 +578,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     subscription = Connectivity()
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
-      checkInternetConnectivityShowSnackbar(this);
+      checkInternetConnectivityShowSnackbar(this, (context) {
+        _showInternetErrorSnackbar(this);
+      });
     });
     initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition();
     //initOneSignalPushMessages();
@@ -644,7 +646,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     /*new Future.delayed(Duration.zero, () async {
       Translator.currentLocale(context);
     });*/
-    checkInternetConnectivityShowSnackbar(this);
+    checkInternetConnectivityShowSnackbar(this, (ctx) {
+      _showInternetErrorSnackbar(this);
+    });
     return MaterialApp(
         localizationsDelegates: [
           FlutterI18nDelegate(),
@@ -830,6 +834,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void showSnackBar(ctx, String msgId, {String additionalText = ""}) {
+    if (_scaffoldKey.currentState == null) return;
+
     _scaffoldKey.currentState.removeCurrentSnackBar();
     _scaffoldKey.currentState.showSnackBar(SnackBar(
       duration: Duration(milliseconds: 3000),

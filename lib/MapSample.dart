@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:Coinector/translator.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
@@ -183,9 +184,15 @@ class MapSampleState extends State<MapSample> {
     return merchant.location;
   }
 
+  AwesomeDialog dialog;
+
   @override
   Widget build(BuildContext ctx) {
-    checkInternetConnectivityShowSnackbar(this);
+    checkInternetConnectivityShowSnackbar(this, (abc) {
+      //Toaster.showWarning("Internet Error!!!");
+      _showDialogInternetError(ctx);
+      //Dialogs.showInfoDialogWithCloseButton(ctx);
+    });
     return Builder(builder: (buildCtx) {
       return Scaffold(
         body: Padding(
@@ -249,6 +256,9 @@ class MapSampleState extends State<MapSample> {
   @override
   void dispose() {
     cancelToasts();
+    if (dialog != null) {
+      dialog.dissmiss();
+    }
     super.dispose();
   }
 
@@ -269,5 +279,20 @@ class MapSampleState extends State<MapSample> {
       }
     });
     return index;
+  }
+
+  void _showDialogInternetError(ctx) async {
+    dialog = await AwesomeDialog(
+            context: ctx,
+            title: "",
+            headerAnimationLoop: false,
+            desc: "Activate internet!!!",
+            autoHide: Duration(seconds: 7),
+            dialogType: DialogType.ERROR,
+            animType: AnimType.BOTTOMSLIDE,
+            btnOkOnPress: () {
+              //dismiss
+            })
+        .show();
   }
 }
