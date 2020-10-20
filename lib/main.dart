@@ -1,13 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-import 'package:awesome_dialog/awesome_dialog.dart';
-
-import 'package:in_app_review/in_app_review.dart';
-import 'package:connectivity/connectivity.dart';
 
 import 'package:Coinector/translator.dart';
-
+import 'package:connectivity/connectivity.dart';
 //import 'package:device_preview/device_preview.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -17,12 +13,11 @@ import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_i18n/flutter_i18n_delegate.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:geolocator/geolocator.dart';
-
+import 'package:in_app_review/in_app_review.dart';
 //import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:synchronized/synchronized.dart' as synchro;
-import 'package:url_launcher/url_launcher.dart';
 
 import 'AssetLoader.dart';
 import 'CardItemBuilder.dart';
@@ -92,8 +87,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   @override
   void dispose() {
-    if (subscription != null)
-      subscription.cancel();
+    if (subscription != null) subscription.cancel();
 
     tabController.dispose();
     if (searchIconBlinkAnimationController != null)
@@ -525,7 +519,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   @override
   void initState() {
     super.initState();
-    subscription = Connectivity().onConnectivityChanged.listen((ConnectivityResult result) {
+    subscription = Connectivity()
+        .onConnectivityChanged
+        .listen((ConnectivityResult result) {
       checkInternetConnectivity();
     });
     initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition();
@@ -1088,6 +1084,14 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void checkInternetConnectivity() async {
+    //DONT CHECK MORE THAN EVERY 10 SECONDS
+    var milliSecondsNow = DateTime.now().millisecondsSinceEpoch;
+    if (lastWarningInMillis != 0 &&
+        lastWarningInMillis + 10000 > milliSecondsNow) {
+      return;
+    }
+    lastWarningInMillis = milliSecondsNow;
+
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile) {
       // I am connected to a mobile network.
@@ -1109,7 +1113,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     }
   }
 
-  var lastWarningInMillis=0;
+  var lastWarningInMillis = 0;
 
   void showWarning() {
     /*new AwesomeDialog(
@@ -1123,11 +1127,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
             }).show();*/
     //Dialogs.showInfoDialogWithCloseButton(context);
     //Dont show too many of these snackbars
-    var milliSecondsNow = DateTime.now().millisecondsSinceEpoch;
-    if (lastWarningInMillis != 0 && lastWarningInMillis + 10000 > milliSecondsNow) {
-      lastWarningInMillis = milliSecondsNow;
-      return;
-    }
 
     showSnackBar(context, "", additionalText: "Internet Error!");
   }
