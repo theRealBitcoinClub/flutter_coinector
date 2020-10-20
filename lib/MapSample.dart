@@ -12,6 +12,7 @@ import 'ListModel.dart';
 import 'Merchant.dart';
 import 'TagParser.dart';
 import 'Toaster.dart';
+import 'main.dart';
 import 'pages.dart';
 
 var sharedPrefKeyCounterToastGeneral = "sharedPrefKeyCounterToastGeneral2";
@@ -184,6 +185,7 @@ class MapSampleState extends State<MapSample> {
 
   @override
   Widget build(BuildContext ctx) {
+    checkInternetConnectivityShowSnackbar(this);
     return Builder(builder: (buildCtx) {
       return Scaffold(
         body: Padding(

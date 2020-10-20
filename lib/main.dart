@@ -41,6 +41,61 @@ class AnimatedListSample extends StatefulWidget {
   _AnimatedListSampleState createState() => _AnimatedListSampleState();
 }
 
+var lastWarningInMillis = 0;
+
+void checkInternetConnectivityShowSnackbar(ctx) async {
+//DONT CHECK MORE THAN EVERY 9 SECONDS
+  var milliSecondsNow = DateTime.now().millisecondsSinceEpoch;
+  if (lastWarningInMillis != 0 &&
+      lastWarningInMillis + 8500 > milliSecondsNow) {
+    return;
+  }
+  lastWarningInMillis = milliSecondsNow;
+
+  var connectivityResult = await (Connectivity().checkConnectivity());
+  if (connectivityResult == ConnectivityResult.mobile) {
+// I am connected to a mobile network.
+  } else if (connectivityResult == ConnectivityResult.wifi) {
+// I am connected to a wifi network.
+    checkConnectionWithRequest(() {
+      _showInternetErrorSnackbar(ctx);
+    });
+  } else {
+    _showInternetErrorSnackbar(ctx);
+  }
+}
+
+Future checkConnectionWithRequest(_onError) async {
+  try {
+    Response response = await Dio().get('https://google.com').catchError((e) {
+      _onError();
+    });
+    if (response == null || response.statusCode != HttpStatus.ok) {
+      _onError();
+    }
+  } catch (e) {
+    _onError();
+  }
+}
+
+void _showInternetErrorSnackbar(ctx) {
+//Double check internet connection before showing error
+  checkConnectionWithRequest(() {
+    ctx.showSnackBar(ctx.context, "", additionalText: "Internet Error!");
+  });
+/*new AwesomeDialog(
+            context: context,
+            title: "Internet",
+            desc: "Activate internet!!!",
+            dialogType: DialogType.WARNING,
+            animType: AnimType.BOTTOMSLIDE,
+            btnOkOnPress: () {
+              //dismiss
+            }).show();*/
+//Dialogs.showInfoDialogWithCloseButton(context);
+//Dont show too many of these snackbars
+}
+
 class _AnimatedListSampleState extends State<AnimatedListSample>
     with TickerProviderStateMixin {
   final SearchDemoSearchDelegate searchDelegate = SearchDemoSearchDelegate();
@@ -523,7 +578,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     subscription = Connectivity()
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
-      checkInternetConnectivity();
+      checkInternetConnectivityShowSnackbar(this);
     });
     initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition();
     //initOneSignalPushMessages();
@@ -589,7 +644,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     /*new Future.delayed(Duration.zero, () async {
       Translator.currentLocale(context);
     });*/
-    checkInternetConnectivity();
+    checkInternetConnectivityShowSnackbar(this);
     return MaterialApp(
         localizationsDelegates: [
           FlutterI18nDelegate(),
@@ -1082,61 +1137,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     return new Position(
         longitude: responseJSON['longitude'],
         latitude: responseJSON['latitude']);
-  }
-
-  var lastWarningInMillis = 0;
-
-  void checkInternetConnectivity() async {
-    //DONT CHECK MORE THAN EVERY 10 SECONDS
-    var milliSecondsNow = DateTime.now().millisecondsSinceEpoch;
-    if (lastWarningInMillis != 0 &&
-        lastWarningInMillis + 10000 > milliSecondsNow) {
-      return;
-    }
-    lastWarningInMillis = milliSecondsNow;
-
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.mobile) {
-      // I am connected to a mobile network.
-    } else if (connectivityResult == ConnectivityResult.wifi) {
-      // I am connected to a wifi network.
-      checkConnectionWithRequest(() {
-        _showInternetErrorSnackbar();
-      });
-    } else {
-      _showInternetErrorSnackbar();
-    }
-  }
-
-  Future checkConnectionWithRequest(_onError) async {
-    try {
-      Response response = await Dio().get('https://google.com').catchError((e) {
-        _onError();
-      });
-      if (response == null || response.statusCode != HttpStatus.ok) {
-        _onError();
-      }
-    } catch (e) {
-      _onError();
-    }
-  }
-
-  void _showInternetErrorSnackbar() {
-    //Double check internet connection before showing error
-    checkConnectionWithRequest(() {
-      showSnackBar(context, "", additionalText: "Internet Error!");
-    });
-    /*new AwesomeDialog(
-            context: context,
-            title: "Internet",
-            desc: "Activate internet!!!",
-            dialogType: DialogType.WARNING,
-            animType: AnimType.BOTTOMSLIDE,
-            btnOkOnPress: () {
-              //dismiss
-            }).show();*/
-    //Dialogs.showInfoDialogWithCloseButton(context);
-    //Dont show too many of these snackbars
   }
 }
 
