@@ -454,7 +454,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     //ALWAYS GET LOCATION VIA IP FIRST TO HAVE SOMETHING AT STARTUP
     //if (kIsWeb) {
     //_getCurrentLocationWeb();
-    setLatestPosition(await _getCoarseLocationViaIP());
     //return true;
     // } else {
     if (!kIsWeb && await Permission.locationWhenInUse.isGranted) {
@@ -462,7 +461,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
 
       setLatestPosition(pos);
-    }
+    } else
+      setLatestPosition(await _getCoarseLocationViaIP());
+
     return true;
     //}
     //return false;
@@ -1083,6 +1084,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         latitude: responseJSON['latitude']);
   }
 
+  var lastWarningInMillis = 0;
+
   void checkInternetConnectivity() async {
     //DONT CHECK MORE THAN EVERY 10 SECONDS
     var milliSecondsNow = DateTime.now().millisecondsSinceEpoch;
@@ -1100,22 +1103,20 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       try {
         Response response =
             await Dio().get('https://google.com').catchError((e) {
-          showWarning();
+          _showInternetErrorSnackbar();
         });
         if (response == null || response.statusCode != HttpStatus.ok) {
-          showWarning();
+          _showInternetErrorSnackbar();
         }
       } catch (e) {
-        showWarning();
+        _showInternetErrorSnackbar();
       }
     } else {
-      showWarning();
+      _showInternetErrorSnackbar();
     }
   }
 
-  var lastWarningInMillis = 0;
-
-  void showWarning() {
+  void _showInternetErrorSnackbar() {
     /*new AwesomeDialog(
             context: context,
             title: "Internet",
