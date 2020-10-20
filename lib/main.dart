@@ -778,6 +778,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void showSnackBar(ctx, String msgId, {String additionalText = ""}) {
+    _scaffoldKey.currentState.removeCurrentSnackBar();
     _scaffoldKey.currentState.showSnackBar(SnackBar(
       duration: Duration(milliseconds: 3000),
       content: Text(
