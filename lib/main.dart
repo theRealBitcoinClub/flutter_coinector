@@ -1100,23 +1100,32 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       // I am connected to a mobile network.
     } else if (connectivityResult == ConnectivityResult.wifi) {
       // I am connected to a wifi network.
-      try {
-        Response response =
-            await Dio().get('https://google.com').catchError((e) {
-          _showInternetErrorSnackbar();
-        });
-        if (response == null || response.statusCode != HttpStatus.ok) {
-          _showInternetErrorSnackbar();
-        }
-      } catch (e) {
+      checkConnectionWithRequest(() {
         _showInternetErrorSnackbar();
-      }
+      });
     } else {
       _showInternetErrorSnackbar();
     }
   }
 
+  Future checkConnectionWithRequest(_onError) async {
+    try {
+      Response response = await Dio().get('https://google.com').catchError((e) {
+        _onError();
+      });
+      if (response == null || response.statusCode != HttpStatus.ok) {
+        _onError();
+      }
+    } catch (e) {
+      _onError();
+    }
+  }
+
   void _showInternetErrorSnackbar() {
+    //Double check internet connection before showing error
+    checkConnectionWithRequest(() {
+      showSnackBar(context, "", additionalText: "Internet Error!");
+    });
     /*new AwesomeDialog(
             context: context,
             title: "Internet",
@@ -1128,8 +1137,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
             }).show();*/
     //Dialogs.showInfoDialogWithCloseButton(context);
     //Dont show too many of these snackbars
-
-    showSnackBar(context, "", additionalText: "Internet Error!");
   }
 }
 
