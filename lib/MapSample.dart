@@ -54,6 +54,7 @@ class MapSampleState extends State<MapSample> {
   GoogleMapController _googleMapController;
 
   MapSampleState(this.allLists, this.position, this.initialZoomLevel);
+
   Set<Marker> allMarkers = Set.from([]);
 
   Toaster toast = Toaster();
@@ -249,16 +250,19 @@ class MapSampleState extends State<MapSample> {
   bool hasMarkers() => allMarkers != null && allMarkers.length > 1;
 
   Future<void> closeMapResetMerchant() async {
+    dismissDialog();
     cancelToasts();
     Navigator.of(context).pop();
+  }
+
+  void dismissDialog() {
+    if (dialog != null) dialog.dissmiss();
   }
 
   @override
   void dispose() {
     cancelToasts();
-    if (dialog != null) {
-      dialog.dissmiss();
-    }
+    dismissDialog();
     super.dispose();
   }
 
@@ -286,10 +290,11 @@ class MapSampleState extends State<MapSample> {
             context: ctx,
             title: "",
             headerAnimationLoop: false,
-            desc: "Activate internet!!!",
+            desc: "Internet Error!!!",
             autoHide: Duration(seconds: 7),
             dialogType: DialogType.ERROR,
-            animType: AnimType.BOTTOMSLIDE,
+            animType: AnimType.SCALE,
+            padding: EdgeInsets.all(0.0),
             btnOkOnPress: () {
               //dismiss
             })

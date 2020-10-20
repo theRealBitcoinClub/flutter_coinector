@@ -578,7 +578,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     subscription = Connectivity()
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
-      checkInternetConnectivityShowSnackbar(this, (context) {
+      checkInternetConnectivityShowSnackbar(this, (abc) {
         _showInternetErrorSnackbar(this);
       });
     });
