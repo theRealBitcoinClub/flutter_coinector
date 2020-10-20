@@ -1109,6 +1109,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     }
   }
 
+  var lastWarningInMillis=0;
+
   void showWarning() {
     /*new AwesomeDialog(
             context: context,
@@ -1120,6 +1122,12 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
               //dismiss
             }).show();*/
     //Dialogs.showInfoDialogWithCloseButton(context);
+    //Dont show too many of these snackbars
+    var milliSecondsNow = DateTime.now().millisecondsSinceEpoch;
+    if (lastWarningInMillis != 0 && lastWarningInMillis + 10000 > milliSecondsNow) {
+      lastWarningInMillis = milliSecondsNow;
+      return;
+    }
 
     showSnackBar(context, "", additionalText: "Internet Error!");
   }
