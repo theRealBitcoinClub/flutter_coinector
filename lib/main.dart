@@ -80,9 +80,26 @@ Future checkConnectionWithRequest(that, _onError) async {
 
 void _showInternetErrorSnackbar(that) {
 //Double check internet connection before showing error
-  checkConnectionWithRequest(that, (abc) {
-    that.showSnackBar(that.context, "", additionalText: "Internet Error!");
-  });
+  try {
+    checkConnectionWithRequest(that, (abc) {
+      //Future.delayed(Duration(seconds: 1), );
+      checkConnectionWithRequest(that, (abc) {
+        checkConnectionWithRequest(that, (abc) {
+          that.showSnackBar(that.context, "",
+              additionalText: "Internet Error!");
+        });
+      });
+    });
+  } catch (e) {
+    try {
+      checkConnectionWithRequest(that, (abc) {
+        //Future.delayed(Duration(seconds: 1), );
+        that.showSnackBar(that.context, "", additionalText: "Internet Error!");
+      });
+    } catch (e) {
+      that.showSnackBar(that.context, "", additionalText: "Internet Error!");
+    }
+  }
 /*new AwesomeDialog(
             context: context,
             title: "Internet",
