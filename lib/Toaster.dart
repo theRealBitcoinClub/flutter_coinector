@@ -7,39 +7,56 @@ class Toaster {
   static const DEFAULT_BACKGROUND_OPACITY = 0.9;
   static const double DEFAULT_FONT_SIZE = 16.0;
   static const Color DEFAULT_TEXT_COLOR = Colors.white;
-  static const Color DEFAULT_BACKGROUND_COLOR = Colors.amber;
+  static const Color DEFAULT_BACKGROUND_COLOR = Colors.orange;
   static const int DEFAULT_TIME_FOR_IOS_AND_WEB = 3;
   static const Toast DEFAULT_TIME_FOR_ANDROID = Toast.LENGTH_LONG;
   static const ToastGravity DEFAULT_TOAST_GRAVITY = ToastGravity.CENTER;
 
+  static void showToastAttractCustomers(ctx) {
+    _showWarning(
+        Translator.translate(ctx, "Please select a suggestion from the list!"));
+  }
+
+  static void showToastSelectSuggestion() {
+    _showWarning("Please select a suggestion from the list!");
+  }
+
   static void showToastLaunchingEmailClient(ctx) {
-    showWarning(Translator.translate(ctx, "toaster_select_email_client"));
+    _showWarning(Translator.translate(ctx, "toaster_select_email_client"));
   }
 
   static void showToastEmailNotConfigured(ctx) {
-    showWarning(Translator.translate(ctx, "toaster_email_not_configured"));
+    _showWarning(Translator.translate(ctx, "toaster_email_not_configured"));
   }
 
-  static void showWarning(message) {
-    Fluttertoast.cancel();
+  static var isToasting = false;
+
+  static void _showWarning(message) async {
+    await cancel();
+    if (!isToasting) isToasting = true;
     showToast(message, DEFAULT_BACKGROUND_COLOR);
   }
 
+  static void cancel() async {
+    if (isToasting) await Fluttertoast.cancel();
+    isToasting = false;
+  }
+
   static void showAddName(ctx) {
-    showWarning(Translator.translate(
+    _showWarning(Translator.translate(
         ctx, "toaster_enter_name_atleast_five_characters"));
   }
 
   static void showAddExactlyFourTags(ctx) {
-    showWarning(Translator.translate(ctx, "toaster_minimum_four_tags"));
+    _showWarning(Translator.translate(ctx, "toaster_minimum_four_tags"));
   }
 
   static void showAddAtleastOneReceivingAddress(ctx) {
-    showWarning(Translator.translate(ctx, "toaster_atleast_one_bitcoin_adr"));
+    _showWarning(Translator.translate(ctx, "toaster_atleast_one_bitcoin_adr"));
   }
 
   static void showAddFullAdr(ctx) {
-    showWarning(Translator.translate(ctx, "toaster_full_adr"));
+    _showWarning(Translator.translate(ctx, "toaster_full_adr"));
   }
 
   static void showInstructionToast(

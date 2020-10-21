@@ -57,7 +57,7 @@ void checkInternetConnectivityShowSnackbar(ctx, _onError) async {
 // I am connected to a mobile network.
   } else if (connectivityResult == ConnectivityResult.wifi) {
 // I am connected to a wifi network.
-    checkConnectionWithRequest(ctx, () {
+    checkConnectionWithRequest(ctx, (abc) {
       _onError(ctx);
     });
   } else {
@@ -142,6 +142,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   @override
   void dispose() {
+    Dialogs.dismissDialog();
     if (subscription != null) subscription.cancel();
 
     tabController.dispose();
@@ -151,7 +152,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void loadAssets(
-      int filterWordIndex, String locationFilter, String fileName) async {
+      ctx, int filterWordIndex, String locationFilter, String fileName) async {
     updateCurrentPosition();
 
     if (isUnfilteredSearch(filterWordIndex)) {
@@ -162,7 +163,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     } else {
       this.isUnfilteredList = false;
     }
-    checkForUpdatedData();
+    _checkForUpdatedData(ctx);
 
     initListModel();
 
@@ -173,11 +174,11 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     }
   }
 
-  void checkForUpdatedData() {
+  void _checkForUpdatedData(ctx) async {
     try {
       FileCache.initLastVersion(() async {
         //has new version
-        //Toaster.showWarning("APP UPDATED! PLEASE RESTART!");
+        //showSnackBar(context, "", additionalText: "APP UPDATED! DO RESTART!");
         updateAllCachedContent();
       });
     } catch (e) {
@@ -595,7 +596,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     }
   }
 
-  void loadAssetsUnfiltered() => loadAssets(-999, null, null);
+  void loadAssetsUnfiltered() => loadAssets(context, -999, null, null);
 
   void updateDistanceToAllMerchantsIfNotDoneYet() {
     if (userPosition == null) return;
@@ -646,7 +647,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     /*new Future.delayed(Duration.zero, () async {
       Translator.currentLocale(context);
     });*/
-    checkInternetConnectivityShowSnackbar(this, (ctx) {
+    checkInternetConnectivityShowSnackbar(this, (abc) {
       _showInternetErrorSnackbar(this);
     });
     return MaterialApp(
@@ -1026,7 +1027,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     var index = Tag.getTagIndex(selectedLocationOrTag);
     showMatchingSnackBar(ctx, fileName, capitalize(search), index);
 
-    loadAssets(index, search, fileName);
+    loadAssets(ctx, index, search, fileName);
 
     setState(() {
       _searchTerm = search;
@@ -1159,5 +1160,6 @@ void main() {
     //just ignore the errors for now to have less library dependencies
   };
   WidgetsFlutterBinding.ensureInitialized();
+  //runApp(Phoenix(child: AnimatedListSample()));
   runApp(AnimatedListSample());
 }

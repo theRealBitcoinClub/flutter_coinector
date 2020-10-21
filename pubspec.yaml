@@ -31,6 +31,7 @@ dependencies:
   #flutter_typeahead: ^1.4.0
   awesome_dialog: ^1.2.1
   #confetti: ^0.5.4+1
+  flutter_phoenix: ^0.1.0
   loading: ^1.0.2
   shared_preferences: ^0.5.12+2
   dio: ^3.0.10

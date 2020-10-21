@@ -1,19 +1,63 @@
 import 'package:Coinector/translator.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 
 class Dialogs {
+  static var hasDialog = false;
+  static AwesomeDialog dialog;
+
+  static void showDialogUpdateApp(ctx) async {
+    dialog = await AwesomeDialog(
+        context: ctx,
+        title: "",
+        desc: "App updated! Restart now?",
+        btnCancelOnPress: () {
+          dialog.dissmiss();
+        },
+        btnOkOnPress: () {
+          //Phoenix.rebirth(ctx);
+          Navigator.of(ctx).pop();
+        }).show();
+  }
+
+  static void showDialogInternetError(ctx) async {
+    if (!hasDialog) {
+      hasDialog = true;
+      dialog = await AwesomeDialog(
+              context: ctx,
+              title: "",
+              headerAnimationLoop: false,
+              desc: "Internet Error!!!",
+              autoHide: Duration(seconds: 7),
+              dialogType: DialogType.ERROR,
+              animType: AnimType.SCALE,
+              padding: EdgeInsets.all(0.0),
+              onDissmissCallback: () {
+                hasDialog = false;
+              },
+              btnOkOnPress: () {
+                //dismiss
+              })
+          .show();
+    }
+  }
+
+  static void dismissDialog() {
+    if (dialog != null) dialog.dissmiss();
+  }
+
   static void confirmMakeDonation(BuildContext buildCtx, callbackYes) {
     showDialog(
         context: buildCtx,
         builder: (BuildContext ctx) {
           return AlertDialog(
             backgroundColor: Colors.grey[900],
-            content: Text(
-                Translator.translate(buildCtx, "make_donation_text")),
+            content: Text(Translator.translate(buildCtx, "make_donation_text")),
             title: Row(
               children: <Widget>[
                 Icon(Icons.done_outline),
-                Text(" Support adoption?", style: TextStyle(color: Colors.white))
+                Text(" Support adoption?",
+                    style: TextStyle(color: Colors.white))
               ],
             ),
             actions: <Widget>[
@@ -23,6 +67,7 @@ class Dialogs {
           );
         });
   }
+
   static void confirmSendEmail(BuildContext context, callbackYes) {
     showDialog(
         context: context,
@@ -118,8 +163,7 @@ class Dialogs {
             content: Text(
                 Translator.translate(buildCtx, "dialog_search_favo_food"),
                 style: textStyle),
-            title: Text(
-                Translator.translate(buildCtx, "dialog_are_you_hungry"),
+            title: Text(Translator.translate(buildCtx, "dialog_are_you_hungry"),
                 style: textStyle),
             actions: <Widget>[
               FlatButton(

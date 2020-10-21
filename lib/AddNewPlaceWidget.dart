@@ -174,7 +174,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       duration: DEFAULT_DURATION_OPACITY_FADE,
       opacity: !showInputTags
           ? OPACITY_ITEM_DEACTIVATED
-          : hasInputAllTags() ? OPACITY_ITEM_VALIDATED : 1.0,
+          : hasInputAllTags()
+              ? OPACITY_ITEM_VALIDATED
+              : 1.0,
       child: buildColumnTag(ctx));
 
   Widget wrapBuildColumnAdr(ctx) => AnimatedOpacity(
@@ -182,7 +184,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       duration: DEFAULT_DURATION_OPACITY_FADE,
       opacity: !showInputAdr
           ? OPACITY_ITEM_DEACTIVATED
-          : showInputTags ? OPACITY_ITEM_VALIDATED : 1.0,
+          : showInputTags
+              ? OPACITY_ITEM_VALIDATED
+              : 1.0,
       child: buildColumnAdr(ctx));
 
   bool hasInputAllTags() => allSelectedTags.length == 4;
@@ -197,7 +201,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         curve: DEFAULT_ANIMATION_CURVE,
         duration: DURATION_OPACITY_FADE_SUBMIT_BTN,
         opacity: showSubmitBtn
-            ? allSelectedTags.length == MIN_INPUT_TAGS ? 1.0 : 0.5
+            ? allSelectedTags.length == MIN_INPUT_TAGS
+                ? 1.0
+                : 0.5
             : 0.0,
         child: buildSubmitBtn(context),
       );
@@ -631,8 +637,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     if (input.length >= MIN_INPUT_BCHyDASH &&
         input != KEYWORD_CONTROLLER_ACTION &&
         !youSaidIt) {
-      Toaster.showWarning(
-          Translator.translate(context, "attract_more_customer"));
+      Toaster.showToastAttractCustomers(context);
       youSaidIt = true;
     }
 

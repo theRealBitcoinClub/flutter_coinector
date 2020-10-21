@@ -3,12 +3,12 @@ import 'dart:async';
 import 'package:Coinector/translator.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 //import 'package:place_picker/place_picker.dart';
 
+import 'Dialogs.dart';
 import 'ListModel.dart';
 import 'Merchant.dart';
 import 'TagParser.dart';
@@ -191,7 +191,7 @@ class MapSampleState extends State<MapSample> {
   Widget build(BuildContext ctx) {
     checkInternetConnectivityShowSnackbar(this, (abc) {
       //Toaster.showWarning("Internet Error!!!");
-      _showDialogInternetError(ctx);
+      Dialogs.showDialogInternetError(ctx);
       //Dialogs.showInfoDialogWithCloseButton(ctx);
     });
     return Builder(builder: (buildCtx) {
@@ -250,24 +250,23 @@ class MapSampleState extends State<MapSample> {
   bool hasMarkers() => allMarkers != null && allMarkers.length > 1;
 
   Future<void> closeMapResetMerchant() async {
-    dismissDialog();
-    cancelToasts();
+    close();
     Navigator.of(context).pop();
-  }
-
-  void dismissDialog() {
-    if (dialog != null) dialog.dissmiss();
   }
 
   @override
   void dispose() {
-    cancelToasts();
-    dismissDialog();
+    close();
     super.dispose();
   }
 
+  void close() {
+    cancelToasts();
+    Dialogs.dismissDialog();
+  }
+
   void cancelToasts() {
-    Fluttertoast.cancel();
+    Toaster.cancel();
   }
 
   Future<void> closeMapReturnMerchant(merchant) async {
@@ -283,21 +282,5 @@ class MapSampleState extends State<MapSample> {
       }
     });
     return index;
-  }
-
-  void _showDialogInternetError(ctx) async {
-    dialog = await AwesomeDialog(
-            context: ctx,
-            title: "",
-            headerAnimationLoop: false,
-            desc: "Internet Error!!!",
-            autoHide: Duration(seconds: 7),
-            dialogType: DialogType.ERROR,
-            animType: AnimType.SCALE,
-            padding: EdgeInsets.all(0.0),
-            btnOkOnPress: () {
-              //dismiss
-            })
-        .show();
   }
 }

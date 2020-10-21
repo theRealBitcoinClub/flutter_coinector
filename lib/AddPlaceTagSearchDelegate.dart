@@ -135,7 +135,7 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
   void showResults(BuildContext context) {
     //DONT SHOW ANY RESULTS HERE, SIMPLY REMOVE THE WIDGET
     //THIS METHOD IS CALLED WHEN USER HITS THE SEARCH ICON OF THE KEYBOARD LAYOUT
-    Toaster.showWarning("Please select a suggestion from the list!");
+    Toaster.showToastSelectSuggestion();
     //close(context, null);
   }
 
