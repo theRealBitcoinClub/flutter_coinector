@@ -43,7 +43,7 @@ class AnimatedListSample extends StatefulWidget {
 
 var lastWarningInMillis = 0;
 
-void checkInternetConnectivityShowSnackbar(ctx, _onError) async {
+void checkInternetConnectivityShowSnackbar(that, _onError) async {
 //DONT CHECK MORE THAN EVERY 9 SECONDS
   var milliSecondsNow = DateTime.now().millisecondsSinceEpoch;
   if (lastWarningInMillis != 0 &&
@@ -57,31 +57,31 @@ void checkInternetConnectivityShowSnackbar(ctx, _onError) async {
 // I am connected to a mobile network.
   } else if (connectivityResult == ConnectivityResult.wifi) {
 // I am connected to a wifi network.
-    checkConnectionWithRequest(ctx, (abc) {
-      _onError(ctx);
+    checkConnectionWithRequest(that, (abc) {
+      _onError(that);
     });
   } else {
-    _onError(ctx);
+    _onError(that);
   }
 }
 
-Future checkConnectionWithRequest(ctx, _onError) async {
+Future checkConnectionWithRequest(that, _onError) async {
   try {
     Response response = await Dio().get('https://google.com').catchError((e) {
-      _onError(ctx);
+      _onError(that);
     });
     if (response == null || response.statusCode != HttpStatus.ok) {
-      _onError(ctx);
+      _onError(that);
     }
   } catch (e) {
-    _onError(ctx);
+    _onError(that);
   }
 }
 
-void _showInternetErrorSnackbar(ctx) {
+void _showInternetErrorSnackbar(that) {
 //Double check internet connection before showing error
-  checkConnectionWithRequest(ctx, (abc) {
-    ctx.showSnackBar(ctx.context, "", additionalText: "Internet Error!");
+  checkConnectionWithRequest(that, (abc) {
+    that.showSnackBar(that.context, "", additionalText: "Internet Error!");
   });
 /*new AwesomeDialog(
             context: context,
@@ -142,6 +142,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   @override
   void dispose() {
+    timerIsCancelled = true;
     Dialogs.dismissDialog();
     if (subscription != null) subscription.cancel();
 
@@ -155,7 +156,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       ctx, int filterWordIndex, String locationFilter, String fileName) async {
     updateCurrentPosition();
 
-    if (isUnfilteredSearch(filterWordIndex)) {
+    if (_isUnfilteredSearch(filterWordIndex)) {
       updateDistanceToAllMerchantsIfNotDoneYet();
       if (isUnfilteredList) return;
       //if (unfilteredLists.length != 0) updateListModel(unfilteredLists);
@@ -163,30 +164,39 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     } else {
       this.isUnfilteredList = false;
     }
-    _checkForUpdatedData(ctx);
 
     initListModel();
 
     if (fileName == null) {
-      loadAndParseAllPlaces(filterWordIndex, locationFilter);
+      _loadAndParseAllPlaces(filterWordIndex, locationFilter);
     } else {
-      loadAndParseAsset(filterWordIndex, locationFilter, fileName);
+      _loadAndParseAsset(filterWordIndex, locationFilter, fileName);
     }
   }
+
+  var isCheckingForUpdates = false;
+  var timerIsCancelled = false;
 
   void _checkForUpdatedData(ctx) async {
-    try {
-      FileCache.initLastVersion(() async {
-        //has new version
-        //showSnackBar(context, "", additionalText: "APP UPDATED! DO RESTART!");
-        updateAllCachedContent();
-      });
-    } catch (e) {
-      FileCache.forceUpdateNextTime();
-    }
+    if (isCheckingForUpdates || timerIsCancelled) return;
+    isCheckingForUpdates = true;
+    Timer.periodic(Duration(seconds: 30), (timer) {
+      if (timerIsCancelled) timer.cancel();
+      if (timer.tick == 0) return; //skip first iteration
+      try {
+        FileCache.initLastVersion(() async {
+          //has new version
+          showSnackBar(ctx, "", additionalText: "DATA UPDATE, RESTART APP!");
+          //showSnackBar(context, "", additionalText: "APP UPDATED! DO RESTART!");
+          _updateAllCachedContent();
+        });
+      } catch (e) {
+        FileCache.forceUpdateNextTime();
+      }
+    });
   }
 
-  void updateAllCachedContent() {
+  void _updateAllCachedContent() {
     FileCache.loadFromWebAndPersistCache('am');
     FileCache.loadFromWebAndPersistCache('as');
     FileCache.loadFromWebAndPersistCache('au');
@@ -199,21 +209,21 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     FileCache.loadFromWebAndPersistCache('placesId');
   }
 
-  void loadAndParseAllPlaces(int filterWordIndex, String locationFilter) {
-    loadAndParseAsset(filterWordIndex, locationFilter, 'am');
-    loadAndParseAsset(filterWordIndex, locationFilter, 'as');
-    loadAndParseAsset(filterWordIndex, locationFilter, 'au');
-    loadAndParseAsset(filterWordIndex, locationFilter, 'e');
+  void _loadAndParseAllPlaces(int filterWordIndex, String locationFilter) {
+    _loadAndParseAsset(filterWordIndex, locationFilter, 'am');
+    _loadAndParseAsset(filterWordIndex, locationFilter, 'as');
+    _loadAndParseAsset(filterWordIndex, locationFilter, 'au');
+    _loadAndParseAsset(filterWordIndex, locationFilter, 'e');
   }
 
-  Future loadAndParseAsset(
+  Future _loadAndParseAsset(
       int filterWordIndex, String locationFilter, String fileName) async {
     var decoded = await FileCache.loadAndDecodeAsset(fileName);
     parseAssetUpdateListModel(
         filterWordIndex, locationFilter, decoded, fileName, fileName != null);
   }
 
-  bool isUnfilteredSearch(int filterWordIndex) => filterWordIndex == -999;
+  bool _isUnfilteredSearch(int filterWordIndex) => filterWordIndex == -999;
 
   Future<void> parseAssetUpdateListModel(
       int selectedTagIndex,
@@ -416,7 +426,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   bool isUnfilteredRequest(int filterWordIndex) =>
-      isUnfilteredSearch(filterWordIndex);
+      _isUnfilteredSearch(filterWordIndex);
 
   void initListModelSeveralTimes(List lists, bool keepListKeys) {
     lists.clear();
@@ -554,7 +564,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         .promptUserForPushNotificationPermission(fallbackToSettings: true);
   }*/
 
-  initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition() async {
+  initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition(ctx) async {
     var position = await getLatestSavedPosition();
     if (position != null && position.isNotEmpty) {
       setState(() {
@@ -564,7 +574,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       });
     }
 
-    loadAssetsUnfiltered();
+    loadAssetsUnfiltered(ctx);
     requestCurrentPosition();
   }
 
@@ -583,7 +593,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         _showInternetErrorSnackbar(this);
       });
     });
-    initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition();
+    initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition(context);
     //initOneSignalPushMessages();
     searchDelegate.buildHistory();
     tabController = TabController(vsync: this, length: Pages.pages.length);
@@ -594,9 +604,11 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         if (!hasHit) initBlinkAnimation();
       });
     }
+
+    _checkForUpdatedData(context);
   }
 
-  void loadAssetsUnfiltered() => loadAssets(context, -999, null, null);
+  void loadAssetsUnfiltered(ctx) => loadAssets(ctx, -999, null, null);
 
   void updateDistanceToAllMerchantsIfNotDoneYet() {
     if (userPosition == null) return;
@@ -1056,7 +1068,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     updateTitleToCurrentlySelectedTab();
     if (isFilteredList()) {
       _searchTerm = '';
-      loadAssetsUnfiltered();
+      loadAssetsUnfiltered(ctx);
     }
     showSnackBar(ctx, "snackbar_showing_unfiltered_list");
   }
