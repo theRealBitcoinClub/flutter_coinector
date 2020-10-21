@@ -85,8 +85,7 @@ void _showInternetErrorSnackbar(that) {
       //Future.delayed(Duration(seconds: 1), );
       checkConnectionWithRequest(that, (abc) {
         checkConnectionWithRequest(that, (abc) {
-          that.showSnackBar(that.context, "",
-              additionalText: "Internet Error!");
+          _snackBarInternetError(that);
         });
       });
     });
@@ -94,23 +93,16 @@ void _showInternetErrorSnackbar(that) {
     try {
       checkConnectionWithRequest(that, (abc) {
         //Future.delayed(Duration(seconds: 1), );
-        that.showSnackBar(that.context, "", additionalText: "Internet Error!");
+        _snackBarInternetError(that);
       });
     } catch (e) {
-      that.showSnackBar(that.context, "", additionalText: "Internet Error!");
+      _snackBarInternetError(that);
     }
   }
-/*new AwesomeDialog(
-            context: context,
-            title: "Internet",
-            desc: "Activate internet!!!",
-            dialogType: DialogType.WARNING,
-            animType: AnimType.BOTTOMSLIDE,
-            btnOkOnPress: () {
-              //dismiss
-            }).show();*/
-//Dialogs.showInfoDialogWithCloseButton(context);
-//Dont show too many of these snackbars
+}
+
+void _snackBarInternetError(that) {
+  that.showSnackBar(that.context, "", additionalText: "Internet Error!");
 }
 
 class _AnimatedListSampleState extends State<AnimatedListSample>
