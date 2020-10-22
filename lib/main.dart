@@ -854,6 +854,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   void handleMapButtonClick(ctx) async {
     try {
       if (Platform.isAndroid || Platform.isIOS) {
+        InternetConnectivityChecker.pauseAutoChecker();
         Merchant result = await Navigator.push(
           ctx,
           MaterialPageRoute(

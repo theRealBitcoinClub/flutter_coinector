@@ -78,21 +78,14 @@ class MapSampleState extends State<MapSample> {
   void checkConnection() {
     InternetConnectivityChecker.resumeAutoChecker();
     try {
-      //if (isCheckingConnection) return;
-      isCheckingConnection = true;
       InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(
           kIsWeb, this, (abc) {
-        isCheckingConnection = false;
         //Toaster.showToastInternetError(context);
         Dialogs.showDialogInternetError(context);
-        InternetConnectivityChecker.pauseAutoChecker();
-        //Dialogs.showInfoDialogWithCloseButton(ctx);
       });
     } catch (e) {
-      isCheckingConnection = false;
       Toaster.showToastInternetError(context);
     }
-    InternetConnectivityChecker.pauseAutoChecker();
     //}
   }
 
@@ -209,7 +202,6 @@ class MapSampleState extends State<MapSample> {
   }
 
   AwesomeDialog dialog;
-  var isCheckingConnection = false;
 
   @override
   Widget build(BuildContext ctx) {
