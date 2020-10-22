@@ -82,11 +82,17 @@ class FileCache {
 
   static Future<String> getCachedAssetWithDefaultFallback(
       String fileName) async {
-    String cachedAsset = await FileCache.readCache(fileName);
-    if (cachedAsset == null || cachedAsset.isEmpty) {
+    String cachedAsset;
+    try {
+      cachedAsset = await FileCache.readCache(fileName);
+      if (cachedAsset == null || cachedAsset.isEmpty) {
+        cachedAsset =
+            await AssetLoader.loadString('assets/' + fileName + '.json');
+        FileCache.writeCache(fileName, cachedAsset);
+      }
+    } catch (e) {
       cachedAsset =
           await AssetLoader.loadString('assets/' + fileName + '.json');
-      FileCache.writeCache(fileName, cachedAsset);
     }
     return cachedAsset;
   }

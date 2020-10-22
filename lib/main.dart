@@ -12,8 +12,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_i18n/flutter_i18n_delegate.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:in_app_review/in_app_review.dart';
+import 'package:loading/indicator/ball_grid_pulse_indicator.dart';
+import 'package:loading/loading.dart';
 //import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -102,12 +105,15 @@ void _showInternetErrorSnackbar(that) {
 }
 
 void _snackBarInternetError(that) {
-  that.showSnackBar(that.context, "", additionalText: "Internet Error!");
+  that.showSnackBar(that.context, "",
+      additionalText: "Internet Error!", duration: Duration(seconds: 3));
 }
 
 class _AnimatedListSampleState extends State<AnimatedListSample>
     with TickerProviderStateMixin {
   final SearchDemoSearchDelegate searchDelegate = SearchDemoSearchDelegate();
+
+  NestedScrollView appContent;
   var _scaffoldKey = GlobalKey<ScaffoldState>();
   final List<GlobalKey<AnimatedListState>> _listKeys = [];
   TabController tabController;
@@ -131,6 +137,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   Animation<Color> searchIconBlinkAnimation;
   AnimationController searchIconBlinkAnimationController;
 
+  static bool latestPositionWasCoarse = false;
+
   initBlinkAnimation() {
     searchIconBlinkAnimationController = AnimationController(
         duration: const Duration(milliseconds: 1000), vsync: this);
@@ -151,6 +159,10 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   @override
   void dispose() {
+    isInitialized = false;
+    isUpdatingPosition = false;
+    isCheckingForUpdates = false;
+    //isUnfilteredList = false;
     timerIsCancelled = true;
     Dialogs.dismissDialog();
     if (subscription != null) subscription.cancel();
@@ -163,10 +175,10 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   void loadAssets(
       ctx, int filterWordIndex, String locationFilter, String fileName) async {
-    updateCurrentPosition();
+    await updateCurrentPosition();
 
     if (_isUnfilteredSearch(filterWordIndex)) {
-      updateDistanceToAllMerchantsIfNotDoneYet();
+      _updateDistanceToAllMerchantsIfNotDoneYet();
       if (isUnfilteredList) return;
       //if (unfilteredLists.length != 0) updateListModel(unfilteredLists);
       this.isUnfilteredList = true;
@@ -189,20 +201,36 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   void _checkForUpdatedData(ctx) async {
     if (isCheckingForUpdates || timerIsCancelled) return;
     isCheckingForUpdates = true;
-    Timer.periodic(Duration(seconds: 30), (timer) {
+    await checkDataUpdateShowSnackbarUpdateCache(ctx);
+    Timer.periodic(Duration(seconds: 10), (timer) async {
       if (timerIsCancelled) timer.cancel();
-      if (timer.tick == 0) return; //skip first iteration
+      //if (timer.tick == 0) return; //skip first iteration
       try {
-        FileCache.initLastVersion(() async {
-          //has new version
-          showSnackBar(ctx, "", additionalText: "DATA UPDATE, RESTART APP!");
-          //showSnackBar(context, "", additionalText: "APP UPDATED! DO RESTART!");
-          _updateAllCachedContent();
-        });
+        await checkDataUpdateShowSnackbarUpdateCache(ctx);
+        isCheckingForUpdates = false;
       } catch (e) {
         FileCache.forceUpdateNextTime();
       }
     });
+  }
+
+  Future<bool> checkDataUpdateShowSnackbarUpdateCache(ctx) async {
+    FileCache.initLastVersion(() {
+      //has new version
+      if (timerIsCancelled) return false;
+      showSnackBar(ctx, "",
+          duration: Duration(seconds: 30),
+          additionalText: "App updated, restart now ->",
+          snackbarAction: SnackBarAction(
+            label: "RESTART",
+            onPressed: () {
+              Phoenix.rebirth(context);
+            },
+          ));
+      _updateAllCachedContent();
+      return true;
+    });
+    return false;
   }
 
   void _updateAllCachedContent() {
@@ -301,9 +329,10 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   void insertListItem(updateState, currentList, int newListPos, m) {
     if (updateState) {
-      setState(() {
-        currentList.insert(newListPos, m);
-      });
+      if (mounted)
+        setState(() {
+          currentList.insert(newListPos, m);
+        });
     } else {
       currentList.insert(newListPos, m);
     }
@@ -327,14 +356,16 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       distance = km + " km";
     }
 
-    setState(() {
-      m.distance = distance;
-    });
+    if (mounted)
+      setState(() {
+        m.distance = distance;
+      });
     return true;
   }
 
   void updateListModel(List<ListModel<Merchant>> tmpList) {
     updateList(_lists, tmpList, true);
+    isInitialized = true;
   }
 
   void animateToFirstResult(merchant) async {
@@ -475,11 +506,11 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     );
   }
 
-  _handleTabSelection() {
+  _handleTabSelection() async {
     if (!isFilteredList()) updateTitleToCurrentlySelectedTab();
     updateAddButtonCategory();
-    initCurrentPositionIfNotInitialized();
-    updateDistanceToAllMerchantsIfNotDoneYet();
+    await initCurrentPositionIfNotInitialized();
+    _updateDistanceToAllMerchantsIfNotDoneYet();
   }
 
   void requestCurrentPosition() async {
@@ -490,8 +521,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       LocationPermission p = await Geolocator.requestPermission();
       if (p == LocationPermission.whileInUse ||
           p == LocationPermission.always) {
-        updateCurrentPosition();
-        updateDistanceToAllMerchantsIfNotDoneYet();
+        await updateCurrentPosition();
+        _updateDistanceToAllMerchantsIfNotDoneYet();
       }
     } catch (e) {
       FlutterError.presentError(e);
@@ -502,7 +533,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     if (userPosition != null) return;
 
     //TODO check if that call is correct, might make sense to request permission always if necesssary?
-    updateCurrentPosition();
+    await updateCurrentPosition();
   }
 
 /*
@@ -525,7 +556,12 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     }
   }
 */
+
+  static var isUpdatingPosition = false;
+
   Future<bool> updateCurrentPosition() async {
+    //if (isUpdatingPosition) return false;
+    isUpdatingPosition = true;
     //ALWAYS GET LOCATION VIA IP FIRST TO HAVE SOMETHING AT STARTUP
     //if (kIsWeb) {
     //_getCurrentLocationWeb();
@@ -535,23 +571,62 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       Position pos = await GeolocatorPlatform.instance
           .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
 
-      setLatestPosition(pos);
-    } else
-      setLatestPosition(await _getCoarseLocationViaIP());
-
+      if (await setLatestPosition(pos)) {
+        if (latestPositionWasCoarse) _onCompleteGPS();
+      }
+      latestPositionWasCoarse = false;
+    } else if (await setLatestPosition(await _getCoarseLocationViaIP())) {
+      //TODO silently update the data
+      latestPositionWasCoarse = true;
+      //_updateDistanceToAllMerchantsNow();
+      //showSnackBarGPS();
+      //After getting coarse location we do nothing
+    }
+    //latestPositionWasCoarse = true;
+    isUpdatingPosition = false;
     return true;
     //}
     //return false;
   }
 
-  void setLatestPosition(Position pos) {
-    saveLatestSavedPosition(
-        pos.latitude.toString() + ";" + pos.longitude.toString());
+  void _onCompleteGPS() async {
+    //TODO find out how to update the distance and repaint the tree
+    showSnackBar(context, "", additionalText: "Updated GPS!");
+
+    Future.delayed(
+      Duration(seconds: 3),
+    ).whenComplete(() {
+      Phoenix.rebirth(context);
+    });
+  }
+
+  void showSnackBarGPS() {
+    //TODO I want to check periodically if GPS changed, use a listener, then update carditems silently
+    showSnackBar(context, "",
+        duration: Duration(seconds: 10),
+        additionalText: "GPS updated!",
+        snackbarAction: SnackBarAction(
+          label: "Refresh",
+          onPressed: () {
+            Phoenix.rebirth(context);
+          },
+        ));
+  }
+
+  Future<bool> setLatestPosition(Position pos) async {
+    String position = await getLatestSavedPosition();
+    if (position == _buildPosDataStructure(pos)) return false;
+
+    bool success = await _saveLatestSavedPosition(_buildPosDataStructure(pos));
 
     setState(() {
       userPosition = pos;
     });
+    return success;
   }
+
+  String _buildPosDataStructure(Position pos) =>
+      pos.latitude.toString() + ";" + pos.longitude.toString();
 
   /* Future<void> initOneSignalPushMessages() async {
     //OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
@@ -592,9 +667,12 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   StreamSubscription subscription;
 
+  static var isInitialized = false;
+
   @override
   void initState() {
     super.initState();
+
     subscription = Connectivity()
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
@@ -619,9 +697,13 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   void loadAssetsUnfiltered(ctx) => loadAssets(ctx, -999, null, null);
 
-  void updateDistanceToAllMerchantsIfNotDoneYet() {
+  void _updateDistanceToAllMerchantsIfNotDoneYet() {
     if (userPosition == null) return;
 
+    _updateDistanceToAllMerchantsNow();
+  }
+
+  void _updateDistanceToAllMerchantsNow() async {
     for (int i = 0; i < _lists.length; i++) {
       ListModel<Merchant> model = _lists[i];
       for (int x = 0; x < model.length; x++) {
@@ -629,7 +711,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
         if (m.distance != null) return;
 
-        calculateDistanceUpdateMerchant(userPosition, m);
+        await calculateDistanceUpdateMerchant(userPosition, m);
       }
     }
   }
@@ -735,8 +817,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
               /*new Future.delayed(Duration.zero, () async {
             await Translator.refresh(ctx, new Locale('de'));
           });*/
-
-              return NestedScrollView(
+              appContent = NestedScrollView(
                 headerSliverBuilder:
                     (BuildContext buildCtx, bool innerBoxIsScrolled) {
                   /*new Future.delayed(Duration.zero, () async {
@@ -810,6 +891,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                         controller: tabController,
                         children: buildAllTabContainer(ctx)),
               );
+              return appContent;
             }),
           ),
         ));
@@ -840,7 +922,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
                           ? 5.0
                           : 0.0)),
         );
-        updateDistanceToAllMerchantsIfNotDoneYet();
+        _updateDistanceToAllMerchantsIfNotDoneYet();
         if (result != null) {
           filterListUpdateTitle(ctx, result.name);
           tabController.animateTo(result.type);
@@ -855,12 +937,16 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     }
   }
 
-  void showSnackBar(ctx, String msgId, {String additionalText = ""}) {
+  void showSnackBar(ctx, String msgId,
+      {String additionalText = "",
+      snackbarAction,
+      duration = const Duration(milliseconds: 5000)}) {
     if (_scaffoldKey.currentState == null) return;
 
-    _scaffoldKey.currentState.removeCurrentSnackBar();
+    //_scaffoldKey.currentState.removeCurrentSnackBar(); DONT REMOVE THEM, AVOID THE SPAM INSTEAD
     _scaffoldKey.currentState.showSnackBar(SnackBar(
-      duration: Duration(milliseconds: 3000),
+      action: snackbarAction,
+      duration: duration,
       content: Text(
         Translator.translate(ctx, msgId) + additionalText,
         style: TextStyle(
@@ -894,9 +980,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   bool isFilterEmpty() => _searchTerm == null || _searchTerm.isEmpty;
 
-  Future<void> saveLatestSavedPosition(String value) async {
+  Future<bool> _saveLatestSavedPosition(String value) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString(sharedPrefKeyLastLocation, value);
+    return await prefs.setString(sharedPrefKeyLastLocation, value);
   }
 
   Future<String> getLatestSavedPosition() async {
@@ -935,6 +1021,10 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         progress: searchDelegate.transitionAnimation,
       ),
       onPressed: () {
+        /*setState(() {
+          showLoading();
+        });*/
+
         showUnfilteredLists(ctx);
       },
     );
@@ -1011,7 +1101,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         if (selected != null) {
           filterListUpdateTitle(ctx, selected);
         } else {
-          updateDistanceToAllMerchantsIfNotDoneYet();
+          _updateDistanceToAllMerchantsIfNotDoneYet();
           showUnfilteredLists(ctx);
         }
       },
@@ -1096,45 +1186,53 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
             ),
             padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
           )
-        : Padding(
-            padding: EdgeInsets.fromLTRB(25.0, 0.0, 25.0, 0.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                buildSeparator(),
-                Text(
-                  Translator.translate(ctx, "no_matches"),
-                  style: TextStyle(fontWeight: FontWeight.w400),
-                ),
-                buildSeparator(),
-                SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.all(10.0),
-                          child: /*IconButton(icon: */ Icon(Icons.arrow_upward),
-                        ),
-                        Text(
-                          Translator.translate(ctx, "hit_icon"),
-                          style: TextStyle(fontWeight: FontWeight.w300),
-                        )
-                      ],
-                    )),
-                buildSeparator(),
-                SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(
-                      children: <Widget>[
-                        buildHomeButton(ctx),
-                        Text(
-                          Translator.translate(ctx, "show_all_merchants"),
-                          style: TextStyle(fontWeight: FontWeight.w300),
-                        )
-                      ],
-                    )),
-              ],
-            ));
+        : !isInitialized
+            ? Center(
+                child: Loading(
+                    color: Colors.white,
+                    indicator: BallGridPulseIndicator(),
+                    size: 40),
+              )
+            : Padding(
+                padding: EdgeInsets.fromLTRB(25.0, 0.0, 25.0, 0.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    buildSeparator(),
+                    Text(
+                      Translator.translate(ctx, "no_matches"),
+                      style: TextStyle(fontWeight: FontWeight.w400),
+                    ),
+                    buildSeparator(),
+                    SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: <Widget>[
+                            Padding(
+                              padding: EdgeInsets.all(10.0),
+                              child: /*IconButton(icon: */ Icon(
+                                  Icons.arrow_upward),
+                            ),
+                            Text(
+                              Translator.translate(ctx, "hit_icon"),
+                              style: TextStyle(fontWeight: FontWeight.w300),
+                            )
+                          ],
+                        )),
+                    buildSeparator(),
+                    SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: <Widget>[
+                            buildHomeButton(ctx),
+                            Text(
+                              Translator.translate(ctx, "show_all_merchants"),
+                              style: TextStyle(fontWeight: FontWeight.w300),
+                            )
+                          ],
+                        )),
+                  ],
+                ));
   }
 
   SizedBox buildSeparator() {
@@ -1160,11 +1258,27 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   Future<Position> _getCoarseLocationViaIP() async {
-    var response = await new Dio().get('https://geolocation-db.com/json/');
-    var responseJSON = json.decode(response.data);
-    return new Position(
-        longitude: responseJSON['longitude'],
-        latitude: responseJSON['latitude']);
+    try {
+      var response = await new Dio().get('https://geolocation-db.com/json/');
+      var responseJSON = json.decode(response.data);
+      var longitude = responseJSON['longitude'];
+      var latitude = responseJSON['latitude'];
+      if (longitude is int) {
+        longitude = double.parse(longitude.toString());
+      }
+      if (latitude is int) {
+        latitude = double.parse(latitude.toString());
+      }
+      if (longitude is double)
+        userPosition = new Position(longitude: longitude, latitude: latitude);
+      else
+        debugPrint(
+            "RECEIVING INVALID DATA FROM COARSE LOCATION PROVIDER\nRECEIVING INVALID DATA FROM COARSE LOCATION PROVIDER\nRECEIVING INVALID DATA FROM COARSE LOCATION PROVIDER");
+
+      return userPosition;
+    } catch (e) {
+      debugPrint(e.toString());
+    }
   }
 }
 
@@ -1181,6 +1295,6 @@ void main() {
     //just ignore the errors for now to have less library dependencies
   };
   WidgetsFlutterBinding.ensureInitialized();
-  //runApp(Phoenix(child: AnimatedListSample()));
-  runApp(AnimatedListSample());
+  runApp(Phoenix(child: AnimatedListSample()));
+  //runApp(AnimatedListSample());
 }

@@ -21,7 +21,7 @@ class AssetLoader {
   static dynamic decodeJSON(String input) {
     return json.decode(input);
   }
-
+/*
   static void putDecodedAssetInCache(String key, List<dynamic> asset) {
     switch (key) {
       case "assets/am.json":
@@ -81,7 +81,7 @@ class AssetLoader {
         return places;
     }
     return null;
-  }
+  }*/
 
   static Future<List<dynamic>> loadAndDecodeAsset(final String fileName) async {
     //List<dynamic> cached = getDecodedCachedAsset(fileName);
@@ -93,7 +93,8 @@ class AssetLoader {
     return decoded;
   }
 
-  static Future<String> loadString(String fileName) async => rootBundle.loadString(fileName, cache: true);
+  static Future<String> loadString(String fileName) async =>
+      rootBundle.loadString(fileName, cache: true);
 
   static Future<String> loadReceivingAddress(String id) async {
     var addresses = await AssetLoader.loadAndDecodeAsset("assets/addr.json");
@@ -114,7 +115,8 @@ class AssetLoader {
   //TODO split contents in one file for each continent
   Future<Place> loadPlace(String id) async {
     if (placesIdCache == null) {
-      String data = await FileCache.getCachedAssetWithDefaultFallback("placesId");
+      String data =
+          await FileCache.getCachedAssetWithDefaultFallback("placesId");
       if (data.isNotEmpty) {
         placesIdCache = json.decode(data);
       } else {
