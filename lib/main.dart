@@ -159,6 +159,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   @override
   void dispose() {
+    if (positionStream != null) positionStream.cancel();
     isInitialized = false;
     isUpdatingPosition = false;
     isCheckingForUpdates = false;
@@ -175,7 +176,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   void loadAssets(
       ctx, int filterWordIndex, String locationFilter, String fileName) async {
-    await updateCurrentPosition();
+    updateCurrentPosition();
 
     if (_isUnfilteredSearch(filterWordIndex)) {
       _updateDistanceToAllMerchantsIfNotDoneYet();
@@ -570,9 +571,16 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     if (!kIsWeb && await Permission.locationWhenInUse.isGranted) {
       Position pos = await GeolocatorPlatform.instance
           .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-
-      if (await setLatestPosition(pos)) {
-        if (latestPositionWasCoarse) _onCompleteGPS();
+      //setState(() {
+      userPosition = pos;
+      //});
+//TODO FIND BUG AFTER RELOAD WITH POSITION THE APP HANGS ON START
+      try {
+        if (await setLatestPosition(pos)) {
+          if (latestPositionWasCoarse) _onCompleteGPS();
+        }
+      } catch (e) {
+        debugPrint("\n\n\”dgfdbvevgreave\n\n\n" + e.toString());
       }
       latestPositionWasCoarse = false;
     } else if (await setLatestPosition(await _getCoarseLocationViaIP())) {
@@ -615,9 +623,10 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   Future<bool> setLatestPosition(Position pos) async {
     String position = await getLatestSavedPosition();
-    if (position == _buildPosDataStructure(pos)) return false;
+    var posString = _buildPosString(pos);
+    if (position == posString) return false;
 
-    bool success = await _saveLatestSavedPosition(_buildPosDataStructure(pos));
+    bool success = await _saveLatestSavedPosition(posString);
 
     setState(() {
       userPosition = pos;
@@ -625,7 +634,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     return success;
   }
 
-  String _buildPosDataStructure(Position pos) =>
+  String _buildPosString(Position pos) =>
       pos.latitude.toString() + ";" + pos.longitude.toString();
 
   /* Future<void> initOneSignalPushMessages() async {
@@ -693,7 +702,21 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     }
 
     _checkForUpdatedData(context);
+    //initPositionStream();
   }
+
+  void initPositionStream() async {
+    positionStream = Geolocator.getPositionStream(distanceFilter: 500)
+        .listen((Position position) {
+      print(position == null
+          ? 'Unknown'
+          : position.latitude.toString() +
+              ', ' +
+              position.longitude.toString());
+    });
+  }
+
+  StreamSubscription<Position> positionStream;
 
   void loadAssetsUnfiltered(ctx) => loadAssets(ctx, -999, null, null);
 
