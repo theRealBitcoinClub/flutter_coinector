@@ -47,7 +47,7 @@ class AnimatedListSample extends StatefulWidget {
 }
 
 class _AnimatedListSampleState extends State<AnimatedListSample>
-    with TickerProviderStateMixin {
+    with TickerProviderStateMixin, WidgetsBindingObserver {
   final SearchDemoSearchDelegate searchDelegate = SearchDemoSearchDelegate();
 
   NestedScrollView appContent;
@@ -96,8 +96,21 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    //TODO CHECK IF THIS IS REALLY WORKING AS EXPECTED
+    if (state == AppLifecycleState.resumed) {
+      InternetConnectivityChecker.resumeAutoChecker();
+    } else if (state == AppLifecycleState.paused) {
+      InternetConnectivityChecker.pauseAutoChecker();
+    }
+  }
+
+  @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    InternetConnectivityChecker.pauseAutoChecker();
     Snackbars.close();
+    InternetConnectivityChecker.close();
     if (positionStream != null) positionStream.cancel();
     isInitialized = false;
     isUpdatingPosition = false;
@@ -542,7 +555,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   Future<bool> setLatestPosition(Position pos) async {
     String position = await getLatestSavedPosition();
     var posString = _buildPosString(pos);
-    if (position == posString) return false;
+    if (posString != null && position == posString) return false;
 
     bool success = await _saveLatestSavedPosition(posString);
 
@@ -552,8 +565,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     return success;
   }
 
-  String _buildPosString(Position pos) =>
-      pos.latitude.toString() + ";" + pos.longitude.toString();
+  String _buildPosString(Position pos) => pos != null && pos.latitude != null
+      ? (pos.latitude.toString() + ";" + pos.longitude.toString())
+      : null;
 
   initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition(ctx) async {
     var position = await getLatestSavedPosition();
@@ -579,6 +593,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     scaffoldKey = _scaffoldKey;
     subscription = Connectivity()
         .onConnectivityChanged
@@ -673,11 +688,15 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     /*new Future.delayed(Duration.zero, () async {
       Translator.currentLocale(context);
     });*/
-    if (!kIsWeb)
+    if (kIsWeb) {
+      InternetConnectivityChecker.pauseAutoChecker();
+    } else {
+      InternetConnectivityChecker.resumeAutoChecker();
       InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(
           kIsWeb, this, (abc) {
         Snackbars.showInternetErrorSnackbar(this);
       });
+    }
     return MaterialApp(
         localizationsDelegates: [
           FlutterI18nDelegate(),
@@ -992,21 +1011,28 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           progress: searchDelegate.transitionAnimation,
           icon: AnimatedIcons.search_ellipsis),
       onPressed: () async {
-        final String selected = await showSearch<String>(
-          context: ctx,
-          delegate: searchDelegate,
-        );
-        if (hasNotHitSearch()) {
-          Dialogs.showInfoDialogWithCloseButton(ctx);
-          handleSearchButtonAnimationAndPersistHit();
-        }
-        //TODO ask users to rate the app
+        InternetConnectivityChecker.pauseAutoChecker();
+        try {
+          final String selected = await showSearch<String>(
+            context: ctx,
+            delegate: searchDelegate,
+          );
+          InternetConnectivityChecker.resumeAutoChecker();
 
-        if (selected != null) {
-          filterListUpdateTitle(ctx, selected);
-        } else {
-          _updateDistanceToAllMerchantsIfNotDoneYet();
-          showUnfilteredLists(ctx);
+          if (hasNotHitSearch()) {
+            Dialogs.showInfoDialogWithCloseButton(ctx);
+            handleSearchButtonAnimationAndPersistHit();
+          }
+          //TODO ask users to rate the app
+
+          if (selected != null) {
+            filterListUpdateTitle(ctx, selected);
+          } else {
+            _updateDistanceToAllMerchantsIfNotDoneYet();
+            showUnfilteredLists(ctx);
+          }
+        } catch (e) {
+          InternetConnectivityChecker.resumeAutoChecker();
         }
       },
       tooltip: 'Search',

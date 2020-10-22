@@ -68,10 +68,32 @@ class MapSampleState extends State<MapSample> {
       initialCamPosFallback = CameraPosition(
           target: LatLng(position.latitude, position.longitude),
           zoom: initialZoomLevel);
+
 /*
     if (allLists != null) {
       parseListAndZoomToSingleResult();
     }*/
+  }
+
+  void checkConnection() {
+    InternetConnectivityChecker.resumeAutoChecker();
+    try {
+      //if (isCheckingConnection) return;
+      isCheckingConnection = true;
+      InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(
+          kIsWeb, this, (abc) {
+        isCheckingConnection = false;
+        //Toaster.showToastInternetError(context);
+        Dialogs.showDialogInternetError(context);
+        InternetConnectivityChecker.pauseAutoChecker();
+        //Dialogs.showInfoDialogWithCloseButton(ctx);
+      });
+    } catch (e) {
+      isCheckingConnection = false;
+      Toaster.showToastInternetError(context);
+    }
+    InternetConnectivityChecker.pauseAutoChecker();
+    //}
   }
 
   Future<Set<Marker>> parseListAndZoomToSingleResult(ctx) async {
@@ -187,15 +209,11 @@ class MapSampleState extends State<MapSample> {
   }
 
   AwesomeDialog dialog;
+  var isCheckingConnection = false;
 
   @override
   Widget build(BuildContext ctx) {
-    InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(
-        kIsWeb, this, (abc) {
-      //Toaster.showToastInternetError(ctx);
-      Dialogs.showDialogInternetError(ctx);
-      //Dialogs.showInfoDialogWithCloseButton(ctx);
-    });
+    checkConnection();
     return Builder(builder: (buildCtx) {
       return Scaffold(
         body: Padding(

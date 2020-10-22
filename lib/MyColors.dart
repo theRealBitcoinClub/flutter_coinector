@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class MyColors {
-
   static Color getTabColor(typeIndex) {
     switch (typeIndex) {
       case 0:
@@ -32,7 +31,7 @@ class MyColors {
       case 1:
         return Colors.red[700];
       case 2:
-        return Colors.yellow[800];
+        return Colors.yellow[900];
       case 3:
         return Colors.teal[800];
       case 4:

@@ -7,7 +7,7 @@ class Toaster {
   static const DEFAULT_BACKGROUND_OPACITY = 0.9;
   static const double DEFAULT_FONT_SIZE = 16.0;
   static const Color DEFAULT_TEXT_COLOR = Colors.white;
-  static const Color DEFAULT_BACKGROUND_COLOR = Colors.orange;
+  static Color DEFAULT_BACKGROUND_COLOR = Colors.yellow[900];
   static const int DEFAULT_TIME_FOR_IOS_AND_WEB = 3;
   static const Toast DEFAULT_TIME_FOR_ANDROID = Toast.LENGTH_LONG;
   static const ToastGravity DEFAULT_TOAST_GRAVITY = ToastGravity.CENTER;
