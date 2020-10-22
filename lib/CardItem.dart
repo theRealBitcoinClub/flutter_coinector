@@ -110,7 +110,7 @@ class CardItem extends StatelessWidget {
         child: Stack(
           children: <Widget>[
             buildBackGroundImageFallback(ctx),
-            buildImageContainer(gifUrl),
+            //buildImageContainer(gifUrl),
             buildStackInfoTextWithBackgroundAndShadow(
                 infoBoxBackgroundColor, backGroundColor, textStyle, textStyle2),
             buildPositionedContainerDistance(ctx, backGroundColor, textStyle2),

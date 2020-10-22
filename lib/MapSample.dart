@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:Coinector/translator.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -9,11 +10,11 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 //import 'package:place_picker/place_picker.dart';
 
 import 'Dialogs.dart';
+import 'InternetConnectivityChecker.dart';
 import 'ListModel.dart';
 import 'Merchant.dart';
 import 'TagParser.dart';
 import 'Toaster.dart';
-import 'main.dart';
 import 'pages.dart';
 
 var sharedPrefKeyCounterToastGeneral = "sharedPrefKeyCounterToastGeneral2";
@@ -189,8 +190,9 @@ class MapSampleState extends State<MapSample> {
 
   @override
   Widget build(BuildContext ctx) {
-    checkInternetConnectivityShowSnackbar(this, (abc) {
-      //Toaster.showWarning("Internet Error!!!");
+    InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(
+        kIsWeb, this, (abc) {
+      //Toaster.showToastInternetError(ctx);
       Dialogs.showDialogInternetError(ctx);
       //Dialogs.showInfoDialogWithCloseButton(ctx);
     });

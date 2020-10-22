@@ -12,6 +12,10 @@ class Toaster {
   static const Toast DEFAULT_TIME_FOR_ANDROID = Toast.LENGTH_LONG;
   static const ToastGravity DEFAULT_TOAST_GRAVITY = ToastGravity.CENTER;
 
+  static void showToastInternetError(ctx) {
+    _showWarning("INTERNET ERROR!");
+  }
+
   static void showToastAttractCustomers(ctx) {
     _showWarning(
         Translator.translate(ctx, "Please select a suggestion from the list!"));

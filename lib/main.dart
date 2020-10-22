@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:Coinector/InternetConnectivityChecker.dart';
+import 'package:Coinector/Snackbars.dart';
 import 'package:Coinector/translator.dart';
 import 'package:connectivity/connectivity.dart';
 //import 'package:device_preview/device_preview.dart';
@@ -44,78 +46,13 @@ class AnimatedListSample extends StatefulWidget {
   _AnimatedListSampleState createState() => _AnimatedListSampleState();
 }
 
-var lastWarningInMillis = 0;
-
-void checkInternetConnectivityShowSnackbar(that, _onError) async {
-  if (kIsWeb) return;
-//DONT CHECK MORE THAN EVERY 9 SECONDS
-  var milliSecondsNow = DateTime.now().millisecondsSinceEpoch;
-  if (lastWarningInMillis != 0 &&
-      lastWarningInMillis + 8500 > milliSecondsNow) {
-    return;
-  }
-  lastWarningInMillis = milliSecondsNow;
-
-  var connectivityResult = await (Connectivity().checkConnectivity());
-  if (connectivityResult == ConnectivityResult.mobile) {
-// I am connected to a mobile network.
-  } else if (connectivityResult == ConnectivityResult.wifi) {
-// I am connected to a wifi network.
-    checkConnectionWithRequest(that, (abc) {
-      _onError(that);
-    });
-  } else {
-    _onError(that);
-  }
-}
-
-Future checkConnectionWithRequest(that, _onError) async {
-  try {
-    Response response = await Dio().get('https://google.com').catchError((e) {
-      _onError(that);
-    });
-    if (response == null || response.statusCode != HttpStatus.ok) {
-      _onError(that);
-    }
-  } catch (e) {
-    _onError(that);
-  }
-}
-
-void _showInternetErrorSnackbar(that) {
-//Double check internet connection before showing error
-  try {
-    checkConnectionWithRequest(that, (abc) {
-      //Future.delayed(Duration(seconds: 1), );
-      checkConnectionWithRequest(that, (abc) {
-        checkConnectionWithRequest(that, (abc) {
-          _snackBarInternetError(that);
-        });
-      });
-    });
-  } catch (e) {
-    try {
-      checkConnectionWithRequest(that, (abc) {
-        //Future.delayed(Duration(seconds: 1), );
-        _snackBarInternetError(that);
-      });
-    } catch (e) {
-      _snackBarInternetError(that);
-    }
-  }
-}
-
-void _snackBarInternetError(that) {
-  that.showSnackBar(that.context, "",
-      additionalText: "Internet Error!", duration: Duration(seconds: 3));
-}
-
 class _AnimatedListSampleState extends State<AnimatedListSample>
     with TickerProviderStateMixin {
   final SearchDemoSearchDelegate searchDelegate = SearchDemoSearchDelegate();
 
   NestedScrollView appContent;
   var _scaffoldKey = GlobalKey<ScaffoldState>();
+  var scaffoldKey;
   final List<GlobalKey<AnimatedListState>> _listKeys = [];
   TabController tabController;
   bool _customIndicator = false;
@@ -160,6 +97,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   @override
   void dispose() {
+    Snackbars.close();
     if (positionStream != null) positionStream.cancel();
     isInitialized = false;
     isUpdatingPosition = false;
@@ -220,15 +158,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     FileCache.initLastVersion(() {
       //has new version
       if (timerIsCancelled) return false;
-      showSnackBar(ctx, "",
-          duration: Duration(seconds: 30),
-          additionalText: "App updated, restart now ->",
-          snackbarAction: SnackBarAction(
-            label: "RESTART",
-            onPressed: () {
-              Phoenix.rebirth(context);
-            },
-          ));
+      Snackbars.showSnackBarRestartApp(_scaffoldKey, ctx);
       _updateAllCachedContent();
       return true;
     });
@@ -600,26 +530,13 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   void _onGetAccurateGPSFirstTime() async {
     //TODO find out how to update the distance and repaint the tree
-    showSnackBar(context, "", additionalText: "Updated GPS!");
+    Snackbars.showSnackBarGPS(_scaffoldKey, context);
 
     Future.delayed(
       Duration(seconds: 3),
     ).whenComplete(() {
       Phoenix.rebirth(context);
     });
-  }
-
-  void showSnackBarGPS() {
-    //TODO I want to check periodically if GPS changed, use a listener, then update carditems silently
-    showSnackBar(context, "",
-        duration: Duration(seconds: 10),
-        additionalText: "GPS updated!",
-        snackbarAction: SnackBarAction(
-          label: "Refresh",
-          onPressed: () {
-            Phoenix.rebirth(context);
-          },
-        ));
   }
 
   Future<bool> setLatestPosition(Position pos) async {
@@ -637,26 +554,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   String _buildPosString(Position pos) =>
       pos.latitude.toString() + ";" + pos.longitude.toString();
-
-  /* Future<void> initOneSignalPushMessages() async {
-    //OneSignal.shared.setLogLevel(OSLogLevel.verbose, OSLogLevel.none);
-
-    var settings = {
-      OSiOSSettings.autoPrompt: false,
-      OSiOSSettings.promptBeforeOpeningPushUrl: true
-    };
-
-    await OneSignal.shared
-        .init("3cfbaca5-2b90-4f68-a1fe-98aa9a168894", iOSSettings: settings);
-
-    OneSignal.shared
-        .setInFocusDisplayType(OSNotificationDisplayType.notification);
-
-    OneSignal.shared.setLocationShared(true);
-
-    OneSignal.shared
-        .promptUserForPushNotificationPermission(fallbackToSettings: true);
-  }*/
 
   initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition(ctx) async {
     var position = await getLatestSavedPosition();
@@ -682,17 +579,18 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   @override
   void initState() {
     super.initState();
-
+    scaffoldKey = _scaffoldKey;
     subscription = Connectivity()
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
       if (!kIsWeb)
-        checkInternetConnectivityShowSnackbar(this, (abc) {
-          _showInternetErrorSnackbar(this);
+        InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(
+            kIsWeb, this, (abc) {
+          Snackbars.showInternetErrorSnackbar(this);
         });
     });
     initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition(context);
-    //initOneSignalPushMessages();
+    //OneSignal.initOneSignalPushMessages();
     searchDelegate.buildHistory();
     tabController = TabController(vsync: this, length: Pages.pages.length);
     tabController.addListener(_handleTabSelection);
@@ -776,8 +674,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       Translator.currentLocale(context);
     });*/
     if (!kIsWeb)
-      checkInternetConnectivityShowSnackbar(this, (abc) {
-        _showInternetErrorSnackbar(this);
+      InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(
+          kIsWeb, this, (abc) {
+        Snackbars.showInternetErrorSnackbar(this);
       });
     return MaterialApp(
         localizationsDelegates: [
@@ -963,27 +862,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     }
   }
 
-  void showSnackBar(ctx, String msgId,
-      {String additionalText = "",
-      snackbarAction,
-      duration = const Duration(milliseconds: 5000)}) {
-    if (_scaffoldKey.currentState == null) return;
-
-    //_scaffoldKey.currentState.removeCurrentSnackBar(); DONT REMOVE THEM, AVOID THE SPAM INSTEAD
-    _scaffoldKey.currentState.showSnackBar(SnackBar(
-      action: snackbarAction,
-      duration: duration,
-      content: Text(
-        Translator.translate(ctx, msgId) + additionalText,
-        style: TextStyle(
-            fontSize: 18.0,
-            fontWeight: FontWeight.w400,
-            color: Colors.grey[900]),
-      ),
-      backgroundColor: Colors.yellow[700],
-    ));
-  }
-
   List<Widget> buildAllTabContainer(ctx) {
     var builder = CardItemBuilder(_lists);
     return [
@@ -1162,7 +1040,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     }
 
     var index = Tag.getTagIndex(selectedLocationOrTag);
-    showMatchingSnackBar(ctx, fileName, capitalize(search), index);
+    Snackbars.showMatchingSnackBar(
+        _scaffoldKey, ctx, fileName, capitalize(search), index);
 
     loadAssets(ctx, index, search, fileName);
 
@@ -1177,16 +1056,6 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         search.substring(1, search.length);
   }
 
-  void showMatchingSnackBar(ctx, String fileName, String search, int index) {
-    if (fileName != null)
-      showSnackBar(ctx, "snackbar_filtered_by_location",
-          additionalText: search);
-    else if (index != -1 && fileName == null)
-      showSnackBar(ctx, "snackbar_filtered_by_tag", additionalText: search);
-    else
-      showSnackBar(ctx, "snackbar_merchant", additionalText: search);
-  }
-
   void showUnfilteredLists(ctx) {
     zoomMapAfterSelectLocation = false;
     mapPosition = null;
@@ -1195,7 +1064,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       _searchTerm = '';
       loadAssetsUnfiltered(ctx);
     }
-    showSnackBar(ctx, "snackbar_showing_unfiltered_list");
+    Snackbars.showSnackBarUnfilteredList(_scaffoldKey, ctx);
   }
 
   bool isFilteredList() => _searchTerm != null && _searchTerm.isNotEmpty;

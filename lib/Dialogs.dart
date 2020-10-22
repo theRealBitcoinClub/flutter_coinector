@@ -23,6 +23,7 @@ class Dialogs {
   static void showDialogInternetError(ctx) async {
     if (!hasDialog) {
       hasDialog = true;
+      //TODO ICH SE H NIX AUFM HANDY
       dialog = await AwesomeDialog(
               context: ctx,
               title: "",
@@ -34,6 +35,7 @@ class Dialogs {
               padding: EdgeInsets.all(0.0),
               onDissmissCallback: () {
                 hasDialog = false;
+                Navigator.of(ctx).pop();
               },
               btnOkOnPress: () {
                 //dismiss
@@ -43,6 +45,7 @@ class Dialogs {
   }
 
   static void dismissDialog() {
+    hasDialog = false;
     if (dialog != null) dialog.dissmiss();
   }
 
