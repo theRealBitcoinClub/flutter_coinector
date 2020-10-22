@@ -47,6 +47,7 @@ class AnimatedListSample extends StatefulWidget {
 var lastWarningInMillis = 0;
 
 void checkInternetConnectivityShowSnackbar(that, _onError) async {
+  if (kIsWeb) return;
 //DONT CHECK MORE THAN EVERY 9 SECONDS
   var milliSecondsNow = DateTime.now().millisecondsSinceEpoch;
   if (lastWarningInMillis != 0 &&
@@ -577,7 +578,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 //TODO FIND BUG AFTER RELOAD WITH POSITION THE APP HANGS ON START
       try {
         if (await setLatestPosition(pos)) {
-          if (latestPositionWasCoarse) _onCompleteGPS();
+          if (latestPositionWasCoarse) _onGetAccurateGPSFirstTime();
         }
       } catch (e) {
         debugPrint("\n\n\”dgfdbvevgreave\n\n\n" + e.toString());
@@ -597,7 +598,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     //return false;
   }
 
-  void _onCompleteGPS() async {
+  void _onGetAccurateGPSFirstTime() async {
     //TODO find out how to update the distance and repaint the tree
     showSnackBar(context, "", additionalText: "Updated GPS!");
 
@@ -685,9 +686,10 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     subscription = Connectivity()
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
-      checkInternetConnectivityShowSnackbar(this, (abc) {
-        _showInternetErrorSnackbar(this);
-      });
+      if (!kIsWeb)
+        checkInternetConnectivityShowSnackbar(this, (abc) {
+          _showInternetErrorSnackbar(this);
+        });
     });
     initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition(context);
     //initOneSignalPushMessages();
@@ -773,9 +775,10 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     /*new Future.delayed(Duration.zero, () async {
       Translator.currentLocale(context);
     });*/
-    checkInternetConnectivityShowSnackbar(this, (abc) {
-      _showInternetErrorSnackbar(this);
-    });
+    if (!kIsWeb)
+      checkInternetConnectivityShowSnackbar(this, (abc) {
+        _showInternetErrorSnackbar(this);
+      });
     return MaterialApp(
         localizationsDelegates: [
           FlutterI18nDelegate(),
