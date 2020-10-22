@@ -620,6 +620,10 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     }
 
     _checkForUpdatedData(context);
+
+    Future.delayed(Duration(seconds: 5), () {
+      Snackbars.showSnackBarPlayStore(kIsWeb, _scaffoldKey, context);
+    });
     //initPositionStream();
   }
 

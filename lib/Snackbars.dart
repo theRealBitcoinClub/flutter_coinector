@@ -1,7 +1,10 @@
 import 'package:Coinector/InternetConnectivityChecker.dart';
+import 'package:Coinector/UrlLauncher.dart';
 import 'package:Coinector/translator.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
+import 'package:platform_detect/platform_detect.dart';
 
 class Snackbars {
   static void _showSnackBar(
@@ -120,5 +123,36 @@ class Snackbars {
             Phoenix.rebirth(ctx);
           },
         ));*/
+  }
+
+  static void showSnackBarPlayStore(kIsWeb, scaffoldKey, ctx) {
+    //THIS METHOD IS ONLY FOR THE WEB APP, in case that someone opens the web app with a mobile phone
+    if (!kIsWeb) return;
+    String appstore = "Android";
+    String chosenUrl = "http://bitcoinmap.cash/coinector";
+    final iphoneUrl = "http://bitcoinmap.cash/iphone";
+
+    try {
+      if (browser.isSafari || operatingSystem.isMac) {
+        appstore = "iPhone";
+        chosenUrl = iphoneUrl;
+      } else if (operatingSystem.isWindows && browser.isInternetExplorer) {
+        appstore = "iPhone";
+        chosenUrl = iphoneUrl;
+      }
+
+      _showSnackBar(scaffoldKey, ctx, "",
+          duration: Duration(seconds: 20),
+          additionalText: appstore + " app available ->",
+          snackbarAction: SnackBarAction(
+            label: "Install",
+            onPressed: () {
+              UrlLauncher.launchURI(chosenUrl, forceWebView: true);
+            },
+          ));
+    } catch (e) {
+      //UNSUPPORTED ERROR
+      //debugPrint(e);
+    }
   }
 }
