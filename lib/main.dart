@@ -171,24 +171,27 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     FileCache.initLastVersion(() {
       //has new version
       if (timerIsCancelled) return false;
-      Snackbars.showSnackBarRestartApp(_scaffoldKey, ctx);
-      _updateAllCachedContent();
+      _updateAllCachedContent(ctx);
       return true;
     });
     return false;
   }
 
-  void _updateAllCachedContent() {
-    FileCache.loadFromWebAndPersistCache('am');
-    FileCache.loadFromWebAndPersistCache('as');
-    FileCache.loadFromWebAndPersistCache('au');
-    FileCache.loadFromWebAndPersistCache('as-jap');
-    FileCache.loadFromWebAndPersistCache('am-ven-car');
-    FileCache.loadFromWebAndPersistCache('am-ven');
-    FileCache.loadFromWebAndPersistCache('e');
-    FileCache.loadFromWebAndPersistCache('e-spa');
-    FileCache.loadFromWebAndPersistCache('addr');
-    FileCache.loadFromWebAndPersistCache('placesId');
+  void _updateAllCachedContent(ctx) async {
+    await FileCache.loadFromWebAndPersistCache('am');
+    await FileCache.loadFromWebAndPersistCache('as');
+    await FileCache.loadFromWebAndPersistCache('au');
+    await FileCache.loadFromWebAndPersistCache('as-jap');
+    await FileCache.loadFromWebAndPersistCache('am-ven-car');
+    await FileCache.loadFromWebAndPersistCache('am-ven');
+    await FileCache.loadFromWebAndPersistCache('e');
+    await FileCache.loadFromWebAndPersistCache('e-spa');
+    await FileCache.loadFromWebAndPersistCache('addr');
+    await FileCache.loadFromWebAndPersistCache('placesId');
+    Snackbars.showSnackBarRestartApp(_scaffoldKey, ctx);
+    Future.delayed(Duration(seconds: 30), () {
+      Phoenix.rebirth(ctx);
+    });
   }
 
   void _loadAndParseAllPlaces(int filterWordIndex, String locationFilter) {
