@@ -70,8 +70,8 @@ class CardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle textStyleBody1 = Theme.of(context).textTheme.body1;
-    TextStyle textStyleBody2 = Theme.of(context).textTheme.body2;
+    TextStyle textStyleBody1 = Theme.of(context).textTheme.bodyText1;
+    TextStyle textStyleBody2 = Theme.of(context).textTheme.bodyText2;
 
     final infoBoxBackgroundColor =
         MyColors.getCardInfoBoxBackgroundColor(merchant.type).withOpacity(1.0);
@@ -237,7 +237,7 @@ class CardItem extends StatelessWidget {
                     topLeft: buildRadius(), bottomLeft: buildRadius()),
                 color: backGroundColor),
             child: RatingWidgetBuilder.buildRatingWidgetIfReviewsAvailable(
-                merchant, Theme.of(ctx).textTheme.body2),
+                merchant, Theme.of(ctx).textTheme.bodyText2),
           ),
         ));
   }

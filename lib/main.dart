@@ -774,13 +774,13 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       // Define the default TextTheme. Use this to specify the default
       // text styling for headlines, titles, bodies of text, and more.
       textTheme: TextTheme(
-        title: TextStyle(color: Colors.black),
-        headline: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-        body1: TextStyle(
+        headline6: TextStyle(color: Colors.black),
+        headline5: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+        bodyText1: TextStyle(
             fontSize: 17.0,
             fontFamily: 'Hind',
             color: Colors.white.withOpacity(0.85)),
-        body2: TextStyle(
+        bodyText2: TextStyle(
             fontSize: 14.0,
             fontFamily: 'Hind',
             color: Colors.white.withOpacity(0.7)),
