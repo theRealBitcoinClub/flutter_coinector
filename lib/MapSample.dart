@@ -68,10 +68,24 @@ class MapSampleState extends State<MapSample> {
       initialCamPosFallback = CameraPosition(
           target: LatLng(position.latitude, position.longitude),
           zoom: initialZoomLevel);
+
 /*
     if (allLists != null) {
       parseListAndZoomToSingleResult();
     }*/
+  }
+
+  void checkConnection() {
+    InternetConnectivityChecker.resumeAutoChecker();
+    try {
+      InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(
+          kIsWeb, this, (abc) {
+        Dialogs.showDialogInternetError(context);
+      });
+    } catch (e) {
+      Toaster.showToastInternetError(context);
+    }
+    //}
   }
 
   Future<Set<Marker>> parseListAndZoomToSingleResult(ctx) async {
@@ -190,12 +204,7 @@ class MapSampleState extends State<MapSample> {
 
   @override
   Widget build(BuildContext ctx) {
-    InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(
-        kIsWeb, this, (abc) {
-      //Toaster.showToastInternetError(ctx);
-      Dialogs.showDialogInternetError(ctx);
-      //Dialogs.showInfoDialogWithCloseButton(ctx);
-    });
+    checkConnection();
     return Builder(builder: (buildCtx) {
       return Scaffold(
         body: Padding(
@@ -230,14 +239,16 @@ class MapSampleState extends State<MapSample> {
             },
           ),
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-        floatingActionButton: FloatingActionButton.extended(
-          backgroundColor: Colors.white70,
-          foregroundColor: Theme.of(ctx).backgroundColor,
-          onPressed: closeMapResetMerchant,
-          label: Text(Translator.translate(ctx, 'close_map')),
-          icon: Icon(Icons.close),
-        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
+        floatingActionButton: Padding(
+            padding: EdgeInsets.only(top: 15),
+            child: FloatingActionButton.extended(
+              backgroundColor: Colors.white70,
+              foregroundColor: Theme.of(ctx).backgroundColor,
+              onPressed: closeMapResetMerchant,
+              label: Text("BACK" /*Translator.translate(ctx, 'close_map')*/),
+              icon: Icon(Icons.navigate_before),
+            )),
       );
     });
   }

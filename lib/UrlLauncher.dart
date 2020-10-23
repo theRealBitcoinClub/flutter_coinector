@@ -52,7 +52,8 @@ class UrlLauncher {
   }
 
   static void launchSubmitForm() {
-    launchURI("http://bitcoinmap.cash/submit", forceWebView: true);
+    launchURI(
+        "http://bitcoinmap.cash/submit" /*, forceWebView: true TEST IF THAT FIXES THE ERROR ON DEVICE*/);
   }
 
   static void launchBitcoinMap() {
