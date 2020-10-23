@@ -110,7 +110,9 @@ class CardItem extends StatelessWidget {
         child: Stack(
           children: <Widget>[
             buildBackGroundImageFallback(ctx),
-            //buildImageContainer(gifUrl),
+            kReleaseMode
+                ? buildImageContainer(gifUrl)
+                : SizedBox(), //LIMIT DATA USAGE BY NOT LOADING IMAGES IN DEV MODE
             buildStackInfoTextWithBackgroundAndShadow(
                 infoBoxBackgroundColor, backGroundColor, textStyle, textStyle2),
             buildPositionedContainerDistance(ctx, backGroundColor, textStyle2),

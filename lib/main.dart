@@ -47,7 +47,7 @@ class AnimatedListSample extends StatefulWidget {
 }
 
 class _AnimatedListSampleState extends State<AnimatedListSample>
-    with TickerProviderStateMixin {
+    with TickerProviderStateMixin, WidgetsBindingObserver {
   final SearchDemoSearchDelegate searchDelegate = SearchDemoSearchDelegate();
 
   NestedScrollView appContent;
@@ -96,8 +96,21 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    //TODO CHECK IF THIS IS REALLY WORKING AS EXPECTED
+    if (state == AppLifecycleState.resumed) {
+      InternetConnectivityChecker.resumeAutoChecker();
+    } else if (state == AppLifecycleState.paused) {
+      InternetConnectivityChecker.pauseAutoChecker();
+    }
+  }
+
+  @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    InternetConnectivityChecker.pauseAutoChecker();
     Snackbars.close();
+    InternetConnectivityChecker.close();
     if (positionStream != null) positionStream.cancel();
     isInitialized = false;
     isUpdatingPosition = false;
@@ -158,24 +171,27 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     FileCache.initLastVersion(() {
       //has new version
       if (timerIsCancelled) return false;
-      Snackbars.showSnackBarRestartApp(_scaffoldKey, ctx);
-      _updateAllCachedContent();
+      _updateAllCachedContent(ctx);
       return true;
     });
     return false;
   }
 
-  void _updateAllCachedContent() {
-    FileCache.loadFromWebAndPersistCache('am');
-    FileCache.loadFromWebAndPersistCache('as');
-    FileCache.loadFromWebAndPersistCache('au');
-    FileCache.loadFromWebAndPersistCache('as-jap');
-    FileCache.loadFromWebAndPersistCache('am-ven-car');
-    FileCache.loadFromWebAndPersistCache('am-ven');
-    FileCache.loadFromWebAndPersistCache('e');
-    FileCache.loadFromWebAndPersistCache('e-spa');
-    FileCache.loadFromWebAndPersistCache('addr');
-    FileCache.loadFromWebAndPersistCache('placesId');
+  void _updateAllCachedContent(ctx) async {
+    await FileCache.loadFromWebAndPersistCache('am');
+    await FileCache.loadFromWebAndPersistCache('as');
+    await FileCache.loadFromWebAndPersistCache('au');
+    await FileCache.loadFromWebAndPersistCache('as-jap');
+    await FileCache.loadFromWebAndPersistCache('am-ven-car');
+    await FileCache.loadFromWebAndPersistCache('am-ven');
+    await FileCache.loadFromWebAndPersistCache('e');
+    await FileCache.loadFromWebAndPersistCache('e-spa');
+    await FileCache.loadFromWebAndPersistCache('addr');
+    await FileCache.loadFromWebAndPersistCache('placesId');
+    Snackbars.showSnackBarRestartApp(_scaffoldKey, ctx);
+    Future.delayed(Duration(seconds: 30), () {
+      Phoenix.rebirth(ctx);
+    });
   }
 
   void _loadAndParseAllPlaces(int filterWordIndex, String locationFilter) {
@@ -542,7 +558,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   Future<bool> setLatestPosition(Position pos) async {
     String position = await getLatestSavedPosition();
     var posString = _buildPosString(pos);
-    if (position == posString) return false;
+    if (posString != null && position == posString) return false;
 
     bool success = await _saveLatestSavedPosition(posString);
 
@@ -552,8 +568,9 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     return success;
   }
 
-  String _buildPosString(Position pos) =>
-      pos.latitude.toString() + ";" + pos.longitude.toString();
+  String _buildPosString(Position pos) => pos != null && pos.latitude != null
+      ? (pos.latitude.toString() + ";" + pos.longitude.toString())
+      : null;
 
   initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition(ctx) async {
     var position = await getLatestSavedPosition();
@@ -579,6 +596,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     scaffoldKey = _scaffoldKey;
     subscription = Connectivity()
         .onConnectivityChanged
@@ -673,11 +691,15 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     /*new Future.delayed(Duration.zero, () async {
       Translator.currentLocale(context);
     });*/
-    if (!kIsWeb)
+    if (kIsWeb) {
+      InternetConnectivityChecker.pauseAutoChecker();
+    } else {
+      //InternetConnectivityChecker.resumeAutoChecker();
       InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(
           kIsWeb, this, (abc) {
         Snackbars.showInternetErrorSnackbar(this);
       });
+    }
     return MaterialApp(
         localizationsDelegates: [
           FlutterI18nDelegate(),
@@ -693,119 +715,20 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           const Locale('id'),
           const Locale('fr')
         ],
-        theme: ThemeData(
-          // Define the default Brightness and Colors
-          brightness: Brightness.dark,
-          backgroundColor: Colors.grey[900],
-          primaryColor: Colors.grey[900],
-          accentColor: Colors.white,
-
-          // Define the default Font Family
-          //fontFamily: 'Montserrat',
-          fontFamily: 'OpenSans',
-          // Define the default TextTheme. Use this to specify the default
-          // text styling for headlines, titles, bodies of text, and more.
-          textTheme: TextTheme(
-            title: TextStyle(color: Colors.black),
-            headline: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-            body1: TextStyle(
-                fontSize: 17.0,
-                fontFamily: 'Hind',
-                color: Colors.white.withOpacity(0.85)),
-            body2: TextStyle(
-                fontSize: 14.0,
-                fontFamily: 'Hind',
-                color: Colors.white.withOpacity(0.7)),
-          ),
-        ),
+        theme: buildTheme(),
         home: new WillPopScope(
           onWillPop: _onWillPop,
           child: Scaffold(
             key: _scaffoldKey,
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerFloat,
-            floatingActionButton: Builder(
-              builder: (builderCtx) => FloatingActionButton.extended(
-                  backgroundColor: getColorOfSelectedTab(),
-                  foregroundColor: Colors.white,
-                  onPressed: () {
-                    openAddNewPlaceWidget(builderCtx);
-                  },
-                  label: Text(
-                      Translator.translate(builderCtx, "floatbutton_add") +
-                          Translator.translate(
-                              builderCtx, addButtonCategory.toUpperCase())),
-                  icon: Icon(Icons.add_location)),
-            ),
+            floatingActionButton: buildFloatingActionButton(),
             body: new Builder(builder: (BuildContext ctx) {
-              //Translator.refresh(ctx, Locale("en"));
-              /*new Future.delayed(Duration.zero, () async {
-            await Translator.refresh(ctx, new Locale('de'));
-          });*/
               appContent = NestedScrollView(
                 headerSliverBuilder:
                     (BuildContext buildCtx, bool innerBoxIsScrolled) {
-                  /*new Future.delayed(Duration.zero, () async {
-                await Translator.refresh(buildCtx, new Locale('de'));
-              });*/
                   return <Widget>[
-                    SliverAppBar(
-                        elevation: 2,
-                        forceElevated: true,
-                        leading: buildHomeButton(buildCtx),
-                        bottom: TabBar(
-                          controller: tabController,
-                          isScrollable: true,
-                          indicator: getIndicator(),
-                          tabs: Pages.pages.map<Tab>((Pagee page) {
-                            return _lists[page.tabIndex].length > 0
-                                ? Tab(
-                                    icon: Icon(
-                                      page.icon,
-                                      color:
-                                          MyColors.getTabColor(page.typeIndex),
-                                      size: 22,
-                                    ),
-                                    //text: page.text)
-                                    /*child: Text(page.text,
-                                    maxLines: 1,
-
-                                    overflow: TextOverflow.fade,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .body2
-                                        .copyWith(
-                                            color: MyColors.getTabColor(
-                                                page.typeIndex)))*/
-                                  )
-                                : Tab(
-                                    icon: Icon(
-                                    page.icon,
-                                    color: Colors.white.withOpacity(0.5),
-                                    size: 22,
-                                  ));
-                          }).toList(),
-                        ),
-                        actions: <Widget>[
-                          buildIconButtonMap(buildCtx),
-                        ],
-                        title: Padding(
-                            padding: EdgeInsets.all(0.0),
-                            child: AnimatedSwitcher(
-                                //TODO fix animation, how to switch animted with a fade transition?
-                                duration: Duration(milliseconds: 500),
-                                child: Text(
-                                  titleActionBar,
-                                  style: TextStyle(
-                                      fontSize: 22.0,
-                                      fontWeight: FontWeight.w300,
-                                      fontStyle: FontStyle.normal,
-                                      color: Colors.white.withOpacity(0.7)),
-                                ))),
-                        //expandedHeight: 300.0, GOOD SPACE FOR ADS LATER
-                        floating: true,
-                        snap: true,
-                        pinned: false),
+                    buildSliverAppBar(buildCtx),
                   ];
                 },
                 body:
@@ -822,6 +745,104 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         ));
   }
 
+  Builder buildFloatingActionButton() {
+    return Builder(
+      builder: (builderCtx) => FloatingActionButton.extended(
+          backgroundColor: getColorOfSelectedTab(),
+          foregroundColor: Colors.white,
+          onPressed: () {
+            openAddNewPlaceWidget(builderCtx);
+          },
+          label: Text(Translator.translate(builderCtx, "floatbutton_add") +
+              Translator.translate(
+                  builderCtx, addButtonCategory.toUpperCase())),
+          icon: Icon(Icons.add_location)),
+    );
+  }
+
+  ThemeData buildTheme() {
+    return ThemeData(
+      // Define the default Brightness and Colors
+      brightness: Brightness.dark,
+      backgroundColor: Colors.grey[900],
+      primaryColor: Colors.grey[900],
+      accentColor: Colors.white,
+
+      // Define the default Font Family
+      //fontFamily: 'Montserrat',
+      fontFamily: 'OpenSans',
+      // Define the default TextTheme. Use this to specify the default
+      // text styling for headlines, titles, bodies of text, and more.
+      textTheme: TextTheme(
+        title: TextStyle(color: Colors.black),
+        headline: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+        body1: TextStyle(
+            fontSize: 17.0,
+            fontFamily: 'Hind',
+            color: Colors.white.withOpacity(0.85)),
+        body2: TextStyle(
+            fontSize: 14.0,
+            fontFamily: 'Hind',
+            color: Colors.white.withOpacity(0.7)),
+      ),
+    );
+  }
+
+  SliverAppBar buildSliverAppBar(BuildContext buildCtx) {
+    return SliverAppBar(
+        elevation: 2,
+        forceElevated: true,
+        leading: buildHomeButton(buildCtx),
+        bottom: TabBar(
+          controller: tabController,
+          isScrollable: true,
+          indicator: getIndicator(),
+          tabs: Pages.pages.map<Tab>((Pagee page) {
+            return buildColoredTab(page);
+          }).toList(),
+        ),
+        actions: <Widget>[
+          buildIconButtonMap(buildCtx),
+        ],
+        title: buildTitleWidget(),
+        //expandedHeight: 300.0, GOOD SPACE FOR ADS LATER
+        floating: true,
+        snap: true,
+        pinned: false);
+  }
+
+  Padding buildTitleWidget() {
+    return Padding(
+        padding: EdgeInsets.all(0.0),
+        child: AnimatedSwitcher(
+            //TODO fix animation, how to switch animted with a fade transition?
+            duration: Duration(milliseconds: 500),
+            child: Text(
+              titleActionBar,
+              style: TextStyle(
+                  fontSize: 22.0,
+                  fontWeight: FontWeight.w300,
+                  fontStyle: FontStyle.normal,
+                  color: Colors.white.withOpacity(0.7)),
+            )));
+  }
+
+  Tab buildColoredTab(Pagee page) {
+    return _lists[page.tabIndex].length > 0
+        ? Tab(
+            icon: Icon(
+            page.icon,
+            color: MyColors.getTabColor(page.typeIndex),
+            size: 22,
+          ))
+        : Tab(
+            icon: Icon(
+            page.icon,
+            color: Colors.white.withOpacity(0.5),
+            size: 22,
+          ));
+  }
+
   bool zoomMapAfterSelectLocation = false;
 
   Widget buildIconButtonMap(ctx) {
@@ -835,6 +856,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   void handleMapButtonClick(ctx) async {
     try {
       if (Platform.isAndroid || Platform.isIOS) {
+        //InternetConnectivityChecker.pauseAutoChecker();
         Merchant result = await Navigator.push(
           ctx,
           MaterialPageRoute(
@@ -992,21 +1014,28 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           progress: searchDelegate.transitionAnimation,
           icon: AnimatedIcons.search_ellipsis),
       onPressed: () async {
-        final String selected = await showSearch<String>(
-          context: ctx,
-          delegate: searchDelegate,
-        );
-        if (hasNotHitSearch()) {
-          Dialogs.showInfoDialogWithCloseButton(ctx);
-          handleSearchButtonAnimationAndPersistHit();
-        }
-        //TODO ask users to rate the app
+        InternetConnectivityChecker.pauseAutoChecker();
+        try {
+          final String selected = await showSearch<String>(
+            context: ctx,
+            delegate: searchDelegate,
+          );
+          InternetConnectivityChecker.resumeAutoChecker();
 
-        if (selected != null) {
-          filterListUpdateTitle(ctx, selected);
-        } else {
-          _updateDistanceToAllMerchantsIfNotDoneYet();
-          showUnfilteredLists(ctx);
+          if (hasNotHitSearch()) {
+            Dialogs.showInfoDialogWithCloseButton(ctx);
+            handleSearchButtonAnimationAndPersistHit();
+          }
+          //TODO ask users to rate the app
+
+          if (selected != null) {
+            filterListUpdateTitle(ctx, selected);
+          } else {
+            _updateDistanceToAllMerchantsIfNotDoneYet();
+            showUnfilteredLists(ctx);
+          }
+        } catch (e) {
+          InternetConnectivityChecker.resumeAutoChecker();
         }
       },
       tooltip: 'Search',

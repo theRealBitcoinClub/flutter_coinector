@@ -6,10 +6,23 @@ import 'package:dio/dio.dart';
 
 class InternetConnectivityChecker {
   static var lastWarningInMillis = 0;
+  static var pauseInternetChecker = false;
+
+  static void close() {
+    resumeAutoChecker();
+  }
+
+  static void pauseAutoChecker() {
+    pauseInternetChecker = true;
+  }
+
+  static void resumeAutoChecker() {
+    pauseInternetChecker = false;
+  }
 
   static void checkInternetConnectivityShowSnackbar(
       kIsWeb, that, _onError) async {
-    if (kIsWeb) return;
+    if (pauseInternetChecker || kIsWeb) return;
 //DONT CHECK MORE THAN EVERY 9 SECONDS
     var milliSecondsNow = DateTime.now().millisecondsSinceEpoch;
     if (that.mounted &&
