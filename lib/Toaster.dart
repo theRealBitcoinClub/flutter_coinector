@@ -12,7 +12,7 @@ class Toaster {
   static Color DEFAULT_BACKGROUND_COLOR = Colors.yellow[900];
   static const int DEFAULT_TIME_FOR_IOS_AND_WEB = 3;
   static const Toast DEFAULT_TIME_FOR_ANDROID = Toast.LENGTH_LONG;
-  static const ToastGravity DEFAULT_TOAST_GRAVITY = ToastGravity.CENTER;
+  static const ToastGravity DEFAULT_TOAST_GRAVITY = ToastGravity.SNACKBAR;
 
   static void showToastInternetError(ctx) {
     _showWarning(Dialogs.INTERNET_ERROR);
@@ -38,14 +38,14 @@ class Toaster {
   static var isToasting = false;
 
   static void _showWarning(message) async {
-    await cancel();
-    if (!isToasting) isToasting = true;
+    if (!await cancel()) isToasting = true;
     showToast(message, DEFAULT_BACKGROUND_COLOR);
   }
 
-  static void cancel() async {
+  static Future<bool> cancel() async {
     if (isToasting) await Fluttertoast.cancel();
     isToasting = false;
+    return isToasting;
   }
 
   static void showAddName(ctx) {

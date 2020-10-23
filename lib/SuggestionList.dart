@@ -44,8 +44,8 @@ class SuggestionList extends StatelessWidget {
                       ? searchMatch.substring(0, query.trim().length)
                       : searchMatch
                   : searchMatch,
-              style:
-                  theme.textTheme.subhead.copyWith(fontWeight: FontWeight.bold),
+              style: theme.textTheme.subtitle1
+                  .copyWith(fontWeight: FontWeight.bold),
               children: <TextSpan>[
                 TextSpan(
                   text: (isRealSuggestion(searchMatch, ctx))
@@ -53,16 +53,16 @@ class SuggestionList extends StatelessWidget {
                           ? searchMatch.substring(query.trim().length)
                           : ''
                       : '',
-                  style: theme.textTheme.subhead,
+                  style: theme.textTheme.subtitle1,
                 ),
                 TextSpan(
                   text: state,
-                  style: theme.textTheme.subhead
+                  style: theme.textTheme.subtitle1
                       .copyWith(color: Colors.white.withOpacity(0.5)),
                 ),
                 TextSpan(
                   text: continent,
-                  style: theme.textTheme.subhead
+                  style: theme.textTheme.subtitle1
                       .copyWith(color: Colors.white.withOpacity(0.5)),
                 ),
               ],

@@ -113,7 +113,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     InternetConnectivityChecker.close();
     if (positionStream != null) positionStream.cancel();
     isInitialized = false;
-    isUpdatingPosition = false;
+    //isUpdatingPosition = false;
     isCheckingForUpdates = false;
     //isUnfilteredList = false;
     timerIsCancelled = true;
@@ -293,7 +293,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       return false;
     }
 
-    double distanceInMeters = await GeolocatorPlatform.instance
+    double distanceInMeters = GeolocatorPlatform.instance
         .distanceBetween(position.latitude, position.longitude, m.x, m.y);
 
     m.distanceInMeters = distanceInMeters;
@@ -477,11 +477,11 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     }
   }
 
-  void initCurrentPositionIfNotInitialized() async {
-    if (userPosition != null) return;
+  Future<bool> initCurrentPositionIfNotInitialized() async {
+    if (userPosition != null) return false;
 
     //TODO check if that call is correct, might make sense to request permission always if necesssary?
-    await updateCurrentPosition();
+    return await updateCurrentPosition();
   }
 
 /*
@@ -505,11 +505,11 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 */
 
-  static var isUpdatingPosition = false;
+  //static var isUpdatingPosition = false;
 
   Future<bool> updateCurrentPosition() async {
     //if (isUpdatingPosition) return false;
-    isUpdatingPosition = true;
+    //isUpdatingPosition = true;
     //ALWAYS GET LOCATION VIA IP FIRST TO HAVE SOMETHING AT STARTUP
     //if (kIsWeb) {
     //_getCurrentLocationWeb();
@@ -538,7 +538,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       //After getting coarse location we do nothing
     }
     //latestPositionWasCoarse = true;
-    isUpdatingPosition = false;
+    //isUpdatingPosition = false;
     return true;
     //}
     //return false;
@@ -774,13 +774,13 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       // Define the default TextTheme. Use this to specify the default
       // text styling for headlines, titles, bodies of text, and more.
       textTheme: TextTheme(
-        title: TextStyle(color: Colors.black),
-        headline: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-        body1: TextStyle(
+        headline6: TextStyle(color: Colors.black),
+        headline5: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+        bodyText1: TextStyle(
             fontSize: 17.0,
             fontFamily: 'Hind',
             color: Colors.white.withOpacity(0.85)),
-        body2: TextStyle(
+        bodyText2: TextStyle(
             fontSize: 14.0,
             fontFamily: 'Hind',
             color: Colors.white.withOpacity(0.7)),
@@ -1198,11 +1198,10 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       else
         debugPrint(
             "RECEIVING INVALID DATA FROM COARSE LOCATION PROVIDER\nRECEIVING INVALID DATA FROM COARSE LOCATION PROVIDER\nRECEIVING INVALID DATA FROM COARSE LOCATION PROVIDER");
-
-      return userPosition;
     } catch (e) {
       debugPrint(e.toString());
     }
+    return userPosition;
   }
 }
 
