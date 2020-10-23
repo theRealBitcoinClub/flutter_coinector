@@ -80,7 +80,8 @@ class MapSampleState extends State<MapSample> {
     try {
       InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(
           kIsWeb, this, (abc) {
-        Dialogs.showDialogInternetError(context);
+        //Dialogs.showDialogInternetError(context);
+        Toaster.showToastInternetError(context);
       });
     } catch (e) {
       Toaster.showToastInternetError(context);
