@@ -113,7 +113,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     InternetConnectivityChecker.close();
     if (positionStream != null) positionStream.cancel();
     isInitialized = false;
-    isUpdatingPosition = false;
+    //isUpdatingPosition = false;
     isCheckingForUpdates = false;
     //isUnfilteredList = false;
     timerIsCancelled = true;
