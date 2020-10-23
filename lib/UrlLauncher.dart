@@ -86,7 +86,7 @@ class UrlLauncher {
 
   static Future<void> launchEmailClientAddPlace(ctx, String inputDASH,
       String inputBCH, String content, onEmailClientNotFound) async {
-    String countryCode = getLocale(ctx);
+    //String countryCode = getLocale(ctx);
     //print("countryCode:" + countryCode);
     var urlString = "mailto:" +
         "trbc@bitcoinmap.cash" +

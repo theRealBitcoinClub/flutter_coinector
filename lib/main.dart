@@ -293,7 +293,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       return false;
     }
 
-    double distanceInMeters = await GeolocatorPlatform.instance
+    double distanceInMeters = GeolocatorPlatform.instance
         .distanceBetween(position.latitude, position.longitude, m.x, m.y);
 
     m.distanceInMeters = distanceInMeters;
@@ -477,11 +477,11 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     }
   }
 
-  void initCurrentPositionIfNotInitialized() async {
-    if (userPosition != null) return;
+  Future<bool> initCurrentPositionIfNotInitialized() async {
+    if (userPosition != null) return false;
 
     //TODO check if that call is correct, might make sense to request permission always if necesssary?
-    await updateCurrentPosition();
+    return await updateCurrentPosition();
   }
 
 /*
@@ -505,11 +505,11 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 */
 
-  static var isUpdatingPosition = false;
+  //static var isUpdatingPosition = false;
 
   Future<bool> updateCurrentPosition() async {
     //if (isUpdatingPosition) return false;
-    isUpdatingPosition = true;
+    //isUpdatingPosition = true;
     //ALWAYS GET LOCATION VIA IP FIRST TO HAVE SOMETHING AT STARTUP
     //if (kIsWeb) {
     //_getCurrentLocationWeb();
@@ -538,7 +538,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       //After getting coarse location we do nothing
     }
     //latestPositionWasCoarse = true;
-    isUpdatingPosition = false;
+    //isUpdatingPosition = false;
     return true;
     //}
     //return false;
