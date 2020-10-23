@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'Dialogs.dart';
+
 class Toaster {
   static const DEFAULT_BACKGROUND_OPACITY = 0.9;
   static const double DEFAULT_FONT_SIZE = 16.0;
@@ -13,7 +15,7 @@ class Toaster {
   static const ToastGravity DEFAULT_TOAST_GRAVITY = ToastGravity.CENTER;
 
   static void showToastInternetError(ctx) {
-    _showWarning("INTERNET ERROR!");
+    _showWarning(Dialogs.INTERNET_ERROR);
   }
 
   static void showToastAttractCustomers(ctx) {

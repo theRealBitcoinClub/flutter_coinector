@@ -5,20 +5,7 @@ import 'package:flutter/material.dart';
 class Dialogs {
   static var hasDialog = false;
   static AwesomeDialog dialog;
-
-  static void showDialogUpdateApp(ctx) async {
-    dialog = await AwesomeDialog(
-        context: ctx,
-        title: "",
-        desc: "App updated! Restart now?",
-        btnCancelOnPress: () {
-          dialog.dissmiss();
-        },
-        btnOkOnPress: () {
-          //Phoenix.rebirth(ctx);
-          Navigator.of(ctx).pop();
-        }).show();
-  }
+  static const String INTERNET_ERROR = "Internet Error!";
 
   static void showDialogInternetError(ctx) async {
     if (!hasDialog) {
@@ -28,7 +15,7 @@ class Dialogs {
               context: ctx,
               title: "",
               headerAnimationLoop: false,
-              desc: "Internet Error!!!",
+              desc: INTERNET_ERROR,
               autoHide: Duration(seconds: 7),
               dialogType: DialogType.ERROR,
               animType: AnimType.SCALE,

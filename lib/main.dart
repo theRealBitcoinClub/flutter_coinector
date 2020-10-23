@@ -694,7 +694,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     if (kIsWeb) {
       InternetConnectivityChecker.pauseAutoChecker();
     } else {
-      InternetConnectivityChecker.resumeAutoChecker();
+      //InternetConnectivityChecker.resumeAutoChecker();
       InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(
           kIsWeb, this, (abc) {
         Snackbars.showInternetErrorSnackbar(this);
@@ -856,7 +856,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   void handleMapButtonClick(ctx) async {
     try {
       if (Platform.isAndroid || Platform.isIOS) {
-        InternetConnectivityChecker.pauseAutoChecker();
+        //InternetConnectivityChecker.pauseAutoChecker();
         Merchant result = await Navigator.push(
           ctx,
           MaterialPageRoute(
