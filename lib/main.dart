@@ -1198,11 +1198,10 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       else
         debugPrint(
             "RECEIVING INVALID DATA FROM COARSE LOCATION PROVIDER\nRECEIVING INVALID DATA FROM COARSE LOCATION PROVIDER\nRECEIVING INVALID DATA FROM COARSE LOCATION PROVIDER");
-
-      return userPosition;
     } catch (e) {
       debugPrint(e.toString());
     }
+    return userPosition;
   }
 }
 

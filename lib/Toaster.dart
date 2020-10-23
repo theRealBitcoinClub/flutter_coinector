@@ -38,14 +38,14 @@ class Toaster {
   static var isToasting = false;
 
   static void _showWarning(message) async {
-    await cancel();
-    if (!isToasting) isToasting = true;
+    if (!await cancel()) isToasting = true;
     showToast(message, DEFAULT_BACKGROUND_COLOR);
   }
 
-  static void cancel() async {
+  static Future<bool> cancel() async {
     if (isToasting) await Fluttertoast.cancel();
     isToasting = false;
+    return isToasting;
   }
 
   static void showAddName(ctx) {

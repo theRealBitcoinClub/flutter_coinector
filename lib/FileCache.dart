@@ -102,12 +102,17 @@ class FileCache {
     await FileCache.writeCache(fileName, latestContent);
   }
 
-  static void writeCache(String fileName, String content) async {
+  static Future<bool> writeCache(String fileName, String content) async {
     if (kIsWeb) //this happens on web
-      return null;
+      return false;
 
-    final file = await localFile(fileName);
-    // Write the file
-    file.writeAsString(content, flush: true);
+    try {
+      final file = await localFile(fileName);
+      // Write the file
+      file.writeAsString(content, flush: true);
+    } catch (e) {
+      return false;
+    }
+    return true;
   }
 }
