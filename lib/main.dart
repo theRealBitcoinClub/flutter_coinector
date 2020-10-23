@@ -715,119 +715,20 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           const Locale('id'),
           const Locale('fr')
         ],
-        theme: ThemeData(
-          // Define the default Brightness and Colors
-          brightness: Brightness.dark,
-          backgroundColor: Colors.grey[900],
-          primaryColor: Colors.grey[900],
-          accentColor: Colors.white,
-
-          // Define the default Font Family
-          //fontFamily: 'Montserrat',
-          fontFamily: 'OpenSans',
-          // Define the default TextTheme. Use this to specify the default
-          // text styling for headlines, titles, bodies of text, and more.
-          textTheme: TextTheme(
-            title: TextStyle(color: Colors.black),
-            headline: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-            body1: TextStyle(
-                fontSize: 17.0,
-                fontFamily: 'Hind',
-                color: Colors.white.withOpacity(0.85)),
-            body2: TextStyle(
-                fontSize: 14.0,
-                fontFamily: 'Hind',
-                color: Colors.white.withOpacity(0.7)),
-          ),
-        ),
+        theme: buildTheme(),
         home: new WillPopScope(
           onWillPop: _onWillPop,
           child: Scaffold(
             key: _scaffoldKey,
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerFloat,
-            floatingActionButton: Builder(
-              builder: (builderCtx) => FloatingActionButton.extended(
-                  backgroundColor: getColorOfSelectedTab(),
-                  foregroundColor: Colors.white,
-                  onPressed: () {
-                    openAddNewPlaceWidget(builderCtx);
-                  },
-                  label: Text(
-                      Translator.translate(builderCtx, "floatbutton_add") +
-                          Translator.translate(
-                              builderCtx, addButtonCategory.toUpperCase())),
-                  icon: Icon(Icons.add_location)),
-            ),
+            floatingActionButton: buildFloatingActionButton(),
             body: new Builder(builder: (BuildContext ctx) {
-              //Translator.refresh(ctx, Locale("en"));
-              /*new Future.delayed(Duration.zero, () async {
-            await Translator.refresh(ctx, new Locale('de'));
-          });*/
               appContent = NestedScrollView(
                 headerSliverBuilder:
                     (BuildContext buildCtx, bool innerBoxIsScrolled) {
-                  /*new Future.delayed(Duration.zero, () async {
-                await Translator.refresh(buildCtx, new Locale('de'));
-              });*/
                   return <Widget>[
-                    SliverAppBar(
-                        elevation: 2,
-                        forceElevated: true,
-                        leading: buildHomeButton(buildCtx),
-                        bottom: TabBar(
-                          controller: tabController,
-                          isScrollable: true,
-                          indicator: getIndicator(),
-                          tabs: Pages.pages.map<Tab>((Pagee page) {
-                            return _lists[page.tabIndex].length > 0
-                                ? Tab(
-                                    icon: Icon(
-                                      page.icon,
-                                      color:
-                                          MyColors.getTabColor(page.typeIndex),
-                                      size: 22,
-                                    ),
-                                    //text: page.text)
-                                    /*child: Text(page.text,
-                                    maxLines: 1,
-
-                                    overflow: TextOverflow.fade,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .body2
-                                        .copyWith(
-                                            color: MyColors.getTabColor(
-                                                page.typeIndex)))*/
-                                  )
-                                : Tab(
-                                    icon: Icon(
-                                    page.icon,
-                                    color: Colors.white.withOpacity(0.5),
-                                    size: 22,
-                                  ));
-                          }).toList(),
-                        ),
-                        actions: <Widget>[
-                          buildIconButtonMap(buildCtx),
-                        ],
-                        title: Padding(
-                            padding: EdgeInsets.all(0.0),
-                            child: AnimatedSwitcher(
-                                //TODO fix animation, how to switch animted with a fade transition?
-                                duration: Duration(milliseconds: 500),
-                                child: Text(
-                                  titleActionBar,
-                                  style: TextStyle(
-                                      fontSize: 22.0,
-                                      fontWeight: FontWeight.w300,
-                                      fontStyle: FontStyle.normal,
-                                      color: Colors.white.withOpacity(0.7)),
-                                ))),
-                        //expandedHeight: 300.0, GOOD SPACE FOR ADS LATER
-                        floating: true,
-                        snap: true,
-                        pinned: false),
+                    buildSliverAppBar(buildCtx),
                   ];
                 },
                 body:
@@ -842,6 +743,104 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
             }),
           ),
         ));
+  }
+
+  Builder buildFloatingActionButton() {
+    return Builder(
+      builder: (builderCtx) => FloatingActionButton.extended(
+          backgroundColor: getColorOfSelectedTab(),
+          foregroundColor: Colors.white,
+          onPressed: () {
+            openAddNewPlaceWidget(builderCtx);
+          },
+          label: Text(Translator.translate(builderCtx, "floatbutton_add") +
+              Translator.translate(
+                  builderCtx, addButtonCategory.toUpperCase())),
+          icon: Icon(Icons.add_location)),
+    );
+  }
+
+  ThemeData buildTheme() {
+    return ThemeData(
+      // Define the default Brightness and Colors
+      brightness: Brightness.dark,
+      backgroundColor: Colors.grey[900],
+      primaryColor: Colors.grey[900],
+      accentColor: Colors.white,
+
+      // Define the default Font Family
+      //fontFamily: 'Montserrat',
+      fontFamily: 'OpenSans',
+      // Define the default TextTheme. Use this to specify the default
+      // text styling for headlines, titles, bodies of text, and more.
+      textTheme: TextTheme(
+        title: TextStyle(color: Colors.black),
+        headline: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+        body1: TextStyle(
+            fontSize: 17.0,
+            fontFamily: 'Hind',
+            color: Colors.white.withOpacity(0.85)),
+        body2: TextStyle(
+            fontSize: 14.0,
+            fontFamily: 'Hind',
+            color: Colors.white.withOpacity(0.7)),
+      ),
+    );
+  }
+
+  SliverAppBar buildSliverAppBar(BuildContext buildCtx) {
+    return SliverAppBar(
+        elevation: 2,
+        forceElevated: true,
+        leading: buildHomeButton(buildCtx),
+        bottom: TabBar(
+          controller: tabController,
+          isScrollable: true,
+          indicator: getIndicator(),
+          tabs: Pages.pages.map<Tab>((Pagee page) {
+            return buildColoredTab(page);
+          }).toList(),
+        ),
+        actions: <Widget>[
+          buildIconButtonMap(buildCtx),
+        ],
+        title: buildTitleWidget(),
+        //expandedHeight: 300.0, GOOD SPACE FOR ADS LATER
+        floating: true,
+        snap: true,
+        pinned: false);
+  }
+
+  Padding buildTitleWidget() {
+    return Padding(
+        padding: EdgeInsets.all(0.0),
+        child: AnimatedSwitcher(
+            //TODO fix animation, how to switch animted with a fade transition?
+            duration: Duration(milliseconds: 500),
+            child: Text(
+              titleActionBar,
+              style: TextStyle(
+                  fontSize: 22.0,
+                  fontWeight: FontWeight.w300,
+                  fontStyle: FontStyle.normal,
+                  color: Colors.white.withOpacity(0.7)),
+            )));
+  }
+
+  Tab buildColoredTab(Pagee page) {
+    return _lists[page.tabIndex].length > 0
+        ? Tab(
+            icon: Icon(
+            page.icon,
+            color: MyColors.getTabColor(page.typeIndex),
+            size: 22,
+          ))
+        : Tab(
+            icon: Icon(
+            page.icon,
+            color: Colors.white.withOpacity(0.5),
+            size: 22,
+          ));
   }
 
   bool zoomMapAfterSelectLocation = false;
