@@ -48,9 +48,14 @@ class MapSampleState extends State<MapSample> {
     zoom: 10, //This position reflect Vila de Gracia Barcelona, Quinoa Bar
   );
 
-  static const int HINT_COUNT_TOTAL = 3;
+  static const int HINT_COUNT_TOTAL_GENERAL = 2;
+  static const int HINT_COUNT_TOTAL_SPECIFIC_ = 3;
+  static const int HINT_REPETITION = 2;
 
-  static const SHOW_HINT_MAX_COUNTER = HINT_COUNT_TOTAL * 2;
+  static const SHOW_HINT_MAX_COUNTER_GENERAL =
+      HINT_COUNT_TOTAL_GENERAL * HINT_REPETITION;
+  static const SHOW_HINT_MAX_COUNTER_SPECIFIC =
+      HINT_COUNT_TOTAL_SPECIFIC_ * HINT_REPETITION;
 
   GoogleMapController _googleMapController;
 
@@ -125,9 +130,13 @@ class MapSampleState extends State<MapSample> {
         if (latLngBounds.contains(latLngLastParsedItem))
           allMarkers.add(Marker(
               onTap: () {
-                if (counterToastSpecific >= SHOW_HINT_MAX_COUNTER) return;
-                Toaster.showInstructionToast(ctx, counterToastSpecific,
-                    HINT_COUNT_TOTAL, Toaster.getMerchantSpecificToastHint);
+                if (counterToastSpecific >= SHOW_HINT_MAX_COUNTER_SPECIFIC)
+                  return;
+                Toaster.showInstructionToast(
+                    ctx,
+                    counterToastSpecific,
+                    HINT_COUNT_TOTAL_SPECIFIC_,
+                    Toaster.getMerchantSpecificToastHint);
 
                 setState(() {
                   counterToastSpecific++;
@@ -212,9 +221,9 @@ class MapSampleState extends State<MapSample> {
           padding: EdgeInsets.only(top: 25.0),
           child: GoogleMap(
             onTap: (pos) {
-              if (counterToastGeneral >= SHOW_HINT_MAX_COUNTER) return;
+              if (counterToastGeneral >= SHOW_HINT_MAX_COUNTER_GENERAL) return;
               Toaster.showInstructionToast(buildCtx, counterToastGeneral,
-                  HINT_COUNT_TOTAL, Toaster.getGeneralToastHint);
+                  HINT_COUNT_TOTAL_GENERAL, Toaster.getGeneralToastHint);
               setState(() {
                 counterToastGeneral++;
               });

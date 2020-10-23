@@ -12,7 +12,7 @@ class Toaster {
   static Color DEFAULT_BACKGROUND_COLOR = Colors.yellow[900];
   static const int DEFAULT_TIME_FOR_IOS_AND_WEB = 3;
   static const Toast DEFAULT_TIME_FOR_ANDROID = Toast.LENGTH_LONG;
-  static const ToastGravity DEFAULT_TOAST_GRAVITY = ToastGravity.SNACKBAR;
+  static const ToastGravity DEFAULT_TOAST_GRAVITY = ToastGravity.TOP;
 
   static void showToastInternetError(ctx) {
     _showWarning(Dialogs.INTERNET_ERROR);
@@ -110,8 +110,6 @@ class Toaster {
         return Translator.translate(ctx, "toast_instructions_marker");
       case 1:
         return Translator.translate(ctx, "toast_instructions_location");
-      case 2:
-        return Translator.translate(ctx, "toast_instructions_close");
     }
     return "";
   }
