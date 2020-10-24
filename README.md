@@ -25,25 +25,25 @@ IPhone: https://bitcoinmap.cash/iphone
 
 This app provides a horizontally and vertically scrollable container of card items. Each card item represents a place with GPS location. The app sorts these places by distance automatically. The app contains Restaurants, Bars, Supermarkets, Hotels, Shops & Spas accepting BCH, BTC or DASH payments worldwide.
 
-## SEARCH
+## Search
 
 It provides a search feature (top left action bar), which lets the user search for various tags, locations, brands or common phrases.
 
-## VISIT
+## Visit
 
 After tapping the visit button on the CardItem the user is being forwarded to the Google Maps app and from there he can get directions/phone.
 
-## REVIEW
+## Review
 
 On each card there is a REVIEW button which forwards the user to a website which opens the review action for Google Maps, so that users can give reviews easily and smooth after visiting and consuming with bitcoins. 
 
-## MAP
+# MAP
 
 The app features a native Google Maps view with markers in different colors according to their category.
 
 In the web version of this app the map functionality links to http://bitcoinmap.cash
 
-## ADD PLACES
+# Add Places
 
 Currently the add places functionality has been simplified and is using this Google Form: http://bitcoinmap.cash/submit
 
