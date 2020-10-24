@@ -1,5 +1,7 @@
 # Coinector Video Tutorial
 
+Click the image to play a YouTube video
+
 [![Coinector Video Tutorial](https://img.youtube.com/vi/NyIQlYw2vGI/0.jpg)](https://www.youtube.com/watch?v=NyIQlYw2vGI)
 
 # Web
