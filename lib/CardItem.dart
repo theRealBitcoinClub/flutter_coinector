@@ -70,8 +70,8 @@ class CardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle textStyleBody1 = Theme.of(context).textTheme.body1;
-    TextStyle textStyleBody2 = Theme.of(context).textTheme.body2;
+    TextStyle textStyleBody1 = Theme.of(context).textTheme.bodyText1;
+    TextStyle textStyleBody2 = Theme.of(context).textTheme.bodyText2;
 
     final infoBoxBackgroundColor =
         MyColors.getCardInfoBoxBackgroundColor(merchant.type).withOpacity(1.0);
@@ -237,7 +237,7 @@ class CardItem extends StatelessWidget {
                     topLeft: buildRadius(), bottomLeft: buildRadius()),
                 color: backGroundColor),
             child: RatingWidgetBuilder.buildRatingWidgetIfReviewsAvailable(
-                merchant, Theme.of(ctx).textTheme.body2),
+                merchant, Theme.of(ctx).textTheme.bodyText2),
           ),
         ));
   }
@@ -291,19 +291,24 @@ class CardItem extends StatelessWidget {
               bottomRight: Radius.elliptical(15, 15),
               bottomLeft: Radius.elliptical(15, 15)),
           color: Colors.grey[900].withOpacity(0.1)),
-      child: ButtonTheme.bar(
-          padding: EdgeInsets.all(10.0),
-          // make buttons use the appropriate styles for cards
-          child: ButtonBar(
-            buttonPadding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-            mainAxisSize: MainAxisSize.max,
-            alignment: MainAxisAlignment.end,
-            children: <Widget>[
-              buildFlatButtonReview(context),
-              buildFlatButtonVisit(context),
-            ],
-          )),
+      child: buildButtons(context),
     );
+  }
+
+  ButtonBarTheme buildButtons(BuildContext context) {
+    return ButtonBarTheme(
+        data: ButtonBarThemeData(),
+        child: Padding(
+            padding: EdgeInsets.all(5.0),
+            child: ButtonBar(
+              buttonPadding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+              mainAxisSize: MainAxisSize.max,
+              alignment: MainAxisAlignment.end,
+              children: <Widget>[
+                buildFlatButtonReview(context),
+                buildFlatButtonVisit(context),
+              ],
+            )));
   }
 
   FlatButton buildFlatButtonVisit(BuildContext context) {

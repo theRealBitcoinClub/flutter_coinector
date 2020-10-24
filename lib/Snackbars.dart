@@ -1,3 +1,4 @@
+import 'package:Coinector/Dialogs.dart';
 import 'package:Coinector/InternetConnectivityChecker.dart';
 import 'package:Coinector/UrlLauncher.dart';
 import 'package:Coinector/translator.dart';
@@ -37,48 +38,24 @@ class Snackbars {
   }
 
   static void showInternetErrorSnackbar(that) async {
-//Double check internet connection before showing error
+    //Double check internet connection before showing error
     if (isBusySnacking) return;
     isBusySnacking = true;
     try {
       InternetConnectivityChecker.checkConnectionWithRequest(that, (abc) {
-//Future.delayed(Duration(seconds: 1), );
-
         _snackBarInternetError(that.scaffoldKey, that.context);
         isBusySnacking = false;
       });
     } catch (e) {
       isBusySnacking = false;
-      //_snackBarInternetError(that.scaffoldKey, that.context);
     }
-    /*try {
-      await InternetConnectivityChecker.checkConnectionWithRequest(that, (abc) {
-//Future.delayed(Duration(seconds: 1), );
-        InternetConnectivityChecker.checkConnectionWithRequest(that, (abc) {
-          InternetConnectivityChecker.checkConnectionWithRequest(that, (abc) {
-            _snackBarInternetError(that.scaffoldKey, that.context);
-            return;
-          });
-        });
-      });
-    } catch (e) {
-      try {
-        await InternetConnectivityChecker.checkConnectionWithRequest(that,
-            (abc) {
-//Future.delayed(Duration(seconds: 1), );
-          _snackBarInternetError(that.scaffoldKey, that.context);
-        });
-      } catch (e) {
-        _snackBarInternetError(that.scaffoldKey, that.context);
-      }
-    }*/
   }
 
   static void _snackBarInternetError(
       GlobalKey<ScaffoldState> scaffoldKey, ctx) {
     _showSnackBar(scaffoldKey, ctx, "",
         removeLatest: true,
-        additionalText: "Internet Error!",
+        additionalText: Dialogs.INTERNET_ERROR,
         duration: Duration(seconds: 3));
   }
 
@@ -100,9 +77,11 @@ class Snackbars {
   }
 
   static void showSnackBarRestartApp(scaffoldKey, ctx) {
+    String text = Translator.translate(ctx, "dialog_close");
     _showSnackBar(scaffoldKey, ctx, "",
         duration: Duration(seconds: 30),
-        additionalText: "App updated, restart now ->",
+        additionalText:
+            text.isEmpty ? "App updated, restart now ->" : text + " ->",
         snackbarAction: SnackBarAction(
           label: "RESTART",
           onPressed: () {
@@ -114,15 +93,6 @@ class Snackbars {
   static void showSnackBarGPS(scaffoldKey, ctx) {
     _showSnackBar(scaffoldKey, ctx, "", additionalText: "Updated GPS!");
     //TODO I want to check periodically if GPS changed, use a listener, then update carditems silently
-    /* _showSnackBar(scaffoldKey, ctx, "",
-        duration: Duration(seconds: 10),
-        additionalText: "GPS updated!",
-        snackbarAction: SnackBarAction(
-          label: "Refresh",
-          onPressed: () {
-            Phoenix.rebirth(ctx);
-          },
-        ));*/
   }
 
   static void showSnackBarPlayStore(kIsWeb, scaffoldKey, ctx) {

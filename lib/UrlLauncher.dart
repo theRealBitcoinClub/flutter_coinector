@@ -52,7 +52,8 @@ class UrlLauncher {
   }
 
   static void launchSubmitForm() {
-    launchURI("http://bitcoinmap.cash/submit", forceWebView: true);
+    launchURI(
+        "http://bitcoinmap.cash/submit" /*, forceWebView: true TEST IF THAT FIXES THE ERROR ON DEVICE*/);
   }
 
   static void launchBitcoinMap() {
@@ -85,7 +86,7 @@ class UrlLauncher {
 
   static Future<void> launchEmailClientAddPlace(ctx, String inputDASH,
       String inputBCH, String content, onEmailClientNotFound) async {
-    String countryCode = getLocale(ctx);
+    //String countryCode = getLocale(ctx);
     //print("countryCode:" + countryCode);
     var urlString = "mailto:" +
         "trbc@bitcoinmap.cash" +

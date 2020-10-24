@@ -3,17 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'Dialogs.dart';
+
 class Toaster {
   static const DEFAULT_BACKGROUND_OPACITY = 0.9;
   static const double DEFAULT_FONT_SIZE = 16.0;
   static const Color DEFAULT_TEXT_COLOR = Colors.white;
-  static Color DEFAULT_BACKGROUND_COLOR = Colors.yellow[900];
+  static Color defaultBackgroundColor = Colors.yellow[900];
   static const int DEFAULT_TIME_FOR_IOS_AND_WEB = 3;
   static const Toast DEFAULT_TIME_FOR_ANDROID = Toast.LENGTH_LONG;
-  static const ToastGravity DEFAULT_TOAST_GRAVITY = ToastGravity.CENTER;
+  static const ToastGravity DEFAULT_TOAST_GRAVITY = ToastGravity.TOP;
 
   static void showToastInternetError(ctx) {
-    _showWarning("INTERNET ERROR!");
+    _showWarning(Dialogs.INTERNET_ERROR);
   }
 
   static void showToastAttractCustomers(ctx) {
@@ -36,14 +38,14 @@ class Toaster {
   static var isToasting = false;
 
   static void _showWarning(message) async {
-    await cancel();
-    if (!isToasting) isToasting = true;
-    showToast(message, DEFAULT_BACKGROUND_COLOR);
+    if (!await cancel()) isToasting = true;
+    showToast(message, defaultBackgroundColor);
   }
 
-  static void cancel() async {
+  static Future<bool> cancel() async {
     if (isToasting) await Fluttertoast.cancel();
     isToasting = false;
+    return isToasting;
   }
 
   static void showAddName(ctx) {
@@ -108,8 +110,6 @@ class Toaster {
         return Translator.translate(ctx, "toast_instructions_marker");
       case 1:
         return Translator.translate(ctx, "toast_instructions_location");
-      case 2:
-        return Translator.translate(ctx, "toast_instructions_close");
     }
     return "";
   }

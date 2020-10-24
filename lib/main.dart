@@ -113,7 +113,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     InternetConnectivityChecker.close();
     if (positionStream != null) positionStream.cancel();
     isInitialized = false;
-    isUpdatingPosition = false;
+    //isUpdatingPosition = false;
     isCheckingForUpdates = false;
     //isUnfilteredList = false;
     timerIsCancelled = true;
@@ -188,10 +188,12 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     await FileCache.loadFromWebAndPersistCache('e-spa');
     await FileCache.loadFromWebAndPersistCache('addr');
     await FileCache.loadFromWebAndPersistCache('placesId');
+
+    if (!mounted) return;
     Snackbars.showSnackBarRestartApp(_scaffoldKey, ctx);
-    Future.delayed(Duration(seconds: 30), () {
-      Phoenix.rebirth(ctx);
-    });
+    /*Future.delayed(Duration(seconds: 30), () {
+        Phoenix.rebirth(ctx);
+      }); MAYBE THE USER IS ALREADY OK WITH THE DATA AND THERE IS NO NEED TO RESTART*/
   }
 
   void _loadAndParseAllPlaces(int filterWordIndex, String locationFilter) {
@@ -293,7 +295,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       return false;
     }
 
-    double distanceInMeters = await GeolocatorPlatform.instance
+    double distanceInMeters = GeolocatorPlatform.instance
         .distanceBetween(position.latitude, position.longitude, m.x, m.y);
 
     m.distanceInMeters = distanceInMeters;
@@ -477,11 +479,11 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     }
   }
 
-  void initCurrentPositionIfNotInitialized() async {
-    if (userPosition != null) return;
+  Future<bool> initCurrentPositionIfNotInitialized() async {
+    if (userPosition != null) return false;
 
     //TODO check if that call is correct, might make sense to request permission always if necesssary?
-    await updateCurrentPosition();
+    return await updateCurrentPosition();
   }
 
 /*
@@ -505,11 +507,11 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 */
 
-  static var isUpdatingPosition = false;
+  //static var isUpdatingPosition = false;
 
   Future<bool> updateCurrentPosition() async {
     //if (isUpdatingPosition) return false;
-    isUpdatingPosition = true;
+    //isUpdatingPosition = true;
     //ALWAYS GET LOCATION VIA IP FIRST TO HAVE SOMETHING AT STARTUP
     //if (kIsWeb) {
     //_getCurrentLocationWeb();
@@ -538,19 +540,21 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       //After getting coarse location we do nothing
     }
     //latestPositionWasCoarse = true;
-    isUpdatingPosition = false;
+    //isUpdatingPosition = false;
     return true;
     //}
     //return false;
   }
 
   void _onGetAccurateGPSFirstTime() async {
+    if (!mounted) return;
     //TODO find out how to update the distance and repaint the tree
     Snackbars.showSnackBarGPS(_scaffoldKey, context);
 
     Future.delayed(
       Duration(seconds: 3),
     ).whenComplete(() {
+      if (!mounted) return;
       Phoenix.rebirth(context);
     });
   }
@@ -698,7 +702,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     if (kIsWeb) {
       InternetConnectivityChecker.pauseAutoChecker();
     } else {
-      InternetConnectivityChecker.resumeAutoChecker();
+      //InternetConnectivityChecker.resumeAutoChecker();
       InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(
           kIsWeb, this, (abc) {
         Snackbars.showInternetErrorSnackbar(this);
@@ -719,119 +723,20 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
           const Locale('id'),
           const Locale('fr')
         ],
-        theme: ThemeData(
-          // Define the default Brightness and Colors
-          brightness: Brightness.dark,
-          backgroundColor: Colors.grey[900],
-          primaryColor: Colors.grey[900],
-          accentColor: Colors.white,
-
-          // Define the default Font Family
-          //fontFamily: 'Montserrat',
-          fontFamily: 'OpenSans',
-          // Define the default TextTheme. Use this to specify the default
-          // text styling for headlines, titles, bodies of text, and more.
-          textTheme: TextTheme(
-            title: TextStyle(color: Colors.black),
-            headline: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-            body1: TextStyle(
-                fontSize: 17.0,
-                fontFamily: 'Hind',
-                color: Colors.white.withOpacity(0.85)),
-            body2: TextStyle(
-                fontSize: 14.0,
-                fontFamily: 'Hind',
-                color: Colors.white.withOpacity(0.7)),
-          ),
-        ),
+        theme: buildTheme(),
         home: new WillPopScope(
           onWillPop: _onWillPop,
           child: Scaffold(
             key: _scaffoldKey,
             floatingActionButtonLocation:
                 FloatingActionButtonLocation.centerFloat,
-            floatingActionButton: Builder(
-              builder: (builderCtx) => FloatingActionButton.extended(
-                  backgroundColor: getColorOfSelectedTab(),
-                  foregroundColor: Colors.white,
-                  onPressed: () {
-                    openAddNewPlaceWidget(builderCtx);
-                  },
-                  label: Text(
-                      Translator.translate(builderCtx, "floatbutton_add") +
-                          Translator.translate(
-                              builderCtx, addButtonCategory.toUpperCase())),
-                  icon: Icon(Icons.add_location)),
-            ),
+            floatingActionButton: buildFloatingActionButton(),
             body: new Builder(builder: (BuildContext ctx) {
-              //Translator.refresh(ctx, Locale("en"));
-              /*new Future.delayed(Duration.zero, () async {
-            await Translator.refresh(ctx, new Locale('de'));
-          });*/
               appContent = NestedScrollView(
                 headerSliverBuilder:
                     (BuildContext buildCtx, bool innerBoxIsScrolled) {
-                  /*new Future.delayed(Duration.zero, () async {
-                await Translator.refresh(buildCtx, new Locale('de'));
-              });*/
                   return <Widget>[
-                    SliverAppBar(
-                        elevation: 2,
-                        forceElevated: true,
-                        leading: buildHomeButton(buildCtx),
-                        bottom: TabBar(
-                          controller: tabController,
-                          isScrollable: true,
-                          indicator: getIndicator(),
-                          tabs: Pages.pages.map<Tab>((Pagee page) {
-                            return _lists[page.tabIndex].length > 0
-                                ? Tab(
-                                    icon: Icon(
-                                      page.icon,
-                                      color:
-                                          MyColors.getTabColor(page.typeIndex),
-                                      size: 22,
-                                    ),
-                                    //text: page.text)
-                                    /*child: Text(page.text,
-                                    maxLines: 1,
-
-                                    overflow: TextOverflow.fade,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .body2
-                                        .copyWith(
-                                            color: MyColors.getTabColor(
-                                                page.typeIndex)))*/
-                                  )
-                                : Tab(
-                                    icon: Icon(
-                                    page.icon,
-                                    color: Colors.white.withOpacity(0.5),
-                                    size: 22,
-                                  ));
-                          }).toList(),
-                        ),
-                        actions: <Widget>[
-                          buildIconButtonMap(buildCtx),
-                        ],
-                        title: Padding(
-                            padding: EdgeInsets.all(0.0),
-                            child: AnimatedSwitcher(
-                                //TODO fix animation, how to switch animted with a fade transition?
-                                duration: Duration(milliseconds: 500),
-                                child: Text(
-                                  titleActionBar,
-                                  style: TextStyle(
-                                      fontSize: 22.0,
-                                      fontWeight: FontWeight.w300,
-                                      fontStyle: FontStyle.normal,
-                                      color: Colors.white.withOpacity(0.7)),
-                                ))),
-                        //expandedHeight: 300.0, GOOD SPACE FOR ADS LATER
-                        floating: true,
-                        snap: true,
-                        pinned: false),
+                    buildSliverAppBar(buildCtx),
                   ];
                 },
                 body:
@@ -848,6 +753,104 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         ));
   }
 
+  Builder buildFloatingActionButton() {
+    return Builder(
+      builder: (builderCtx) => FloatingActionButton.extended(
+          backgroundColor: getColorOfSelectedTab(),
+          foregroundColor: Colors.white,
+          onPressed: () {
+            openAddNewPlaceWidget(builderCtx);
+          },
+          label: Text(Translator.translate(builderCtx, "floatbutton_add") +
+              Translator.translate(
+                  builderCtx, addButtonCategory.toUpperCase())),
+          icon: Icon(Icons.add_location)),
+    );
+  }
+
+  ThemeData buildTheme() {
+    return ThemeData(
+      // Define the default Brightness and Colors
+      brightness: Brightness.dark,
+      backgroundColor: Colors.grey[900],
+      primaryColor: Colors.grey[900],
+      accentColor: Colors.white,
+
+      // Define the default Font Family
+      //fontFamily: 'Montserrat',
+      fontFamily: 'OpenSans',
+      // Define the default TextTheme. Use this to specify the default
+      // text styling for headlines, titles, bodies of text, and more.
+      textTheme: TextTheme(
+        headline6: TextStyle(color: Colors.black),
+        headline5: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+        bodyText1: TextStyle(
+            fontSize: 17.0,
+            fontFamily: 'Hind',
+            color: Colors.white.withOpacity(0.85)),
+        bodyText2: TextStyle(
+            fontSize: 14.0,
+            fontFamily: 'Hind',
+            color: Colors.white.withOpacity(0.7)),
+      ),
+    );
+  }
+
+  SliverAppBar buildSliverAppBar(BuildContext buildCtx) {
+    return SliverAppBar(
+        elevation: 2,
+        forceElevated: true,
+        leading: buildHomeButton(buildCtx),
+        bottom: TabBar(
+          controller: tabController,
+          isScrollable: true,
+          indicator: getIndicator(),
+          tabs: Pages.pages.map<Tab>((Pagee page) {
+            return buildColoredTab(page);
+          }).toList(),
+        ),
+        actions: <Widget>[
+          buildIconButtonMap(buildCtx),
+        ],
+        title: buildTitleWidget(),
+        //expandedHeight: 300.0, GOOD SPACE FOR ADS LATER
+        floating: true,
+        snap: true,
+        pinned: false);
+  }
+
+  Padding buildTitleWidget() {
+    return Padding(
+        padding: EdgeInsets.all(0.0),
+        child: AnimatedSwitcher(
+            //TODO fix animation, how to switch animted with a fade transition?
+            duration: Duration(milliseconds: 500),
+            child: Text(
+              titleActionBar,
+              style: TextStyle(
+                  fontSize: 22.0,
+                  fontWeight: FontWeight.w300,
+                  fontStyle: FontStyle.normal,
+                  color: Colors.white.withOpacity(0.7)),
+            )));
+  }
+
+  Tab buildColoredTab(Pagee page) {
+    return _lists[page.tabIndex].length > 0
+        ? Tab(
+            icon: Icon(
+            page.icon,
+            color: MyColors.getTabColor(page.typeIndex),
+            size: 22,
+          ))
+        : Tab(
+            icon: Icon(
+            page.icon,
+            color: Colors.white.withOpacity(0.5),
+            size: 22,
+          ));
+  }
+
   bool zoomMapAfterSelectLocation = false;
 
   Widget buildIconButtonMap(ctx) {
@@ -861,7 +864,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   void handleMapButtonClick(ctx) async {
     try {
       if (Platform.isAndroid || Platform.isIOS) {
-        InternetConnectivityChecker.pauseAutoChecker();
+        //InternetConnectivityChecker.pauseAutoChecker();
         Merchant result = await Navigator.push(
           ctx,
           MaterialPageRoute(
@@ -1203,11 +1206,10 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       else
         debugPrint(
             "RECEIVING INVALID DATA FROM COARSE LOCATION PROVIDER\nRECEIVING INVALID DATA FROM COARSE LOCATION PROVIDER\nRECEIVING INVALID DATA FROM COARSE LOCATION PROVIDER");
-
-      return userPosition;
     } catch (e) {
       debugPrint(e.toString());
     }
+    return userPosition;
   }
 }
 
