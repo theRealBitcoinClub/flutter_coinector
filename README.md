@@ -1,22 +1,23 @@
-# Coinector Video Tutorial
+## Coinector Video Tutorial
 
 Click the image to play a YouTube video
 
 [![Coinector Video Tutorial](https://img.youtube.com/vi/NyIQlYw2vGI/0.jpg)](https://www.youtube.com/watch?v=NyIQlYw2vGI)
 
-# Web
+## Releases
 
-https://coinector.app
+Download:https://github.com/theRealBitcoinClub/flutter_coinector/releases
 
-# Android
+## Running Web App
 
-https://bitcoinmap.cash/coinector
+Web: https://coinector.app
 
-# IPhone
+## Play Store & App Store
 
-https://bitcoinmap.cash/iphone
+Android: https://bitcoinmap.cash/coinector
+IPhone: https://bitcoinmap.cash/iphone
 
-# Build Status
+## Build Status
 
 [![Codemagic build status](https://api.codemagic.io/apps/5c883f703bcac0000cbf2083/5c883f703bcac0000cbf2082/status_badge.svg)](https://codemagic.io/apps/5c883f703bcac0000cbf2083/5c883f703bcac0000cbf2082/latest_build)
 
