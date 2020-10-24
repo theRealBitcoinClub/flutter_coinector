@@ -1,3 +1,7 @@
+# Coinector Video Tutorial
+
+[![Coinector Video Tutorial](https://img.youtube.com/vi/NyIQlYw2vGI/0.jpg)](https://www.youtube.com/watch?v=NyIQlYw2vGI)
+
 # Web
 
 https://coinector.app
