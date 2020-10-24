@@ -291,19 +291,24 @@ class CardItem extends StatelessWidget {
               bottomRight: Radius.elliptical(15, 15),
               bottomLeft: Radius.elliptical(15, 15)),
           color: Colors.grey[900].withOpacity(0.1)),
-      child: ButtonTheme.bar(
-          padding: EdgeInsets.all(10.0),
-          // make buttons use the appropriate styles for cards
-          child: ButtonBar(
-            buttonPadding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-            mainAxisSize: MainAxisSize.max,
-            alignment: MainAxisAlignment.end,
-            children: <Widget>[
-              buildFlatButtonReview(context),
-              buildFlatButtonVisit(context),
-            ],
-          )),
+      child: buildButtons(context),
     );
+  }
+
+  ButtonBarTheme buildButtons(BuildContext context) {
+    return ButtonBarTheme(
+        data: ButtonBarThemeData(),
+        child: Padding(
+            padding: EdgeInsets.all(5.0),
+            child: ButtonBar(
+              buttonPadding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+              mainAxisSize: MainAxisSize.max,
+              alignment: MainAxisAlignment.end,
+              children: <Widget>[
+                buildFlatButtonReview(context),
+                buildFlatButtonVisit(context),
+              ],
+            )));
   }
 
   FlatButton buildFlatButtonVisit(BuildContext context) {

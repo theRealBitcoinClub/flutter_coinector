@@ -188,10 +188,12 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     await FileCache.loadFromWebAndPersistCache('e-spa');
     await FileCache.loadFromWebAndPersistCache('addr');
     await FileCache.loadFromWebAndPersistCache('placesId');
+
+    if (!mounted) return;
     Snackbars.showSnackBarRestartApp(_scaffoldKey, ctx);
-    Future.delayed(Duration(seconds: 30), () {
-      Phoenix.rebirth(ctx);
-    });
+    /*Future.delayed(Duration(seconds: 30), () {
+        Phoenix.rebirth(ctx);
+      }); MAYBE THE USER IS ALREADY OK WITH THE DATA AND THERE IS NO NEED TO RESTART*/
   }
 
   void _loadAndParseAllPlaces(int filterWordIndex, String locationFilter) {
@@ -545,12 +547,14 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   }
 
   void _onGetAccurateGPSFirstTime() async {
+    if (!mounted) return;
     //TODO find out how to update the distance and repaint the tree
     Snackbars.showSnackBarGPS(_scaffoldKey, context);
 
     Future.delayed(
       Duration(seconds: 3),
     ).whenComplete(() {
+      if (!mounted) return;
       Phoenix.rebirth(context);
     });
   }
