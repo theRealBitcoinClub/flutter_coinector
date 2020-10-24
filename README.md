@@ -14,28 +14,17 @@ https://bitcoinmap.cash/iphone
 
 [![Codemagic build status](https://api.codemagic.io/apps/5c883f703bcac0000cbf2083/5c883f703bcac0000cbf2082/status_badge.svg)](https://codemagic.io/apps/5c883f703bcac0000cbf2083/5c883f703bcac0000cbf2082/latest_build)
 
-# Support
-
-BCH:qqp0kpntfxygx3e6d4mr9c5ef5ucxdcjk5zkgtevss
-DASH:XiHdw8SVoNtJqno6GnxKQS2Snxh7BTuR39
-
-https://cointr.ee/bmap (Please send an email to trbc@bitcoinmap.cash to verify that the donation arrived)
-
-[CLICK HERE TO DONATE BCH or DASH WITH QR CODES](https://bitcoinmap.cash/bitcoin-bch-dash-qr-code-generator?bch=qqp0kpntfxygx3e6d4mr9c5ef5ucxdcjk5zkgtevss&dash=XiHdw8SVoNtJqno6GnxKQS2Snxh7BTuR39)
-
 # Coinector - Coinnect the coimunity
 
-This app provides a horizontally and vertically scrollable list of card items containing all Restaurants, Bars, Supermarkets, Hotels, Shops & Spas accepting BCH, BTC or DASH payments worldwide.
+This app provides a horizontally and vertically scrollable container of card items. Each card item represents a place with GPS location. The app sorts these places by distance automatically. The app contains Restaurants, Bars, Supermarkets, Hotels, Shops & Spas accepting BCH, BTC or DASH payments worldwide.
 
-## ACTIONS
+## SEARCH
 
-It provides a search action (top left action bar), which lets the user search for various tags, locations, brands or common phrases.
-
-On the card of each merchant the user can tap 2 different action buttons to VISIT or REVIEW the shop.
+It provides a search feature (top left action bar), which lets the user search for various tags, locations, brands or common phrases.
 
 ## VISIT
 
-After tapping the visit button on the card the user is being forwarded to the Google Maps app and from there he can get directions/phone.
+After tapping the visit button on the CardItem the user is being forwarded to the Google Maps app and from there he can get directions/phone.
 
 ## REVIEW
 
@@ -51,11 +40,11 @@ In the web version of this app the map functionality links to http://bitcoinmap.
 
 Currently the add places functionality has been simplified and is using this Google Form: http://bitcoinmap.cash/submit
 
-We might re-activate the more complex approach as soon as the demand justifies the efforts.
+We might re-activate the more complex approach as soon as the demand for that feature increases.
 
 1. The user who sends an Email to add a place, triggers an automated action, which creates an Issue on Gitlab & Github:
 https://gitlab.com/bmap.cash/bmap.cash/issues & https://github.com/theRealBitcoinClub/bmap.cash/issues
-2. Places can be updated via Github repository, they are sorted by continent and can be broken down in finer groups if necessary as the database grows:
+2. Places can be updated via Github repository, they are sorted by continent per JSON file, can be broken down in finer groups (countries) as the database grows:
 https://github.com/theRealBitcoinClub/flutter_coinector/tree/master/assets
 3. Images must be added to the main repo of bmap.cash in GIF format 640x480:
 https://github.com/theRealBitcoinClub/BITCOINMAP.CASH---Browser-PWA/raw/master/public/img/app/
@@ -69,6 +58,15 @@ User can download a PDF file with QR Codes after adding a place
 ## Programming language
 
 This project is written in dart using the flutter framework.
+
+# Support
+
+BCH:qqp0kpntfxygx3e6d4mr9c5ef5ucxdcjk5zkgtevss
+DASH:XiHdw8SVoNtJqno6GnxKQS2Snxh7BTuR39
+
+https://cointr.ee/bmap (Please send an email to trbc@bitcoinmap.cash to verify that the donation arrived)
+
+[CLICK HERE TO DONATE BCH or DASH WITH QR CODES](https://bitcoinmap.cash/bitcoin-bch-dash-qr-code-generator?bch=qqp0kpntfxygx3e6d4mr9c5ef5ucxdcjk5zkgtevss&dash=XiHdw8SVoNtJqno6GnxKQS2Snxh7BTuR39)
 
 ## Licence
 
