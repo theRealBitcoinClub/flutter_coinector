@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 
 class InternetConnectivityChecker {
   static var lastWarningInMillis = 0;
@@ -20,8 +21,7 @@ class InternetConnectivityChecker {
     pauseInternetChecker = false;
   }
 
-  static void checkInternetConnectivityShowSnackbar(
-      kIsWeb, that, _onError) async {
+  static void checkInternetConnectivityShowSnackbar(that, _onError) async {
     if (pauseInternetChecker || kIsWeb) return;
 //DONT CHECK MORE THAN EVERY 9 SECONDS
     var milliSecondsNow = DateTime.now().millisecondsSinceEpoch;

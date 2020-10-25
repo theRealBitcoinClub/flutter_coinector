@@ -20,7 +20,8 @@ dependencies:
   #place_picker: ^0.9.9
   #after_init: ^0.1.2
   fluttertoast: ^7.1.1
-  platform_detect: ^1.4.0
+  #universal_html: 1.2.3
+  #platform_detect: ^1.4.0
   permission_handler: ^5.0.1+1
   synchronized: ^2.2.0+2
   #firebase_messaging: ^5.0.3

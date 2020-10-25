@@ -606,8 +606,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
       if (!kIsWeb)
-        InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(
-            kIsWeb, this, (abc) {
+        InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(this,
+            (abc) {
           Snackbars.showInternetErrorSnackbar(this);
         });
     });
@@ -626,7 +626,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     _checkForUpdatedData(context);
 
     Future.delayed(Duration(seconds: 5), () {
-      Snackbars.showSnackBarPlayStore(kIsWeb, _scaffoldKey, context);
+      Snackbars.showSnackBarPlayStore(_scaffoldKey, context);
     });
     //initPositionStream();
   }
@@ -703,8 +703,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       InternetConnectivityChecker.pauseAutoChecker();
     } else {
       //InternetConnectivityChecker.resumeAutoChecker();
-      InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(
-          kIsWeb, this, (abc) {
+      InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(this,
+          (abc) {
         Snackbars.showInternetErrorSnackbar(this);
       });
     }
