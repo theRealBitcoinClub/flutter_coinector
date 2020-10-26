@@ -41,14 +41,25 @@ import 'pages.dart';
 //import 'package:geohash/geohash.dart';
 //import 'package:clustering_google_maps/clustering_google_maps.dart';
 
-class AnimatedListSample extends StatefulWidget {
+class CoinectorWidget extends StatefulWidget {
+  String search;
+  CoinectorWidget(String search) {
+    this.search = search;
+  }
+
   @override
-  _AnimatedListSampleState createState() => _AnimatedListSampleState();
+  _CoinectorWidgetState createState() => _CoinectorWidgetState(search);
 }
 
-class _AnimatedListSampleState extends State<AnimatedListSample>
+class _CoinectorWidgetState extends State<CoinectorWidget>
     with TickerProviderStateMixin, WidgetsBindingObserver {
   final SearchDemoSearchDelegate searchDelegate = SearchDemoSearchDelegate();
+
+  _CoinectorWidgetState(String search) {
+    urlSearch = search;
+  }
+
+  String urlSearch;
 
   NestedScrollView appContent;
   var _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -77,6 +88,41 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
 
   static bool latestPositionWasCoarse = false;
 
+  static String home = "/";
+  static String search = "/search";
+/*
+THIS DIDNT WORK, goes into endless routing loop
+
+  Handler homeHandler;
+  Handler routeHandler;
+
+  void configureRoutes(FluroRouter router) {
+    homeHandler = Handler(
+        handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+      return SizedBox();
+    });
+
+    routeHandler = Handler(
+        handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+      String tag = params["tag"]?.first;
+      String category = params["category"]?.first;
+      return SizedBox();
+    });
+    router.define(home, handler: homeHandler);
+    router.define(search, handler: routeHandler);
+    router.notFoundHandler = Handler(
+        handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+      debugPrint(
+          "\nROUTE WAS NOT FOUND !!!\nROUTE WAS NOT FOUND !!!\nROUTE WAS NOT FOUND !!!\nROUTE WAS NOT FOUND !!!\nROUTE WAS NOT FOUND !!!\nROUTE WAS NOT FOUND !!!");
+    });
+  }
+
+  _AnimatedListSampleState() {
+    final router = FluroRouter();
+    configureRoutes(router);
+    Application.router = router;
+  }
+*/
   initBlinkAnimation() {
     searchIconBlinkAnimationController = AnimationController(
         duration: const Duration(milliseconds: 1000), vsync: this);
@@ -586,7 +632,23 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
       });
     }
 
-    loadAssetsUnfiltered(ctx);
+    if (urlSearch != null &&
+        urlSearch.isNotEmpty &&
+        urlSearch.length > 2 &&
+        !urlSearch.contains("1") &&
+        !urlSearch.contains("2") &&
+        !urlSearch.contains("3") &&
+        !urlSearch.contains("4") &&
+        !urlSearch.contains("5") &&
+        !urlSearch.contains("6") &&
+        !urlSearch.contains("7") &&
+        !urlSearch.contains("8") &&
+        !urlSearch.contains("9") &&
+        !urlSearch.contains("0"))
+      startProcessSearch(ctx, urlSearch, true);
+    else
+      loadAssetsUnfiltered(ctx);
+
     requestCurrentPosition();
   }
 
@@ -600,6 +662,8 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
   @override
   void initState() {
     super.initState();
+    debugPrint("\n\n\n\n\nDSFSDSFDSFDS\nsdfdsfds\nfdsfdsfdsf\n\n\n\n\n" +
+        urlSearch.toString());
     WidgetsBinding.instance.addObserver(this);
     scaffoldKey = _scaffoldKey;
     subscription = Connectivity()
@@ -1028,26 +1092,30 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
             context: ctx,
             delegate: searchDelegate,
           );
-          InternetConnectivityChecker.resumeAutoChecker();
-
-          if (hasNotHitSearch()) {
-            Dialogs.showInfoDialogWithCloseButton(ctx);
-            handleSearchButtonAnimationAndPersistHit();
-          }
-          //TODO ask users to rate the app
-
-          if (selected != null) {
-            filterListUpdateTitle(ctx, selected);
-          } else {
-            _updateDistanceToAllMerchantsIfNotDoneYet();
-            showUnfilteredLists(ctx);
-          }
+          startProcessSearch(ctx, selected, false);
         } catch (e) {
           InternetConnectivityChecker.resumeAutoChecker();
         }
       },
       tooltip: 'Search',
     );
+  }
+
+  void startProcessSearch(BuildContext ctx, String selected, hideInfoBox) {
+    InternetConnectivityChecker.resumeAutoChecker();
+
+    if (hasNotHitSearch() && !hideInfoBox) {
+      Dialogs.showInfoDialogWithCloseButton(ctx);
+      handleSearchButtonAnimationAndPersistHit();
+    }
+    //TODO ask users to rate the app as they are using this advanced feature multiple times
+
+    if (selected != null) {
+      filterListUpdateTitle(ctx, selected);
+    } else {
+      _updateDistanceToAllMerchantsIfNotDoneYet();
+      showUnfilteredLists(ctx);
+    }
   }
 
   void handleSearchButtonAnimationAndPersistHit() async {
@@ -1216,21 +1284,4 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     }
     return userPosition;
   }
-}
-
-void main() {
-  // Set `enableInDevMode` to true to see reports while in debug mode
-  // This is only to be used for confirming that reports are being
-  // submitted as expected. It is not intended to be used for everyday
-  // development.
-  //Crashlytics.instance.enableInDevMode = true;
-
-  // Pass all uncaught errors to Crashlytics.
-  FlutterError.onError = (FlutterErrorDetails details) {
-    //Crashlytics.instance.onError(details);
-    //just ignore the errors for now to have less library dependencies
-  };
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp(Phoenix(child: AnimatedListSample()));
-  //runApp(AnimatedListSample());
 }

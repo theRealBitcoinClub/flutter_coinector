@@ -11,7 +11,7 @@ description: Coinnect the coimunity.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 3.8.0+253846
+version: 3.8.1+253847
 
 environment:
   sdk: ">=2.2.0 <3.0.0"
@@ -24,6 +24,7 @@ dependencies:
   #platform_detect: ^1.4.0
   permission_handler: ^5.0.1+1
   synchronized: ^2.2.0+2
+  fluro: ^1.7.6
   #firebase_messaging: ^5.0.3
   #firebase_core: ^0.4.0+5
   #firebase_crashlytics: ^0.0.4+5
