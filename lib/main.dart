@@ -879,7 +879,7 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
         );
         _updateDistanceToAllMerchantsIfNotDoneYet();
         if (result != null) {
-          filterListUpdateTitle(ctx, result.name);
+          showFilterResults(null, result.name, ctx, result.name);
           tabController.animateTo(result.type);
           //showSnackBar("Showing selected merchant: " + result.name);
         } else {
@@ -1070,6 +1070,11 @@ class _AnimatedListSampleState extends State<AnimatedListSample>
     final String search = title.split(" - ")[0];
     //if selectedItem contains separator ; it has the filename attached
     final String fileName = selectedArray.length > 1 ? selectedArray[1] : null;
+    showFilterResults(fileName, selectedLocationOrTag, ctx, search);
+  }
+
+  void showFilterResults(
+      String fileName, String selectedLocationOrTag, ctx, String search) {
     if (fileName != null) {
       zoomMapAfterSelectLocation = true;
     } else {
