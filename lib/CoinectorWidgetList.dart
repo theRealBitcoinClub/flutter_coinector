@@ -43,10 +43,8 @@ import 'pages.dart';
 //import 'package:clustering_google_maps/clustering_google_maps.dart';
 
 class CoinectorWidget extends StatefulWidget {
-  String search;
-  CoinectorWidget(String search) {
-    this.search = search;
-  }
+  final String search;
+  CoinectorWidget(String search) : this.search = search;
 
   @override
   _CoinectorWidgetState createState() => _CoinectorWidgetState(search);
@@ -89,41 +87,6 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   static bool latestPositionWasCoarse = false;
 
-  static String home = "/";
-  static String search = "/search";
-/*
-THIS DIDNT WORK, goes into endless routing loop
-
-  Handler homeHandler;
-  Handler routeHandler;
-
-  void configureRoutes(FluroRouter router) {
-    homeHandler = Handler(
-        handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      return SizedBox();
-    });
-
-    routeHandler = Handler(
-        handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      String tag = params["tag"]?.first;
-      String category = params["category"]?.first;
-      return SizedBox();
-    });
-    router.define(home, handler: homeHandler);
-    router.define(search, handler: routeHandler);
-    router.notFoundHandler = Handler(
-        handlerFunc: (BuildContext context, Map<String, List<String>> params) {
-      debugPrint(
-          "\nROUTE WAS NOT FOUND !!!\nROUTE WAS NOT FOUND !!!\nROUTE WAS NOT FOUND !!!\nROUTE WAS NOT FOUND !!!\nROUTE WAS NOT FOUND !!!\nROUTE WAS NOT FOUND !!!");
-    });
-  }
-
-  _AnimatedListSampleState() {
-    final router = FluroRouter();
-    configureRoutes(router);
-    Application.router = router;
-  }
-*/
   initBlinkAnimation() {
     searchIconBlinkAnimationController = AnimationController(
         duration: const Duration(milliseconds: 1000), vsync: this);
