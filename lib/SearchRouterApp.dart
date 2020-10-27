@@ -33,7 +33,7 @@ class _SearchRouterAppState extends State<SearchRouterApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Co1nector',
+      title: 'Coinector - Coinecting to coimunity...',
       routerDelegate: _routerDelegate,
       routeInformationParser: _routeInformationParser,
     );

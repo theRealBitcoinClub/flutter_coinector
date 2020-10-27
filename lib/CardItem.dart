@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:loading/indicator/ball_grid_pulse_indicator.dart';
 import 'package:loading/loading.dart';
+import 'package:share/share.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 import 'AssetLoader.dart';
@@ -305,6 +306,7 @@ class CardItem extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               alignment: MainAxisAlignment.end,
               children: <Widget>[
+                buildFlatButtonShare(context),
                 buildFlatButtonReview(context),
                 buildFlatButtonVisit(context),
               ],
@@ -361,6 +363,47 @@ class CardItem extends StatelessWidget {
     } else {
       UrlLauncher.launchReviewUrl(ctx, merchant.place);
     }
+  }
+
+  FlatButton buildFlatButtonShare(BuildContext ctx) {
+    return FlatButton(
+      child: Column(
+        children: <Widget>[
+          Dialogs.buildIcon(Icons.share, Colors.white),
+          Dialogs.buildSpacer(),
+          Text(
+            Translator.translate(ctx, 'SHARE'),
+            style: TextStyle(color: Colors.white),
+          )
+        ],
+      ),
+      onPressed: () {
+        if (kIsWeb) {
+          //Dialogs.showInfoDialogWithCloseButtonFreeText(
+          // ctx, "SHARE", "https://coinector.app/#/" + merchant.name);
+          UrlLauncher.launchURI("https://coinector.app/share.html?search=" +
+              Uri.encodeComponent(merchant.name) +
+              "&location=" +
+              Uri.encodeComponent(merchant.location));
+          /*Toaster.showToastShare(
+              ctx, "https://coinector.app/#/" + merchant.name);*/
+          /*Future.delayed(Duration(seconds: 1), () {
+            UrlLauncher.launchURI(
+                "https://www.facebook.com/sharer/sharer.php?u=http://coinector.app/#/" +
+                    merchant.name);
+            Future.delayed(Duration(seconds: 1), () {
+              UrlLauncher.launchURI(
+                  "https://twitter.com/share?url=http://coinector.app/#/" +
+                      merchant.name);
+            });
+          });*/
+          /*open urllauncher with twitter or facebook share url*/
+          return;
+        }
+        Share.share('https://coinector.app/#/' + merchant.name,
+            subject: 'OMG Watch This!');
+      },
+    );
   }
 
   FlatButton buildFlatButtonReview(BuildContext ctx) {

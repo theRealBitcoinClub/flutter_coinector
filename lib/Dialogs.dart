@@ -142,7 +142,8 @@ class Dialogs {
         });
   }
 
-  static void showInfoDialogWithCloseButton(BuildContext buildCtx) {
+  static void _showInfoDialogWithCloseButton(
+      BuildContext buildCtx, String title, String content) {
     showDialog(
         context: buildCtx,
         builder: (BuildContext ctx) {
@@ -150,11 +151,8 @@ class Dialogs {
           var textStyle = TextStyle(color: color);
           return AlertDialog(
             backgroundColor: Colors.grey[900],
-            content: Text(
-                Translator.translate(buildCtx, "dialog_search_favo_food"),
-                style: textStyle),
-            title: Text(Translator.translate(buildCtx, "dialog_are_you_hungry"),
-                style: textStyle),
+            content: Text(content, style: textStyle),
+            title: Text(title, style: textStyle),
             actions: <Widget>[
               FlatButton(
                 onPressed: () {
@@ -174,6 +172,18 @@ class Dialogs {
             ],
           );
         });
+  }
+
+  static void showInfoDialogWithCloseButton(BuildContext buildCtx) {
+    _showInfoDialogWithCloseButton(
+        buildCtx,
+        Translator.translate(buildCtx, "dialog_are_you_hungry"),
+        Translator.translate(buildCtx, "dialog_search_favo_food"));
+  }
+
+  static void showInfoDialogWithCloseButtonFreeText(
+      BuildContext buildCtx, String title, String content) {
+    _showInfoDialogWithCloseButton(buildCtx, title, content);
   }
 
   static FlatButton buildCloseDialogButton(BuildContext context) {
