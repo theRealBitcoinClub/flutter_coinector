@@ -21,7 +21,7 @@ dependencies:
   #after_init: ^0.1.2
   fluttertoast: ^7.1.1
   #universal_html: 1.2.3
-  #platform_detect: ^1.4.0
+  platform_detect: ^1.4.0
   permission_handler: ^5.0.1+1
   synchronized: ^2.2.0+2
   #fluro: ^1.7.6
