@@ -350,13 +350,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.2.1"
-  platform_detect:
-    dependency: "direct main"
-    description:
-      name: platform_detect
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.4.0"
   plugin_platform_interface:
     dependency: transitive
     description:
@@ -371,13 +364,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.13"
-  pub_semver:
-    dependency: transitive
+  responsive_framework:
+    dependency: "direct main"
     description:
-      name: pub_semver
+      name: responsive_framework
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.4.4"
+    version: "0.0.11"
   sa_anicoto:
     dependency: transitive
     description:

@@ -2,12 +2,8 @@ import 'package:Coinector/Dialogs.dart';
 import 'package:Coinector/InternetConnectivityChecker.dart';
 import 'package:Coinector/translator.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
-import 'package:platform_detect/platform_detect.dart';
-
-import 'UrlLauncher.dart';
 
 class Snackbars {
   static void _showSnackBar(
@@ -99,7 +95,7 @@ class Snackbars {
 
   static void showSnackBarPlayStore(scaffoldKey, ctx) {
     //THIS METHOD IS ONLY FOR THE WEB APP, in case that someone opens the web app with a mobile phone
-    if (!kIsWeb) return;
+    /*if (!kIsWeb) return;
     String appstore = "Android";
     String chosenUrl = "http://bitcoinmap.cash/coinector";
     final iphoneUrl = "http://bitcoinmap.cash/iphone";
@@ -125,6 +121,6 @@ class Snackbars {
     } catch (e) {
       //UNSUPPORTED ERROR
       //debugPrint(e);
-    }
+    }*/
   }
 }

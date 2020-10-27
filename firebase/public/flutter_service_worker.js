@@ -3,15 +3,15 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "version.json": "f35eb04f3b342528249d05254aa47b72",
+  "version.json": "18dda97dd3325ddf00012bd34262db0e",
 "manifest.json": "44a0d5258eb35d65c0d738cb1894f257",
-"main.dart.js": "e7c5086222ec5fa4363a567d0bb6710c",
+"main.dart.js": "67b035e4b3450b54956968eec6aa1d18",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
-"index.html": "fc23e328ef08e2f95044804ac98b6940",
-"/": "fc23e328ef08e2f95044804ac98b6940",
-"assets/NOTICES": "a8e63df9beb315e34db980ec0916fc02",
+"index.html": "0011531e06776fed47aa07a5bb203b94",
+"/": "0011531e06776fed47aa07a5bb203b94",
+"assets/NOTICES": "32d71540ee7919ab7a53e53c2b1efee4",
 "assets/packages/awesome_dialog/assets/flare/error.flr": "87d83833748ad4425a01986f2821a75b",
 "assets/packages/awesome_dialog/assets/flare/info_without_loop.flr": "cf106e19d7dee9846bbc1ac29296a43f",
 "assets/packages/awesome_dialog/assets/flare/warning.flr": "68898234dacef62093ae95ff4772509b",

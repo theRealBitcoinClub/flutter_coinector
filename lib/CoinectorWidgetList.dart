@@ -21,6 +21,7 @@ import 'package:loading/indicator/ball_grid_pulse_indicator.dart';
 import 'package:loading/loading.dart';
 //import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:synchronized/synchronized.dart' as synchro;
 
@@ -773,20 +774,23 @@ THIS DIDNT WORK, goes into endless routing loop
       });
     }
     return MaterialApp(
+        builder: (context, widget) => ResponsiveWrapper.builder(
+            BouncingScrollWrapper.builder(context, widget),
+            maxWidth: 545,
+            minWidth: 450,
+            defaultScale: true,
+            breakpoints: [
+              ResponsiveBreakpoint.resize(450, name: MOBILE),
+              ResponsiveBreakpoint.resize(800, name: TABLET),
+              ResponsiveBreakpoint.resize(1200, name: DESKTOP),
+            ],
+            background: Container(color: Colors.grey[900].withOpacity(0.95))),
         localizationsDelegates: [
           FlutterI18nDelegate(),
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate
         ],
-        supportedLocales: [
-          const Locale('de'),
-          const Locale('it'),
-          const Locale('es'),
-          const Locale('en'),
-          const Locale('ja'),
-          const Locale('id'),
-          const Locale('fr')
-        ],
+        supportedLocales: supportedLocales(),
         theme: buildTheme(),
         home: new WillPopScope(
           onWillPop: _onWillPop,
@@ -815,6 +819,18 @@ THIS DIDNT WORK, goes into endless routing loop
             }),
           ),
         ));
+  }
+
+  List<Locale> supportedLocales() {
+    return [
+      const Locale('de'),
+      const Locale('it'),
+      const Locale('es'),
+      const Locale('en'),
+      const Locale('ja'),
+      const Locale('id'),
+      const Locale('fr')
+    ];
   }
 
   Builder buildFloatingActionButton() {

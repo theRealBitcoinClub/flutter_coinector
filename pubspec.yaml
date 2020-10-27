@@ -21,7 +21,7 @@ dependencies:
   #after_init: ^0.1.2
   fluttertoast: ^7.1.1
   #universal_html: 1.2.3
-  platform_detect: ^1.4.0
+  #platform_detect: ^1.4.0
   permission_handler: ^5.0.1+1
   synchronized: ^2.2.0+2
   fluro: ^1.7.6
@@ -41,7 +41,7 @@ dependencies:
   shared_preferences: ^0.5.12+2
   dio: ^3.0.10
   #device_preview: ^0.4.8
-  #responsive_framework: ^0.0.9
+  responsive_framework: ^0.0.11
   #desktop_window: ^0.3.0
   #js: ^0.6.2
   #http: ^0.12.2
