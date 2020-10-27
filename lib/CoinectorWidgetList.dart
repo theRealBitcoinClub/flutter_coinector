@@ -784,7 +784,7 @@ THIS DIDNT WORK, goes into endless routing loop
               ResponsiveBreakpoint.resize(800, name: TABLET),
               ResponsiveBreakpoint.resize(1200, name: DESKTOP),
             ],
-            background: Container(color: Colors.grey[900].withOpacity(0.95))),
+            background: Container(color: hexToColor("#303030"))),
         localizationsDelegates: [
           FlutterI18nDelegate(),
           GlobalMaterialLocalizations.delegate,
@@ -819,6 +819,10 @@ THIS DIDNT WORK, goes into endless routing loop
             }),
           ),
         ));
+  }
+
+  Color hexToColor(String code) {
+    return new Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
   }
 
   List<Locale> supportedLocales() {
@@ -879,6 +883,11 @@ THIS DIDNT WORK, goes into endless routing loop
   SliverAppBar buildSliverAppBar(BuildContext buildCtx) {
     return SliverAppBar(
         elevation: 2,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(20),
+          ),
+        ),
         forceElevated: true,
         leading: buildHomeButton(buildCtx),
         bottom: TabBar(
