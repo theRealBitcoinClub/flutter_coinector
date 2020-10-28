@@ -1,4 +1,10 @@
 {
+  "SHARE" : "PARTAGER",
+  "RESTART" : "REDÉMARRER",
+  "try_another_word" : "Rien n'a été trouvé! Essayez un autre mot!",
+  "select_suggestion" : "Veuillez sélectionner une suggestion!",
+  "search_hint" : "Écrivez votre plat préféré!",
+  "type_something" : "Tapez quelque chose sur le clavier!",
   "snackbar_showing_unfiltered_list": "Afficher tous les lieux...",
   "snackbar_merchant": "Lieu: ",
   "snackbar_filtered_by_tag": "Filtre de tag: ",

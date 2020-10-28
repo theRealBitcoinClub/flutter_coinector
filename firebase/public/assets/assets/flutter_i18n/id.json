@@ -1,4 +1,10 @@
 {
+  "SHARE" : "BAGIKAN",
+  "RESTART" : "KEMBALI",
+  "try_another_word" : "Tidak ada yang ditemukan! Coba kata lain!",
+  "select_suggestion" : "Silakan pilih saran!",
+  "search_hint" : "Tulis makanan favorit Anda!",
+  "type_something" : "Ketik sesuatu ke keyboard!",
   "snackbar_showing_unfiltered_list": "Menampilkan semua tempat...",
   "snackbar_merchant": "Tempat: ",
   "snackbar_filtered_by_tag": "Filter Tag: ",

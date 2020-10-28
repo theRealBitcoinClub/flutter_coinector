@@ -1,4 +1,10 @@
 {
+  "SHARE" : "シェア",
+  "RESTART" : "再起動",
+  "try_another_word" : "何も見つかりません！ 別の言葉を試してみてください！",
+  "select_suggestion" : "提案を選択してください！",
+  "search_hint" : "あなたの好きな食べ物を書いてください！",
+  "type_something" : "キーボードに何かを入力してください！",
   "snackbar_showing_unfiltered_list": "すべての場所を表示...",
   "snackbar_merchant": "場所: ",
   "snackbar_filtered_by_tag": "タグフィルタ: ",

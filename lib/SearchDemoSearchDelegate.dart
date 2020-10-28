@@ -175,7 +175,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
     //THIS METHOD IS CALLED AFTER USER HITS THE SEARCH ICON OF THE KEYBOARD LAYOUT
     //This app doesnt need this button as we autosearch on every keystroke
     String text;
-    if (query.isEmpty) {
+    if (query.trim().isEmpty) {
       text = translate(context, "type_something");
     } else if (hasResults)
       text = translate(context, "select_suggestion");
