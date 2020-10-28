@@ -1,0 +1,1 @@
+{"version":3,"file":"scopes.js","sourceRoot":"","sources":["../src/scopes.js"],"names":[],"mappings":"AAAA,YAAY,CAAC;AAEb,MAAM,CAAC,OAAO,GAAG;IAEf,MAAM,EAAE,QAAQ;IAChB,KAAK,EAAE,OAAO;IACd,uBAAuB,EAAE,gEAAgE;IACzF,iBAAiB,EAAE,0CAA0C;IAG7D,cAAc,EAAE,gDAAgD;IAChE,aAAa,EAAE,uDAAuD;IACtE,YAAY,EAAE,wCAAwC;CACvD,CAAC"}

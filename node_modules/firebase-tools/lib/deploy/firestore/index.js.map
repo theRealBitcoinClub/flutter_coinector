@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../src/deploy/firestore/index.js"],"names":[],"mappings":"AAAA,YAAY,CAAC;AAEb,MAAM,CAAC,OAAO,GAAG;IACf,OAAO,EAAE,OAAO,CAAC,WAAW,CAAC;IAC7B,MAAM,EAAE,OAAO,CAAC,UAAU,CAAC;IAC3B,OAAO,EAAE,OAAO,CAAC,WAAW,CAAC;CAC9B,CAAC"}
