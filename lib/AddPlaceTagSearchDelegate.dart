@@ -74,15 +74,15 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
   bool startsWith(String currentItem, String pattern) =>
       currentItem.toLowerCase().startsWith(pattern.toLowerCase());
 
-  static const COINECTOR_SUPPORTS_MANY_LANGUAGES =
-      "🇪🇸 🇩🇪 🇫🇷 🇮🇹 🇬🇧 🇯🇵 🇮🇩";
+  //static const COINECTOR_SUPPORTS_MANY_LANGUAGES =
+  // "🇪🇸 🇩🇪 🇫🇷 🇮🇹 🇬🇧 🇯🇵 🇮🇩";
 
   Set<String> unfilteredSuggestions;
 
   @override
   Widget buildSuggestions(BuildContext ctx) {
     Set<String> suggestions = Set.from([
-      COINECTOR_SUPPORTS_MANY_LANGUAGES,
+      //  COINECTOR_SUPPORTS_MANY_LANGUAGES,
       Translator.translate(ctx, "you_can_scroll")
     ]);
 

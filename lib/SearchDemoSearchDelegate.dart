@@ -1,8 +1,8 @@
 import 'package:Coinector/translator.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'AddPlaceTagSearchDelegate.dart';
 import 'SuggestionList.dart';
 import 'Suggestions.dart';
 import 'Tag.dart';
@@ -57,6 +57,8 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
     return prefs.setStringList(_kNotificationsPrefs, value);
   }
 
+  bool hasResults;
+
   _getSuggestions(String pattern, ctx) {
     Set<String> matches = Set.from([]);
 
@@ -65,8 +67,10 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
     addMatches(pattern, matches, Suggestions.locations);
     addMatches(pattern, matches, Tag.titleTags);
 
+    hasResults = true;
     if (matches.length == 0) {
       matches.add(TRY_ANOTHER_WORD);
+      hasResults = false;
     }
 
     return matches;
@@ -132,8 +136,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
 
     if (query.isEmpty) {
       suggestions = Set.from([
-        AddPlaceTagSearchDelegate.COINECTOR_SUPPORTS_MANY_LANGUAGES,
-        Translator.translate(context, "you_can_scroll")
+        Translator.translate(context, "you_can_scroll"),
       ]);
       suggestions.addAll(_history);
     } else {
@@ -155,8 +158,22 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
   @override
   void showResults(BuildContext context) {
     //DONT SHOW ANY RESULTS HERE, SIMPLY REMOVE THE WIDGET
-    //THIS METHOD IS CALLED WHEN USER HITS THE SEARCH ICON OF THE KEYBOARD LAYOUT
-    close(context, null);
+    //THIS METHOD IS CALLED AFTER USER HITS THE SEARCH ICON OF THE KEYBOARD LAYOUT
+    //This app doesnt need this button as we autosearch on every keystroke
+    String text;
+    if (query.isEmpty) {
+      text = "Type something into the keyboard!";
+    } else if (hasResults)
+      text = "Select a suggestion from the list!";
+    else {
+      text = TRY_ANOTHER_WORD;
+    }
+
+    AwesomeDialog(
+            context: context,
+            title: Translator.translate(context, text),
+            desc: "")
+        .show();
   }
 
   @override

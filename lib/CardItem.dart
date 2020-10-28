@@ -387,7 +387,7 @@ class CardItem extends StatelessWidget {
         }
         Share.share(
             'https://coinector.app/#/' + Uri.encodeComponent(merchant.name),
-            subject: 'OMG Watch This!');
+            subject: 'Coinector - coinecting to coimunity...');
       },
     );
   }
