@@ -379,28 +379,14 @@ class CardItem extends StatelessWidget {
       ),
       onPressed: () {
         if (kIsWeb) {
-          //Dialogs.showInfoDialogWithCloseButtonFreeText(
-          // ctx, "SHARE", "https://coinector.app/#/" + merchant.name);
           UrlLauncher.launchURI("https://coinector.app/share.html?search=" +
               Uri.encodeComponent(merchant.name) +
               "&location=" +
               Uri.encodeComponent(merchant.location));
-          /*Toaster.showToastShare(
-              ctx, "https://coinector.app/#/" + merchant.name);*/
-          /*Future.delayed(Duration(seconds: 1), () {
-            UrlLauncher.launchURI(
-                "https://www.facebook.com/sharer/sharer.php?u=http://coinector.app/#/" +
-                    merchant.name);
-            Future.delayed(Duration(seconds: 1), () {
-              UrlLauncher.launchURI(
-                  "https://twitter.com/share?url=http://coinector.app/#/" +
-                      merchant.name);
-            });
-          });*/
-          /*open urllauncher with twitter or facebook share url*/
           return;
         }
-        Share.share('https://coinector.app/#/' + merchant.name,
+        Share.share(
+            'https://coinector.app/#/' + Uri.encodeComponent(merchant.name),
             subject: 'OMG Watch This!');
       },
     );
