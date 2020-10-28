@@ -52,8 +52,7 @@ class CoinectorWidget extends StatefulWidget {
 
 class _CoinectorWidgetState extends State<CoinectorWidget>
     with TickerProviderStateMixin, WidgetsBindingObserver {
-  final SearchDemoSearchDelegate searchDelegate =
-      SearchDemoSearchDelegate(hintText: "Type in your favourite food!");
+  SearchDemoSearchDelegate searchDelegate;
 
   _CoinectorWidgetState(String search) {
     urlSearch = search;
@@ -642,7 +641,6 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     });
     initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition(context);
     //OneSignal.initOneSignalPushMessages();
-    searchDelegate.buildHistory();
     tabController = TabController(vsync: this, length: TabPages.pages.length);
     tabController.addListener(_handleTabSelection);
     initListModel();
@@ -1006,10 +1004,10 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   IconButton buildIconButtonClearFilter(ctx) {
     return IconButton(
       tooltip: 'Reset',
-      icon: AnimatedIcon(
-        icon: AnimatedIcons.close_menu,
+      icon: Icon(
+        Icons.close,
         color: Colors.white,
-        progress: searchDelegate.transitionAnimation,
+        //progress: getSearchDelegate().transitionAnimation,
       ),
       onPressed: () {
         /*setState(() {
@@ -1072,18 +1070,20 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   IconButton buildIconButtonSearchContainer(BuildContext ctx) {
     return IconButton(
-      icon: AnimatedIcon(
-          color: searchIconBlinkAnimation != null && hasNotHitSearch()
-              ? searchIconBlinkAnimation.value
-              : Colors.white,
-          progress: searchDelegate.transitionAnimation,
-          icon: AnimatedIcons.search_ellipsis),
+      icon: Icon(
+        Icons.search,
+        color: searchIconBlinkAnimation != null && hasNotHitSearch()
+            ? searchIconBlinkAnimation.value
+            : Colors.white,
+        //progress: getSearchDelegate().transitionAnimation,
+      ),
       onPressed: () async {
         InternetConnectivityChecker.pauseAutoChecker();
         try {
+          getSearchDelegate(ctx).buildHistory();
           final String selected = await showSearch<String>(
             context: ctx,
-            delegate: searchDelegate,
+            delegate: getSearchDelegate(ctx),
           );
           startProcessSearch(ctx, selected, false);
         } catch (e) {
@@ -1231,6 +1231,17 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                         )),
                   ],
                 ));
+  }
+
+  SearchDemoSearchDelegate getSearchDelegate(ctx) {
+    if (searchDelegate == null ||
+        searchDelegate.hintText == null ||
+        searchDelegate.hintText.isEmpty) {
+      final t = Translator.translate(ctx, "search_hint");
+      searchDelegate = SearchDemoSearchDelegate(hintText: t);
+      searchDelegate.hintText = t;
+    }
+    return searchDelegate;
   }
 
   SizedBox buildSeparator() {

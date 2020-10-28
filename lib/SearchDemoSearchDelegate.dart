@@ -11,10 +11,10 @@ import 'UrlLauncher.dart';
 class SearchDemoSearchDelegate extends SearchDelegate<String> {
   final Set<String> _historyBackup = Set.from(Suggestions.locations);
   final Set<String> _history = Set.from(Suggestions.locations);
+  String hintText;
 
-  SearchDemoSearchDelegate({
-    String hintText,
-  }) : super(
+  SearchDemoSearchDelegate({String hintText = "Satoshi lives, children yeaha!"})
+      : super(
           searchFieldStyle:
               TextStyle(inherit: false, color: Colors.black45, fontSize: 16),
           searchFieldLabel: hintText,
