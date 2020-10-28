@@ -12,6 +12,16 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
   final Set<String> _historyBackup = Set.from(Suggestions.locations);
   final Set<String> _history = Set.from(Suggestions.locations);
 
+  SearchDemoSearchDelegate({
+    String hintText,
+  }) : super(
+          searchFieldStyle:
+              TextStyle(inherit: false, color: Colors.black45, fontSize: 16),
+          searchFieldLabel: hintText,
+          keyboardType: TextInputType.text,
+          textInputAction: TextInputAction.search,
+        );
+
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
@@ -25,8 +35,6 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
       },
     );
   }
-
-  //TODO make all button press async by default: onPressed: () async {
 
   buildHistory() async {
     List<String> historyItems = await getHistory();
@@ -69,11 +77,17 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
 
     hasResults = true;
     if (matches.length == 0) {
-      matches.add(TRY_ANOTHER_WORD);
+      matches.add(translate(ctx, "try_another_word"));
+      //matches.add(TRY_ANOTHER_WORD);
       hasResults = false;
     }
 
     return matches;
+  }
+
+  String translate(ctx, text) {
+    String t = Translator.translate(ctx, text);
+    return t.isNotEmpty ? t : " ";
   }
 
   void addCountrySpecificMatches(ctx, String pattern, Set<String> matches) {
@@ -117,7 +131,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
   bool startsWith(String currentItem, String pattern) =>
       currentItem.toLowerCase().startsWith(pattern.toLowerCase());
 
-  static const TRY_ANOTHER_WORD = 'Not found! Try another word!';
+  //static const TRY_ANOTHER_WORD = 'Not found! Try another word!';
 
   _addHistoryItem(String item) async {
     List<String> historyItems = await getHistory();
@@ -136,7 +150,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
 
     if (query.isEmpty) {
       suggestions = Set.from([
-        Translator.translate(context, "you_can_scroll"),
+        translate(context, "you_can_scroll"),
       ]);
       suggestions.addAll(_history);
     } else {
@@ -162,17 +176,14 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
     //This app doesnt need this button as we autosearch on every keystroke
     String text;
     if (query.isEmpty) {
-      text = "Type something into the keyboard!";
+      text = translate(context, "type_something");
     } else if (hasResults)
-      text = "Select a suggestion from the list!";
+      text = translate(context, "select_suggestion");
     else {
-      text = TRY_ANOTHER_WORD;
+      text = translate(context, "try_another_word");
     }
 
-    AwesomeDialog(
-            context: context,
-            title: Translator.translate(context, text),
-            desc: "")
+    AwesomeDialog(context: context, title: translate(context, text), desc: "")
         .show();
   }
 

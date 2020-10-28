@@ -201,7 +201,7 @@ class MapSampleState extends State<MapSample> {
   }
 
   String buildTypeSnippet(Merchant m) {
-    return Pages
+    return TabPages
         .pages[m.type == 999 ? 6 : m.type].text; //type 999 gets mapped to tab 6
   }
 

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-class Pagee {
-  const Pagee({this.text, this.icon, this.title, this.tabIndex, this.typeIndex});
+class TabPage {
+  const TabPage(
+      {this.text, this.icon, this.title, this.tabIndex, this.typeIndex});
   final String text;
   final String title;
   final IconData icon;
@@ -9,39 +10,39 @@ class Pagee {
   final int typeIndex;
 }
 
-class Pages {
-  static const List<Pagee> pages = <Pagee>[
-    Pagee(
+class TabPages {
+  static const List<TabPage> pages = <TabPage>[
+    TabPage(
         text: 'EAT',
         icon: Icons.restaurant,
         title: 'RESTAURANT',
         tabIndex: 0,
         typeIndex: 0),
-    Pagee(
+    TabPage(
         text: 'TOGO',
         icon: Icons.restaurant_menu,
         title: 'TAKE-AWAY-FOOD',
         tabIndex: 1,
         typeIndex: 1),
-    Pagee(
+    TabPage(
         text: 'BAR',
         icon: Icons.local_bar,
         title: 'BAR, CLUB, CAFE',
         tabIndex: 2,
         typeIndex: 2),
-    Pagee(
+    TabPage(
         text: 'MARKET',
         icon: Icons.shopping_cart,
         title: 'SUPERMARKET',
         tabIndex: 3,
         typeIndex: 3),
-    Pagee(
+    TabPage(
         text: 'SHOP',
         icon: Icons.shopping_basket,
         title: 'SHOP & FASHION',
         tabIndex: 4,
         typeIndex: 4),
-    Pagee(
+    TabPage(
         text: 'HOTEL',
         icon: Icons.hotel,
         title: 'HOTEL & BnB',
@@ -53,7 +54,7 @@ class Pages {
       title: 'TELLER & TRADER',
       tabIndex: 6,
       typeIndex: 99),*/
-    Pagee(
+    TabPage(
         text: 'SPA',
         icon: Icons.spa,
         title: 'WELLNESS & BEAUTY',

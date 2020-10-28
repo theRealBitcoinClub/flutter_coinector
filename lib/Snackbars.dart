@@ -75,13 +75,13 @@ class Snackbars {
   }
 
   static void showSnackBarRestartApp(scaffoldKey, ctx) {
-    String text = Translator.translate(ctx, "dialog_close");
+    String text = Translator.translate(ctx, "toast_update_succesfull");
     _showSnackBar(scaffoldKey, ctx, "",
         duration: Duration(seconds: 30),
         additionalText:
             text.isEmpty ? "App updated, restart now ->" : text + " ->",
         snackbarAction: SnackBarAction(
-          label: "RESTART",
+          label: Translator.translate(ctx, "RESTART"),
           onPressed: () {
             Phoenix.rebirth(ctx);
           },

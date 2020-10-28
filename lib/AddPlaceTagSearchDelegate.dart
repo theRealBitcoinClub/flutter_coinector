@@ -1,7 +1,6 @@
 import 'package:Coinector/translator.dart';
 import 'package:flutter/material.dart';
 
-import 'SearchDemoSearchDelegate.dart';
 import 'SuggestionList.dart';
 import 'Tag.dart';
 import 'Toaster.dart';
@@ -51,7 +50,8 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
     addMatches(pattern, matches, Tag.tagText);
 
     if (matches.length == 0) {
-      matches.add(SearchDemoSearchDelegate.TRY_ANOTHER_WORD);
+      matches.add(Translator.translate(ctx, "try_another_word"));
+      //matches.add(SearchDemoSearchDelegate.TRY_ANOTHER_WORD);
     }
 
     return matches;

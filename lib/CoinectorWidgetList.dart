@@ -52,7 +52,8 @@ class CoinectorWidget extends StatefulWidget {
 
 class _CoinectorWidgetState extends State<CoinectorWidget>
     with TickerProviderStateMixin, WidgetsBindingObserver {
-  final SearchDemoSearchDelegate searchDelegate = SearchDemoSearchDelegate();
+  final SearchDemoSearchDelegate searchDelegate =
+      SearchDemoSearchDelegate(hintText: "Type in your favourite food!");
 
   _CoinectorWidgetState(String search) {
     urlSearch = search;
@@ -431,7 +432,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   void initListModelSeveralTimes(List lists, bool keepListKeys) {
     lists.clear();
     if (keepListKeys) _listKeys.clear();
-    for (int i = 0; i < Pages.pages.length + 1; i++) {
+    for (int i = 0; i < TabPages.pages.length + 1; i++) {
       if (keepListKeys)
         _listKeys.add(GlobalKey<AnimatedListState>(
             debugLabel: "Scaffoldkey Listmodel no." + i.toString()));
@@ -642,7 +643,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition(context);
     //OneSignal.initOneSignalPushMessages();
     searchDelegate.buildHistory();
-    tabController = TabController(vsync: this, length: Pages.pages.length);
+    tabController = TabController(vsync: this, length: TabPages.pages.length);
     tabController.addListener(_handleTabSelection);
     initListModel();
     if (hasNotHitSearch()) {
@@ -701,11 +702,11 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   void updateAddButtonCategory() {
     setState(() {
-      addButtonCategory = Pages.pages[tabController.index].text;
+      addButtonCategory = TabPages.pages[tabController.index].text;
     });
   }
 
-  String getTitleOfSelectedTab() => Pages.pages[tabController.index].title;
+  String getTitleOfSelectedTab() => TabPages.pages[tabController.index].title;
 
   Color getColorOfSelectedTab() =>
       MyColors.getCardInfoBoxBackgroundColor(tabController.index);
@@ -846,18 +847,20 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   SliverAppBar buildSliverAppBar(BuildContext buildCtx) {
     return SliverAppBar(
         elevation: 2,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(20),
-          ),
-        ),
+        shape: kIsWeb
+            ? RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+                  bottom: Radius.circular(20),
+                ),
+              )
+            : null,
         forceElevated: true,
         leading: buildHomeButton(buildCtx),
         bottom: TabBar(
           controller: tabController,
           isScrollable: true,
           indicator: getIndicator(),
-          tabs: Pages.pages.map<Tab>((Pagee page) {
+          tabs: TabPages.pages.map<Tab>((TabPage page) {
             return buildColoredTab(page);
           }).toList(),
         ),
@@ -887,14 +890,15 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
             )));
   }
 
-  Tab buildColoredTab(Pagee page) {
+  Tab buildColoredTab(TabPage page) {
     return _lists[page.tabIndex].length > 0
         ? Tab(
+            text: page.text,
             icon: Icon(
-            page.icon,
-            color: MyColors.getTabColor(page.typeIndex),
-            size: 22,
-          ))
+              page.icon,
+              color: MyColors.getTabColor(page.typeIndex),
+              size: 22,
+            ))
         : Tab(
             icon: Icon(
             page.icon,
@@ -907,6 +911,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   Widget buildIconButtonMap(ctx) {
     return IconButton(
+        tooltip: "Map",
         icon: Icon(Icons.map),
         onPressed: () {
           handleMapButtonClick(ctx);
@@ -948,19 +953,19 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     var builder = CardItemBuilder(_lists);
     return [
       buildTabContainer(ctx, _listKeys[0], _lists[0],
-          builder.buildItemRestaurant, Pages.pages[0].title),
+          builder.buildItemRestaurant, TabPages.pages[0].title),
       buildTabContainer(ctx, _listKeys[1], _lists[1], builder.buildItemTogo,
-          Pages.pages[1].title),
+          TabPages.pages[1].title),
       buildTabContainer(ctx, _listKeys[2], _lists[2], builder.buildItemBar,
-          Pages.pages[2].title),
+          TabPages.pages[2].title),
       buildTabContainer(ctx, _listKeys[3], _lists[3], builder.buildItemMarket,
-          Pages.pages[3].title),
+          TabPages.pages[3].title),
       buildTabContainer(ctx, _listKeys[4], _lists[4], builder.buildItemShop,
-          Pages.pages[4].title),
+          TabPages.pages[4].title),
       buildTabContainer(ctx, _listKeys[5], _lists[5], builder.buildItemHotel,
-          Pages.pages[5].title),
+          TabPages.pages[5].title),
       buildTabContainer(ctx, _listKeys[6], _lists[6], builder.buildItemWellness,
-          Pages.pages[6].title),
+          TabPages.pages[6].title),
     ];
   }
 
@@ -1000,7 +1005,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   IconButton buildIconButtonClearFilter(ctx) {
     return IconButton(
-      tooltip: 'Clear Filter',
+      tooltip: 'Reset',
       icon: AnimatedIcon(
         icon: AnimatedIcons.close_menu,
         color: Colors.white,

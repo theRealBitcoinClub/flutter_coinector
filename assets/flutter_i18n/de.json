@@ -1,4 +1,10 @@
 {
+  "SHARE" : "TEILEN",
+  "RESTART" : "NEUSTART",
+  "try_another_word" : "Nichts gefunden! Suche ein anderes Wort!",
+  "select_suggestion" : "Bitte einen Vorschlag auswählen!",
+  "search_hint" : "Schreibe dein Lieblingsessen!",
+  "type_something" : "Schreibe etwas!",
   "snackbar_showing_unfiltered_list": "Zeige alle Orte...",
   "snackbar_merchant": "Ort: ",
   "snackbar_filtered_by_tag": "Tagfilter: ",
@@ -56,7 +62,6 @@
   "name" : "Name",
   "add_title" : "HINZUFÜGEN: ",
   "you_can_scroll" : "Du kannst diese Liste scrollen!",
-  "SHARE" : "TEILEN",
   "REVIEW" : "BEWERTEN",
   "download_qr_code" : "Möchtest du eine PDF-Datei mit QR-Codes runterladen?",
   "NO" : "NEIN",
