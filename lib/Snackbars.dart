@@ -1,6 +1,7 @@
 import 'package:Coinector/Dialogs.dart';
 import 'package:Coinector/InternetConnectivityChecker.dart';
 import 'package:Coinector/translator.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 
@@ -74,13 +75,13 @@ class Snackbars {
   }
 
   static void showSnackBarRestartApp(scaffoldKey, ctx) {
-    String text = Translator.translate(ctx, "dialog_close");
+    String text = Translator.translate(ctx, "toast_update_succesfull");
     _showSnackBar(scaffoldKey, ctx, "",
         duration: Duration(seconds: 30),
         additionalText:
             text.isEmpty ? "App updated, restart now ->" : text + " ->",
         snackbarAction: SnackBarAction(
-          label: "RESTART",
+          label: Translator.translate(ctx, "RESTART"),
           onPressed: () {
             Phoenix.rebirth(ctx);
           },
@@ -90,5 +91,36 @@ class Snackbars {
   static void showSnackBarGPS(scaffoldKey, ctx) {
     _showSnackBar(scaffoldKey, ctx, "", additionalText: "Updated GPS!");
     //TODO I want to check periodically if GPS changed, use a listener, then update carditems silently
+  }
+
+  static void showSnackBarPlayStore(scaffoldKey, ctx) {
+    //THIS METHOD IS ONLY FOR THE WEB APP, in case that someone opens the web app with a mobile phone
+    /*if (!kIsWeb) return;
+    String appstore = "Android";
+    String chosenUrl = "http://bitcoinmap.cash/coinector";
+    final iphoneUrl = "http://bitcoinmap.cash/iphone";
+
+    try {
+      if (browser.isSafari || operatingSystem.isMac) {
+        appstore = "iPhone";
+        chosenUrl = iphoneUrl;
+      } else if (operatingSystem.isWindows && browser.isInternetExplorer) {
+        appstore = "iPhone";
+        chosenUrl = iphoneUrl;
+      }
+
+      _showSnackBar(scaffoldKey, ctx, "",
+          duration: Duration(seconds: 20),
+          additionalText: appstore + " app available ->",
+          snackbarAction: SnackBarAction(
+            label: "Install",
+            onPressed: () {
+              UrlLauncher.launchURI(chosenUrl, forceWebView: true);
+            },
+          ));
+    } catch (e) {
+      //UNSUPPORTED ERROR
+      //debugPrint(e);
+    }*/
   }
 }

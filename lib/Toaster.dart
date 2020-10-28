@@ -18,9 +18,12 @@ class Toaster {
     _showWarning(Dialogs.INTERNET_ERROR);
   }
 
+  static void showToastShare(ctx, String share) {
+    _showWarning(share);
+  }
+
   static void showToastAttractCustomers(ctx) {
-    _showWarning(
-        Translator.translate(ctx, "Please select a suggestion from the list!"));
+    _showWarning(Translator.translate(ctx, "attract_more_customer"));
   }
 
   static void showToastSelectSuggestion() {

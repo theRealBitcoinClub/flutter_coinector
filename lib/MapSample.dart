@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:Coinector/translator.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -83,8 +82,8 @@ class MapSampleState extends State<MapSample> {
   void checkConnection() {
     InternetConnectivityChecker.resumeAutoChecker();
     try {
-      InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(
-          kIsWeb, this, (abc) {
+      InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(this,
+          (abc) {
         //Dialogs.showDialogInternetError(context);
         Toaster.showToastInternetError(context);
       });
@@ -202,7 +201,7 @@ class MapSampleState extends State<MapSample> {
   }
 
   String buildTypeSnippet(Merchant m) {
-    return Pages
+    return TabPages
         .pages[m.type == 999 ? 6 : m.type].text; //type 999 gets mapped to tab 6
   }
 

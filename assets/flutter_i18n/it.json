@@ -1,4 +1,10 @@
 {
+  "SHARE" : "CONDIVIDERE",
+  "RESTART" : "RICOMINCIA",
+  "try_another_word" : "Non abbiamo trovato nulla! Prova un'altra parola!",
+  "select_suggestion" : "Seleziona un suggerimento!",
+  "search_hint" : "Scrivi il tuo cibo preferito!",
+  "type_something" : "Digita qualcosa sulla tastiera!",
   "snackbar_showing_unfiltered_list": "Mostrare tutti i posti...",
   "snackbar_merchant": "Posto: ",
   "snackbar_filtered_by_tag": "Filtro Tag: ",

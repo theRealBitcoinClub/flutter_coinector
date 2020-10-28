@@ -1,8 +1,8 @@
 import 'package:Coinector/translator.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'AddPlaceTagSearchDelegate.dart';
 import 'SuggestionList.dart';
 import 'Suggestions.dart';
 import 'Tag.dart';
@@ -11,6 +11,16 @@ import 'UrlLauncher.dart';
 class SearchDemoSearchDelegate extends SearchDelegate<String> {
   final Set<String> _historyBackup = Set.from(Suggestions.locations);
   final Set<String> _history = Set.from(Suggestions.locations);
+  String hintText;
+
+  SearchDemoSearchDelegate({String hintText = "Satoshi lives, children yeaha!"})
+      : super(
+          searchFieldStyle:
+              TextStyle(inherit: false, color: Colors.black45, fontSize: 16),
+          searchFieldLabel: hintText,
+          keyboardType: TextInputType.text,
+          textInputAction: TextInputAction.search,
+        );
 
   @override
   Widget buildLeading(BuildContext context) {
@@ -25,8 +35,6 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
       },
     );
   }
-
-  //TODO make all button press async by default: onPressed: () async {
 
   buildHistory() async {
     List<String> historyItems = await getHistory();
@@ -57,6 +65,8 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
     return prefs.setStringList(_kNotificationsPrefs, value);
   }
 
+  bool hasResults;
+
   _getSuggestions(String pattern, ctx) {
     Set<String> matches = Set.from([]);
 
@@ -65,11 +75,19 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
     addMatches(pattern, matches, Suggestions.locations);
     addMatches(pattern, matches, Tag.titleTags);
 
+    hasResults = true;
     if (matches.length == 0) {
-      matches.add(TRY_ANOTHER_WORD);
+      matches.add(translate(ctx, "try_another_word"));
+      //matches.add(TRY_ANOTHER_WORD);
+      hasResults = false;
     }
 
     return matches;
+  }
+
+  String translate(ctx, text) {
+    String t = Translator.translate(ctx, text);
+    return t.isNotEmpty ? t : " ";
   }
 
   void addCountrySpecificMatches(ctx, String pattern, Set<String> matches) {
@@ -113,7 +131,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
   bool startsWith(String currentItem, String pattern) =>
       currentItem.toLowerCase().startsWith(pattern.toLowerCase());
 
-  static const TRY_ANOTHER_WORD = 'Not found! Try another word!';
+  //static const TRY_ANOTHER_WORD = 'Not found! Try another word!';
 
   _addHistoryItem(String item) async {
     List<String> historyItems = await getHistory();
@@ -132,8 +150,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
 
     if (query.isEmpty) {
       suggestions = Set.from([
-        AddPlaceTagSearchDelegate.COINECTOR_SUPPORTS_MANY_LANGUAGES,
-        Translator.translate(context, "you_can_scroll")
+        translate(context, "you_can_scroll"),
       ]);
       suggestions.addAll(_history);
     } else {
@@ -155,8 +172,19 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
   @override
   void showResults(BuildContext context) {
     //DONT SHOW ANY RESULTS HERE, SIMPLY REMOVE THE WIDGET
-    //THIS METHOD IS CALLED WHEN USER HITS THE SEARCH ICON OF THE KEYBOARD LAYOUT
-    close(context, null);
+    //THIS METHOD IS CALLED AFTER USER HITS THE SEARCH ICON OF THE KEYBOARD LAYOUT
+    //This app doesnt need this button as we autosearch on every keystroke
+    String text;
+    if (query.isEmpty) {
+      text = translate(context, "type_something");
+    } else if (hasResults)
+      text = translate(context, "select_suggestion");
+    else {
+      text = translate(context, "try_another_word");
+    }
+
+    AwesomeDialog(context: context, title: translate(context, text), desc: "")
+        .show();
   }
 
   @override

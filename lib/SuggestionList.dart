@@ -1,8 +1,6 @@
 import 'package:Coinector/translator.dart';
 import 'package:flutter/material.dart';
 
-import 'AddPlaceTagSearchDelegate.dart';
-import 'SearchDemoSearchDelegate.dart';
 import 'SuggestionMatch.dart';
 
 class SuggestionList extends StatelessWidget {
@@ -79,9 +77,10 @@ class SuggestionList extends StatelessWidget {
   }
 
   bool isRealSuggestion(String suggestion, ctx) {
-    return SearchDemoSearchDelegate.TRY_ANOTHER_WORD != suggestion &&
-        Translator.translate(ctx, "you_can_scroll") != suggestion &&
+    return Translator.translate(ctx, "try_another_word") != suggestion &&
+        Translator.translate(ctx, "you_can_scroll") != suggestion;
+    /*&&
         AddPlaceTagSearchDelegate.COINECTOR_SUPPORTS_MANY_LANGUAGES !=
-            suggestion;
+            suggestion*/
   }
 }

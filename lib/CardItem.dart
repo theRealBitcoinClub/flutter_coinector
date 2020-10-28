@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:loading/indicator/ball_grid_pulse_indicator.dart';
 import 'package:loading/loading.dart';
+import 'package:share/share.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 import 'AssetLoader.dart';
@@ -305,6 +306,7 @@ class CardItem extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               alignment: MainAxisAlignment.end,
               children: <Widget>[
+                buildFlatButtonShare(context),
                 buildFlatButtonReview(context),
                 buildFlatButtonVisit(context),
               ],
@@ -361,6 +363,33 @@ class CardItem extends StatelessWidget {
     } else {
       UrlLauncher.launchReviewUrl(ctx, merchant.place);
     }
+  }
+
+  FlatButton buildFlatButtonShare(BuildContext ctx) {
+    return FlatButton(
+      child: Column(
+        children: <Widget>[
+          Dialogs.buildIcon(Icons.share, Colors.white),
+          Dialogs.buildSpacer(),
+          Text(
+            Translator.translate(ctx, 'SHARE'),
+            style: TextStyle(color: Colors.white),
+          )
+        ],
+      ),
+      onPressed: () {
+        if (kIsWeb) {
+          UrlLauncher.launchURI("https://coinector.app/share.html?search=" +
+              Uri.encodeComponent(merchant.name) +
+              "&location=" +
+              Uri.encodeComponent(merchant.location));
+          return;
+        }
+        Share.share(
+            'https://coinector.app/#/' + Uri.encodeComponent(merchant.name),
+            subject: 'Coinector - coinecting to coimunity...');
+      },
+    );
   }
 
   FlatButton buildFlatButtonReview(BuildContext ctx) {
