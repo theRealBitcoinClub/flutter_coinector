@@ -4,49 +4,10 @@ class Tag {
 
   Tag(this.content, this.id);
 
-  static final List<List<Tag>> tagsSortedByCategory = [
-    [
-      Tag('Sweet 🍭', 142),
-      Tag('Spicey 🌶️', 0),
-      Tag('Salty 🥨', 1),
-      Tag('Sour 😜', 2)
-    ],
-    [
-      Tag('Italian 🇮🇹', 102),
-      Tag('Arabic 🥙', 13),
-      Tag('Chinese 🇨🇳', 34),
-      Tag('Vegan 🐮', 5),
-      Tag('Mexican 🇲🇽', 128),
-      Tag('Greek 🇬🇷', 154),
-    ],
-    [
-      Tag('Falafel 🥙', 44),
-      Tag('Salad 🥗', 15),
-      Tag('Fruit 🍓', 17),
-      Tag('Burger 🍔', 7),
-      Tag('Sandwich 🥪', 8),
-      Tag('Burrito 🌯', 129),
-      Tag('Tortilla 🌮', 130)
-    ],
-    [
-      Tag('Muffin 🧁', 9),
-      Tag('Brownie 🥮', 10),
-      Tag('Cake 🎂', 11),
-      Tag('Cookie 🍪', 12)
-    ],
-    [
-      Tag('Smoothie 🥤', 16),
-    ],
-    [
-      Tag('Duck 🍱', 35),
-    ],
-    [
-      Tag('Healthy 💓', 6),
-    ]
-  ];
-
   static int getTagIndex(String searchTerm) {
-    if (!Tag.tagText.contains(searchTerm) &&
+    if (!Tag.tagText.any((String e) {
+          return e.toLowerCase().contains(searchTerm.toLowerCase());
+        }) &&
         !Tag.tagTextES.contains(searchTerm) &&
         !Tag.tagTextDE.contains(searchTerm) &&
         !Tag.tagTextFR.contains(searchTerm) &&
@@ -75,7 +36,7 @@ class Tag {
   static int _findTagIndex(String searchTerm, tags) {
     for (int i = 0; i < tags.length; i++) {
       String item = tags.elementAt(i);
-      if (item == searchTerm) {
+      if (item.toLowerCase().startsWith(searchTerm.toLowerCase())) {
         return i;
       }
     }

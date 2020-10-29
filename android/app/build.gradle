@@ -44,7 +44,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 29
         versionCode 253854
-        versionName "BMAP 3.9.4"
+        versionName "BMAP 3.9.5"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
