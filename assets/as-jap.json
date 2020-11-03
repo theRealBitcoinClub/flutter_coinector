@@ -1,10 +1,10 @@
 [{"p":"numazukoginza","x":"35.674296","y":"139.768588","n":"Sushi-Bar Numazuko Ginza 1st - 回転寿司酒場 銀座沼津港","t":"0","c":"293","s":"3.6","d":"0","a":"67,104,104,104","l":"1 Chome-8-19 Ginza, Chuo City, Tokyo, Japan"}
 ,{"p":"mezzo","x":"35.6625396","y":"139.7332497","n":"MEZZO Luxury Bar & Lounge","t":"2","c":"86","s":"4.0","d":"0","a":"31,33,82,160","l":"5 Chome-1 Roppongi, Minato City, Tokyo, Japan"}
-,{"p":"daikanyama","x":"35.64827","y":"139.7036586","n":"daikanyama O'KOK","t":"0","c":"33","s":"4.4","d":"0","a":"104,104,104,104","l":"2 Chome−21−15 Ebisunishi, Shibuya City, Tokyo, Japan"}
+,{"p":"daikanyama","x":"35.64827","y":"139.7036586","n":"daikanyama OKOK","t":"0","c":"33","s":"4.4","d":"0","a":"104,104,104,104","l":"2 Chome−21−15 Ebisunishi, Shibuya City, Tokyo, Japan"}
 ,{"p":"cafedeperle","x":"35.669106","y":"139.761887","n":"Cafe de Perle - カフェ・ド・ペルル","t":"2","c":"6","s":"4.3","d":"0","a":"81,82,83,84","l":"7 Chome−7−9, Ginza, Chuo City, Tokyo, Japan"}
 ,{"p":"twodogstaproom","x":"35.6626594","y":"139.7352281","n":"Two Dogs Taproom トゥー·ドッグス·タップルーム","t":"0","c":"241","s":"4.2","d":"0","a":"14,32,31,8","l":"Japan, Tokyo, Minato City, Roppongi, 3 Chome−15−24"}
 ,{"p":"thepinkcowakasaka","x":"35.6720966","y":"139.7397304","n":"The Pink Cow Akasaka - 赤坂 The Pink Cow (ピンクカウ)","t":"0","c":"57","s":"4.5","d":"0","a":"14,100,96,31","l":"2 Chome-7-5 Akasaka, Minato City, Tokyo, Japan"}
-,{"p":"downtownb","x":"35.665032","y":"139.736647","n":"Downtown B's Indian Kitchen - ダウンタウン ビーズ","t":"0","c":"357","s":"4.7","d":"0","a":"158,159,71,135","l":"3 Chome-4 Roppongi, Minato City, Tokyo, Japan"}
+,{"p":"downtownb","x":"35.665032","y":"139.736647","n":"Downtown Bs Indian Kitchen - ダウンタウン ビーズ","t":"0","c":"357","s":"4.7","d":"0","a":"158,159,71,135","l":"3 Chome-4 Roppongi, Minato City, Tokyo, Japan"}
 ,{"p":"fline","x":"35.6333881","y":"139.6611829","n":"f,line - エフライン","t":"4","c":"3","s":"5.0","d":"0","a":"104,104,104,104","l":"4 Chome-4-4-3 Kamiuma, Setagaya City, Tokyo, Japan"}
 ,{"p":"kagurazaka","x":"35.706609","y":"139.731268","n":"Kagurazaka aka be e tasuki - 神楽坂 あかべえ 襷｜神楽坂 焼き鳥 ワイン 日本酒","t":"0","c":"20","s":"3.7","d":"0","a":"104,104,104,104","l":"6 Chome-3 Yamabukicho, Shinjuku City, Tokyo, Japan"}
 ,{"p":"newsalsasudada","x":"35.6616764","y":"139.7351021","n":"Salsa Sudada - サルサスダーダ","t":"2","c":"43","s":"4.1","d":"0","a":"31,32,33,160","l":"東京都港区六本木５丁目１６−5 インペリアル六本木 Forum 2F - 5 Chome-16-5 Roppongi, Minato City, Tokyo, Japan"}
@@ -30,7 +30,7 @@
 ,{"p":"izakayatonteki","x":"35.6969398","y":"139.6796013","n":"Izakaya restaurant Tonteki, Nakano sakaue - 酒場食堂とんてき -中野坂上 ","t":"0","c":"31","s":"4.2","d":"0","a":"60,59,61,104","l":"Japan, 〒164-0012 Tokyo, Nakano City, Honcho, 2 Chome−51−13 フラワーハイツ 1F"}
 ,{"p":"tariq","x":"34.3983986","y":"132.4724483","n":"タリーク（ＴＡＲＩＱ）","t":"2","c":"5","s":"4.0","d":"0","a":"81,3,60,61","l":"12-9 Osugacho, Minami Ward, Hiroshima, 732-0821, Japan"}
 ,{"p":"sushitoge","x":"43.0552675","y":"141.3216802","n":"Sushi Togemaruyama Koen Ten - 寿司とうげ円山公園店","t":"0","c":"24","s":"4.8","d":"0","a":"67,60,61,104","l":"Japan, 〒060-0061 Hokkaido, Sapporo, Chuo Ward, Minami 1 Jonishi, 24 Chome−1−8 エスターアベニュー ２F"}
-,{"p":"jokersbar","x":"37.9147985","y":"139.0619746","n":"JOKER'S BAR","t":"2","c":"4","s":"4.0","d":"0","a":"127,33,32,31","l":"1 Chome-6-9 Higashiodori, Chuo Ward, Niigata, 950-0087, Japan"}
+,{"p":"jokersbar","x":"37.9147985","y":"139.0619746","n":"JOKERS BAR","t":"2","c":"4","s":"4.0","d":"0","a":"127,33,32,31","l":"1 Chome-6-9 Higashiodori, Chuo Ward, Niigata, 950-0087, Japan"}
 ,{"p":"coworkingtokyo","x":"35.6680691","y":"139.7320423","n":"Coworking Tokyo Chapter - ninetytwo13","t":"999","c":"26","s":"4.5","d":"0","a":"59,60,61,104","l":"9 Chome-2-13 Akasaka, Tokyo, 107-0052, Japan"}
 ,{"p":"sonidos","x":"35.6624155","y":"139.7349178","n":"Sonidos Bar Roppongi ソニドスバー六本木","t":"2","c":"28","s":"4.3","d":"0","a":"127,33,32,31","l":"SHIMOJOU building B1F 3-14-8, Roppongi, Minayo-ku, Tokyo 106-0031, Japan"}
 ,{"p":"ramenjinanbodos","x":"35.7384871","y":"139.662336","n":"Ramen - 麺処 次男房 桜台店","t":"0","c":"45","s":"4.0","d":"0","a":"135,100,97,104","l":"1 Chome-4-7 Sakuradai, Nerima City, Tokyo 176-0002"}

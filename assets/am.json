@@ -7,7 +7,7 @@
 ,{"p":"artehelado","x":"17.9917209","y":"-92.9471109","n":"Artehelado Villahermosa","t":"1","c":"36","s":"4.7","d":"0","a":"18,79,139,55","l":"Villahermosa, Tabasco, Mexico"}
 ,{"p":"verdepistache","x":"16.848293","y":"-99.8482528","n":"Verde Vegan Verde Pistache","t":"0","c":"13","s":"3.8","d":"0","a":"62,59,61,104","l":"Capitán James Cook 61, Costa Azul, 39850 Acapulco de Juárez, Gro., Mexico"}
 ,{"p":"rempahrempahcafebar","x":"18.4525012","y":"-69.9493383","n":"Rempah Rempah Cafe & Bar","t":"2","c":"44","s":"4.4","d":"0","a":"71,135,138,31","l":"Santo Domingo, Dominican Republic"}
-,{"p":"peoplespub","x":"45.1928354","y":"-67.2761859","n":"People's Pub","t":"2","c":"38","s":"4.2","d":"0","a":"104,104,104,104","l":"People's Pub, 1 Milltown Blvd, Saint Stephen, NB, Canada"}
+,{"p":"peoplespub","x":"45.1928354","y":"-67.2761859","n":"Peoples Pub","t":"2","c":"38","s":"4.2","d":"0","a":"104,104,104,104","l":"Peoples Pub, 1 Milltown Blvd, Saint Stephen, NB, Canada"}
 ,{"p":"figures","x":"43.6739721","y":"-79.3960984","n":"Figures","t":"0","c":"322","s":"4.1","d":"0","a":"14,100,8,138","l":"Avenue Road, Toronto, ON, Canada"}
 ,{"p":"surfranchhotelresort","x":"11.249599","y":"-85.842958","n":"Surf Ranch Hotel & Resort","t":"5","c":"251","s":"3.5","d":"0","a":"59,104,104,104","l":"San Juan del Sur, Nicaragua"}
 ,{"p":"brunpanaderia","x":"8.9764589","y":"-79.5203753","n":"Brun Panadería, Pastelería & café","t":"2","c":"26","s":"4.5","d":"0","a":"115,29,15,16","l":"Avenida Balboa Centro comercial balboa boutiques, Panamá, Panama"}
@@ -18,9 +18,9 @@
 ,{"p":"bodegadayana","x":"-11.9973412","y":"-77.0078031","n":"Bodega Dayana","t":"4","c":"0","s":"0.0","d":"0","a":"59,61,104,104","l":"jr las Gravas 2061, san juan de, Peru"}
 ,{"p":"livernoismcgraw","x":"42.3404134","y":"-83.1277302","n":"Livernois-McGraw Party Store","t":"4","c":"55","s":"4.1","d":"0","a":"81,82,83,84","l":"5545 Livernois, Detroit, MI 48210, USA"}
 ,{"p":"carolinabeecompany","x":"36.201415","y":"-78.504301","n":"The Carolina Bee Company","t":"4","c":"2","s":"5.0","d":"0","a":"59,104,104,104","l":"3630 Charlie Grissom Rd, Kittrell, NC 27544, USA"}
-,{"p":"kirby","x":"43.1435947","y":"-72.3732477","n":"Kirby's Q","t":"0","c":"46","s":"4.7","d":"0","a":"111,71,164,62","l":"River Street, Alstead, NH, USA"}
-,{"p":"streetza360","x":"43.068945","y":"-70.773056","n":"STREET'za 360","t":"0","c":"71","s":"4.6","d":"0","a":"71,99,14,62","l":"Islington Street, Portsmouth, NH, USA"}
-,{"p":"liarsbench","x":"43.0725374","y":"-70.7687944","n":"Liar's Bench Beer Co","t":"2","c":"117","s":"4.6","d":"0","a":"32,33,38,62","l":"Islington Street, Portsmouth, NH, USA"}
+,{"p":"kirby","x":"43.1435947","y":"-72.3732477","n":"Kirbys Q","t":"0","c":"46","s":"4.7","d":"0","a":"111,71,164,62","l":"River Street, Alstead, NH, USA"}
+,{"p":"streetza360","x":"43.068945","y":"-70.773056","n":"STREETza 360","t":"0","c":"71","s":"4.6","d":"0","a":"71,99,14,62","l":"Islington Street, Portsmouth, NH, USA"}
+,{"p":"liarsbench","x":"43.0725374","y":"-70.7687944","n":"Liars Bench Beer Co","t":"2","c":"117","s":"4.6","d":"0","a":"32,33,38,62","l":"Islington Street, Portsmouth, NH, USA"}
 ,{"p":"3sartspace","x":"43.0799851","y":"-70.7629727","n":"3S Artspace","t":"2","c":"161","s":"4.7","d":"0","a":"29,31,32,62","l":"Vaughan Street, Portsmouth, NH, USA"}
 ,{"p":"cascadeduchocolat","x":"42.981505","y":"-70.946847","n":"La Cascade Du Chocolat","t":"1","c":"25","s":"5.0","d":"0","a":"62,12,11,9","l":"109 Water St, Exeter, NH 03833, USA"}
 ,{"p":"misto","x":"43.120927","y":"-70.7198341","n":"Misto!","t":"0","c":"89","s":"4.4","d":"0","a":"62,59,61,104","l":"436 US-1, Kittery, ME 03904, USA"}
@@ -34,7 +34,7 @@
 ,{"p":"seacoasttheatre","x":"43.0786102","y":"-70.7545512","n":"Seacoast Repertory Theatre","t":"999","c":"218","s":"4.8","d":"0","a":"62,59,61,104","l":"125 Bow St, Portsmouth, NH 03801, USA"}
 ,{"p":"freestatebitcoin","x":"43.0768612","y":"-70.7546206","n":"Free State Bitcoin Shoppe","t":"4","c":"14","s":"4.0","d":"0","a":"62,59,61,104","l":"110 State Street, Portsmouth, NH 03801, USA"}
 ,{"p":"solsunwear","x":"43.0770566","y":"-70.754063","n":"Sol Sunwear Sunglasses","t":"4","c":"2","s":"5.0","d":"0","a":"62,59,61,104","l":"68 State Street, Portsmouth, NH 03801, USA"}
-,{"p":"pickwicksmercantile","x":"43.0772407","y":"-70.7538307","n":"Pickwick's Mercantile","t":"0","c":"74","s":"4.8","d":"0","a":"62,59,61,104","l":"64 State Street, Portsmouth, NH 03801, USA"}
+,{"p":"pickwicksmercantile","x":"43.0772407","y":"-70.7538307","n":"Pickwicks Mercantile","t":"0","c":"74","s":"4.8","d":"0","a":"62,59,61,104","l":"64 State Street, Portsmouth, NH 03801, USA"}
 ,{"p":"portcitycoin","x":"43.0555116","y":"-70.7689857","n":"Port City Coin & Jewelry","t":"4","c":"18","s":"5.0","d":"0","a":"62,59,61,104","l":"599 Lafayette Rd, Portsmouth, NH 03801, USA"}
 ,{"p":"lensdoctors","x":"43.054194","y":"-70.7696966","n":"Lens Doctors-Portsmouth","t":"4","c":"51","s":"4.6","d":"0","a":"62,59,61,104","l":"605 Lafayette Rd Suite 1, Portsmouth, NH 03801, USA"}
 ,{"p":"flowerroom","x":"43.1981733","y":"-70.8744589","n":"The Flower Room","t":"4","c":"23","s":"4.8","d":"0","a":"62,59,61,104","l":"474 Central Ave, Dover, NH 03820, USA"}
@@ -42,28 +42,28 @@
 ,{"p":"tacobeyondo","x":"43.1166614","y":"-71.8911372","n":"Taco Beyondo","t":"0","c":"429","s":"4.8","d":"0","a":"62,59,61,104","l":"53 Henniker St, Hillsboro, NH 03244, USA"}
 ,{"p":"lineagevapors2","x":"42.8053268","y":"-71.5444644","n":"Merrimack - Lineage Vapors","t":"4","c":"38","s":"4.8","d":"0","a":"62,59,61,104","l":"707 Milford Rd, Merrimack, NH 03054, USA"}
 ,{"p":"oldebostonian","x":"44.4751073","y":"-71.548275","n":"The Olde Bostonian Tavern & Grille","t":"0","c":"12","s":"3.0","d":"0","a":"62,59,61,104","l":"200 Portland Street, At The Cabot Inn, Lancaster, NH 03584, USA"}
-,{"p":"zicoshaircuts","x":"42.8790815","y":"-72.5615456","n":"Zico's Haircuts","t":"999","c":"16","s":"4.1","d":"0","a":"62,59,61,104","l":"896 Putney Rd #8, Brattleboro, VT 05301, USA"}
+,{"p":"zicoshaircuts","x":"42.8790815","y":"-72.5615456","n":"Zicos Haircuts","t":"999","c":"16","s":"4.1","d":"0","a":"62,59,61,104","l":"896 Putney Rd #8, Brattleboro, VT 05301, USA"}
 ,{"p":"route101locals","x":"42.9153114","y":"-72.2473031","n":"Route 101 Local Goods","t":"4","c":"33","s":"4.6","d":"0","a":"62,59,61,104","l":"661 Marlboro St, Keene, NH 03431, USA"}
 ,{"p":"cheshirewellnesscenter","x":"42.934349","y":"-72.274221","n":"Cheshire Wellness Center","t":"999","c":"9","s":"5.0","d":"0","a":"62,59,61,104","l":"103 Roxbury St Suite 103, Keene, NH 03431, USA"}
 ,{"p":"thirstyowl","x":"42.9280374","y":"-72.2830562","n":"Thirsty Owl","t":"0","c":"21","s":"4.7","d":"0","a":"62,59,61,104","l":"141 Winchester St, Keene, NH 03431, USA"}
 ,{"p":"hothogs","x":"42.9306435","y":"-72.2805333","n":"Hot Hogs BBQ","t":"1","c":"2","s":"5.0","d":"0","a":"62,59,61,104","l":"100 Emerald St, Keene, NH 03431, USA"}
 ,{"p":"curryindian","x":"42.9312326","y":"-72.2833466","n":"Curry Indian Restaurant and Groceries","t":"0","c":"153","s":"4.7","d":"0","a":"62,59,61,104","l":"149 Emerald St, Keene, NH 03431, USA"}
-,{"p":"littlezoes","x":"42.9312753","y":"-72.2848349","n":"Little Zoe's Pizza. Brick oven and Take & Bake","t":"0","c":"31","s":"4.7","d":"0","a":"62,59,61,104","l":"149 Emerald St #5, Keene, NH 03431, USA"}
+,{"p":"littlezoes","x":"42.9312753","y":"-72.2848349","n":"Little Zoes Pizza. Brick oven and Take & Bake","t":"0","c":"31","s":"4.7","d":"0","a":"62,59,61,104","l":"149 Emerald St #5, Keene, NH 03431, USA"}
 ,{"p":"streetsavory","x":"43.1128684","y":"-72.3238179","n":"Street & Savory (Food Truck)","t":"1","c":"0","s":"0.0","d":"0","a":"59,104,104,104","l":"548A Alstead Center Rd, Alstead, NH 03602, USA"}
 ,{"p":"campusstore","x":"42.9275424","y":"-72.2832991","n":"Campus Convenience Store","t":"3","c":"6","s":"2.7","d":"0","a":"59,104,104,104","l":"152 Winchester St, Keene, NH 03431, USA"}
 ,{"p":"makeitso","x":"42.931414","y":"-72.27709","n":"Monadnock Makerspace Coworking","t":"999","c":"2","s":"5.0","d":"0","a":"62,59,61,104","l":"12 Eagle Ct, Keene, NH 03431, USA"}
 ,{"p":"localburger","x":"42.9321576","y":"-72.2778317","n":"Local Burger","t":"0","c":"296","s":"4.4","d":"0","a":"62,59,61,104","l":"82 Main St, Keene, NH 03431, USA"}
 ,{"p":"thecornernews","x":"42.9323554","y":"-72.2785143","n":"The Corner News","t":"4","c":"66","s":"4.6","d":"0","a":"62,59,61,104","l":"67 Main St, Keene, NH 03431, USA"}
 ,{"p":"modasuostudio","x":"42.9333563","y":"-72.2788846","n":"Moda Suo Studio Hair Salon","t":"999","c":"31","s":"4.7","d":"0","a":"62,59,61,104","l":"7 Main St Suite #1, Keene, NH 03431, USA"}
-,{"p":"zicoshaircuts","x":"42.8790815","y":"-72.5615456","n":"Zico's Haircuts","t":"999","c":"16","s":"4.1","d":"0","a":"62,59,61,104","l":"896 Putney Rd #8, Brattleboro, VT 05301, USA"}
+,{"p":"zicoshaircuts","x":"42.8790815","y":"-72.5615456","n":"Zicos Haircuts","t":"999","c":"16","s":"4.1","d":"0","a":"62,59,61,104","l":"896 Putney Rd #8, Brattleboro, VT 05301, USA"}
 ,{"p":"bangkokexpress","x":"39.106399","y":"-84.51482","n":"Bangkok Express Thai Restaurant","t":"0","c":"83","s":"3.5","d":"0","a":"62,59,61,104","l":"12 W Court St, Cincinnati, OH 45202, USA"}
 ,{"p":"salonsibell","x":"30.495536","y":"-97.6539311","n":"Salon Sibell","t":"999","c":"21","s":"4.8","d":"0","a":"62,59,61,104","l":"2051 Gattis School Rd #190, Round Rock, TX 78664, USA"}
 ,{"p":"laughingfrogs","x":"37.7188648","y":"-122.0780632","n":"Laughing Frogs Health Consultant","t":"999","c":"1","s":"5.0","d":"0","a":"62,59,61,104", "l":"laughingfrogs.com"}
-,{"p":"murphysdiner","x":"42.9855489","y":"-71.4635307","n":"Murphy's Diner - American Restaurant","t":"0","c":"283","s":"3.8","d":"0","a":"59,104,104,104","l":"516 Elm St, Manchester, NH 03101, USA"}
-,{"p":"murphystaproom","x":"42.985186","y":"-71.4634037","n":"Murphy's Taproom - Airy saloon with a deep beer list","t":"0","c":"543","s":"4.0","d":"0","a":"32,33,38,32","l":"494 Elm St, Manchester, NH 03101, USA"}
+,{"p":"murphysdiner","x":"42.9855489","y":"-71.4635307","n":"Murphys Diner - American Restaurant","t":"0","c":"283","s":"3.8","d":"0","a":"59,104,104,104","l":"516 Elm St, Manchester, NH 03101, USA"}
+,{"p":"murphystaproom","x":"42.985186","y":"-71.4634037","n":"Murphys Taproom - Airy saloon with a deep beer list","t":"0","c":"543","s":"4.0","d":"0","a":"32,33,38,32","l":"494 Elm St, Manchester, NH 03101, USA"}
 ,{"p":"street","x":"43.069034","y":"-70.7732358","n":"STREET eat/drink 360","t":"0","c":"668","s":"4.5","d":"0","a":"7,15,99,71","l":"STREET eat/drink 360, Islington Street, Portsmouth, NH, USA"}
 ,{"p":"lamaisonnavarre","x":"43.076224","y":"-70.760166","n":"La Maison Navarre - Pastry, Bistro, Wine Bar","t":"2","c":"219","s":"4.8","d":"0","a":"133,81,109,134","l":"Congress Street, Portsmouth, NH, USA"}
-,{"p":"fezziwig","x":"43.0768584","y":"-70.7546156","n":"Fezziwig's Food and Fountain","t":"0","c":"100","s":"4.7","d":"0","a":"81,109,15,8","l":"State Street, Portsmouth, NH, USA"}
+,{"p":"fezziwig","x":"43.0768584","y":"-70.7546156","n":"Fezziwigs Food and Fountain","t":"0","c":"100","s":"4.7","d":"0","a":"81,109,15,8","l":"State Street, Portsmouth, NH, USA"}
 ,{"p":"theboldmariner","x":"36.8761266","y":"-76.3054246","n":"The Bold Mariner Brewing Company","t":"2","c":"88","s":"4.6","d":"0","a":"32,8,119,32","l":"Bowdens Ferry Road, Norfolk, VA, USA"}
 ,{"p":"lasireneupper","x":"40.7838279","y":"-73.9780648","n":"La Sirene Upper West Side","t":"0","c":"70","s":"4.4","d":"0","a":"38,100,97,109","l":"Amsterdam Avenue, New York, NY, USA"}
 ,{"p":"lasirenesoho","x":"40.724543","y":"-74.005667","n":"La Sirene SOHO","t":"0","c":"269","s":"4.5","d":"0","a":"38,100,97,109","l":"Broome Street, Manhattan, New York, NY, USA"}
@@ -76,7 +76,7 @@
 ,{"p":"luminous","x":"44.8029692","y":"-106.9537325","n":"Luminous Brewhouse","t":"2","c":"76","s":"4.6","d":"0","a":"32,33,55,119","l":"Broadway Street, Sheridan, WY, USA"}
 ,{"p":"mill","x":"44.774132","y":"-106.9417101","n":"Mill Inn","t":"5","c":"119","s":"4.5","d":"0","a":"104,104,104,104","l":"Coffeen Avenue, Sheridan, WY, USA"}
 ,{"p":"classiccrustpizza","x":"33.5974227","y":"-112.0351418","n":"Classic Crust Pizza","t":"0","c":"180","s":"4.2","d":"0","a":"14,102,108,109","l":"Classic Crust Pizza, E Cactus Rd, Phoenix, AZ, USA"}
-,{"p":"steaknhoagie","x":"35.095978","y":"-80.6775481","n":"Steak ‘n Hoagie Shop","t":"0","c":"0","s":"0.0","d":"0","a":"59,104,104,104","l":"1542 Stallings Road, Matthews, North Carolina, 28104, USA"}
+,{"p":"steaknhoagie","x":"35.095978","y":"-80.6775481","n":"Steak n Hoagie Shop","t":"0","c":"0","s":"0.0","d":"0","a":"59,104,104,104","l":"1542 Stallings Road, Matthews, North Carolina, 28104, USA"}
 ,{"p":"lolliquors","x":"29.548738","y":"-98.344312","n":"LOL LIQUORS","t":"4","c":"115","s":"4.8","d":"0","a":"59,104,104,104","l":"12107 Toepperwein Rd #6, Live Oak, TX 78233, USA"}
 ,{"p":"bardofarm","x":"43.4677437","y":"72.1694528","n":"Bardo Farm","t":"3","c":"0","s":"0.0","d":"0","a":"59,104,104,104","l":"92 Forehand Rd, Croydon, NH 03773, USA"}
 ,{"p":"livingtea1","x":"32.7604005","y":"-117.1304427","n":"Living Tea Kombucha San Diego","t":"2","c":"21","s":"4.8","d":"0","a":"16,106,8,37","l":"4566 30th St, San Diego, CA 92116, USA"}
@@ -99,7 +99,7 @@
 ,{"p":"fanatic","x":"9.5639874","y":"-69.2035326","n":"Fanatic Sport Bar","t":"2","c":"142","s":"4.4","d":"0","a":"31,32,71,99","l":"Calle 31, Acarigua, Portuguesa, Venezuela"}
 ,{"p":"steakburger","x":"9.5667649","y":"-69.215185","n":"Steak Burger","t":"0","c":"174","s":"4.6","d":"0","a":"7,99,137,100","l":"Avenida Las Lagrimas, Araure, Portuguesa, Venezuela"}
 ,{"p":"lasogagrillbar","x":"9.5637874","y":"-69.2132714","n":"La Soga Grill & Bar","t":"0","c":"158","s":"4.6","d":"0","a":"7,111,99,100","l":"Araure, Portuguesa, Venezuela"}
-,{"p":"litalia","x":"9.558281","y":"-69.204444","n":"L'Italia Restaurant","t":"0","c":"21","s":"4.2","d":"0","a":"102,108,71,15","l":"Acarigua, Portuguesa, Venezuela"}
+,{"p":"litalia","x":"9.558281","y":"-69.204444","n":"LItalia Restaurant","t":"0","c":"21","s":"4.2","d":"0","a":"102,108,71,15","l":"Acarigua, Portuguesa, Venezuela"}
 ,{"p":"altosdeleste","x":"7.7724126","y":"-72.209355","n":"Panaderia Altos del Este","t":"1","c":"69","s":"4.0","d":"0","a":"115,116,117,142","l":"San Cristobal, Tachira, Venezuela"}
 ,{"p":"buddhabar","x":"10.4806044","y":"-66.8553371","n":"Rest. Buddha Bar Caracas","t":"0","c":"370","s":"4.5","d":"0","a":"67,109,56,138","l":"212 Calle Orinoco, Caracas 1060, Miranda, Venezuela"}
 ,{"p":"wowfles","x":"10.5193129","y":"-66.9381218","n":"WOWFLES Venezuela","t":"0","c":"9","s":"3.7","d":"0","a":"59,104,104,104","l":"Calle Ruperto Lugo 1A, Caracas 1030, Capital District, Venezuela"}
@@ -131,9 +131,9 @@
 ,{"p":"bonappetit","x":"10.494118","y":"-66.8780864","n":"Bon Appetit - C.C. City Market nivel Feria","t":"2","c":"1","s":"2.0","d":"0","a":"59,104,104,104","l":"Calle Unión, Bulevar de Sabana Grande, Caracas 1050, Distrito Capital, Venezuela"}
 ,{"p":"planetsandwich","x":"10.4974977","y":"-66.8229553","n":"Planet Sandwich","t":"0","c":"0","s":"0.0","d":"0","a":"59,15,16,115","l":"Final Calle Imboca, Caracas, Miranda, 1071, Venezuela"}
 ,{"p":"hachebistro","x":"10.5031157","y":"-66.8312804","n":"Hache Bistro","t":"0","c":"76","s":"4.3","d":"0","a":"59,15,143,115","l":"Dentro de Centro Cultural Los Galpones, Transversal 8, Avenida Sucre, Caracas 1071, Miranda, Venezuela"}
-,{"p":"churchchickenlacascada","x":"10.3551461","y":"-67.0024613","n":"Church's Chicken","t":"0","c":"11","s":"3.5","d":"0","a":"71,143,16,101","l":"Centro Comercial Ciudad La Cascada, Nivel Feria, Local Local: N2-13, Carretera Panamericana, Municipio Carrizal, Miranda, Venezuela"}
+,{"p":"churchchickenlacascada","x":"10.3551461","y":"-67.0024613","n":"Churchs Chicken","t":"0","c":"11","s":"3.5","d":"0","a":"71,143,16,101","l":"Centro Comercial Ciudad La Cascada, Nivel Feria, Local Local: N2-13, Carretera Panamericana, Municipio Carrizal, Miranda, Venezuela"}
 ,{"p":"fortalezayvida","x":"10.5037123","y":"-66.9529092","n":"Cafetin fortaleza y vida - C.C. Propatria","t":"2","c":"0","s":"0.0","d":"0","a":"59,29,9,8","l":"Caracas 1030, Distrito Capital, Venezuela"}
-,{"p":"comoncasa","x":"10.5042652","y":"-66.911813","n":"COMO n' CASA - C.C. El Gallo De Oro","t":"0","c":"0","s":"0.0","d":"0","a":"59,104,104,104","l":"Caracas 1012, Distrito Capital, Venezuela"}
+,{"p":"comoncasa","x":"10.5042652","y":"-66.911813","n":"COMO n CASA - C.C. El Gallo De Oro","t":"0","c":"0","s":"0.0","d":"0","a":"59,104,104,104","l":"Caracas 1012, Distrito Capital, Venezuela"}
 ,{"p":"planetsandwich","x":"10.4974977","y":"-66.8229553","n":"Planet Sandwich - C.C. Boleíta Center","t":"0","c":"0","s":"0.0","d":"0","a":"59,15,16,115","l":"Caracas 1071, Miranda, Venezuela"}
 ,{"p":"mediterraneogourmet","x":"10.4972026","y":"-66.8514195","n":"Mediterráneo Gourmet","t":"0","c":"3","s":"5.0","d":"0","a":"59,8,109,133","l":"Avenida Eugenio Mendoza, Caracas 1060, Distrito Capital"}
 ,{"p":"practipizza","x":"10.372183","y":"-66.9697335","n":"Practipizza","t":"0","c":"3","s":"3.7","d":"0","a":"59,14,16,8","l":"San Antonio de Los Altos 1204, Miranda"}
@@ -236,7 +236,7 @@
 ,{"p":"apiainnsamoa","x":"-13.8474364","y":"-171.778085","n":"Apia Inn Samoa","t":"5","c":"1","s":"5.0","d":"0","a":"156,129,138,31","l":"Apia, Samoa, Island"}
 ,{"p":"doccafe","x":"-34.6007987","y":"-58.3766964","n":"DOC Café","t":"2","c":"43","s":"4.9","d":"0","a":"29,10,11,12","l":"Maipú 625, C1006 ACG, Buenos Aires, Argentina"}
 ,{"p":"verduleriaarcoiris","x":"-32.1787009","y":"-64.1173234","n":"Verduleria Arco Iris","t":"3","c":"17","s":"4.8","d":"0","a":"59,104,104,104","l":"25 de Febrero 140, Río Tercero, Córdoba, Argentina"}
-,{"p":"qpatacon","x":"6.1630242","y":"-75.5814668","n":"Q'patacon","t":"0","c":"24","s":"4.4","d":"0","a":"59,104,104,104","l":"Cra. 29a ##65, Envigado, Antioquia, Colombia"}
+,{"p":"qpatacon","x":"6.1630242","y":"-75.5814668","n":"Qpatacon","t":"0","c":"24","s":"4.4","d":"0","a":"59,104,104,104","l":"Cra. 29a ##65, Envigado, Antioquia, Colombia"}
 ,{"p":"bolosazoncostena","x":"6.1762556","y":"-75.5838155","n":"Bololó Sazón Costeña","t":"0","c":"214","s":"4.4","d":"0","a":"59,104,104,104","l":"Transversal 31 Sur # 32D - 21, Envigado, Antioquia, Colombia"}
 ,{"p":"puntonaranja","x":"6.2512262","y":"-75.5821656","n":"PUNTO NARANJA","t":"3","c":"22","s":"3.8","d":"0","a":"59,104,104,104","l":"Cra. 64 #45A-12, Medellín, Antioquia, Colombia"}
 ,{"p":"chezalice","x":"6.1736829","y":"-75.58481","n":"CHEZ ALICE ATELIER GOURMET","t":"0","c":"67","s":"4.8","d":"0","a":"59,104,104,104","l":"Tv. 33 Sur #3353, Envigado, Antioquia, Colombia"}
@@ -268,7 +268,7 @@
 ,{"p":"lmdistribuidora","x":"6.1697852","y":"-75.5846356","n":"Distribuidora L&M","t":"4","c":"0","s":"0.0","d":"0","a":"59,104,104,104","l":"Cl. 36 Sur ##39-38, Envigado, Antioquia, Colombia"}
 ,{"p":"orangegrill","x":"6.2563608","y":"-75.5787331","n":"Orange Grill - Orange CE","t":"0","c":"0","s":"0.0","d":"0","a":"59,104,104,104","l":"Cra. 64b ##61-66, Medellín, Antioquia, Colombia"}
 ,{"p":"mercadosdelrancho","x":"6.2520578","y":"-75.6084825","n":"Mercados Del Rancho","t":"3","c":"1","s":"5.0","d":"0","a":"59,104,104,104","l":"Cl. 43 ##90-50, Medellín, Antioquia, Colombia"}
-,{"p":"rellenitas","x":"6.1750926","y":"-75.5839805","n":"Rellenitas D'","t":"0","c":"29","s":"4.6","d":"0","a":"59,104,104,104","l":"Dg. 32d ##32B-09, Envigado, Antioquia, Colombia"}
+,{"p":"rellenitas","x":"6.1750926","y":"-75.5839805","n":"Rellenitas D","t":"0","c":"29","s":"4.6","d":"0","a":"59,104,104,104","l":"Dg. 32d ##32B-09, Envigado, Antioquia, Colombia"}
 ,{"p":"premiumpizza","x":"6.231076","y":"-75.592791","n":"Premium Pizza Alitas Y Arroz S.A.S.","t":"0","c":"43","s":"4.4","d":"0","a":"59,104,104,104","l":"Cra. 72 ## 29-61, Medellín, Antioquia, Colombia"}
 ,{"p":"ruta40company","x":"6.155606","y":"-75.5826227","n":"Ruta40 Company","t":"0","c":"0","s":"0.0","d":"0","a":"59,104,104,104","l":"Clle40Fsur#25A23, Envigado, Antioquia, Colombia"}
 ,{"p":"zacatecas","x":"6.243155","y":"-75.6019976","n":"Zacatecas Restaurante Mexicano","t":"0","c":"203","s":"4.6","d":"0","a":"59,104,104,104","l":"Cra. 80b ##35-07, Medellín, Antioquia, Colombia"}
@@ -304,7 +304,7 @@
 ,{"p":"lamiaexpress","x":"7.1153228","y":"-73.1079234","n":"La Mia Express","t":"0","c":"30","s":"4.5","d":"0","a":"59,104,104,104","l":"La Quinta, Cra. 36 ##49-45, Bucaramanga, Santander, Colombia"}
 ,{"p":"dimariagelateria","x":"6.2467056","y":"-75.590518","n":"DiMaria Gelateria","t":"1","c":"6","s":"4.7","d":"0","a":"59,104,104,104","l":"Cra. 71, Cq. 4 ##09, Medellín, Antioquia, Colombia"}
 ,{"p":"losquesoditos","x":"6.1630187","y":"-75.5819018","n":"los quesuditos","t":"0","c":"5","s":"4.4","d":"0","a":"59,104,104,104","l":"Cl. 39B Sur #29a-27, Envigado, Antioquia, Colombia"}
-,{"p":"tokachicharron","x":"6.1706463","y":"-75.5927825","n":"Toka by The Chicharron's Factory","t":"0","c":"37","s":"4.4","d":"0","a":"59,104,104,104","l":"Cl. 39 Sur #46 - 35, Envigado, Antioquia, Colombia"}
+,{"p":"tokachicharron","x":"6.1706463","y":"-75.5927825","n":"Toka by The Chicharrons Factory","t":"0","c":"37","s":"4.4","d":"0","a":"59,104,104,104","l":"Cl. 39 Sur #46 - 35, Envigado, Antioquia, Colombia"}
 ,{"p":"sanpatelosbar","x":"6.173117","y":"-75.5855734","n":"San Patelos bar","t":"2","c":"9","s":"4.2","d":"0","a":"59,106,33,32","l":"Dg. 40 ##33 sur 59, Envigado, Antioquia, Colombia"}
 ,{"p":"snacksazon","x":"6.1622253","y":"-75.5822404","n":"Snack Sazon","t":"0","c":"1","s":"5.0","d":"0","a":"59,104,104,104","l":"Cl. 40 Sur ###29a 20, Envigado, Antioquia, Colombia"}
 ,{"p":"elpandemilola","x":"6.1740397","y":"-75.5851766","n":"El Pan de mi Lola","t":"1","c":"4","s":"5.0","d":"0","a":"59,104,104,104","l":"Dirección Diagonal 39 con transversal con 32c sur - 6. Barrio, Envigado, Antioquia, Colombia"}
@@ -327,7 +327,7 @@
 ,{"p":"latortata","x":"4.649932","y":"-74.058985","n":"La Tortata","t":"1","c":"4","s":"4.8","d":"0","a":"59,104,104,104","l":"Cl. 66 ##7-18, Bogotá, Colombia"}
 ,{"p":"pollochef","x":"6.1686592","y":"-75.5875762","n":"PolloChef","t":"0","c":"0","s":"0.0","d":"0","a":"59,104,104,104","l":"Calle 38A Sur #41 65, Envigado, Antioquia, Colombia"}
 ,{"p":"publichouselaureles","x":"6.2461097","y":"-75.5960508","n":"Public House Laureles","t":"0","c":"129","s":"4.3","d":"0","a":"59,104,104,104","l":"Av. Nutibara ##75-14, Medellín, Antioquia, Colombia"}
-,{"p":"bearspizzeria","x":"6.2460827","y":"-75.5967351","n":"Bear's Pizzería","t":"0","c":"1","s":"5.0","d":"0","a":"59,104,104,104","l":"Cq. 75 ##39-99 a 39-5, Medellín, Antioquia, Colombia"}
+,{"p":"bearspizzeria","x":"6.2460827","y":"-75.5967351","n":"Bears Pizzería","t":"0","c":"1","s":"5.0","d":"0","a":"59,104,104,104","l":"Cq. 75 ##39-99 a 39-5, Medellín, Antioquia, Colombia"}
 ,{"p":"sushiworld","x":"6.1773127","y":"-75.5864123","n":"Sushi World Envigado","t":"0","c":"291","s":"4.6","d":"0","a":"59,67,104,104","l":"Cl. 30a Sur ## 44 A 57, Envigado, Antioquia, Colombia"}
 ,{"p":"arpoe","x":"7.8935369","y":"-72.4995075","n":"Arpoe","t":"2","c":"1","s":"5.0","d":"0","a":"59,104,104,104","l":"Av. 0 ##4 - 56, Cúcuta, Norte de Santander, Colombia"}
 ,{"p":"llanerada","x":"7.8378075","y":"-72.508783","n":"La llanerada de juancho","t":"0","c":"68","s":"4.6","d":"0","a":"59,104,104,104","l":"Los Patios, Norte de Santander, Colombia"}
@@ -356,8 +356,8 @@
 ,{"p":"lanuevapalma","x":"6.2290877","y":"-75.5964566","n":"LA NUEVA PALMA","t":"0","c":"7","s":"4.3","d":"0","a":"59,104,104,104","l":"Cl. 28 #76-35, Medellín, Antioquia, Colombia"}
 ,{"p":"blackcoffeehouse","x":"6.1695039","y":"-75.5845162","n":"Black Coffee House","t":"2","c":"5","s":"4.6","d":"0","a":"59,29,133,16","l":"Cra. 39 #39 sur 21, Envigado, Antioquia, Colombia"}
 ,{"p":"Laparriladelvenado","x":"6.1659176","y":"-75.6210514","n":"La Parrilla del Venado","t":"0","c":"16","s":"4.7","d":"0","a":"59,104,104,104","l":"Cra. 50A ##34-50, Itagüi, Antioquia, Colombia"}
-,{"p":"mariosarepas","x":"6.2425428","y":"-75.5999712","n":"Mario's Arepas","t":"0","c":"4","s":"4.0","d":"0","a":"59,104,104,104","l":"Cl. 35 ##79-65 a 79-1, Medellín, Antioquia, Colombia"}
-,{"p":"mariospizza","x":"6.242639","y":"-75.5997305","n":"Mario's Pizza","t":"0","c":"5","s":"3.8","d":"0","a":"59,104,104,104","l":"Cl. 35 ###79-10, Medellín, Antioquia, Colombia"}
+,{"p":"mariosarepas","x":"6.2425428","y":"-75.5999712","n":"Marios Arepas","t":"0","c":"4","s":"4.0","d":"0","a":"59,104,104,104","l":"Cl. 35 ##79-65 a 79-1, Medellín, Antioquia, Colombia"}
+,{"p":"mariospizza","x":"6.242639","y":"-75.5997305","n":"Marios Pizza","t":"0","c":"5","s":"3.8","d":"0","a":"59,104,104,104","l":"Cl. 35 ###79-10, Medellín, Antioquia, Colombia"}
 ,{"p":"lemuah","x":"6.240113","y":"-75.587955","n":"Le muah","t":"0","c":"7","s":"4.6","d":"0","a":"59,104,104,104","l":"Cl 34#66a-54, Medellín, Antioquia, Colombia"}
 ,{"p":"publichouse33","x":"6.239006","y":"-75.5975417","n":"Public House 33","t":"0","c":"298","s":"4.3","d":"0","a":"59,104,104,104","l":"Av. 33 ## 76 - 100, Medellín, Antioquia, Colombia"}
 ,{"p":"naturalgreenmarket","x":"6.232027","y":"-75.5989726","n":"NaturalGreen Market Mercado Saludable","t":"3","c":"10","s":"4.5","d":"0","a":"59,104,104,104","l":"ChIJYdbUl5UpRI4RlsmLyjm2IAM"}
@@ -366,7 +366,7 @@
 ,{"p":"mrfood73","x":"6.2481004","y":"-75.5924077","n":"Mr. Food","t":"0","c":"3","s":"3.0","d":"0","a":"59,104,104,104","l":"Cra. 73 ##41-2 a 41-88, Medellín, Antioquia, Colombia"}
 ,{"p":"avilasushi","x":"6.2423592","y":"-75.5832214","n":"Avila Sushi","t":"0","c":"3","s":"3.7","d":"0","a":"59,67,104,104","l":"Cra. 65 ###38-01, Medellín, Antioquia, Colombia"}
 ,{"p":"mdechorizo","x":"6.2410167","y":"-75.5968276","n":"MDE Chorizo Company","t":"0","c":"301","s":"4.5","d":"0","a":"59,104,104,104","l":"Cra. 76 ##34-16, Medellín, Antioquia, Colombia"}
-,{"p":"paellasnacks","x":"6.2103259","y":"-75.571404","n":"Paella Snack's","t":"0","c":"3","s":"4.7","d":"0","a":"59,104,104,104","l":"Cra. 43b ## 09 - 19, Medellín, Antioquia, Colombia"}
+,{"p":"paellasnacks","x":"6.2103259","y":"-75.571404","n":"Paella Snacks","t":"0","c":"3","s":"4.7","d":"0","a":"59,104,104,104","l":"Cra. 43b ## 09 - 19, Medellín, Antioquia, Colombia"}
 ,{"p":"latineria","x":"6.2099726","y":"-75.5713607","n":"Latinería","t":"2","c":"585","s":"4.6","d":"0","a":"59,139,133,55","l":"Cl. 9 #43b 17, Medellín, Antioquia, Colombia"}
 ,{"p":"bambuburguer","x":"7.8437879","y":"-72.4696897","n":"Bambu Burguer Fast Food","t":"0","c":"0","s":"0.0","d":"0","a":"59,104,104,104","l":"Calle 17 #12-55 Barrio La Palmita, Villa Del Rosario, Norte de Santander, Colombia"}
 ,{"p":"mrfoods","x":"6.242876","y":"-75.6014311","n":"Mr Foods","t":"0","c":"9","s":"5.0","d":"0","a":"59,104,104,104","l":"Cl. 35 ##80a-36, Medellín, Antioquia, Colombia"}
@@ -374,7 +374,7 @@
 ,{"p":"laestacionenvigado","x":"6.1760013","y":"-75.5826337","n":"La Estacion","t":"0","c":"116","s":"4.5","d":"0","a":"59,104,104,104","l":"Dg. 32 #32 Sur-16 a 32 Sur-22,, Envigado, Antioquia, Colombia"}
 ,{"p":"duepizza","x":"6.1631637","y":"-75.5935839","n":"DUEPIZZA","t":"0","c":"5","s":"4.8","d":"0","a":"59,104,104,104","l":"Carrera 42b # 45a Sur-20, Envigado, Antioquia, Colombia"}
 ,{"p":"amalur","x":"6.2463562","y":"-75.5899408","n":"Amalur Café Bar","t":"2","c":"42","s":"4.6","d":"0","a":"8,31,15,32","l":"Cq. 4 ## 70 - 79, Medellín, Antioquia, Colombia"}
-,{"p":"casuposfood","x":"6.1666336","y":"-75.5908208","n":"Casupo's Food","t":"0","c":"97","s":"4.8","d":"0","a":"59,104,104,104","l":"Cl. 40H Sur ##42A 29, Envigado, Antioquia, Colombia"}
+,{"p":"casuposfood","x":"6.1666336","y":"-75.5908208","n":"Casupos Food","t":"0","c":"97","s":"4.8","d":"0","a":"59,104,104,104","l":"Cl. 40H Sur ##42A 29, Envigado, Antioquia, Colombia"}
 ,{"p":"lepanetier","x":"6.2454824","y":"-75.5939154","n":"Le Panetier","t":"0","c":"152","s":"4.4","d":"0","a":"59,104,104,104","l":"Cq. 73b, Medellín, Antioquia, Colombia"}
 ,{"p":"dimariagelateria","x":"6.2467058","y":"-75.5905181","n":"DiMaria Gelateria","t":"1","c":"6","s":"4.7","d":"0","a":"59,104,104,104","l":"Cra. 71, Cq. 4 ##09, Medellín, Antioquia, Colombia"}
 ,{"p":"restaurantesupercaliente","x":"6.16522","y":"-75.59766","n":"Restaurante Super Caliente","t":"1","c":"9","s":"4.7","d":"0","a":"59,104,104,104","l":"Envigado, Antioquia, Colombia"}

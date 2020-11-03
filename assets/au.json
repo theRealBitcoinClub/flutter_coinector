@@ -3,11 +3,11 @@
 ,{"p":"restaurant1903","x":"-31.9444011","y":"115.8634259","n":"1903 Restaurant","t":"0","c":"116","s":"4.3","d":"0","a":"67,100,97,143","l":"Robinson Avenue, Perth WA, Australia"}
 ,{"p":"urbanpizza","x":"-33.885727","y":"151.177249","n":"Urban Pizza Bar","t":"1","c":"83","s":"4.4","d":"0","a":"14,102,109,110","l":"Layton Street, Camperdown NSW, Australia"}
 ,{"p":"verucasalt","x":"-37.885791","y":"144.987916","n":"Veruca Salt","t":"0","c":"84","s":"4.5","d":"0","a":"8,9,11,124","l":"Ormond Road, Elwood VIC, Australia"}
-,{"p":"francesca","x":"-37.773621","y":"144.998428","n":"Francesca's Bar","t":"2","c":"115","s":"4.5","d":"0","a":"31,32,14,76","l":"High Street, Northcote VIC, Australia"}
+,{"p":"francesca","x":"-37.773621","y":"144.998428","n":"Francescas Bar","t":"2","c":"115","s":"4.5","d":"0","a":"31,32,14,76","l":"High Street, Northcote VIC, Australia"}
 ,{"p":"platform62","x":"-33.9231906","y":"151.1874351","n":"Platform 62","t":"0","c":"65","s":"4.4","d":"0","a":"120,121,81,3","l":"Bourke Street, Mascot NSW, Australia"}
 ,{"p":"spawnpoint","x":"-33.869619","y":"151.2051551","n":"Spawn Point Small Bar","t":"2","c":"300","s":"4.4","d":"0","a":"56,57,118,119","l":"Clarence Street, Sydney NSW, Australia"}
 ,{"p":"lastazione","x":"-33.732271","y":"151.1291659","n":"La Stazione Bakery & Cafe","t":"1","c":"22","s":"4.7","d":"0","a":"29,115,116,117","l":"Rohini Street, Turramurra NSW, Australia"}
-,{"p":"portstephens","x":"-32.718805","y":"152.14999","n":"Port Stephen's Motel - 3 Star Hotel","t":"5","c":"44","s":"4.0","d":"0","a":"104,104,104,104","l":"Magnus Street, Nelson Bay NSW, Australia"}
+,{"p":"portstephens","x":"-32.718805","y":"152.14999","n":"Port Stephens Motel - 3 Star Hotel","t":"5","c":"44","s":"4.0","d":"0","a":"104,104,104,104","l":"Magnus Street, Nelson Bay NSW, Australia"}
 ,{"p":"nutrientdepot","x":"-43.5435925","y":"172.5877462","n":"Nutrient Depot","t":"0","c":"49","s":"4.5","d":"0","a":"3,6,29,135","l":"Birmingham Drive, Middleton, Christchurch, New Zealand"}
 ,{"p":"stoneandwood","x":"-28.634215","y":"153.586002","n":"Stone & Wood Brewing Company","t":"2","c":"132","s":"4.7","d":"0","a":"32,33,119,32","l":"Centennial Circuit, Byron Bay NSW, Australia"}
 ,{"p":"nexthotelbrisbane","x":"-27.4702158","y":"153.0238486","n":"Next Hotel Brisbane","t":"5","c":"927","s":"4.5","d":"0","a":"104,104,104,104","l":"Queen Street, Brisbane City QLD, Australia"}
@@ -16,7 +16,7 @@
 ,{"p":"newyorkpizza","x":"-27.4569692","y":"153.0368568","n":"Boroughs of New York Wood fire Pizza","t":"0","c":"133","s":"3.8","d":"0","a":"14,125,126,127","l":"Creek Road, Carindale QLD, Australia"}
 ,{"p":"nomnom","x":"-27.4580795","y":"153.0351267","n":"Nom Nom Korean Eatery","t":"0","c":"175","s":"4.2","d":"0","a":"113,67,99,15","l":"Fortitude Valley QLD, Australia"}
 ,{"p":"5dogs","x":"-27.4577851","y":"153.0342357","n":"5 Dogs HotDog","t":"1","c":"215","s":"3.9","d":"0","a":"64,123,124,79","l":"Brunswick Street, Fortitude Valley QLD, Australia"}
-,{"p":"stephs","x":"-27.4576832","y":"153.0342048","n":"Steph's Cafe","t":"2","c":"9","s":"5.0","d":"0","a":"32,8,55,79","l":"Brunswick Street, Fortitude Valley QLD, Australia"}
+,{"p":"stephs","x":"-27.4576832","y":"153.0342048","n":"Stephs Cafe","t":"2","c":"9","s":"5.0","d":"0","a":"32,8,55,79","l":"Brunswick Street, Fortitude Valley QLD, Australia"}
 ,{"p":"thevalley","x":"-27.452379","y":"153.039292","n":"Ovolo The Valley - 5 Star Hotel","t":"5","c":"325","s":"4.4","d":"0","a":"104,104,104,104","l":"Ann Street, Fortitude Valley QLD, Australia"}
 ,{"p":"spoondelicafe","x":"-27.4032246","y":"153.1092763","n":"Spoon Deli Cafe","t":"2","c":"19","s":"4.4","d":"0","a":"29,79,8,15","l":"Airport Drive, Brisbane Airport QLD, Australia"}
 ,{"p":"botanistkitchenbar","x":"-27.4036899","y":"153.1096041","n":"The Botanist Kitchen and Bar","t":"2","c":"18","s":"2.9","d":"0","a":"29,79,8,15","l":"Airport Drive, Brisbane Airport QLD, Australia"}
@@ -36,7 +36,7 @@
 ,{"p":"backpackers","x":"-24.2110028","y":"151.902216","n":"Backpackers @ 1770","t":"5","c":"90","s":"4.5","d":"0","a":"104,104,104,104","l":"Grahame Colyer Drive, Agnes Water QLD, Australia"}
 ,{"p":"greenturtle","x":"-24.208358","y":"151.9025738","n":"Green Turtle Brasserie","t":"0","c":"46","s":"3.4","d":"0","a":"8,15,125,141","l":"Captain Cook Drive, Agnes Water QLD, Australia"}
 ,{"p":"sandcastles","x":"-24.2082681","y":"151.9019972","n":"Sandcastles 1770 Motel & Resort - 4 Star","t":"5","c":"193","s":"4.2","d":"0","a":"104,104,104,104","l":"Captain Cook Drive, Agnes Water QLD, Australia"}
-,{"p":"catsmeow","x":"-19.2888512","y":"146.7971418","n":"The Cat's Meow","t":"0","c":"144","s":"4.3","d":"0","a":"7,99,11,15","l":"Charters Towers Road, Hermit Park QLD, Australia"}
+,{"p":"catsmeow","x":"-19.2888512","y":"146.7971418","n":"The Cats Meow","t":"0","c":"144","s":"4.3","d":"0","a":"7,99,11,15","l":"Charters Towers Road, Hermit Park QLD, Australia"}
 ,{"p":"littlepegs","x":"-19.2844316","y":"146.7978993","n":"Little Pegs Cafe","t":"2","c":"30","s":"5.0","d":"0","a":"29,109,119,142","l":"Charters Towers Road, Hermit Park QLD, Australia"}
 ,{"p":"altbrew","x":"-19.2617703","y":"146.815679","n":"Alt Brew","t":"2","c":"3","s":"4.0","d":"0","a":"8,99,29,109","l":"Flinders Street, Townsville City QLD, Australia"}
 ,{"p":"thewatermark","x":"-19.2479035","y":"146.812666","n":"The Watermark Townsville Restaurant & Hotel","t":"0","c":"624","s":"4.3","d":"0","a":"100,97,138,163","l":"The Strand, North Ward QLD, Australia"}
@@ -75,7 +75,7 @@
 ,{"p":"giardinetto","x":"-27.4588164","y":"153.0355945","n":"Giardinetto","t":"0","c":"108","s":"3.8","d":"0","a":"59,104,104,104","l":"366 Brunswick St, Fortitude Valley QLD 4006, Australia"}
 ,{"p":"therollshop","x":"-27.4671271","y":"153.0281725","n":"The Roll Shop","t":"0","c":"37","s":"4.4","d":"0","a":"59,104,104,104","l":"shop 2/88 Creek St, Brisbane City QLD 4000, Australia"}
 ,{"p":"delhistreets","x":"-37.819841","y":"144.956474","n":"Delhi Streets","t":"0","c":"745","s":"4.2","d":"0","a":"59,104,104,104","l":"22 Katherine Pl, Melbourne VIC 3000, Australia"}
-,{"p":"pablorusty","x":"-27.4699796","y":"153.0294969","n":"Pablo & Rusty's Coffee Roasters","t":"2","c":"138","s":"4.7","d":"0","a":"59,104,104,104","l":"200 Mary St, Brisbane City QLD 4000, Australia"}
+,{"p":"pablorusty","x":"-27.4699796","y":"153.0294969","n":"Pablo & Rustys Coffee Roasters","t":"2","c":"138","s":"4.7","d":"0","a":"59,104,104,104","l":"200 Mary St, Brisbane City QLD 4000, Australia"}
 ,{"p":"ambrosia","x":"-26.1995598","y":"152.6497201","n":"Ambrosia Indian Restaurant","t":"0","c":"94","s":"4.4","d":"0","a":"59,104,104,104","l":"310/5 Woolgar Rd, Gympie QLD 4570, Australia"}
 ,{"p":"baltiindian","x":"-27.4573929","y":"153.0343763","n":"Balti Indian Restaurant","t":"0","c":"232","s":"4.0","d":"0","a":"59,104,104,104","l":"214 270/290 Brunswick St, Fortitude Valley QLD 4006, Australia"}
 ,{"p":"banhmitime","x":"-27.4576412","y":"153.0341921","n":"Banh Mi Time","t":"0","c":"16","s":"4.2","d":"0","a":"59,104,104,104","l":"McWhirters Building, Brunswick St Mall, Fortitude Valley QLD 4006, Australia"}
@@ -83,7 +83,7 @@
 ,{"p":"fireandfood","x":"-33.8649134","y":"151.2077923","n":"Fire And Food ASQ","t":"1","c":"21","s":"3.2","d":"0","a":"59,104,104,104","l":"264 George St, Sydney NSW 2000, Australia"}
 ,{"p":"talunga","x":"-34.820673","y":"138.871019","n":"Talunga Estate, Winery, Cafe & Functions","t":"0","c":"62","s":"4.4","d":"0","a":"59,104,104,104","l":"198D Torrens Valley Rd, Gumeracha SA 5233, Australia"}
 ,{"p":"musclebarcafe","x":"-34.9070625","y":"138.6079356","n":"Muscle Bar Cafe","t":"2","c":"17","s":"4.3","d":"0","a":"59,104,104,104","l":"101 Melbourne St, North Adelaide SA 5006, Australia"}
-,{"p":"hungryjoes","x":"-12.4799689","y":"130.970704","n":"Hungry Joe's Pizza & Ribs","t":"0","c":"77","s":"3.6","d":"0","a":"59,104,104,104","l":"9/130 University Ave, Palmerston City NT 0830, Australia"}
+,{"p":"hungryjoes","x":"-12.4799689","y":"130.970704","n":"Hungry Joes Pizza & Ribs","t":"0","c":"77","s":"3.6","d":"0","a":"59,104,104,104","l":"9/130 University Ave, Palmerston City NT 0830, Australia"}
 ,{"p":"bluedoorcafe","x":"-32.927232","y":"151.772888","n":"Blue Door Cafe Newcastle","t":"2","c":"445","s":"4.2","d":"0","a":"59,104,104,104","l":"363-365 Hunter St, Newcastle NSW 2300, Australia"}
 ,{"p":"bellissimocoffee","x":"-27.455683","y":"153.0405445","n":"Bellissimo Coffee","t":"2","c":"390","s":"4.7","d":"0","a":"59,104,104,104","l":"30 Wandoo St, Fortitude Valley QLD 4006, Australia"}
 ,{"p":"brisbaneconvention","x":"-27.4764842","y":"153.0183743","n":"Brisbane Convention & Exhibition Centre","t":"2","c":"3362","s":"4.4","d":"0","a":"59,104,104,104","l":"Merivale St & Glenelg Street, South Brisbane QLD 4101, Australia"}

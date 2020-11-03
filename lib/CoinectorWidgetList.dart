@@ -626,8 +626,6 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   @override
   void initState() {
     super.initState();
-    debugPrint("\n\n\n\n\nDSFSDSFDSFDS\nsdfdsfds\nfdsfdsfdsf\n\n\n\n\n" +
-        urlSearch.toString());
     WidgetsBinding.instance.addObserver(this);
     scaffoldKey = _scaffoldKey;
     subscription = Connectivity()

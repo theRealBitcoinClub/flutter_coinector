@@ -7,7 +7,7 @@
 ,{"p":"fanatic","x":"9.5639874","y":"-69.2035326","n":"Fanatic Sport Bar","t":"2","c":"142","s":"4.4","d":"0","a":"31,32,71,99","l":"Calle 31, Acarigua, Portuguesa, Venezuela"}
 ,{"p":"steakburger","x":"9.5667649","y":"-69.215185","n":"Steak Burger","t":"0","c":"174","s":"4.6","d":"0","a":"7,99,137,100","l":"Avenida Las Lagrimas, Araure, Portuguesa, Venezuela"}
 ,{"p":"lasogagrillbar","x":"9.5637874","y":"-69.2132714","n":"La Soga Grill & Bar","t":"0","c":"158","s":"4.6","d":"0","a":"7,111,99,100","l":"Araure, Portuguesa, Venezuela"}
-,{"p":"litalia","x":"9.558281","y":"-69.204444","n":"L'Italia Restaurant","t":"0","c":"21","s":"4.2","d":"0","a":"102,108,71,15","l":"Acarigua, Portuguesa, Venezuela"}
+,{"p":"litalia","x":"9.558281","y":"-69.204444","n":"LItalia Restaurant","t":"0","c":"21","s":"4.2","d":"0","a":"102,108,71,15","l":"Acarigua, Portuguesa, Venezuela"}
 ,{"p":"altosdeleste","x":"7.7724126","y":"-72.209355","n":"Panaderia Altos del Este","t":"1","c":"69","s":"4.0","d":"0","a":"115,116,117,142","l":"San Cristobal, Tachira, Venezuela"}
 ,{"p":"buddhabar","x":"10.4806044","y":"-66.8553371","n":"Rest. Buddha Bar Caracas","t":"0","c":"370","s":"4.5","d":"0","a":"67,109,56,138","l":"212 Calle Orinoco, Caracas 1060, Miranda, Venezuela"}
 ,{"p":"recargabotellon","x":"10.508430","y":"-66.908923","n":"Recarga Tu Botellon - Agua Fresca De La Montana","t":"1","c":"0","s":"0.0","d":"0","a":"59,60,61,104","l":"Caracas, Venezuela"}
@@ -40,9 +40,9 @@
 ,{"p":"bonappetit","x":"10.494118","y":"-66.8780864","n":"Bon Appetit - C.C. City Market nivel Feria","t":"2","c":"1","s":"2.0","d":"0","a":"59,104,104,104","l":"Calle Unión, Bulevar de Sabana Grande, Caracas 1050, Distrito Capital, Venezuela"}
 ,{"p":"planetsandwich","x":"10.4974977","y":"-66.8229553","n":"Planet Sandwich","t":"0","c":"0","s":"0.0","d":"0","a":"59,15,16,115","l":"Final Calle Imboca, Caracas, Miranda, 1071, Venezuela"}
 ,{"p":"hachebistro","x":"10.5031157","y":"-66.8312804","n":"Hache Bistro","t":"0","c":"76","s":"4.3","d":"0","a":"59,15,143,115","l":"Dentro de Centro Cultural Los Galpones, Transversal 8, Avenida Sucre, Caracas 1071, Miranda, Venezuela"}
-,{"p":"churchchickenlacascada","x":"10.3551461","y":"-67.0024613","n":"Church's Chicken","t":"0","c":"11","s":"3.5","d":"0","a":"71,143,16,101","l":"Centro Comercial Ciudad La Cascada, Nivel Feria, Local Local: N2-13, Carretera Panamericana, Municipio Carrizal, Miranda, Venezuela"}
+,{"p":"churchchickenlacascada","x":"10.3551461","y":"-67.0024613","n":"Churchs Chicken","t":"0","c":"11","s":"3.5","d":"0","a":"71,143,16,101","l":"Centro Comercial Ciudad La Cascada, Nivel Feria, Local Local: N2-13, Carretera Panamericana, Municipio Carrizal, Miranda, Venezuela"}
 ,{"p":"fortalezayvida","x":"10.5037123","y":"-66.9529092","n":"Cafetin fortaleza y vida - C.C. Propatria","t":"2","c":"0","s":"0.0","d":"0","a":"59,29,9,8","l":"Caracas 1030, Distrito Capital, Venezuela"}
-,{"p":"comoncasa","x":"10.5042652","y":"-66.911813","n":"COMO n' CASA - C.C. El Gallo De Oro","t":"0","c":"0","s":"0.0","d":"0","a":"59,104,104,104","l":"Caracas 1012, Distrito Capital, Venezuela"}
+,{"p":"comoncasa","x":"10.5042652","y":"-66.911813","n":"COMO n CASA - C.C. El Gallo De Oro","t":"0","c":"0","s":"0.0","d":"0","a":"59,104,104,104","l":"Caracas 1012, Distrito Capital, Venezuela"}
 ,{"p":"planetsandwich","x":"10.4974977","y":"-66.8229553","n":"Planet Sandwich - C.C. Boleíta Center","t":"0","c":"0","s":"0.0","d":"0","a":"59,15,16,115","l":"Caracas 1071, Miranda, Venezuela"}
 ,{"p":"mediterraneogourmet","x":"10.4972026","y":"-66.8514195","n":"Mediterráneo Gourmet","t":"0","c":"3","s":"5.0","d":"0","a":"59,8,109,133","l":"Avenida Eugenio Mendoza, Caracas 1060, Distrito Capital"}
 ,{"p":"practipizza","x":"10.372183","y":"-66.9697335","n":"Practipizza","t":"0","c":"3","s":"3.7","d":"0","a":"59,14,16,8","l":"San Antonio de Los Altos 1204, Miranda"}
