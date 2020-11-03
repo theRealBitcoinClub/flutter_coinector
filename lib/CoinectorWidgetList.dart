@@ -27,6 +27,7 @@ import 'package:synchronized/synchronized.dart' as synchro;
 
 import 'AssetLoader.dart';
 import 'CardItemBuilder.dart';
+import 'CustomScrollBar.dart';
 import 'Dialogs.dart';
 import 'FileCache.dart';
 import 'ListModel.dart';
@@ -44,6 +45,7 @@ import 'pages.dart';
 
 class CoinectorWidget extends StatefulWidget {
   final String search;
+
   CoinectorWidget(String search) : this.search = search;
 
   @override
@@ -54,11 +56,17 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     with TickerProviderStateMixin, WidgetsBindingObserver {
   SearchDemoSearchDelegate searchDelegate;
 
+  CustomScroller _verticalScroller;
+
   _CoinectorWidgetState(String search) {
     urlSearch = search;
   }
 
   String urlSearch;
+  StreamSubscription subscriptionConnectivityChangeListener;
+
+  static var isInitialized = false;
+  ScrollController _scrollControl;
 
   NestedScrollView appContent;
   var _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -128,7 +136,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     //isUnfilteredList = false;
     timerIsCancelled = true;
     Dialogs.dismissDialog();
-    if (subscription != null) subscription.cancel();
+    if (subscriptionConnectivityChangeListener != null)
+      subscriptionConnectivityChangeListener.cancel();
 
     tabController.dispose();
     if (searchIconBlinkAnimationController != null)
@@ -467,10 +476,20 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   _handleTabSelection() async {
+    setState(() {
+      if (_verticalScroller.state != null)
+        _verticalScroller.state.resetOffset();
+    });
+    _verticalScroller = buildCustomScroller();
+    updateCurrentListItemCounter();
     if (!isFilteredList()) updateTitleToCurrentlySelectedTab();
     updateAddButtonCategory();
     await initCurrentPositionIfNotInitialized();
     _updateDistanceToAllMerchantsIfNotDoneYet();
+  }
+
+  void updateCurrentListItemCounter() {
+    currentListItemCounter = _lists[tabController.index].length;
   }
 
   void requestCurrentPosition() async {
@@ -619,16 +638,14 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   double parseDouble(String position, int piece) =>
       double.parse(position.split(";")[piece]);
 
-  StreamSubscription subscription;
-
-  static var isInitialized = false;
-
   @override
   void initState() {
     super.initState();
+    _scrollControl = ScrollController();
+    _verticalScroller = buildCustomScroller();
     WidgetsBinding.instance.addObserver(this);
     scaffoldKey = _scaffoldKey;
-    subscription = Connectivity()
+    subscriptionConnectivityChangeListener = Connectivity()
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
       if (!kIsWeb)
@@ -649,6 +666,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     }
 
     _checkForUpdatedData(context);
+    updateCurrentListItemCounter();
 
     Future.delayed(Duration(seconds: 5), () {
       Snackbars.showSnackBarPlayStore(_scaffoldKey, context);
@@ -767,18 +785,22 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                     buildSliverAppBar(buildCtx),
                   ];
                 },
-                body:
-                    /*Padding(
-                  padding: EdgeInsets.only(top: 5.0),
-                  child:*/
-                    TabBarView(
-                        controller: tabController,
-                        children: buildAllTabContainer(ctx)),
+                body: TabBarView(
+                    controller: tabController,
+                    children: buildAllTabContainer(ctx)),
               );
               return appContent;
             }),
           ),
         ));
+  }
+
+  void scrollCallBack(DragUpdateDetails dragUpdate) {
+    setState(() {
+      // Note: 3.5 represents the theoretical height of all my scrollable content. This number will vary for you.
+      _scrollControl.position.moveTo(
+          dragUpdate.localPosition.dy * (dragUpdate.localPosition.dy / 5));
+    });
   }
 
   Color hexToColor(String code) {
@@ -1174,12 +1196,18 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       ctx, var listKey, var list, var builderMethod, var cat) {
     return (list != null && list.length > 0)
         ? Padding(
-            child: AnimatedList(
-              key: listKey,
-              padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 60.0),
-              initialItemCount: list.length,
-              itemBuilder: builderMethod,
-            ),
+            child: Stack(children: [
+              AnimatedList(
+                controller: _scrollControl,
+                key: listKey,
+                padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 60.0),
+                initialItemCount: list.length,
+                itemBuilder: builderMethod,
+              ),
+              (!kIsWeb || !hasScrollableContent())
+                  ? SizedBox()
+                  : _verticalScroller
+            ]),
             padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
           )
         : !isInitialized
@@ -1229,6 +1257,22 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                         )),
                   ],
                 ));
+  }
+
+  CustomScroller buildCustomScroller() {
+    return CustomScroller(
+      //Pass a reference to the ScrollCallBack function into the scrollbar
+      scrollCallBack,
+
+      scrollBarHeightPercentage: 1.0,
+      //Add optional values
+      scrollBarBackgroundColor: Colors.transparent,
+      scrollBarWidth: 20.0,
+      dragHandleColor: Colors.white,
+      dragHandleBorderRadius: 5.0,
+      dragHandleHeight: 60.0,
+      dragHandleWidth: 6.0,
+    );
   }
 
   SearchDemoSearchDelegate getSearchDelegate(ctx) {
@@ -1285,5 +1329,17 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       debugPrint(e.toString());
     }
     return userPosition;
+  }
+
+  var currentListItemCounter = 0;
+
+  int currentListItemCount() {
+    return currentListItemCounter == 0
+        ? currentListItemCounter = _lists[tabController.index].length
+        : currentListItemCounter;
+  }
+
+  bool hasScrollableContent() {
+    return currentListItemCounter > 1;
   }
 }
