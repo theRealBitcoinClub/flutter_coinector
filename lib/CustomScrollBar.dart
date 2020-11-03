@@ -83,6 +83,10 @@ class CustomScroller extends StatefulWidget {
     // TODO: implement createState
     return state = _CustomScrollerState();
   }
+
+  close() {
+    state = null;
+  }
 }
 
 class _CustomScrollerState extends State<CustomScroller> {
