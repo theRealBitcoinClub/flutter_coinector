@@ -56,6 +56,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     with TickerProviderStateMixin, WidgetsBindingObserver {
   SearchDemoSearchDelegate searchDelegate;
 
+  CustomScroller _verticalScroller;
+
   _CoinectorWidgetState(String search) {
     urlSearch = search;
   }
@@ -474,6 +476,11 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   _handleTabSelection() async {
+    setState(() {
+      if (_verticalScroller.state != null)
+        _verticalScroller.state.resetOffset();
+    });
+    _verticalScroller = buildCustomScroller();
     updateCurrentListItemCounter();
     if (!isFilteredList()) updateTitleToCurrentlySelectedTab();
     updateAddButtonCategory();
@@ -635,6 +642,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   void initState() {
     super.initState();
     _scrollControl = ScrollController();
+    _verticalScroller = buildCustomScroller();
     WidgetsBinding.instance.addObserver(this);
     scaffoldKey = _scaffoldKey;
     subscriptionConnectivityChangeListener = Connectivity()
@@ -790,8 +798,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   void scrollCallBack(DragUpdateDetails dragUpdate) {
     setState(() {
       // Note: 3.5 represents the theoretical height of all my scrollable content. This number will vary for you.
-      _scrollControl.position
-          .moveTo(dragUpdate.localPosition.dy * currentListItemCount());
+      _scrollControl.position.moveTo(
+          dragUpdate.localPosition.dy * (dragUpdate.localPosition.dy / 5));
     });
   }
 
@@ -1192,25 +1200,13 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
               AnimatedList(
                 controller: _scrollControl,
                 key: listKey,
-                padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+                padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 60.0),
                 initialItemCount: list.length,
                 itemBuilder: builderMethod,
               ),
               (!kIsWeb || !hasScrollableContent())
                   ? SizedBox()
-                  : CustomScroller(
-                      //Pass a reference to the ScrollCallBack function into the scrollbar
-                      scrollCallBack,
-
-                      scrollBarHeightPercentage: 1.0,
-                      //Add optional values
-                      scrollBarBackgroundColor: Colors.transparent,
-                      scrollBarWidth: 20.0,
-                      dragHandleColor: Colors.white,
-                      dragHandleBorderRadius: 5.0,
-                      dragHandleHeight: 60.0,
-                      dragHandleWidth: 6.0,
-                    )
+                  : _verticalScroller
             ]),
             padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
           )
@@ -1261,6 +1257,22 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                         )),
                   ],
                 ));
+  }
+
+  CustomScroller buildCustomScroller() {
+    return CustomScroller(
+      //Pass a reference to the ScrollCallBack function into the scrollbar
+      scrollCallBack,
+
+      scrollBarHeightPercentage: 1.0,
+      //Add optional values
+      scrollBarBackgroundColor: Colors.transparent,
+      scrollBarWidth: 20.0,
+      dragHandleColor: Colors.white,
+      dragHandleBorderRadius: 5.0,
+      dragHandleHeight: 60.0,
+      dragHandleWidth: 6.0,
+    );
   }
 
   SearchDemoSearchDelegate getSearchDelegate(ctx) {

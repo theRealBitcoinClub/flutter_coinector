@@ -76,15 +76,23 @@ class CustomScroller extends StatefulWidget {
       this.dragHandleBorderRadius = 3.0,
       this.scrollBarHeightPercentage = 1.0});
 
+  _CustomScrollerState state;
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return _CustomScrollerState();
+    return state = _CustomScrollerState();
   }
 }
 
 class _CustomScrollerState extends State<CustomScroller> {
   static double _offset = 0;
+
+  void resetOffset() {
+    setState(() {
+      _offset = 0;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -118,6 +126,9 @@ class _CustomScrollerState extends State<CustomScroller> {
                   if (dragUpdate.localPosition.dy >= 0) {
                     widget.scrollCallBack(dragUpdate);
 
+                    var pos = dragUpdate.localPosition.dy *
+                        (dragUpdate.localPosition.dy / 5);
+
                     setState(() {
                       /// Update the offset of the drag handle to push it down or shift it up
                       var tmpoffset = (2 - widget.scrollBarHeightPercentage) *
@@ -126,6 +137,9 @@ class _CustomScrollerState extends State<CustomScroller> {
                       final offsetWithHandleHeight =
                           tmpoffset - (widget.dragHandleHeight / 2);
                       if (offsetWithHandleHeight > 0)
+                        /*if (widget
+                              .dragHandleHeight >
+                          offsetWithHandleHeight)*/
                         _offset = offsetWithHandleHeight;
                       else {
                         _offset = tmpoffset / 2;
