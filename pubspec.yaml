@@ -12,12 +12,13 @@ description: Coinnect the coimunity.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 
-version: 3.9.6+253856
+version: 3.9.7+253856
 
 environment:
   sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
+  flutter_web_scrollbar: ^0.0.3
   bitbox: ^0.0.5
   bch_wallet: ^0.0.3
   #material_floating_search_bar: ^0.2.2
