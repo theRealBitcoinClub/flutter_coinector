@@ -477,15 +477,16 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   _handleTabSelection() async {
     setState(() {
-      if (_verticalScroller.state != null)
+      if (_verticalScroller.state != null && _verticalScroller.state.mounted) {
         _verticalScroller.state.resetOffset();
+      }
     });
-    _verticalScroller = buildCustomScroller();
     updateCurrentListItemCounter();
     if (!isFilteredList()) updateTitleToCurrentlySelectedTab();
     updateAddButtonCategory();
     await initCurrentPositionIfNotInitialized();
     _updateDistanceToAllMerchantsIfNotDoneYet();
+    //_verticalScroller = buildCustomScroller();
   }
 
   void updateCurrentListItemCounter() {
