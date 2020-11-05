@@ -110,10 +110,11 @@ class CardItem extends StatelessWidget {
     return GestureDetector(
         child: Stack(
           children: <Widget>[
-            buildBackGroundImageFallback(ctx),
+            //buildBackGroundImageFallback(ctx),
             kReleaseMode
                 ? buildImageContainer(gifUrl)
-                : SizedBox(), //LIMIT DATA USAGE BY NOT LOADING IMAGES IN DEV MODE
+                : buildBackGroundImageFallback(
+                    ctx), //LIMIT DATA USAGE BY NOT LOADING IMAGES IN DEV MODE
             buildStackInfoTextWithBackgroundAndShadow(
                 infoBoxBackgroundColor, backGroundColor, textStyle, textStyle2),
             buildPositionedContainerDistance(ctx, backGroundColor, textStyle2),

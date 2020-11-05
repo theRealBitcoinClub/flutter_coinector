@@ -12,16 +12,23 @@ description: Coinnect the coimunity.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 
-version: 3.9.7+253856
+version: 3.9.8+253857
 
 environment:
   sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
-  carousel_slider: 2.3.1
-  flutter_web_scrollbar: ^0.0.3
-  bitbox: ^0.0.5
-  bch_wallet: ^0.0.3
+  #firebase_core: 0.5.1
+  #firebase_core_web: 0.2.0
+  #firebase_picture_uploader: 1.1.2
+  #image_picker: 0.6.7+12
+  #image_picker_for_web: 0.1.0+2
+  #github: 7.0.3
+  #flutter_easyrefresh: 2.1.6
+  #carousel_slider: 2.3.1
+  #flutter_web_scrollbar: ^0.0.3
+  #bitbox: ^0.0.5
+  #bch_wallet: ^0.0.3
   #material_floating_search_bar: ^0.2.2
   #country_code_picker: ^1.6.0
   #place_picker: ^0.9.9
