@@ -125,6 +125,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   @override
   void dispose() {
+    if (_verticalScroller != null) _verticalScroller.close();
     WidgetsBinding.instance.removeObserver(this);
     InternetConnectivityChecker.pauseAutoChecker();
     Snackbars.close();
@@ -477,10 +478,12 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   _handleTabSelection() async {
     setState(() {
-      if (_verticalScroller.state != null)
+      if (_verticalScroller != null &&
+          _verticalScroller.state != null &&
+          _verticalScroller.state.mounted) {
         _verticalScroller.state.resetOffset();
+      }
     });
-    _verticalScroller = buildCustomScroller();
     updateCurrentListItemCounter();
     if (!isFilteredList()) updateTitleToCurrentlySelectedTab();
     updateAddButtonCategory();
