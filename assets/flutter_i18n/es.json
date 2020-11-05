@@ -42,7 +42,7 @@
   "send_email" : " ENVIAR CORREO",
   "dialog_help_grow_adoption" : "¡Ayuda a crecer la adopción!\n\nEnviar la información que falta a:\n\ntrbc@bitcoinmap.cash ahora!",
   "dialog_missing_gmaps_title" : "Falta el enlace de Google Maps!",
-  "email_text_add_new_place" : "Bienvenido a http://bmap.cash!\n\n¡Opcionalmente puedes adjuntar imágenes a este correo electrónico ahora!\n\n¡Envía este correo electrónico para enviar el lugar!\n\n¡Te avisaremos tan pronto como el lugar esté disponible dentro de la aplicación!\n\n¡No modifique el contenido de este correo electrónico!\n\nPara agregar más detalles, envíe otro correo electrónico a trbc@bitcoinmap.cash!\n\nEres Satoshi Nakamoto!\n\n¡Gracias!",
+  "email_text_add_new_place" : "Bienvenido a https://bmap.app!\n\n¡Opcionalmente puedes adjuntar imágenes a este correo electrónico ahora!\n\n¡Envía este correo electrónico para enviar el lugar!\n\n¡Te avisaremos tan pronto como el lugar esté disponible dentro de la aplicación!\n\n¡No modifique el contenido de este correo electrónico!\n\nPara agregar más detalles, envíe otro correo electrónico a trbc@bitcoinmap.cash!\n\nEres Satoshi Nakamoto!\n\n¡Gracias!",
   "send" : " ENVIAR",
   "add_place_name_title" : "¿Cuál es el nombre de ese lugar?",
   "add_place_name_subtitle" : "Usa el mismo nombre que en Google Maps",
