@@ -53,22 +53,26 @@
     <link type="text/css" rel="stylesheet"
           href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
-    <link type="text/css" rel="stylesheet" href="jssocials-theme-classic.css" />
+    <link type="text/css" rel="stylesheet" href="jssocials-theme-classic.css"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <style>
     html, body {
         background-color:#303030;
     }
-
-
-
     </style>
 </head>
 <body>
-<div style="font-size:larger;" id="share"></div>
-<div style="color:white;font-family:arial;font-size:medium;" ><i>Copied to clipboard! You can paste it or use the social media sharing buttons!</i></div>
-<h2><span  style="color:white;font-family:arial;" id="search"></span><span style='color:white;' id="urlPreview"></span></h2>
-<h4 style="color:white;font-family:arial;" id="location"></h4>
-<h4><!--span style="color:white;font-family:arial;" id="url"></span--></h4>
+<div style="width:495px;height:100%;margin-top:50px;margin-left:auto;margin-right:auto;">
+    <div style="font-size:larger;" id="share"></div>
+    <div style="color:white;font-family:arial;font-size:medium;"><i>The shareable link has been copied to clipboard! You can
+        paste it anywhere or use the social media sharing buttons!</i></div>
+    <h2><span style="color:white;font-family:arial;" id="search"></span>
+        <span style='color:white;'
+              id="urlPreview"></span>
+    </h2>
+    <h4 style="color:white;font-family:arial;" id="location"></h4>
+</div>
 <script type="text/javascript" src="jquery-3.5.1.min.js"></script>
 <script type="text/javascript"
         src="jssocials.min.js"></script>
@@ -138,6 +142,8 @@ $("#url").html(shareURL);
             shareIn: "popup",
         });
         copyTextToClipboard(shareURL);
+
+
 </script>
 </body>
 </html>
