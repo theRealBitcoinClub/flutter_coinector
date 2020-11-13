@@ -9,13 +9,19 @@ class TagParser {
   }
 
   static String parseElementAt(splittedTags, int pos) {
-    int tagIndex = int.parse(splittedTags.elementAt(pos));
-
-    if (tagIndex == 104) return "";
+    var tagIndex = splittedTags.elementAt(pos);
 
     String addSeparator = "";
     if (pos != 0) addSeparator = "   ";
 
-    return addSeparator + Tag.tagText.elementAt(tagIndex);
+    return addSeparator + parseTag(tagIndex);
+  }
+
+  static String parseTag(index) {
+    int tagIndex = int.parse(index);
+
+    if (tagIndex == 104) return "";
+
+    return Tag.tagText.elementAt(tagIndex);
   }
 }

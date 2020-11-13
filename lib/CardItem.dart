@@ -22,12 +22,14 @@ class CardItem extends StatelessWidget {
       @required this.animation,
       @required this.index,
       @required this.merchant,
+      @required this.tagFilterCallback,
       this.selected: false})
       : assert(animation != null),
         assert(merchant != null),
         assert(index != null),
         super(key: key);
 
+  final TagFilterCallback tagFilterCallback;
   final int index;
   final Animation<double> animation;
   final Merchant merchant;
@@ -92,15 +94,19 @@ class CardItem extends StatelessWidget {
           child: Column(
             children: <Widget>[
               buildContentStack(context, infoBoxBackgroundColor, textStyleBody1,
-                  textStyleBody2),
+                  textStyleBody2, tagFilterCallback),
               buildButtonTheme(context),
             ],
           )),
     );
   }
 
-  Widget buildContentStack(BuildContext ctx, Color infoBoxBackgroundColor,
-      TextStyle textStyle, TextStyle textStyle2) {
+  Widget buildContentStack(
+      BuildContext ctx,
+      Color infoBoxBackgroundColor,
+      TextStyle textStyle,
+      TextStyle textStyle2,
+      TagFilterCallback tagFilterCallback) {
     var gifUrl =
         'https://github.com/theRealBitcoinClub/BITCOINMAP.CASH---Browser-PWA/raw/master/public/img/app/' +
             merchant.id +
@@ -115,8 +121,8 @@ class CardItem extends StatelessWidget {
                 ? buildImageContainer(gifUrl)
                 : buildBackGroundImageFallback(
                     ctx), //LIMIT DATA USAGE BY NOT LOADING IMAGES IN DEV MODE
-            buildStackInfoTextWithBackgroundAndShadow(
-                infoBoxBackgroundColor, backGroundColor, textStyle, textStyle2),
+            buildStackInfoTextWithBackgroundAndShadow(infoBoxBackgroundColor,
+                backGroundColor, textStyle, textStyle2, tagFilterCallback),
             buildPositionedContainerDistance(ctx, backGroundColor, textStyle2),
             RatingWidgetBuilder.hasReviews(merchant)
                 ? buildPositionedContainerReviews(backGroundColor, ctx)
@@ -167,8 +173,12 @@ class CardItem extends StatelessWidget {
     ]);
   }
 
-  Stack buildStackInfoTextWithBackgroundAndShadow(Color infoBoxBackgroundColor,
-      Color backGroundColor, TextStyle textStyle, TextStyle textStyle2) {
+  Stack buildStackInfoTextWithBackgroundAndShadow(
+      Color infoBoxBackgroundColor,
+      Color backGroundColor,
+      TextStyle textStyle,
+      TextStyle textStyle2,
+      TagFilterCallback tagFilterCallback) {
     return Stack(
       children: <Widget>[
         buildGradientContainer(Colors.grey[900]),
@@ -190,6 +200,7 @@ class CardItem extends StatelessWidget {
               color: backGroundColor),
         ),
         ItemInfoStackLayer(
+            filterCallback: tagFilterCallback,
             merchant: merchant,
             textStyleMerchantTitle: textStyle,
             textStyleMerchantLocation: textStyle2,
@@ -303,7 +314,7 @@ class CardItem extends StatelessWidget {
         child: Padding(
             padding: EdgeInsets.all(5.0),
             child: ButtonBar(
-              buttonPadding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+              buttonPadding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
               mainAxisSize: MainAxisSize.max,
               alignment: MainAxisAlignment.end,
               children: <Widget>[

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:Coinector/InternetConnectivityChecker.dart';
+import 'package:Coinector/ItemInfoStackLayer.dart';
 import 'package:Coinector/Snackbars.dart';
 import 'package:Coinector/translator.dart';
 import 'package:connectivity/connectivity.dart';
@@ -53,7 +54,7 @@ class CoinectorWidget extends StatefulWidget {
 }
 
 class _CoinectorWidgetState extends State<CoinectorWidget>
-    with TickerProviderStateMixin, WidgetsBindingObserver {
+    with TickerProviderStateMixin, WidgetsBindingObserver, TagFilterCallback {
   SearchDemoSearchDelegate searchDelegate;
 
   CustomScroller _verticalScroller;
@@ -899,7 +900,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     return Padding(
         padding: EdgeInsets.all(0.0),
         child: AnimatedSwitcher(
-            //TODO fix animation, how to switch animted with a fade transition?
+            //TODO fix animation, how to switch animated with a fade transition?
             duration: Duration(milliseconds: 500),
             child: Text(
               titleActionBar,
@@ -971,7 +972,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   List<Widget> buildAllTabContainer(ctx) {
-    var builder = CardItemBuilder(_lists);
+    var builder = CardItemBuilder(_lists, this);
     return [
       buildTabContainer(ctx, _listKeys[0], _lists[0],
           builder.buildItemRestaurant, TabPages.pages[0].title),
@@ -1109,7 +1110,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
             delegate: getSearchDelegate(ctx),
           );
           startProcessSearch(ctx, selected, false);
-        } catch (e) {
+        } finally {
           InternetConnectivityChecker.resumeAutoChecker();
         }
       },
@@ -1344,5 +1345,10 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   bool hasScrollableContent() {
     return currentListItemCounter > 1;
+  }
+
+  @override
+  doFilter(String search) {
+    return startProcessSearch(context, search, true);
   }
 }

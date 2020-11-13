@@ -18,6 +18,9 @@ environment:
   sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
+  flutter_web_plugins:
+    sdk: flutter
+  hovering: ^1.0.2
   #firebase_core: 0.5.1
   #firebase_core_web: 0.2.0
   #firebase_picture_uploader: 1.1.2

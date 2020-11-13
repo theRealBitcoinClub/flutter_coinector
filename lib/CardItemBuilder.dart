@@ -1,3 +1,4 @@
+import 'package:Coinector/ItemInfoStackLayer.dart';
 import 'package:flutter/material.dart';
 
 import 'CardItem.dart';
@@ -6,9 +7,11 @@ import 'Merchant.dart';
 
 class CardItemBuilder {
   List<ListModel<Merchant>> _lists;
+  TagFilterCallback _tagFilterCallback;
 
-  CardItemBuilder(lists) {
+  CardItemBuilder(lists, tagFilterCallback) {
     _lists = lists;
+    _tagFilterCallback = tagFilterCallback;
   }
 
   CardItem _buildItem(
@@ -21,7 +24,8 @@ class CardItemBuilder {
         return CardItem(
           index: index,
           animation: animation,
-          merchant: currentListModel
+          merchant: currentListModel,
+          tagFilterCallback: _tagFilterCallback,
         );
       }
     } catch (e) {

@@ -1,18 +1,25 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:hovering/hovering.dart';
 
 import 'Merchant.dart';
 import 'TagParser.dart';
 
+class TagFilterCallback {
+  doFilter(String search) {}
+}
+
 class ItemInfoStackLayer extends StatelessWidget {
   const ItemInfoStackLayer({
     Key key,
+    @required this.filterCallback,
     @required this.merchant,
     @required this.textStyleMerchantTitle,
     @required this.textStyleMerchantLocation,
     @required this.height,
   }) : super(key: key);
 
+  final TagFilterCallback filterCallback;
   final Merchant merchant;
   final TextStyle textStyleMerchantTitle;
   final TextStyle textStyleMerchantLocation;
@@ -20,7 +27,7 @@ class ItemInfoStackLayer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var splittedtags = merchant.tags.split(",");
+    var splittedTags = merchant.tags.split(",");
     return Container(
       height: height,
       child: ListView(
@@ -49,17 +56,37 @@ class ItemInfoStackLayer extends StatelessWidget {
           ),
           SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: Row(
-                children: <Widget>[buildTagText(splittedtags)],
-              )),
+              child: Row(children: buildTagTextItems(context, splittedTags))),
         ],
       ),
     );
   }
 
-  Text buildTagText(List<String> splittedtags) {
-    return Text(TagParser.parseTagIndexToText(splittedtags),
-        style: TextStyle(
-            fontSize: 15.0, fontWeight: FontWeight.w300, color: Colors.white));
+  List<Widget> buildTagTextItems(ctx, List<String> splittedTags) {
+    return splittedTags.map((title) {
+      return Padding(
+          padding: EdgeInsets.only(left: 5.0, right: 5.0),
+          child: HoverButton(
+              padding: EdgeInsets.all(0.0),
+              hoverPadding: EdgeInsets.all(0.0),
+              onpressed: () => restartWidgetWithFilter(ctx, title),
+              child: Text(TagParser.parseTag(title),
+                  style: TextStyle(
+                      decoration: TextDecoration.underline,
+                      textBaseline: TextBaseline.alphabetic,
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.w300,
+                      color: Colors.white))));
+    }).toList();
   }
+
+  void restartWidgetWithFilter(ctx, String title) {
+    filterCallback.doFilter(TagParser.parseTag(title));
+  }
+/* Navigator.pop(ctx);
+    Navigator.push(
+        ctx,
+        MaterialPageRoute(
+            builder: (context) => CoinectorWidget(TagParser.parseTag(title))));
+  }*/
 }
