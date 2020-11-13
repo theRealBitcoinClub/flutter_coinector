@@ -61,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void uploadToGithub(PickedFile pickedFile) async {
     /*var github = GitHub(
         auth: Authentication.withToken(
-            '7fe1054716ce024fe0cae9ff96e87e40e645d730'));
+            ''));
     String content = await pickedFile.readAsBytes().toString();
     debugPrint("start gh");
     GitBlob blob = await github.git.createBlob(

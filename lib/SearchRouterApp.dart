@@ -2,6 +2,7 @@ import 'package:Coinector/SearchRouterDelegate.dart';
 import 'package:flutter/material.dart';
 
 import 'SearchRouteInformationParser.dart';
+import 'configure_nonweb.dart';
 
 void main() {
   // Set `enableInDevMode` to true to see reports while in debug mode
@@ -17,6 +18,7 @@ void main() {
   };
 
   WidgetsFlutterBinding.ensureInitialized();
+  configureApp();
   runApp(SearchRouterApp());
 }
 
