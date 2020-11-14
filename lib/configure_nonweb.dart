@@ -1,3 +1,4 @@
-void configureApp() {
+/*void configureApp() {
   // No-op.
 }
+*/
