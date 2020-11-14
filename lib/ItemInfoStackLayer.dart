@@ -83,10 +83,4 @@ class ItemInfoStackLayer extends StatelessWidget {
   void restartWidgetWithFilter(ctx, String title) {
     filterCallback.doFilter(TagParser.parseTag(title));
   }
-/* Navigator.pop(ctx);
-    Navigator.push(
-        ctx,
-        MaterialPageRoute(
-            builder: (context) => CoinectorWidget(TagParser.parseTag(title))));
-  }*/
 }

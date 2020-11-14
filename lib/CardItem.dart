@@ -113,32 +113,27 @@ class CardItem extends StatelessWidget {
             ".gif";
 
     var backGroundColor = Colors.grey[900].withOpacity(0.8);
-    return GestureDetector(
-        child: Stack(
-          children: <Widget>[
-            //buildBackGroundImageFallback(ctx),
-            kReleaseMode
+    return Stack(
+      children: <Widget>[
+        ClipRRect(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20.0),
+                topRight: Radius.circular(20.0)),
+            child: kReleaseMode
                 ? buildImageContainer(gifUrl)
                 : buildBackGroundImageFallback(
-                    ctx), //LIMIT DATA USAGE BY NOT LOADING IMAGES IN DEV MODE
-            buildStackInfoTextWithBackgroundAndShadow(infoBoxBackgroundColor,
-                backGroundColor, textStyle, textStyle2, tagFilterCallback),
-            buildPositionedContainerDistance(ctx, backGroundColor, textStyle2),
-            RatingWidgetBuilder.hasReviews(merchant)
-                ? buildPositionedContainerReviews(backGroundColor, ctx)
-                : SizedBox(),
-          ],
-        ),
-        onTap: () {
-          /*
-          Dialogs.confirmMakeDonation(ctx, () {
-            UrlLauncher.launchDonateUrl();
-          */
-        });
+                    ctx)), //LIMIT DATA USAGE BY NOT LOADING IMAGES IN DEV MODE
+        buildStackInfoTextWithBackgroundAndShadow(infoBoxBackgroundColor,
+            backGroundColor, textStyle, textStyle2, tagFilterCallback),
+        buildPositionedContainerDistance(ctx, backGroundColor, textStyle2),
+        RatingWidgetBuilder.hasReviews(merchant)
+            ? buildPositionedContainerReviews(backGroundColor, ctx)
+            : SizedBox(),
+      ],
+    );
   }
 
   Widget buildBackGroundImageFallback(BuildContext ctx) {
-    //var img = "assets/youaresatoshi" + (index % 2).toString() + ".gif";
     var img = "assets/placeholder640x480.jpg";
     return FadeInImage.assetNetwork(
       fadeInCurve: Curves.decelerate,
@@ -186,10 +181,7 @@ class CardItem extends StatelessWidget {
           margin: EdgeInsets.all(0.0),
           height: itemHeightInfoText,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.elliptical(30, 15),
-                  topLeft: Radius.circular(15.0),
-                  topRight: Radius.circular(15.0)),
+              borderRadius: BorderRadius.all(Radius.circular(15.0)),
               boxShadow: [
                 CustomBoxShadow(
                     color: infoBoxBackgroundColor.withOpacity(0.5),
@@ -269,22 +261,15 @@ class CardItem extends StatelessWidget {
     return Container(
       height: itemHeightInfoText,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(15.0),
-            topRight: Radius.circular(15.0),
-            bottomLeft: Radius.elliptical(30, 15)),
+        borderRadius: BorderRadius.all(Radius.circular(15.0)),
         gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
               //infoBoxBackgroundColor,
               infoBoxBackgroundColor,
-              infoBoxBackgroundColor.withOpacity(0.95),
-              infoBoxBackgroundColor.withOpacity(0.9),
-              infoBoxBackgroundColor.withOpacity(0.8),
-              infoBoxBackgroundColor.withOpacity(0.7),
-              infoBoxBackgroundColor.withOpacity(0.6),
-              infoBoxBackgroundColor.withOpacity(0.5),
+              infoBoxBackgroundColor.withOpacity(0.75),
+              infoBoxBackgroundColor.withOpacity(0.0),
             ]),
       ),
     );
@@ -301,8 +286,8 @@ class CardItem extends StatelessWidget {
                 blurStyle: BlurStyle.outer)
           ],
           borderRadius: BorderRadius.only(
-              bottomRight: Radius.elliptical(15, 15),
-              bottomLeft: Radius.elliptical(15, 15)),
+              bottomRight: Radius.circular(15.0),
+              bottomLeft: Radius.circular(15.0)),
           color: Colors.grey[900].withOpacity(0.1)),
       child: buildButtons(context),
     );

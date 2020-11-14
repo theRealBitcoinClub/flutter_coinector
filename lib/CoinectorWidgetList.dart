@@ -136,7 +136,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     //isUpdatingPosition = false;
     isCheckingForUpdates = false;
     //isUnfilteredList = false;
-    timerIsCancelled = true;
+    checkDataUpdateTimerIsCancelled = true;
     Dialogs.dismissDialog();
     if (subscriptionConnectivityChangeListener != null)
       subscriptionConnectivityChangeListener.cancel();
@@ -170,17 +170,24 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   var isCheckingForUpdates = false;
-  var timerIsCancelled = false;
+  var checkDataUpdateTimerIsCancelled = false;
 
   void _checkForUpdatedData(ctx) async {
-    if (isCheckingForUpdates || timerIsCancelled) return;
+    if (isCheckingForUpdates || checkDataUpdateTimerIsCancelled) return;
     isCheckingForUpdates = true;
-    await checkDataUpdateShowSnackbarUpdateCache(ctx);
-    Timer.periodic(Duration(seconds: 10), (timer) async {
-      if (timerIsCancelled) timer.cancel();
-      //if (timer.tick == 0) return; //skip first iteration
+    bool hasUpdatedData = await checkDataUpdateShowSnackbarUpdateCache(ctx);
+    if (hasUpdatedData) {
+      checkDataUpdateTimerIsCancelled = true;
+      isCheckingForUpdates = false;
+      return;
+    }
+    Timer.periodic(Duration(seconds: 30), (timer) async {
+      if (checkDataUpdateTimerIsCancelled) timer.cancel();
       try {
-        await checkDataUpdateShowSnackbarUpdateCache(ctx);
+        bool hasUpdatedData = await checkDataUpdateShowSnackbarUpdateCache(ctx);
+        if (hasUpdatedData) {
+          checkDataUpdateTimerIsCancelled = true;
+        }
         isCheckingForUpdates = false;
       } catch (e) {
         FileCache.forceUpdateNextTime();
@@ -191,7 +198,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   Future<bool> checkDataUpdateShowSnackbarUpdateCache(ctx) async {
     FileCache.initLastVersion(() {
       //has new version
-      if (timerIsCancelled) return false;
+      if (checkDataUpdateTimerIsCancelled) return false;
       _updateAllCachedContent(ctx);
       return true;
     });
@@ -654,7 +661,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         .listen((ConnectivityResult result) {
       if (!kIsWeb)
         InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(this,
-            (abc) {
+            (onConnectionLoss) {
           Snackbars.showInternetErrorSnackbar(this);
         });
     });
@@ -669,7 +676,6 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       });
     }
 
-    _checkForUpdatedData(context);
     updateCurrentListItemCounter();
 
     Future.delayed(Duration(seconds: 5), () {
@@ -746,15 +752,6 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     /*new Future.delayed(Duration.zero, () async {
       Translator.currentLocale(context);
     });*/
-    if (kIsWeb) {
-      InternetConnectivityChecker.pauseAutoChecker();
-    } else {
-      //InternetConnectivityChecker.resumeAutoChecker();
-      InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(this,
-          (abc) {
-        Snackbars.showInternetErrorSnackbar(this);
-      });
-    }
     return MaterialApp(
         builder: (context, widget) => ResponsiveWrapper.builder(
             BouncingScrollWrapper.builder(context, widget),
@@ -782,6 +779,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                 FloatingActionButtonLocation.centerFloat,
             floatingActionButton: buildFloatingActionButton(),
             body: new Builder(builder: (BuildContext ctx) {
+              buildWithinScopeOfTranslator(ctx);
               appContent = NestedScrollView(
                 headerSliverBuilder:
                     (BuildContext buildCtx, bool innerBoxIsScrolled) {
@@ -799,11 +797,24 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         ));
   }
 
+  void buildWithinScopeOfTranslator(BuildContext ctx) {
+    _checkForUpdatedData(ctx);
+    /*if (kIsWeb) {
+      InternetConnectivityChecker.pauseAutoChecker();
+    } else {*/
+    //InternetConnectivityChecker.resumeAutoChecker();
+    InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(this,
+        (onConnectionLoss) {
+      Snackbars.showInternetErrorSnackbar(this);
+    });
+    //}
+  }
+
   void scrollCallBack(DragUpdateDetails dragUpdate) {
+    const SCROLL_SPEED_MULTIPLIER = 5;
     setState(() {
-      // Note: 3.5 represents the theoretical height of all my scrollable content. This number will vary for you.
-      _scrollControl.position.moveTo(
-          dragUpdate.localPosition.dy * (dragUpdate.localPosition.dy / 5));
+      _scrollControl.position.moveTo(dragUpdate.localPosition.dy *
+          (dragUpdate.localPosition.dy / SCROLL_SPEED_MULTIPLIER));
     });
   }
 
@@ -840,28 +851,20 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   ThemeData buildTheme() {
     return ThemeData(
-      // Define the default Brightness and Colors
       brightness: Brightness.dark,
       backgroundColor: Colors.grey[900],
       primaryColor: Colors.grey[900],
       accentColor: Colors.white,
-
-      // Define the default Font Family
-      //fontFamily: 'Montserrat',
       fontFamily: 'OpenSans',
-      // Define the default TextTheme. Use this to specify the default
-      // text styling for headlines, titles, bodies of text, and more.
       textTheme: TextTheme(
         headline6: TextStyle(color: Colors.black),
         headline5: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-        bodyText1: TextStyle(
-            fontSize: 17.0,
-            fontFamily: 'Hind',
-            color: Colors.white.withOpacity(0.85)),
+        bodyText1:
+            TextStyle(fontSize: 17.0, fontFamily: 'Hind', color: Colors.white),
         bodyText2: TextStyle(
             fontSize: 14.0,
             fontFamily: 'Hind',
-            color: Colors.white.withOpacity(0.7)),
+            color: Colors.white.withOpacity(0.8)),
       ),
     );
   }
@@ -890,7 +893,6 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
           buildIconButtonMap(buildCtx),
         ],
         title: buildTitleWidget(),
-        //expandedHeight: 300.0, GOOD SPACE FOR ADS LATER
         floating: true,
         snap: true,
         pinned: false);
