@@ -11,7 +11,7 @@ const RESOURCES = {
 "jssocials.min.js": "81b383b7ec040274c775b85a465e3a06",
 "base.css": "d41d8cd98f00b204e9800998ecf8427e",
 "jquery-3.5.1.min.js": "12b69d0ae6c6f0c42942ae6da2896e84",
-"main.dart.js": "1d930f5cc63a49052b87b18c8db3a383",
+"main.dart.js": "b3355d14b3d1ca53e26a472d4abdb512",
 "jssocials-theme-classic.css": "e870cb4d3804fe4f3a28c678e5162242",
 "share.html": "ebcb7e7abd7551735842c9aac1b2f8d0",
 "icons/old_Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
