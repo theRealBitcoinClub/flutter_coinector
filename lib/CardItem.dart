@@ -11,7 +11,6 @@ import 'CustomBoxShadow.dart';
 import 'Dialogs.dart';
 import 'ItemInfoStackLayer.dart';
 import 'Merchant.dart';
-import 'MyColors.dart';
 import 'RatingWidgetBuilder.dart';
 import 'Toaster.dart';
 import 'UrlLauncher.dart';
@@ -76,11 +75,9 @@ class CardItem extends StatelessWidget {
     TextStyle textStyleBody1 = Theme.of(context).textTheme.bodyText1;
     TextStyle textStyleBody2 = Theme.of(context).textTheme.bodyText2;
 
-    final infoBoxBackgroundColor =
+    /*final infoBoxBackgroundColor =
         MyColors.getCardInfoBoxBackgroundColor(merchant.type).withOpacity(1.0);
-    final actionButtonBackgroundColor =
-        MyColors.getCardActionButtonBackgroundColor(merchant.type)
-            .withOpacity(0.8);
+    final actionButtonBackgroundColor = Colors.grey[900].withOpacity(0.0);*/
     return SizedBox(
       child: Card(
           clipBehavior: Clip.none,
@@ -90,23 +87,18 @@ class CardItem extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0),
           ),
-          color: actionButtonBackgroundColor,
           child: Column(
             children: <Widget>[
-              buildContentStack(context, infoBoxBackgroundColor, textStyleBody1,
-                  textStyleBody2, tagFilterCallback),
+              buildContentStack(
+                  context, textStyleBody1, textStyleBody2, tagFilterCallback),
               buildButtonTheme(context),
             ],
           )),
     );
   }
 
-  Widget buildContentStack(
-      BuildContext ctx,
-      Color infoBoxBackgroundColor,
-      TextStyle textStyle,
-      TextStyle textStyle2,
-      TagFilterCallback tagFilterCallback) {
+  Widget buildContentStack(BuildContext ctx, TextStyle textStyle,
+      TextStyle textStyle2, TagFilterCallback tagFilterCallback) {
     var gifUrl =
         'https://github.com/theRealBitcoinClub/BITCOINMAP.CASH---Browser-PWA/raw/master/public/img/app/' +
             merchant.id +
@@ -123,7 +115,7 @@ class CardItem extends StatelessWidget {
                 ? buildImageContainer(gifUrl)
                 : buildBackGroundImageFallback(
                     ctx)), //LIMIT DATA USAGE BY NOT LOADING IMAGES IN DEV MODE
-        buildStackInfoTextWithBackgroundAndShadow(infoBoxBackgroundColor,
+        buildStackInfoTextWithBackgroundAndShadow(
             backGroundColor, textStyle, textStyle2, tagFilterCallback),
         buildPositionedContainerDistance(ctx, backGroundColor, textStyle2),
         RatingWidgetBuilder.hasReviews(merchant)
@@ -142,7 +134,7 @@ class CardItem extends StatelessWidget {
       placeholder: img,
       image: img,
       width: 640,
-      height: 390,
+      height: kIsWeb ? 455 : 390,
       alignment: Alignment.bottomCenter,
     );
   }
@@ -169,14 +161,12 @@ class CardItem extends StatelessWidget {
   }
 
   Stack buildStackInfoTextWithBackgroundAndShadow(
-      Color infoBoxBackgroundColor,
       Color backGroundColor,
       TextStyle textStyle,
       TextStyle textStyle2,
       TagFilterCallback tagFilterCallback) {
     return Stack(
       children: <Widget>[
-        buildGradientContainer(Colors.grey[900]),
         Container(
           margin: EdgeInsets.all(0.0),
           height: itemHeightInfoText,
@@ -184,7 +174,7 @@ class CardItem extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(15.0)),
               boxShadow: [
                 CustomBoxShadow(
-                    color: infoBoxBackgroundColor.withOpacity(0.5),
+                    color: backGroundColor.withOpacity(1),
                     blurRadius: 3.0,
                     offset: Offset(0.0, 0.0),
                     blurStyle: BlurStyle.outer)
@@ -261,16 +251,8 @@ class CardItem extends StatelessWidget {
     return Container(
       height: itemHeightInfoText,
       decoration: BoxDecoration(
+        color: infoBoxBackgroundColor,
         borderRadius: BorderRadius.all(Radius.circular(15.0)),
-        gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              //infoBoxBackgroundColor,
-              infoBoxBackgroundColor,
-              infoBoxBackgroundColor.withOpacity(0.75),
-              infoBoxBackgroundColor.withOpacity(0.0),
-            ]),
       ),
     );
   }

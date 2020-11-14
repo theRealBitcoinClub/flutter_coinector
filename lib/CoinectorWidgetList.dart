@@ -522,7 +522,6 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   Future<bool> initCurrentPositionIfNotInitialized() async {
     if (userPosition != null) return false;
 
-    //TODO check if that call is correct, might make sense to request permission always if necesssary?
     return await updateCurrentPosition();
   }
 
@@ -666,7 +665,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         });
     });
     initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition(context);
-    //OneSignal.initOneSignalPushMessages();
+    //OneSignal.initOneSignalPushMessages(); //TODO maybe activate Signal again, I want to ask users for reviews!
     tabController = TabController(vsync: this, length: TabPages.pages.length);
     tabController.addListener(_handleTabSelection);
     initListModel();
@@ -699,6 +698,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   void loadAssetsUnfiltered(ctx) => loadAssets(ctx, -999, null, null);
 
+  //TODO test if I can simply call that in the build function (once) to avoid calling it from different locations
   void _updateDistanceToAllMerchantsIfNotDoneYet() {
     if (userPosition == null) return;
 
@@ -872,13 +872,14 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   SliverAppBar buildSliverAppBar(BuildContext buildCtx) {
     return SliverAppBar(
         elevation: 2,
-        shape: kIsWeb
-            ? RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-                  bottom: Radius.circular(20),
-                ),
-              )
-            : null,
+        shape:
+            kIsWeb //TODO check if user is on mobile with web, then it shall not have rounded corners like in native app
+                ? RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      bottom: Radius.circular(20),
+                    ),
+                  )
+                : null,
         forceElevated: true,
         leading: buildHomeButton(buildCtx),
         bottom: TabBar(
