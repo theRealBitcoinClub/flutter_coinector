@@ -28,7 +28,6 @@ import 'package:synchronized/synchronized.dart' as synchro;
 
 import 'AssetLoader.dart';
 import 'CardItemBuilder.dart';
-import 'CustomScrollBar.dart';
 import 'Dialogs.dart';
 import 'FileCache.dart';
 import 'ListModel.dart';
@@ -57,7 +56,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     with TickerProviderStateMixin, WidgetsBindingObserver, TagFilterCallback {
   SearchDemoSearchDelegate searchDelegate;
 
-  CustomScroller _verticalScroller;
+  //CustomScroller _verticalScroller;
 
   _CoinectorWidgetState(String search) {
     urlSearch = search;
@@ -126,7 +125,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   @override
   void dispose() {
-    if (_verticalScroller != null) _verticalScroller.close();
+    //if (_verticalScroller != null) _verticalScroller.close();
     WidgetsBinding.instance.removeObserver(this);
     InternetConnectivityChecker.pauseAutoChecker();
     Snackbars.close();
@@ -485,13 +484,13 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   _handleTabSelection() async {
-    setState(() {
+    /*setState(() {
       if (_verticalScroller != null &&
           _verticalScroller.state != null &&
           _verticalScroller.state.mounted) {
         _verticalScroller.state.resetOffset();
       }
-    });
+    });*/
     updateCurrentListItemCounter();
     if (!isFilteredList()) updateTitleToCurrentlySelectedTab();
     updateAddButtonCategory();
@@ -652,7 +651,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   void initState() {
     super.initState();
     _scrollControl = ScrollController();
-    _verticalScroller = buildCustomScroller();
+    //_verticalScroller = buildCustomScroller();
     WidgetsBinding.instance.addObserver(this);
     scaffoldKey = _scaffoldKey;
     subscriptionConnectivityChangeListener = Connectivity()
@@ -1211,9 +1210,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                 initialItemCount: list.length,
                 itemBuilder: builderMethod,
               ),
-              (!kIsWeb || !hasScrollableContent())
+              /*(!kIsWeb || !hasScrollableContent())
                   ? SizedBox()
-                  : _verticalScroller
+                  : _verticalScroller*/
             ]),
             padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
           )
@@ -1266,6 +1265,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                 ));
   }
 
+/*
   CustomScroller buildCustomScroller() {
     return CustomScroller(
       //Pass a reference to the ScrollCallBack function into the scrollbar
@@ -1280,7 +1280,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       dragHandleHeight: 60.0,
       dragHandleWidth: 6.0,
     );
+
   }
+ */
 
   SearchDemoSearchDelegate getSearchDelegate(ctx) {
     if (searchDelegate == null ||
