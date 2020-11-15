@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
@@ -83,6 +83,10 @@ class CustomScroller extends StatefulWidget {
     // TODO: implement createState
     return state = _CustomScrollerState();
   }
+
+  close() {
+    state = null;
+  }
 }
 
 class _CustomScrollerState extends State<CustomScroller> {
@@ -156,3 +160,4 @@ class _CustomScrollerState extends State<CustomScroller> {
             ));
   }
 }
+*/

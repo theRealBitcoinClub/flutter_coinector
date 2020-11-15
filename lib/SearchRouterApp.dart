@@ -17,6 +17,7 @@ void main() {
   };
 
   WidgetsFlutterBinding.ensureInitialized();
+  //configureApp();
   runApp(SearchRouterApp());
 }
 

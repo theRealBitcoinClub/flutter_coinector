@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:Coinector/InternetConnectivityChecker.dart';
+import 'package:Coinector/ItemInfoStackLayer.dart';
 import 'package:Coinector/Snackbars.dart';
 import 'package:Coinector/translator.dart';
 import 'package:connectivity/connectivity.dart';
@@ -27,7 +28,6 @@ import 'package:synchronized/synchronized.dart' as synchro;
 
 import 'AssetLoader.dart';
 import 'CardItemBuilder.dart';
-import 'CustomScrollBar.dart';
 import 'Dialogs.dart';
 import 'FileCache.dart';
 import 'ListModel.dart';
@@ -53,10 +53,10 @@ class CoinectorWidget extends StatefulWidget {
 }
 
 class _CoinectorWidgetState extends State<CoinectorWidget>
-    with TickerProviderStateMixin, WidgetsBindingObserver {
+    with TickerProviderStateMixin, WidgetsBindingObserver, TagFilterCallback {
   SearchDemoSearchDelegate searchDelegate;
 
-  CustomScroller _verticalScroller;
+  //CustomScroller _verticalScroller;
 
   _CoinectorWidgetState(String search) {
     urlSearch = search;
@@ -125,6 +125,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   @override
   void dispose() {
+    //if (_verticalScroller != null) _verticalScroller.close();
     WidgetsBinding.instance.removeObserver(this);
     InternetConnectivityChecker.pauseAutoChecker();
     Snackbars.close();
@@ -134,7 +135,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     //isUpdatingPosition = false;
     isCheckingForUpdates = false;
     //isUnfilteredList = false;
-    timerIsCancelled = true;
+    checkDataUpdateTimerIsCancelled = true;
     Dialogs.dismissDialog();
     if (subscriptionConnectivityChangeListener != null)
       subscriptionConnectivityChangeListener.cancel();
@@ -168,17 +169,24 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   var isCheckingForUpdates = false;
-  var timerIsCancelled = false;
+  var checkDataUpdateTimerIsCancelled = false;
 
   void _checkForUpdatedData(ctx) async {
-    if (isCheckingForUpdates || timerIsCancelled) return;
+    if (isCheckingForUpdates || checkDataUpdateTimerIsCancelled) return;
     isCheckingForUpdates = true;
-    await checkDataUpdateShowSnackbarUpdateCache(ctx);
-    Timer.periodic(Duration(seconds: 10), (timer) async {
-      if (timerIsCancelled) timer.cancel();
-      //if (timer.tick == 0) return; //skip first iteration
+    bool hasUpdatedData = await checkDataUpdateShowSnackbarUpdateCache(ctx);
+    if (hasUpdatedData) {
+      checkDataUpdateTimerIsCancelled = true;
+      isCheckingForUpdates = false;
+      return;
+    }
+    Timer.periodic(Duration(seconds: 30), (timer) async {
+      if (checkDataUpdateTimerIsCancelled) timer.cancel();
       try {
-        await checkDataUpdateShowSnackbarUpdateCache(ctx);
+        bool hasUpdatedData = await checkDataUpdateShowSnackbarUpdateCache(ctx);
+        if (hasUpdatedData) {
+          checkDataUpdateTimerIsCancelled = true;
+        }
         isCheckingForUpdates = false;
       } catch (e) {
         FileCache.forceUpdateNextTime();
@@ -189,7 +197,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   Future<bool> checkDataUpdateShowSnackbarUpdateCache(ctx) async {
     FileCache.initLastVersion(() {
       //has new version
-      if (timerIsCancelled) return false;
+      if (checkDataUpdateTimerIsCancelled) return false;
       _updateAllCachedContent(ctx);
       return true;
     });
@@ -476,11 +484,13 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   _handleTabSelection() async {
-    setState(() {
-      if (_verticalScroller.state != null)
+    /*setState(() {
+      if (_verticalScroller != null &&
+          _verticalScroller.state != null &&
+          _verticalScroller.state.mounted) {
         _verticalScroller.state.resetOffset();
-    });
-    _verticalScroller = buildCustomScroller();
+      }
+    });*/
     updateCurrentListItemCounter();
     if (!isFilteredList()) updateTitleToCurrentlySelectedTab();
     updateAddButtonCategory();
@@ -511,7 +521,6 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   Future<bool> initCurrentPositionIfNotInitialized() async {
     if (userPosition != null) return false;
 
-    //TODO check if that call is correct, might make sense to request permission always if necesssary?
     return await updateCurrentPosition();
   }
 
@@ -642,7 +651,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   void initState() {
     super.initState();
     _scrollControl = ScrollController();
-    _verticalScroller = buildCustomScroller();
+    //_verticalScroller = buildCustomScroller();
     WidgetsBinding.instance.addObserver(this);
     scaffoldKey = _scaffoldKey;
     subscriptionConnectivityChangeListener = Connectivity()
@@ -650,12 +659,12 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         .listen((ConnectivityResult result) {
       if (!kIsWeb)
         InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(this,
-            (abc) {
+            (onConnectionLoss) {
           Snackbars.showInternetErrorSnackbar(this);
         });
     });
     initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition(context);
-    //OneSignal.initOneSignalPushMessages();
+    //OneSignal.initOneSignalPushMessages(); //TODO maybe activate Signal again, I want to ask users for reviews!
     tabController = TabController(vsync: this, length: TabPages.pages.length);
     tabController.addListener(_handleTabSelection);
     initListModel();
@@ -665,7 +674,6 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       });
     }
 
-    _checkForUpdatedData(context);
     updateCurrentListItemCounter();
 
     Future.delayed(Duration(seconds: 5), () {
@@ -689,6 +697,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   void loadAssetsUnfiltered(ctx) => loadAssets(ctx, -999, null, null);
 
+  //TODO test if I can simply call that in the build function (once) to avoid calling it from different locations
   void _updateDistanceToAllMerchantsIfNotDoneYet() {
     if (userPosition == null) return;
 
@@ -742,15 +751,6 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     /*new Future.delayed(Duration.zero, () async {
       Translator.currentLocale(context);
     });*/
-    if (kIsWeb) {
-      InternetConnectivityChecker.pauseAutoChecker();
-    } else {
-      //InternetConnectivityChecker.resumeAutoChecker();
-      InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(this,
-          (abc) {
-        Snackbars.showInternetErrorSnackbar(this);
-      });
-    }
     return MaterialApp(
         builder: (context, widget) => ResponsiveWrapper.builder(
             BouncingScrollWrapper.builder(context, widget),
@@ -778,6 +778,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                 FloatingActionButtonLocation.centerFloat,
             floatingActionButton: buildFloatingActionButton(),
             body: new Builder(builder: (BuildContext ctx) {
+              buildWithinScopeOfTranslator(ctx);
               appContent = NestedScrollView(
                 headerSliverBuilder:
                     (BuildContext buildCtx, bool innerBoxIsScrolled) {
@@ -795,11 +796,24 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         ));
   }
 
+  void buildWithinScopeOfTranslator(BuildContext ctx) {
+    _checkForUpdatedData(ctx);
+    /*if (kIsWeb) {
+      InternetConnectivityChecker.pauseAutoChecker();
+    } else {*/
+    //InternetConnectivityChecker.resumeAutoChecker();
+    InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(this,
+        (onConnectionLoss) {
+      Snackbars.showInternetErrorSnackbar(this);
+    });
+    //}
+  }
+
   void scrollCallBack(DragUpdateDetails dragUpdate) {
+    const SCROLL_SPEED_MULTIPLIER = 5;
     setState(() {
-      // Note: 3.5 represents the theoretical height of all my scrollable content. This number will vary for you.
-      _scrollControl.position.moveTo(
-          dragUpdate.localPosition.dy * (dragUpdate.localPosition.dy / 5));
+      _scrollControl.position.moveTo(dragUpdate.localPosition.dy *
+          (dragUpdate.localPosition.dy / SCROLL_SPEED_MULTIPLIER));
     });
   }
 
@@ -836,28 +850,20 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   ThemeData buildTheme() {
     return ThemeData(
-      // Define the default Brightness and Colors
       brightness: Brightness.dark,
       backgroundColor: Colors.grey[900],
       primaryColor: Colors.grey[900],
       accentColor: Colors.white,
-
-      // Define the default Font Family
-      //fontFamily: 'Montserrat',
       fontFamily: 'OpenSans',
-      // Define the default TextTheme. Use this to specify the default
-      // text styling for headlines, titles, bodies of text, and more.
       textTheme: TextTheme(
         headline6: TextStyle(color: Colors.black),
         headline5: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-        bodyText1: TextStyle(
-            fontSize: 17.0,
-            fontFamily: 'Hind',
-            color: Colors.white.withOpacity(0.85)),
+        bodyText1:
+            TextStyle(fontSize: 17.0, fontFamily: 'Hind', color: Colors.white),
         bodyText2: TextStyle(
             fontSize: 14.0,
             fontFamily: 'Hind',
-            color: Colors.white.withOpacity(0.7)),
+            color: Colors.white.withOpacity(0.8)),
       ),
     );
   }
@@ -865,13 +871,14 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   SliverAppBar buildSliverAppBar(BuildContext buildCtx) {
     return SliverAppBar(
         elevation: 2,
-        shape: kIsWeb
-            ? RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-                  bottom: Radius.circular(20),
-                ),
-              )
-            : null,
+        shape:
+            kIsWeb //TODO check if user is on mobile with web, then it shall not have rounded corners like in native app
+                ? RoundedRectangleBorder(
+                    borderRadius: BorderRadius.vertical(
+                      bottom: Radius.circular(20),
+                    ),
+                  )
+                : null,
         forceElevated: true,
         leading: buildHomeButton(buildCtx),
         bottom: TabBar(
@@ -886,7 +893,6 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
           buildIconButtonMap(buildCtx),
         ],
         title: buildTitleWidget(),
-        //expandedHeight: 300.0, GOOD SPACE FOR ADS LATER
         floating: true,
         snap: true,
         pinned: false);
@@ -896,7 +902,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     return Padding(
         padding: EdgeInsets.all(0.0),
         child: AnimatedSwitcher(
-            //TODO fix animation, how to switch animted with a fade transition?
+            //TODO fix animation, how to switch animated with a fade transition?
             duration: Duration(milliseconds: 500),
             child: Text(
               titleActionBar,
@@ -968,7 +974,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   List<Widget> buildAllTabContainer(ctx) {
-    var builder = CardItemBuilder(_lists);
+    var builder = CardItemBuilder(_lists, this);
     return [
       buildTabContainer(ctx, _listKeys[0], _lists[0],
           builder.buildItemRestaurant, TabPages.pages[0].title),
@@ -1106,7 +1112,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
             delegate: getSearchDelegate(ctx),
           );
           startProcessSearch(ctx, selected, false);
-        } catch (e) {
+        } finally {
           InternetConnectivityChecker.resumeAutoChecker();
         }
       },
@@ -1204,9 +1210,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                 initialItemCount: list.length,
                 itemBuilder: builderMethod,
               ),
-              (!kIsWeb || !hasScrollableContent())
+              /*(!kIsWeb || !hasScrollableContent())
                   ? SizedBox()
-                  : _verticalScroller
+                  : _verticalScroller*/
             ]),
             padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
           )
@@ -1259,6 +1265,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                 ));
   }
 
+/*
   CustomScroller buildCustomScroller() {
     return CustomScroller(
       //Pass a reference to the ScrollCallBack function into the scrollbar
@@ -1273,7 +1280,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       dragHandleHeight: 60.0,
       dragHandleWidth: 6.0,
     );
+
   }
+ */
 
   SearchDemoSearchDelegate getSearchDelegate(ctx) {
     if (searchDelegate == null ||
@@ -1341,5 +1350,10 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   bool hasScrollableContent() {
     return currentListItemCounter > 1;
+  }
+
+  @override
+  doFilter(String search) {
+    return startProcessSearch(context, search, true);
   }
 }

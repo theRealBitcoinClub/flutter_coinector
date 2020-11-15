@@ -11,7 +11,6 @@ import 'CustomBoxShadow.dart';
 import 'Dialogs.dart';
 import 'ItemInfoStackLayer.dart';
 import 'Merchant.dart';
-import 'MyColors.dart';
 import 'RatingWidgetBuilder.dart';
 import 'Toaster.dart';
 import 'UrlLauncher.dart';
@@ -22,12 +21,14 @@ class CardItem extends StatelessWidget {
       @required this.animation,
       @required this.index,
       @required this.merchant,
+      @required this.tagFilterCallback,
       this.selected: false})
       : assert(animation != null),
         assert(merchant != null),
         assert(index != null),
         super(key: key);
 
+  final TagFilterCallback tagFilterCallback;
   final int index;
   final Animation<double> animation;
   final Merchant merchant;
@@ -74,11 +75,9 @@ class CardItem extends StatelessWidget {
     TextStyle textStyleBody1 = Theme.of(context).textTheme.bodyText1;
     TextStyle textStyleBody2 = Theme.of(context).textTheme.bodyText2;
 
-    final infoBoxBackgroundColor =
+    /*final infoBoxBackgroundColor =
         MyColors.getCardInfoBoxBackgroundColor(merchant.type).withOpacity(1.0);
-    final actionButtonBackgroundColor =
-        MyColors.getCardActionButtonBackgroundColor(merchant.type)
-            .withOpacity(0.8);
+    final actionButtonBackgroundColor = Colors.grey[900].withOpacity(0.0);*/
     return SizedBox(
       child: Card(
           clipBehavior: Clip.none,
@@ -88,50 +87,45 @@ class CardItem extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0),
           ),
-          color: actionButtonBackgroundColor,
           child: Column(
             children: <Widget>[
-              buildContentStack(context, infoBoxBackgroundColor, textStyleBody1,
-                  textStyleBody2),
+              buildContentStack(
+                  context, textStyleBody1, textStyleBody2, tagFilterCallback),
               buildButtonTheme(context),
             ],
           )),
     );
   }
 
-  Widget buildContentStack(BuildContext ctx, Color infoBoxBackgroundColor,
-      TextStyle textStyle, TextStyle textStyle2) {
+  Widget buildContentStack(BuildContext ctx, TextStyle textStyle,
+      TextStyle textStyle2, TagFilterCallback tagFilterCallback) {
     var gifUrl =
         'https://github.com/theRealBitcoinClub/BITCOINMAP.CASH---Browser-PWA/raw/master/public/img/app/' +
             merchant.id +
             ".gif";
 
     var backGroundColor = Colors.grey[900].withOpacity(0.8);
-    return GestureDetector(
-        child: Stack(
-          children: <Widget>[
-            buildBackGroundImageFallback(ctx),
-            kReleaseMode
+    return Stack(
+      children: <Widget>[
+        ClipRRect(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20.0),
+                topRight: Radius.circular(20.0)),
+            child: kReleaseMode
                 ? buildImageContainer(gifUrl)
-                : SizedBox(), //LIMIT DATA USAGE BY NOT LOADING IMAGES IN DEV MODE
-            buildStackInfoTextWithBackgroundAndShadow(
-                infoBoxBackgroundColor, backGroundColor, textStyle, textStyle2),
-            buildPositionedContainerDistance(ctx, backGroundColor, textStyle2),
-            RatingWidgetBuilder.hasReviews(merchant)
-                ? buildPositionedContainerReviews(backGroundColor, ctx)
-                : SizedBox(),
-          ],
-        ),
-        onTap: () {
-          /*
-          Dialogs.confirmMakeDonation(ctx, () {
-            UrlLauncher.launchDonateUrl();
-          */
-        });
+                : buildBackGroundImageFallback(
+                    ctx)), //LIMIT DATA USAGE BY NOT LOADING IMAGES IN DEV MODE
+        buildStackInfoTextWithBackgroundAndShadow(
+            backGroundColor, textStyle, textStyle2, tagFilterCallback),
+        buildPositionedContainerDistance(ctx, backGroundColor, textStyle2),
+        RatingWidgetBuilder.hasReviews(merchant)
+            ? buildPositionedContainerReviews(backGroundColor, ctx)
+            : SizedBox(),
+      ],
+    );
   }
 
   Widget buildBackGroundImageFallback(BuildContext ctx) {
-    //var img = "assets/youaresatoshi" + (index % 2).toString() + ".gif";
     var img = "assets/placeholder640x480.jpg";
     return FadeInImage.assetNetwork(
       fadeInCurve: Curves.decelerate,
@@ -140,7 +134,7 @@ class CardItem extends StatelessWidget {
       placeholder: img,
       image: img,
       width: 640,
-      height: 390,
+      height: kIsWeb ? 455 : 390,
       alignment: Alignment.bottomCenter,
     );
   }
@@ -166,22 +160,21 @@ class CardItem extends StatelessWidget {
     ]);
   }
 
-  Stack buildStackInfoTextWithBackgroundAndShadow(Color infoBoxBackgroundColor,
-      Color backGroundColor, TextStyle textStyle, TextStyle textStyle2) {
+  Stack buildStackInfoTextWithBackgroundAndShadow(
+      Color backGroundColor,
+      TextStyle textStyle,
+      TextStyle textStyle2,
+      TagFilterCallback tagFilterCallback) {
     return Stack(
       children: <Widget>[
-        buildGradientContainer(Colors.grey[900]),
         Container(
           margin: EdgeInsets.all(0.0),
           height: itemHeightInfoText,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.elliptical(30, 15),
-                  topLeft: Radius.circular(15.0),
-                  topRight: Radius.circular(15.0)),
+              borderRadius: BorderRadius.all(Radius.circular(15.0)),
               boxShadow: [
                 CustomBoxShadow(
-                    color: infoBoxBackgroundColor.withOpacity(0.5),
+                    color: backGroundColor.withOpacity(1),
                     blurRadius: 3.0,
                     offset: Offset(0.0, 0.0),
                     blurStyle: BlurStyle.outer)
@@ -189,6 +182,7 @@ class CardItem extends StatelessWidget {
               color: backGroundColor),
         ),
         ItemInfoStackLayer(
+            filterCallback: tagFilterCallback,
             merchant: merchant,
             textStyleMerchantTitle: textStyle,
             textStyleMerchantLocation: textStyle2,
@@ -257,23 +251,8 @@ class CardItem extends StatelessWidget {
     return Container(
       height: itemHeightInfoText,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(15.0),
-            topRight: Radius.circular(15.0),
-            bottomLeft: Radius.elliptical(30, 15)),
-        gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              //infoBoxBackgroundColor,
-              infoBoxBackgroundColor,
-              infoBoxBackgroundColor.withOpacity(0.95),
-              infoBoxBackgroundColor.withOpacity(0.9),
-              infoBoxBackgroundColor.withOpacity(0.8),
-              infoBoxBackgroundColor.withOpacity(0.7),
-              infoBoxBackgroundColor.withOpacity(0.6),
-              infoBoxBackgroundColor.withOpacity(0.5),
-            ]),
+        color: infoBoxBackgroundColor,
+        borderRadius: BorderRadius.all(Radius.circular(15.0)),
       ),
     );
   }
@@ -289,8 +268,8 @@ class CardItem extends StatelessWidget {
                 blurStyle: BlurStyle.outer)
           ],
           borderRadius: BorderRadius.only(
-              bottomRight: Radius.elliptical(15, 15),
-              bottomLeft: Radius.elliptical(15, 15)),
+              bottomRight: Radius.circular(15.0),
+              bottomLeft: Radius.circular(15.0)),
           color: Colors.grey[900].withOpacity(0.1)),
       child: buildButtons(context),
     );
@@ -302,7 +281,7 @@ class CardItem extends StatelessWidget {
         child: Padding(
             padding: EdgeInsets.all(5.0),
             child: ButtonBar(
-              buttonPadding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+              buttonPadding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
               mainAxisSize: MainAxisSize.max,
               alignment: MainAxisAlignment.end,
               children: <Widget>[
