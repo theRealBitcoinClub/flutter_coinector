@@ -84,6 +84,7 @@ class CardItemBuilder {
       animation: animation,
       merchant: item,
       selected: false,
+      tagFilterCallback: new TagFilterCallback(),
       // No gesture detector here: we don't want removed items to be interactive.
     );
   }
