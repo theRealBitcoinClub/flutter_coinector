@@ -66,8 +66,7 @@ class FileCache {
   }
 
   static Future<String> readCache(String fileName) async {
-    if (kIsWeb) //this happens on web
-      return "";
+    if (kIsWeb) return "";
 
     final file = await localFile(fileName);
     return await file.readAsString();
@@ -75,7 +74,6 @@ class FileCache {
 
   static Future loadAndDecodeAsset(String fileName) async {
     String cachedAsset = await getCachedAssetWithDefaultFallback(fileName);
-    //debugPrint("cachedAsset:" + cachedAsset);
     var decoded = AssetLoader.decodeJSON(cachedAsset);
     return decoded;
   }
@@ -103,12 +101,10 @@ class FileCache {
   }
 
   static Future<bool> writeCache(String fileName, String content) async {
-    if (kIsWeb) //this happens on web
-      return false;
+    if (kIsWeb) return false;
 
     try {
       final file = await localFile(fileName);
-      // Write the file
       file.writeAsString(content, flush: true);
     } catch (e) {
       return false;

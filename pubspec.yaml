@@ -1,5 +1,5 @@
 name: Coinector
-description: Coinnect the coimunity.
+description: Coinecting to coimunity...
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -12,32 +12,43 @@ description: Coinnect the coimunity.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 
-version: 3.9.7+253856
+version: 3.9.8+253858
 
 environment:
   sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
-  carousel_slider: 2.3.1
-  flutter_web_scrollbar: ^0.0.3
-  bitbox: ^0.0.5
-  bch_wallet: ^0.0.3
+  #flutter_web_plugins:
+   # sdk: flutter
+  hovering: ^1.0.2
+  firebase_core: 0.5.2
+  #firebase_core_web: 0.2.0
+  firebase_picture_uploader: 1.1.2
+  image_picker: 0.6.7+14
+  #image_picker_for_web: 0.1.0+2
+  #github: 7.0.3
+  firebase_analytics: 6.2.0
+  flutter_easyrefresh: 2.1.6
+  #carousel_slider: 2.3.1
+  #flutter_web_scrollbar: ^0.0.3
+  #bitbox: ^0.0.5
+  #bch_wallet: ^0.0.3
   #material_floating_search_bar: ^0.2.2
   #country_code_picker: ^1.6.0
   #place_picker: ^0.9.9
   #after_init: ^0.1.2
   fluttertoast: ^7.1.1
   #universal_html: 1.2.3
-  platform_detect: ^1.4.0
+  #platform_detect: ^1.4.0
   permission_handler: ^5.0.1+1
   synchronized: ^2.2.0+2
   #fluro: ^1.7.6
-  #firebase_messaging: ^5.0.3
+  firebase_messaging: ^7.0.3
   #firebase_core: ^0.4.0+5
-  #firebase_crashlytics: ^0.0.4+5
+  firebase_crashlytics: ^0.2.3
   #flutter_advanced_networkimage: any
   #launch_review: 2.0.0
-  #flutter_crashlytics: 1.0.0
+  flutter_crashlytics: 1.0.0
   #clipboard_manager: ^0.0.4
   #flutter_typeahead: ^1.4.0
   awesome_dialog: ^1.2.1
@@ -45,25 +56,25 @@ dependencies:
   flutter_phoenix: ^0.1.0
   #dio_http_cache
   loading: ^1.0.2
-  shared_preferences: ^0.5.12+2
-  share: 0.6.5+3
+  shared_preferences: ^0.5.12+4
+  share: 0.6.5+4
   dio: ^3.0.10
   #device_preview: ^0.4.8
   responsive_framework: ^0.0.11
   #desktop_window: ^0.3.0
   #js: ^0.6.2
   #http: ^0.12.2
-  connectivity: ^0.4.9+5
-  in_app_review: ^0.2.1+1
+  connectivity: ^2.0.1
+  in_app_review: ^1.0.2
   transparent_image: ^1.0.0
   smooth_star_rating: ^1.1.1
-  google_maps_flutter: ^1.0.3
-  url_launcher: ^5.7.4
-  flutter_i18n: ^0.20.0
-  geolocator: ^6.1.0
+  google_maps_flutter: ^1.0.6
+  url_launcher: ^5.7.10
+  flutter_i18n: ^0.20.1
+  geolocator: ^6.1.6
   crypto: ^2.1.5
-  path_provider: ^1.6.21
-  #onesignal_flutter: ^2.1.0
+  path_provider: ^1.6.24
+  #onesignal_flutter: ^2.6.1
   flutter:
     sdk: flutter
 

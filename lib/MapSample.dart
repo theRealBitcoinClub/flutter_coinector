@@ -72,25 +72,22 @@ class MapSampleState extends State<MapSample> {
       initialCamPosFallback = CameraPosition(
           target: LatLng(position.latitude, position.longitude),
           zoom: initialZoomLevel);
-
-/*
-    if (allLists != null) {
-      parseListAndZoomToSingleResult();
-    }*/
   }
 
   void checkConnection() {
     InternetConnectivityChecker.resumeAutoChecker();
     try {
       InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(this,
-          (abc) {
+          (onError) {
+        Future.delayed(Duration(seconds: 10), () {
+          checkConnection();
+        });
         //Dialogs.showDialogInternetError(context);
         Toaster.showToastInternetError(context);
       });
     } catch (e) {
       Toaster.showToastInternetError(context);
     }
-    //}
   }
 
   Future<Set<Marker>> parseListAndZoomToSingleResult(ctx) async {

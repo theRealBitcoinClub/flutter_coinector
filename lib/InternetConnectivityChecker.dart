@@ -23,26 +23,29 @@ class InternetConnectivityChecker {
 
   static void checkInternetConnectivityShowSnackbar(that, _onError) async {
     if (pauseInternetChecker || kIsWeb) return;
-//DONT CHECK MORE THAN EVERY 9 SECONDS
+    pauseInternetChecker = true;
+    //DONT CHECK MORE THAN EVERY 9 SECONDS
     var milliSecondsNow = DateTime.now().millisecondsSinceEpoch;
     if (that.mounted &&
         lastWarningInMillis != 0 &&
         lastWarningInMillis + 8500 > milliSecondsNow) {
+      pauseInternetChecker = false;
       return;
     }
     lastWarningInMillis = milliSecondsNow;
 
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile) {
-// I am connected to a mobile network.
+      // I am connected to a mobile network. all fine
     } else if (connectivityResult == ConnectivityResult.wifi) {
-// I am connected to a wifi network.
+      // wifi activated doesnt assura having internet
       checkConnectionWithRequest(that, (abc) {
         _onError(that);
       });
     } else {
       _onError(that);
     }
+    pauseInternetChecker = false;
   }
 
   static Future checkConnectionWithRequest(that, _onError) async {
