@@ -24,7 +24,7 @@
       },
       {
         "source": "/android",
-        "destination": "/https://play.google.com/store/apps/details?id=cash.bitcoinmap.coinector",
+        "destination": "https://play.google.com/store/apps/details?id=cash.bitcoinmap.coinector",
         "type": 301
       },
       {
