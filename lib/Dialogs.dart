@@ -20,7 +20,7 @@ class Dialogs {
               dialogType: DialogType.ERROR,
               animType: AnimType.SCALE,
               padding: EdgeInsets.all(0.0),
-              onDissmissCallback: () {
+              onDissmissCallback: (DismissType d) {
                 hasDialog = false;
                 Navigator.of(ctx).pop();
               },
@@ -33,7 +33,7 @@ class Dialogs {
 
   static void dismissDialog() {
     hasDialog = false;
-    if (dialog != null) dialog.dissmiss();
+    if (dialog != null) dialog.dismiss();
   }
 
   static void confirmMakeDonation(BuildContext buildCtx, callbackYes) {

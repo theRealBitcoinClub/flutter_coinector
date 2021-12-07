@@ -556,8 +556,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     //return true;
     // } else {
     if (!kIsWeb && await Permission.locationWhenInUse.isGranted) {
-      Position pos = await GeolocatorPlatform.instance
-          .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+      Position pos = await GeolocatorPlatform.instance.getLastKnownPosition();
       //setState(() {
       userPosition = pos;
       //});
@@ -683,7 +682,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   void initPositionStream() async {
-    positionStream = Geolocator.getPositionStream(distanceFilter: 500)
+    positionStream = Geolocator.getPositionStream()
         .listen((Position position) {
       print(position == null
           ? 'Unknown'

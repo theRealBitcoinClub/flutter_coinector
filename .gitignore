@@ -1,0 +1,5 @@
+build
+.dart_tool
+android\\key.properties
+
+android/key.properties

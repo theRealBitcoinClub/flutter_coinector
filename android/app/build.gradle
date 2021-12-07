@@ -33,7 +33,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 31
 
     lintOptions {
         disable 'InvalidPackage'
@@ -41,10 +41,10 @@ android {
 
     defaultConfig {
         applicationId "cash.bitcoinmap.coinector"
-        minSdkVersion 18
-        targetSdkVersion 29
+        minSdkVersion 20
+        targetSdkVersion 31
         versionCode 253858
-        versionName "BMAP 3.9.8"
+        versionName "BMAP 3.9.9"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -73,5 +73,4 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
 
-apply plugin: 'io.fabric'
 apply plugin: 'com.google.gms.google-services'
