@@ -41,7 +41,7 @@ android {
 
     defaultConfig {
         applicationId "cash.bitcoinmap.coinector"
-        minSdkVersion 20
+        minSdkVersion 23
         targetSdkVersion 31
         versionCode 253858
         versionName "BMAP 3.9.9"
@@ -73,4 +73,4 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
 
-apply plugin: 'com.google.gms.google-services'
+//apply plugin: 'com.google.gms.google-services'

@@ -121,7 +121,7 @@ class AssetLoader {
         placesIdCache = json.decode(data);
       } else {
         var response = await new Dio().get(
-            'https://raw.githubusercontent.com/theRealBitcoinClub/flutter_coinector/master/assets/placesId.json');
+            'https://github.com/theRealBitcoinClub/flutter_coinector/raw/master/assets/placesId.json');
         placesIdCache = json.decode(response.data);
         FileCache.writeCache("placesId", response.data.toString());
       }

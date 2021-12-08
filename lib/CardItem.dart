@@ -1,6 +1,7 @@
 import 'package:Coinector/translator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_i18n/widgets/I18nText.dart';
 import 'package:loading/indicator/ball_grid_pulse_indicator.dart';
 import 'package:loading/loading.dart';
 import 'package:share/share.dart';
@@ -40,7 +41,7 @@ class CardItem extends StatelessWidget {
       child: Row(
         children: <Widget>[
           Icon(Icons.alternate_email),
-          Text(Translator.translate(ctx, "send_email"))
+          I18nText("send_email")
         ],
       ),
       onPressed: () {
@@ -61,11 +62,9 @@ class CardItem extends StatelessWidget {
               buildSendEmailButton(buildCtx),
               Dialogs.buildCloseDialogButton(buildCtx)
             ],
-            title: Text(
-                Translator.translate(buildCtx, "dialog_missing_gmaps_title"),
-                style: TextStyle(color: Colors.white)),
-            content: Text(
-                Translator.translate(buildCtx, "dialog_help_grow_adoption")),
+            title: I18nText("dialog_missing_gmaps_title",child: Text("",
+                style: TextStyle(color: Colors.white))),
+            content: I18nText("dialog_help_grow_adoption"),
           );
         });
   }
@@ -100,7 +99,7 @@ class CardItem extends StatelessWidget {
   Widget buildContentStack(BuildContext ctx, TextStyle textStyle,
       TextStyle textStyle2, TagFilterCallback tagFilterCallback) {
     var gifUrl =
-        'https://github.com/theRealBitcoinClub/BITCOINMAP.CASH---Browser-PWA/raw/master/public/img/app/' +
+        'https://raw.githubusercontent.com/theRealBitcoinClub/BITCOINMAP.CASH---Browser-PWA/master/public/img/app/' +
             merchant.id +
             ".gif";
 
@@ -298,9 +297,8 @@ class CardItem extends StatelessWidget {
         children: <Widget>[
           Dialogs.buildIcon(Icons.directions_run, Colors.white),
           Dialogs.buildSpacer(),
-          Text(
-            Translator.translate(context, 'VISIT'),
-            style: TextStyle(fontSize: 14, color: Colors.white),
+            I18nText('VISIT', child: Text("",
+            style: TextStyle(fontSize: 14, color: Colors.white)),
           )
         ],
       ),

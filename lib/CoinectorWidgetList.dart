@@ -400,7 +400,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         !_containsLocation(m2, location) &&
         !_containsTitle(m2, location)) return;
     if (filterWordIndex == -1)
-      mapPosition = Position(latitude: m2.x, longitude: m2.y);
+      mapPosition = Position(latitude: m2.x, longitude: m2.y, speedAccuracy: 0.0, altitude: 0.0, accuracy: 0.0, heading: 0.0, speed: 0.0, timestamp: DateTime.now());
 
     switch (m2.type) {
       case 0:
@@ -619,7 +619,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       setState(() {
         userPosition = Position(
             latitude: parseDouble(position, 0),
-            longitude: parseDouble(position, 1));
+            longitude: parseDouble(position, 1), speedAccuracy: 0.0, altitude: 0.0, accuracy: 0.0, heading: 0.0, speed: 0.0, timestamp: DateTime.now());
       });
     }
 
@@ -1329,7 +1329,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         latitude = double.parse(latitude.toString());
       }
       if (longitude is double)
-        userPosition = new Position(longitude: longitude, latitude: latitude);
+        userPosition = new Position(longitude: longitude, latitude: latitude, speedAccuracy: 0.0, altitude: 0.0, accuracy: 0.0, heading: 0.0, speed: 0.0, timestamp: DateTime.now());
       else
         debugPrint(
             "RECEIVING INVALID DATA FROM COARSE LOCATION PROVIDER\nRECEIVING INVALID DATA FROM COARSE LOCATION PROVIDER\nRECEIVING INVALID DATA FROM COARSE LOCATION PROVIDER");
