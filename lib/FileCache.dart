@@ -19,11 +19,14 @@ const _kNotificationsPrefs = "initLastVersionKey";
 
 class FileCache {
   static Future<String> getLatestContentFromWeb(String fileName) async {
-    var response = await new Dio().get(
-        'https://github.com/theRealBitcoinClub/flutter_coinector/raw/master/assets/' +
-            fileName +
-            '.json');
-    return response.data;
+    var response;
+    try {
+      response = await new Dio().get(
+          'https://github.com/theRealBitcoinClub/flutter_coinector/raw/master/assets/' +
+              fileName +
+              '.json');
+    } catch (e) {}
+    return response == null ? null : response.data;
   }
 
   static Future<void> initLastVersion(onHasNewVersionCallback) async {
@@ -31,8 +34,12 @@ class FileCache {
     var currentVersion = int.parse(
         getLastVersionNumberFromPrefsWithDefaultValue(
             prefs, _kNotificationsPrefs));
-    var response = await new Dio().get(
-        'https://github.com/theRealBitcoinClub/flutter_coinector/raw/master/dataUpdateIncrementVersion.txt');
+    var response;
+    try {
+      response = await new Dio().get(
+          'https://github.com/theRealBitcoinClub/flutter_coinector/raw/master/dataUpdateIncrementVersion.txt');
+    } catch (e) {}
+    if (response == null) return;
     if (int.parse(response.data) > currentVersion) {
       persistCacheVersionCounter(response.data);
       onHasNewVersionCallback();
@@ -97,6 +104,7 @@ class FileCache {
 
   static Future loadFromWebAndPersistCache(String fileName) async {
     String latestContent = await FileCache.getLatestContentFromWeb(fileName);
+    if (latestContent == null) return;
     await FileCache.writeCache(fileName, latestContent);
   }
 

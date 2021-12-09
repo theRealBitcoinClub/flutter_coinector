@@ -39,10 +39,7 @@ class CardItem extends StatelessWidget {
   FlatButton buildSendEmailButton(BuildContext ctx) {
     return FlatButton(
       child: Row(
-        children: <Widget>[
-          Icon(Icons.alternate_email),
-          I18nText("send_email")
-        ],
+        children: <Widget>[Icon(Icons.alternate_email), I18nText("send_email")],
       ),
       onPressed: () {
         Navigator.of(ctx).pop();
@@ -62,8 +59,8 @@ class CardItem extends StatelessWidget {
               buildSendEmailButton(buildCtx),
               Dialogs.buildCloseDialogButton(buildCtx)
             ],
-            title: I18nText("dialog_missing_gmaps_title",child: Text("",
-                style: TextStyle(color: Colors.white))),
+            title: I18nText("dialog_missing_gmaps_title",
+                child: Text("", style: TextStyle(color: Colors.white))),
             content: I18nText("dialog_help_grow_adoption"),
           );
         });
@@ -112,8 +109,7 @@ class CardItem extends StatelessWidget {
                 topRight: Radius.circular(20.0)),
             child: kReleaseMode
                 ? buildImageContainer(gifUrl)
-                : buildDevModeDataSaveImageContainer(
-                    ctx)),
+                : buildDevModeDataSaveImageContainer(ctx)),
         buildStackInfoTextWithBackgroundAndShadow(
             backGroundColor, textStyle, textStyle2, tagFilterCallback),
         buildPositionedContainerDistance(ctx, backGroundColor, textStyle2),
@@ -126,15 +122,8 @@ class CardItem extends StatelessWidget {
 
   Widget buildDevModeDataSaveImageContainer(BuildContext ctx) {
     var img = "assets/placeholder640x480.jpg";
-    return FadeInImage.assetNetwork(
-      fadeInCurve: Curves.decelerate,
-      fit: BoxFit.contain,
-      fadeInDuration: Duration(milliseconds: 300),
-      image: img,
-      width: 640,
-      height: kIsWeb ? 455 : 390,
-      alignment: Alignment.bottomCenter,
-    );
+    return Opacity(opacity: 0.1, child:Image.asset(img));
+    return Stack(children: [Image.asset(img),ColoredBox(color: Colors.white.withOpacity(0.5))]);
   }
 
   Widget buildImageContainer(String gifUrl) {
@@ -146,6 +135,14 @@ class CardItem extends StatelessWidget {
         bottom: kIsWeb ? 40 : 45,
       ),
       FadeInImage.memoryNetwork(
+        imageErrorBuilder:
+            (BuildContext context, Object exception, StackTrace stackTrace) {
+          return SizedBox(height: 220, width: 640);
+        },
+        placeholderErrorBuilder:
+            (BuildContext context, Object exception, StackTrace stackTrace) {
+          return SizedBox(height: 220, width: 640);
+        },
         fadeInCurve: Curves.decelerate,
         fit: BoxFit.contain,
         fadeInDuration: Duration(milliseconds: 500),
@@ -296,8 +293,9 @@ class CardItem extends StatelessWidget {
         children: <Widget>[
           Dialogs.buildIcon(Icons.directions_run, Colors.white),
           Dialogs.buildSpacer(),
-            I18nText('VISIT', child: Text("",
-            style: TextStyle(fontSize: 14, color: Colors.white)),
+          Text(
+            Translator.translate(context, 'VISIT'),
+            style: TextStyle(fontSize: 14, color: Colors.white),
           )
         ],
       ),
@@ -323,6 +321,7 @@ class CardItem extends StatelessWidget {
 
   void loadPlace(afterLoadCallback) async {
     new AssetLoader().loadPlace(merchant.id).then((place) {
+      if (place == null) return;
       merchant.place = place;
       afterLoadCallback();
     });

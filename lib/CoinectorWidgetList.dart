@@ -561,13 +561,13 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       userPosition = pos;
       //});
 //TODO FIND BUG AFTER RELOAD WITH POSITION THE APP HANGS ON START
-      try {
+      //try {
         if (await setLatestPosition(pos)) {
           if (latestPositionWasCoarse) _onGetAccurateGPSFirstTime();
         }
-      } catch (e) {
+      /*} catch (e) {
         debugPrint("\n\n\”dgfdbvevgreave\n\n\n" + e.toString());
-      }
+      }*/
       latestPositionWasCoarse = false;
     } else if (await setLatestPosition(await _getCoarseLocationViaIP())) {
       //TODO silently update the data
@@ -995,6 +995,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   bool isFilterEmpty() => _searchTerm == null || _searchTerm.isEmpty;
 
   Future<bool> _saveLatestSavedPosition(String value) async {
+    if(value == null)
+      return false;
+
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     return await prefs.setString(sharedPrefKeyLastLocation, value);
   }
