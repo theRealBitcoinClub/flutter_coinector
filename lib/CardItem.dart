@@ -112,8 +112,8 @@ class CardItem extends StatelessWidget {
                 topRight: Radius.circular(20.0)),
             child: kReleaseMode
                 ? buildImageContainer(gifUrl)
-                : buildBackGroundImageFallback(
-                    ctx)), //LIMIT DATA USAGE BY NOT LOADING IMAGES IN DEV MODE
+                : buildDevModeDataSaveImageContainer(
+                    ctx)),
         buildStackInfoTextWithBackgroundAndShadow(
             backGroundColor, textStyle, textStyle2, tagFilterCallback),
         buildPositionedContainerDistance(ctx, backGroundColor, textStyle2),
@@ -124,13 +124,12 @@ class CardItem extends StatelessWidget {
     );
   }
 
-  Widget buildBackGroundImageFallback(BuildContext ctx) {
+  Widget buildDevModeDataSaveImageContainer(BuildContext ctx) {
     var img = "assets/placeholder640x480.jpg";
     return FadeInImage.assetNetwork(
       fadeInCurve: Curves.decelerate,
       fit: BoxFit.contain,
       fadeInDuration: Duration(milliseconds: 300),
-      placeholder: img,
       image: img,
       width: 640,
       height: kIsWeb ? 455 : 390,
@@ -153,7 +152,7 @@ class CardItem extends StatelessWidget {
         placeholder: kTransparentImage,
         image: gifUrl,
         width: 640,
-        height: 390,
+        height: kIsWeb ? 455 : 390,
         alignment: Alignment.bottomCenter,
       )
     ]);
