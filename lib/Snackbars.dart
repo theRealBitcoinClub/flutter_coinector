@@ -7,15 +7,14 @@ import 'package:flutter_phoenix/flutter_phoenix.dart';
 
 class Snackbars {
   static void _showSnackBar(
-      GlobalKey<ScaffoldState> _scaffoldKey, ctx, String msgId,
+      GlobalKey<ScaffoldState> _scaffoldKey, BuildContext ctx, String msgId,
       {String additionalText = "",
       snackbarAction,
       duration = const Duration(milliseconds: 5000),
       removeLatest = false}) {
-    if (_scaffoldKey == null || _scaffoldKey.currentState == null) return;
-
-    if (removeLatest) _scaffoldKey.currentState.removeCurrentSnackBar();
-    _scaffoldKey.currentState.showSnackBar(SnackBar(
+    if (isWidgetUnmounted(ctx, _scaffoldKey)) return;
+    if (removeLatest) ScaffoldMessenger.of(ctx).removeCurrentSnackBar();
+    ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(
       action: snackbarAction,
       duration: duration,
       content: Text(
@@ -28,6 +27,8 @@ class Snackbars {
       backgroundColor: Colors.yellow[700],
     ));
   }
+
+  static bool isWidgetUnmounted(BuildContext ctx, GlobalKey<ScaffoldState> _scaffoldKey) => ctx.widget == null || _scaffoldKey == null || _scaffoldKey.currentState == null || !_scaffoldKey.currentState.mounted;
 
   static var isBusySnacking = false;
 
