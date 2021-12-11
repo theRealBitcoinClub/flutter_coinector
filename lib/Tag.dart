@@ -1541,7 +1541,7 @@ class Tag {
     'Moda 👗',
     'Justo 🤗',
     'Mujer 👩', //54
-    'Bebida 🍹',
+    'Refresco 🍹',
     'Tele 📺',
     '🍔🍔🍔Retro 🦄',
     '🍔🍔🍔Feta 🐐',
