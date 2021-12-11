@@ -1,4 +1,5 @@
 import 'package:Coinector/translator.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/widgets/I18nText.dart';
@@ -34,7 +35,7 @@ class CardItem extends StatelessWidget {
   final Animation<double> animation;
   final Merchant merchant;
   final bool selected;
-  final double itemHeightInfoText = 95;
+  final double itemHeightInfoText = kIsWeb ? 75 : 80;
 
   FlatButton buildSendEmailButton(BuildContext ctx) {
     return FlatButton(
@@ -80,6 +81,7 @@ class CardItem extends StatelessWidget {
           margin:
               EdgeInsets.only(top: 0.0, left: 10.0, right: 10.0, bottom: 20.0),
           elevation: 0.0,
+          shadowColor: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0),
           ),
@@ -100,14 +102,14 @@ class CardItem extends StatelessWidget {
             merchant.id +
             ".gif";
 
-    var backGroundColor = Colors.grey[900].withOpacity(0.8);
+    var backGroundColor = Colors.grey[900].withOpacity(0.80);
     return Stack(
       children: <Widget>[
         ClipRRect(
             borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20.0),
-                topRight: Radius.circular(20.0)),
-            child: kReleaseMode
+                topLeft: Radius.circular(10.0),
+                topRight: Radius.circular(10.0)),
+            child: !kReleaseMode
                 ? buildImageContainer(gifUrl)
                 : buildDevModeDataSaveImageContainer(ctx)),
         buildStackInfoTextWithBackgroundAndShadow(
@@ -122,35 +124,70 @@ class CardItem extends StatelessWidget {
 
   Widget buildDevModeDataSaveImageContainer(BuildContext ctx) {
     var img = "assets/placeholder640x480.jpg";
-    return Opacity(opacity: 0.1, child:Image.asset(img));
-    return Stack(children: [Image.asset(img),ColoredBox(color: Colors.white.withOpacity(0.5))]);
+    return Opacity(
+        opacity: 0.1,
+        child: Image.asset(
+          img,
+          height: 340,
+          fit: BoxFit.fitWidth,
+        ));
+    return Stack(children: [
+      Image.asset(img),
+      ColoredBox(color: Colors.white.withOpacity(0.5))
+    ]);
   }
 
   Widget buildImageContainer(String gifUrl) {
     return Stack(children: <Widget>[
-      Positioned(
-        child: Loading(
-            color: Colors.white, indicator: BallGridPulseIndicator(), size: 40),
-        left: kIsWeb ? 230 : 190,
-        bottom: kIsWeb ? 40 : 45,
-      ),
+      SizedBox(
+          height: 160,
+          width: 640,
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: Loading(
+                color: Colors.white54,
+                indicator: BallGridPulseIndicator(),
+                size: 40),
+          )),
       FadeInImage.memoryNetwork(
         imageErrorBuilder:
             (BuildContext context, Object exception, StackTrace stackTrace) {
-          return SizedBox(height: 220, width: 640);
+          return SizedBox(
+            height: 160,
+            width: 640,
+            child: DecoratedBox(
+              decoration: BoxDecoration(color: Colors.grey[900]),
+            ),
+          );
         },
         placeholderErrorBuilder:
             (BuildContext context, Object exception, StackTrace stackTrace) {
-          return SizedBox(height: 220, width: 640);
+          return SizedBox(
+            height: 160,
+            width: 640,
+            child: DecoratedBox(
+              decoration: BoxDecoration(color: Colors.grey[900]),
+            ),
+          );
+          /*return SizedBox(
+            height: 880,
+            width: 640,
+            //color: Colors.white10,
+            child: Text(
+              "Image unavailable, you haz interwebz?",
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.white70),
+            ),
+          );*/
         },
         fadeInCurve: Curves.decelerate,
-        fit: BoxFit.contain,
+        fit: BoxFit.fitWidth,
         fadeInDuration: Duration(milliseconds: 500),
         placeholder: kTransparentImage,
         image: gifUrl,
         width: 640,
-        height: kIsWeb ? 455 : 390,
-        alignment: Alignment.bottomCenter,
+        height: kIsWeb ? 280 : 228,
+        alignment: Alignment.center,
       )
     ]);
   }
@@ -166,7 +203,7 @@ class CardItem extends StatelessWidget {
           margin: EdgeInsets.all(0.0),
           height: itemHeightInfoText,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(15.0)),
+              borderRadius: BorderRadius.all(Radius.circular(10.0)),
               boxShadow: [
                 CustomBoxShadow(
                     color: backGroundColor.withOpacity(1),
@@ -190,7 +227,7 @@ class CardItem extends StatelessWidget {
       BuildContext ctx, Color backGroundColor, TextStyle textStyle2) {
     return Positioned(
       right: 0.0,
-      bottom: kIsWeb ? 80 : 73.0,
+      bottom: 33,
       child: merchant.distance != null
           ? GestureDetector(
               onTap: () {
@@ -215,7 +252,7 @@ class CardItem extends StatelessWidget {
       Color backGroundColor, BuildContext ctx) {
     return Positioned(
         right: 0.0,
-        bottom: kIsWeb ? 50 : 45.0,
+        bottom: 4,
         child: GestureDetector(
           onTap: () {
             handleReviewClick(ctx);
@@ -276,7 +313,8 @@ class CardItem extends StatelessWidget {
         child: Padding(
             padding: EdgeInsets.all(5.0),
             child: ButtonBar(
-              buttonPadding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+              buttonPadding:
+                  EdgeInsets.fromLTRB(0.0, 10.0, kIsWeb ? 25.0 : 12.0, 10.0),
               mainAxisSize: MainAxisSize.max,
               alignment: MainAxisAlignment.end,
               children: <Widget>[

@@ -31,7 +31,7 @@ class ItemInfoStackLayer extends StatelessWidget {
     return Container(
       height: height,
       child: ListView(
-        padding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 0.0),
+        padding: EdgeInsets.fromLTRB(kIsWeb ? 10.0 : 8.0, kIsWeb ? 5.0 : 3.0, 10.0, 0.0),
         physics: const NeverScrollableScrollPhysics(),
         children: <Widget>[
           SingleChildScrollView(
@@ -42,9 +42,9 @@ class ItemInfoStackLayer extends StatelessWidget {
                 maxLines: 1,
               )),
           const SizedBox(
-            height: 5,
+            height: 3,
           ),
-          SingleChildScrollView(
+          SingleChildScrollView(padding: EdgeInsets.all(0.0),
               scrollDirection: Axis.horizontal,
               child: Text(
                 merchant.location,
@@ -52,11 +52,14 @@ class ItemInfoStackLayer extends StatelessWidget {
                 style: textStyleMerchantLocation,
               )),
           const SizedBox(
-            height: 10,
+            height: kIsWeb ? 4 : 0.01,
           ),
           SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: Row(children: buildTagTextItems(context, splittedTags))),
+              child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: buildTagTextItems(context, splittedTags))),
         ],
       ),
     );
