@@ -15,8 +15,11 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
 
   SearchDemoSearchDelegate({String hintText = "Satoshi lives, children yeaha!"})
       : super(
-          searchFieldStyle:
-              TextStyle(inherit: false, color: Colors.black45, fontSize: 16),
+          searchFieldDecorationTheme: InputDecorationTheme(
+              filled: true,
+              fillColor: Colors.white,
+              hintStyle: TextStyle(
+                  inherit: false, color: Colors.black54, fontSize: 16)),
           searchFieldLabel: hintText,
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.search,
