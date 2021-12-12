@@ -18,24 +18,26 @@ import 'Toaster.dart';
 import 'UrlLauncher.dart';
 
 class CardItem extends StatelessWidget {
-  const CardItem(
-      {Key key,
-      @required this.animation,
-      @required this.index,
-      @required this.merchant,
-      @required this.tagFilterCallback,
-      this.selected: false})
-      : assert(animation != null),
-        assert(merchant != null),
-        assert(index != null),
-        super(key: key);
-
+  //final bool isDataSaveOfflineMode;
   final TagFilterCallback tagFilterCallback;
   final int index;
   final Animation<double> animation;
   final Merchant merchant;
   final bool selected;
   final double itemHeightInfoText = kIsWeb ? 75 : 80;
+
+  const CardItem(
+      {Key key,
+      @required this.animation,
+      @required this.index,
+      @required this.merchant,
+      @required this.tagFilterCallback,
+      this.selected: false,
+      /*this.isDataSaveOfflineMode: false*/})
+      : assert(animation != null),
+        assert(merchant != null),
+        assert(index != null),
+        super(key: key);
 
   FlatButton buildSendEmailButton(BuildContext ctx) {
     return FlatButton(
@@ -110,8 +112,8 @@ class CardItem extends StatelessWidget {
                 topLeft: Radius.circular(10.0),
                 topRight: Radius.circular(10.0)),
             child: kReleaseMode
-                ? buildImageContainer(gifUrl)
-                : buildDevModeDataSaveImageContainer(ctx)),
+                ? buildImageContainer(gifUrl, ctx)
+                : buildPlaceHolderOfflineVersion(ctx)),
         buildStackInfoTextWithBackgroundAndShadow(
             backGroundColor, textStyle, textStyle2, tagFilterCallback),
         buildPositionedContainerDistance(ctx, backGroundColor, textStyle2),
@@ -122,63 +124,50 @@ class CardItem extends StatelessWidget {
     );
   }
 
-  Widget buildDevModeDataSaveImageContainer(BuildContext ctx) {
-    var img = "assets/placeholder640x480.jpg";
-    return Opacity(
-        opacity: 0.1,
-        child: Image.asset(
-          img,
-          height: 340,
-          fit: BoxFit.fitWidth,
-        ));
-    return Stack(children: [
-      Image.asset(img),
-      ColoredBox(color: Colors.white.withOpacity(0.5))
-    ]);
+  SizedBox buildPlaceHolderOfflineVersion(ctx) {
+    return SizedBox(
+      height: 160,
+      width: 640,
+      child: DecoratedBox(
+        child: Align(
+            alignment: Alignment.bottomLeft,
+            child: Padding(
+                padding: EdgeInsets.all(5.0),
+                //child: GestureDetector(
+                  //  onTap: onTapActivateOnlineMode(ctx),
+                    child: Text(
+                      "Offline Data Saver Mode or Image missing.",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.white54),
+                      textScaleFactor: 0.9,
+                    ))),//),
+        decoration: BoxDecoration(color: Colors.grey[900]),
+      ),
+    );
   }
 
-  Widget buildImageContainer(String gifUrl) {
+  Widget buildImageContainer(String gifUrl, BuildContext ctx) {
     return Stack(children: <Widget>[
       SizedBox(
           height: 160,
           width: 640,
           child: Align(
             alignment: Alignment.bottomCenter,
-            child: Loading(
-                color: Colors.white54,
-                indicator: BallGridPulseIndicator(),
-                size: 40),
-          )),
+            //child: GestureDetector(
+              //  onTap: () => onTapActivateDataSaverOfflineMode(ctx),
+                child: Loading(
+                    color: Colors.white54,
+                    indicator: BallGridPulseIndicator(),
+                    size: 40)),
+          ),//),
       FadeInImage.memoryNetwork(
         imageErrorBuilder:
             (BuildContext context, Object exception, StackTrace stackTrace) {
-          return SizedBox(
-            height: 160,
-            width: 640,
-            child: DecoratedBox(
-              decoration: BoxDecoration(color: Colors.grey[900]),
-            ),
-          );
+          return buildPlaceHolderOfflineVersion(ctx);
         },
         placeholderErrorBuilder:
             (BuildContext context, Object exception, StackTrace stackTrace) {
-          return SizedBox(
-            height: 160,
-            width: 640,
-            child: DecoratedBox(
-              decoration: BoxDecoration(color: Colors.grey[900]),
-            ),
-          );
-          /*return SizedBox(
-            height: 880,
-            width: 640,
-            //color: Colors.white10,
-            child: Text(
-              "Image unavailable, you haz interwebz?",
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white70),
-            ),
-          );*/
+          return buildPlaceHolderOfflineVersion(ctx);
         },
         fadeInCurve: Curves.decelerate,
         fit: BoxFit.fitWidth,
@@ -422,4 +411,25 @@ class CardItem extends StatelessWidget {
       },
     );
   }
+
+  //TODO ACTIVATE DATA SAVE MODE ON TOUCH OF LOADER THEN DEACTIVATE ON TOUCH OF TEXTHINT
+  /*persistDataSaverOfflineMode() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool("sjlfsjlfjsjnwfuinsnvsdjnvsn", true);
+  }
+
+  removeDataSaverOfflineMode() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.remove("sjlfsjlfjsjnwfuinsnvsdjnvsn");
+  }
+
+  onTapActivateDataSaverOfflineMode(ctx) {
+    persistDataSaverOfflineMode();
+    //Phoenix.rebirth(ctx);
+  }
+
+  onTapActivateOnlineMode(ctx) {
+    removeDataSaverOfflineMode();
+    //Phoenix.rebirth(ctx);
+  }*/
 }

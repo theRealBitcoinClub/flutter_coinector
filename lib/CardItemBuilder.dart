@@ -6,13 +6,12 @@ import 'ListModel.dart';
 import 'Merchant.dart';
 
 class CardItemBuilder {
-  List<ListModel<Merchant>> _lists;
-  TagFilterCallback _tagFilterCallback;
+  final List<ListModel<Merchant>> _lists;
+  final TagFilterCallback _tagFilterCallback;
+  //final bool _isDataSaverOfflineMode;
 
-  CardItemBuilder(lists, tagFilterCallback) {
-    _lists = lists;
-    _tagFilterCallback = tagFilterCallback;
-  }
+  CardItemBuilder(
+      this._lists, this._tagFilterCallback /*, this._isDataSaverOfflineMode*/);
 
   CardItem _buildItem(
       int index, Animation<double> animation, ListModel<Merchant> listModel) {
@@ -26,6 +25,7 @@ class CardItemBuilder {
           animation: animation,
           merchant: currentListModel,
           tagFilterCallback: _tagFilterCallback,
+          //isDataSaveOfflineMode: _isDataSaverOfflineMode,
         );
       }
     } catch (e) {

@@ -56,6 +56,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     with TickerProviderStateMixin, WidgetsBindingObserver, TagFilterCallback {
   SearchDemoSearchDelegate searchDelegate;
 
+  //bool isDataSaverOfflineMode = false;
+
   //CustomScroller _verticalScroller;
 
   _CoinectorWidgetState(String search) {
@@ -400,7 +402,15 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         !_containsLocation(m2, location) &&
         !_containsTitle(m2, location)) return;
     if (filterWordIndex == -1)
-      mapPosition = Position(latitude: m2.x, longitude: m2.y, speedAccuracy: 0.0, altitude: 0.0, accuracy: 0.0, heading: 0.0, speed: 0.0, timestamp: DateTime.now());
+      mapPosition = Position(
+          latitude: m2.x,
+          longitude: m2.y,
+          speedAccuracy: 0.0,
+          altitude: 0.0,
+          accuracy: 0.0,
+          heading: 0.0,
+          speed: 0.0,
+          timestamp: DateTime.now());
 
     switch (m2.type) {
       case 0:
@@ -562,9 +572,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       //});
 //TODO FIND BUG AFTER RELOAD WITH POSITION THE APP HANGS ON START
       //try {
-        if (await setLatestPosition(pos)) {
-          if (latestPositionWasCoarse) _onGetAccurateGPSFirstTime();
-        }
+      if (await setLatestPosition(pos)) {
+        if (latestPositionWasCoarse) _onGetAccurateGPSFirstTime();
+      }
       /*} catch (e) {
         debugPrint("\n\n\”dgfdbvevgreave\n\n\n" + e.toString());
       }*/
@@ -595,7 +605,15 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       Phoenix.rebirth(context);
     });
   }
+/*
+  Future<bool> initDataSaverOfflineMode() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    var tmp = prefs.getBool("sjlfsjlfjsjnwfuinsnvsdjnvsn");
 
+    isDataSaverOfflineMode = tmp != null ? tmp : false;
+    return isDataSaverOfflineMode;
+  }
+*/
   Future<bool> setLatestPosition(Position pos) async {
     String position = await getLatestSavedPosition();
     var posString = _buildPosString(pos);
@@ -619,7 +637,13 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       setState(() {
         userPosition = Position(
             latitude: parseDouble(position, 0),
-            longitude: parseDouble(position, 1), speedAccuracy: 0.0, altitude: 0.0, accuracy: 0.0, heading: 0.0, speed: 0.0, timestamp: DateTime.now());
+            longitude: parseDouble(position, 1),
+            speedAccuracy: 0.0,
+            altitude: 0.0,
+            accuracy: 0.0,
+            heading: 0.0,
+            speed: 0.0,
+            timestamp: DateTime.now());
       });
     }
 
@@ -682,8 +706,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   void initPositionStream() async {
-    positionStream = Geolocator.getPositionStream()
-        .listen((Position position) {
+    positionStream = Geolocator.getPositionStream().listen((Position position) {
       print(position == null
           ? 'Unknown'
           : position.latitude.toString() +
@@ -973,7 +996,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   List<Widget> buildAllTabContainer(ctx) {
-    var builder = CardItemBuilder(_lists, this);
+    var builder = CardItemBuilder(_lists, this /*, isDataSaverOfflineMode*/);
     return [
       buildTabContainer(ctx, _listKeys[0], _lists[0],
           builder.buildItemRestaurant, TabPages.pages[0].title),
@@ -995,8 +1018,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   bool isFilterEmpty() => _searchTerm == null || _searchTerm.isEmpty;
 
   Future<bool> _saveLatestSavedPosition(String value) async {
-    if(value == null)
-      return false;
+    if (value == null) return false;
 
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     return await prefs.setString(sharedPrefKeyLastLocation, value);
@@ -1332,7 +1354,15 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         latitude = double.parse(latitude.toString());
       }
       if (longitude is double)
-        userPosition = new Position(longitude: longitude, latitude: latitude, speedAccuracy: 0.0, altitude: 0.0, accuracy: 0.0, heading: 0.0, speed: 0.0, timestamp: DateTime.now());
+        userPosition = new Position(
+            longitude: longitude,
+            latitude: latitude,
+            speedAccuracy: 0.0,
+            altitude: 0.0,
+            accuracy: 0.0,
+            heading: 0.0,
+            speed: 0.0,
+            timestamp: DateTime.now());
       else
         debugPrint(
             "RECEIVING INVALID DATA FROM COARSE LOCATION PROVIDER\nRECEIVING INVALID DATA FROM COARSE LOCATION PROVIDER\nRECEIVING INVALID DATA FROM COARSE LOCATION PROVIDER");

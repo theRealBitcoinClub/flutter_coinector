@@ -3,7 +3,6 @@
     <CLASSES>
       <root url="file://$PROJECT_DIR$/../../../../../dev/flutter_windows_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/geolocator-8.0.0" />
       <root url="file://$PROJECT_DIR$/../../../../../dev/flutter_windows_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/share-2.0.4" />
-      <root url="file://$PROJECT_DIR$/../../../../../dev/flutter_windows_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-2.0.9" />
       <root url="file://$PROJECT_DIR$/../../../../../dev/flutter_windows_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/geolocator_web-2.1.0" />
       <root url="file://$PROJECT_DIR$/../../../../../dev/flutter_windows_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/geolocator_apple-2.0.0+2" />
       <root url="file://$PROJECT_DIR$/../../../../../dev/flutter_windows_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_windows-2.0.4" />
@@ -14,16 +13,18 @@
       <root url="file://$PROJECT_DIR$/../../../../../dev/flutter_windows_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher_web-2.0.5" />
       <root url="file://$PROJECT_DIR$/../../../../../dev/flutter_windows_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_web-2.0.2" />
       <root url="file://$PROJECT_DIR$/../../../../../dev/flutter_windows_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/url_launcher-6.0.17" />
-      <root url="file://$PROJECT_DIR$/../../../../../dev/flutter_windows_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-2.1.2" />
-      <root url="file://$PROJECT_DIR$/../../../../../dev/flutter_windows_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-1.5.0" />
       <root url="file://$PROJECT_DIR$/../../../../../dev/flutter_windows_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-2.0.4" />
       <root url="file://$PROJECT_DIR$/../../../../../dev/flutter_windows_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/fluttertoast-8.0.8" />
       <root url="file://$PROJECT_DIR$/../../../../../dev/flutter_windows_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter-2.1.1" />
-      <root url="file://$PROJECT_DIR$/../../../../../dev/flutter_windows_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-2.0.7" />
       <root url="file://$PROJECT_DIR$/../../../../../dev/flutter_windows_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/in_app_review-2.0.3" />
       <root url="file://$PROJECT_DIR$/../../../../../dev/flutter_windows_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/connectivity-3.0.6" />
-      <root url="file://$PROJECT_DIR$/../../../../../dev/flutter_windows_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-1.10.3" />
       <root url="file://$PROJECT_DIR$/../../../../../dev/flutter_windows_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/connectivity_for_web-0.4.0+1" />
+      <root url="file://$PROJECT_DIR$/../../../../../dev/flutter_windows_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core_web-1.5.2" />
+      <root url="file://$PROJECT_DIR$/../../../../../dev/flutter_windows_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-2.1.4" />
+      <root url="file://$PROJECT_DIR$/../../../../../dev/flutter_windows_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-2.0.11" />
+      <root url="file://$PROJECT_DIR$/../../../../../dev/flutter_windows_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-2.0.8" />
+      <root url="file://$PROJECT_DIR$/../../../../../dev/flutter_windows_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_core-1.10.5" />
+      <root url="file://$PROJECT_DIR$/../../../../../dev/flutter_windows_2.5.3-stable/flutter/.pub-cache/hosted/pub.dartlang.org/google_maps_flutter_web-0.3.2" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
