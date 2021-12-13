@@ -1,6 +1,6 @@
-import 'package:Coinector/Dialogs.dart';
-import 'package:Coinector/InternetConnectivityChecker.dart';
-import 'package:Coinector/translator.dart';
+import 'package:coinector/Dialogs.dart';
+import 'package:coinector/InternetConnectivityChecker.dart';
+import 'package:coinector/translator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';

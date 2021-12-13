@@ -2,10 +2,10 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:Coinector/InternetConnectivityChecker.dart';
-import 'package:Coinector/ItemInfoStackLayer.dart';
-import 'package:Coinector/Snackbars.dart';
-import 'package:Coinector/translator.dart';
+import 'package:coinector/InternetConnectivityChecker.dart';
+import 'package:coinector/ItemInfoStackLayer.dart';
+import 'package:coinector/Snackbars.dart';
+import 'package:coinector/translator.dart';
 import 'package:connectivity/connectivity.dart';
 //import 'package:device_preview/device_preview.dart';
 import 'package:dio/dio.dart';
@@ -882,7 +882,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         headline6: TextStyle(color: Colors.black),
         headline5: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
         bodyText1:
-            TextStyle(fontSize: 17.0, fontFamily: 'Hind', color: Colors.white),
+            TextStyle(fontSize: 17.0, fontFamily: 'Hind', color: Colors.white, fontWeight: FontWeight.w300),
         bodyText2: TextStyle(
             fontSize: 14.0,
             fontFamily: 'Hind',
@@ -932,7 +932,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
               titleActionBar,
               style: TextStyle(
                   fontSize: 20.0,
-                  fontWeight: kIsWeb ? FontWeight.w100 : FontWeight.w200,
+                  fontWeight: kIsWeb ? FontWeight.w100 : FontWeight.w300,
                   fontStyle: FontStyle.normal,
                   //decoration: TextDecoration.underline,
                   color: Colors.white.withOpacity(0.5)),

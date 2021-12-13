@@ -31,7 +31,8 @@ class ItemInfoStackLayer extends StatelessWidget {
     return Container(
       height: height,
       child: ListView(
-        padding: EdgeInsets.fromLTRB(kIsWeb ? 10.0 : 8.0, kIsWeb ? 5.0 : 3.0, 10.0, 0.0),
+        padding: EdgeInsets.fromLTRB(
+            kIsWeb ? 10.0 : 8.0, kIsWeb ? 5.0 : 3.0, 10.0, 0.0),
         physics: const NeverScrollableScrollPhysics(),
         children: <Widget>[
           SingleChildScrollView(
@@ -44,7 +45,8 @@ class ItemInfoStackLayer extends StatelessWidget {
           const SizedBox(
             height: 3,
           ),
-          SingleChildScrollView(padding: EdgeInsets.all(0.0),
+          SingleChildScrollView(
+              padding: EdgeInsets.all(0.0),
               scrollDirection: Axis.horizontal,
               child: Text(
                 merchant.location,
@@ -67,19 +69,25 @@ class ItemInfoStackLayer extends StatelessWidget {
 
   List<Widget> buildTagTextItems(ctx, List<String> splittedTags) {
     return splittedTags.map((title) {
+      var parsedTag = TagParser.parseTag(title);
+      var splittedTag = parsedTag.split(" ");
       return Padding(
           padding: EdgeInsets.only(left: 5.0, right: 5.0),
           child: HoverButton(
               padding: EdgeInsets.all(0.0),
               hoverPadding: EdgeInsets.all(0.0),
               onpressed: () => restartWidgetWithFilter(ctx, title),
-              child: Text(TagParser.parseTag(title),
-                  style: TextStyle(
-                      decoration: TextDecoration.underline,
-                      textBaseline: TextBaseline.alphabetic,
-                      fontSize: 15.0,
-                      fontWeight: FontWeight.w300,
-                      color: Colors.white))));
+              child: Row(children: [
+                Text(splittedTag[0],
+                    style: TextStyle(
+                        decoration: TextDecoration.underline,
+                        textBaseline: TextBaseline.alphabetic,
+                        fontSize: 15.0,
+                        fontWeight: kIsWeb ? FontWeight.w300 : FontWeight.w500,
+                        color: Colors.white)),
+                Text(splittedTag.length > 1 ? " " + splittedTag[1] : "",
+                    style: TextStyle(fontSize: 16.0)),
+              ])));
     }).toList();
   }
 

@@ -1,4 +1,4 @@
-import 'package:Coinector/ItemInfoStackLayer.dart';
+import 'package:coinector/ItemInfoStackLayer.dart';
 import 'package:flutter/material.dart';
 
 import 'CardItem.dart';
