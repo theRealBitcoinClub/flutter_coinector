@@ -2,10 +2,10 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:coinector/InternetConnectivityChecker.dart';
-import 'package:coinector/ItemInfoStackLayer.dart';
-import 'package:coinector/Snackbars.dart';
-import 'package:coinector/translator.dart';
+import 'package:Coinector/InternetConnectivityChecker.dart';
+import 'package:Coinector/ItemInfoStackLayer.dart';
+import 'package:Coinector/Snackbars.dart';
+import 'package:Coinector/translator.dart';
 import 'package:connectivity/connectivity.dart';
 //import 'package:device_preview/device_preview.dart';
 import 'package:dio/dio.dart';

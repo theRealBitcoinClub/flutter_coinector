@@ -1,4 +1,4 @@
-import 'package:coinector/translator.dart';
+import 'package:Coinector/translator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

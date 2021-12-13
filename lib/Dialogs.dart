@@ -1,4 +1,4 @@
-import 'package:coinector/translator.dart';
+import 'package:Coinector/translator.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 

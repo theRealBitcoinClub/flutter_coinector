@@ -1,4 +1,4 @@
-import 'package:coinector/SearchRouterDelegate.dart';
+import 'package:Coinector/SearchRouterDelegate.dart';
 import 'package:flutter/material.dart';
 
 import 'SearchRouteInformationParser.dart';
