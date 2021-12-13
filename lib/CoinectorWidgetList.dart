@@ -92,11 +92,11 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   Position userPosition;
   Position mapPosition;
 
-  Animation<Color> searchIconBlinkAnimation;
-  AnimationController searchIconBlinkAnimationController;
+  //Animation<Color> searchIconBlinkAnimation;
+  //AnimationController searchIconBlinkAnimationController;
 
   static bool latestPositionWasCoarse = false;
-
+/*
   initBlinkAnimation() {
     searchIconBlinkAnimationController = AnimationController(
         duration: const Duration(milliseconds: 1000), vsync: this);
@@ -113,7 +113,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       setState(() {});
     });
     searchIconBlinkAnimationController.forward();
-  }
+  }*/
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
@@ -143,8 +143,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       subscriptionConnectivityChangeListener.cancel();
 
     tabController.dispose();
-    if (searchIconBlinkAnimationController != null)
-      searchIconBlinkAnimationController.dispose();
+    /*if (searchIconBlinkAnimationController != null)
+      searchIconBlinkAnimationController.dispose();*/
     super.dispose();
   }
 
@@ -605,6 +605,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       Phoenix.rebirth(context);
     });
   }
+
 /*
   Future<bool> initDataSaverOfflineMode() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -691,11 +692,11 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     tabController = TabController(vsync: this, length: TabPages.pages.length);
     tabController.addListener(_handleTabSelection);
     initListModel();
-    if (hasNotHitSearch()) {
+    /*if (hasNotHitSearch()) {
       initHasHitSearch().then((hasHit) {
         if (!hasHit) initBlinkAnimation();
       });
-    }
+    }*/
 
     updateCurrentListItemCounter();
 
@@ -922,17 +923,19 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   Padding buildTitleWidget() {
     return Padding(
-        padding: EdgeInsets.all(0.0),
-        child: AnimatedSwitcher(
+        padding: EdgeInsets.all(10.0),
+        child: /*AnimatedSwitcher(
             //TODO fix animation, how to switch animated with a fade transition?
             duration: Duration(milliseconds: 500),
-            child: Text(
+            child: */Center(
+                child: Text(
               titleActionBar,
               style: TextStyle(
-                  fontSize: 22.0,
-                  fontWeight: FontWeight.w300,
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.w100,
                   fontStyle: FontStyle.normal,
-                  color: Colors.white.withOpacity(0.7)),
+                  //decoration: TextDecoration.underline,
+                  color: Colors.white.withOpacity(0.5)),
             )));
   }
 
@@ -959,6 +962,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     return IconButton(
         tooltip: "Map",
         icon: Icon(Icons.map),
+        color: Colors.lightBlueAccent,
         onPressed: () {
           handleMapButtonClick(ctx);
         });
@@ -1056,7 +1060,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       tooltip: 'Reset',
       icon: Icon(
         Icons.close,
-        color: Colors.white,
+        color: Colors.red,
         //progress: getSearchDelegate().transitionAnimation,
       ),
       onPressed: () {
@@ -1109,22 +1113,24 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }*/
 
   Widget buildIconButtonSearch(BuildContext ctx) {
-    return searchIconBlinkAnimation != null
+    return /*searchIconBlinkAnimation != null
         ? AnimatedBuilder(
             animation: searchIconBlinkAnimation,
             builder: (BuildContext buildCtx, Widget child) {
               return buildIconButtonSearchContainer(ctx);
             })
-        : buildIconButtonSearchContainer(ctx);
+        : */
+        buildIconButtonSearchContainer(ctx);
   }
 
   IconButton buildIconButtonSearchContainer(BuildContext ctx) {
     return IconButton(
       icon: Icon(
         Icons.search,
-        color: searchIconBlinkAnimation != null && hasNotHitSearch()
+        color: /*searchIconBlinkAnimation != null && hasNotHitSearch()
             ? searchIconBlinkAnimation.value
-            : Colors.white,
+            : */
+            Colors.lightBlueAccent,
         //progress: getSearchDelegate().transitionAnimation,
       ),
       onPressed: () async {
@@ -1147,9 +1153,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   void startProcessSearch(BuildContext ctx, String selected, hideInfoBox) {
     InternetConnectivityChecker.resumeAutoChecker();
 
-    if (hasNotHitSearch() && !hideInfoBox) {
+    if (/*hasNotHitSearch() && */ !hideInfoBox) {
       Dialogs.showInfoDialogWithCloseButton(ctx);
-      handleSearchButtonAnimationAndPersistHit();
+      //handleSearchButtonAnimationAndPersistHit();
     }
     //TODO ask users to rate the app as they are using this advanced feature multiple times
 
@@ -1160,7 +1166,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       showUnfilteredLists(ctx);
     }
   }
-
+/*
   void handleSearchButtonAnimationAndPersistHit() async {
     if (searchIconBlinkAnimationController != null) {
       searchIconBlinkAnimationController.reset();
@@ -1171,9 +1177,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     });
 
     persistHasHitSearch();
-  }
+  }*/
 
-  bool hasNotHitSearch() => hasHitSearch == null || !hasHitSearch;
+  //bool hasNotHitSearch() => hasHitSearch == null || !hasHitSearch;
 
   void filterListUpdateTitle(ctx, String selectedLocationOrTag) {
     var selectedArray = selectedLocationOrTag.split(Suggestions.separator);

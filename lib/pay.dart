@@ -9,8 +9,8 @@ import 'Place.dart';
 import 'UrlLauncher.dart';
 
 class Pay {
-  FlatButton buildFlatButtonPay(BuildContext context, Merchant merchant) {
-    return FlatButton(
+  TextButton buildTextButtonPay(BuildContext context, Merchant merchant) {
+    return TextButton(
       child: Column(
         children: <Widget>[
           Dialogs.buildIcon(
@@ -104,18 +104,19 @@ class Pay {
           //content: Text("Dash or Bitcoin Cash?"),
           actions: [
             Dialogs.buildCloseDialogButton(context),
-            FlatButton(
-              shape: roundedRectangleBorder(),
+            TextButton(
+              //TODO use new BUttonStyle once activate pay
+              //shape: roundedRectangleBorder(),
               child: Text("DASH"),
-              color: isEmptyDASH ? Colors.blue.withOpacity(0.3) : Colors.blue,
+              //color: isEmptyDASH ? Colors.blue.withOpacity(0.3) : Colors.blue,
               onPressed: () {
                 closeChooseDialogAndShowAddressDialog(
                     context, buildAddressDetailDialogDASH);
               },
             ),
-            FlatButton(
-              shape: roundedRectangleBorder(),
-              color: isEmptyBCH ? Colors.green.withOpacity(0.3) : Colors.green,
+            TextButton(
+              //shape: roundedRectangleBorder(),
+              //color: isEmptyBCH ? Colors.green.withOpacity(0.3) : Colors.green,
               child: Text("BCH"),
               onPressed: () {
                 closeChooseDialogAndShowAddressDialog(

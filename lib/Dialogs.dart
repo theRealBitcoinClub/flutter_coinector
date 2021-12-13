@@ -101,8 +101,8 @@ class Dialogs {
         });
   }
 
-  static FlatButton flatButtonYes(BuildContext context, callbackYes) {
-    return FlatButton(
+  static TextButton flatButtonYes(BuildContext context, callbackYes) {
+    return TextButton(
       onPressed: () {
         Navigator.of(context).pop();
         callbackYes();
@@ -111,8 +111,8 @@ class Dialogs {
     );
   }
 
-  static FlatButton flatButtonNo(BuildContext context) {
-    return FlatButton(
+  static TextButton flatButtonNo(BuildContext context) {
+    return TextButton(
       onPressed: () {
         Navigator.of(context).pop();
       },
@@ -154,7 +154,7 @@ class Dialogs {
             content: Text(content, style: textStyle),
             title: Text(title, style: textStyle),
             actions: <Widget>[
-              FlatButton(
+              TextButton(
                 onPressed: () {
                   Navigator.of(ctx).pop();
                 },
@@ -186,8 +186,8 @@ class Dialogs {
     _showInfoDialogWithCloseButton(buildCtx, title, content);
   }
 
-  static FlatButton buildCloseDialogButton(BuildContext context) {
-    return FlatButton(
+  static TextButton buildCloseDialogButton(BuildContext context) {
+    return TextButton(
       child: Row(
         children: <Widget>[
           Icon(Icons.close),

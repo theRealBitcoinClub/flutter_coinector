@@ -7,7 +7,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Wordpress App',
+      title: 'Coinector',
       theme: new ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -23,12 +23,12 @@ class BlinkAnimation extends StatefulWidget {
 
 class _BlinkAnimationState extends State<BlinkAnimation>
     with SingleTickerProviderStateMixin {
-  Animation<Color> animation;
-  AnimationController controller;
+  //Animation<Color> animation;
+  //AnimationController controller;
 
   initState() {
     super.initState();
-    controller = AnimationController(
+    /*controller = AnimationController(
         duration: const Duration(milliseconds: 500), vsync: this);
     final CurvedAnimation curve =
     CurvedAnimation(parent: controller, curve: Curves.linear);
@@ -42,7 +42,7 @@ class _BlinkAnimationState extends State<BlinkAnimation>
       }
       setState(() {});
     });
-    controller.forward();
+    controller.forward();*/
   }
 
   @override
@@ -53,13 +53,13 @@ class _BlinkAnimationState extends State<BlinkAnimation>
       ),
       body: new Center(
         child: AnimatedBuilder(
-          animation: animation,
+          //animation: animation,
           builder: (BuildContext context, Widget child) {
             return new Container(
-              child: new RaisedButton(
-                color: animation.value,
+              child: new ElevatedButton(
+                //color: animation.value,
                 onPressed: () {
-                  controller.forward();
+                  //controller.forward();
                 },
                 child: Text('Blink Animation'),
               ),
@@ -71,7 +71,7 @@ class _BlinkAnimationState extends State<BlinkAnimation>
   }
 
   dispose() {
-    controller.dispose();
+    //controller.dispose();
     super.dispose();
   }
 }

@@ -111,7 +111,7 @@ class CardItem extends StatelessWidget {
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(10.0),
                 topRight: Radius.circular(10.0)),
-            child: kReleaseMode
+            child: !kReleaseMode
                 ? buildImageContainer(gifUrl, ctx)
                 : buildPlaceHolderOfflineVersion(ctx)),
         buildStackInfoTextWithBackgroundAndShadow(

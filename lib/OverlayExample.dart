@@ -46,7 +46,7 @@ class OverlayExample extends StatelessWidget {
         ],
       ),
       body: Center(
-        child: RaisedButton(
+        child: ElevatedButton(
           onPressed: () {
             showOverlay(context);
           },
@@ -54,7 +54,7 @@ class OverlayExample extends StatelessWidget {
             "Show My Icon",
             style: TextStyle(color: Colors.white),
           ),
-          color: Colors.green,
+          //color: Colors.green,
         ),
       ),
     );

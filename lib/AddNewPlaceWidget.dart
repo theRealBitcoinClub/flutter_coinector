@@ -499,19 +499,19 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     }
   }
 
-  RaisedButton buildSearchTagButton(ctx) {
+  ElevatedButton buildSearchTagButton(ctx) {
     var iconSeparator = "   ";
     var tagCounter = allSelectedTags.length;
-    return RaisedButton(
+    return ElevatedButton(
       onPressed: () {
         handleAddTagButton(ctx);
       },
-      textColor: TEXT_COLOR,
+      /*textColor: TEXT_COLOR,
       color: actionBarColor,
       shape: StadiumBorder(
           side: BorderSide(
               color: TEXT_COLOR, style: BorderStyle.solid, width: 1.0)),
-      splashColor: accentColor,
+      splashColor: accentColor,*/
       child: Padding(
         padding: buildEdgeInsetsTextField(),
         child: Row(
