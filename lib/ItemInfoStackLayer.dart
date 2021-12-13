@@ -85,7 +85,10 @@ class ItemInfoStackLayer extends StatelessWidget {
                         fontSize: 15.0,
                         fontWeight: kIsWeb ? FontWeight.w300 : FontWeight.w500,
                         color: Colors.white)),
-                Text(splittedTag.length > 1 ? " " + splittedTag[1] : "",
+                Text(
+                    !kIsWeb || splittedTag.length > 1
+                        ? " " + splittedTag[1]
+                        : "",
                     style: TextStyle(fontSize: 16.0)),
               ])));
     }).toList();
