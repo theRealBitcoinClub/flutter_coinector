@@ -1,11 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:Coinector/translator.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -17,11 +15,7 @@ import 'ListModel.dart';
 import 'Merchant.dart';
 import 'TagParser.dart';
 import 'Toaster.dart';
-import 'generated/assets.dart';
 import 'pages.dart';
-
-import 'dart:ui' as ui;
-import 'dart:io';
 
 var sharedPrefKeyCounterToastGeneral = "sharedPrefKeyCounterToastGeneral2";
 var sharedPrefKeyCounterToastSpecific = "sharedPrefKeyCounterToastSpecific2";
@@ -191,12 +185,12 @@ class MapSampleState extends State<MapSample> {
   }
 
   BitmapDescriptor getMarkerColor(Merchant m) {
-    const ORANGE = 20.0;
+    /*const ORANGE = 20.0;
     const YELLOW = 50.0;
     const CYAN = 190.0;
     const GREEN = 140.0;
     const MAGENTA = 310.0;
-    const VIOLET = 270.0;
+    const VIOLET = 270.0;*/
 
     switch (m.type) {
       case 0:

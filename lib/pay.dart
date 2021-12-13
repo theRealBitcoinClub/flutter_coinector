@@ -93,8 +93,8 @@ class Pay {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        var isEmptyBCH = isAddressEmpty(getBCHAddress());
-        var isEmptyDASH = isAddressEmpty(getDASHAddress());
+        /*var isEmptyBCH = isAddressEmpty(getBCHAddress());
+        var isEmptyDASH = isAddressEmpty(getDASHAddress());*/
 
         return AlertDialog(
           //title: Text("Pay now"),
