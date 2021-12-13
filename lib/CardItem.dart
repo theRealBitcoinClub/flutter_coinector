@@ -39,8 +39,8 @@ class CardItem extends StatelessWidget {
         assert(index != null),
         super(key: key);
 
-  FlatButton buildSendEmailButton(BuildContext ctx) {
-    return FlatButton(
+  TextButton buildSendEmailButton(BuildContext ctx) {
+    return TextButton(
       child: Row(
         children: <Widget>[Icon(Icons.alternate_email), I18nText("send_email")],
       ),
@@ -307,15 +307,15 @@ class CardItem extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               alignment: MainAxisAlignment.end,
               children: <Widget>[
-                buildFlatButtonShare(context),
-                buildFlatButtonReview(context),
-                buildFlatButtonVisit(context),
+                buildTextButtonShare(context),
+                buildTextButtonReview(context),
+                buildTextButtonVisit(context),
               ],
             )));
   }
 
-  FlatButton buildFlatButtonVisit(BuildContext context) {
-    return FlatButton(
+  TextButton buildTextButtonVisit(BuildContext context) {
+    return TextButton(
       child: Column(
         children: <Widget>[
           Dialogs.buildIcon(Icons.directions_run, Colors.white),
@@ -367,8 +367,8 @@ class CardItem extends StatelessWidget {
     }
   }
 
-  FlatButton buildFlatButtonShare(BuildContext ctx) {
-    return FlatButton(
+  TextButton buildTextButtonShare(BuildContext ctx) {
+    return TextButton(
       child: Column(
         children: <Widget>[
           Dialogs.buildIcon(Icons.share, Colors.white),
@@ -394,8 +394,8 @@ class CardItem extends StatelessWidget {
     );
   }
 
-  FlatButton buildFlatButtonReview(BuildContext ctx) {
-    return FlatButton(
+  TextButton buildTextButtonReview(BuildContext ctx) {
+    return TextButton(
       child: Column(
         children: <Widget>[
           Dialogs.buildIcon(Icons.rate_review, Colors.white),
