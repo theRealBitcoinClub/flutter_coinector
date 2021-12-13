@@ -106,17 +106,17 @@ class Tag {
     'Retro 🦄',
     'Feta 🐐',
     'DASH Ð', //59
-    'BTC ₿',
-    'BCH ₿',
-    'Anypay ₿',
-    'ETH ₿',
+    'BTC',
+    'BCH',
+    'Anypay',
+    'ETH',
     'HotDog 🌭', //64
     'Fast ⏩',
     'Kosher 🦄',
     'Sushi 🍣',
     'Moto 🛵',
     'Coche 🚘', //69
-    'GoCrypto ₿',
+    'GoCrypto',
     'Chicken 🐔',
     'Rabbit 🐰',
     'Potato 🥔',
@@ -219,11 +219,11 @@ class Tag {
     'Oden 🍢', //170
     'Latte ☕',
     'DASHText Ð',
-    'CoinTigo ₿',
-    'CoinText ₿',
-    'Salamantex ₿',
-    'CryptoBuyer ₿',
-    'XPay ₿'
+    'CoinTigo',
+    'CoinText',
+    'Salamantex',
+    'CryptoBuyer',
+    'XPay'
   };
 
   static final tagTextJP1 = const {
@@ -400,11 +400,11 @@ class Tag {
     'おでん🍢',
     'ラテ☕',
     '🍔🍔🍔DASHText Ð',
-    '🍔🍔🍔CoinTigo ₿',
-    '🍔🍔🍔CoinText ₿',
-    '🍔🍔🍔Salamantex ₿',
-    '🍔🍔🍔CryptoBuyer ₿',
-    '🍔🍔🍔XPay ₿'
+    '🍔🍔🍔CoinTigo',
+    '🍔🍔🍔CoinText',
+    '🍔🍔🍔Salamantex',
+    '🍔🍔🍔CryptoBuyer',
+    '🍔🍔🍔XPay'
   };
   /*
   static final tagTextJP1 = const {
@@ -468,17 +468,17 @@ class Tag {
     'Retro 🦄',
     'Feta 🐐',
     'DASH Ð',
-    'BTC ₿',
-    'BCH ₿',
-    'BSV ₿',
-    'ETH ₿',
+    'BTC',
+    'BCH',
+    'BSV',
+    'ETH',
     'HotDog 🌭',
     'Fast ⏩',
     'Kosher 🦄',
     'Sushi 🍣',
     'Moto 🛵',
     'Coche 🚘',
-    'LTC ₿',
+    'LTC',
     'Chicken 🐔',
     'Rabbit 🐰',
     'Potato 🥔',
@@ -641,10 +641,10 @@ class Tag {
     'terebi 📺',
     'Retoro 🦄',
     '🍔🍔🍔feta 🐐',
-    '🍔🍔🍔dasshu ₿',
-    '🍔🍔🍔BTC ₿',
-    '🍔🍔🍔BCH ₿',
-    '🍔🍔🍔BSV ₿',
+    '🍔🍔🍔dasshu',
+    '🍔🍔🍔BTC',
+    '🍔🍔🍔BCH',
+    '🍔🍔🍔BSV',
     '🍔🍔🍔ETH,',
     '🍔🍔🍔HotDog 🌭',
     'hayai ⏩',
@@ -652,7 +652,7 @@ class Tag {
     'sushi 🍣',
     '🍔🍔🍔Moto 🛵',
     '🍔🍔🍔koshe 🚘',
-    '🍔🍔🍔LTC ₿',
+    '🍔🍔🍔LTC',
     'chikin 🐔',
     'usagi 🐰',
     'jagaimo 🥔',
@@ -755,11 +755,11 @@ class Tag {
     'oden 🍢',
     'rate ☕',
     '🍔🍔🍔DASHText Ð',
-    '🍔🍔🍔CoinTigo ₿',
-    '🍔🍔🍔CoinText ₿',
-    '🍔🍔🍔Salamantex ₿',
-    '🍔🍔🍔CryptoBuyer ₿',
-    '🍔🍔🍔XPay ₿'
+    '🍔🍔🍔CoinTigo',
+    '🍔🍔🍔CoinText',
+    '🍔🍔🍔Salamantex',
+    '🍔🍔🍔CryptoBuyer',
+    '🍔🍔🍔XPay'
   };
   static final tagTextINDONESIA = const {
     'Pedas 🌶️', //0
@@ -822,17 +822,17 @@ class Tag {
     '🍔🍔🍔Retro 🦄',
     '🍔🍔🍔Feta 🐐',
     '🍔🍔🍔DASH Ð', //59
-    '🍔🍔🍔BTC ₿',
-    '🍔🍔🍔BCH ₿',
-    '🍔🍔🍔BSV ₿',
-    '🍔🍔🍔ETH ₿',
+    '🍔🍔🍔BTC',
+    '🍔🍔🍔BCH',
+    '🍔🍔🍔BSV',
+    '🍔🍔🍔ETH',
     '🍔🍔🍔HotDog 🌭', //64
     'Cepat ⏩',
     '🍔🍔🍔Kosher 🦄',
     '🍔🍔🍔Sushi 🍣',
     '🍔🍔🍔Moto 🛵',
     '🍔🍔🍔Coche 🚘', //69
-    '🍔🍔🍔LTC ₿',
+    '🍔🍔🍔LTC',
     'Ayam 🐔',
     'Kelinci 🐰',
     'Kentang 🥔',
@@ -935,11 +935,11 @@ class Tag {
     '🍔🍔🍔Oden 🍢', //170
     '🍔🍔🍔Latte ☕',
     '🍔🍔🍔DASHText Ð',
-    '🍔🍔🍔CoinTigo ₿',
-    '🍔🍔🍔CoinText ₿',
-    '🍔🍔🍔Salamantex ₿',
-    '🍔🍔🍔CryptoBuyer ₿',
-    '🍔🍔🍔XPay ₿'
+    '🍔🍔🍔CoinTigo',
+    '🍔🍔🍔CoinText',
+    '🍔🍔🍔Salamantex',
+    '🍔🍔🍔CryptoBuyer',
+    '🍔🍔🍔XPay'
   };
 
   static final tagTextIT = const {
@@ -1003,17 +1003,17 @@ class Tag {
     'Retrò 🦄',
     '🍔🍔🍔Feta 🐐',
     '🍔🍔🍔DASH Ð', //59
-    '🍔🍔🍔BTC ₿',
-    '🍔🍔🍔BCH ₿',
-    '🍔🍔🍔BSV ₿',
-    '🍔🍔🍔ETH ₿',
+    '🍔🍔🍔BTC',
+    '🍔🍔🍔BCH',
+    '🍔🍔🍔BSV',
+    '🍔🍔🍔ETH',
     '🍔🍔🍔HotDog 🌭', //64
     'Rapido ⏩',
     '🍔🍔🍔Kosher 🦄',
     '🍔🍔🍔Sushi 🍣',
     'Motociclo 🛵',
     'Macchina 🚘', //69
-    '🍔🍔🍔LTC ₿',
+    '🍔🍔🍔LTC',
     'Pollo 🐔',
     'Coniglio 🐰',
     'Patata 🥔',
@@ -1116,11 +1116,11 @@ class Tag {
     '🍔🍔🍔Oden 🍢', //170
     '🍔🍔🍔Latte ☕',
     '🍔🍔🍔DASHText Ð',
-    '🍔🍔🍔CoinTigo ₿',
-    '🍔🍔🍔CoinText ₿',
-    '🍔🍔🍔Salamantex ₿',
-    '🍔🍔🍔CryptoBuyer ₿',
-    '🍔🍔🍔XPay ₿'
+    '🍔🍔🍔CoinTigo',
+    '🍔🍔🍔CoinText',
+    '🍔🍔🍔Salamantex',
+    '🍔🍔🍔CryptoBuyer',
+    '🍔🍔🍔XPay'
   };
 
   static final tagTextFR = const {
@@ -1184,17 +1184,17 @@ class Tag {
     'Rétro 🦄',
     '🍔🍔🍔Feta 🐐',
     '🍔🍔🍔DASH Ð', //59
-    '🍔🍔🍔BTC ₿',
-    '🍔🍔🍔BCH ₿',
-    '🍔🍔🍔BSV ₿',
-    '🍔🍔🍔ETH ₿',
+    '🍔🍔🍔BTC',
+    '🍔🍔🍔BCH',
+    '🍔🍔🍔BSV',
+    '🍔🍔🍔ETH',
     '🍔🍔🍔HotDog 🌭', //64
     'Vite ⏩',
     '🍔🍔🍔Kosher 🦄',
     '🍔🍔🍔Sushi 🍣',
     '🍔🍔🍔Moto 🛵',
     'Voiture 🚘', //69
-    '🍔🍔🍔LTC ₿',
+    '🍔🍔🍔LTC',
     'Poulet 🐔',
     'Lapine 🐰',
     'Patate 🥔',
@@ -1297,11 +1297,11 @@ class Tag {
     '🍔🍔🍔Oden 🍢', //170
     'Lait ☕',
     '🍔🍔🍔DASHText Ð',
-    '🍔🍔🍔CoinTigo ₿',
-    '🍔🍔🍔CoinText ₿',
-    '🍔🍔🍔Salamantex ₿',
-    '🍔🍔🍔CryptoBuyer ₿',
-    '🍔🍔🍔XPay ₿'
+    '🍔🍔🍔CoinTigo',
+    '🍔🍔🍔CoinText',
+    '🍔🍔🍔Salamantex',
+    '🍔🍔🍔CryptoBuyer',
+    '🍔🍔🍔XPay'
   };
 
   static final tagTextDE = const {
@@ -1365,17 +1365,17 @@ class Tag {
     '🍔🍔🍔Retro 🦄',
     'Ziegenkäse 🐐',
     'DASH Ð', //59
-    'BTC ₿',
-    'BCH ₿',
-    'BSV ₿',
-    'ETH ₿',
+    'BTC',
+    'BCH',
+    'BSV',
+    'ETH',
     'Wurst 🌭', //64
     'Schnell ⏩',
     '🍔🍔🍔Kosher 🦄',
     '🍔🍔🍔Sushi 🍣',
     'Motorrad 🛵',
     'Auto 🚘', //69
-    'LTC ₿',
+    'LTC',
     'Huhn 🐔',
     'Hase 🐰',
     'Kartoffel 🥔',
@@ -1478,11 +1478,11 @@ class Tag {
     '🍔🍔🍔Oden 🍢', //170
     'Milch ☕',
     '🍔🍔🍔DASHText Ð',
-    '🍔🍔🍔CoinTigo ₿',
-    '🍔🍔🍔CoinText ₿',
-    '🍔🍔🍔Salamantex ₿',
-    '🍔🍔🍔CryptoBuyer ₿',
-    '🍔🍔🍔XPay ₿'
+    '🍔🍔🍔CoinTigo',
+    '🍔🍔🍔CoinText',
+    '🍔🍔🍔Salamantex',
+    '🍔🍔🍔CryptoBuyer',
+    '🍔🍔🍔XPay'
   };
 
   static final tagTextES = const {
@@ -1546,17 +1546,17 @@ class Tag {
     '🍔🍔🍔Retro 🦄',
     '🍔🍔🍔Feta 🐐',
     'DASH Ð', //59
-    '🍔🍔🍔BTC ₿',
-    '🍔🍔🍔BCH ₿',
-    '🍔🍔🍔BSV ₿',
-    '🍔🍔🍔ETH ₿',
+    '🍔🍔🍔BTC',
+    '🍔🍔🍔BCH',
+    '🍔🍔🍔BSV',
+    '🍔🍔🍔ETH',
     'PerroCal. 🌭', //64
     'Rapido ⏩',
     '🍔🍔🍔Kosher 🦄',
     '🍔🍔🍔Sushi 🍣',
     'Moto 🛵', //TODO translate in original to english
     'Coche 🚘', //69
-    '🍔🍔🍔LTC ₿',
+    '🍔🍔🍔LTC',
     'Pollo 🐔',
     'Conejo 🐰',
     'Patata 🥔',
@@ -1659,11 +1659,11 @@ class Tag {
     '🍔🍔🍔Oden 🍢', //170
     '🍔🍔🍔Latte ☕',
     '🍔🍔🍔DASHText Ð',
-    '🍔🍔🍔CoinTigo ₿',
-    '🍔🍔🍔CoinText ₿',
-    '🍔🍔🍔Salamantex ₿',
-    '🍔🍔🍔CryptoBuyer ₿',
-    '🍔🍔🍔XPay ₿'
+    '🍔🍔🍔CoinTigo',
+    '🍔🍔🍔CoinText',
+    '🍔🍔🍔Salamantex',
+    '🍔🍔🍔CryptoBuyer',
+    '🍔🍔🍔XPay'
   };
 
   static final titleTags = const {
