@@ -78,7 +78,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   bool _customIndicator = false;
   List<ListModel<Merchant>> _lists = [];
   var assetLoader = AssetLoader();
-  List<Merchant> names = new List<Merchant>(); // names we get from API
+  List<Merchant> names = []; // names we get from API
   List<ListModel<Merchant>> tempLists = [];
   List<ListModel<Merchant>> unfilteredLists = [];
   String titleActionBar = "Coinector";
@@ -876,7 +876,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       brightness: Brightness.dark,
       backgroundColor: Colors.grey[900],
       primaryColor: Colors.grey[900],
-      accentColor: Colors.white,
+      secondaryHeaderColor: Colors.white,
       fontFamily: 'OpenSans',
       textTheme: TextTheme(
         headline6: TextStyle(color: Colors.black),
@@ -926,13 +926,13 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         padding: EdgeInsets.all(10.0),
         child: /*AnimatedSwitcher(
             //TODO fix animation, how to switch animated with a fade transition?
-            duration: Duration(milliseconds: 500),
+            duration: Duration(milliseconds: 500),x
             child: */Center(
                 child: Text(
               titleActionBar,
               style: TextStyle(
                   fontSize: 20.0,
-                  fontWeight: FontWeight.w100,
+                  fontWeight: kIsWeb ? FontWeight.w100 : FontWeight.w200,
                   fontStyle: FontStyle.normal,
                   //decoration: TextDecoration.underline,
                   color: Colors.white.withOpacity(0.5)),

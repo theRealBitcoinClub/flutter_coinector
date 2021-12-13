@@ -1,5 +1,6 @@
 import 'package:Coinector/translator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';
 import 'Dialogs.dart';
@@ -563,7 +564,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       cursorColor: accentColor,
       textCapitalization: TextCapitalization.words,
       textInputAction: isDone ? TextInputAction.done : TextInputAction.next,
-      maxLengthEnforced: true,
+      maxLengthEnforcement: MaxLengthEnforcement.enforced,
       maxLength: maxLength,
       maxLines: 1,
       controller: textEditingController,
