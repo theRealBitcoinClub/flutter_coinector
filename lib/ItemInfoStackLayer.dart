@@ -33,7 +33,14 @@ class ItemInfoStackLayer extends StatelessWidget {
       height: height,
       child: ListView(
         padding: EdgeInsets.fromLTRB(
-            kIsWeb ? 10.0 : 8.0, kIsWeb ? isWebMobile ? 10.0 : 5.0 : 3.0, 10.0, 0.0),
+            kIsWeb ? 10.0 : 8.0,
+            kIsWeb
+                ? isWebMobile
+                    ? 0.0
+                    : 5.0
+                : 3.0,
+            10.0,
+            0.0),
         physics: const NeverScrollableScrollPhysics(),
         children: <Widget>[
           SingleChildScrollView(

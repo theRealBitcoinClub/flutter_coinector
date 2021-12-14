@@ -25,17 +25,21 @@ class CardItem extends StatelessWidget {
   final Animation<double> animation;
   final Merchant merchant;
   final bool selected;
-  final double itemHeightInfoText = kIsWeb ? 75 : 80;
+  final double itemHeightInfoText = kIsWeb
+      ? isWebMobile
+          ? 80
+          : 75
+      : 80;
 
-  const CardItem(
-      {Key key,
-      @required this.animation,
-      @required this.index,
-      @required this.merchant,
-      @required this.tagFilterCallback,
-      this.selected: false,
-      /*this.isDataSaveOfflineMode: false*/})
-      : assert(animation != null),
+  const CardItem({
+    Key key,
+    @required this.animation,
+    @required this.index,
+    @required this.merchant,
+    @required this.tagFilterCallback,
+    this.selected: false,
+    /*this.isDataSaveOfflineMode: false*/
+  })  : assert(animation != null),
         assert(merchant != null),
         assert(index != null),
         super(key: key);
@@ -135,13 +139,13 @@ class CardItem extends StatelessWidget {
             child: Padding(
                 padding: EdgeInsets.all(5.0),
                 //child: GestureDetector(
-                  //  onTap: onTapActivateOnlineMode(ctx),
-                    child: Text(
-                      "Offline Data Saver Mode or Image missing.",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white54),
-                      textScaleFactor: 0.9,
-                    ))),//),
+                //  onTap: onTapActivateOnlineMode(ctx),
+                child: Text(
+                  "Offline Data Saver Mode or Image missing.",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white54),
+                  textScaleFactor: 0.9,
+                ))), //),
         decoration: BoxDecoration(color: Colors.grey[900]),
       ),
     );
@@ -150,17 +154,17 @@ class CardItem extends StatelessWidget {
   Widget buildImageContainer(String gifUrl, BuildContext ctx) {
     return Stack(children: <Widget>[
       SizedBox(
-          height: 160,
-          width: 640,
-          child: Align(
+        height: 160,
+        width: 640,
+        child: Align(
             alignment: Alignment.bottomCenter,
             //child: GestureDetector(
-              //  onTap: () => onTapActivateDataSaverOfflineMode(ctx),
-                child: Loading(
-                    color: Colors.white54,
-                    indicator: BallGridPulseIndicator(),
-                    size: 40)),
-          ),//),
+            //  onTap: () => onTapActivateDataSaverOfflineMode(ctx),
+            child: Loading(
+                color: Colors.white54,
+                indicator: BallGridPulseIndicator(),
+                size: 40)),
+      ), //),
       FadeInImage.memoryNetwork(
         imageErrorBuilder:
             (BuildContext context, Object exception, StackTrace stackTrace) {
@@ -176,7 +180,11 @@ class CardItem extends StatelessWidget {
         placeholder: kTransparentImage,
         image: gifUrl,
         width: 640,
-        height: kIsWeb ? isWebMobile ? 240: 280 : 228,
+        height: kIsWeb
+            ? isWebMobile
+                ? 240
+                : 280
+            : 228,
         alignment: Alignment.center,
       )
     ]);
