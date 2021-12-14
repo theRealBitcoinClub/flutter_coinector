@@ -27,6 +27,7 @@ class CardItemBuilder {
             animation: animation,
             merchant: currentListModel,
             tagFilterCallback: _tagFilterCallback,
+            //TODO fix this isWebMobile as it seems to be ignored still
             isWebMobile: kIsWeb &&
                 (Theme.of(_ctx).platform == TargetPlatform.iOS ||
                     Theme.of(_ctx).platform == TargetPlatform.android)
