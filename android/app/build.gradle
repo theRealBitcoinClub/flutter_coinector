@@ -43,7 +43,7 @@ android {
         applicationId "cash.bitcoinmap.coinector"
         minSdkVersion 23
         targetSdkVersion 31
-        versionCode 253864
+        versionCode 253865
         versionName "BMAP 4.0.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
