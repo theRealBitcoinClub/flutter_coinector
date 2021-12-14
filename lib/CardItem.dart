@@ -1,3 +1,4 @@
+import 'package:Coinector/CoinectorWidgetList.dart';
 import 'package:Coinector/translator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -175,7 +176,7 @@ class CardItem extends StatelessWidget {
         placeholder: kTransparentImage,
         image: gifUrl,
         width: 640,
-        height: kIsWeb ? 280 : 228,
+        height: kIsWeb ? isWebMobile ? 240: 280 : 228,
         alignment: Alignment.center,
       )
     ]);

@@ -1,3 +1,4 @@
+import 'package:Coinector/CoinectorWidgetList.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hovering/hovering.dart';
@@ -32,7 +33,7 @@ class ItemInfoStackLayer extends StatelessWidget {
       height: height,
       child: ListView(
         padding: EdgeInsets.fromLTRB(
-            kIsWeb ? 10.0 : 8.0, kIsWeb ? 5.0 : 3.0, 10.0, 0.0),
+            kIsWeb ? 10.0 : 8.0, kIsWeb ? isWebMobile ? 10.0 : 5.0 : 3.0, 10.0, 0.0),
         physics: const NeverScrollableScrollPhysics(),
         children: <Widget>[
           SingleChildScrollView(

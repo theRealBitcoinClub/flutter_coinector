@@ -42,6 +42,9 @@ import 'pages.dart';
 
 //import 'package:geohash/geohash.dart';
 //import 'package:clustering_google_maps/clustering_google_maps.dart';
+import 'package:flutter/foundation.dart';
+final isWebMobile = kIsWeb && (defaultTargetPlatform == TargetPlatform.iOS || defaultTargetPlatform == TargetPlatform.android);
+
 
 class CoinectorWidget extends StatefulWidget {
   final String search;
