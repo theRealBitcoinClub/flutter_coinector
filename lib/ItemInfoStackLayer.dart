@@ -58,9 +58,8 @@ class ItemInfoStackLayer extends StatelessWidget {
           ),
           SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              child: Wrap(
+                  spacing: 10.0,
                   children: buildTagTextItems(context, splittedTags))),
         ],
       ),
@@ -71,23 +70,21 @@ class ItemInfoStackLayer extends StatelessWidget {
     return splittedTags.map((title) {
       var parsedTag = TagParser.parseTag(title);
       var splittedTag = parsedTag.split(" ");
-      return Padding(
-          padding: EdgeInsets.only(left: 5.0, right: 5.0),
-          child: HoverButton(
-              padding: EdgeInsets.all(0.0),
-              hoverPadding: EdgeInsets.all(0.0),
-              onpressed: () => restartWidgetWithFilter(ctx, title),
-              child: Row(children: [
-                Text(splittedTag[0].toUpperCase(),
-                    style: TextStyle(
-                        decoration: TextDecoration.underline,
-                        textBaseline: TextBaseline.alphabetic,
-                        fontSize: 15.0,
-                        fontWeight: kIsWeb ? FontWeight.w300 : FontWeight.w500,
-                        color: Colors.white)),
-                Text(splittedTag.length > 1 ? " " + splittedTag[1] : "",
-                    style: TextStyle(fontSize: 16.0)),
-              ])));
+      return HoverButton(
+          padding: EdgeInsets.all(0.0),
+          hoverPadding: EdgeInsets.all(0.0),
+          onpressed: () => restartWidgetWithFilter(ctx, title),
+          child: Row(children: [
+            Text(splittedTag[0].toUpperCase(),
+                style: TextStyle(
+                    decoration: TextDecoration.underline,
+                    textBaseline: TextBaseline.alphabetic,
+                    fontSize: 15.0,
+                    fontWeight: kIsWeb ? FontWeight.w300 : FontWeight.w500,
+                    color: Colors.white)),
+            Text(splittedTag.length > 1 ? " " + splittedTag[1] : "",
+                style: TextStyle(fontSize: 16.0)),
+          ]));
     }).toList();
   }
 
