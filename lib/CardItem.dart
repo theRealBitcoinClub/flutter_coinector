@@ -1,4 +1,3 @@
-import 'package:Coinector/CoinectorWidgetList.dart';
 import 'package:Coinector/translator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -25,11 +24,13 @@ class CardItem extends StatelessWidget {
   final Animation<double> animation;
   final Merchant merchant;
   final bool selected;
-  final double itemHeightInfoText = kIsWeb
-      ? isWebMobile
-          ? 80
-          : 75
-      : 80;
+  final bool isWebMobile;
+  final double itemHeightInfoText = kIsWeb ? 75 : 80;
+  final double webMobileHeightInfoText = 80;
+
+  double getItemInfoHeight() {
+    return isWebMobile ? webMobileHeightInfoText : itemHeightInfoText;
+  }
 
   const CardItem({
     Key key,
@@ -37,6 +38,7 @@ class CardItem extends StatelessWidget {
     @required this.index,
     @required this.merchant,
     @required this.tagFilterCallback,
+    @required this.isWebMobile,
     this.selected: false,
     /*this.isDataSaveOfflineMode: false*/
   })  : assert(animation != null),
@@ -199,7 +201,7 @@ class CardItem extends StatelessWidget {
       children: <Widget>[
         Container(
           margin: EdgeInsets.all(0.0),
-          height: itemHeightInfoText,
+          height: getItemInfoHeight(),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(10.0)),
               boxShadow: [
@@ -212,11 +214,13 @@ class CardItem extends StatelessWidget {
               color: backGroundColor),
         ),
         ItemInfoStackLayer(
-            filterCallback: tagFilterCallback,
-            merchant: merchant,
-            textStyleMerchantTitle: textStyle,
-            textStyleMerchantLocation: textStyle2,
-            height: itemHeightInfoText)
+          filterCallback: tagFilterCallback,
+          merchant: merchant,
+          textStyleMerchantTitle: textStyle,
+          textStyleMerchantLocation: textStyle2,
+          height: getItemInfoHeight(),
+          isWebMobile: isWebMobile,
+        )
       ],
     );
   }
@@ -279,7 +283,7 @@ class CardItem extends StatelessWidget {
 
   Container buildGradientContainer(Color infoBoxBackgroundColor) {
     return Container(
-      height: itemHeightInfoText,
+      height: getItemInfoHeight(),
       decoration: BoxDecoration(
         color: infoBoxBackgroundColor,
         borderRadius: BorderRadius.all(Radius.circular(15.0)),

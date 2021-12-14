@@ -1,4 +1,3 @@
-import 'package:Coinector/CoinectorWidgetList.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hovering/hovering.dart';
@@ -18,6 +17,7 @@ class ItemInfoStackLayer extends StatelessWidget {
     @required this.textStyleMerchantTitle,
     @required this.textStyleMerchantLocation,
     @required this.height,
+    @required this.isWebMobile,
   }) : super(key: key);
 
   final TagFilterCallback filterCallback;
@@ -25,6 +25,7 @@ class ItemInfoStackLayer extends StatelessWidget {
   final TextStyle textStyleMerchantTitle;
   final TextStyle textStyleMerchantLocation;
   final double height;
+  final bool isWebMobile;
 
   @override
   Widget build(BuildContext context) {
@@ -33,14 +34,7 @@ class ItemInfoStackLayer extends StatelessWidget {
       height: height,
       child: ListView(
         padding: EdgeInsets.fromLTRB(
-            kIsWeb ? 10.0 : 8.0,
-            kIsWeb
-                ? isWebMobile
-                    ? 0.0
-                    : 5.0
-                : 3.0,
-            10.0,
-            0.0),
+            kIsWeb ? 10.0 : 8.0, kIsWeb ? 5.0 : 3.0, 10.0, 0.0),
         physics: const NeverScrollableScrollPhysics(),
         children: <Widget>[
           SingleChildScrollView(
@@ -61,8 +55,8 @@ class ItemInfoStackLayer extends StatelessWidget {
                 maxLines: 1,
                 style: textStyleMerchantLocation,
               )),
-          const SizedBox(
-            height: kIsWeb ? 4 : 0.01,
+          SizedBox(
+            height: kIsWeb && !isWebMobile ? 4.0 : 0.01,
           ),
           SingleChildScrollView(
               scrollDirection: Axis.horizontal,
