@@ -40,12 +40,6 @@ import 'Tag.dart';
 import 'UrlLauncher.dart';
 import 'pages.dart';
 
-//import 'package:geohash/geohash.dart';
-//import 'package:clustering_google_maps/clustering_google_maps.dart';
-import 'package:flutter/foundation.dart';
-final isWebMobile = kIsWeb && (defaultTargetPlatform == TargetPlatform.iOS || defaultTargetPlatform == TargetPlatform.android);
-
-
 class CoinectorWidget extends StatefulWidget {
   final String search;
 
@@ -1003,7 +997,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   List<Widget> buildAllTabContainer(ctx) {
-    var builder = CardItemBuilder(_lists, this /*, isDataSaverOfflineMode*/);
+    var builder = CardItemBuilder(ctx, _lists, this /*, isDataSaverOfflineMode*/);
     return [
       buildTabContainer(ctx, _listKeys[0], _lists[0],
           builder.buildItemRestaurant, TabPages.pages[0].title),

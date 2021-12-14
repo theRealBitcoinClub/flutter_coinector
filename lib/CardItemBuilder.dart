@@ -4,14 +4,16 @@ import 'package:flutter/material.dart';
 import 'CardItem.dart';
 import 'ListModel.dart';
 import 'Merchant.dart';
+import 'package:flutter/foundation.dart';
 
 class CardItemBuilder {
   final List<ListModel<Merchant>> _lists;
   final TagFilterCallback _tagFilterCallback;
+  final BuildContext _ctx;
   //final bool _isDataSaverOfflineMode;
 
-  CardItemBuilder(
-      this._lists, this._tagFilterCallback /*, this._isDataSaverOfflineMode*/);
+  CardItemBuilder(this._ctx, this._lists,
+      this._tagFilterCallback /*, this._isDataSaverOfflineMode*/);
 
   CardItem _buildItem(
       int index, Animation<double> animation, ListModel<Merchant> listModel) {
@@ -21,12 +23,16 @@ class CardItemBuilder {
           currentListModel != null &&
           listModel.length > 0) {
         return CardItem(
-          index: index,
-          animation: animation,
-          merchant: currentListModel,
-          tagFilterCallback: _tagFilterCallback,
-          //isDataSaveOfflineMode: _isDataSaverOfflineMode,
-        );
+            index: index,
+            animation: animation,
+            merchant: currentListModel,
+            tagFilterCallback: _tagFilterCallback,
+            isWebMobile: kIsWeb &&
+                (Theme.of(_ctx).platform == TargetPlatform.iOS ||
+                    Theme.of(_ctx).platform == TargetPlatform.android)
+
+            //isDataSaveOfflineMode: _isDataSaverOfflineMode,
+            );
       }
     } catch (e) {
       //not catching RangeErrors caused issues with filterbar
@@ -80,12 +86,13 @@ class CardItemBuilder {
   static Widget buildRemovedItem(
       Merchant item, BuildContext context, Animation<double> animation) {
     return CardItem(
-      index: 0,
-      animation: animation,
-      merchant: item,
-      selected: false,
-      tagFilterCallback: new TagFilterCallback(),
-      // No gesture detector here: we don't want removed items to be interactive.
-    );
+        index: 0,
+        animation: animation,
+        merchant: item,
+        selected: false,
+        tagFilterCallback: new TagFilterCallback(),
+        isWebMobile: false
+        // No gesture detector here: we don't want removed items to be interactive.
+        );
   }
 }
