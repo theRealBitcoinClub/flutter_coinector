@@ -55,9 +55,13 @@ class ItemInfoStackLayer extends StatelessWidget {
                 maxLines: 1,
                 style: textStyleMerchantLocation,
               )),
-          SizedBox(
-            height: kIsWeb && !isWebMobile ? 4.0 : 0.01,
-          ),
+          isWebMobile
+              ? SizedBox(
+                  height: 0.01,
+                )
+              : SizedBox(
+                  height: kIsWeb ? 4.0 : 0.01,
+                ),
           SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Wrap(

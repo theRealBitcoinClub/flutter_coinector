@@ -25,11 +25,9 @@ class CardItem extends StatelessWidget {
   final Merchant merchant;
   final bool selected;
   final bool isWebMobile;
-  final double itemHeightInfoText = kIsWeb ? 75 : 80;
-  final double webMobileHeightInfoText = 80;
 
   double getItemInfoHeight() {
-    return isWebMobile ? webMobileHeightInfoText : itemHeightInfoText;
+    return isWebMobile ? 85 : kIsWeb ? 75 : 80;
   }
 
   const CardItem({
