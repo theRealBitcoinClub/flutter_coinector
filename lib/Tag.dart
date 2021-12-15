@@ -900,7 +900,7 @@ class Tag {
     'Sup 🥣', //135
     'Teh 🍵',
     'Bawang',
-    '🍔🍔🍔Steak 🥩',
+    'Carne 🥩',
     'Getar 🥤',
     '🍔🍔🍔Empanadas 🥟', //140
     'MakanMalam 🍽️',
@@ -1596,7 +1596,7 @@ class Tag {
     'Hombres ♂️',
     'Pasta 🍝',
     'Postre 🍬', //109
-    'Arrancador 🥠', //110
+    'Aperitivo 🥠', //110
     'Barbacoa 🍗',
     'Fideos 🍜',
     'Coreano 🥟',
@@ -1605,10 +1605,10 @@ class Tag {
     'Panadería 🥨',
     'Café ☕',
     'Juegos 🎮',
-    'Caramelo 🍿', //119
+    'Merienda 🍿', //119
     'Elegante 🕴️',
     '🍔🍔🍔Piano 🎹',
-    '🍔🍔🍔Brunch 🍱',
+    'Desalmuerzo 🍱',
     '🍔🍔🍔Nachos 🌽',
     'Almuerzo 🥡',
     'Desayuno 🥐', //125

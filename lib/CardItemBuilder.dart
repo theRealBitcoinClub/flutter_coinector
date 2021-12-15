@@ -28,9 +28,9 @@ class CardItemBuilder {
             merchant: currentListModel,
             tagFilterCallback: _tagFilterCallback,
             //TODO fix this isWebMobile as it seems to be ignored still
-            isWebMobile: kIsWeb &&
+            isWebMobile: true /*kIsWeb &&
                 (Theme.of(_ctx).platform == TargetPlatform.iOS ||
-                    Theme.of(_ctx).platform == TargetPlatform.android)
+                    Theme.of(_ctx).platform == TargetPlatform.android)*/
 
             //isDataSaveOfflineMode: _isDataSaverOfflineMode,
             );
@@ -92,7 +92,7 @@ class CardItemBuilder {
         merchant: item,
         selected: false,
         tagFilterCallback: new TagFilterCallback(),
-        isWebMobile: false
+        isWebMobile: true
         // No gesture detector here: we don't want removed items to be interactive.
         );
   }
