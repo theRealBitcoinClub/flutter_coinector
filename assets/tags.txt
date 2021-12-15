@@ -118,7 +118,7 @@ static final tagTextES = const {
   'Panadería 🥨',
   'Café ☕',
   'Juegos 🎮',
-  'Caramelo 🍿', //119
+  'Merienda 🍿', //119
   'Elegante 🕴️',
   '🍔🍔🍔Piano 🎹',
   '🍔🍔🍔Brunch 🍱',
