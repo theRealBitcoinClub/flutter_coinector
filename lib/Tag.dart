@@ -223,7 +223,8 @@ class Tag {
     'CoinText',
     'Salamantex',
     'CryptoBuyer',
-    'XPay'
+    'XPay',
+    'Panmoni'
   };
 
   static final tagTextJP1 = const {
@@ -404,7 +405,8 @@ class Tag {
     '🍔🍔🍔CoinText',
     '🍔🍔🍔Salamantex',
     '🍔🍔🍔CryptoBuyer',
-    '🍔🍔🍔XPay'
+    '🍔🍔🍔XPay',
+    '🍔🍔🍔Panmoni'
   };
   /*
   static final tagTextJP1 = const {
@@ -759,7 +761,8 @@ class Tag {
     '🍔🍔🍔CoinText',
     '🍔🍔🍔Salamantex',
     '🍔🍔🍔CryptoBuyer',
-    '🍔🍔🍔XPay'
+    '🍔🍔🍔XPay',
+    '🍔🍔🍔Panmoni'
   };
   static final tagTextINDONESIA = const {
     'Pedas 🌶️', //0
@@ -939,7 +942,8 @@ class Tag {
     '🍔🍔🍔CoinText',
     '🍔🍔🍔Salamantex',
     '🍔🍔🍔CryptoBuyer',
-    '🍔🍔🍔XPay'
+    '🍔🍔🍔XPay',
+    '🍔🍔🍔Panmoni'
   };
 
   static final tagTextIT = const {
@@ -1120,7 +1124,8 @@ class Tag {
     '🍔🍔🍔CoinText',
     '🍔🍔🍔Salamantex',
     '🍔🍔🍔CryptoBuyer',
-    '🍔🍔🍔XPay'
+    '🍔🍔🍔XPay',
+    '🍔🍔🍔Panmoni'
   };
 
   static final tagTextFR = const {
@@ -1301,7 +1306,8 @@ class Tag {
     '🍔🍔🍔CoinText',
     '🍔🍔🍔Salamantex',
     '🍔🍔🍔CryptoBuyer',
-    '🍔🍔🍔XPay'
+    '🍔🍔🍔XPay',
+    '🍔🍔🍔Panmoni'
   };
 
   static final tagTextDE = const {
@@ -1482,7 +1488,8 @@ class Tag {
     '🍔🍔🍔CoinText',
     '🍔🍔🍔Salamantex',
     '🍔🍔🍔CryptoBuyer',
-    '🍔🍔🍔XPay'
+    '🍔🍔🍔XPay',
+    '🍔🍔🍔Panmoni'
   };
 
   static final tagTextES = const {
@@ -1663,7 +1670,8 @@ class Tag {
     '🍔🍔🍔CoinText',
     '🍔🍔🍔Salamantex',
     '🍔🍔🍔CryptoBuyer',
-    '🍔🍔🍔XPay'
+    '🍔🍔🍔XPay',
+    '🍔🍔🍔Panmoni'
   };
 
   static final titleTags = const {
