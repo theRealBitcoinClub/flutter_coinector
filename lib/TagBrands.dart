@@ -10,6 +10,10 @@ class TagBrands {
     "Binance",
     "Salamantex",
     "CryptoBuyer",
-    "XPay"
+    "XPay",
+    "Bitcoin.jp",
+    "Bitcoin.com",
+    "Bitcoinstad Arnhem",
+    "Coinmap.org"
   };
 }
