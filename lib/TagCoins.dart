@@ -1,3 +1,12 @@
+// Identifier w
+
 class TagCoins {
-  static final const
+  static final tagCoins = const {
+    "BCH",
+    "DASH",
+    "BTC",
+    "USDT",
+    "BUSD",
+    "FlexUSD"
+  };
 }
