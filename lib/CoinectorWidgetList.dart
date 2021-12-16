@@ -26,6 +26,7 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:synchronized/synchronized.dart' as synchro;
 
+import 'AddNewPlaceWidget.dart';
 import 'AssetLoader.dart';
 import 'CardItemBuilder.dart';
 import 'Dialogs.dart';
@@ -878,8 +879,11 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       textTheme: TextTheme(
         headline6: TextStyle(color: Colors.black),
         headline5: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-        bodyText1:
-            TextStyle(fontSize: 17.0, fontFamily: 'Hind', color: Colors.white, fontWeight: FontWeight.w300),
+        bodyText1: TextStyle(
+            fontSize: 17.0,
+            fontFamily: 'Hind',
+            color: Colors.white,
+            fontWeight: FontWeight.w300),
         bodyText2: TextStyle(
             fontSize: 14.0,
             fontFamily: 'Hind',
@@ -924,16 +928,17 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         child: /*AnimatedSwitcher(
             //TODO fix animation, how to switch animated with a fade transition?
             duration: Duration(milliseconds: 500),x
-            child: */Center(
+            child: */
+            Center(
                 child: Text(
-              titleActionBar,
-              style: TextStyle(
-                  fontSize: 20.0,
-                  fontWeight: kIsWeb ? FontWeight.w100 : FontWeight.w300,
-                  fontStyle: FontStyle.normal,
-                  //decoration: TextDecoration.underline,
-                  color: Colors.white.withOpacity(0.5)),
-            )));
+          titleActionBar,
+          style: TextStyle(
+              fontSize: 20.0,
+              fontWeight: kIsWeb ? FontWeight.w100 : FontWeight.w300,
+              fontStyle: FontStyle.normal,
+              //decoration: TextDecoration.underline,
+              color: Colors.white.withOpacity(0.5)),
+        )));
   }
 
   Tab buildColoredTab(TabPage page) {
@@ -997,7 +1002,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   List<Widget> buildAllTabContainer(ctx) {
-    var builder = CardItemBuilder(ctx, _lists, this /*, isDataSaverOfflineMode*/);
+    var builder =
+        CardItemBuilder(ctx, _lists, this /*, isDataSaverOfflineMode*/);
     return [
       buildTabContainer(ctx, _listKeys[0], _lists[0],
           builder.buildItemRestaurant, TabPages.pages[0].title),
@@ -1329,19 +1335,22 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   void openAddNewPlaceWidget(BuildContext ctx) async {
-    UrlLauncher.launchSubmitForm();
-    /*await Navigator.push(
-      ctx,
-      MaterialPageRoute(
-          builder: (buildCtx) => AddNewPlaceWidget(
-                selectedType: tabController.index,
-                accentColor: getAccentColorOfSelectedTab(),
-                actionBarColor: getDarkColorOfSelectedTab(),
-                typeTitle: addButtonCategory,
-              )),
-    );
-    updateDistanceToAllMerchantsIfNotDoneYet();
-    showSnackBar(ctx, "snackbar_you_are_satoshi");*/
+    if (kReleaseMode) {
+      UrlLauncher.launchSubmitForm();
+      return;
+    } else
+      await Navigator.push(
+        ctx,
+        MaterialPageRoute(
+            builder: (buildCtx) => AddNewPlaceWidget(
+                  selectedType: tabController.index,
+                  accentColor: getAccentColorOfSelectedTab(),
+                  actionBarColor: getDarkColorOfSelectedTab(),
+                  typeTitle: addButtonCategory,
+                )),
+      );
+    _updateDistanceToAllMerchantsIfNotDoneYet();
+    Snackbars.showSnackBarAfterAddPlace(_scaffoldKey, ctx);
   }
 
   Future<Position> _getCoarseLocationViaIP() async {

@@ -89,7 +89,7 @@ class UrlLauncher {
     //String countryCode = getLocale(ctx);
     //print("countryCode:" + countryCode);
     var urlString = "mailto:" +
-        "trbc@bitcoinmap.cash" +
+        "trbcwindoof@protonmail.com" +
         /*
         countryCode +
         "-bmap.cash@therealbitcoin.club," +
@@ -104,7 +104,7 @@ class UrlLauncher {
         "&body=" +
         Translator.translate(ctx, "email_text_add_new_place") +
         content;
-    await _launchEmail(ctx, urlString, onEmailClientNotFound);
+    await _launchEmail(ctx, urlString, onEmailClientNotFound(content));
   }
 
   static String getLocale(ctx) {

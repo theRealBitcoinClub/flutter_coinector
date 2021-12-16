@@ -75,6 +75,10 @@ class Snackbars {
     _showSnackBar(scaffoldKey, ctx, "snackbar_showing_unfiltered_list");
   }
 
+    static void showSnackBarAfterAddPlace(scaffoldKey, ctx) {
+      _showSnackBar(scaffoldKey, ctx, "snackbar_you_are_satoshi");
+    }
+
   static void showSnackBarRestartApp(scaffoldKey, ctx) {
     String text = Translator.translate(ctx, "toast_update_succesfull");
     _showSnackBar(scaffoldKey, ctx, "",

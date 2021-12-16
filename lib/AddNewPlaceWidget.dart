@@ -1,4 +1,5 @@
 import 'package:Coinector/translator.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -117,6 +118,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     controllerInputName.addListener(() {
       updateInputName(KEYWORD_CONTROLLER_ACTION);
     });
+
+    if (!kReleaseMode) updateInputName("NameName");
+    if (!kReleaseMode) updateInputAdr("AddressAddressAddress");
   }
 
   @override
@@ -347,7 +351,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     //Dialogs.confirmSendEmail(context, () {
 
     UrlLauncher.launchEmailClientAddPlace(
-        ctx, inputDASH, inputBCH, buildJsonToSubmitViaEmail(), () {
+        ctx, inputDASH, inputBCH, buildJsonToSubmitViaEmail(),
+        (String content) {
+      print("Add Place Submit:\n" + Uri.decodeComponent(content));
       Toaster.showToastEmailNotConfigured(ctx);
     });
     //});
@@ -447,14 +453,12 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   void handleAddTagButton(ctx) async {
     if (allSelectedTags.length >= MIN_INPUT_TAGS) {
-      Dialogs.confirmShowResetTags(ctx, () {
-        setState(() {
-          allSelectedTags = Set.from([]);
-          searchTagsDelegate.alreadySelected = Set.from([]);
-          showInputDASHyBCH = false;
-          showSubmitBtn = false;
+      if (!kReleaseMode)
+        resetTags();
+      else
+        Dialogs.confirmShowResetTags(ctx, () {
+          resetTags();
         });
-      });
       return;
     }
 
@@ -467,16 +471,31 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
     addSelectedTag(selected);
 
+    // if (!kReleaseMode) printAllTags(searchTagsDelegate.alreadySelected);
+
     if (allSelectedTags.length == MAX_INPUT_TAGS) {
-      showInputBCHyDASH();
-      FocusScope.of(ctx).requestFocus(focusNodeInputDASH);
-      scrollController.jumpTo(INPUT_DASH_POS);
+      if (!kReleaseMode)
+        Clipboard.setData(ClipboardData(text: printAllTags()));
+      else {
+        showInputBCHyDASH();
+        FocusScope.of(ctx).requestFocus(focusNodeInputDASH);
+        scrollController.jumpTo(INPUT_DASH_POS);
+      }
     } else {
       scrollController.jumpTo(INPUT_TAGS_POS);
     }
 
     setState(() {
-      showSubmitBtn = true;
+      showSubmitBtn = kReleaseMode ? true : false;
+    });
+  }
+
+  void resetTags() {
+    setState(() {
+      allSelectedTags = Set.from([]);
+      searchTagsDelegate.alreadySelected = Set.from([]);
+      showInputDASHyBCH = false;
+      showSubmitBtn = false;
     });
   }
 
@@ -724,15 +743,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         buildJsonTag(allSelectedTags.elementAt(2)) +
         ',' +
         buildJsonTag(allSelectedTags.elementAt(3)) +
-        '],"a":"' +
-        Tag.getTagIndex(allSelectedTags.elementAt(0)).toString() +
-        "," +
-        Tag.getTagIndex(allSelectedTags.elementAt(1)).toString() +
-        "," +
-        Tag.getTagIndex(allSelectedTags.elementAt(2)).toString() +
-        "," +
-        Tag.getTagIndex(allSelectedTags.elementAt(3)).toString() +
-        '"}');
+        '],' +
+        printAllTags() +
+        '}');
   }
 
   String buildJsonTag(tag) {
@@ -741,5 +754,17 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         '", "id":"' +
         Tag.getTagIndex(tag).toString() +
         '"}';
+  }
+
+  String printAllTags() {
+    return '"a":"' +
+        searchTagsDelegate.alreadySelected.elementAt(0).toString() +
+        "," +
+        searchTagsDelegate.alreadySelected.elementAt(1).toString() +
+        "," +
+        searchTagsDelegate.alreadySelected.elementAt(2).toString() +
+        "," +
+        searchTagsDelegate.alreadySelected.elementAt(3).toString() +
+        '"';
   }
 }
