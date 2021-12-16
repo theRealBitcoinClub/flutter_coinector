@@ -221,7 +221,7 @@ class Tag {
     'DASHText Ð',
     'CoinTigo',
     'CoinText',
-    'Salamantex',
+    'Salamantex',//175
     'CryptoBuyer',
     'XPay',
     'Panmoni'
@@ -940,7 +940,7 @@ class Tag {
     '🍔🍔🍔DASHText Ð',
     '🍔🍔🍔CoinTigo',
     '🍔🍔🍔CoinText',
-    '🍔🍔🍔Salamantex',
+    '🍔🍔🍔Salamantex',//175
     '🍔🍔🍔CryptoBuyer',
     '🍔🍔🍔XPay',
     '🍔🍔🍔Panmoni'
@@ -1122,7 +1122,7 @@ class Tag {
     '🍔🍔🍔DASHText Ð',
     '🍔🍔🍔CoinTigo',
     '🍔🍔🍔CoinText',
-    '🍔🍔🍔Salamantex',
+    '🍔🍔🍔Salamantex',//175
     '🍔🍔🍔CryptoBuyer',
     '🍔🍔🍔XPay',
     '🍔🍔🍔Panmoni'
@@ -1304,7 +1304,7 @@ class Tag {
     '🍔🍔🍔DASHText Ð',
     '🍔🍔🍔CoinTigo',
     '🍔🍔🍔CoinText',
-    '🍔🍔🍔Salamantex',
+    '🍔🍔🍔Salamantex',//175
     '🍔🍔🍔CryptoBuyer',
     '🍔🍔🍔XPay',
     '🍔🍔🍔Panmoni'
@@ -1486,7 +1486,7 @@ class Tag {
     '🍔🍔🍔DASHText Ð',
     '🍔🍔🍔CoinTigo',
     '🍔🍔🍔CoinText',
-    '🍔🍔🍔Salamantex',
+    '🍔🍔🍔Salamantex',//175
     '🍔🍔🍔CryptoBuyer',
     '🍔🍔🍔XPay',
     '🍔🍔🍔Panmoni'
@@ -1668,7 +1668,7 @@ class Tag {
     '🍔🍔🍔DASHText Ð',
     '🍔🍔🍔CoinTigo',
     '🍔🍔🍔CoinText',
-    '🍔🍔🍔Salamantex',
+    '🍔🍔🍔Salamantex',//175
     '🍔🍔🍔CryptoBuyer',
     '🍔🍔🍔XPay',
     '🍔🍔🍔Panmoni'
