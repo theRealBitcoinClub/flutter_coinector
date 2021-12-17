@@ -1,6 +1,15 @@
-Fallo
-,{"p":"farmashopchacao","x":"10.4917503","y":"-66.8557949","n":"Farma Shop Chacao","t":"999","c":"","s":"","d":"0","a":",,,","l":""}
+Check unused tags
+replace unused tags with new tags from the bottom
+translate tags
 
+1. Complete list panmoni only places and pendientes
+2. Put tags to all places
+3. Add images from Gmaps if available and use the image from Panmoni always
+
+Tags never used
+105,171
+
+106 to 150 are in use
 
 Pendiente por registrar
 

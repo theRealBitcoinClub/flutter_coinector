@@ -107,18 +107,18 @@ class Tag {
     'TV 📺',
     'Retro 🦄',
     'Feta 🐐',
-    'DASH Ð', //59
-    'BTC',
-    'BCH',
-    'Anypay',
-    'ETH',
+    'WiFi',//'DASH Ð', //59
+    'Centro Comercial',//'BTC',
+    'Hipermercado',//'BCH',
+    'Cigarro',//'Anypay',
+    'Recarga',//'ETH',
     'HotDog 🌭', //64
     'Fast ⏩',
     'Kosher 🦄',
     'Sushi 🍣',
     'Moto 🛵',
-    'Coche 🚘', //69
-    'GoCrypto',
+    'Car 🚘', //69
+    '',//'GoCrypto',
     'Chicken 🐔',
     'Rabbit 🐰',
     'Potato 🥔',
@@ -220,13 +220,47 @@ class Tag {
     'Matcha 🍵',
     'Oden 🍢', //170
     'Latte ☕',
-    'DASHText Ð',
-    'CoinTigo',
-    'CoinText',
-    'Salamantex',//175
-    'CryptoBuyer',
-    'XPay',
-    'Panmoni'
+    'Piscina',//'DASHText Ð',
+    'Pire acond.',//'CoinTigo',
+    'Planta Electr.',//'CoinText',
+    'Alquiler',//'Salamantex',//175
+    'Bodegon',//'CryptoBuyer',
+    'Kiosco',//'XPay',
+    'Electro',//'Panmoni'
+    'Telefonos', //180
+    'Estacionamiento',
+    'Accesorios',
+    'Zapatos',
+    'Playa',
+    'Rio',//185
+    'Naturista',
+    'Importado',
+    'Bicicleta',
+    'Harina',
+    'Limpieza',//190
+    'Jabon',
+    'Detergente',
+    'Farmacia',
+    'Azucar',
+    'Tarjeta Sim',//195
+    'MicroSD',
+    'Bateria',
+    'Agua',
+    'Reloj', //200,
+    'Llave',
+    'Candado',
+    'Mascota',
+    'Nino',
+    'Pelicula',//205
+    'Foto',
+    'Camara',
+    'Seguridad',
+    'Colchon',
+    'Mantenimiento', //210
+    'Lavadora',
+    'Salsicha',
+    'Huevo',
+    'Leche'
   };
 
   static final tagTextJP1 = const {
@@ -300,7 +334,7 @@ class Tag {
     '寿司🍣',
     'モト🛵',
     'コシェ🚘',
-    '🍔🍔🍔LTC₿',
+    '🍔🍔🍔GoCrypto₿',
     'チキン🐔',
     'うさぎ🐰',
     'じゃがいも🥔',
@@ -482,7 +516,7 @@ class Tag {
     'Sushi 🍣',
     'Moto 🛵',
     'Coche 🚘',
-    'LTC',
+    'GoCrypto',
     'Chicken 🐔',
     'Rabbit 🐰',
     'Potato 🥔',
@@ -656,7 +690,7 @@ class Tag {
     'sushi 🍣',
     '🍔🍔🍔Moto 🛵',
     '🍔🍔🍔koshe 🚘',
-    '🍔🍔🍔LTC',
+    '🍔🍔🍔GoCrypto',
     'chikin 🐔',
     'usagi 🐰',
     'jagaimo 🥔',
@@ -837,7 +871,7 @@ class Tag {
     '🍔🍔🍔Sushi 🍣',
     '🍔🍔🍔Moto 🛵',
     '🍔🍔🍔Coche 🚘', //69
-    '🍔🍔🍔LTC',
+    '🍔🍔🍔GoCrypto',
     'Ayam 🐔',
     'Kelinci 🐰',
     'Kentang 🥔',
@@ -1019,7 +1053,7 @@ class Tag {
     '🍔🍔🍔Sushi 🍣',
     'Motociclo 🛵',
     'Macchina 🚘', //69
-    '🍔🍔🍔LTC',
+    '🍔🍔🍔GoCrypto',
     'Pollo 🐔',
     'Coniglio 🐰',
     'Patata 🥔',
@@ -1201,7 +1235,7 @@ class Tag {
     '🍔🍔🍔Sushi 🍣',
     '🍔🍔🍔Moto 🛵',
     'Voiture 🚘', //69
-    '🍔🍔🍔LTC',
+    '🍔🍔🍔GoCrypto',
     'Poulet 🐔',
     'Lapine 🐰',
     'Patate 🥔',
@@ -1383,7 +1417,7 @@ class Tag {
     '🍔🍔🍔Sushi 🍣',
     'Motorrad 🛵',
     'Auto 🚘', //69
-    'LTC',
+    'GoCrypto',
     'Huhn 🐔',
     'Hase 🐰',
     'Kartoffel 🥔',
@@ -1554,18 +1588,18 @@ class Tag {
     'Tele 📺',
     '🍔🍔🍔Retro 🦄',
     '🍔🍔🍔Feta 🐐',
-    'DASH Ð', //59
-    '🍔🍔🍔BTC',
-    '🍔🍔🍔BCH',
-    '🍔🍔🍔BSV',
-    '🍔🍔🍔ETH',
+    'WiFi',//'DASH Ð', //59
+    'Centro Comercial',//'BTC',
+    'Hipermercado',//'BCH',
+    'Cigarro',//'Anypay',
+    'Recarga',//'ETH',
     'PerroCal. 🌭', //64
     'Rapido ⏩',
     '🍔🍔🍔Kosher 🦄',
     '🍔🍔🍔Sushi 🍣',
     'Moto 🛵', //TODO translate in original to english
     'Coche 🚘', //69
-    '🍔🍔🍔LTC',
+    '',//GoCrypto
     'Pollo 🐔',
     'Conejo 🐰',
     'Patata 🥔',
@@ -1667,12 +1701,46 @@ class Tag {
     '🍔🍔🍔Matcha 🍵',
     '🍔🍔🍔Oden 🍢', //170
     '🍔🍔🍔Latte ☕',
-    '🍔🍔🍔DASHText Ð',
-    '🍔🍔🍔CoinTigo',
-    '🍔🍔🍔CoinText',
-    '🍔🍔🍔Salamantex',//175
-    '🍔🍔🍔CryptoBuyer',
-    '🍔🍔🍔XPay',
-    '🍔🍔🍔Panmoni'
+    'Piscina',//'DASHText Ð',
+    'Pire acond.',//'CoinTigo',
+    'Planta Electr.',//'CoinText',
+    'Alquiler',//'Salamantex',//175
+    'Bodegon',//'CryptoBuyer',
+    'Kiosco',//'XPay',
+    'Electro',//'Panmoni'
+    'Telefonos', //180
+    'Estacionamiento',
+    'Accesorios',
+    'Zapatos',
+    'Playa',
+    'Rio',//185
+    'Naturista',
+    'Importado',
+    'Bicicleta',
+    'Harina',
+    'Limpieza',//190
+    'Jabon',
+    'Detergente',
+    'Farmacia',
+    'Azucar',
+    'Tarjeta Sim',//195
+    'MicroSD',
+    'Bateria',
+    'Agua',
+    'Reloj', //200,
+    'Llave',
+    'Candado',
+    'Mascota',
+    'Nino',
+    'Pelicula',//205
+    'Foto',
+    'Camara',
+    'Seguridad',
+    'Colchon',
+    'Mantenimiento', //210
+    'Lavadora',
+    'Salsicha',
+    'Huevo',
+    'Leche'
   };
 }
