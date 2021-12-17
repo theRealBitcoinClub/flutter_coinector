@@ -94,7 +94,7 @@ class AssetLoader {
   }
 
   static Future<String> loadString(String fileName) async =>
-      rootBundle.loadString(fileName, cache: true);
+      rootBundle.loadString(fileName, cache: false);
 
   static Future<String> loadReceivingAddress(String id) async {
     var addresses = await AssetLoader.loadAndDecodeAsset("assets/addr.json");
