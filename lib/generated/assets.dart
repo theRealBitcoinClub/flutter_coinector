@@ -20,7 +20,6 @@ class Assets {
   static const String assetsFlutterI18nJa = 'assets/flutter_i18n/ja.json';
   static const String assetsPendiente = 'assets/pendiente';
   static const String assetsPlaceholder640x480 = 'assets/placeholder640x480.jpg';
-  static const String assetsPlaces = 'assets/assets/places.json';
   static const String assetsPlacesId = 'assets/placesId.json';
   static const String assetsREADMEDATA = 'assets/README-DATA.md';
   static const String assetsTags = 'assets/tags.txt';
