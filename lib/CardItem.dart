@@ -1,3 +1,5 @@
+import 'package:Coinector/TagBrands.dart';
+import 'package:Coinector/TagCoins.dart';
 import 'package:Coinector/translator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -27,7 +29,11 @@ class CardItem extends StatelessWidget {
   final bool isWebMobile;
 
   double getItemInfoHeight() {
-    return isWebMobile ? 85 : kIsWeb ? 75 : 80;
+    return isWebMobile
+        ? 85
+        : kIsWeb
+            ? 75
+            : 80;
   }
 
   const CardItem({
@@ -122,6 +128,8 @@ class CardItem extends StatelessWidget {
         buildStackInfoTextWithBackgroundAndShadow(
             backGroundColor, textStyle, textStyle2, tagFilterCallback),
         buildPositionedContainerDistance(ctx, backGroundColor, textStyle2),
+        buildPositionedContainerBrand(ctx, backGroundColor, textStyle2),
+        buildPositionedContainerAcceptedCoins(backGroundColor, ctx, textStyle2),
         RatingWidgetBuilder.hasReviews(merchant)
             ? buildPositionedContainerReviews(backGroundColor, ctx)
             : SizedBox(),
@@ -220,6 +228,54 @@ class CardItem extends StatelessWidget {
           isWebMobile: isWebMobile,
         )
       ],
+    );
+  }
+
+  Positioned buildPositionedContainerBrand(
+      BuildContext ctx, Color backGroundColor, TextStyle textStyle2) {
+    return Positioned(
+      left: 0.0,
+      bottom: kReleaseMode ? 33 : 48,
+      child: merchant.brand != null
+          ? Container(
+              padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topRight: buildRadius(), bottomRight: buildRadius()),
+                  color: backGroundColor),
+              child: Text(
+                TagBrands.tagBrands.elementAt(merchant.brand),
+                style: textStyle2,
+              ),
+            )
+          : Container(),
+    );
+  }
+
+  Positioned buildPositionedContainerAcceptedCoins(
+      Color backGroundColor, BuildContext ctx, TextStyle tStyle) {
+    return Positioned(
+      left: 0.0,
+      bottom: kReleaseMode ? 4 : 19,
+      child: merchant.acceptedCoins != null
+          ? Container(
+              padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topRight: buildRadius(), bottomRight: buildRadius()),
+                  color: backGroundColor),
+              child: Wrap(
+                spacing: 10.0,
+                children: merchant.acceptedCoins
+                    .split(",")
+                    .map((e) => Text(
+                          TagCoins.tagCoins.elementAt(int.parse(e)),
+                          style: tStyle,
+                        ))
+                    .toList(),
+              ),
+            )
+          : Container(),
     );
   }
 
