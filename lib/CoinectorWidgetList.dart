@@ -161,7 +161,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
     initListModel();
 
-    if (fileName == null) {
+    if (!kReleaseMode || fileName == null) {
       _loadAndParseAllPlaces(filterWordIndex, locationFilter);
     } else {
       _loadAndParseAsset(filterWordIndex, locationFilter, fileName);
@@ -205,14 +205,18 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   void _updateAllCachedContent(ctx) async {
-    await FileCache.loadFromWebAndPersistCache('am');
-    await FileCache.loadFromWebAndPersistCache('as');
-    await FileCache.loadFromWebAndPersistCache('au');
-    await FileCache.loadFromWebAndPersistCache('as-jap');
-    await FileCache.loadFromWebAndPersistCache('am-ven-car');
-    await FileCache.loadFromWebAndPersistCache('am-ven');
-    await FileCache.loadFromWebAndPersistCache('e');
-    await FileCache.loadFromWebAndPersistCache('e-spa');
+    if (kReleaseMode) {
+      await FileCache.loadFromWebAndPersistCache('am');
+      await FileCache.loadFromWebAndPersistCache('as');
+      await FileCache.loadFromWebAndPersistCache('au');
+      await FileCache.loadFromWebAndPersistCache('as-jap');
+      await FileCache.loadFromWebAndPersistCache('am-ven-car');
+      await FileCache.loadFromWebAndPersistCache('am-ven');
+      await FileCache.loadFromWebAndPersistCache('e');
+      await FileCache.loadFromWebAndPersistCache('e-spa');
+    } else
+      await FileCache.loadFromWebAndPersistCache('places');
+
     await FileCache.loadFromWebAndPersistCache('addr');
     await FileCache.loadFromWebAndPersistCache('placesId');
 
@@ -224,15 +228,24 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   void _loadAndParseAllPlaces(int filterWordIndex, String locationFilter) {
-    _loadAndParseAsset(filterWordIndex, locationFilter, 'am');
-    _loadAndParseAsset(filterWordIndex, locationFilter, 'as');
-    _loadAndParseAsset(filterWordIndex, locationFilter, 'au');
-    _loadAndParseAsset(filterWordIndex, locationFilter, 'e');
+    if (!kReleaseMode)
+      _loadAndParseAsset(filterWordIndex, locationFilter, "places");
+    else {
+      _loadAndParseAsset(filterWordIndex, locationFilter, 'am');
+      _loadAndParseAsset(filterWordIndex, locationFilter, 'as');
+      _loadAndParseAsset(filterWordIndex, locationFilter, 'au');
+      _loadAndParseAsset(filterWordIndex, locationFilter, 'e');
+    }
   }
 
   Future _loadAndParseAsset(
       int filterWordIndex, String locationFilter, String fileName) async {
-    var decoded = await FileCache.loadAndDecodeAsset(fileName);
+    var decoded;
+    if (!kReleaseMode)
+      decoded = await FileCache.loadAndDecodeAsset("places");
+    else {
+      decoded = await FileCache.loadAndDecodeAsset(fileName);
+    }
     parseAssetUpdateListModel(
         filterWordIndex, locationFilter, decoded, fileName, fileName != null);
   }
