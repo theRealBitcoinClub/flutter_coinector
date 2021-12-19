@@ -107,18 +107,18 @@ class Tag {
     'TV 📺',
     'Retro 🦄',
     'Feta 🐐',
-    'WiFi',//'DASH Ð', //59
-    'Centro Comercial',//'BTC',
-    'Hipermercado',//'BCH',
-    'Cigarro',//'Anypay',
-    'Recarga',//'ETH',
+    'WiFi 🌐', //'DASH Ð', //59
+    'Centro Comercial', //'BTC',
+    'Hipermercado', //'BCH',
+    'Cigarro', //'Anypay',
+    'Recarga', //'ETH',
     'HotDog 🌭', //64
     'Fast ⏩',
     'Kosher 🦄',
     'Sushi 🍣',
     'Moto 🛵',
     'Car 🚘', //69
-    '',//'GoCrypto',
+    '', //'GoCrypto',
     'Chicken 🐔',
     'Rabbit 🐰',
     'Potato 🥔',
@@ -220,29 +220,29 @@ class Tag {
     'Matcha 🍵',
     'Oden 🍢', //170
     'Latte ☕',
-    'Piscina',//'DASHText Ð',
-    'Pire acond.',//'CoinTigo',
-    'Planta Electr.',//'CoinText',
-    'Alquiler',//'Salamantex',//175
-    'Bodegon',//'CryptoBuyer',
-    'Kiosco',//'XPay',
-    'Electro',//'Panmoni'
+    'Piscina', //'DASHText Ð',
+    'Pire acond.', //'CoinTigo',
+    'Planta Electr.', //'CoinText',
+    'Alquiler', //'Salamantex',//175
+    'Bodegon', //'CryptoBuyer',
+    'Kiosco', //'XPay',
+    'Electro', //'Panmoni'
     'Telefonos', //180
     'Estacionamiento',
     'Accesorios',
     'Zapatos',
     'Playa',
-    'Rio',//185
+    'Rio', //185
     'Naturista',
     'Importado',
     'Bicicleta',
     'Harina',
-    'Limpieza',//190
+    'Limpieza', //190
     'Jabon',
     'Detergente',
     'Farmacia',
     'Azucar',
-    'Tarjeta Sim',//195
+    'Tarjeta Sim', //195
     'MicroSD',
     'Bateria',
     'Agua',
@@ -251,7 +251,7 @@ class Tag {
     'Candado',
     'Mascota',
     'Nino',
-    'Pelicula',//205
+    'Pelicula', //205
     'Foto',
     'Camara',
     'Seguridad',
@@ -505,7 +505,7 @@ class Tag {
     'TV 📺',
     'Retro 🦄',
     'Feta 🐐',
-    'DASH Ð',
+    '🍔🍔🍔WiFi',
     'BTC',
     'BCH',
     'BSV',
@@ -860,7 +860,7 @@ class Tag {
     '🍔🍔🍔TV 📺',
     '🍔🍔🍔Retro 🦄',
     '🍔🍔🍔Feta 🐐',
-    '🍔🍔🍔DASH Ð', //59
+    '🍔🍔🍔WiFi', //59
     '🍔🍔🍔BTC',
     '🍔🍔🍔BCH',
     '🍔🍔🍔BSV',
@@ -976,7 +976,7 @@ class Tag {
     '🍔🍔🍔DASHText Ð',
     '🍔🍔🍔CoinTigo',
     '🍔🍔🍔CoinText',
-    '🍔🍔🍔Salamantex',//175
+    '🍔🍔🍔Salamantex', //175
     '🍔🍔🍔CryptoBuyer',
     '🍔🍔🍔XPay',
     '🍔🍔🍔Panmoni'
@@ -1042,7 +1042,7 @@ class Tag {
     'Tivù 📺',
     'Retrò 🦄',
     '🍔🍔🍔Feta 🐐',
-    '🍔🍔🍔DASH Ð', //59
+    '🍔🍔🍔WiFi', //59
     '🍔🍔🍔BTC',
     '🍔🍔🍔BCH',
     '🍔🍔🍔BSV',
@@ -1158,7 +1158,7 @@ class Tag {
     '🍔🍔🍔DASHText Ð',
     '🍔🍔🍔CoinTigo',
     '🍔🍔🍔CoinText',
-    '🍔🍔🍔Salamantex',//175
+    '🍔🍔🍔Salamantex', //175
     '🍔🍔🍔CryptoBuyer',
     '🍔🍔🍔XPay',
     '🍔🍔🍔Panmoni'
@@ -1224,7 +1224,7 @@ class Tag {
     'Télé 📺',
     'Rétro 🦄',
     '🍔🍔🍔Feta 🐐',
-    '🍔🍔🍔DASH Ð', //59
+    '🍔🍔🍔WiFi', //59
     '🍔🍔🍔BTC',
     '🍔🍔🍔BCH',
     '🍔🍔🍔BSV',
@@ -1340,7 +1340,7 @@ class Tag {
     '🍔🍔🍔DASHText Ð',
     '🍔🍔🍔CoinTigo',
     '🍔🍔🍔CoinText',
-    '🍔🍔🍔Salamantex',//175
+    '🍔🍔🍔Salamantex', //175
     '🍔🍔🍔CryptoBuyer',
     '🍔🍔🍔XPay',
     '🍔🍔🍔Panmoni'
@@ -1406,7 +1406,7 @@ class Tag {
     'Fernseher 📺',
     '🍔🍔🍔Retro 🦄',
     'Ziegenkäse 🐐',
-    'DASH Ð', //59
+    '🍔🍔🍔WiFi', //59
     'BTC',
     'BCH',
     'BSV',
@@ -1522,7 +1522,7 @@ class Tag {
     '🍔🍔🍔DASHText Ð',
     '🍔🍔🍔CoinTigo',
     '🍔🍔🍔CoinText',
-    '🍔🍔🍔Salamantex',//175
+    '🍔🍔🍔Salamantex', //175
     '🍔🍔🍔CryptoBuyer',
     '🍔🍔🍔XPay',
     '🍔🍔🍔Panmoni'
@@ -1588,18 +1588,18 @@ class Tag {
     'Tele 📺',
     '🍔🍔🍔Retro 🦄',
     '🍔🍔🍔Feta 🐐',
-    'WiFi',//'DASH Ð', //59
-    'Centro Comercial',//'BTC',
-    'Hipermercado',//'BCH',
-    'Cigarro',//'Anypay',
-    'Recarga',//'ETH',
+    '🍔🍔🍔WiFi', //59
+    'Centro Comercial', //'BTC',
+    'Hipermercado', //'BCH',
+    'Cigarro', //'Anypay',
+    'Recarga', //'ETH',
     'PerroCal. 🌭', //64
     'Rapido ⏩',
     '🍔🍔🍔Kosher 🦄',
     '🍔🍔🍔Sushi 🍣',
     'Moto 🛵', //TODO translate in original to english
     'Coche 🚘', //69
-    '',//GoCrypto
+    '', //GoCrypto
     'Pollo 🐔',
     'Conejo 🐰',
     'Patata 🥔',
@@ -1701,29 +1701,29 @@ class Tag {
     '🍔🍔🍔Matcha 🍵',
     '🍔🍔🍔Oden 🍢', //170
     '🍔🍔🍔Latte ☕',
-    'Piscina',//'DASHText Ð',
-    'Pire acond.',//'CoinTigo',
-    'Planta Electr.',//'CoinText',
-    'Alquiler',//'Salamantex',//175
-    'Bodegon',//'CryptoBuyer',
-    'Kiosco',//'XPay',
-    'Electro',//'Panmoni'
+    'Piscina', //'DASHText Ð',
+    'Pire acond.', //'CoinTigo',
+    'Planta Electr.', //'CoinText',
+    'Alquiler', //'Salamantex',//175
+    'Bodegon', //'CryptoBuyer',
+    'Kiosco', //'XPay',
+    'Electro', //'Panmoni'
     'Telefonos', //180
     'Estacionamiento',
     'Accesorios',
     'Zapatos',
     'Playa',
-    'Rio',//185
+    'Rio', //185
     'Naturista',
     'Importado',
     'Bicicleta',
     'Harina',
-    'Limpieza',//190
+    'Limpieza', //190
     'Jabon',
     'Detergente',
     'Farmacia',
     'Azucar',
-    'Tarjeta Sim',//195
+    'Tarjeta Sim', //195
     'MicroSD',
     'Bateria',
     'Agua',
@@ -1732,7 +1732,7 @@ class Tag {
     'Candado',
     'Mascota',
     'Nino',
-    'Pelicula',//205
+    'Pelicula', //205
     'Foto',
     'Camara',
     'Seguridad',

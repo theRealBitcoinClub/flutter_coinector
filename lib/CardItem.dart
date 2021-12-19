@@ -142,7 +142,7 @@ class CardItem extends StatelessWidget {
       height: 160,
       width: 640,
       child: DecoratedBox(
-        child: Align(
+        /*child: Align(
             alignment: Alignment.bottomLeft,
             child: Padding(
                 padding: EdgeInsets.all(5.0),
@@ -153,7 +153,7 @@ class CardItem extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(color: Colors.white54),
                   textScaleFactor: 0.9,
-                ))), //),
+                ))), //),*/
         decoration: BoxDecoration(color: Colors.grey[900]),
       ),
     );
@@ -235,7 +235,7 @@ class CardItem extends StatelessWidget {
       BuildContext ctx, Color backGroundColor, TextStyle textStyle2) {
     return Positioned(
       left: 0.0,
-      bottom: kReleaseMode ? 33 : 48,
+      bottom: 33,
       child: merchant.brand != null
           ? Container(
               padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
@@ -243,10 +243,8 @@ class CardItem extends StatelessWidget {
                   borderRadius: BorderRadius.only(
                       topRight: buildRadius(), bottomRight: buildRadius()),
                   color: backGroundColor),
-              child: Text(
-                TagBrands.tagBrands.elementAt(merchant.brand),
-                style: textStyle2,
-              ),
+              child: Text(TagBrands.tagBrands.elementAt(merchant.brand),
+                  style: TextStyle(color: Colors.white70)),
             )
           : Container(),
     );
@@ -256,7 +254,7 @@ class CardItem extends StatelessWidget {
       Color backGroundColor, BuildContext ctx, TextStyle tStyle) {
     return Positioned(
       left: 0.0,
-      bottom: kReleaseMode ? 4 : 19,
+      bottom: 4,
       child: merchant.acceptedCoins != null
           ? Container(
               padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
@@ -270,7 +268,7 @@ class CardItem extends StatelessWidget {
                     .split(",")
                     .map((e) => Text(
                           TagCoins.tagCoins.elementAt(int.parse(e)),
-                          style: tStyle,
+                          style: tStyle.copyWith(fontWeight: FontWeight.bold),
                         ))
                     .toList(),
               ),

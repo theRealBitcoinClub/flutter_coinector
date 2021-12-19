@@ -83,7 +83,6 @@ class ItemInfoStackLayer extends StatelessWidget {
           child: Row(children: [
             Text(splittedTag[0].toUpperCase(),
                 style: TextStyle(
-                    decoration: TextDecoration.underline,
                     textBaseline: TextBaseline.alphabetic,
                     fontSize: 15.0,
                     fontWeight: kIsWeb ? FontWeight.w300 : FontWeight.w500,
