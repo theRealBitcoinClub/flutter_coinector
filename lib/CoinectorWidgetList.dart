@@ -83,7 +83,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   String addButtonCategory = "EAT";
   bool isUnfilteredList = false;
   bool
-      hasHitSearch; //TODO count user activity by how often he hits search, how much he interacts with the app, reward him for that with badges or BMAP tokens
+  hasHitSearch; //TODO count user activity by how often he hits search, how much he interacts with the app, reward him for that with badges or BMAP tokens
   var sharedPrefKeyHasHitSearch = "sharedPrefKeyHasHitSearch";
   var sharedPrefKeyLastLocation = "dsfdsfdsfdsfwer3e3r3";
   String _searchTerm;
@@ -286,7 +286,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         var lock = synchro.Lock();
         lock.synchronized(() async {
           bool hasCalculated =
-              await calculateDistanceUpdateMerchant(userPosition, m);
+          await calculateDistanceUpdateMerchant(userPosition, m);
 
           if (hasCalculated)
             insertItemInOrderedPosition(currentList, m, updateState);
@@ -445,7 +445,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       case 999:
         tempLists[6].insert(0, m2);
         break;
-      /*case 999:
+    /*case 999:
         tempLists[7].insert(0, m2);
         break;*/
     }
@@ -490,11 +490,11 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
     return ShapeDecoration(
       shape: const StadiumBorder(
-            side: BorderSide(
-              color: Colors.white24,
-              width: 2.0,
-            ),
-          ) +
+        side: BorderSide(
+          color: Colors.white24,
+          width: 2.0,
+        ),
+      ) +
           const StadiumBorder(
             side: BorderSide(
               color: Colors.transparent,
@@ -694,9 +694,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         .listen((ConnectivityResult result) {
       if (!kIsWeb)
         InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(this,
-            (onConnectionLoss) {
-          Snackbars.showInternetErrorSnackbar(this);
-        });
+                (onConnectionLoss) {
+              Snackbars.showInternetErrorSnackbar(this);
+            });
     });
     initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition(context);
     //OneSignal.initOneSignalPushMessages(); //TODO maybe activate Signal again, I want to ask users for reviews!
@@ -722,8 +722,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       print(position == null
           ? 'Unknown'
           : position.latitude.toString() +
-              ', ' +
-              position.longitude.toString());
+          ', ' +
+          position.longitude.toString());
     });
   }
 
@@ -809,7 +809,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
           child: Scaffold(
             key: _scaffoldKey,
             floatingActionButtonLocation:
-                FloatingActionButtonLocation.centerFloat,
+            FloatingActionButtonLocation.centerFloat,
             floatingActionButton: buildFloatingActionButton(),
             body: new Builder(builder: (BuildContext ctx) {
               buildWithinScopeOfTranslator(ctx);
@@ -837,9 +837,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     } else {*/
     //InternetConnectivityChecker.resumeAutoChecker();
     InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(this,
-        (onConnectionLoss) {
-      Snackbars.showInternetErrorSnackbar(this);
-    });
+            (onConnectionLoss) {
+          Snackbars.showInternetErrorSnackbar(this);
+        });
     //}
   }
 
@@ -909,13 +909,13 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     return SliverAppBar(
         elevation: 2,
         shape:
-            kIsWeb //TODO check if user is on mobile with web, then it shall not have rounded corners like in native app
-                ? RoundedRectangleBorder(
-                    borderRadius: BorderRadius.vertical(
-                      bottom: Radius.circular(20),
-                    ),
-                  )
-                : null,
+        kIsWeb //TODO check if user is on mobile with web, then it shall not have rounded corners like in native app
+            ? RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(20),
+          ),
+        )
+            : null,
         forceElevated: true,
         leading: buildHomeButton(buildCtx),
         bottom: TabBar(
@@ -942,33 +942,33 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
             //TODO fix animation, how to switch animated with a fade transition?
             duration: Duration(milliseconds: 500),x
             child: */
-            Center(
-                child: Text(
-          titleActionBar,
-          style: TextStyle(
-              fontSize: 20.0,
-              fontWeight: kIsWeb ? FontWeight.w100 : FontWeight.w300,
-              fontStyle: FontStyle.normal,
-              //decoration: TextDecoration.underline,
-              color: Colors.white.withOpacity(0.5)),
-        )));
+        Center(
+            child: Text(
+              titleActionBar,
+              style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: kIsWeb ? FontWeight.w100 : FontWeight.w300,
+                  fontStyle: FontStyle.normal,
+                  //decoration: TextDecoration.underline,
+                  color: Colors.white.withOpacity(0.5)),
+            )));
   }
 
   Tab buildColoredTab(TabPage page) {
     return _lists[page.tabIndex].length > 0
         ? Tab(
-            text: page.text,
-            icon: Icon(
-              page.icon,
-              color: MyColors.getTabColor(page.typeIndex),
-              size: 22,
-            ))
+        text: page.text,
+        icon: Icon(
+          page.icon,
+          color: MyColors.getTabColor(page.typeIndex),
+          size: 22,
+        ))
         : Tab(
-            icon: Icon(
-            page.icon,
-            color: Colors.white.withOpacity(0.5),
-            size: 22,
-          ));
+        icon: Icon(
+          page.icon,
+          color: Colors.white.withOpacity(0.5),
+          size: 22,
+        ));
   }
 
   bool zoomMapAfterSelectLocation = false;
@@ -996,8 +996,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                   zoomMapAfterSelectLocation
                       ? 10.0
                       : userPosition != null
-                          ? 5.0
-                          : 0.0)),
+                      ? 5.0
+                      : 0.0)),
         );
         _updateDistanceToAllMerchantsIfNotDoneYet();
         if (result != null) {
@@ -1016,7 +1016,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   List<Widget> buildAllTabContainer(ctx) {
     var builder =
-        CardItemBuilder(ctx, _lists, this /*, isDataSaverOfflineMode*/);
+    CardItemBuilder(ctx, _lists, this /*, isDataSaverOfflineMode*/);
     return [
       buildTabContainer(ctx, _listKeys[0], _lists[0],
           builder.buildItemRestaurant, TabPages.pages[0].title),
@@ -1136,7 +1136,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
               return buildIconButtonSearchContainer(ctx);
             })
         : */
-        buildIconButtonSearchContainer(ctx);
+      buildIconButtonSearchContainer(ctx);
   }
 
   IconButton buildIconButtonSearchContainer(BuildContext ctx) {
@@ -1146,7 +1146,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         color: /*searchIconBlinkAnimation != null && hasNotHitSearch()
             ? searchIconBlinkAnimation.value
             : */
-            Colors.lightBlueAccent,
+        Colors.lightBlueAccent,
         //progress: getSearchDelegate().transitionAnimation,
       ),
       onPressed: () async {
@@ -1248,67 +1248,67 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       ctx, var listKey, var list, var builderMethod, var cat) {
     return (list != null && list.length > 0)
         ? Padding(
-            child: Stack(children: [
-              AnimatedList(
-                controller: _scrollControl,
-                key: listKey,
-                padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 60.0),
-                initialItemCount: list.length,
-                itemBuilder: builderMethod,
-              ),
-              /*(!kIsWeb || !hasScrollableContent())
+      child: Stack(children: [
+        AnimatedList(
+          controller: _scrollControl,
+          key: listKey,
+          padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 60.0),
+          initialItemCount: list.length,
+          itemBuilder: builderMethod,
+        ),
+        /*(!kIsWeb || !hasScrollableContent())
                   ? SizedBox()
                   : _verticalScroller*/
-            ]),
-            padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
-          )
+      ]),
+      padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+    )
         : !isInitialized
-            ? Center(
-                child: Loading(
-                    color: Colors.white,
-                    indicator: BallGridPulseIndicator(),
-                    size: 40),
-              )
-            : Padding(
-                padding: EdgeInsets.fromLTRB(25.0, 0.0, 25.0, 0.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+        ? Center(
+      child: Loading(
+          color: Colors.white,
+          indicator: BallGridPulseIndicator(),
+          size: 40),
+    )
+        : Padding(
+        padding: EdgeInsets.fromLTRB(25.0, 0.0, 25.0, 0.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            buildSeparator(),
+            Text(
+              Translator.translate(ctx, "no_matches"),
+              style: TextStyle(fontWeight: FontWeight.w400),
+            ),
+            buildSeparator(),
+            SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
                   children: <Widget>[
-                    buildSeparator(),
-                    Text(
-                      Translator.translate(ctx, "no_matches"),
-                      style: TextStyle(fontWeight: FontWeight.w400),
+                    Padding(
+                      padding: EdgeInsets.all(10.0),
+                      child: /*IconButton(icon: */ Icon(
+                          Icons.arrow_upward),
                     ),
-                    buildSeparator(),
-                    SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: <Widget>[
-                            Padding(
-                              padding: EdgeInsets.all(10.0),
-                              child: /*IconButton(icon: */ Icon(
-                                  Icons.arrow_upward),
-                            ),
-                            Text(
-                              Translator.translate(ctx, "hit_icon"),
-                              style: TextStyle(fontWeight: FontWeight.w300),
-                            )
-                          ],
-                        )),
-                    buildSeparator(),
-                    SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: <Widget>[
-                            buildHomeButton(ctx),
-                            Text(
-                              Translator.translate(ctx, "show_all_merchants"),
-                              style: TextStyle(fontWeight: FontWeight.w300),
-                            )
-                          ],
-                        )),
+                    Text(
+                      Translator.translate(ctx, "hit_icon"),
+                      style: TextStyle(fontWeight: FontWeight.w300),
+                    )
                   ],
-                ));
+                )),
+            buildSeparator(),
+            SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: <Widget>[
+                    buildHomeButton(ctx),
+                    Text(
+                      Translator.translate(ctx, "show_all_merchants"),
+                      style: TextStyle(fontWeight: FontWeight.w300),
+                    )
+                  ],
+                )),
+          ],
+        ));
   }
 
 /*
@@ -1356,11 +1356,11 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         ctx,
         MaterialPageRoute(
             builder: (buildCtx) => AddNewPlaceWidget(
-                  selectedType: tabController.index,
-                  accentColor: getAccentColorOfSelectedTab(),
-                  actionBarColor: getDarkColorOfSelectedTab(),
-                  typeTitle: addButtonCategory,
-                )),
+              selectedType: tabController.index,
+              accentColor: getAccentColorOfSelectedTab(),
+              actionBarColor: getDarkColorOfSelectedTab(),
+              typeTitle: addButtonCategory,
+            )),
       );
     _updateDistanceToAllMerchantsIfNotDoneYet();
     Snackbars.showSnackBarAfterAddPlace(_scaffoldKey, ctx);
