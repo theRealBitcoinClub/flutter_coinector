@@ -24,6 +24,8 @@ class Merchant {
   String distance;
   double distanceInMeters = -1;
   String geohash;
+  int brand;
+  String acceptedCoins;
   //LatLngAndGeohash latLngAndGeohash;
 
   /*calcGeoHash () {
@@ -31,8 +33,19 @@ class Merchant {
     latLngAndGeohash = LatLngAndGeohash(LatLng(x, y));
   }*/
 
-  Merchant(this.id, this.x, this.y, this.name, this.type, this.reviewCount,
-      this.reviewStars, this.discount, this.tags, this.location);
+  Merchant(
+      this.id,
+      this.x,
+      this.y,
+      this.name,
+      this.type,
+      this.reviewCount,
+      this.reviewStars,
+      this.discount,
+      this.tags,
+      this.location,
+      this.brand,
+      this.acceptedCoins);
 
   // named constructor
   Merchant.fromJson(Map<String, dynamic> json)
@@ -45,8 +58,8 @@ class Merchant {
         reviewStars = json['s'],
         discount = int.parse(json['d']),
         tags = json['a'],
-  //TODO use one single source of locations, take the suggestions or the placesIDAddress as reference
-        location = json['l'];
-
-
+        //TODO use one single source of locations, take the suggestions or the placesIDAddress as reference
+        location = json['l'],
+        brand = json['b'],
+        acceptedCoins = json['w'];
 }

@@ -18,17 +18,43 @@ environment:
   sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
-  #flutter_web_plugins:
-   # sdk: flutter
   hovering: ^1.0.4
-  firebase_core: ^1.10.5
+  firebase_core: ^1.10.6
+  flutter_easyrefresh: ^2.2.1
+  fluttertoast: ^8.0.8
+  permission_handler: ^8.3.0
+  synchronized: ^3.0.0
+  awesome_dialog: ^2.1.2
+  flutter_phoenix: ^1.0.0
+  loading: ^1.0.2
+  shared_preferences: ^2.0.11
+  share: ^2.0.4
+  dio: ^4.0.4
+  responsive_framework: ^0.1.5
+  connectivity: ^3.0.6
+  in_app_review: ^2.0.3
+  transparent_image: ^2.0.0
+  smooth_star_rating: ^1.1.1
+  google_maps_flutter: ^2.1.1
+  google_maps_flutter_web: 0.3.2
+  url_launcher: ^6.0.17
+  flutter_i18n: ^0.31.0
+  geolocator: ^8.0.1
+  crypto: ^3.0.1
+  path_provider: ^2.0.8
+  #device_preview: ^0.4.8
+  #desktop_window: ^0.3.0
+  #js: ^0.6.2
+  #http: ^0.12.2
+  #onesignal_flutter: ^2.6.1
+  #flutter_web_plugins:
+  # sdk: flutter
   #firebase_core_web: 0.2.0
   #firebase_picture_uploader: ^1.3.1
   #image_picker: ^0.8.4+4
   #image_picker_for_web: 0.1.0+2
   #github: 7.0.3
   #firebase_analytics: ^8.3.4
-  flutter_easyrefresh: ^2.2.1
   #carousel_slider: 2.3.1
   #flutter_web_scrollbar: ^0.0.3
   #bitbox: ^0.0.5
@@ -37,11 +63,8 @@ dependencies:
   #country_code_picker: ^1.6.0
   #place_picker: ^0.9.9
   #after_init: ^0.1.2
-  fluttertoast: ^8.0.8
   #universal_html: 1.2.3
   #platform_detect: ^1.4.0
-  permission_handler: ^8.3.0
-  synchronized: ^3.0.0
   #fluro: ^1.7.6
   #firebase_messaging: ^11.2.0
   #firebase_core: ^0.4.0+5
@@ -51,31 +74,9 @@ dependencies:
   #flutter_crashlytics: 1.0.0
   #clipboard_manager: ^0.0.4
   #flutter_typeahead: ^1.4.0
-  awesome_dialog: ^2.1.2
   #confetti: ^0.5.4+1
-  flutter_phoenix: ^1.0.0
   #dio_http_cache
-  loading: ^1.0.2
-  shared_preferences: ^2.0.11
-  share: ^2.0.4
-  dio: ^4.0.4
-  #device_preview: ^0.4.8
-  responsive_framework: ^0.1.5
-  #desktop_window: ^0.3.0
-  #js: ^0.6.2
-  #http: ^0.12.2
-  connectivity: ^3.0.6
-  in_app_review: ^2.0.3
-  transparent_image: ^2.0.0
-  smooth_star_rating: ^1.1.1
-  google_maps_flutter: ^2.1.1
-  google_maps_flutter_web: 0.3.2
-  url_launcher: ^6.0.17
-  flutter_i18n: ^0.31.0
-  geolocator: ^8.0.0
-  crypto: ^3.0.1
-  path_provider: ^2.0.8
-  #onesignal_flutter: ^2.6.1
+
   flutter:
     sdk: flutter
 

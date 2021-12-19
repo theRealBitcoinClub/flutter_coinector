@@ -1,3 +1,6 @@
+FOR WINDOWS USERS RUN THIS COMMAND TO AVOID CHECKING IN FILES WITH CHANGED LINE ENDINGS: 
+git config --global core.autocrlf true
+
 ## Coinector Video Tutorial
 
 Click the image to play a YouTube video showing the features of this app.
@@ -11,6 +14,7 @@ Download:https://github.com/theRealBitcoinClub/flutter_coinector/releases
 ## Running Web App
 
 Web: https://coinector.app
+Development: https://coinector.codemagic.app
 
 ## Play Store & App Store
 
@@ -19,7 +23,7 @@ IPhone: https://bitcoinmap.cash/iphone
 
 ## Build Status
 
-[![Codemagic build status](https://api.codemagic.io/apps/5c883f703bcac0000cbf2083/5c883f703bcac0000cbf2082/status_badge.svg)](https://codemagic.io/apps/5c883f703bcac0000cbf2083/5c883f703bcac0000cbf2082/latest_build)
+[![Codemagic build status](https://api.codemagic.io/apps/61b1eda95f52b59508c82d31/61b1eda95f52b59508c82d30/status_badge.svg)](https://codemagic.io/apps/61b1eda95f52b59508c82d31/61b1eda95f52b59508c82d30/latest_build)
 
 # Coinector - Coinnect the coimunity
 
@@ -66,14 +70,13 @@ User can download a PDF file with QR Codes after adding a place
 
 This project is written in dart using the flutter framework.
 
-# Support
+# How To Support
 
-BCH:qqp0kpntfxygx3e6d4mr9c5ef5ucxdcjk5zkgtevss
-DASH:XiHdw8SVoNtJqno6GnxKQS2Snxh7BTuR39
+PLEASE GO AND PROMOTE THIS APP TO EVERYONE YOU KNOW WHO IS INTERESTED IN P2P CASH
 
-https://cointr.ee/bmap (Please send an email to trbc@bitcoinmap.cash to verify that the donation arrived)
+ONBOARD YOUR FAVOURITE MERCHANT TO USE BITCOIN CASH THEN SUBMIT THE PLACE TO THIS APP
 
-[CLICK HERE TO DONATE BCH or DASH WITH QR CODES](https://bitcoinmap.cash/bitcoin-bch-dash-qr-code-generator?bch=qqp0kpntfxygx3e6d4mr9c5ef5ucxdcjk5zkgtevss&dash=XiHdw8SVoNtJqno6GnxKQS2Snxh7BTuR39)
+STOP TOUCHING FIAT PAPER MONEY OR USING CUSTODIAL BANK OR CUSTODIAL CRYPTO ACCOUNTS
 
 ## Licence
 

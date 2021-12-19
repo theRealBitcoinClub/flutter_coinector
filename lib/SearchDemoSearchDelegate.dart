@@ -6,6 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'SuggestionList.dart';
 import 'Suggestions.dart';
 import 'Tag.dart';
+import 'TagNames.dart';
 import 'UrlLauncher.dart';
 
 class SearchDemoSearchDelegate extends SearchDelegate<String> {
@@ -76,7 +77,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
     addCountrySpecificMatches(ctx, pattern, matches);
 
     addMatches(pattern, matches, Suggestions.locations);
-    addMatches(pattern, matches, Tag.titleTags);
+    addMatches(pattern, matches, TagNames.titleTags);
 
     hasResults = true;
     if (matches.length == 0) {
