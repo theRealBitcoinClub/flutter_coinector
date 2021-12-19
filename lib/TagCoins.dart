@@ -2,11 +2,11 @@
 
 class TagCoins {
   static final tagCoins = const {
-    "BCH",
-    "DASH",
-    "BTC",
-    "USDT",
-    "BUSD",
-    "FlexUSD"
+    "BCH", //0
+    "DASH", //1
+    "BTC", //2
+    "USDT", //3
+    "BUSD", //4
+    "FlexUSD" //5
   };
 }
