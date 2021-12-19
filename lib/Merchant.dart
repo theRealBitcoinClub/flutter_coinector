@@ -17,15 +17,16 @@ class Merchant {
   String reviewCount;
   String reviewStars;
   int discount;
-  String tags;
+  String
+      tags; //TODO SPLIT THE TAGS ONE TIME AND SAVE THEM IN TWO ARRAYS ONE INT ARRAY FOR SEARCH AND ONE STRING ARRAY WITH PARSED TAGS
   String location;
-  String serverId;
+  String serverId; //TODO RENAME THIS VARIABLE
   Place place;
   String distance;
   double distanceInMeters = -1;
   String geohash;
-  int brand;
-  String acceptedCoins;
+  int brand; //TODO LET USER TAP THE BRAND TO SEE ONLY THE SAME BRAND
+  String acceptedCoins; //TODO SPLIT TAGS ON FIRST READ
   //LatLngAndGeohash latLngAndGeohash;
 
   /*calcGeoHash () {
@@ -60,6 +61,6 @@ class Merchant {
         tags = json['a'],
         //TODO use one single source of locations, take the suggestions or the placesIDAddress as reference
         location = json['l'],
-        brand = json['b'],
+        brand = json['b'] != null ? int.parse(json['b']) : null,
         acceptedCoins = json['w'];
 }
