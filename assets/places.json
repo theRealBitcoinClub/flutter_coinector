@@ -53,7 +53,7 @@
 ,{"p":"thecornercafe","x":"53.3087543","y":"-3.7404846","n":"The Corner Cafe","t":"2","c":"94","s":"4.7","d":"0","a":"29,8,125,152","l":" Rhos Road, Rhos on Sea, Colwyn Bay, England, UK"}
 ,{"p":"thegreenroom","x":"52.0258816","y":"-1.1499362","n":"The Green Room","t":"2","c":"224","s":"4.6","d":"0","a":"8,38,109,15","l":"Bridge Street, Brackley, England, UK"}
 ,{"p":"thekyberthandori","x":"51.2955219","y":"-0.2149833","n":"New Khyber","t":"0","c":"40","s":"4.3","d":"0","a":"120,141,158,0","l":"2 Waterhouse Ln, Banstead, Tadworth KT20 6EB, UK"}
-,{"p":"mrwolfs","x":"51.4538348","y":"-2.594218","n":"Mr Wolfs","t":"2","c":"546","s":"4.1","d":"0","a":"62,33,37,106","l":"32 St Nicholas St, Bristol BS1 1TG, UK","b":"1"}
+,{"p":"mrwolfs","x":"51.4538348","y":"-2.594218","n":"Mr Wolfs","t":"2","c":"546","s":"4.1","d":"0","a":"104,33,37,106","l":"32 St Nicholas St, Bristol BS1 1TG, UK","b":"1"}
 ,{"p":"chaoscoffeebar","x":"60.388109","y":"5.325569","n":"Chaos Coffee Bar - Kafe Chaos","t":"2","c":"76","s":"4.5","d":"0","a":"29,8,31,142","l":"Fosswinckels gate, Bergen, Norway"}
 ,{"p":"tonyscoffeebar","x":"57.6975382","y":"11.9861658","n":"Tonys coffeebar","t":"2","c":"79","s":"4.8","d":"0","a":"29,8,142,125","l":"Skånegatan, Gothenburg, Sweden"}
 ,{"p":"mamasbanh","x":"52.5311","y":"13.43435","n":"Mamas Banh, Vietnamese Tapas","t":"0","c":"182","s":"4.7","d":"0","a":"151,71,15,112","l":"Prenzlauer Berg, Hufelandstraße, Berlin, Germany","b":"0","w":"0,1"}
@@ -623,11 +623,11 @@
 ,{"p":"bodegadayana","x":"-11.9973412","y":"-77.0078031","n":"Bodega Dayana","t":"4","c":"0","s":"0.0","d":"0","a":"104,104,104,104","l":"jr las Gravas 2061, san juan de, Peru","b": "13","w": "0,1"}
 ,{"p":"livernoismcgraw","x":"42.3404134","y":"-83.1277302","n":"Livernois-McGraw Party Store","t":"4","c":"55","s":"4.1","d":"0","a":"81,82,83,84","l":"5545 Livernois, Detroit, MI 48210, USA"}
 ,{"p":"carolinabeecompany","x":"36.201415","y":"-78.504301","n":"The Carolina Bee Company","t":"4","c":"2","s":"5.0","d":"0","a":"104,104,104,104","l":"3630 Charlie Grissom Rd, Kittrell, NC 27544, USA","b":"13","w":"0,1"}
-,{"p":"kirby","x":"43.1435947","y":"-72.3732477","n":"Kirbys Q","t":"0","c":"46","s":"4.7","d":"0","a":"111,71,164,62","l":"River Street, Alstead, NH, USA","b":"1"}
-,{"p":"streetza360","x":"43.068945","y":"-70.773056","n":"STREETza 360","t":"0","c":"71","s":"4.6","d":"0","a":"71,99,14,62","l":"Islington Street, Portsmouth, NH, USA","b":"1"}
-,{"p":"liarsbench","x":"43.0725374","y":"-70.7687944","n":"Liars Bench Beer Co","t":"2","c":"117","s":"4.6","d":"0","a":"32,33,38,62","l":"Islington Street, Portsmouth, NH, USA","b":"1"}
-,{"p":"3sartspace","x":"43.0799851","y":"-70.7629727","n":"3S Artspace","t":"2","c":"161","s":"4.7","d":"0","a":"29,31,32,62","l":"Vaughan Street, Portsmouth, NH, USA","b":"1"}
-,{"p":"cascadeduchocolat","x":"42.981505","y":"-70.946847","n":"La Cascade Du Chocolat","t":"1","c":"25","s":"5.0","d":"0","a":"62,12,11,9","l":"109 Water St, Exeter, NH 03833, USA","b":"1"}
+,{"p":"kirby","x":"43.1435947","y":"-72.3732477","n":"Kirbys Q","t":"0","c":"46","s":"4.7","d":"0","a":"111,71,164,104","l":"River Street, Alstead, NH, USA","b":"1"}
+,{"p":"streetza360","x":"43.068945","y":"-70.773056","n":"STREETza 360","t":"0","c":"71","s":"4.6","d":"0","a":"71,99,14,104","l":"Islington Street, Portsmouth, NH, USA","b":"1"}
+,{"p":"liarsbench","x":"43.0725374","y":"-70.7687944","n":"Liars Bench Beer Co","t":"2","c":"117","s":"4.6","d":"0","a":"32,33,38,104","l":"Islington Street, Portsmouth, NH, USA","b":"1"}
+,{"p":"3sartspace","x":"43.0799851","y":"-70.7629727","n":"3S Artspace","t":"2","c":"161","s":"4.7","d":"0","a":"29,31,32,104","l":"Vaughan Street, Portsmouth, NH, USA","b":"1"}
+,{"p":"cascadeduchocolat","x":"42.981505","y":"-70.946847","n":"La Cascade Du Chocolat","t":"1","c":"25","s":"5.0","d":"0","a":"104,12,11,9","l":"109 Water St, Exeter, NH 03833, USA","b":"1"}
 ,{"p":"misto","x":"43.120927","y":"-70.7198341","n":"Misto!","t":"0","c":"89","s":"4.4","d":"0","a":"104,104,104,,104","l":"436 US-1, Kittery, ME 03904, USA","b":"1"}
 ,{"p":"martinhillinn","x":"43.072465","y":"-70.7675072","n":"Martin Hill Inn","t":"5","c":"32","s":"4.7","d":"0","a":"104,104,104,,104","l":"404 Islington St, Portsmouth, NH 03801, USA","b":"1"}
 ,{"p":"blazeyoga","x":"43.067625","y":"-70.770235","n":"Blaze Yoga and Pilates","t":"999","c":"40","s":"5.0","d":"0","a":"104,104,104,,104","l":"800 Islington St, Portsmouth, NH 03801, USA","b":"1"}
