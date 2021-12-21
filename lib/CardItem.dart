@@ -1,12 +1,10 @@
 import 'package:Coinector/TagBrands.dart';
 import 'package:Coinector/TagCoins.dart';
 import 'package:Coinector/translator.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/widgets/I18nText.dart';
-import 'package:loading/indicator/ball_grid_pulse_indicator.dart';
-import 'package:loading/loading.dart';
+import 'package:loading_animations/loading_animations.dart';
 import 'package:share/share.dart';
 import 'package:transparent_image/transparent_image.dart';
 
@@ -162,17 +160,19 @@ class CardItem extends StatelessWidget {
   Widget buildImageContainer(String gifUrl, BuildContext ctx) {
     return Stack(children: <Widget>[
       SizedBox(
-        height: 160,
-        width: 640,
-        child: Align(
+          height: 160,
+          width: 640,
+          child: Align(
             alignment: Alignment.bottomCenter,
             //child: GestureDetector(
             //  onTap: () => onTapActivateDataSaverOfflineMode(ctx),
-            child: Loading(
-                color: Colors.white54,
-                indicator: BallGridPulseIndicator(),
-                size: 40)),
-      ), //),
+            child: LoadingBouncingLine.circle(
+              size: 32.0,
+              borderSize: 5.0,
+              borderColor: Colors.grey[800],
+              backgroundColor: Colors.white24,
+            ),
+          )), //),
       FadeInImage.memoryNetwork(
         imageErrorBuilder:
             (BuildContext context, Object exception, StackTrace stackTrace) {
@@ -238,7 +238,7 @@ class CardItem extends StatelessWidget {
       bottom: 33,
       child: merchant.brand != null
           ? Container(
-              padding: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
+              padding: EdgeInsets.fromLTRB(8.8, 5.0, 10.0, 4.5),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
                       topRight: buildRadius(), bottomRight: buildRadius()),

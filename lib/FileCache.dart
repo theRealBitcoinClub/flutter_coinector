@@ -82,6 +82,7 @@ class FileCache {
   static Future loadAndDecodeAsset(String fileName) async {
     String cachedAsset = await getCachedAssetWithDefaultFallback(fileName);
     var decoded = AssetLoader.decodeJSON(cachedAsset);
+    if (!kReleaseMode) print(cachedAsset);
     return decoded;
   }
 

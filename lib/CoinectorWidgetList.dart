@@ -7,20 +7,16 @@ import 'package:Coinector/ItemInfoStackLayer.dart';
 import 'package:Coinector/Snackbars.dart';
 import 'package:Coinector/translator.dart';
 import 'package:connectivity/connectivity.dart';
-//import 'package:device_preview/device_preview.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_i18n/flutter_i18n_delegate.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:in_app_review/in_app_review.dart';
-import 'package:loading/indicator/ball_grid_pulse_indicator.dart';
-import 'package:loading/loading.dart';
-//import 'package:onesignal_flutter/onesignal_flutter.dart';
+import 'package:loading_animations/loading_animations.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -897,7 +893,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
             fontSize: 17.0,
             fontFamily: 'Hind',
             color: Colors.white,
-            fontWeight: FontWeight.w300),
+            fontWeight: kIsWeb ? FontWeight.w100 : FontWeight.w400),
         bodyText2: TextStyle(
             fontSize: 14.0,
             fontFamily: 'Hind',
@@ -1265,10 +1261,13 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
           )
         : !isInitialized
             ? Center(
-                child: Loading(
-                    color: Colors.white,
-                    indicator: BallGridPulseIndicator(),
-                    size: 40),
+                child: LoadingBouncingLine.circle(
+                  //inverted: true,
+                  size: 32.0,
+                  borderSize: 5.0,
+                  borderColor: Colors.grey[800],
+                  backgroundColor: Colors.white24,
+                ),
               )
             : Padding(
                 padding: EdgeInsets.fromLTRB(25.0, 0.0, 25.0, 0.0),
