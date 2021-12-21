@@ -118,7 +118,7 @@ class Tag {
     'Sushi 🍣',
     'Moto 🛵',
     'Car 🚘', //69
-    '', //'GoCrypto',
+    '', //'GoCrypto UNUSED',
     'Chicken 🐔',
     'Rabbit 🐰',
     'Potato 🥔',
