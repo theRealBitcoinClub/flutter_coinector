@@ -108,10 +108,10 @@ class Tag {
     'Retro 🦄',
     'Feta 🐐',
     'WiFi 🌐', //'DASH Ð', //59
-    'Centro Comercial', //'BTC',
-    'Hipermercado', //'BCH',
-    'Cigarro', //'Anypay',
-    'Recarga', //'ETH',
+    'Centro Comercial 🛍️', //'BTC',
+    'Hipermercado 🏬', //'BCH',
+    'Cigarro 🚬', //'Anypay',
+    'Recarga 📱', //'ETH',
     'HotDog 🌭', //64
     'Fast ⏩',
     'Kosher 🦄',

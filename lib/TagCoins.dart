@@ -7,6 +7,7 @@ class TagCoins {
     "BTC", //2
     "USDT", //3
     "BUSD", //4
-    "FlexUSD" //5
+    "FlexUSD", //5
+    "DAI" //6
   };
 }
