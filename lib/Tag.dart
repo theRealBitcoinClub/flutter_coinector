@@ -220,47 +220,47 @@ class Tag {
     'Matcha 🍵',
     'Oden 🍢', //170
     'Latte ☕',
-    'Piscina', //'DASHText Ð',
-    'Pire acond.', //'CoinTigo',
-    'Planta Electr.', //'CoinText',
-    'Alquiler', //'Salamantex',//175
+    'Pool 🏊', //'DASHText Ð', //
+    'Air Cond.', //'CoinTigo',
+    'Power plant.', //'CoinText',
+    'Rental', //'Salamantex',//175
     'Bodegon', //'CryptoBuyer',
     'Kiosco', //'XPay',
-    'Electro', //'Panmoni'
-    'Telefonos', //180
-    'Estacionamiento',
-    'Accesorios',
-    'Zapatos',
-    'Playa',
-    'Rio', //185
-    'Naturista',
-    'Importado',
-    'Bicicleta',
-    'Harina',
-    'Limpieza', //190
-    'Jabon',
-    'Detergente',
-    'Farmacia',
-    'Azucar',
-    'Tarjeta Sim', //195
-    'MicroSD',
-    'Bateria',
-    'Agua',
-    'Reloj', //200,
-    'Llave',
-    'Candado',
-    'Mascota',
-    'Nino',
-    'Pelicula', //205
-    'Foto',
-    'Camara',
-    'Seguridad',
-    'Colchon',
-    'Mantenimiento', //210
-    'Lavadora',
-    'Salsicha',
-    'Huevo',
-    'Leche'
+    'Electronic 💻', //'Panmoni'
+    'Cell phone 📱', //180
+    'Parking lot',
+    'Accessories',
+    'Shoes 👞',
+    'Beach 🏖️',
+    'River 🏞️', //185
+    'Naturalist',
+    'Imported',
+    'Bike 🚲',
+    'Flour',
+    'Cleaning 🧹', //190
+    'Soap 🧼',
+    'Detergent',
+    'Pharmacy',
+    'Sugar',
+    'Simcard', //195
+    'Microsd',
+    'Battery 🔋',
+    'Water',
+    'Clock 🕰️', //200,
+    'Key 🔑',
+    'Padlock 🔒',
+    'Pet 🐶',
+    'Little boy',
+    'Movie 🎥', //205
+    'Photo 📸',
+    'Camera 📷',
+    'Security 👮',
+    'Mattress 🛏️',
+    'Maintenance 🔧', //210
+    'Washingmachine',
+    'Sausage 🌭',
+    'Egg 🥚',
+    'Milk 🥛'
   };
 
   static final tagTextJP1 = const {
