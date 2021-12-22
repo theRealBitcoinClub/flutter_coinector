@@ -86,7 +86,7 @@ class Tag {
     'Duck 🍱',
     'Rock 🎸',
     'LiveDJ 🎧',
-    'Terrace ☀️',
+    'Terrace ☀',
     'Seeds 🌱', //39
     'Grinder 🍌',
     'Papers 🚬',
@@ -108,17 +108,17 @@ class Tag {
     'Retro 🦄',
     'Feta 🐐',
     'WiFi 🌐', //'DASH Ð', //59
-    'Centro Comercial 🛍️', //'BTC',
-    'Hipermercado 🏬', //'BCH',
-    'Cigarro 🚬', //'Anypay',
-    'Recarga 📱', //'ETH',
+    'Shopping Center 🛍️', //'BTC',
+    'Department Store 🏬', //'BCH',
+    'Cigarette 🚬', //'Anypay',
+    'Recharge 📱', //'ETH',
     'HotDog 🌭', //64
     'Fast ⏩',
-    'Kosher 🦄',
+    'Kosher 🕍',
     'Sushi 🍣',
-    'Moto 🛵',
+    'Motorbike 🛵', //DOUBLE CHECK DOWN AT MOTORBIKE
     'Car 🚘', //69
-    '', //'GoCrypto UNUSED',
+    'Bicycle 🚴', //'GoCrypto UNUSED',
     'Chicken 🐔',
     'Rabbit 🐰',
     'Potato 🥔',
@@ -139,7 +139,7 @@ class Tag {
     'SoftIce 🍦',
     'Dango 🍡',
     'BnB 🛏️', //90
-    'Haircut ✂️',
+    'Haircut ✂',
     'Candy 🍭',
     'Beauty 💅',
     'Miso 🍱',
@@ -155,7 +155,7 @@ class Tag {
     ' - - - ', //This is number 104 the no tag indicator, currently not used //TODO hide this field from the suggestions
     'Bourbon 🥃', //105
     'Liquor 🥃',
-    'Men ♂️',
+    'Men ♂',
     'Pasta 🍝',
     'Dessert 🍬', //109
     'Starter 🥠', //110
@@ -185,7 +185,7 @@ class Tag {
     'Bistro 🍲',
     'Soup 🥣', //135
     'Tea 🍵',
-    'Onion',
+    'Onion 🧅',
     'Steak 🥩',
     'Shakes 🥤',
     'Empanadas 🥟', //140
@@ -221,43 +221,43 @@ class Tag {
     'Oden 🍢', //170
     'Latte ☕',
     'Pool 🏊', //'DASHText Ð', //
-    'Air Cond.', //'CoinTigo',
-    'Power plant.', //'CoinText',
-    'Rental', //'Salamantex',//175
-    'Bodegon', //'CryptoBuyer',
-    'Kiosco', //'XPay',
+    'Air Cond. ❄', //'CoinTigo',
+    'Powerplant 🔌', //'CoinText',
+    'Rental 🏠', //'Salamantex',//175
+    'Supply 🧺', //'CryptoBuyer',
+    'Kiosk 🏪', //'XPay',
     'Electronic 💻', //'Panmoni'
-    'Cell phone 📱', //180
-    'Parking lot',
-    'Accessories',
+    'Cellphone 📱', //180
+    'Parking 🅿️',
+    'Accessories 💠',
     'Shoes 👞',
     'Beach 🏖️',
     'River 🏞️', //185
-    'Naturalist',
-    'Imported',
-    'Bike 🚲',
-    'Flour',
+    'Natural 🌲',
+    'Imported 🌎',
+    'Tools 🔨',
+    'Flour 🥖',
     'Cleaning 🧹', //190
     'Soap 🧼',
-    'Detergent',
-    'Pharmacy',
-    'Sugar',
-    'Simcard', //195
-    'Microsd',
+    'Detergent ☢',
+    'Pharmacy 🏥',
+    'Sugar 😍',
+    'Simcard 📶', //195
+    'Microsd 💾',
     'Battery 🔋',
-    'Water',
-    'Clock 🕰️', //200,
+    'Water 🚰',
+    'Clock ⌚', //200,
     'Key 🔑',
     'Padlock 🔒',
     'Pet 🐶',
-    'Little boy',
+    'Kids 🚸',
     'Movie 🎥', //205
     'Photo 📸',
     'Camera 📷',
     'Security 👮',
     'Mattress 🛏️',
     'Maintenance 🔧', //210
-    'Washingmachine',
+    'Washingmachine 🚿',
     'Sausage 🌭',
     'Egg 🥚',
     'Milk 🥛'
