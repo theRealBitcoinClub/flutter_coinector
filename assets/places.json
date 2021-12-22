@@ -15179,5 +15179,82 @@
   "l": "Via Federico Ozanam, 23, 00152 Roma RM, Italia",
   "b": "0",
   "w": "0,1,2"
-}
-]
+}, {
+  "p": "kaprichossuy",
+  "x": "10.498149",
+  "y": "-66.90047",
+  "n": "Kaprichos Susy C.A",
+  "t": "4",
+  "c": "0",
+  "s": "0.0",
+  "d": "0",
+  "a": "104,104,104,104",
+  "l": "Edificio El Tejar y Mohedano, Nivel Sotano 1, Local NCS, 19 Avenida Lecuna, Caracas 1015, Distrito Capital",
+  "b": "4",
+  "w": "0"
+}, {
+  "p": "chillpost",
+  "x": "6.5162867",
+  "y": "3.3877647",
+  "n": "Chillspot",
+  "t": "0",
+  "c": "31",
+  "s": "4.5",
+  "d": "0",
+  "a": "104,104,104,104",
+  "l": "University of Lagos Sports Complex, Yaba 100213, Lagos, Nigeria",
+  "b": "4",
+  "w": "0"
+}, {
+  "p": "drepgrill",
+  "x": "7.4326421",
+  "y": "3.9063412",
+  "n": "Drepgrill Sharwama",
+  "t": "0",
+  "c": "0",
+  "s": "0.0",
+  "d": "0",
+  "a": "104,104,104,104",
+  "l": "Hexagon, 47 Sango-Ojoo Road, 200132, Ibadan, Nigeria",
+  "b": "4",
+  "w": "0"
+}, {
+  "p": "amarachi",
+  "x": "7.4389935",
+  "y": "3.9073276",
+  "n": "Amarachi African Kitchen",
+  "t": "0",
+  "c": "2",
+  "s": "4.0",
+  "d": "0",
+  "a": "104,104,104,104",
+  "l": "No A1 Preboye's Complex, Opposite Emmanuel College, UI, Kenneth Dike Rd, 200132, Ibadan, Nigeria",
+  "b": "4",
+  "w": "0"
+}, {
+  "p": "cellcanguro",
+  "x": "6.2471045",
+  "y": "-75.5707998",
+  "n": "Cell canguro",
+  "t": "4",
+  "c": "62",
+  "s": "4.4",
+  "d": "0",
+  "a": "104,104,104,104",
+  "l": "Cra 52 ##46-68, Medellín, Antioquia, Colombia",
+  "b": "4",
+  "w": "0"
+}, {
+  "p": "primorosa",
+  "x": "6.2447885",
+  "y": "-75.5915559",
+  "n": "Primorosa Boutique",
+  "t": "4",
+  "c": "5",
+  "s": "5.0",
+  "d": "0",
+  "a": "104,104,104,104",
+  "l": "Cra. 73 & Cq. 2, 06 Loc 101, Medellín, Antioquia, Colombia",
+  "b": "4",
+  "w": "0"
+}]
