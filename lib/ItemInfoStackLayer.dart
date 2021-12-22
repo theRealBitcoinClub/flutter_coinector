@@ -65,7 +65,7 @@ class ItemInfoStackLayer extends StatelessWidget {
           SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Wrap(
-                  spacing: 10.0,
+                  spacing: 5.0,
                   children: buildTagTextItems(context, splittedTags))),
         ],
       ),
@@ -73,13 +73,15 @@ class ItemInfoStackLayer extends StatelessWidget {
   }
 
   List<Widget> buildTagTextItems(ctx, List<String> splittedTags) {
-    return splittedTags.map((title) {
-      var parsedTag = TagParser.parseTag(title);
+    return splittedTags.map((tagId) {
+      if (tagId == "104")
+        return SizedBox(); //return empty box in case of placeholder tag 104
+      var parsedTag = TagParser.parseTag(tagId);
       var splittedTag = parsedTag.split(" ");
       return HoverButton(
           padding: EdgeInsets.all(0.0),
           hoverPadding: EdgeInsets.all(0.0),
-          onpressed: () => restartWidgetWithFilter(ctx, title),
+          onpressed: () => restartWidgetWithFilter(ctx, tagId),
           child: Row(children: [
             Text(splittedTag[0].toUpperCase(),
                 style: TextStyle(
