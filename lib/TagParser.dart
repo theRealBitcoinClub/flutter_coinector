@@ -18,10 +18,13 @@ class TagParser {
   }
 
   static String parseTag(index) {
-    int tagIndex = int.parse(index);
+    if (index == "104") return "";
 
-    if (tagIndex == 104) return "";
-
-    return Tag.tagText.elementAt(tagIndex);
+    try {
+      return Tag.tagText.elementAt(int.parse(index));
+    } catch (e) {
+      print("INVALID TAG INDEX:" + index);
+      return "";
+    }
   }
 }
