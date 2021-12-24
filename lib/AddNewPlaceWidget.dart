@@ -1,4 +1,5 @@
 import 'package:Coinector/translator.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -120,6 +121,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       updateInputName(KEYWORD_CONTROLLER_ACTION);
     });
     // scrapeIt();
+    findPlaceId("Krispy Donut El Terminal");
 
     if (!kReleaseMode) updateInputName("NameName");
     if (!kReleaseMode) updateInputAdr("AddressAddressAddress");
@@ -128,6 +130,16 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   void printWrapped(String text) {
     final pattern = new RegExp('.{1,800}'); // 800 is the size of each chunk
     pattern.allMatches(text).forEach((match) => print(match.group(0)));
+  }
+
+  Future<String> findPlaceId(String search) async {
+    var encoded = Uri.encodeComponent(search);
+    var result = await new Dio().get(
+        "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?inputtype=textquery&key=AIzaSyAVDl8Ng3iT4xfX2r6Fj1SvJJvndz73JOI&input=" +
+            encoded);
+    var placeId = result.data['candidates'][0]["place_id"].toString();
+    if (!kReleaseMode) print(placeId);
+    return placeId;
   }
 
   void scrapeIt() async {
