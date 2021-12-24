@@ -2,6 +2,7 @@ import 'package:Coinector/translator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:web_scraper/web_scraper.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';
 import 'Dialogs.dart';
@@ -118,9 +119,30 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     controllerInputName.addListener(() {
       updateInputName(KEYWORD_CONTROLLER_ACTION);
     });
+    // scrapeIt();
 
     if (!kReleaseMode) updateInputName("NameName");
     if (!kReleaseMode) updateInputAdr("AddressAddressAddress");
+  }
+
+  void printWrapped(String text) {
+    final pattern = new RegExp('.{1,800}'); // 800 is the size of each chunk
+    pattern.allMatches(text).forEach((match) => print(match.group(0)));
+  }
+
+  void scrapeIt() async {
+    final webScraper = WebScraper('https://www.google.com');
+    if (await webScraper
+        .loadWebPage('/search?q=Krispy%20Donuts%20El%20Terminal')) {
+      printWrapped(webScraper.getPageContent().toString());
+      /*List<Map<String, dynamic>> elements =
+          webScraper.getElement('a', ['jsaction']);
+      for (var e in elements) {
+        if (e.toString().indexOf("null") != -1) {
+          print("scrape:" + e.toString());
+        }
+      }*/
+    }
   }
 
   @override
