@@ -20,7 +20,8 @@ class Merchant {
   String
       tags; //TODO SPLIT THE TAGS ONE TIME AND SAVE THEM IN TWO ARRAYS ONE INT ARRAY FOR SEARCH AND ONE STRING ARRAY WITH PARSED TAGS
   String location;
-  String serverId; //TODO RENAME THIS VARIABLE
+  String
+      serverId; //TODO PROGRAM A BACKUP SERVER IF GITHUB CANT SERVE DATA USE FIREBASE AND IF THATS ALSO BLOCKED THEN USE IPFS
   Place place;
   String distance;
   double distanceInMeters = -1;

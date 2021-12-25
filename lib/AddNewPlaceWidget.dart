@@ -93,6 +93,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   bool showInputTags = false;
   bool showSearchButton = false;
 
+  var textStyleButtons = TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0);
+
   Set<String> allSelectedTags = Set.from([]);
 
   var scrollController = ScrollController();
@@ -172,9 +174,12 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     merchant = await findPlaceIdDetails(placeId);
     prefillName(merchant);
     prefillAddress(merchant);
+    prefillTags(merchant);
     hideRegisterOnGmaps();
     hideSearchBtn();
   }
+
+  void prefillTags(Merchant merchant) {}
 
   void prefillAddress(Merchant merchant) {
     controllerInputAdr.clear();
@@ -330,7 +335,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      wrapBuildColumnName(ctx),
+                      wrapBuildColumnNameWithSearch(ctx),
                       wrapBuildColumnAdr(ctx),
                       wrapBuildColumnRegisterOnGmaps(ctx),
                       wrapBuildColumnTag(ctx),
@@ -349,11 +354,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       opacity: !showRegisterOnGoogleMapsButton ? 0.0 : 1.0,
       child: buildColumnRegisterOnGmaps(ctx));
 
-  Widget wrapBuildColumnName(ctx) => AnimatedOpacity(
+  Widget wrapBuildColumnNameWithSearch(ctx) => AnimatedOpacity(
       curve: DEFAULT_ANIMATION_CURVE,
       duration: DEFAULT_DURATION_OPACITY_FADE,
       opacity: showInputAdr ? OPACITY_ITEM_VALIDATED : 1.0,
-      child: buildColumnName(ctx));
+      child: buildColumnNameWithSearch(ctx));
 
   Widget wrapBuildColumnTag(ctx) => AnimatedOpacity(
       curve: DEFAULT_ANIMATION_CURVE,
@@ -400,7 +405,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     );
   }
 
-  Column buildColumnName(ctx) {
+  Column buildColumnNameWithSearch(ctx) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -430,7 +435,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             duration: DEFAULT_DURATION_OPACITY_FADE,
             opacity: !showSearchButton ? 0.0 : 1.0,
             child: ElevatedButton(
-              child: Text(Translator.translate(ctx, "action_search")),
+              child: Text(
+                Translator.translate(ctx, "action_search"),
+                style: textStyleButtons,
+              ),
               onPressed: () {
                 searchOnGoogleMapsPrefillFields();
               },
@@ -445,8 +453,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         ElevatedButton(
-          child: Text(Translator.translate(
-              ctx, Translator.translate(ctx, "action_register_on_gmaps"))),
+          child: Text(
+            Translator.translate(
+                ctx, Translator.translate(ctx, "action_register_on_gmaps")),
+            style: textStyleButtons,
+          ),
           onPressed: () {
             UrlLauncher.launchRegisterOnGmaps();
           },
@@ -804,7 +815,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   EdgeInsets buildEdgeInsetsTextField() => EdgeInsets.all(10.0);
 
   TextStyle textStyleInput() =>
-      TextStyle(color: TEXT_COLOR, fontWeight: FontWeight.w300);
+      TextStyle(color: TEXT_COLOR, fontWeight: FontWeight.w400);
 
   TextStyle textStyleLabel() => TextStyle(
       color: TEXT_COLOR,

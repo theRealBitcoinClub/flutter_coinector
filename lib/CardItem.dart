@@ -326,6 +326,7 @@ class CardItem extends StatelessWidget {
   Radius buildRadius() => Radius.circular(10);
 
   //TODO use REGEX to improve searchalgorithm, search for matched words instead of matched anything "gin" or identify tags and dont searcg
+  //TODO get data from places ip to accelerate search on addresses with all zipcpde search, cities and states
 
   String getServerId() {
     return (merchant.serverId.contains('-')
