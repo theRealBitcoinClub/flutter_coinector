@@ -172,6 +172,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     prefillTags(merchant);
     hideRegisterOnGmaps();
     hideSearchBtn();
+    _fieldFocusChange(context, focusNodeInputAdr, null);
+    _fieldFocusChange(context, focusNodeInputName, null);
+    scrollToWithAnimation(INPUT_TAGS_POS);
   }
 
   void prefillTags(Merchant merchant) {}
@@ -318,9 +321,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      wrapBuildColumnNameWithSearch(ctx),
+                      wrapBuildColumnName(ctx),
+                      wrapBuildGoogleButtons(ctx),
                       wrapBuildColumnAdr(ctx),
-                      wrapBuildColumnRegisterOnGmaps(ctx),
                       wrapBuildColumnTag(ctx),
                       wrapBuildSelectedTagsList(),
                       wrapBuildColumnDASHyBCH(ctx),
@@ -331,13 +334,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     );
   }
 
-  Widget wrapBuildColumnRegisterOnGmaps(ctx) => AnimatedOpacity(
-      curve: DEFAULT_ANIMATION_CURVE,
-      duration: DEFAULT_DURATION_OPACITY_FADE,
-      opacity: !showRegisterOnGoogleMapsButton ? 0.0 : 1.0,
-      child: buildColumnRegisterOnGmaps(ctx));
-
-  Widget wrapBuildColumnNameWithSearch(ctx) => AnimatedOpacity(
+  Widget wrapBuildColumnName(ctx) => AnimatedOpacity(
       curve: DEFAULT_ANIMATION_CURVE,
       duration: DEFAULT_DURATION_OPACITY_FADE,
       opacity: showInputAdr ? OPACITY_ITEM_VALIDATED : 1.0,
@@ -412,40 +409,53 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             Icons.title,
             MAX_INPUT_NAME,
             i18n(ctx, "name"),
-            updateInputName),
-        AnimatedOpacity(
-            curve: DEFAULT_ANIMATION_CURVE,
-            duration: DEFAULT_DURATION_OPACITY_FADE,
-            opacity: !showSearchButton ? 0.0 : 1.0,
-            child: ElevatedButton(
-              child: Text(
-                Translator.translate(ctx, "action_search"),
-                style: textStyleButtons,
-              ),
-              onPressed: () {
-                searchOnGoogleMapsPrefillFields();
-              },
-            ))
+            updateInputName)
       ],
     );
   }
 
-  Column buildColumnRegisterOnGmaps(ctx) {
+  Column wrapBuildGoogleButtons(ctx) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: <Widget>[
-        ElevatedButton(
-          child: Text(
-            Translator.translate(
-                ctx, Translator.translate(ctx, "action_register_on_gmaps")),
-            style: textStyleButtons,
-          ),
-          onPressed: () {
-            UrlLauncher.launchRegisterOnGmaps();
-          },
-        )
-      ],
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          showSearchButton || showRegisterOnGoogleMapsButton
+              ? AnimatedOpacity(
+                  curve: DEFAULT_ANIMATION_CURVE,
+                  duration: DEFAULT_DURATION_OPACITY_FADE,
+                  opacity: !showSearchButton && !showRegisterOnGoogleMapsButton
+                      ? 0.0
+                      : 1.0,
+                  child: !showRegisterOnGoogleMapsButton
+                      ? wrapBuildGoogleSearch(ctx)
+                      : wrapBuildGoogleRegister(ctx))
+              : SizedBox()
+        ]);
+  }
+
+  ElevatedButton wrapBuildGoogleRegister(ctx) {
+    return ElevatedButton(
+      child: Text(
+        Translator.translate(
+            ctx, Translator.translate(ctx, "action_register_on_gmaps")),
+        style: textStyleButtons,
+      ),
+      onPressed: () {
+        UrlLauncher.launchRegisterOnGmaps();
+      },
+    );
+  }
+
+  ElevatedButton wrapBuildGoogleSearch(ctx) {
+    return ElevatedButton(
+      child: Text(
+        Translator.translate(ctx, "action_search"),
+        style: textStyleButtons,
+      ),
+      onPressed: () {
+        hideSearchBtn();
+        searchOnGoogleMapsPrefillFields();
+      },
     );
   }
 
@@ -654,12 +664,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   void handleAddTagButton(ctx) async {
     if (allSelectedTags.length >= MIN_INPUT_TAGS) {
-      if (!kReleaseMode)
+      Dialogs.confirmShowResetTags(ctx, () {
         resetTags();
-      else
-        Dialogs.confirmShowResetTags(ctx, () {
-          resetTags();
-        });
+      });
       return;
     }
 
@@ -676,16 +683,13 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   void inputTag(String selected) {
     addSelectedTag(selected);
 
-    // if (!kReleaseMode) printAllTags(searchTagsDelegate.alreadySelected);
-
     if (allSelectedTags.length == MAX_INPUT_TAGS) {
       if (!kReleaseMode)
-        Clipboard.setData(ClipboardData(text: printAllTags()));
-      else {
-        showInputBCHyDASH();
-        FocusScope.of(context).requestFocus(focusNodeInputDASH);
-        scrollController.jumpTo(INPUT_DASH_POS);
-      }
+        Clipboard.setData(ClipboardData(text: merchant.getBmapDataJson()));
+
+      showInputBCHyDASH();
+      FocusScope.of(context).requestFocus(focusNodeInputDASH);
+      scrollController.jumpTo(INPUT_DASH_POS);
     } else {
       scrollController.jumpTo(INPUT_TAGS_POS);
     }
@@ -936,6 +940,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
     if (input.length >= MIN_INPUT_NAME && input != KEYWORD_CONTROLLER_ACTION) {
       showSearchBtn();
+      hideRegisterOnGmaps();
     }
 
     if (hasTriedSearch && input != KEYWORD_CONTROLLER_ACTION) {
