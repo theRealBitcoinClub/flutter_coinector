@@ -111,8 +111,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   bool showRegisterOnGoogleMapsButton = false;
 
-  static const String GOOGLE_PLACES_KEY =
-      "AIzaSyAVDl8Ng3iT4xfX2r6Fj1SvJJvndz73JOI";
+  static const String GOOGLE_PLACES_KEY = "";
 
   bool hasSelectedImages = false;
 
