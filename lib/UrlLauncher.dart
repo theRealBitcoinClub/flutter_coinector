@@ -132,4 +132,8 @@ class UrlLauncher {
         m.id;
     _launchEmail(ctx, urlString, onEmailClientNotFound);
   }
+
+  static launchRegisterOnGmaps() {
+    launchURI("https://business.google.com/create/new", forceWebView: true);
+  }
 }

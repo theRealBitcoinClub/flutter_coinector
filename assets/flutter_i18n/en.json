@@ -32,6 +32,8 @@
   "toast_instructions_details" : "DETAILS: Tap the info box to load the details of that place.",
   "toast_instructions_route" : "ROUTE: Tap the route button (bottom right), to navigate to the selected place.",
   "toast_instructions_map" : "MAP: Tap the map at any free space, to close the info box of a selected place.",
+  "merchant_not_found_on_gmaps" : "Please register your business on Google Maps, it will drive many customers to your place!",
+  "merchant_not_found_on_gmaps_try_again" : "The merchant was not found on Google Maps, please search again with an address!",
   "VISIT" : "VISIT",
   "toaster_enter_name_atleast_five_characters" : "Please enter a name with atleast 5 characters!",
   "toaster_minimum_four_tags" : "Please add exactly four tags!",
@@ -74,5 +76,7 @@
   "choose_tag_3" : "CHOOSE THIRD TAG",
   "choose_tag_4" : "CHOOSE LAST TAG",
   "choose_tag_5" : "RESET TAGS",
-  "make_donation_text" : "Would you like to support this app with a BCH or DASH donation?!"
+  "make_donation_text" : "Would you like to support this app with a BCH or DASH donation?!",
+  "action_register_on_gmaps" : "Register on Google Maps",
+  "action_search" : "Search"
 }

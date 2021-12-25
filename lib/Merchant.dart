@@ -33,6 +33,31 @@ class Merchant {
     geohash = Geohash.encode(x,y);
     latLngAndGeohash = LatLngAndGeohash(LatLng(x, y));
   }*/
+  String getBmapDataJson() {
+    return '{"p":"' +
+        id +
+        '","x":"' +
+        x.toString() +
+        '","y":"' +
+        y.toString() +
+        '","n":"' +
+        name +
+        '","t":"' +
+        type.toString() +
+        '","c":"' +
+        reviewCount.toString() +
+        '","s":"' +
+        reviewStars.toString() +
+        '","d":"' +
+        discount.toString() +
+        '","l":"' +
+        location +
+        '","b":"' +
+        brand.toString() +
+        '","w":"' +
+        acceptedCoins +
+        '"}';
+  }
 
   Merchant(
       this.id,

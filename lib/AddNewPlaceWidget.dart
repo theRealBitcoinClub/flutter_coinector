@@ -1,3 +1,4 @@
+import 'package:Coinector/Merchant.dart';
 import 'package:Coinector/translator.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -23,11 +24,13 @@ const INPUT_TAGS_POS = 200.0;
 const INPUT_ADR_POS = 130.0;
 const KEYWORD_CONTROLLER_ACTION = "controller";
 
-const int MIN_INPUT_ADR = 20;
-const int MIN_INPUT_NAME = 5;
+const int MIN_INPUT_ADR =
+    20; //TODO validate the address it shall contain a zip code and a country or use separate fields
+const int MIN_INPUT_NAME = 10;
 const int MIN_INPUT_TAGS = 4;
-const int MIN_INPUT_BCHyDASH = 32;
-const int MAX_INPUT_ADR = 50;
+const int MIN_INPUT_BCHyDASH =
+    32; //TODO offer an address field for each coin right after checking its box
+const int MAX_INPUT_ADR = 250;
 const int MAX_INPUT_NAME = 50;
 const int MAX_INPUT_DASH = 36; //dash:XintDskT8uV59N9HNvbpJ27nKNtbyHiyUn
 const int MAX_INPUT_BCH =
@@ -88,10 +91,17 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   bool showInputDASHyBCH = false;
   bool showInputAdr = false;
   bool showInputTags = false;
+  bool showSearchButton = false;
 
   Set<String> allSelectedTags = Set.from([]);
 
   var scrollController = ScrollController();
+
+  Merchant merchant;
+
+  bool hasTriedSearch = false;
+
+  bool showRegisterOnGoogleMapsButton = false;
 
   _AddNewPlaceWidgetState(
       this.selectedType, this.accentColor, this.typeTitle, this.actionBarColor);
@@ -120,11 +130,66 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     controllerInputName.addListener(() {
       updateInputName(KEYWORD_CONTROLLER_ACTION);
     });
+    // searchOnGoogleMapsPrefillFields(debugSearch: "Krispy Donut El Terminal");
     // scrapeIt();
-    findPlaceId("Krispy Donut El Terminal");
+    // if (!kReleaseMode) updateInputName("NameName");
+    // if (!kReleaseMode) updateInputAdr("AddressAddressAddress");
+  }
 
-    if (!kReleaseMode) updateInputName("NameName");
-    if (!kReleaseMode) updateInputAdr("AddressAddressAddress");
+  //If place is on Gmaps prefill the fields
+  // if not found on Google Maps then ask them to register on business.google.com first before being able to appear on our map, offer them a search button
+  //Check if there are four tags prefilled, let them remove each tag separately to add a replacement tag, dont let them submit before choosing four tags
+
+  void searchOnGoogleMapsPrefillFields({String debugSearch}) async {
+    String placeId = await findPlaceId(
+        debugSearch != null ? debugSearch : lastInputName + " " + lastInputAdr);
+
+    if (placeId == null) {
+      if (hasTriedSearch) {
+        Toaster.showMerchantNotFoundOnGoogleMaps();
+        showRegisterOnGmaps();
+        return;
+      }
+      Toaster.showMerchantNotFoundOnGoogleMapsTryAgain();
+      hasTriedSearch = true;
+      // TODO ASK user to input the address of that place too then search again
+      // TODO showRegisterGoogleBusinessButton() if still not found with address;
+      return;
+    }
+
+    hasTriedSearch = false;
+
+    merchant = await findPlaceIdDetails(placeId);
+  }
+
+  Future<Merchant> findPlaceIdDetails(placeId) async {
+    var result = await Dio().get(
+        "https://maps.googleapis.com/maps/api/place/details/json?key=AIzaSyAVDl8Ng3iT4xfX2r6Fj1SvJJvndz73JOI&place_id=" +
+            placeId);
+    var data = result.data["result"];
+
+    Merchant m = prefillMerchant(placeId, data);
+
+    if (!kReleaseMode) printWrapped(m.getBmapDataJson());
+    return m;
+  }
+
+  Merchant prefillMerchant(placeId, data) {
+    var location = data["geometry"]["location"];
+    Merchant m = Merchant(
+        placeId,
+        location["lat"],
+        location["lng"],
+        data["name"],
+        selectedType /*TODO add function to map google types to bmap types*/,
+        data["user_ratings_total"].toString(),
+        data["rating"].toString(),
+        0,
+        '104,104,104,104',
+        data["formatted_address"],
+        4,
+        "0");
+    return m;
   }
 
   void printWrapped(String text) {
@@ -192,6 +257,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                     children: <Widget>[
                       wrapBuildColumnName(ctx),
                       wrapBuildColumnAdr(ctx),
+                      wrapBuildColumnRegisterOnGmaps(ctx),
                       wrapBuildColumnTag(ctx),
                       wrapBuildSelectedTagsList(),
                       wrapBuildColumnDASHyBCH(ctx),
@@ -201,6 +267,12 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
               )),
     );
   }
+
+  Widget wrapBuildColumnRegisterOnGmaps(ctx) => AnimatedOpacity(
+      curve: DEFAULT_ANIMATION_CURVE,
+      duration: DEFAULT_DURATION_OPACITY_FADE,
+      opacity: !showRegisterOnGoogleMapsButton ? 0.0 : 1.0,
+      child: buildColumnRegisterOnGmaps(ctx));
 
   Widget wrapBuildColumnName(ctx) => AnimatedOpacity(
       curve: DEFAULT_ANIMATION_CURVE,
@@ -278,6 +350,28 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             MAX_INPUT_NAME,
             i18n(ctx, "name"),
             updateInputName),
+        AnimatedOpacity(
+            curve: DEFAULT_ANIMATION_CURVE,
+            duration: DEFAULT_DURATION_OPACITY_FADE,
+            opacity: !showSearchButton ? 0.0 : 1.0,
+            child: ElevatedButton(
+              child: Text(Translator.translate(ctx, "action_search")),
+              onPressed: searchOnGoogleMapsPrefillFields,
+            ))
+      ],
+    );
+  }
+
+  Column buildColumnRegisterOnGmaps(ctx) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        ElevatedButton(
+          child: Text(Translator.translate(
+              ctx, Translator.translate(ctx, "action_register_on_gmaps"))),
+          onPressed: UrlLauncher.launchRegisterOnGmaps(),
+        )
       ],
     );
   }
@@ -648,6 +742,18 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     });
   }
 
+  void showRegisterOnGmaps() {
+    setState(() {
+      showRegisterOnGoogleMapsButton = true;
+    });
+  }
+
+  void showSearchBtn() {
+    setState(() {
+      showSearchButton = true;
+    });
+  }
+
   void showInputTag() {
     scrollToWithAnimation(INPUT_TAGS_POS);
     setState(() {
@@ -732,16 +838,18 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     if (hasMinInput && lastInputName != inputName) {
       if (input == KEYWORD_CONTROLLER_ACTION &&
           lastInputNameWithCommand == KEYWORD_CONTROLLER_ACTION) {
-        _fieldFocusChange(context, null, focusNodeInputAdr);
-        scrollToWithAnimation(INPUT_ADR_POS);
+        // _fieldFocusChange(context, null, focusNodeInputAdr);
+        //TODO reactivate scrollToWithAnimation(INPUT_ADR_POS);
         lastInputName = inputName;
         return;
       }
     }
 
-    if (!showInputAdr &&
-        input.length >= MIN_INPUT_NAME &&
-        input != KEYWORD_CONTROLLER_ACTION) {
+    if (input.length >= MIN_INPUT_NAME && input != KEYWORD_CONTROLLER_ACTION) {
+      showSearchBtn();
+    }
+
+    if (hasTriedSearch && input != KEYWORD_CONTROLLER_ACTION) {
       showInputAddress();
     }
 
