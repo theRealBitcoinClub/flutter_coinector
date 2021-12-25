@@ -141,8 +141,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   //Check if there are four tags prefilled, let them remove each tag separately to add a replacement tag, dont let them submit before choosing four tags
 
   void searchOnGoogleMapsPrefillFields({String debugSearch}) async {
-    String placeId = await findPlaceId(
-        debugSearch != null ? debugSearch : lastInputName + " " + lastInputAdr);
+    var search = inputName + " " + inputAdr;
+    if (!kReleaseMode) print("inputs: " + search);
+
+    String placeId =
+        await findPlaceId(debugSearch != null ? debugSearch : search);
 
     if (!kReleaseMode) print("placeid: " + placeId.toString());
 
