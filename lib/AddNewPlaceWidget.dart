@@ -124,11 +124,12 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     super.initState();
     googlePlace = GooglePlace(GOOGLE_PLACES_KEY,
         proxyUrl: !kIsWeb ? 'cors-anywhere.herokuapp.com' : null);
-    focusNodeInputDASH = FocusNode();
-    focusNodeInputBCH = FocusNode();
-    focusNodeInputAdr = FocusNode();
-    focusNodeInputName = FocusNode();
 
+    initFocusNodes();
+    initInputListener();
+  }
+
+  void initInputListener() {
     controllerInputDASH = TextEditingController();
     controllerInputDASH.addListener(() {
       updateInputDASH(KEYWORD_CONTROLLER_ACTION);
@@ -145,6 +146,13 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     controllerInputName.addListener(() {
       updateInputName(KEYWORD_CONTROLLER_ACTION);
     });
+  }
+
+  void initFocusNodes() {
+    focusNodeInputDASH = FocusNode();
+    focusNodeInputBCH = FocusNode();
+    focusNodeInputAdr = FocusNode();
+    focusNodeInputName = FocusNode();
   }
 
   //If place is on Gmaps prefill the fields
