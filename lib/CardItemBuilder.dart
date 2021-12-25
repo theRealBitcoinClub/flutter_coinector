@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'CardItem.dart';
 import 'ListModel.dart';
 import 'Merchant.dart';
-import 'package:flutter/foundation.dart';
 
 class CardItemBuilder {
   final List<ListModel<Merchant>> _lists;
@@ -28,7 +27,8 @@ class CardItemBuilder {
             merchant: currentListModel,
             tagFilterCallback: _tagFilterCallback,
             //TODO fix this isWebMobile as it seems to be ignored still
-            isWebMobile: true /*kIsWeb &&
+            isWebMobile:
+                true /*kIsWeb &&
                 (Theme.of(_ctx).platform == TargetPlatform.iOS ||
                     Theme.of(_ctx).platform == TargetPlatform.android)*/
 

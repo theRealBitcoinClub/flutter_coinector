@@ -1,7 +1,6 @@
 import 'package:Coinector/Dialogs.dart';
 import 'package:Coinector/InternetConnectivityChecker.dart';
 import 'package:Coinector/translator.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 
@@ -28,7 +27,12 @@ class Snackbars {
     ));
   }
 
-  static bool isWidgetUnmounted(BuildContext ctx, GlobalKey<ScaffoldState> _scaffoldKey) => ctx.widget == null || _scaffoldKey == null || _scaffoldKey.currentState == null || !_scaffoldKey.currentState.mounted;
+  static bool isWidgetUnmounted(
+          BuildContext ctx, GlobalKey<ScaffoldState> _scaffoldKey) =>
+      ctx.widget == null ||
+      _scaffoldKey == null ||
+      _scaffoldKey.currentState == null ||
+      !_scaffoldKey.currentState.mounted;
 
   static var isBusySnacking = false;
 
@@ -75,9 +79,9 @@ class Snackbars {
     _showSnackBar(scaffoldKey, ctx, "snackbar_showing_unfiltered_list");
   }
 
-    static void showSnackBarAfterAddPlace(scaffoldKey, ctx) {
-      _showSnackBar(scaffoldKey, ctx, "snackbar_you_are_satoshi");
-    }
+  static void showSnackBarAfterAddPlace(scaffoldKey, ctx) {
+    _showSnackBar(scaffoldKey, ctx, "snackbar_you_are_satoshi");
+  }
 
   static void showSnackBarRestartApp(scaffoldKey, ctx) {
     String text = Translator.translate(ctx, "toast_update_succesfull");

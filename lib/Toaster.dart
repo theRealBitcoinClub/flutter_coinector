@@ -132,11 +132,12 @@ class Toaster {
 
   //TODO translate the toast
 
-  static void showMerchantNotFoundOnGoogleMaps() {
-    _showWarning("merchant_not_found_on_gmaps");
+  static void showMerchantNotFoundOnGoogleMaps(ctx) {
+    _showWarning(Translator.translate(ctx, "merchant_not_found_on_gmaps"));
   }
 
-  static void showMerchantNotFoundOnGoogleMapsTryAgain() {
-    _showWarning("merchant_not_found_on_gmaps_try_again");
+  static void showMerchantNotFoundOnGoogleMapsTryAgain(ctx) {
+    _showWarning(
+        Translator.translate(ctx, "merchant_not_found_on_gmaps_try_again"));
   }
 }

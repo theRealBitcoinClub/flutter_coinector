@@ -7,7 +7,8 @@ class Translator {
     try {
       return FlutterI18n.translate(ctx, key);
     } catch (e) {
-      if (!kReleaseMode) debugPrint("Translator missing key: " + key);
+      if (key != "" && !kReleaseMode)
+        debugPrint("Translator missing key: " + key);
       //throw new Exception("Translator missing key: " + key);
       return "";
     }

@@ -144,22 +144,46 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     String placeId = await findPlaceId(
         debugSearch != null ? debugSearch : lastInputName + " " + lastInputAdr);
 
+    if (!kReleaseMode) print("placeid: " + placeId.toString());
+
     if (placeId == null) {
       if (hasTriedSearch) {
-        Toaster.showMerchantNotFoundOnGoogleMaps();
+        if (!kReleaseMode) print("has tried search true");
+        Toaster.showMerchantNotFoundOnGoogleMaps(context);
         showRegisterOnGmaps();
-        return;
+      } else {
+        if (!kReleaseMode) print("has tried search false");
+        //TODO always use snackbar or toasts but dont mix them
+        Toaster.showMerchantNotFoundOnGoogleMapsTryAgain(context);
+        setState(() {
+          hasTriedSearch = true;
+          showInputAdr = true;
+        });
       }
-      Toaster.showMerchantNotFoundOnGoogleMapsTryAgain();
-      hasTriedSearch = true;
-      // TODO ASK user to input the address of that place too then search again
-      // TODO showRegisterGoogleBusinessButton() if still not found with address;
-      return;
+    } else {
+      loadMerchantsDetailsPrefillAddress(placeId);
     }
+  }
 
-    hasTriedSearch = false;
-
+  Future<void> loadMerchantsDetailsPrefillAddress(String placeId) async {
     merchant = await findPlaceIdDetails(placeId);
+    prefillName(merchant);
+    prefillAddress(merchant);
+    hideRegisterOnGmaps();
+    hideSearchBtn();
+  }
+
+  void prefillAddress(Merchant merchant) {
+    controllerInputAdr.clear();
+    controllerInputAdr.text = merchant.location;
+    showInputAddress();
+    updateInputAdr(merchant.location);
+  }
+
+  void prefillName(Merchant merchant) {
+    controllerInputName.clear();
+    controllerInputName.text = merchant.name;
+    updateInputName(merchant.name);
   }
 
   Future<Merchant> findPlaceIdDetails(placeId) async {
@@ -168,13 +192,13 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             placeId);
     var data = result.data["result"];
 
-    Merchant m = prefillMerchant(placeId, data);
+    Merchant m = parseGmapsDataToMerchant(placeId, data);
 
     if (!kReleaseMode) printWrapped(m.getBmapDataJson());
     return m;
   }
 
-  Merchant prefillMerchant(placeId, data) {
+  Merchant parseGmapsDataToMerchant(placeId, data) {
     var location = data["geometry"]["location"];
     Merchant m = Merchant(
         placeId,
@@ -202,6 +226,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     var result = await new Dio().get(
         "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?inputtype=textquery&key=AIzaSyAVDl8Ng3iT4xfX2r6Fj1SvJJvndz73JOI&input=" +
             encoded);
+    if (!kReleaseMode) printWrapped(result.toString());
+    if (result.data['status'].toString() == "ZERO_RESULTS") return null;
     var placeId = result.data['candidates'][0]["place_id"].toString();
     if (!kReleaseMode) print(placeId);
     return placeId;
@@ -356,7 +382,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             opacity: !showSearchButton ? 0.0 : 1.0,
             child: ElevatedButton(
               child: Text(Translator.translate(ctx, "action_search")),
-              onPressed: searchOnGoogleMapsPrefillFields,
+              onPressed: () {
+                searchOnGoogleMapsPrefillFields();
+              },
             ))
       ],
     );
@@ -370,7 +398,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         ElevatedButton(
           child: Text(Translator.translate(
               ctx, Translator.translate(ctx, "action_register_on_gmaps"))),
-          onPressed: UrlLauncher.launchRegisterOnGmaps(),
+          onPressed: () {
+            UrlLauncher.launchRegisterOnGmaps();
+          },
         )
       ],
     );
@@ -745,6 +775,18 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   void showRegisterOnGmaps() {
     setState(() {
       showRegisterOnGoogleMapsButton = true;
+    });
+  }
+
+  void hideRegisterOnGmaps() {
+    setState(() {
+      showRegisterOnGoogleMapsButton = false;
+    });
+  }
+
+  void hideSearchBtn() {
+    setState(() {
+      showSearchButton = false;
     });
   }
 
