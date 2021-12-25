@@ -97,6 +97,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   String placeId;
   GooglePlace googlePlace;
   List<Uint8List> images = [];
+  List<Uint8List> selectedImages = [];
 
   var textStyleButtons = TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0);
 
@@ -113,13 +114,16 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   static const String GOOGLE_PLACES_KEY =
       "AIzaSyAVDl8Ng3iT4xfX2r6Fj1SvJJvndz73JOI";
 
+  bool hasSelectedImages = false;
+
   _AddNewPlaceWidgetState(
       this.selectedType, this.accentColor, this.typeTitle, this.actionBarColor);
 
   @override
   void initState() {
     super.initState();
-    googlePlace = GooglePlace(GOOGLE_PLACES_KEY);
+    googlePlace = GooglePlace(GOOGLE_PLACES_KEY,
+        proxyUrl: !kIsWeb ? 'cors-anywhere.herokuapp.com' : null);
     focusNodeInputDASH = FocusNode();
     focusNodeInputBCH = FocusNode();
     focusNodeInputAdr = FocusNode();
@@ -1033,27 +1037,36 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   Column wrapBuildColumnImages() {
     return Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
       Container(
-        height: 112,
+        height: 168,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          itemCount: images.length,
+          itemCount: hasSelectedImages ? selectedImages.length : images.length,
           itemBuilder: (context, index) {
             return Container(
-              width: 213,
-              child: Card(
-                elevation: 4,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(10.0),
-                  child: Image.memory(
-                    images[index],
-                    fit: BoxFit.fill,
+                width: 320,
+                child: GestureDetector(
+                  onLongPress: () {
+                    if (!hasSelectedImages) setHasSelectedImages(true);
+                  },
+                  onDoubleTap: () {
+                    if (!hasSelectedImages) addImageToSelection(index);
+                  },
+                  child: Card(
+                    elevation: 4,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(5.0),
+                      child: Image.memory(
+                        hasSelectedImages
+                            ? selectedImages[index]
+                            : images[index],
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            );
+                ));
           },
         ),
       )
@@ -1065,22 +1078,40 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     if (result != null && result.result != null) {
       setState(() {
         images = [];
+        selectedImages = [];
+        hasSelectedImages = false;
       });
 
       if (result.result.photos != null) {
         for (var photo in result.result.photos) {
-          loadGooglePlacePhoto(photo.photoReference);
+          await loadGooglePlacePhoto(photo.photoReference);
         }
       }
     }
   }
 
-  void loadGooglePlacePhoto(String photoReference) async {
-    var result = await this.googlePlace.photos.get(photoReference, 112, 213);
+  Future<void> loadGooglePlacePhoto(String photoReference) async {
+    var result = await this.googlePlace.photos.get(photoReference, null, 320);
     if (result != null) {
       setState(() {
         images.add(result);
       });
     }
+  }
+
+  void addImageToSelection(int index) {
+    setState(() {
+      selectedImages.add(images[index]);
+      images.removeAt(index);
+      if (selectedImages.length == 3 || selectedImages.length == images.length)
+        hasSelectedImages = true;
+      if (hasSelectedImages) images.clear();
+    });
+  }
+
+  void setHasSelectedImages(bool bool) {
+    setState(() {
+      hasSelectedImages = bool;
+    });
   }
 }

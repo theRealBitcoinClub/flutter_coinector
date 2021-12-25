@@ -19,6 +19,7 @@ environment:
 
 dependencies:
   #web_scraper: 0.1.4
+  github: ^8.5.0
   google_place: ^0.4.3
   hovering: ^1.0.4
   firebase_core: ^1.10.6
