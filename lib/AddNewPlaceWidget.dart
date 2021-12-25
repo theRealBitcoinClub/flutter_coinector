@@ -263,8 +263,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       if (index != 104 && review.contains(tag) && tag.isNotEmpty) {
         print("index:" + index.toString() + "\ntag:" + tag + "\n");
         //The tag 107 is men and very short it appears in many other words
-        if (index != 107 || (index == 107 && review.contains(" " + tag + " ")))
+        if (index != 107 ||
+            (index == 107 && review.contains(" " + tag + " "))) {
           allTags.write("," + index.toString());
+          inputTag(t);
+        }
       }
       index++;
     }
@@ -687,6 +690,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
     if (selected == null || selected.isEmpty) return;
 
+    inputTag(selected);
+  }
+
+  void inputTag(String selected) {
     addSelectedTag(selected);
 
     // if (!kReleaseMode) printAllTags(searchTagsDelegate.alreadySelected);
@@ -696,7 +703,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         Clipboard.setData(ClipboardData(text: printAllTags()));
       else {
         showInputBCHyDASH();
-        FocusScope.of(ctx).requestFocus(focusNodeInputDASH);
+        FocusScope.of(context).requestFocus(focusNodeInputDASH);
         scrollController.jumpTo(INPUT_DASH_POS);
       }
     } else {
