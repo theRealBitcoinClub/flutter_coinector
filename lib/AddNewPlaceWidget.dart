@@ -203,6 +203,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   Merchant parseGmapsDataToMerchant(placeId, data) {
     var location = data["geometry"]["location"];
+    var reviews = data["reviews"];
+
+    String tags = parseReviewsSearchForMatchingTags(reviews);
+
     Merchant m = Merchant(
         placeId,
         location["lat"],
@@ -212,11 +216,53 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         data["user_ratings_total"].toString(),
         data["rating"].toString(),
         0,
-        '104,104,104,104',
+        tags,
         data["formatted_address"],
         4,
         "0");
     return m;
+  }
+
+  String parseReviewsSearchForMatchingTags(reviews) {
+    StringBuffer resultTags = StringBuffer();
+
+    for (var r in reviews) {
+      int index = 0;
+      String review = r["text"].toString().toLowerCase();
+      //print(review + "\n");
+      //TODO replace accented characters with normal ones to match more
+      matchTags(resultTags, index, review, Tag.tagText);
+      matchTags(resultTags, index, review, Tag.tagTextDE);
+      matchTags(resultTags, index, review, Tag.tagTextES);
+      matchTags(resultTags, index, review, Tag.tagTextFR);
+      matchTags(resultTags, index, review, Tag.tagTextINDONESIA);
+      matchTags(resultTags, index, review, Tag.tagTextIT);
+      matchTags(resultTags, index, review, Tag.tagTextJP1);
+      matchTags(resultTags, index, review, Tag.tagTextJP2);
+    }
+
+    String results = resultTags.isNotEmpty
+        ? resultTags.toString().substring(1)
+        : "104,104,104,104";
+
+    if (results.split(",").length < 4) results = appendPlaceholderTags(results);
+
+    if (!kReleaseMode) print(results);
+    return results;
+  }
+
+  matchTags(StringBuffer allTags, int index, String review, tags) {
+    for (String t in tags) {
+      String tag = t.split(" ")[0].trim().toLowerCase();
+      //print(tag);
+      if (index != 104 && review.contains(tag) && tag.isNotEmpty) {
+        print("index:" + index.toString() + "\ntag:" + tag + "\n");
+        //The tag 107 is men and very short it appears in many other words
+        if (index != 107 || (index == 107 && review.contains(" " + tag + " ")))
+          allTags.write("," + index.toString());
+      }
+      index++;
+    }
   }
 
   void printWrapped(String text) {
@@ -953,5 +999,13 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         "," +
         searchTagsDelegate.alreadySelected.elementAt(3).toString() +
         '"';
+  }
+
+  String appendPlaceholderTags(String results) {
+    int targetLength = 4;
+    for (var i = results.split(",").length; i < targetLength; i++) {
+      results += ",104";
+    }
+    return results;
   }
 }

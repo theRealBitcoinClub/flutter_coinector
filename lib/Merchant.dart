@@ -50,6 +50,8 @@ class Merchant {
         reviewStars.toString() +
         '","d":"' +
         discount.toString() +
+        '","a":"' +
+        tags +
         '","l":"' +
         location +
         '","b":"' +
