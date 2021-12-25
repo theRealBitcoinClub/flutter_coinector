@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:web_scraper/web_scraper.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';
 import 'Dialogs.dart';
@@ -132,10 +131,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     controllerInputName.addListener(() {
       updateInputName(KEYWORD_CONTROLLER_ACTION);
     });
-    // searchOnGoogleMapsPrefillFields(debugSearch: "Krispy Donut El Terminal");
-    // scrapeIt();
-    // if (!kReleaseMode) updateInputName("NameName");
-    // if (!kReleaseMode) updateInputAdr("AddressAddressAddress");
   }
 
   //If place is on Gmaps prefill the fields
@@ -288,21 +283,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     var placeId = result.data['candidates'][0]["place_id"].toString();
     if (!kReleaseMode) print(placeId);
     return placeId;
-  }
-
-  void scrapeIt() async {
-    final webScraper = WebScraper('https://www.google.com');
-    if (await webScraper
-        .loadWebPage('/search?q=Krispy%20Donuts%20El%20Terminal')) {
-      printWrapped(webScraper.getPageContent().toString());
-      /*List<Map<String, dynamic>> elements =
-          webScraper.getElement('a', ['jsaction']);
-      for (var e in elements) {
-        if (e.toString().indexOf("null") != -1) {
-          print("scrape:" + e.toString());
-        }
-      }*/
-    }
   }
 
   @override

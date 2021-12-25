@@ -18,7 +18,7 @@ environment:
   sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
-  web_scraper: 0.1.4
+  #web_scraper: 0.1.4
   hovering: ^1.0.4
   firebase_core: ^1.10.6
   flutter_easyrefresh: ^2.2.1
