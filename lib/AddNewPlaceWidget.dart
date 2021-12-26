@@ -1,7 +1,9 @@
+import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:Coinector/ConfigReader.dart';
 import 'package:Coinector/Merchant.dart';
+import 'package:Coinector/TagBrands.dart';
 import 'package:Coinector/translator.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -129,6 +131,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     super.initState();
     github =
         GitHub(auth: Authentication.withToken(ConfigReader.getGithubKey()));
+    print("GITHUB" + github.toString());
     googlePlace = GooglePlace(GOOGLE_PLACES_KEY,
         proxyUrl: kIsWeb ? 'cors-anywhere.herokuapp.com' : null);
 
@@ -188,7 +191,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       }
     } else {
       await loadMerchantsDetailsPrefillAddress(placeId);
-      loadGooglePlaceDetails(placeId);
+      // loadGooglePlaceDetails(placeId);
     }
   }
 
@@ -334,6 +337,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     controllerInputAdr.dispose();
     controllerInputName.dispose();
     github.dispose();
+    Dialogs.dismissDialog();
     super.dispose();
   }
 
@@ -701,12 +705,50 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     var repositorySlug =
         RepositorySlug("theRealBitcoinClub", "flutter_coinector");
     var commitUser = CommitUser("therealbitcoinclub", "trbc@bitcoinmap.cash");
+    var t = DateTime.now();
     var createFile = CreateFile(
         branch: "master",
         committer: commitUser,
-        content: merchant.getBmapDataJson(),
+        content: base64.encode(merchant.getBmapDataJson().codeUnits),
+        path: "addplace_" +
+            t.year.toString() +
+            t.month.toString() +
+            t.day.toString() +
+            "_" +
+            merchant.name.replaceAll(" ", "-") +
+            "_" +
+            TagBrands.tagBrands.elementAt(merchant.brand) +
+            "_" +
+            t.millisecondsSinceEpoch.toString() +
+            ".json",
+        message: "Add Place " + merchant.name);
+
+    //TODO REMOVE ALL SPECIAL ACCENTED CHARACTERS FROM THE APP AS IT MAKES THINGS TOO COMPLICATED, ON THE INTERNET WE DO NOT HAVE ACCENTS, OBEY!!!
+
+    Repository repository =
+        await github.repositories.getRepository(repositorySlug);
+    print("response github:" + repository.cloneUrl);
+
+    ContentCreation response =
+        await github.repositories.createFile(repositorySlug, createFile);
+    print("response github downloadUrl:" + response.content.downloadUrl);
+  }
+
+  Future<void> createNewFileOnGitHub() async {
+    var repositorySlug =
+        RepositorySlug("theRealBitcoinClub", "flutter_coinector");
+    var commitUser = CommitUser("therealbitcoinclub", "trbc@bitcoinmap.cash");
+    var createFile = CreateFile(
+        branch: "master",
+        committer: commitUser,
+        content: "bXkgbmV3IGZpbGUgY29udGVudHM=",
+        // content: merchant.getBmapDataJson(),
         path: "test.json",
         message: "testing api");
+
+    Repository repository =
+        await github.repositories.getRepository(repositorySlug);
+    print("response github:" + repository.cloneUrl);
 
     ContentCreation response =
         await github.repositories.createFile(repositorySlug, createFile);
@@ -716,8 +758,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   void handleAddTagButton(ctx) async {
     if (allSelectedTags.length >= MIN_INPUT_TAGS) {
       Dialogs.confirmShowResetTags(ctx, () {
-        uploadImageToGithub();
-        // resetTags();
+        resetTags();
       });
       return;
     }
@@ -736,6 +777,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     addSelectedTag(selected);
 
     if (allSelectedTags.length == MAX_INPUT_TAGS) {
+      merchant.tags = printAllTags();
+      uploadImageToGithub();
+      return;
       if (!kReleaseMode)
         Clipboard.setData(ClipboardData(text: merchant.getBmapDataJson()));
 
@@ -1025,9 +1069,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         buildJsonTag(allSelectedTags.elementAt(2)) +
         ',' +
         buildJsonTag(allSelectedTags.elementAt(3)) +
-        '],' +
+        '],"a":"' +
         printAllTags() +
-        '}');
+        '"}');
   }
 
   String buildJsonTag(tag) {
@@ -1039,15 +1083,13 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   String printAllTags() {
-    return '"a":"' +
-        searchTagsDelegate.alreadySelected.elementAt(0).toString() +
+    return searchTagsDelegate.alreadySelected.elementAt(0).toString() +
         "," +
         searchTagsDelegate.alreadySelected.elementAt(1).toString() +
         "," +
         searchTagsDelegate.alreadySelected.elementAt(2).toString() +
         "," +
-        searchTagsDelegate.alreadySelected.elementAt(3).toString() +
-        '"';
+        searchTagsDelegate.alreadySelected.elementAt(3).toString();
   }
 
   String appendPlaceholderTags(String results) {
