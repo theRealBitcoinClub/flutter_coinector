@@ -89,12 +89,13 @@ dependencies:
   #cupertino_icons: ^0.1.2
 
 dev_dependencies:
+  flutter_launcher_icons: "^0.9.2"
   flutter_test:
     sdk: flutter
 
 flutter_icons:
   image_path: "assets/web_hi_res_512.png"
-  android: true
+  android: "launcher_icon"
   ios: true
 
 #this override is necessary for launcher icon generation plugin
@@ -129,7 +130,6 @@ flutter:
     - assets/e-spa.json
     - assets/placesId.json
     - assets/places.json
-    - assets/app_config.json
     - config/app_config.json
 
   # An image asset can refer to one or more resolution-specific "variants", see

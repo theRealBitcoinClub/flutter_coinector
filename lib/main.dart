@@ -3,8 +3,8 @@ import 'package:flutter/cupertino.dart';
 
 import 'ConfigReader.dart';
 
-main() {
-  ConfigReader.initialize();
+main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   // Set `enableInDevMode` to true to see reports while in debug mode
   // This is only to be used for confirming that reports are being
   // submitted as expected. It is not intended to be used for everyday
@@ -17,7 +17,7 @@ main() {
     //just ignore the errors for now to have less library dependencies
   };
 
-  WidgetsFlutterBinding.ensureInitialized();
+  ConfigReader.initialize();
   //configureApp();
   runApp(SearchRouterApp());
 }
