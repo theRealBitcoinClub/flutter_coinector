@@ -20,10 +20,10 @@ import 'UrlLauncher.dart';
 
 const OPACITY_ITEM_VALIDATED = 0.7;
 const OPACITY_ITEM_DEACTIVATED = 0.0;
-const DEFAULT_DURATION_SCROLL_ANIMATION = Duration(milliseconds: 3000);
+const DEFAULT_DURATION_SCROLL_ANIMATION = Duration(milliseconds: 2000);
 const DEFAULT_ANIMATION_CURVE = Curves.decelerate;
-const DEFAULT_DURATION_OPACITY_FADE = Duration(milliseconds: 5000);
-const DURATION_OPACITY_FADE_SUBMIT_BTN = Duration(milliseconds: 10000);
+const DEFAULT_DURATION_OPACITY_FADE = Duration(milliseconds: 3000);
+const DURATION_OPACITY_FADE_SUBMIT_BTN = Duration(milliseconds: 5000);
 const INPUT_DASH_POS = 550.0;
 const INPUT_BCH_POS = 700.0;
 const INPUT_TAGS_POS = 200.0;
@@ -118,14 +118,14 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   bool hasSelectedImages = false;
 
-  static const double IMAGE_HEIGHT = 336;
-  static const double IMAGE_WIDTH = 640;
+  static const int IMAGE_HEIGHT = 168;
+  static const int IMAGE_WIDTH = 320;
 
   GitHub github;
 
-  RepositorySlug repositorySlug;
-
   CommitUser commitUser;
+
+  bool cancelAllImageLoads = false;
 
   _AddNewPlaceWidgetState(
       this.selectedType, this.accentColor, this.typeTitle, this.actionBarColor);
@@ -144,7 +144,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   void initGithub() {
     github =
         GitHub(auth: Authentication.withToken(ConfigReader.getGithubKey()));
-    repositorySlug = RepositorySlug("theRealBitcoinClub", "flutter_coinector");
     commitUser = CommitUser("therealbitcoinclub", "trbc@bitcoinmap.cash");
     print("GITHUB" + github.toString());
   }
@@ -716,7 +715,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
     //TODO REMOVE ALL SPECIAL ACCENTED CHARACTERS FROM THE APP AS IT MAKES THINGS TOO COMPLICATED, ON THE INTERNET WE DO NOT HAVE ACCENTS, OBEY!!!
 
-    await githubSendDataToRepository(createFile);
+    await githubSendDataToRepository("flutter_coinector", createFile);
   }
 
   CreateFile githubCreateFileMerchantDetails(CommitUser commitUser) {
@@ -725,7 +724,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         branch: "master",
         committer: commitUser,
         content: base64.encode(merchant.getBmapDataJson().codeUnits),
-        path: "addplace_" +
+        path: "uploaded/" +
+            merchant.id +
+            "/" +
+            "addplace_" +
             t.year.toString() +
             t.month.toString() +
             t.day.toString() +
@@ -747,14 +749,17 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       CreateFile createFile =
           githubCreateFileMerchantImage(commitUser, img, index);
 
-      await githubSendDataToRepository(createFile);
+      await githubSendDataToRepository("flutter_coinector", createFile);
     }
   }
 
-  Future<void> githubSendDataToRepository(CreateFile createFile) async {
-    ContentCreation response =
-        await github.repositories.createFile(repositorySlug, createFile);
-    print("response github downloadUrl:" + response.content.downloadUrl);
+  Future<void> githubSendDataToRepository(
+      String repository, CreateFile createFile) async {
+    ContentCreation response = await github.repositories.createFile(
+        RepositorySlug("theRealBitcoinClub", repository), createFile);
+    print(repository +
+        " response github downloadUrl:" +
+        response.content.downloadUrl);
   }
 
   CreateFile githubCreateFileMerchantImage(
@@ -763,11 +768,22 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         branch: "master",
         committer: commitUser,
         content: base64.encode(img),
-        path: merchant.id + "_" + index.toString() + ".jpg",
-        message: "Add Image " + merchant.name + " No. " + index.toString());
+        path: "uploaded/" +
+            merchant.id +
+            "/" +
+            IMAGE_WIDTH.toString() +
+            "x" +
+            IMAGE_HEIGHT.toString() +
+            "/" +
+            merchant.id +
+            "_" +
+            index.toString() +
+            ".jpg",
+        message: "Add Image " + merchant.name + " " + index.toString());
     return createFile;
   }
 
+/*
   Future<void> createNewFileOnGitHub() async {
     var repositorySlug =
         RepositorySlug("theRealBitcoinClub", "flutter_coinector");
@@ -788,7 +804,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         await github.repositories.createFile(repositorySlug, createFile);
     print("response github:" + response.content.downloadUrl);
   }
-
+*/
   void handleAddTagButton(ctx) async {
     if (allSelectedTags.length >= MIN_INPUT_TAGS) {
       Dialogs.confirmShowResetTags(ctx, () {
@@ -1139,13 +1155,13 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   Column wrapBuildColumnImages() {
     return Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
       Container(
-        height: IMAGE_HEIGHT,
+        height: IMAGE_HEIGHT.toDouble(),
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: hasSelectedImages ? selectedImages.length : images.length,
           itemBuilder: (context, index) {
             return Container(
-                width: IMAGE_WIDTH,
+                width: IMAGE_WIDTH.toDouble(),
                 child: GestureDetector(
                   onLongPress: () {
                     if (!hasSelectedImages) hasSelectedImagesNow();
@@ -1165,8 +1181,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                             ? selectedImages[index]
                             : images[index],
                         fit: BoxFit.cover,
-                        height: IMAGE_HEIGHT,
-                        width: IMAGE_WIDTH,
+                        height: IMAGE_HEIGHT.toDouble(),
+                        width: IMAGE_WIDTH.toDouble(),
                       ),
                     ),
                   ),
@@ -1178,20 +1194,29 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void loadGooglePlacePhotos(String placeId) async {
+    resetImages();
+    const sleepDuration = const Duration(milliseconds: 1600);
+    // await Future.delayed(sleepDuration);
+    // if (cancelAllImageLoads) return;
     var result = await this.googlePlace.details.get(placeId);
     if (result != null && result.result != null) {
-      setState(() {
-        images = [];
-        selectedImages = [];
-        hasSelectedImages = false;
-      });
-
       if (result.result.photos != null) {
         for (var photo in result.result.photos) {
+          if (cancelAllImageLoads) return;
           await loadGooglePlacePhoto(photo.photoReference);
+          await Future.delayed(sleepDuration);
         }
       }
     }
+  }
+
+  void resetImages() {
+    setState(() {
+      images = [];
+      selectedImages = [];
+      hasSelectedImages = false;
+      cancelAllImageLoads = false;
+    });
   }
 
   Future<void> loadGooglePlacePhoto(String photoReference) async {
@@ -1199,8 +1224,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         .googlePlace
         .photos
         .get(photoReference, null, IMAGE_WIDTH.toInt());
+    await Future.delayed(const Duration(milliseconds: 100));
     if (result != null) {
       setState(() {
+        if (cancelAllImageLoads) return;
         images.add(result);
       });
     }
@@ -1223,6 +1250,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void lockSelectedImagesAndUpload() {
+    cancelAllImageLoads = true;
     hasSelectedImages = true;
     githubUploadPlaceImages();
   }
