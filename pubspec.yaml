@@ -45,6 +45,7 @@ dependencies:
   geolocator: ^8.0.1
   crypto: ^3.0.1
   path_provider: ^2.0.8
+  provider: ^6.0.1
   #device_preview: ^0.4.8
   #desktop_window: ^0.3.0
   #js: ^0.6.2
@@ -91,14 +92,14 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-#flutter_icons:
-#  image_path: "assets/web_hi_res_512.png"
-#  android: true
-#  ios: true
+flutter_icons:
+  image_path: "assets/web_hi_res_512.png"
+  android: true
+  ios: true
 
 #this override is necessary for launcher icon generation plugin
-#dependency_overrides:
- # image: 2.0.7
+dependency_overrides:
+  image: ^3.1.0
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
 
@@ -128,7 +129,8 @@ flutter:
     - assets/e-spa.json
     - assets/placesId.json
     - assets/places.json
-    - config/
+    - assets/app_config.json
+    - config/app_config.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/#resolution-aware.

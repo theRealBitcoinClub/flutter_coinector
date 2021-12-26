@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:Coinector/ConfigReader.dart';
 import 'package:Coinector/Merchant.dart';
 import 'package:Coinector/translator.dart';
 import 'package:dio/dio.dart';
@@ -108,10 +109,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   Merchant merchant;
 
   bool hasTriedSearch = false;
-
   bool showRegisterOnGoogleMapsButton = false;
 
-  static const String GOOGLE_PLACES_KEY = "";
+  static String GOOGLE_PLACES_KEY = ConfigReader.getGooglePlacesKey();
 
   bool hasSelectedImages = false;
 
