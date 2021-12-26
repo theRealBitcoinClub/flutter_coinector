@@ -97,26 +97,26 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
   void addCountrySpecificMatches(ctx, String pattern, Set<String> matches) {
     switch (UrlLauncher.getLocale(ctx)) {
       case "de":
-        addMatches(pattern, matches, Tag.tagTextDE);
+        addMatches(pattern, matches, Tags.tagTextDE);
         break;
       case "es":
-        addMatches(pattern, matches, Tag.tagTextES);
+        addMatches(pattern, matches, Tags.tagTextES);
         break;
       case "ja":
-        addMatches(pattern, matches, Tag.tagTextJP1);
-        addMatches(pattern, matches, Tag.tagTextJP2);
+        addMatches(pattern, matches, Tags.tagTextJP1);
+        addMatches(pattern, matches, Tags.tagTextJP2);
         break;
       case "fr":
-        addMatches(pattern, matches, Tag.tagTextFR);
+        addMatches(pattern, matches, Tags.tagTextFR);
         break;
       case "id":
-        addMatches(pattern, matches, Tag.tagTextINDONESIA);
+        addMatches(pattern, matches, Tags.tagTextINDONESIA);
         break;
       case "it":
-        addMatches(pattern, matches, Tag.tagTextIT);
+        addMatches(pattern, matches, Tags.tagTextIT);
         break;
     }
-    addMatches(pattern, matches, Tag.tagText);
+    addMatches(pattern, matches, Tags.tagText);
   }
 
   void addMatches(String pattern, Set<String> matches, set) {

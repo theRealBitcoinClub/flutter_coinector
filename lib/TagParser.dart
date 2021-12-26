@@ -21,7 +21,7 @@ class TagParser {
     if (index == "104") return "";
 
     try {
-      return Tag.tagText.elementAt(int.parse(index));
+      return Tags.tagText.elementAt(int.parse(index));
     } catch (e) {
       print("INVALID TAG INDEX:" + index);
       return "";

@@ -28,26 +28,26 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
 
     switch (UrlLauncher.getLocale(ctx)) {
       case "de":
-        addMatches(pattern, matches, Tag.tagTextDE);
+        addMatches(pattern, matches, Tags.tagTextDE);
         break;
       case "es":
-        addMatches(pattern, matches, Tag.tagTextES);
+        addMatches(pattern, matches, Tags.tagTextES);
         break;
       case "ja":
-        addMatches(pattern, matches, Tag.tagTextJP1);
-        addMatches(pattern, matches, Tag.tagTextJP2);
+        addMatches(pattern, matches, Tags.tagTextJP1);
+        addMatches(pattern, matches, Tags.tagTextJP2);
         break;
       case "fr":
-        addMatches(pattern, matches, Tag.tagTextFR);
+        addMatches(pattern, matches, Tags.tagTextFR);
         break;
       case "id":
-        addMatches(pattern, matches, Tag.tagTextINDONESIA);
+        addMatches(pattern, matches, Tags.tagTextINDONESIA);
         break;
       case "it":
-        addMatches(pattern, matches, Tag.tagTextIT);
+        addMatches(pattern, matches, Tags.tagTextIT);
         break;
     }
-    addMatches(pattern, matches, Tag.tagText);
+    addMatches(pattern, matches, Tags.tagText);
 
     if (matches.length == 0) {
       matches.add(Translator.translate(ctx, "try_another_word"));
@@ -108,26 +108,26 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
   Set<String> addAllTagsInAllLanguages(Set<String> suggestions, ctx) {
     switch (UrlLauncher.getLocale(ctx)) {
       case "de":
-        suggestions.addAll(cleanSuggestions(Tag.tagTextDE));
+        suggestions.addAll(cleanSuggestions(Tags.tagTextDE));
         break;
       case "es":
-        suggestions.addAll(cleanSuggestions(Tag.tagTextES));
+        suggestions.addAll(cleanSuggestions(Tags.tagTextES));
         break;
       case "ja":
-        suggestions.addAll(cleanSuggestions(Tag.tagTextJP1));
-        suggestions.addAll(cleanSuggestions(Tag.tagTextJP2));
+        suggestions.addAll(cleanSuggestions(Tags.tagTextJP1));
+        suggestions.addAll(cleanSuggestions(Tags.tagTextJP2));
         break;
       case "fr":
-        suggestions.addAll(cleanSuggestions(Tag.tagTextFR));
+        suggestions.addAll(cleanSuggestions(Tags.tagTextFR));
         break;
       case "id":
-        suggestions.addAll(cleanSuggestions(Tag.tagTextINDONESIA));
+        suggestions.addAll(cleanSuggestions(Tags.tagTextINDONESIA));
         break;
       case "it":
-        suggestions.addAll(cleanSuggestions(Tag.tagTextIT));
+        suggestions.addAll(cleanSuggestions(Tags.tagTextIT));
         break;
     }
-    suggestions.addAll(cleanSuggestions(Tag.tagText));
+    suggestions.addAll(cleanSuggestions(Tags.tagText));
     return suggestions;
   }
 

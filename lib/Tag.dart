@@ -1,36 +1,36 @@
 // Identifier a
 
-class Tag {
+class Tags {
   final String content;
   final int id;
 
-  Tag(this.content, this.id);
+  Tags(this.content, this.id);
 
   static int getTagIndex(String searchTerm) {
-    if (!Tag.tagText.any((String e) {
+    if (!Tags.tagText.any((String e) {
           return e.toLowerCase().contains(searchTerm.toLowerCase());
         }) &&
-        !Tag.tagTextES.contains(searchTerm) &&
-        !Tag.tagTextDE.contains(searchTerm) &&
-        !Tag.tagTextFR.contains(searchTerm) &&
-        !Tag.tagTextIT.contains(searchTerm) &&
-        !Tag.tagTextINDONESIA.contains(searchTerm) &&
-        !Tag.tagTextJP1.contains(searchTerm) &&
-        !Tag.tagTextJP2.contains(searchTerm)) return -1;
+        !Tags.tagTextES.contains(searchTerm) &&
+        !Tags.tagTextDE.contains(searchTerm) &&
+        !Tags.tagTextFR.contains(searchTerm) &&
+        !Tags.tagTextIT.contains(searchTerm) &&
+        !Tags.tagTextINDONESIA.contains(searchTerm) &&
+        !Tags.tagTextJP1.contains(searchTerm) &&
+        !Tags.tagTextJP2.contains(searchTerm)) return -1;
 
     int result = -1;
-    if ((result = _findTagIndex(searchTerm, Tag.tagText)) == -1) if ((result =
-            _findTagIndex(searchTerm, Tag.tagTextES)) ==
+    if ((result = _findTagIndex(searchTerm, Tags.tagText)) == -1) if ((result =
+            _findTagIndex(searchTerm, Tags.tagTextES)) ==
         -1) if ((result =
-            _findTagIndex(searchTerm, Tag.tagTextDE)) ==
+            _findTagIndex(searchTerm, Tags.tagTextDE)) ==
         -1) if ((result =
-            _findTagIndex(searchTerm, Tag.tagTextFR)) ==
+            _findTagIndex(searchTerm, Tags.tagTextFR)) ==
         -1) if ((result =
-            _findTagIndex(searchTerm, Tag.tagTextIT)) ==
+            _findTagIndex(searchTerm, Tags.tagTextIT)) ==
         -1) if ((result =
-            _findTagIndex(searchTerm, Tag.tagTextINDONESIA)) ==
-        -1) if ((result = _findTagIndex(searchTerm, Tag.tagTextJP1)) == -1)
-      result = _findTagIndex(searchTerm, Tag.tagTextJP2);
+            _findTagIndex(searchTerm, Tags.tagTextINDONESIA)) ==
+        -1) if ((result = _findTagIndex(searchTerm, Tags.tagTextJP1)) == -1)
+      result = _findTagIndex(searchTerm, Tags.tagTextJP2);
 
     return result;
   }

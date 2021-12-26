@@ -1211,7 +1211,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       zoomMapAfterSelectLocation = false;
     }
 
-    var index = Tag.getTagIndex(selectedLocationOrTag);
+    var index = Tags.getTagIndex(selectedLocationOrTag);
     Snackbars.showMatchingSnackBar(
         _scaffoldKey, ctx, fileName, capitalize(search), index);
 

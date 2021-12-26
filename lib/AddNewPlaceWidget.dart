@@ -7,6 +7,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+// import 'package:github/github.dart';
 import 'package:google_place/google_place.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';
@@ -118,12 +119,16 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   static const double IMAGE_HEIGHT = 112;
   static const double IMAGE_WIDTH = 213;
 
+  // GitHub github;
+
   _AddNewPlaceWidgetState(
       this.selectedType, this.accentColor, this.typeTitle, this.actionBarColor);
 
   @override
   void initState() {
     super.initState();
+    // github =
+    //     GitHub(auth: Authentication.withToken(ConfigReader.getGithubKey()));
     googlePlace = GooglePlace(GOOGLE_PLACES_KEY,
         proxyUrl: kIsWeb ? 'cors-anywhere.herokuapp.com' : null);
 
@@ -157,9 +162,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     focusNodeInputName = FocusNode();
   }
 
-  //If place is on Gmaps prefill the fields
-  // if not found on Google Maps then ask them to register on business.google.com first before being able to appear on our map, offer them a search button
-  //Check if there are four tags prefilled, let them remove each tag separately to add a replacement tag, dont let them submit before choosing four tags
+  //TODO let them remove each tag separately to add a replacement tag
 
   void searchOnGoogleMapsPrefillFields({String debugSearch}) async {
     var search = inputName + " " + inputAdr;
@@ -263,14 +266,14 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       String review = r["text"].toString().toLowerCase();
       //print(review + "\n");
       //TODO replace accented characters with normal ones to match more
-      matchTags(resultTags, index, review, Tag.tagText);
-      matchTags(resultTags, index, review, Tag.tagTextDE);
-      matchTags(resultTags, index, review, Tag.tagTextES);
-      matchTags(resultTags, index, review, Tag.tagTextFR);
-      matchTags(resultTags, index, review, Tag.tagTextINDONESIA);
-      matchTags(resultTags, index, review, Tag.tagTextIT);
-      matchTags(resultTags, index, review, Tag.tagTextJP1);
-      matchTags(resultTags, index, review, Tag.tagTextJP2);
+      matchTags(resultTags, index, review, Tags.tagText);
+      matchTags(resultTags, index, review, Tags.tagTextDE);
+      matchTags(resultTags, index, review, Tags.tagTextES);
+      matchTags(resultTags, index, review, Tags.tagTextFR);
+      matchTags(resultTags, index, review, Tags.tagTextINDONESIA);
+      matchTags(resultTags, index, review, Tags.tagTextIT);
+      matchTags(resultTags, index, review, Tags.tagTextJP1);
+      matchTags(resultTags, index, review, Tags.tagTextJP2);
     }
 
     String results = resultTags.isNotEmpty
@@ -694,10 +697,15 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   SizedBox buildSizedBoxSeparator({multiplier = 1.0}) =>
       SizedBox(height: 10.0 * multiplier);
 
+  void uploadImageToGithub() {
+    // github.postJSON("https://github.com/theRealBitcoinClub/flutter_coinector/blob/master/assets/test.json",
+    //     body: merchant.getBmapDataJson());
+  }
   void handleAddTagButton(ctx) async {
     if (allSelectedTags.length >= MIN_INPUT_TAGS) {
       Dialogs.confirmShowResetTags(ctx, () {
-        resetTags();
+        uploadImageToGithub();
+        // resetTags();
       });
       return;
     }
@@ -983,7 +991,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     setState(() {
       allSelectedTags.add(selected);
     });
-    searchTagsDelegate.alreadySelected.add(Tag.getTagIndex(selected));
+    searchTagsDelegate.alreadySelected.add(Tags.getTagIndex(selected));
   }
 
   String buildJsonToSubmitViaEmail() {
@@ -1014,7 +1022,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     return '{"tag":"' +
         tag +
         '", "id":"' +
-        Tag.getTagIndex(tag).toString() +
+        Tags.getTagIndex(tag).toString() +
         '"}';
   }
 
