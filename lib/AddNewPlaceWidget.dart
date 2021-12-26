@@ -118,8 +118,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   bool hasSelectedImages = false;
 
-  static const double IMAGE_HEIGHT = 112;
-  static const double IMAGE_WIDTH = 213;
+  static const double IMAGE_HEIGHT = 336;
+  static const double IMAGE_WIDTH = 640;
 
   GitHub github;
 
@@ -201,7 +201,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       }
     } else {
       await loadMerchantsDetailsPrefillAddress(placeId);
-      // loadGooglePlaceDetails(placeId);
+      loadGooglePlacePhotos(placeId);
     }
   }
 
@@ -717,7 +717,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     //TODO REMOVE ALL SPECIAL ACCENTED CHARACTERS FROM THE APP AS IT MAKES THINGS TOO COMPLICATED, ON THE INTERNET WE DO NOT HAVE ACCENTS, OBEY!!!
 
     await githubSendDataToRepository(createFile);
-    loadGooglePlacePhotos(placeId);
   }
 
   CreateFile githubCreateFileMerchantDetails(CommitUser commitUser) {
@@ -814,14 +813,16 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     if (allSelectedTags.length == MAX_INPUT_TAGS) {
       merchant.tags = printAllTags();
       githubUploadPlaceDetails();
-      return;
       if (!kReleaseMode)
         Clipboard.setData(ClipboardData(text: merchant.getBmapDataJson()));
+      return;
 
       showInputBCHyDASH();
       FocusScope.of(context).requestFocus(focusNodeInputDASH);
       scrollController.jumpTo(INPUT_DASH_POS);
     } else {
+      if (allSelectedTags.length > MAX_INPUT_TAGS)
+        throw new Exception("TOO MANY TAGS PARSED FROM COMMENTS");
       scrollController.jumpTo(INPUT_TAGS_POS);
     }
 
