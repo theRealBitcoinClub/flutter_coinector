@@ -7,7 +7,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-// import 'package:github/github.dart';
+import 'package:github/github.dart';
 import 'package:google_place/google_place.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';
@@ -119,7 +119,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   static const double IMAGE_HEIGHT = 112;
   static const double IMAGE_WIDTH = 213;
 
-  // GitHub github;
+  GitHub github;
 
   _AddNewPlaceWidgetState(
       this.selectedType, this.accentColor, this.typeTitle, this.actionBarColor);
@@ -127,8 +127,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   @override
   void initState() {
     super.initState();
-    // github =
-    //     GitHub(auth: Authentication.withToken(ConfigReader.getGithubKey()));
+    github =
+        GitHub(auth: Authentication.withToken(ConfigReader.getGithubKey()));
     googlePlace = GooglePlace(GOOGLE_PLACES_KEY,
         proxyUrl: kIsWeb ? 'cors-anywhere.herokuapp.com' : null);
 
@@ -333,7 +333,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     controllerInputBCH.dispose();
     controllerInputAdr.dispose();
     controllerInputName.dispose();
-
+    github.dispose();
     super.dispose();
   }
 
@@ -697,10 +697,22 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   SizedBox buildSizedBoxSeparator({multiplier = 1.0}) =>
       SizedBox(height: 10.0 * multiplier);
 
-  void uploadImageToGithub() {
-    // github.postJSON("https://github.com/theRealBitcoinClub/flutter_coinector/blob/master/assets/test.json",
-    //     body: merchant.getBmapDataJson());
+  void uploadImageToGithub() async {
+    var repositorySlug =
+        RepositorySlug("theRealBitcoinClub", "flutter_coinector");
+    var commitUser = CommitUser("therealbitcoinclub", "trbc@bitcoinmap.cash");
+    var createFile = CreateFile(
+        branch: "master",
+        committer: commitUser,
+        content: merchant.getBmapDataJson(),
+        path: "test.json",
+        message: "testing api");
+
+    ContentCreation response =
+        await github.repositories.createFile(repositorySlug, createFile);
+    print("response github:" + response.content.downloadUrl);
   }
+
   void handleAddTagButton(ctx) async {
     if (allSelectedTags.length >= MIN_INPUT_TAGS) {
       Dialogs.confirmShowResetTags(ctx, () {
