@@ -123,20 +123,30 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   GitHub github;
 
+  RepositorySlug repositorySlug;
+
+  CommitUser commitUser;
+
   _AddNewPlaceWidgetState(
       this.selectedType, this.accentColor, this.typeTitle, this.actionBarColor);
 
   @override
   void initState() {
     super.initState();
-    github =
-        GitHub(auth: Authentication.withToken(ConfigReader.getGithubKey()));
-    print("GITHUB" + github.toString());
+    initGithub();
     googlePlace = GooglePlace(GOOGLE_PLACES_KEY,
         proxyUrl: kIsWeb ? 'cors-anywhere.herokuapp.com' : null);
 
     initFocusNodes();
     initInputListener();
+  }
+
+  void initGithub() {
+    github =
+        GitHub(auth: Authentication.withToken(ConfigReader.getGithubKey()));
+    repositorySlug = RepositorySlug("theRealBitcoinClub", "flutter_coinector");
+    commitUser = CommitUser("therealbitcoinclub", "trbc@bitcoinmap.cash");
+    print("GITHUB" + github.toString());
   }
 
   void initInputListener() {
@@ -701,10 +711,16 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   SizedBox buildSizedBoxSeparator({multiplier = 1.0}) =>
       SizedBox(height: 10.0 * multiplier);
 
-  void uploadImageToGithub() async {
-    var repositorySlug =
-        RepositorySlug("theRealBitcoinClub", "flutter_coinector");
-    var commitUser = CommitUser("therealbitcoinclub", "trbc@bitcoinmap.cash");
+  void githubUploadPlaceDetails() async {
+    CreateFile createFile = githubCreateFileMerchantDetails(commitUser);
+
+    //TODO REMOVE ALL SPECIAL ACCENTED CHARACTERS FROM THE APP AS IT MAKES THINGS TOO COMPLICATED, ON THE INTERNET WE DO NOT HAVE ACCENTS, OBEY!!!
+
+    await githubSendDataToRepository(createFile);
+    loadGooglePlacePhotos(placeId);
+  }
+
+  CreateFile githubCreateFileMerchantDetails(CommitUser commitUser) {
     var t = DateTime.now();
     var createFile = CreateFile(
         branch: "master",
@@ -722,16 +738,35 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             t.millisecondsSinceEpoch.toString() +
             ".json",
         message: "Add Place " + merchant.name);
+    return createFile;
+  }
 
-    //TODO REMOVE ALL SPECIAL ACCENTED CHARACTERS FROM THE APP AS IT MAKES THINGS TOO COMPLICATED, ON THE INTERNET WE DO NOT HAVE ACCENTS, OBEY!!!
+  void githubUploadPlaceImages() async {
+    int index = 0;
+    for (Uint8List img in selectedImages) {
+      index++;
+      CreateFile createFile =
+          githubCreateFileMerchantImage(commitUser, img, index);
 
-    Repository repository =
-        await github.repositories.getRepository(repositorySlug);
-    print("response github:" + repository.cloneUrl);
+      await githubSendDataToRepository(createFile);
+    }
+  }
 
+  Future<void> githubSendDataToRepository(CreateFile createFile) async {
     ContentCreation response =
         await github.repositories.createFile(repositorySlug, createFile);
     print("response github downloadUrl:" + response.content.downloadUrl);
+  }
+
+  CreateFile githubCreateFileMerchantImage(
+      CommitUser commitUser, Uint8List img, int index) {
+    var createFile = CreateFile(
+        branch: "master",
+        committer: commitUser,
+        content: base64.encode(img),
+        path: merchant.id + "_" + index.toString() + ".jpg",
+        message: "Add Image " + merchant.name + " No. " + index.toString());
+    return createFile;
   }
 
   Future<void> createNewFileOnGitHub() async {
@@ -778,7 +813,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
     if (allSelectedTags.length == MAX_INPUT_TAGS) {
       merchant.tags = printAllTags();
-      uploadImageToGithub();
+      githubUploadPlaceDetails();
       return;
       if (!kReleaseMode)
         Clipboard.setData(ClipboardData(text: merchant.getBmapDataJson()));
@@ -1112,7 +1147,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                 width: IMAGE_WIDTH,
                 child: GestureDetector(
                   onLongPress: () {
-                    if (!hasSelectedImages) setHasSelectedImages(true);
+                    if (!hasSelectedImages) hasSelectedImagesNow();
                   },
                   onDoubleTap: () {
                     if (!hasSelectedImages) addImageToSelection(index);
@@ -1141,7 +1176,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     ]);
   }
 
-  void loadGooglePlaceDetails(String placeId) async {
+  void loadGooglePlacePhotos(String placeId) async {
     var result = await this.googlePlace.details.get(placeId);
     if (result != null && result.result != null) {
       setState(() {
@@ -1175,14 +1210,19 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       selectedImages.add(images[index]);
       images.removeAt(index);
       if (selectedImages.length == 3 || selectedImages.length == images.length)
-        hasSelectedImages = true;
+        lockSelectedImagesAndUpload();
       if (hasSelectedImages) images.clear();
     });
   }
 
-  void setHasSelectedImages(bool bool) {
+  void hasSelectedImagesNow() {
     setState(() {
-      hasSelectedImages = bool;
+      lockSelectedImagesAndUpload();
     });
+  }
+
+  void lockSelectedImagesAndUpload() {
+    hasSelectedImages = true;
+    githubUploadPlaceImages();
   }
 }
