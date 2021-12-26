@@ -93,14 +93,14 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-flutter_icons:
-  image_path: "assets/web_hi_res_512.png"
-  android: "launcher_icon"
-  ios: true
+#flutter_icons:
+ # image_path: "assets/web_hi_res_512.png"
+  #android: "launcher_icon"
+  #ios: true
 
 #this override is necessary for launcher icon generation plugin
-dependency_overrides:
-  image: ^3.1.0
+#dependency_overrides:
+ # image: ^3.1.0
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
 
