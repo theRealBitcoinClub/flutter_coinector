@@ -115,6 +115,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   bool hasSelectedImages = false;
 
+  static const double IMAGE_HEIGHT = 112;
+  static const double IMAGE_WIDTH = 213;
+
   _AddNewPlaceWidgetState(
       this.selectedType, this.accentColor, this.typeTitle, this.actionBarColor);
 
@@ -122,7 +125,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   void initState() {
     super.initState();
     googlePlace = GooglePlace(GOOGLE_PLACES_KEY,
-        proxyUrl: !kIsWeb ? 'cors-anywhere.herokuapp.com' : null);
+        proxyUrl: kIsWeb ? 'cors-anywhere.herokuapp.com' : null);
 
     initFocusNodes();
     initInputListener();
@@ -764,12 +767,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       onPressed: () {
         handleAddTagButton(ctx);
       },
-      /*textColor: TEXT_COLOR,
-      color: actionBarColor,
-      shape: StadiumBorder(
-          side: BorderSide(
-              color: TEXT_COLOR, style: BorderStyle.solid, width: 1.0)),
-      splashColor: accentColor,*/
       child: Padding(
         padding: buildEdgeInsetsTextField(),
         child: Row(
@@ -1044,13 +1041,13 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   Column wrapBuildColumnImages() {
     return Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
       Container(
-        height: 168,
+        height: IMAGE_HEIGHT,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: hasSelectedImages ? selectedImages.length : images.length,
           itemBuilder: (context, index) {
             return Container(
-                width: 320,
+                width: IMAGE_WIDTH,
                 child: GestureDetector(
                   onLongPress: () {
                     if (!hasSelectedImages) setHasSelectedImages(true);
@@ -1070,6 +1067,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                             ? selectedImages[index]
                             : images[index],
                         fit: BoxFit.cover,
+                        height: IMAGE_HEIGHT,
+                        width: IMAGE_WIDTH,
                       ),
                     ),
                   ),
@@ -1098,7 +1097,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   Future<void> loadGooglePlacePhoto(String photoReference) async {
-    var result = await this.googlePlace.photos.get(photoReference, null, 320);
+    var result = await this
+        .googlePlace
+        .photos
+        .get(photoReference, null, IMAGE_WIDTH.toInt());
     if (result != null) {
       setState(() {
         images.add(result);
