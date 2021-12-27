@@ -118,14 +118,16 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   bool hasSelectedImages = false;
 
-  static const int IMAGE_HEIGHT = 168;
-  static const int IMAGE_WIDTH = 320;
+  static const int IMAGE_HEIGHT = 336;
+  static const int IMAGE_WIDTH = 640;
 
   GitHub github;
 
   CommitUser commitUser;
 
   bool cancelAllImageLoads = false;
+
+  Set<String> imagesSuccess;
 
   _AddNewPlaceWidgetState(
       this.selectedType, this.accentColor, this.typeTitle, this.actionBarColor);
@@ -1195,17 +1197,23 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   void loadGooglePlacePhotos(String placeId) async {
     resetImages();
-    const sleepDuration = const Duration(milliseconds: 1600);
-    // await Future.delayed(sleepDuration);
-    // if (cancelAllImageLoads) return;
+    const sleepDuration = const Duration(milliseconds: 2000);
     var result = await this.googlePlace.details.get(placeId);
     if (result != null && result.result != null) {
       if (result.result.photos != null) {
-        for (var photo in result.result.photos) {
-          if (cancelAllImageLoads) return;
-          await loadGooglePlacePhoto(photo.photoReference);
-          await Future.delayed(sleepDuration);
-        }
+        print("PHOTOCOUNT: " + result.result.photos.length.toString());
+        for (int x = 0; x < 10; x++)
+          for (var photo in result.result.photos) {
+            if (cancelAllImageLoads) return;
+            if (!imagesSuccess.contains(photo.photoReference)) {
+              print("loadGooglePlacePhoto: " +
+                  x.toString() +
+                  " " +
+                  photo.photoReference);
+              await loadGooglePlacePhoto(photo, x);
+              await Future.delayed(sleepDuration);
+            }
+          }
       }
     }
   }
@@ -1214,21 +1222,39 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     setState(() {
       images = [];
       selectedImages = [];
+      imagesSuccess = Set<String>();
       hasSelectedImages = false;
       cancelAllImageLoads = false;
     });
   }
 
-  Future<void> loadGooglePlacePhoto(String photoReference) async {
-    var result = await this
-        .googlePlace
-        .photos
-        .get(photoReference, null, IMAGE_WIDTH.toInt());
+  Future<void> loadGooglePlacePhoto(Photo photo, index) async {
+    //with this variable only the horizontal images are being grabbed
+    bool isVertical = photo.height > photo.width;
+
+    var divider = index + 1;
+    bool flip = divider % 2 == 0;
+    var maxSize = IMAGE_WIDTH ~/ divider;
+    //grabbing only horizontals and when I flip the null with maxSize its only verticals
+    var result = await this.googlePlace.photos.get(
+        photo.photoReference,
+        isVertical && flip ? IMAGE_WIDTH : null,
+        isVertical && flip ? null : IMAGE_WIDTH);
+    // var result = await this.googlePlace.photos.get(photo.photoReference,
+    //     flip ? null : IMAGE_HEIGHT, flip ? IMAGE_WIDTH : null);
+    print("loadGooglePlacePhoto RESULT: " +
+        index.toString() +
+        " " +
+        photo.photoReference);
+
     await Future.delayed(const Duration(milliseconds: 100));
     if (result != null) {
       setState(() {
         if (cancelAllImageLoads) return;
         images.add(result);
+        print(
+            "imagesSuccess: " + index.toString() + " " + photo.photoReference);
+        imagesSuccess.add(photo.photoReference);
       });
     }
   }
