@@ -745,13 +745,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void githubUploadPlaceImages() async {
-    int index = 0;
     for (Uint8List img in selectedImages) {
-      index++;
-      CreateFile createFile =
-          githubCreateFileMerchantImage(commitUser, img, index);
-
-      await githubSendDataToRepository("flutter_coinector", createFile);
+      await githubSendDataToRepository(
+          "flutter_coinector", githubCreateFileMerchantImage(commitUser, img));
     }
   }
 
@@ -759,13 +755,18 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       String repository, CreateFile createFile) async {
     ContentCreation response = await github.repositories.createFile(
         RepositorySlug("theRealBitcoinClub", repository), createFile);
+    var url = response.content.downloadUrl;
     print(repository +
-        " response github downloadUrl:" +
-        response.content.downloadUrl);
+        "\nresponse github downloadUrl:" +
+        url +
+        "\nhttps://ezgif.com/crop?url=" +
+        url +
+        "\nhttps://ezgif.com/resize?url=" +
+        url);
   }
 
   CreateFile githubCreateFileMerchantImage(
-      CommitUser commitUser, Uint8List img, int index) {
+      CommitUser commitUser, Uint8List img) {
     var createFile = CreateFile(
         branch: "master",
         committer: commitUser,
@@ -779,9 +780,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             "/" +
             merchant.id +
             "_" +
-            index.toString() +
+            DateTime.now().millisecondsSinceEpoch.toString() +
             ".jpg",
-        message: "Add Image " + merchant.name + " " + index.toString());
+        message: "Add Image " + merchant.name + "_" + merchant.id);
     return createFile;
   }
 
