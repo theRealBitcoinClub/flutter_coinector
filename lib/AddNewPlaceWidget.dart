@@ -1229,19 +1229,15 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   Future<void> loadGooglePlacePhoto(Photo photo, index) async {
-    //with this variable only the horizontal images are being grabbed
     bool isVertical = photo.height > photo.width;
 
     var divider = index + 1;
     bool flip = divider % 2 == 0;
-    var maxSize = IMAGE_WIDTH ~/ divider;
-    //grabbing only horizontals and when I flip the null with maxSize its only verticals
     var result = await this.googlePlace.photos.get(
         photo.photoReference,
         isVertical && flip ? IMAGE_WIDTH : null,
         isVertical && flip ? null : IMAGE_WIDTH);
-    // var result = await this.googlePlace.photos.get(photo.photoReference,
-    //     flip ? null : IMAGE_HEIGHT, flip ? IMAGE_WIDTH : null);
+
     print("loadGooglePlacePhoto RESULT: " +
         index.toString() +
         " " +
