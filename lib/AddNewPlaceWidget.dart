@@ -749,7 +749,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     var createFile = CreateFile(
         branch: "master",
         committer: commitUser,
-        content: base64.encode(merchant.getBmapDataJson().codeUnits),
+        content: base64.encode(utf8.encode(merchant.getBmapDataJson())),
         path: "uploaded/" +
             merchant.id +
             "/" +
