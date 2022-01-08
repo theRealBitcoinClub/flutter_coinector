@@ -31,7 +31,7 @@ const INPUT_ADR_POS = 130.0;
 const KEYWORD_CONTROLLER_ACTION = "controller";
 
 const int MIN_INPUT_ADR =
-    20; //TODO validate the address it shall contain a zip code and a country or use separate fields
+    5; //TODO validate the address it shall contain a zip code and a country or use separate fields
 const int MIN_INPUT_NAME = 5;
 const int MIN_INPUT_TAGS = 4;
 const int MIN_INPUT_BCHyDASH =
@@ -746,7 +746,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   CreateFile githubCreateFileMerchantDetails(CommitUser commitUser) {
     var t = DateTime.now();
-    var createFile = CreateFile(
+    CreateFile createFile = CreateFile(
         branch: "master",
         committer: commitUser,
         content: base64.encode(utf8.encode(merchant.getBmapDataJson())),
@@ -758,13 +758,14 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             t.month.toString() +
             t.day.toString() +
             "_" +
-            merchant.name.replaceAll(" ", "-") +
+            merchant.name.replaceAll(RegExp('[^A-Za-z0-9]'), 'x') +
             "_" +
             TagBrands.tagBrands.elementAt(merchant.brand) +
             "_" +
             t.millisecondsSinceEpoch.toString() +
             ".json",
         message: "Add Place " + merchant.name);
+    if (!kReleaseMode) print("\nPATH:\n" + createFile.path);
     return createFile;
   }
 
@@ -834,10 +835,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 */
   void handleAddTagButton(ctx) async {
     if (allSelectedTags.length >= MIN_INPUT_TAGS) {
-      Dialogs.confirmShowResetTags(ctx, () {
-        resetTags();
-      });
-      return;
+      //Dialogs.confirmShowResetTags(ctx, () {
+      resetTags();
+      //});
+      //return;
     }
 
     final String selected = await showSearch<String>(
