@@ -118,8 +118,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   bool hasSelectedImages = false;
 
-  static const int IMAGE_HEIGHT = 336;
-  static const int IMAGE_WIDTH = 640;
+  static const int IMAGE_HEIGHT = kReleaseMode ? 336 : 112;
+  static const int IMAGE_WIDTH = kReleaseMode ? 640 : 213;
 
   GitHub github;
 
@@ -220,11 +220,23 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   Future<void> loadMerchantsDetailsPrefillAddress(String placeId) async {
     merchant = await findPlaceIdDetails(placeId);
+    //TODO HANDLE MORE TAGS LATER, LET ADMIN CHOOSE BEST TAGS OR SIMPLY LET CONTENT CONTAIN MORE TAGS
+    //TODO USER PROPER STATE PATTERN INSTEAD OF THIS CRAZY VARIABLING
+    setState(() {
+      for (int tagIndex in merchant.inputTags) {
+        allSelectedTags.add(Tags.tagText.elementAt(tagIndex));
+        searchTagsDelegate.alreadySelected.add(tagIndex);
+      }
+    });
+    //overwriteTagsIfSelectionChanged();
+    githubUploadPlaceDetails();
+
     prefillName(merchant);
     prefillAddress(merchant);
     hideRegisterOnGmaps();
     hideSearchBtn();
-    _fieldFocusChange(context, focusNodeInputAdr, null);
+    _fieldFocusChange(context, focusNodeInputAdr,
+        null); //TODO READ THE FUNCTION NAME THIS UI CHANGES HERE IS RIDICULOUS
     _fieldFocusChange(context, focusNodeInputName, null);
     scrollToWithAnimation(INPUT_TAGS_POS);
   }
@@ -257,9 +269,15 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   Merchant parseGmapsDataToMerchant(placeId, data) {
-    var location = data["geometry"]["location"];
-    String tags = prefillTags(data);
+    var reviews = data["reviews"];
+    Set<int> resultTags = parseReviewsSearchForMatchingTags(reviews);
+    String tags = prefillTags(resultTags);
 
+    return createMerchant(data, placeId, tags, resultTags);
+  }
+
+  Merchant createMerchant(data, placeId, String tags, Set<int> inputTags) {
+    var location = data["geometry"]["location"];
     Merchant m = Merchant(
         placeId,
         location["lat"],
@@ -273,25 +291,33 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         data["formatted_address"],
         4,
         "0");
+    m.inputTags = inputTags;
     return m;
   }
 
-  String prefillTags(data) {
-    var reviews = data["reviews"];
-
+  String prefillTags(Set<int> inputTags) {
     resetTags();
-    String tags = parseReviewsSearchForMatchingTags(reviews);
-    return tags;
+
+    //TODO order the proposed tags by number, smaller number is a more important tag, but have to write a complete converter for that to reparse all existing data or reparse all data once and dismiss old tags which havent been priority anyways
+
+    var r = inputTags.toString();
+    String results =
+        inputTags.isNotEmpty ? r.substring(1, r.length - 1) : "104,104,104,104";
+
+    if (inputTags.length < MAX_INPUT_TAGS)
+      results = appendPlaceholderTags(results);
+
+    if (!kReleaseMode) print("\nTAGS:\n" + results + "\n");
+    return results;
   }
 
-  String parseReviewsSearchForMatchingTags(reviews) {
-    StringBuffer resultTags = StringBuffer();
-
+  Set<int> parseReviewsSearchForMatchingTags(reviews) {
+    Set<int> resultTags = {};
     for (var r in reviews) {
       int index = 0;
       String review = r["text"].toString().toLowerCase();
       //print(review + "\n");
-      //TODO replace accented characters with normal ones to match more
+      //TODO replace accented characters with normal ones to match more, use normalize method
       matchTags(resultTags, index, review, Tags.tagText);
       matchTags(resultTags, index, review, Tags.tagTextDE);
       matchTags(resultTags, index, review, Tags.tagTextES);
@@ -301,18 +327,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       matchTags(resultTags, index, review, Tags.tagTextJP1);
       matchTags(resultTags, index, review, Tags.tagTextJP2);
     }
-
-    String results = resultTags.isNotEmpty
-        ? resultTags.toString().substring(1)
-        : "104,104,104,104";
-
-    if (results.split(",").length < 4) results = appendPlaceholderTags(results);
-
-    if (!kReleaseMode) print(results);
-    return results;
+    return resultTags;
   }
 
-  matchTags(StringBuffer allTags, int index, String review, tags) {
+  matchTags(Set<int> allTags, int index, String review, tags) {
     for (String t in tags) {
       String tag = t.split(" ")[0].trim().toLowerCase();
       //print(tag);
@@ -321,8 +339,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         //The tag 107 is men and very short it appears in many other words
         if (index != 107 ||
             (index == 107 && review.contains(" " + tag + " "))) {
-          allTags.write("," + index.toString());
-          inputTag(t);
+          if (allTags.length < MAX_INPUT_TAGS) {
+            allTags.add(index);
+          }
         }
       }
       index++;
@@ -424,7 +443,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
               : 1.0,
       child: buildColumnAdr(ctx));
 
-  bool hasInputAllTags() => allSelectedTags.length == 4;
+  bool hasInputAllTags() => allSelectedTags.length == MAX_INPUT_TAGS;
 
   Widget wrapBuildColumnDASHyBCH(ctx) => AnimatedOpacity(
       curve: DEFAULT_ANIMATION_CURVE,
@@ -735,7 +754,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       return null;
     }
     CreateFile createFile = githubCreateFileMerchantDetails(commitUser);
-    //TODO REMOVE ALL SPECIAL ACCENTED CHARACTERS FROM THE APP AS IT MAKES THINGS TOO COMPLICATED, ON THE INTERNET WE DO NOT HAVE ACCENTS, OBEY!!!
+    //TODO REMOVE ALL SPECIAL ACCENTED CHARACTERS FROM THE APP AS IT MAKES THINGS TOO COMPLICATED, ON THE INTERNET WE DO NOT HAVE ACCENTS, OBEY!!! USE THE NORMALIZE METHOD THEN REPLACE / and + with -_ again
     githubSendDataToRepository("flutter_coinector", createFile);
     lastMerchantUploadId = merchant.id;
     Clipboard.setData(ClipboardData(text: merchant.getBmapDataJson()));
@@ -782,12 +801,14 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         RepositorySlug("theRealBitcoinClub", repository), createFile);
     var url = response.content.downloadUrl;
     print(repository +
-        "\nresponse github downloadUrl:" +
-        url +
-        "\nhttps://ezgif.com/crop?url=" +
+            "\nresponse github downloadUrl:" +
+            url +
+            "\n" /*+
+        "https://ezgif.com/crop?url=" +
         url +
         "\nhttps://ezgif.com/resize?url=" +
-        url);
+        url*/
+        );
   }
 
   CreateFile githubCreateFileMerchantImage(
@@ -851,14 +872,12 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     inputTag(selected);
   }
 
+  //TODO sort this mess out, do not reuse this method in such a dirty way
   void inputTag(String selected) {
+    if (!kReleaseMode) print("\nSELECTED:" + selected);
     addSelectedTag(selected);
 
     if (allSelectedTags.length == MAX_INPUT_TAGS) {
-      overwriteTagsIfSelectionChanged();
-      githubUploadPlaceDetails();
-      if (!kReleaseMode) return;
-
       showInputBCHyDASH();
       FocusScope.of(context).requestFocus(focusNodeInputDASH);
       scrollController.jumpTo(INPUT_DASH_POS);
@@ -873,7 +892,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     }
 
     setState(() {
-      showSubmitBtn = kReleaseMode ? true : false;
+      showSubmitBtn = true;
     });
   }
 
@@ -1135,6 +1154,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   void addSelectedTag(String selected) {
     setState(() {
+      //TODO DO NOT UPDATE THE STATE WITHIN AN ASYNC TASK, DO THAT AFTERWARDS BULKED
       allSelectedTags.add(selected);
     });
     searchTagsDelegate.alreadySelected.add(Tags.getTagIndex(selected));
@@ -1311,7 +1331,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     cancelAllImageLoads = true;
     hasSelectedImages = true;
     await githubUploadPlaceDetails();
-    githubUploadPlaceImages();
+    await githubUploadPlaceImages();
     Navigator.pop(context);
   }
 }
