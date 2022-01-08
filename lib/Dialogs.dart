@@ -57,6 +57,31 @@ class Dialogs {
           );
         });
   }
+/*
+  static void confirmUploadPlace(BuildContext context, callbackYes) {
+    showDialog(
+        context: context,
+        builder: (BuildContext ctx) {
+          return AlertDialog(
+            backgroundColor: Colors.grey[900],
+            content: Text(Translator.translate(
+                context, "Upload this place to bmap.app?")),
+            title: Row(
+              children: <Widget>[
+                Icon(Icons.email),
+                Text("Upload place?",Map
+                    style: TextStyle(
+                        color: Colors
+                            .white)) //TODO add missing translations in all dialogs
+              ],
+            ),
+            actions: <Widget>[
+              flatButtonNo(context),
+              flatButtonYes(context, callbackYes)
+            ],
+          );
+        });
+  }*/
 
   static void confirmSendEmail(BuildContext context, callbackYes) {
     showDialog(

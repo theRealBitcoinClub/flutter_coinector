@@ -32,7 +32,7 @@ const KEYWORD_CONTROLLER_ACTION = "controller";
 
 const int MIN_INPUT_ADR =
     20; //TODO validate the address it shall contain a zip code and a country or use separate fields
-const int MIN_INPUT_NAME = 10;
+const int MIN_INPUT_NAME = 5;
 const int MIN_INPUT_TAGS = 4;
 const int MIN_INPUT_BCHyDASH =
     32; //TODO offer an address field for each coin right after checking its box
@@ -112,7 +112,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   Merchant merchant;
 
   bool hasTriedSearch = false;
-  bool showRegisterOnGoogleMapsButton = false;
+  bool showRegisterOnGMapsButton = false;
 
   static String GOOGLE_PLACES_KEY = ConfigReader.getGooglePlacesKey();
 
@@ -128,6 +128,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   bool cancelAllImageLoads = false;
 
   Set<String> imagesSuccess;
+
+  String lastMerchantUploadId;
 
   _AddNewPlaceWidgetState(
       this.selectedType, this.accentColor, this.typeTitle, this.actionBarColor);
@@ -183,27 +185,37 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     if (!kReleaseMode) print("inputs: " + search);
 
     placeId = await findPlaceId(debugSearch != null ? debugSearch : search);
+    if (placeId == "multiple") placeId = null;
 
     if (!kReleaseMode) print("placeid: " + placeId.toString());
 
     if (placeId == null) {
-      if (hasTriedSearch) {
-        if (!kReleaseMode) print("has tried search true");
-        Toaster.showMerchantNotFoundOnGoogleMaps(context);
-        showRegisterOnGmaps();
-      } else {
-        if (!kReleaseMode) print("has tried search false");
-        //TODO always use snackbar or toasts but dont mix them
-        Toaster.showMerchantNotFoundOnGoogleMapsTryAgain(context);
-        setState(() {
-          hasTriedSearch = true;
-          showInputAdr = true;
-        });
-      }
+      //if (hasTriedSearch) {
+      //if (!kReleaseMode) print("has tried search true");
+      offerGoogleBusinessSignup();
+      //} else {
+      //if (!kReleaseMode) print("has tried search false");
+      //TODO always use snackbar or toasts but dont mix them
+      //Toaster.showMerchantNotFoundOnGoogleMapsTryAgain(context);
+      //setState(() {
+      //  hasTriedSearch = true;
+      // showInputAdr = true;
+      // });
+      //}
     } else {
       await loadMerchantsDetailsPrefillAddress(placeId);
+      showInputTag();
       loadGooglePlacePhotos(placeId);
     }
+  }
+
+  void offerGoogleBusinessSignup() {
+    Toaster.showMerchantNotFoundOnGoogleMaps(context);
+    showRegisterOnGmaps();
+    hideSearchBtn();
+    resetTags();
+    hideInputTag();
+    scrollToWithAnimation(0.0);
   }
 
   Future<void> loadMerchantsDetailsPrefillAddress(String placeId) async {
@@ -331,7 +343,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             encoded);
     if (!kReleaseMode) printWrapped(result.toString());
     if (result.data['status'].toString() == "ZERO_RESULTS") return null;
-    var placeId = result.data['candidates'][0]["place_id"].toString();
+    List<dynamic> candidates = result.data['candidates'];
+    if (candidates.length > 1) return "multiple";
+    var placeId = candidates[0]["place_id"].toString();
     if (!kReleaseMode) print(placeId);
     return placeId;
   }
@@ -371,8 +385,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       wrapBuildColumnName(ctx),
-                      wrapBuildGoogleButtons(ctx),
                       wrapBuildColumnAdr(ctx),
+                      wrapBuildGoogleButtons(ctx),
                       wrapBuildColumnTag(ctx),
                       wrapBuildSelectedTagsList(),
                       wrapBuildColumnImages(),
@@ -469,14 +483,14 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          showSearchButton || showRegisterOnGoogleMapsButton
+          showSearchButton || showRegisterOnGMapsButton
               ? AnimatedOpacity(
                   curve: DEFAULT_ANIMATION_CURVE,
                   duration: DEFAULT_DURATION_OPACITY_FADE,
-                  opacity: !showSearchButton && !showRegisterOnGoogleMapsButton
+                  opacity: !showSearchButton && !showRegisterOnGMapsButton
                       ? 0.0
                       : 1.0,
-                  child: !showRegisterOnGoogleMapsButton
+                  child: !showRegisterOnGMapsButton
                       ? wrapBuildGoogleSearch(ctx)
                       : wrapBuildGoogleRegister(ctx))
               : SizedBox()
@@ -712,12 +726,22 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   SizedBox buildSizedBoxSeparator({multiplier = 1.0}) =>
       SizedBox(height: 10.0 * multiplier);
 
-  void githubUploadPlaceDetails() async {
+  Future<String> githubUploadPlaceDetails() async {
+    if (merchant == null) return null;
+    // Dialogs.confirmUploadPlace(context, () {
+
+    if (lastMerchantUploadId != null && lastMerchantUploadId == merchant.id) {
+      print("That place has already been uploaded");
+      return null;
+    }
     CreateFile createFile = githubCreateFileMerchantDetails(commitUser);
-
     //TODO REMOVE ALL SPECIAL ACCENTED CHARACTERS FROM THE APP AS IT MAKES THINGS TOO COMPLICATED, ON THE INTERNET WE DO NOT HAVE ACCENTS, OBEY!!!
-
-    await githubSendDataToRepository("flutter_coinector", createFile);
+    githubSendDataToRepository("flutter_coinector", createFile);
+    lastMerchantUploadId = merchant.id;
+    Clipboard.setData(ClipboardData(text: merchant.getBmapDataJson()));
+    return merchant.id;
+    //  });
+    return null;
   }
 
   CreateFile githubCreateFileMerchantDetails(CommitUser commitUser) {
@@ -830,24 +854,30 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     addSelectedTag(selected);
 
     if (allSelectedTags.length == MAX_INPUT_TAGS) {
-      merchant.tags = printAllTags();
+      overwriteTagsIfSelectionChanged();
       githubUploadPlaceDetails();
-      if (!kReleaseMode)
-        Clipboard.setData(ClipboardData(text: merchant.getBmapDataJson()));
-      return;
+      if (!kReleaseMode) return;
 
       showInputBCHyDASH();
       FocusScope.of(context).requestFocus(focusNodeInputDASH);
       scrollController.jumpTo(INPUT_DASH_POS);
     } else {
-      if (allSelectedTags.length > MAX_INPUT_TAGS)
-        throw new Exception("TOO MANY TAGS PARSED FROM COMMENTS");
+      if (allSelectedTags.length > MAX_INPUT_TAGS) {
+        //TODO solve this edgecase and select best tags
+        allSelectedTags.remove(allSelectedTags.length - 1);
+        return;
+        print("POTENTIAL TAGS MORE THAN FOUR" + allSelectedTags.toString());
+      }
       scrollController.jumpTo(INPUT_TAGS_POS);
     }
 
     setState(() {
       showSubmitBtn = kReleaseMode ? true : false;
     });
+  }
+
+  void overwriteTagsIfSelectionChanged() {
+    if (merchant != null) merchant.tags = parseTagsFromInputs();
   }
 
   void resetTags() {
@@ -970,13 +1000,13 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   void showRegisterOnGmaps() {
     setState(() {
-      showRegisterOnGoogleMapsButton = true;
+      showRegisterOnGMapsButton = true;
     });
   }
 
   void hideRegisterOnGmaps() {
     setState(() {
-      showRegisterOnGoogleMapsButton = false;
+      showRegisterOnGMapsButton = false;
     });
   }
 
@@ -996,6 +1026,12 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     scrollToWithAnimation(INPUT_TAGS_POS);
     setState(() {
       showInputTags = true;
+    });
+  }
+
+  void hideInputTag() {
+    setState(() {
+      showInputTags = false;
     });
   }
 
@@ -1058,10 +1094,13 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       }
     }
 
-    if (!showInputTags &&
-        input.length >= MIN_INPUT_ADR &&
+    if (inputAdr.length >= MIN_INPUT_ADR &&
+        inputName.length >= MIN_INPUT_NAME &&
         input != KEYWORD_CONTROLLER_ACTION) {
-      showInputTag();
+      showSearchBtn();
+      hideRegisterOnGmaps();
+      resetTags();
+      hideInputTag();
     }
 
     lastInputAdrWithCommand = input;
@@ -1084,11 +1123,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     }
 
     if (input.length >= MIN_INPUT_NAME && input != KEYWORD_CONTROLLER_ACTION) {
-      showSearchBtn();
-      hideRegisterOnGmaps();
-    }
-
-    if (hasTriedSearch && input != KEYWORD_CONTROLLER_ACTION) {
       showInputAddress();
     }
 
@@ -1125,7 +1159,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         ',' +
         buildJsonTag(allSelectedTags.elementAt(3)) +
         '],"a":"' +
-        printAllTags() +
+        parseTagsFromInputs() +
         '"}');
   }
 
@@ -1137,7 +1171,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         '"}';
   }
 
-  String printAllTags() {
+  String parseTagsFromInputs() {
     return searchTagsDelegate.alreadySelected.elementAt(0).toString() +
         "," +
         searchTagsDelegate.alreadySelected.elementAt(1).toString() +
@@ -1272,9 +1306,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     });
   }
 
-  void lockSelectedImagesAndUpload() {
+  void lockSelectedImagesAndUpload() async {
     cancelAllImageLoads = true;
     hasSelectedImages = true;
+    await githubUploadPlaceDetails();
     githubUploadPlaceImages();
   }
 }
