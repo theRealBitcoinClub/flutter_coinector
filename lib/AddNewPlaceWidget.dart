@@ -1311,5 +1311,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     hasSelectedImages = true;
     await githubUploadPlaceDetails();
     githubUploadPlaceImages();
+    Navigator.pop(context);
   }
 }
