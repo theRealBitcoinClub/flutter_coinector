@@ -1,4 +1,5 @@
 import 'package:Coinector/Localizer.dart';
+import 'package:Coinector/TagCoinector.dart';
 import 'package:Coinector/TagFactory.dart';
 import 'package:Coinector/translator.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
@@ -77,8 +78,8 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
     addMatchesLangSpecific(ctx, pattern, matches);
     addMatchesEnglish(pattern, matches, ctx);
 
-    addMatches(pattern, matches, Suggestions.locations);
-    addMatches(pattern, matches, TagNames.titleTags);
+    addMatchesString(pattern, matches, Suggestions.locations);
+    addMatchesString(pattern, matches, TagNames.titleTags);
 
     hasResults = true;
     if (matches.length == 0) {
@@ -91,7 +92,8 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
   }
 
   void addMatchesEnglish(String pattern, Set<String> matches, ctx) {
-    addMatches(pattern, matches, TagFactory.getTags(ctx, lang: LangCode.EN));
+    addMatchesTags(
+        pattern, matches, TagFactory.getTags(ctx, lang: LangCode.EN));
   }
 
   String translate(ctx, text) {
@@ -100,10 +102,17 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
   }
 
   void addMatchesLangSpecific(ctx, String pattern, Set<String> matches) {
-    addMatches(pattern, matches, TagFactory.getTags(ctx));
+    addMatchesTags(pattern, matches, TagFactory.getTags(ctx));
   }
 
-  void addMatches(String pattern, Set<String> matches, set) {
+  void addMatchesTags(
+      String pattern, Set<String> matches, Set<TagCoinector> set) {
+    for (int x = 0; x < set.length; x++) {
+      addMatch(x, pattern, matches, set.elementAt(x).toUI());
+    }
+  }
+
+  void addMatchesString(String pattern, Set<String> matches, Set<String> set) {
     for (int x = 0; x < set.length; x++) {
       addMatch(x, pattern, matches, set.elementAt(x));
     }
