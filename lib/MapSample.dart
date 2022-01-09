@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:Coinector/TagCoinector.dart';
 import 'package:Coinector/translator.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +14,6 @@ import 'Dialogs.dart';
 import 'InternetConnectivityChecker.dart';
 import 'ListModel.dart';
 import 'Merchant.dart';
-import 'TagParser.dart';
 import 'Toaster.dart';
 import 'pages.dart';
 
@@ -222,7 +222,8 @@ class MapSampleState extends State<MapSample> {
     return InfoWindow(
         title: merchant.name +
             ": " +
-            TagParser.parseTagIndexToText(merchant.tags.split(","))
+            TagCoinector.parseTagIndexToText(
+                    merchant.tagsDatabaseFormat.split(","))
                 .toUpperCase(),
         onTap: () {
           closeMapReturnMerchant(merchant);

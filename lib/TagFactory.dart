@@ -1,12 +1,12 @@
 import 'package:Coinector/Localizer.dart';
 
-import 'Tag.dart';
+import 'TagCoinector.dart';
 
 class TagFactory {
-  static Set<Tag> _tagz;
+  static Set<TagCoinector> _tagz;
   static LangCode _lastLangCode;
 
-  static Set<Tag> getTags(ctx, {LangCode lang}) {
+  static Set<TagCoinector> getTags(ctx, {LangCode lang}) {
     LangCode currentLangCode = Localizer.getLocale(ctx);
     if (_tagz == null || currentLangCode != _lastLangCode)
       _tagz = _createTags(lang != null ? lang : currentLangCode);
@@ -20,13 +20,13 @@ class TagFactory {
   That list is being parsed from a .json file later on, currently its still inside the Tag.dart file as static array
    */
 
-  static Set<Tag> _createTags(LangCode lang) {
-    Set<Tag> tags = {};
+  static Set<TagCoinector> _createTags(LangCode lang) {
+    Set<TagCoinector> tags = {};
     Set<String> rawTags = _getRawTags(lang);
     int index = 0;
     for (String rawTag in rawTags) {
       List<String> splittedTag = rawTag.split(" ");
-      tags.add(Tag(index++, splittedTag[0],
+      tags.add(TagCoinector(index++, splittedTag[0],
           splittedTag.length > 0 ? splittedTag[1] : ""));
     }
     return tags;
@@ -37,29 +37,29 @@ class TagFactory {
 
     switch (lang) {
       case LangCode.EN:
-        rawTags = Tag.tagTextEN;
+        rawTags = TagCoinector.tagTextEN;
         break;
       case LangCode.DE:
-        rawTags = Tag.tagTextDE;
+        rawTags = TagCoinector.tagTextDE;
         break;
       case LangCode.IT:
-        rawTags = Tag.tagTextIT;
+        rawTags = TagCoinector.tagTextIT;
         break;
       case LangCode.FR:
-        rawTags = Tag.tagTextFR;
+        rawTags = TagCoinector.tagTextFR;
         break;
       case LangCode.ES:
-        rawTags = Tag.tagTextES;
+        rawTags = TagCoinector.tagTextES;
         break;
       case LangCode.ID:
-        rawTags = Tag.tagTextINDONESIA;
+        rawTags = TagCoinector.tagTextINDONESIA;
         break;
       case LangCode.JA:
-        rawTags = Tag.tagTextJP1;
-        rawTags.addAll(Tag.tagTextJP1);
+        rawTags = TagCoinector.tagTextJP1;
+        rawTags.addAll(TagCoinector.tagTextJP1);
         break;
       default:
-        rawTags = Tag.tagTextEN;
+        rawTags = TagCoinector.tagTextEN;
         print("ERROR LANGUAGE CODE NOT FOUND");
         break;
     }

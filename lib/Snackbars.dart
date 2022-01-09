@@ -4,6 +4,8 @@ import 'package:Coinector/translator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 
+import 'TagCoinector.dart';
+
 class Snackbars {
   static void _showSnackBar(
       GlobalKey<ScaffoldState> _scaffoldKey, BuildContext ctx, String msgId,
@@ -63,11 +65,11 @@ class Snackbars {
   }
 
   static void showMatchingSnackBar(
-      scaffoldKey, ctx, String fileName, String search, int index) {
+      scaffoldKey, ctx, String fileName, String search, TagCoinector tag) {
     if (fileName != null)
       _showSnackBar(scaffoldKey, ctx, "snackbar_filtered_by_location",
           additionalText: search);
-    else if (index != -1 && fileName == null)
+    else if (tag != null && fileName == null)
       _showSnackBar(scaffoldKey, ctx, "snackbar_filtered_by_tag",
           additionalText: search);
     else

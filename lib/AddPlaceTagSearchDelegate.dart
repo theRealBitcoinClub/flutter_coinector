@@ -4,11 +4,11 @@ import 'package:Coinector/translator.dart';
 import 'package:flutter/material.dart';
 
 import 'SuggestionList.dart';
-import 'Tag.dart';
+import 'TagCoinector.dart';
 import 'Toaster.dart';
 
 class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
-  Set<int> alreadySelected = Set.from([]);
+  Set<int> alreadySelectedTagIndexes = Set.from([]);
 
   @override
   Widget buildLeading(BuildContext context) {
@@ -41,9 +41,10 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
     return matches;
   }
 
-  void addMatches(String pattern, Set<String> matches, Set<Tag> sourceSet) {
+  void addMatches(
+      String pattern, Set<String> matches, Set<TagCoinector> sourceSet) {
     for (int x = 0; x < sourceSet.length; x++) {
-      if (alreadySelected.contains(x)) continue;
+      if (alreadySelectedTagIndexes.contains(x)) continue;
       addMatch(x, pattern, matches, sourceSet.elementAt(x).toUI());
     }
   }
@@ -122,9 +123,9 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
     ];
   }
 
-  Set<String> parseTagsToSuggestions(Set<Tag> tags) {
+  Set<String> parseTagsToSuggestions(Set<TagCoinector> tags) {
     Set<String> parsedSuggestions = Set.from([]);
-    tags.forEach((Tag t) {
+    tags.forEach((TagCoinector t) {
       if (!t.text.contains("🍔🍔🍔")) {
         parsedSuggestions =
             checkIfAlreadySelectedAndAddIfNot(t, parsedSuggestions);
@@ -134,8 +135,9 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
   }
 
   Set<String> checkIfAlreadySelectedAndAddIfNot(
-      Tag t, Set<String> cleanSuggestions) {
-    if (alreadySelected.length == 0 || !alreadySelected.contains(t.id)) {
+      TagCoinector t, Set<String> cleanSuggestions) {
+    if (alreadySelectedTagIndexes.length == 0 ||
+        !alreadySelectedTagIndexes.contains(t.id)) {
       cleanSuggestions.add(t.toUI());
     }
     return cleanSuggestions;

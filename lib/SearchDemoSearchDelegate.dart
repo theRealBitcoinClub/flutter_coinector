@@ -7,9 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'SuggestionList.dart';
 import 'Suggestions.dart';
-import 'Tag.dart';
 import 'TagNames.dart';
-import 'UrlLauncher.dart';
 
 class SearchDemoSearchDelegate extends SearchDelegate<String> {
   final Set<String> _historyBackup = Set.from(Suggestions.locations);
@@ -76,7 +74,8 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
   _getSuggestions(String pattern, ctx) {
     Set<String> matches = Set.from([]);
 
-    addCountrySpecificMatches(ctx, pattern, matches);
+    addMatchesLangSpecific(ctx, pattern, matches);
+    addMatchesEnglish(pattern, matches, ctx);
 
     addMatches(pattern, matches, Suggestions.locations);
     addMatches(pattern, matches, TagNames.titleTags);
@@ -91,35 +90,17 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
     return matches;
   }
 
+  void addMatchesEnglish(String pattern, Set<String> matches, ctx) {
+    addMatches(pattern, matches, TagFactory.getTags(ctx, lang: LangCode.EN));
+  }
+
   String translate(ctx, text) {
     String t = Translator.translate(ctx, text);
     return t.isNotEmpty ? t : " ";
   }
 
-  void addCountrySpecificMatches(ctx, String pattern, Set<String> matches) {
-    addMatches(pattern, matches, TagFactory.tgz);
-    switch (Localizer.getLocale(ctx)) {
-      case "de":
-        addMatches(pattern, matches, Tags.tagTextDE);
-        break;
-      case "es":
-        addMatches(pattern, matches, Tags.tagTextES);
-        break;
-      case "ja":
-        addMatches(pattern, matches, Tags.tagTextJP1);
-        addMatches(pattern, matches, Tags.tagTextJP2);
-        break;
-      case "fr":
-        addMatches(pattern, matches, Tags.tagTextFR);
-        break;
-      case "id":
-        addMatches(pattern, matches, Tags.tagTextINDONESIA);
-        break;
-      case "it":
-        addMatches(pattern, matches, Tags.tagTextIT);
-        break;
-    }
-    addMatches(pattern, matches, Tags.tagTextEN);
+  void addMatchesLangSpecific(ctx, String pattern, Set<String> matches) {
+    addMatches(pattern, matches, TagFactory.getTags(ctx));
   }
 
   void addMatches(String pattern, Set<String> matches, set) {

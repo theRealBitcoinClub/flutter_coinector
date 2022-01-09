@@ -1,5 +1,7 @@
 //{"p":"trbc", "x":"41.406595", "y":"2.16655","n":"TRBC - The Real Bitcoin Club", "t":"99","c":"3","s":"5.0", "d":"3", "a":"0,1,2,34", "l":"Barcelona, Spain, Europe"}
 
+import 'package:Coinector/TagCoinector.dart';
+
 import 'Place.dart';
 //import 'package:geohash/geohash.dart';
 //import 'package:clustering_google_maps/clustering_google_maps.dart';
@@ -18,8 +20,8 @@ class Merchant {
   String reviewStars;
   int discount;
   String
-      tags; //TODO SPLIT THE TAGS ONE TIME AND SAVE THEM IN TWO ARRAYS ONE INT ARRAY FOR SEARCH AND ONE STRING ARRAY WITH PARSED TAGS
-  Set<int> inputTags;
+      tagsDatabaseFormat; //TODO SPLIT THE TAGS ONE TIME AND SAVE THEM IN TWO ARRAYS ONE INT ARRAY FOR SEARCH AND ONE STRING ARRAY WITH PARSED TAGS
+  Set<TagCoinector> tagsInput;
   String location;
   String
       serverId; //TODO PROGRAM A BACKUP SERVER IF GITHUB CANT SERVE DATA USE FIREBASE AND IF THATS ALSO BLOCKED THEN USE IPFS
@@ -53,7 +55,7 @@ class Merchant {
         '","d":"' +
         discount.toString() +
         '","a":"' +
-        tags +
+        tagsDatabaseFormat +
         '","l":"' +
         location +
         '","b":"' +
@@ -72,7 +74,7 @@ class Merchant {
       this.reviewCount,
       this.reviewStars,
       this.discount,
-      this.tags,
+      this.tagsDatabaseFormat,
       this.location,
       this.brand,
       this.acceptedCoins);
@@ -87,7 +89,7 @@ class Merchant {
         reviewCount = json['c'],
         reviewStars = json['s'],
         discount = int.parse(json['d']),
-        tags = json['a'],
+        tagsDatabaseFormat = json['a'],
         //TODO use one single source of locations, take the suggestions or the placesIDAddress as reference
         location = json['l'],
         brand = json['b'] != null ? int.parse(json['b']) : null,
