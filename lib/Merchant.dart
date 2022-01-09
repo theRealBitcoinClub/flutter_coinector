@@ -24,7 +24,7 @@ class Merchant {
   Set<TagCoinector> tagsInput;
   String location;
   String
-      serverId; //TODO PROGRAM A BACKUP SERVER IF GITHUB CANT SERVE DATA USE FIREBASE AND IF THATS ALSO BLOCKED THEN USE IPFS
+      serverIdOrFileName; //TODO PROGRAM A BACKUP SERVER IF GITHUB CANT SERVE DATA USE FIREBASE AND IF THATS ALSO BLOCKED THEN USE IPFS
   Place place;
   String distance;
   double distanceInMeters = -1;

@@ -146,7 +146,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       String fileName) async {
     updateCurrentPosition();
 
-    if (_isUnfilteredSearch(tagFilter)) {
+    if (_isUnfilteredSearch(tagFilter, locationFilter)) {
       _updateDistanceToAllMerchantsIfNotDoneYet();
       if (isUnfilteredList) return;
       //if (unfilteredLists.length != 0) updateListModel(unfilteredLists);
@@ -238,28 +238,24 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     else {
       decoded = await FileCache.loadAndDecodeAsset(fileName);
     }
-    parseAssetUpdateListModel(
-        tag, locationFilter, decoded, fileName, fileName != null);
+    parseAssetUpdateListModel(tag, locationFilter, decoded, fileName);
   }
 
-  bool _isUnfilteredSearch(TagCoinector tag) => tag == null;
+  bool _isUnfilteredSearch(TagCoinector tag, String locationFilter) =>
+      tag == null && locationFilter == null;
 
-  Future<void> parseAssetUpdateListModel(
-      TagCoinector tag,
-      String locationFilter,
-      List places,
-      String serverId,
-      bool isLocationSearch) async {
+  Future<void> parseAssetUpdateListModel(TagCoinector tag,
+      String locationFilter, List places, String serverIdOrFileName) async {
     initTempListModel();
     for (int i = 0; i < places.length; i++) {
       Merchant m2 = Merchant.fromJson(places.elementAt(i));
-      m2.serverId = serverId;
+      m2.serverIdOrFileName = serverIdOrFileName;
       //at the moment there is no PAY feature: m2.isPayEnabled = await AssetLoader.loadReceivingAddress(m2.id) != null;
 
       _insertIntoTempList(m2, tag, locationFilter);
     }
 
-    if (!isLocationSearch) mapPosition = null;
+    //if (locationFilter == null && tag == null) mapPosition = null;
 
     if (unfilteredLists.length == 0) initUnfilteredLists();
 
@@ -409,7 +405,11 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         filterWordIndexDoesNotMatch(tag, m2) &&
         !_containsLocation(m2, location) &&
         !_containsTitle(m2, location)) return;
-    if (tag == null)
+
+    if (location != null && !_containsLocation(m2, location)) return;
+
+    if (tag ==
+        null) //TODO why is this setting the position on every single merchant????
       mapPosition = Position(
           latitude: m2.x,
           longitude: m2.y,
@@ -457,7 +457,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     return tag != null && tag != null && !isUnfilteredRequest(tag);
   }
 
-  bool isUnfilteredRequest(TagCoinector tag) => _isUnfilteredSearch(tag);
+  bool isUnfilteredRequest(TagCoinector tag) => _isUnfilteredSearch(tag, null);
 
   void initListModelSeveralTimes(List lists, bool keepListKeys) {
     lists.clear();
@@ -1211,7 +1211,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     Snackbars.showMatchingSnackBar(
         _scaffoldKey, ctx, fileName, capitalize(search), tag);
 
-    loadAssets(ctx, tag, search, fileName);
+    loadAssets(ctx, tag, tag != null ? null : search, fileName);
 
     setState(() {
       _searchTerm = search;
