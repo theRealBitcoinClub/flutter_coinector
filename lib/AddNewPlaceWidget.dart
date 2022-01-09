@@ -205,6 +205,14 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     } else {
       await loadMerchantsDetailsPrefillAddress(placeId);
       showInputTag();
+      //TODO HANDLE MORE TAGS LATER, LET ADMIN CHOOSE BEST TAGS OR SIMPLY LET CONTENT CONTAIN MORE TAGS
+      //TODO USER PROPER STATE PATTERN INSTEAD OF THIS CRAZY VARIABLING
+      setState(() {
+        for (int tagIndex in merchant.inputTags) {
+          allSelectedTags.add(Tags.tagText.elementAt(tagIndex));
+          searchTagsDelegate.alreadySelected.add(tagIndex);
+        }
+      });
       loadGooglePlacePhotos(placeId);
     }
   }
@@ -213,21 +221,13 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     Toaster.showMerchantNotFoundOnGoogleMaps(context);
     showRegisterOnGmaps();
     hideSearchBtn();
-    resetTags();
-    hideInputTag();
-    scrollToWithAnimation(0.0);
+    // resetTags();
+    // hideInputTag();
+    // scrollToWithAnimation(0.0);
   }
 
   Future<void> loadMerchantsDetailsPrefillAddress(String placeId) async {
     merchant = await findPlaceIdDetails(placeId);
-    //TODO HANDLE MORE TAGS LATER, LET ADMIN CHOOSE BEST TAGS OR SIMPLY LET CONTENT CONTAIN MORE TAGS
-    //TODO USER PROPER STATE PATTERN INSTEAD OF THIS CRAZY VARIABLING
-    setState(() {
-      for (int tagIndex in merchant.inputTags) {
-        allSelectedTags.add(Tags.tagText.elementAt(tagIndex));
-        searchTagsDelegate.alreadySelected.add(tagIndex);
-      }
-    });
     //overwriteTagsIfSelectionChanged();
     githubUploadPlaceDetails();
 
@@ -872,7 +872,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     inputTag(selected);
   }
 
-  //TODO sort this mess out, do not reuse this method in such a dirty way
   void inputTag(String selected) {
     if (!kReleaseMode) print("\nSELECTED:" + selected);
     addSelectedTag(selected);
@@ -882,12 +881,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       FocusScope.of(context).requestFocus(focusNodeInputDASH);
       scrollController.jumpTo(INPUT_DASH_POS);
     } else {
-      if (allSelectedTags.length > MAX_INPUT_TAGS) {
-        //TODO solve this edgecase and select best tags
-        allSelectedTags.remove(allSelectedTags.length - 1);
-        return;
-        print("POTENTIAL TAGS MORE THAN FOUR" + allSelectedTags.toString());
-      }
       scrollController.jumpTo(INPUT_TAGS_POS);
     }
 
@@ -1117,16 +1110,23 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     if (inputAdr.length >= MIN_INPUT_ADR &&
         inputName.length >= MIN_INPUT_NAME &&
         input != KEYWORD_CONTROLLER_ACTION) {
-      showSearchBtn();
-      hideRegisterOnGmaps();
-      resetTags();
-      hideInputTag();
+      resetForm();
     }
 
     lastInputAdrWithCommand = input;
     if (input != KEYWORD_CONTROLLER_ACTION) {
       inputAdr = input;
     }
+  }
+
+  void resetForm() {
+    showSearchBtn();
+    hideRegisterOnGmaps();
+    resetTags();
+    resetImages();
+    hideInputTag();
+    scrollToWithAnimation(0.0);
+    cancelAllImageLoads = true;
   }
 
   void updateInputName(String input) {
@@ -1144,6 +1144,12 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
     if (input.length >= MIN_INPUT_NAME && input != KEYWORD_CONTROLLER_ACTION) {
       showInputAddress();
+    }
+
+    if (inputAdr.length >= MIN_INPUT_ADR &&
+        inputName.length >= MIN_INPUT_NAME &&
+        input != KEYWORD_CONTROLLER_ACTION) {
+      resetForm();
     }
 
     lastInputNameWithCommand = input;
@@ -1279,9 +1285,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       images = [];
       selectedImages = [];
       imagesSuccess = Set<String>();
-      hasSelectedImages = false;
-      cancelAllImageLoads = false;
     });
+    hasSelectedImages = false;
+    cancelAllImageLoads = false;
   }
 
   Future<void> loadGooglePlacePhoto(Photo photo, index) async {
