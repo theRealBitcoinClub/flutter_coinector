@@ -1,11 +1,20 @@
 // Identifier a
 
-class Tags {
-  final String content;
+class Tag {
+  final String text;
+  final String emoji;
   final int id;
 
-  Tags(this.content, this.id);
+  Tag(this.id, this.text, this.emoji);
 
+  String toUI() {
+    return text.toUpperCase() + " " + emoji;
+  }
+
+  String toString() {
+    return id.toString() + text + emoji;
+  }
+/*
   static int getTagIndex(String searchTerm) {
     if (!Tags.tagText.any((String e) {
           return e.toLowerCase().contains(searchTerm.toLowerCase());
@@ -44,10 +53,10 @@ class Tags {
     }
     return -1;
   }
-
+*/
   //Only if the tag is totally unused, that means there are zero results when searching inside the app, then it can be replaced by another tag
 
-  static final tagText = const {
+  static final tagTextEN = const {
     'Spicy 🌶️', //0
     'Salty 🥨',
     'Sour 😜',

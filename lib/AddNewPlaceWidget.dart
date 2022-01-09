@@ -125,7 +125,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   CommitUser commitUser;
 
-  bool cancelAllImageLoads = false;
+  // bool cancelAllImageLoads = false;
 
   Set<String> imagesSuccess;
 
@@ -209,7 +209,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       //TODO USER PROPER STATE PATTERN INSTEAD OF THIS CRAZY VARIABLING
       setState(() {
         for (int tagIndex in merchant.inputTags) {
-          allSelectedTags.add(Tags.tagText.elementAt(tagIndex));
+          allSelectedTags.add(Tags.tagTextEN.elementAt(tagIndex));
           searchTagsDelegate.alreadySelected.add(tagIndex);
         }
       });
@@ -318,7 +318,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       String review = r["text"].toString().toLowerCase();
       //print(review + "\n");
       //TODO replace accented characters with normal ones to match more, use normalize method
-      matchTags(resultTags, index, review, Tags.tagText);
+      matchTags(resultTags, index, review, Tags.tagTextEN);
       matchTags(resultTags, index, review, Tags.tagTextDE);
       matchTags(resultTags, index, review, Tags.tagTextES);
       matchTags(resultTags, index, review, Tags.tagTextFR);
@@ -1126,7 +1126,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     resetImages();
     hideInputTag();
     scrollToWithAnimation(0.0);
-    cancelAllImageLoads = true;
+    //cancelAllImageLoads = true; TODO Would make sense here but there is a sync issue, you need to use better state pattern
   }
 
   void updateInputName(String input) {
@@ -1266,7 +1266,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         print("PHOTOCOUNT: " + result.result.photos.length.toString());
         for (int x = 0; x < 10; x++)
           for (var photo in result.result.photos) {
-            if (cancelAllImageLoads) return;
+            // if (cancelAllImageLoads) retbmap_merchant_images_jpegurn;
             if (!imagesSuccess.contains(photo.photoReference)) {
               print("loadGooglePlacePhoto: " +
                   x.toString() +
@@ -1285,9 +1285,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       images = [];
       selectedImages = [];
       imagesSuccess = Set<String>();
+      hasSelectedImages = false;
+      // cancelAllImageLoads = false;
     });
-    hasSelectedImages = false;
-    cancelAllImageLoads = false;
   }
 
   Future<void> loadGooglePlacePhoto(Photo photo, index) async {
@@ -1308,7 +1308,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     await Future.delayed(const Duration(milliseconds: 100));
     if (result != null) {
       setState(() {
-        if (cancelAllImageLoads) return;
+        // if (cancelAllImageLoads) return;
         images.add(result);
         print(
             "imagesSuccess: " + index.toString() + " " + photo.photoReference);
@@ -1334,7 +1334,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void lockSelectedImagesAndUpload() async {
-    cancelAllImageLoads = true;
+    // cancelAllImageLoads = true;
     hasSelectedImages = true;
     await githubUploadPlaceDetails();
     await githubUploadPlaceImages();

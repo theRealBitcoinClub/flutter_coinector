@@ -1,3 +1,5 @@
+import 'package:Coinector/Localizer.dart';
+import 'package:Coinector/TagFactory.dart';
 import 'package:Coinector/translator.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
@@ -95,7 +97,8 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
   }
 
   void addCountrySpecificMatches(ctx, String pattern, Set<String> matches) {
-    switch (UrlLauncher.getLocale(ctx)) {
+    addMatches(pattern, matches, TagFactory.tgz);
+    switch (Localizer.getLocale(ctx)) {
       case "de":
         addMatches(pattern, matches, Tags.tagTextDE);
         break;
@@ -116,7 +119,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
         addMatches(pattern, matches, Tags.tagTextIT);
         break;
     }
-    addMatches(pattern, matches, Tags.tagText);
+    addMatches(pattern, matches, Tags.tagTextEN);
   }
 
   void addMatches(String pattern, Set<String> matches, set) {
