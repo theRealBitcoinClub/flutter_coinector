@@ -1,10 +1,10 @@
-import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:Coinector/ConfigReader.dart';
+import 'package:Coinector/GithubCoinector.dart';
+import 'package:Coinector/GooglePlacesApiCoinector.dart';
 import 'package:Coinector/Localizer.dart';
 import 'package:Coinector/Merchant.dart';
-import 'package:Coinector/TagBrands.dart';
 import 'package:Coinector/TagCoinector.dart';
 import 'package:Coinector/TagFactory.dart';
 import 'package:Coinector/translator.dart';
@@ -12,8 +12,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:github/github.dart';
-import 'package:google_place/google_place.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';
 import 'Dialogs.dart';
@@ -26,10 +24,12 @@ const DEFAULT_DURATION_SCROLL_ANIMATION = Duration(milliseconds: 2000);
 const DEFAULT_ANIMATION_CURVE = Curves.decelerate;
 const DEFAULT_DURATION_OPACITY_FADE = Duration(milliseconds: 3000);
 const DURATION_OPACITY_FADE_SUBMIT_BTN = Duration(milliseconds: 5000);
-const INPUT_DASH_POS = 550.0;
-const INPUT_BCH_POS = 700.0;
-const INPUT_TAGS_POS = 200.0;
-const INPUT_ADR_POS = 130.0;
+// const SCROLL_POS_DASH = 550.0;
+// const SCROLL_POS_BCH = 700.0;
+const SCROLL_POS_IMAGES = 250.0;
+const SCROLL_POS_TAGS = 200.0;
+const SCROLL_POS_ADR = 130.0;
+const SCROLL_POS_NAME = 0.0;
 const KEYWORD_CONTROLLER_ACTION = "controller";
 
 const int MIN_INPUT_ADR =
@@ -43,6 +43,21 @@ const int MAX_INPUT_NAME = 50;
 const int MAX_INPUT_DASH = 36; //dash:XintDskT8uV59N9HNvbpJ27nKNtbyHiyUn
 const int MAX_INPUT_BCH =
     54; //bitcoincash:qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a
+
+const int IMAGE_HEIGHT = 336; //kReleaseMode ? 336 : 112;
+const int IMAGE_WIDTH = 640; //kReleaseMode ? 640 : 213;
+
+enum FormStep {
+  IN_NAME,
+  IN_ADR,
+  HIT_SEARCH,
+  HIT_GOOGLE,
+  SELECT_TAGS,
+  SELECT_IMAGES,
+  SELECT_BRAND,
+  SELECT_COINS,
+  SUBMIT
+}
 
 class AddNewPlaceWidget extends StatefulWidget {
   final int selectedType;
@@ -100,7 +115,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   bool showInputTags = false;
   bool showSearchButton = false;
   String placeId;
-  GooglePlace googlePlace;
   List<Uint8List> images = [];
   List<Uint8List> selectedImages = [];
 
@@ -119,18 +133,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   bool hasSelectedImages = false;
 
-  static const int IMAGE_HEIGHT = kReleaseMode ? 336 : 112;
-  static const int IMAGE_WIDTH = kReleaseMode ? 640 : 213;
-
-  GitHub github;
-
-  CommitUser commitUser;
-
-  // bool cancelAllImageLoads = false;
+  bool cancelAllImageLoads = false;
 
   Set<String> imagesSuccess;
 
-  String lastMerchantUploadId;
+  GithubCoinector githubCoinector = GithubCoinector();
 
   _AddNewPlaceWidgetState(
       this.selectedType, this.accentColor, this.typeTitle, this.actionBarColor);
@@ -138,30 +145,23 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   @override
   void initState() {
     super.initState();
-    initGithub();
-    googlePlace = GooglePlace(GOOGLE_PLACES_KEY,
-        proxyUrl: kIsWeb ? 'cors-anywhere.herokuapp.com' : null);
+    githubCoinector.init();
 
     initFocusNodes();
     initInputListener();
-  }
 
-  void initGithub() {
-    github =
-        GitHub(auth: Authentication.withToken(ConfigReader.getGithubKey()));
-    commitUser = CommitUser("therealbitcoinclub", "trbc@bitcoinmap.cash");
-    print("GITHUB" + github.toString());
+    drawFormStep(FormStep.IN_NAME);
   }
 
   void initInputListener() {
-    controllerInputDASH = TextEditingController();
+    /*controllerInputDASH = TextEditingController();
     controllerInputDASH.addListener(() {
       updateInputDASH(KEYWORD_CONTROLLER_ACTION);
     });
     controllerInputBCH = TextEditingController();
     controllerInputBCH.addListener(() {
       updateInputBCH(KEYWORD_CONTROLLER_ACTION);
-    });
+    });*/
     controllerInputAdr = TextEditingController();
     controllerInputAdr.addListener(() {
       updateInputAdr(KEYWORD_CONTROLLER_ACTION);
@@ -193,7 +193,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     if (placeId == null) {
       //if (hasTriedSearch) {
       //if (!kReleaseMode) print("has tried search true");
-      offerGoogleBusinessSignup();
+      drawFormStep(FormStep.HIT_GOOGLE);
       //} else {
       //if (!kReleaseMode) print("has tried search false");
       //TODO always use snackbar or toasts but dont mix them
@@ -204,74 +204,39 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       // });
       //}
     } else {
-      await loadMerchantsDetailsPrefillAddress(placeId);
-      showInputTag();
+      await loadDetailsFromGoogle();
       //TODO HANDLE MORE TAGS LATER, LET ADMIN CHOOSE BEST TAGS OR SIMPLY LET CONTENT CONTAIN MORE TAGS
       //TODO USER PROPER STATE PATTERN INSTEAD OF THIS CRAZY VARIABLING
-      setState(() {
-        for (TagCoinector tag in merchant.tagsInput) {
-          allSelectedTags.add(tag);
-          searchTagsDelegate.alreadySelectedTagIndexes.add(tag.id);
-        }
-      });
-      loadGooglePlacePhotos(placeId);
+      prefillNameAddressAndTags();
+      loadGooglePlacePhotos(merchant.placeDetailsData);
     }
   }
 
-  void offerGoogleBusinessSignup() {
-    Toaster.showMerchantNotFoundOnGoogleMaps(context);
-    showRegisterOnGmaps();
-    hideSearchBtn();
-    // resetTags();
-    // hideInputTag();
-    // scrollToWithAnimation(0.0);
+  void prefillNameAddressAndTags() {
+    setState(() {
+      prefillName(merchant);
+      prefillAddress(merchant);
+      for (TagCoinector tag in merchant.tagsInput) {
+        allSelectedTags.add(tag);
+        searchTagsDelegate.alreadySelectedTagIndexes.add(tag.id);
+      }
+      if (allSelectedTags.length >= MIN_INPUT_TAGS)
+        drawFormStep(FormStep.SELECT_IMAGES);
+      else
+        drawFormStep(FormStep.SELECT_TAGS);
+    });
   }
 
-  Future<void> loadMerchantsDetailsPrefillAddress(String placeId) async {
-    merchant = await findPlaceIdDetails(placeId);
-
-    prefillName(merchant);
-    prefillAddress(merchant);
-    hideRegisterOnGmaps();
-    hideSearchBtn();
-    _fieldFocusChange(context, focusNodeInputAdr,
-        null); //TODO READ THE FUNCTION NAME THIS UI CHANGES HERE IS RIDICULOUS
-    _fieldFocusChange(context, focusNodeInputName, null);
-    scrollToWithAnimation(INPUT_TAGS_POS);
+  Future<void> loadDetailsFromGoogle() async {
+    var data = await GooglePlacesApiCoinector.findPlaceIdDetails(placeId);
+    merchant = parseGmapsDataToMerchant(placeId, data);
+    merchant.placeDetailsData = data;
   }
 
-  void prefillAddress(Merchant merchant) {
-    controllerInputAdr.clear();
-    controllerInputAdr.text = merchant.location;
-    showInputAddress();
-    updateInputAdr(merchant.location);
-  }
-
-  void prefillName(Merchant merchant) {
-    controllerInputName.clear();
-    controllerInputName.text = merchant.name;
-    updateInputName(merchant.name);
-  }
-
-  Future<Merchant> findPlaceIdDetails(placeId) async {
-    var result = await Dio().get(
-        "https://maps.googleapis.com/maps/api/place/details/json?key=" +
-            GOOGLE_PLACES_KEY +
-            "&place_id=" +
-            placeId);
-    var data = result.data["result"];
-
-    Merchant m = parseGmapsDataToMerchant(placeId, data);
-
-    if (!kReleaseMode) printWrapped(m.getBmapDataJson());
-    return m;
-  }
-
-  Merchant parseGmapsDataToMerchant(placeId, data) {
+  Merchant parseGmapsDataToMerchant(String placeId, data) {
     var reviews = data["reviews"];
     Set<TagCoinector> resultTags = parseReviewsSearchForMatchingTags(reviews);
     String tags = prefillTags(resultTags);
-
     return createMerchant(data, placeId, tags, resultTags);
   }
 
@@ -293,6 +258,18 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         "0");
     m.tagsInput = tagsInput;
     return m;
+  }
+
+  void prefillAddress(Merchant merchant) {
+    controllerInputAdr.clear();
+    controllerInputAdr.text = merchant.location;
+    updateInputAdr(merchant.location);
+  }
+
+  void prefillName(Merchant merchant) {
+    controllerInputName.clear();
+    controllerInputName.text = merchant.name;
+    updateInputName(merchant.name);
   }
 
   String prefillTags(Set<TagCoinector> inputTags) {
@@ -382,7 +359,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     controllerInputBCH.dispose();
     controllerInputAdr.dispose();
     controllerInputName.dispose();
-    github.dispose();
+    githubCoinector.dispose();
     Dialogs.dismissDialog();
     super.dispose();
   }
@@ -411,7 +388,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                       wrapBuildColumnTag(ctx),
                       wrapBuildSelectedTagsList(),
                       wrapBuildColumnImages(),
-                      wrapBuildColumnDASHyBCH(ctx),
+                      // wrapBuildColumnDASHyBCH(ctx),
                     ],
                   ),
                 ),
@@ -445,14 +422,13 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
               : 1.0,
       child: buildColumnAdr(ctx));
 
-  bool hasInputAllTags() =>
-      allSelectedTags.length == TagCoinector.MAX_INPUT_TAGS;
+  bool hasInputAllTags() => allSelectedTags.length == MIN_INPUT_TAGS;
 
-  Widget wrapBuildColumnDASHyBCH(ctx) => AnimatedOpacity(
+  /* Widget wrapBuildColumnDASHyBCH(ctx) => AnimatedOpacity(
       curve: DEFAULT_ANIMATION_CURVE,
       duration: DEFAULT_DURATION_OPACITY_FADE,
       opacity: !showInputDASHyBCH ? OPACITY_ITEM_DEACTIVATED : 1.0,
-      child: buildColumnDASHyBCH(ctx));
+      child: buildColumnDASHyBCH(ctx));*/
 
   Widget wrapBuildSubmitBtn() => AnimatedOpacity(
         curve: DEFAULT_ANIMATION_CURVE,
@@ -633,10 +609,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             Toaster.showAddExactlyFourTags(ctx);
             return;
           }
-          if (!hasMinInput(inputBCH) && !hasMinInput(inputDASH)) {
+          /*if (!hasMinInput(inputBCH) && !hasMinInput(inputDASH)) {
             Toaster.showAddAtleastOneReceivingAddress(ctx);
             return;
-          }
+          }*/
 
           submitData(ctx);
         },
@@ -646,8 +622,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   void submitData(ctx) async {
     //overwriteTagsIfSelectionChanged();
-    await githubUploadPlaceDetails();
-    await githubUploadPlaceImages();
+    await githubCoinector.githubUploadPlaceDetails(merchant);
+    await githubCoinector.githubUploadPlaceImages(selectedImages, merchant);
 
     //TODO SHOW PROGRESS BAR OF UPLOADS USING MULTIPLE FUTURE BLOCKS FOR EACH IMAGE
     Navigator.pop(context);
@@ -660,8 +636,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     });*/
   }
 
+/*
   bool hasMinInput(input) => input.length > MIN_INPUT_BCHyDASH;
-
   Column buildColumnDASHyBCH(ctx) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -714,6 +690,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     );
   }
 
+ */
+
   Column buildColumnAdr(ctx) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -735,7 +713,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             ctx,
             focusNodeInputAdr,
             null,
-            INPUT_ADR_POS,
+            SCROLL_POS_ADR,
             Icons.local_post_office,
             MAX_INPUT_ADR,
             i18n(ctx, "address"),
@@ -747,121 +725,15 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   SizedBox buildSizedBoxSeparator({multiplier = 1.0}) =>
       SizedBox(height: 10.0 * multiplier);
 
-  Future<String> githubUploadPlaceDetails() async {
-    if (merchant == null) return null;
-    // Dialogs.confirmUploadPlace(context, () {
-
-    if (lastMerchantUploadId != null && lastMerchantUploadId == merchant.id) {
-      print("That place has already been uploaded");
-      return null;
-    }
-    CreateFile createFile = githubCreateFileMerchantDetails(commitUser);
-    //TODO REMOVE ALL SPECIAL ACCENTED CHARACTERS FROM THE APP AS IT MAKES THINGS TOO COMPLICATED, ON THE INTERNET WE DO NOT HAVE ACCENTS, OBEY!!! USE THE NORMALIZE METHOD THEN REPLACE / and + with -_ again
-    githubSendDataToRepository("flutter_coinector", createFile);
-    lastMerchantUploadId = merchant.id;
-    Clipboard.setData(ClipboardData(text: merchant.getBmapDataJson()));
-    return merchant.id;
-    //  });
-    return null;
-  }
-
-  CreateFile githubCreateFileMerchantDetails(CommitUser commitUser) {
-    var t = DateTime.now();
-    CreateFile createFile = CreateFile(
-        branch: "master",
-        committer: commitUser,
-        content: base64.encode(utf8.encode(merchant.getBmapDataJson())),
-        path: "uploaded/" +
-            merchant.id +
-            "/" +
-            "addplace_" +
-            t.year.toString() +
-            t.month.toString() +
-            t.day.toString() +
-            "_" +
-            merchant.name.replaceAll(RegExp('[^A-Za-z0-9]'), 'x') +
-            "_" +
-            TagBrands.tagBrands.elementAt(merchant.brand) +
-            "_" +
-            t.millisecondsSinceEpoch.toString() +
-            ".json",
-        message: "Add Place " + merchant.name);
-    if (!kReleaseMode) print("\nPATH:\n" + createFile.path);
-    return createFile;
-  }
-
-  Future<void> githubUploadPlaceImages() async {
-    for (Uint8List img in selectedImages) {
-      await githubSendDataToRepository(
-          "flutter_coinector", githubCreateFileMerchantImage(commitUser, img));
-    }
-  }
-
-  Future<void> githubSendDataToRepository(
-      String repository, CreateFile createFile) async {
-    ContentCreation response = await github.repositories.createFile(
-        RepositorySlug("theRealBitcoinClub", repository), createFile);
-    var url = response.content.downloadUrl;
-    print(repository +
-            "\nresponse github downloadUrl:" +
-            url +
-            "\n" /*+
-        "https://ezgif.com/crop?url=" +
-        url +
-        "\nhttps://ezgif.com/resize?url=" +
-        url*/
-        );
-  }
-
-  CreateFile githubCreateFileMerchantImage(
-      CommitUser commitUser, Uint8List img) {
-    var createFile = CreateFile(
-        branch: "master",
-        committer: commitUser,
-        content: base64.encode(img),
-        path: "uploaded/" +
-            merchant.id +
-            "/" +
-            IMAGE_WIDTH.toString() +
-            "x" +
-            IMAGE_HEIGHT.toString() +
-            "/" +
-            merchant.id +
-            "_" +
-            DateTime.now().millisecondsSinceEpoch.toString() +
-            ".jpg",
-        message: "Add Image " + merchant.name + "_" + merchant.id);
-    return createFile;
-  }
-
-/*
-  Future<void> createNewFileOnGitHub() async {
-    var repositorySlug =
-        RepositorySlug("theRealBitcoinClub", "flutter_coinector");
-    var commitUser = CommitUser("therealbitcoinclub", "trbc@bitcoinmap.cash");
-    var createFile = CreateFile(
-        branch: "master",
-        committer: commitUser,
-        content: "bXkgbmV3IGZpbGUgY29udGVudHM=",
-        // content: merchant.getBmapDataJson(),
-        path: "test.json",
-        message: "testing api");
-
-    Repository repository =
-        await github.repositories.getRepository(repositorySlug);
-    print("response github:" + repository.cloneUrl);
-
-    ContentCreation response =
-        await github.repositories.createFile(repositorySlug, createFile);
-    print("response github:" + response.content.downloadUrl);
-  }
-*/
   void handleAddTagButton(ctx) async {
     if (allSelectedTags.length >= MIN_INPUT_TAGS) {
       //Dialogs.confirmShowResetTags(ctx, () {
-      resetTags();
+      setState(() {
+        resetTags();
+      });
       //});
       //return;
+
     }
 
     final String selected = await showSearch<String>(
@@ -878,17 +750,15 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     if (!kReleaseMode) print("\nSELECTED:" + selected.toString());
     addSelectedTag(selected);
 
-    if (allSelectedTags.length == TagCoinector.MAX_INPUT_TAGS) {
-      showInputBCHyDASH();
-      FocusScope.of(context).requestFocus(focusNodeInputDASH);
-      scrollController.jumpTo(INPUT_DASH_POS);
+    if (allSelectedTags.length == MIN_INPUT_TAGS) {
+      drawFormStep(FormStep.SELECT_IMAGES);
+      // showInputBCHyDASH();
+      // FocusScope.of(context).requestFocus(focusNodeInputDASH);
+      // scrollController.jumpTo(SCROLL_POS_DASH);
     } else {
-      scrollController.jumpTo(INPUT_TAGS_POS);
+      drawFormStep(FormStep.SELECT_TAGS);
+      // scrollController.jumpTo(SCROLL_POS_TAGS);
     }
-
-    setState(() {
-      showSubmitBtn = true;
-    });
   }
 
   void overwriteTagsIfSelectionChanged() {
@@ -896,19 +766,16 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void resetTags() {
-    setState(() {
-      allSelectedTags = Set.from([]);
-      searchTagsDelegate.alreadySelectedTagIndexes = Set.from([]);
-      showInputDASHyBCH = false;
-      showSubmitBtn = false;
-    });
+    allSelectedTags = Set.from([]);
+    searchTagsDelegate.alreadySelectedTagIndexes = Set.from([]);
+    // showInputDASHyBCH = false;
   }
-
+/*
   void showInputBCHyDASH() {
     setState(() {
       showInputDASHyBCH = true;
     });
-  }
+  }*/
 
   _fieldFocusChange(
       BuildContext context, FocusNode currentFocus, FocusNode nextFocus) {
@@ -1008,48 +875,42 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       fontWeight: FontWeight.w300);
 
   void showInputAddress() {
-    setState(() {
-      showInputAdr = true;
-    });
+    showInputAdr = true;
   }
 
   void showRegisterOnGmaps() {
-    setState(() {
-      showRegisterOnGMapsButton = true;
-    });
+    showRegisterOnGMapsButton = true;
   }
 
   void hideRegisterOnGmaps() {
-    setState(() {
-      showRegisterOnGMapsButton = false;
-    });
+    showRegisterOnGMapsButton = false;
   }
 
   void hideSearchBtn() {
-    setState(() {
-      showSearchButton = false;
-    });
+    showSearchButton = false;
   }
 
   void showSearchBtn() {
-    setState(() {
-      showSearchButton = true;
-    });
+    showSearchButton = true;
   }
 
   void showInputTag() {
-    scrollToWithAnimation(INPUT_TAGS_POS);
-    setState(() {
-      showInputTags = true;
-    });
+    showInputTags = true;
   }
 
   void hideInputTag() {
-    setState(() {
-      showInputTags = false;
-    });
+    showInputTags = false;
   }
 
+  void hideSubmit() {
+    showSubmitBtn = false;
+  }
+
+  void showSubmit() {
+    showSubmitBtn = true;
+  }
+
+/*
   void updateInputBCH(String input) {
     var hasMinInput = inputBCH.length >= MIN_INPUT_BCHyDASH;
 
@@ -1067,7 +928,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       inputBCH = input;
     }
   }
-
   var youSaidIt = false;
 
   void updateInputDASH(String input) {
@@ -1094,7 +954,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     if (input != KEYWORD_CONTROLLER_ACTION) {
       inputDASH = input;
     }
-  }
+  }*/
 
   void updateInputAdr(String input) {
     var hasMinInput = inputAdr.length >= MIN_INPUT_ADR;
@@ -1103,32 +963,20 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       if (input == KEYWORD_CONTROLLER_ACTION &&
           lastInputAdrWithCommand == KEYWORD_CONTROLLER_ACTION) {
         _fieldFocusChange(context, focusNodeInputAdr, null);
-        scrollToWithAnimation(INPUT_TAGS_POS);
+        scrollToWithAnimation(SCROLL_POS_TAGS);
         lastInputAdr = inputAdr;
         return;
       }
     }
 
-    if (inputAdr.length >= MIN_INPUT_ADR &&
-        inputName.length >= MIN_INPUT_NAME &&
-        input != KEYWORD_CONTROLLER_ACTION) {
-      resetForm();
+    if (hasMinInputsForNameAndAdr(input)) {
+      drawFormStep(FormStep.HIT_SEARCH);
     }
 
     lastInputAdrWithCommand = input;
     if (input != KEYWORD_CONTROLLER_ACTION) {
       inputAdr = input;
     }
-  }
-
-  void resetForm() {
-    showSearchBtn();
-    hideRegisterOnGmaps();
-    resetTags();
-    resetImages();
-    hideInputTag();
-    scrollToWithAnimation(0.0);
-    //cancelAllImageLoads = true; TODO Would make sense here but there is a sync issue, you need to use better state pattern
   }
 
   void updateInputName(String input) {
@@ -1144,20 +992,26 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       }
     }
 
-    if (input.length >= MIN_INPUT_NAME && input != KEYWORD_CONTROLLER_ACTION) {
-      showInputAddress();
-    }
-
-    if (inputAdr.length >= MIN_INPUT_ADR &&
-        inputName.length >= MIN_INPUT_NAME &&
-        input != KEYWORD_CONTROLLER_ACTION) {
-      resetForm();
+    if (hasMinInputsForNameAndAdr(input)) {
+      drawFormStep(FormStep.HIT_SEARCH);
+    } else if (hasMinInputsForName(input)) {
+      drawFormStep(FormStep.IN_ADR);
     }
 
     lastInputNameWithCommand = input;
     if (input != KEYWORD_CONTROLLER_ACTION) {
       inputName = input;
     }
+  }
+
+  bool hasMinInputsForName(String input) {
+    return input.length >= MIN_INPUT_NAME && input != KEYWORD_CONTROLLER_ACTION;
+  }
+
+  bool hasMinInputsForNameAndAdr(String input) {
+    return inputAdr.length >= MIN_INPUT_ADR &&
+        inputName.length >= MIN_INPUT_NAME &&
+        input != KEYWORD_CONTROLLER_ACTION;
   }
 
   void addSelectedTag(TagCoinector selected) {
@@ -1191,7 +1045,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                 width: IMAGE_WIDTH.toDouble(),
                 child: GestureDetector(
                   onLongPress: () {
-                    if (!hasSelectedImages) hasSelectedImagesNow();
+                    if (!hasSelectedImages) drawFormStep(FormStep.SUBMIT);
                   },
                   onDoubleTap: () {
                     if (!hasSelectedImages) addImageToSelection(index);
@@ -1220,21 +1074,21 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     ]);
   }
 
-  void loadGooglePlacePhotos(String placeId) async {
-    resetImages();
-    const sleepDuration = const Duration(milliseconds: 2000);
-    var result = await this.googlePlace.details.get(placeId);
-    if (result != null && result.result != null) {
-      if (result.result.photos != null) {
-        print("PHOTOCOUNT: " + result.result.photos.length.toString());
+  void loadGooglePlacePhotos(var data) async {
+    // resetImages();
+    const sleepDuration = const Duration(milliseconds: 1000);
+    var result = data;
+    if (result != null) {
+      if (result["photos"] != null) {
+        // print("PHOTOCOUNT: " + result["photos"].length.toString());
         for (int x = 0; x < 10; x++)
-          for (var photo in result.result.photos) {
-            // if (cancelAllImageLoads) retbmap_merchant_images_jpegurn;
-            if (!imagesSuccess.contains(photo.photoReference)) {
+          for (var photo in result["photos"]) {
+            // if (cancelAllImageLoads) return;
+            if (!imagesSuccess.contains(photo["photo_reference"].toString())) {
               print("loadGooglePlacePhoto: " +
                   x.toString() +
                   " " +
-                  photo.photoReference);
+                  photo["photo_reference"]);
               await loadGooglePlacePhoto(photo, x);
               await Future.delayed(sleepDuration);
             }
@@ -1244,38 +1098,36 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void resetImages() {
-    setState(() {
-      images = [];
-      selectedImages = [];
-      imagesSuccess = Set<String>();
-      hasSelectedImages = false;
-      // cancelAllImageLoads = false;
-    });
+    images = [];
+    selectedImages = [];
+    imagesSuccess = Set<String>();
+    hasSelectedImages = false;
+    cancelAllImageLoads = false;
   }
 
-  Future<void> loadGooglePlacePhoto(Photo photo, index) async {
-    bool isVertical = photo.height > photo.width;
+  Future<void> loadGooglePlacePhoto(var photo, index) async {
+    bool isVertical = photo["height"] > photo["width"];
+    var ref = photo["photo_reference"];
 
     var divider = index + 1;
     bool flip = divider % 2 == 0;
-    var result = await this.googlePlace.photos.get(
-        photo.photoReference,
-        isVertical && flip ? IMAGE_WIDTH : null,
-        isVertical && flip ? null : IMAGE_WIDTH);
+    var result = await GooglePlacesApiCoinector.loadPhoto(ref,
+        height: isVertical && flip ? IMAGE_WIDTH : null,
+        width: isVertical && flip ? null : IMAGE_WIDTH);
 
     print("loadGooglePlacePhoto RESULT: " +
+        (result == null ? "NOP " : "JUP ") +
         index.toString() +
         " " +
-        photo.photoReference);
+        ref);
 
     await Future.delayed(const Duration(milliseconds: 100));
     if (result != null) {
       setState(() {
         // if (cancelAllImageLoads) return;
         images.add(result);
-        print(
-            "imagesSuccess: " + index.toString() + " " + photo.photoReference);
-        imagesSuccess.add(photo.photoReference);
+        print("imagesSuccess: " + index.toString() + " " + ref);
+        imagesSuccess.add(ref.toString());
       });
     }
   }
@@ -1285,19 +1137,85 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       selectedImages.add(images[index]);
       images.removeAt(index);
       if (selectedImages.length == 3 || selectedImages.length == images.length)
-        lockSelectedImages();
-      if (hasSelectedImages) images.clear();
+        drawFormStep(FormStep.SUBMIT);
     });
   }
 
-  void hasSelectedImagesNow() {
-    setState(() {
-      lockSelectedImages();
-    });
-  }
-
-  void lockSelectedImages() async {
-    // cancelAllImageLoads = true;
+  void lockSelectedImages() {
+    cancelAllImageLoads = true;
     hasSelectedImages = true;
+    images.clear();
+  }
+
+  void drawFormStep(FormStep step) {
+    setState(() {
+      switch (step) {
+        case FormStep.IN_NAME:
+          drawStepInit();
+          scrollToWithAnimation(SCROLL_POS_NAME);
+          break;
+        case FormStep.IN_ADR:
+          drawStepInit();
+          showInputAddress();
+          scrollToWithAnimation(SCROLL_POS_ADR);
+          break;
+        case FormStep.HIT_SEARCH:
+          showSearchBtn();
+          drawStepSearch();
+          scrollToWithAnimation(SCROLL_POS_ADR);
+          break;
+        case FormStep.HIT_GOOGLE:
+          Toaster.showMerchantNotFoundOnGoogleMaps(context);
+          hideSearchBtn();
+          showRegisterOnGmaps();
+          resetTagsAndImages();
+          scrollToWithAnimation(SCROLL_POS_ADR);
+          break;
+        case FormStep.SELECT_TAGS:
+          hideSearchBtn();
+          hideRegisterOnGmaps();
+          showInputTag();
+          focusAwayFromInputs();
+          scrollToWithAnimation(SCROLL_POS_TAGS);
+          break;
+        case FormStep.SELECT_IMAGES:
+          hideSearchBtn();
+          hideRegisterOnGmaps();
+          showInputTag();
+          focusAwayFromInputs();
+          scrollToWithAnimation(SCROLL_POS_IMAGES);
+          break;
+        case FormStep.SUBMIT:
+          hideSearchBtn();
+          hideRegisterOnGmaps();
+          lockSelectedImages();
+          showSubmit();
+          break;
+        default:
+          throw Exception("invalid step");
+      }
+    });
+  }
+
+  void focusAwayFromInputs() {
+    _fieldFocusChange(context, focusNodeInputAdr, null);
+    _fieldFocusChange(context, focusNodeInputName, null);
+  }
+
+  void drawStepSearch() {
+    hideRegisterOnGmaps();
+    resetTagsAndImages();
+  }
+
+  void resetTagsAndImages() {
+    hideInputTag();
+    resetTags();
+    resetImages();
+    cancelAllImageLoads = true;
+  }
+
+  void drawStepInit() {
+    hideSearchBtn();
+    drawStepSearch();
   }
 }
