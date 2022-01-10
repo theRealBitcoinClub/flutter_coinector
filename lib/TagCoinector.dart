@@ -70,17 +70,6 @@ class TagCoinector {
   }
 
   static TagCoinector findTag(String searchTerm) {
-    if (!TagCoinector.tagTextEN.any((String e) {
-          return e.toLowerCase().contains(searchTerm.toLowerCase());
-        }) &&
-        !TagCoinector.tagTextES.contains(searchTerm) &&
-        !TagCoinector.tagTextDE.contains(searchTerm) &&
-        !TagCoinector.tagTextFR.contains(searchTerm) &&
-        !TagCoinector.tagTextIT.contains(searchTerm) &&
-        !TagCoinector.tagTextINDONESIA.contains(searchTerm) &&
-        !TagCoinector.tagTextJP1.contains(searchTerm) &&
-        !TagCoinector.tagTextJP2.contains(searchTerm)) return null;
-
     TagCoinector result;
     if ((result = _findTagIndex(searchTerm, TagCoinector.tagTextEN)) == null) if ((result =
             _findTagIndex(searchTerm, TagCoinector.tagTextES)) ==

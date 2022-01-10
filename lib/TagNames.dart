@@ -1,4 +1,4 @@
-class TagNames {
+class SuggestionsTitles {
   static final titleTags = const {
     'Muerde La Carne',
     'Caffe Meranto',

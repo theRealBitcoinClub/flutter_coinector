@@ -79,7 +79,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
     addMatchesEnglish(pattern, matches, ctx);
 
     addMatchesString(pattern, matches, Suggestions.locations);
-    addMatchesString(pattern, matches, TagNames.titleTags);
+    addMatchesString(pattern, matches, SuggestionsTitles.titleTags);
 
     hasResults = true;
     if (matches.length == 0) {
