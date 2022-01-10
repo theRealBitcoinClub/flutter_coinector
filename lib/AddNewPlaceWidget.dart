@@ -1,10 +1,9 @@
-import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:Coinector/ConfigReader.dart';
+import 'package:Coinector/GithubCoinector.dart';
 import 'package:Coinector/Localizer.dart';
 import 'package:Coinector/Merchant.dart';
-import 'package:Coinector/TagBrands.dart';
 import 'package:Coinector/TagCoinector.dart';
 import 'package:Coinector/TagFactory.dart';
 import 'package:Coinector/translator.dart';
@@ -12,7 +11,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:github/github.dart';
 import 'package:google_place/google_place.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';
@@ -43,6 +41,21 @@ const int MAX_INPUT_NAME = 50;
 const int MAX_INPUT_DASH = 36; //dash:XintDskT8uV59N9HNvbpJ27nKNtbyHiyUn
 const int MAX_INPUT_BCH =
     54; //bitcoincash:qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a
+
+const int IMAGE_HEIGHT = kReleaseMode ? 336 : 112;
+const int IMAGE_WIDTH = kReleaseMode ? 640 : 213;
+
+enum FormStep {
+  IN_NAME,
+  IN_ADR,
+  HIT_SEARCH,
+  HIT_GOOGLE,
+  SELECT_TAGS,
+  SELECT_IMAGES,
+  SELECT_BRAND,
+  SELECT_COINS,
+  SUBMIT
+}
 
 class AddNewPlaceWidget extends StatefulWidget {
   final int selectedType;
@@ -119,18 +132,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   bool hasSelectedImages = false;
 
-  static const int IMAGE_HEIGHT = kReleaseMode ? 336 : 112;
-  static const int IMAGE_WIDTH = kReleaseMode ? 640 : 213;
-
-  GitHub github;
-
-  CommitUser commitUser;
-
   // bool cancelAllImageLoads = false;
 
   Set<String> imagesSuccess;
 
-  String lastMerchantUploadId;
+  GithubCoinector githubCoinector = GithubCoinector();
 
   _AddNewPlaceWidgetState(
       this.selectedType, this.accentColor, this.typeTitle, this.actionBarColor);
@@ -138,7 +144,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   @override
   void initState() {
     super.initState();
-    initGithub();
+    githubCoinector.init();
     googlePlace = GooglePlace(GOOGLE_PLACES_KEY,
         proxyUrl: kIsWeb ? 'cors-anywhere.herokuapp.com' : null);
 
@@ -146,22 +152,15 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     initInputListener();
   }
 
-  void initGithub() {
-    github =
-        GitHub(auth: Authentication.withToken(ConfigReader.getGithubKey()));
-    commitUser = CommitUser("therealbitcoinclub", "trbc@bitcoinmap.cash");
-    print("GITHUB" + github.toString());
-  }
-
   void initInputListener() {
-    controllerInputDASH = TextEditingController();
+    /*controllerInputDASH = TextEditingController();
     controllerInputDASH.addListener(() {
       updateInputDASH(KEYWORD_CONTROLLER_ACTION);
     });
     controllerInputBCH = TextEditingController();
     controllerInputBCH.addListener(() {
       updateInputBCH(KEYWORD_CONTROLLER_ACTION);
-    });
+    });*/
     controllerInputAdr = TextEditingController();
     controllerInputAdr.addListener(() {
       updateInputAdr(KEYWORD_CONTROLLER_ACTION);
@@ -382,7 +381,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     controllerInputBCH.dispose();
     controllerInputAdr.dispose();
     controllerInputName.dispose();
-    github.dispose();
+    githubCoinector.dispose();
     Dialogs.dismissDialog();
     super.dispose();
   }
@@ -411,7 +410,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                       wrapBuildColumnTag(ctx),
                       wrapBuildSelectedTagsList(),
                       wrapBuildColumnImages(),
-                      wrapBuildColumnDASHyBCH(ctx),
+                      // wrapBuildColumnDASHyBCH(ctx),
                     ],
                   ),
                 ),
@@ -448,11 +447,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   bool hasInputAllTags() =>
       allSelectedTags.length == TagCoinector.MAX_INPUT_TAGS;
 
-  Widget wrapBuildColumnDASHyBCH(ctx) => AnimatedOpacity(
+  /* Widget wrapBuildColumnDASHyBCH(ctx) => AnimatedOpacity(
       curve: DEFAULT_ANIMATION_CURVE,
       duration: DEFAULT_DURATION_OPACITY_FADE,
       opacity: !showInputDASHyBCH ? OPACITY_ITEM_DEACTIVATED : 1.0,
-      child: buildColumnDASHyBCH(ctx));
+      child: buildColumnDASHyBCH(ctx));*/
 
   Widget wrapBuildSubmitBtn() => AnimatedOpacity(
         curve: DEFAULT_ANIMATION_CURVE,
@@ -633,10 +632,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             Toaster.showAddExactlyFourTags(ctx);
             return;
           }
-          if (!hasMinInput(inputBCH) && !hasMinInput(inputDASH)) {
+          /*if (!hasMinInput(inputBCH) && !hasMinInput(inputDASH)) {
             Toaster.showAddAtleastOneReceivingAddress(ctx);
             return;
-          }
+          }*/
 
           submitData(ctx);
         },
@@ -646,8 +645,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   void submitData(ctx) async {
     //overwriteTagsIfSelectionChanged();
-    await githubUploadPlaceDetails();
-    await githubUploadPlaceImages();
+    await githubCoinector.githubUploadPlaceDetails(merchant);
+    await githubCoinector.githubUploadPlaceImages(selectedImages, merchant);
 
     //TODO SHOW PROGRESS BAR OF UPLOADS USING MULTIPLE FUTURE BLOCKS FOR EACH IMAGE
     Navigator.pop(context);
@@ -660,8 +659,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     });*/
   }
 
+/*
   bool hasMinInput(input) => input.length > MIN_INPUT_BCHyDASH;
-
   Column buildColumnDASHyBCH(ctx) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -714,6 +713,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     );
   }
 
+ */
+
   Column buildColumnAdr(ctx) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -746,116 +747,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   SizedBox buildSizedBoxSeparator({multiplier = 1.0}) =>
       SizedBox(height: 10.0 * multiplier);
-
-  Future<String> githubUploadPlaceDetails() async {
-    if (merchant == null) return null;
-    // Dialogs.confirmUploadPlace(context, () {
-
-    if (lastMerchantUploadId != null && lastMerchantUploadId == merchant.id) {
-      print("That place has already been uploaded");
-      return null;
-    }
-    CreateFile createFile = githubCreateFileMerchantDetails(commitUser);
-    //TODO REMOVE ALL SPECIAL ACCENTED CHARACTERS FROM THE APP AS IT MAKES THINGS TOO COMPLICATED, ON THE INTERNET WE DO NOT HAVE ACCENTS, OBEY!!! USE THE NORMALIZE METHOD THEN REPLACE / and + with -_ again
-    githubSendDataToRepository("flutter_coinector", createFile);
-    lastMerchantUploadId = merchant.id;
-    Clipboard.setData(ClipboardData(text: merchant.getBmapDataJson()));
-    return merchant.id;
-    //  });
-    return null;
-  }
-
-  CreateFile githubCreateFileMerchantDetails(CommitUser commitUser) {
-    var t = DateTime.now();
-    CreateFile createFile = CreateFile(
-        branch: "master",
-        committer: commitUser,
-        content: base64.encode(utf8.encode(merchant.getBmapDataJson())),
-        path: "uploaded/" +
-            merchant.id +
-            "/" +
-            "addplace_" +
-            t.year.toString() +
-            t.month.toString() +
-            t.day.toString() +
-            "_" +
-            merchant.name.replaceAll(RegExp('[^A-Za-z0-9]'), 'x') +
-            "_" +
-            TagBrands.tagBrands.elementAt(merchant.brand) +
-            "_" +
-            t.millisecondsSinceEpoch.toString() +
-            ".json",
-        message: "Add Place " + merchant.name);
-    if (!kReleaseMode) print("\nPATH:\n" + createFile.path);
-    return createFile;
-  }
-
-  Future<void> githubUploadPlaceImages() async {
-    for (Uint8List img in selectedImages) {
-      await githubSendDataToRepository(
-          "flutter_coinector", githubCreateFileMerchantImage(commitUser, img));
-    }
-  }
-
-  Future<void> githubSendDataToRepository(
-      String repository, CreateFile createFile) async {
-    ContentCreation response = await github.repositories.createFile(
-        RepositorySlug("theRealBitcoinClub", repository), createFile);
-    var url = response.content.downloadUrl;
-    print(repository +
-            "\nresponse github downloadUrl:" +
-            url +
-            "\n" /*+
-        "https://ezgif.com/crop?url=" +
-        url +
-        "\nhttps://ezgif.com/resize?url=" +
-        url*/
-        );
-  }
-
-  CreateFile githubCreateFileMerchantImage(
-      CommitUser commitUser, Uint8List img) {
-    var createFile = CreateFile(
-        branch: "master",
-        committer: commitUser,
-        content: base64.encode(img),
-        path: "uploaded/" +
-            merchant.id +
-            "/" +
-            IMAGE_WIDTH.toString() +
-            "x" +
-            IMAGE_HEIGHT.toString() +
-            "/" +
-            merchant.id +
-            "_" +
-            DateTime.now().millisecondsSinceEpoch.toString() +
-            ".jpg",
-        message: "Add Image " + merchant.name + "_" + merchant.id);
-    return createFile;
-  }
-
-/*
-  Future<void> createNewFileOnGitHub() async {
-    var repositorySlug =
-        RepositorySlug("theRealBitcoinClub", "flutter_coinector");
-    var commitUser = CommitUser("therealbitcoinclub", "trbc@bitcoinmap.cash");
-    var createFile = CreateFile(
-        branch: "master",
-        committer: commitUser,
-        content: "bXkgbmV3IGZpbGUgY29udGVudHM=",
-        // content: merchant.getBmapDataJson(),
-        path: "test.json",
-        message: "testing api");
-
-    Repository repository =
-        await github.repositories.getRepository(repositorySlug);
-    print("response github:" + repository.cloneUrl);
-
-    ContentCreation response =
-        await github.repositories.createFile(repositorySlug, createFile);
-    print("response github:" + response.content.downloadUrl);
-  }
-*/
   void handleAddTagButton(ctx) async {
     if (allSelectedTags.length >= MIN_INPUT_TAGS) {
       //Dialogs.confirmShowResetTags(ctx, () {
@@ -1050,6 +941,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     });
   }
 
+/*
   void updateInputBCH(String input) {
     var hasMinInput = inputBCH.length >= MIN_INPUT_BCHyDASH;
 
@@ -1067,7 +959,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       inputBCH = input;
     }
   }
-
   var youSaidIt = false;
 
   void updateInputDASH(String input) {
@@ -1094,7 +985,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     if (input != KEYWORD_CONTROLLER_ACTION) {
       inputDASH = input;
     }
-  }
+  }*/
 
   void updateInputAdr(String input) {
     var hasMinInput = inputAdr.length >= MIN_INPUT_ADR;
