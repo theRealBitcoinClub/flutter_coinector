@@ -741,9 +741,12 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   void handleAddTagButton(ctx) async {
     if (allSelectedTags.length >= MIN_INPUT_TAGS) {
       //Dialogs.confirmShowResetTags(ctx, () {
-      resetTags();
+      setState(() {
+        resetTags();
+      });
       //});
       //return;
+
     }
 
     final String selected = await showSearch<String>(
