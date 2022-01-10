@@ -2,6 +2,7 @@ import 'dart:typed_data';
 
 import 'package:Coinector/ConfigReader.dart';
 import 'package:Coinector/GithubCoinector.dart';
+import 'package:Coinector/GooglePlacesApiCoinector.dart';
 import 'package:Coinector/Localizer.dart';
 import 'package:Coinector/Merchant.dart';
 import 'package:Coinector/TagCoinector.dart';
@@ -11,7 +12,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_place/google_place.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';
 import 'Dialogs.dart';
@@ -115,7 +115,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   bool showInputTags = false;
   bool showSearchButton = false;
   String placeId;
-  GooglePlace googlePlace;
   List<Uint8List> images = [];
   List<Uint8List> selectedImages = [];
 
@@ -147,8 +146,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   void initState() {
     super.initState();
     githubCoinector.init();
-    googlePlace = GooglePlace(GOOGLE_PLACES_KEY,
-        proxyUrl: kIsWeb ? 'cors-anywhere.herokuapp.com' : null);
 
     initFocusNodes();
     initInputListener();
@@ -207,86 +204,39 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       // });
       //}
     } else {
-      await loadMerchantsDetailsPrefillAddress(placeId);
+      await loadDetailsFromGoogle();
       //TODO HANDLE MORE TAGS LATER, LET ADMIN CHOOSE BEST TAGS OR SIMPLY LET CONTENT CONTAIN MORE TAGS
       //TODO USER PROPER STATE PATTERN INSTEAD OF THIS CRAZY VARIABLING
-      setState(() {
-        for (TagCoinector tag in merchant.tagsInput) {
-          allSelectedTags.add(tag);
-          searchTagsDelegate.alreadySelectedTagIndexes.add(tag.id);
-          if (allSelectedTags.length >= MIN_INPUT_TAGS)
-            drawFormStep(FormStep.SELECT_IMAGES);
-          else
-            drawFormStep(FormStep.SELECT_TAGS);
-        }
-      });
+      prefillNameAddressAndTags();
       loadGooglePlacePhotos(merchant.placeDetailsData);
     }
   }
 
-  Future<void> loadMerchantsDetailsPrefillAddress(String placeId) async {
-    merchant = await findPlaceIdDetails(placeId);
-
-    prefillName(merchant);
-    prefillAddress(merchant);
+  void prefillNameAddressAndTags() {
+    setState(() {
+      prefillName(merchant);
+      prefillAddress(merchant);
+      for (TagCoinector tag in merchant.tagsInput) {
+        allSelectedTags.add(tag);
+        searchTagsDelegate.alreadySelectedTagIndexes.add(tag.id);
+      }
+      if (allSelectedTags.length >= MIN_INPUT_TAGS)
+        drawFormStep(FormStep.SELECT_IMAGES);
+      else
+        drawFormStep(FormStep.SELECT_TAGS);
+    });
   }
 
-  void prefillAddress(Merchant merchant) {
-    controllerInputAdr.clear();
-    controllerInputAdr.text = merchant.location;
-    updateInputAdr(merchant.location);
+  Future<void> loadDetailsFromGoogle() async {
+    var data = await GooglePlacesApiCoinector.findPlaceIdDetails(placeId);
+    merchant = parseGmapsDataToMerchant(placeId, data);
+    merchant.placeDetailsData = data;
   }
 
-  void prefillName(Merchant merchant) {
-    controllerInputName.clear();
-    controllerInputName.text = merchant.name;
-    updateInputName(merchant.name);
-  }
-
-  Future<Object> loadPhoto(String reference, {int height, int width}) async {
-    var uri = "https://maps.googleapis.com/maps/api/place/photo" +
-        "?key=" +
-        GOOGLE_PLACES_KEY +
-        "&photoreference=" +
-        reference +
-        "&maxheight=" +
-        height.toString() +
-        "&maxwidth=" +
-        width.toString();
-    print("URI:\n" + uri);
-
-    Uint8List bytes = (await NetworkAssetBundle(Uri.parse(uri)).load(uri))
-        .buffer
-        .asUint8List();
-    return bytes;
-
-    var result = await Dio().get(uri);
-    List<int> list = result.data.codeUnits;
-    var uint8list = Uint8List.fromList(list);
-    return uint8list;
-  }
-
-  Future<Merchant> findPlaceIdDetails(placeId) async {
-    var result = await Dio().get(
-        "https://maps.googleapis.com/maps/api/place/details/json" +
-            "?key=" +
-            GOOGLE_PLACES_KEY +
-            "&place_id=" +
-            placeId);
-    var data = result.data["result"];
-
-    Merchant m = parseGmapsDataToMerchant(placeId, data);
-    m.placeDetailsData = data;
-
-    if (!kReleaseMode) printWrapped(m.getBmapDataJson());
-    return m;
-  }
-
-  Merchant parseGmapsDataToMerchant(placeId, data) {
+  Merchant parseGmapsDataToMerchant(String placeId, data) {
     var reviews = data["reviews"];
     Set<TagCoinector> resultTags = parseReviewsSearchForMatchingTags(reviews);
     String tags = prefillTags(resultTags);
-
     return createMerchant(data, placeId, tags, resultTags);
   }
 
@@ -308,6 +258,18 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         "0");
     m.tagsInput = tagsInput;
     return m;
+  }
+
+  void prefillAddress(Merchant merchant) {
+    controllerInputAdr.clear();
+    controllerInputAdr.text = merchant.location;
+    updateInputAdr(merchant.location);
+  }
+
+  void prefillName(Merchant merchant) {
+    controllerInputName.clear();
+    controllerInputName.text = merchant.name;
+    updateInputName(merchant.name);
   }
 
   String prefillTags(Set<TagCoinector> inputTags) {
@@ -1114,18 +1076,15 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   void loadGooglePlacePhotos(var data) async {
     // resetImages();
-    const sleepDuration = const Duration(milliseconds: 2000);
+    const sleepDuration = const Duration(milliseconds: 1000);
     var result = data;
-    // var result = await this.googlePlace.details.get(placeId);
-    // if (result != null && result.result != null) {
-    //   if (result.result.photos != null) {
     if (result != null) {
       if (result["photos"] != null) {
         // print("PHOTOCOUNT: " + result["photos"].length.toString());
         for (int x = 0; x < 10; x++)
           for (var photo in result["photos"]) {
             // if (cancelAllImageLoads) retbmap_merchant_images_jpegurn;
-            if (!imagesSuccess.contains(photo["photo_reference"])) {
+            if (!imagesSuccess.contains(photo["photo_reference"].toString())) {
               print("loadGooglePlacePhoto: " +
                   x.toString() +
                   " " +
@@ -1152,9 +1111,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
     var divider = index + 1;
     bool flip = divider % 2 == 0;
-    var result = await loadPhoto(ref,
-        height: isVertical && flip ? IMAGE_WIDTH : 320,
-        width: isVertical && flip ? 320 : IMAGE_WIDTH);
+    var result = await GooglePlacesApiCoinector.loadPhoto(ref,
+        height: isVertical && flip ? IMAGE_WIDTH : null,
+        width: isVertical && flip ? null : IMAGE_WIDTH);
 
     print("loadGooglePlacePhoto RESULT: " +
         (result == null ? "NOP " : "JUP ") +
@@ -1168,7 +1127,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         // if (cancelAllImageLoads) return;
         images.add(result);
         print("imagesSuccess: " + index.toString() + " " + ref);
-        // imagesSuccess.add(ref.toString());
+        imagesSuccess.add(ref.toString());
       });
     }
   }
