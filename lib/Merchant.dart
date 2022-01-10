@@ -31,6 +31,8 @@ class Merchant {
   String geohash;
   int brand; //TODO LET USER TAP THE BRAND TO SEE ONLY THE SAME BRAND
   String acceptedCoins; //TODO SPLIT TAGS ON FIRST READ
+
+  var placeDetailsData;
   //LatLngAndGeohash latLngAndGeohash;
 
   /*calcGeoHash () {

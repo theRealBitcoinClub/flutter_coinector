@@ -220,7 +220,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             drawFormStep(FormStep.SELECT_TAGS);
         }
       });
-      loadGooglePlacePhotos(placeId);
+      loadGooglePlacePhotos(merchant.placeDetailsData);
     }
   }
 
@@ -243,15 +243,40 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     updateInputName(merchant.name);
   }
 
+  Future<Object> loadPhoto(String reference, {int height, int width}) async {
+    var uri = "https://maps.googleapis.com/maps/api/place/photo" +
+        "?key=" +
+        GOOGLE_PLACES_KEY +
+        "&photoreference=" +
+        reference +
+        "&maxheight=" +
+        height.toString() +
+        "&maxwidth=" +
+        width.toString();
+    print("URI:\n" + uri);
+
+    Uint8List bytes = (await NetworkAssetBundle(Uri.parse(uri)).load(uri))
+        .buffer
+        .asUint8List();
+    return bytes;
+
+    var result = await Dio().get(uri);
+    List<int> list = result.data.codeUnits;
+    var uint8list = Uint8List.fromList(list);
+    return uint8list;
+  }
+
   Future<Merchant> findPlaceIdDetails(placeId) async {
     var result = await Dio().get(
-        "https://maps.googleapis.com/maps/api/place/details/json?key=" +
+        "https://maps.googleapis.com/maps/api/place/details/json" +
+            "?key=" +
             GOOGLE_PLACES_KEY +
             "&place_id=" +
             placeId);
     var data = result.data["result"];
 
     Merchant m = parseGmapsDataToMerchant(placeId, data);
+    m.placeDetailsData = data;
 
     if (!kReleaseMode) printWrapped(m.getBmapDataJson());
     return m;
@@ -1087,21 +1112,24 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     ]);
   }
 
-  void loadGooglePlacePhotos(String placeId) async {
+  void loadGooglePlacePhotos(var data) async {
     // resetImages();
     const sleepDuration = const Duration(milliseconds: 2000);
-    var result = await this.googlePlace.details.get(placeId);
-    if (result != null && result.result != null) {
-      if (result.result.photos != null) {
-        print("PHOTOCOUNT: " + result.result.photos.length.toString());
+    var result = data;
+    // var result = await this.googlePlace.details.get(placeId);
+    // if (result != null && result.result != null) {
+    //   if (result.result.photos != null) {
+    if (result != null) {
+      if (result["photos"] != null) {
+        // print("PHOTOCOUNT: " + result["photos"].length.toString());
         for (int x = 0; x < 10; x++)
-          for (var photo in result.result.photos) {
+          for (var photo in result["photos"]) {
             // if (cancelAllImageLoads) retbmap_merchant_images_jpegurn;
-            if (!imagesSuccess.contains(photo.photoReference)) {
+            if (!imagesSuccess.contains(photo["photo_reference"])) {
               print("loadGooglePlacePhoto: " +
                   x.toString() +
                   " " +
-                  photo.photoReference);
+                  photo["photo_reference"]);
               await loadGooglePlacePhoto(photo, x);
               await Future.delayed(sleepDuration);
             }
@@ -1118,29 +1146,29 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     cancelAllImageLoads = false;
   }
 
-  Future<void> loadGooglePlacePhoto(Photo photo, index) async {
-    bool isVertical = photo.height > photo.width;
+  Future<void> loadGooglePlacePhoto(var photo, index) async {
+    bool isVertical = photo["height"] > photo["width"];
+    var ref = photo["photo_reference"];
 
     var divider = index + 1;
     bool flip = divider % 2 == 0;
-    var result = await this.googlePlace.photos.get(
-        photo.photoReference,
-        isVertical && flip ? IMAGE_WIDTH : null,
-        isVertical && flip ? null : IMAGE_WIDTH);
+    var result = await loadPhoto(ref,
+        height: isVertical && flip ? IMAGE_WIDTH : 320,
+        width: isVertical && flip ? 320 : IMAGE_WIDTH);
 
     print("loadGooglePlacePhoto RESULT: " +
+        (result == null ? "NOP " : "JUP ") +
         index.toString() +
         " " +
-        photo.photoReference);
+        ref);
 
     await Future.delayed(const Duration(milliseconds: 100));
     if (result != null) {
       setState(() {
         // if (cancelAllImageLoads) return;
         images.add(result);
-        print(
-            "imagesSuccess: " + index.toString() + " " + photo.photoReference);
-        imagesSuccess.add(photo.photoReference);
+        print("imagesSuccess: " + index.toString() + " " + ref);
+        // imagesSuccess.add(ref.toString());
       });
     }
   }
@@ -1169,6 +1197,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           break;
         case FormStep.IN_ADR:
           drawStepInit();
+          showInputAddress();
           scrollToWithAnimation(SCROLL_POS_ADR);
           break;
         case FormStep.HIT_SEARCH:
