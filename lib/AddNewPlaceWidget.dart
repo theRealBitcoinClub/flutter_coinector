@@ -44,8 +44,8 @@ const int MAX_INPUT_DASH = 36; //dash:XintDskT8uV59N9HNvbpJ27nKNtbyHiyUn
 const int MAX_INPUT_BCH =
     54; //bitcoincash:qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a
 
-const int IMAGE_HEIGHT = kReleaseMode ? 336 : 112;
-const int IMAGE_WIDTH = kReleaseMode ? 640 : 213;
+const int IMAGE_HEIGHT = 336; //kReleaseMode ? 336 : 112;
+const int IMAGE_WIDTH = 640; //kReleaseMode ? 640 : 213;
 
 enum FormStep {
   IN_NAME,
@@ -1083,7 +1083,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         // print("PHOTOCOUNT: " + result["photos"].length.toString());
         for (int x = 0; x < 10; x++)
           for (var photo in result["photos"]) {
-            // if (cancelAllImageLoads) retbmap_merchant_images_jpegurn;
+            // if (cancelAllImageLoads) return;
             if (!imagesSuccess.contains(photo["photo_reference"].toString())) {
               print("loadGooglePlacePhoto: " +
                   x.toString() +
