@@ -24,10 +24,12 @@ const DEFAULT_DURATION_SCROLL_ANIMATION = Duration(milliseconds: 2000);
 const DEFAULT_ANIMATION_CURVE = Curves.decelerate;
 const DEFAULT_DURATION_OPACITY_FADE = Duration(milliseconds: 3000);
 const DURATION_OPACITY_FADE_SUBMIT_BTN = Duration(milliseconds: 5000);
-const INPUT_DASH_POS = 550.0;
-const INPUT_BCH_POS = 700.0;
-const INPUT_TAGS_POS = 200.0;
-const INPUT_ADR_POS = 130.0;
+// const SCROLL_POS_DASH = 550.0;
+// const SCROLL_POS_BCH = 700.0;
+const SCROLL_POS_IMAGES = 250.0;
+const SCROLL_POS_TAGS = 200.0;
+const SCROLL_POS_ADR = 130.0;
+const SCROLL_POS_NAME = 0.0;
 const KEYWORD_CONTROLLER_ACTION = "controller";
 
 const int MIN_INPUT_ADR =
@@ -132,7 +134,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   bool hasSelectedImages = false;
 
-  // bool cancelAllImageLoads = false;
+  bool cancelAllImageLoads = false;
 
   Set<String> imagesSuccess;
 
@@ -150,6 +152,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
     initFocusNodes();
     initInputListener();
+
+    drawFormStep(FormStep.IN_NAME);
   }
 
   void initInputListener() {
@@ -192,7 +196,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     if (placeId == null) {
       //if (hasTriedSearch) {
       //if (!kReleaseMode) print("has tried search true");
-      offerGoogleBusinessSignup();
+      drawFormStep(FormStep.HIT_GOOGLE);
       //} else {
       //if (!kReleaseMode) print("has tried search false");
       //TODO always use snackbar or toasts but dont mix them
@@ -204,26 +208,20 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       //}
     } else {
       await loadMerchantsDetailsPrefillAddress(placeId);
-      showInputTag();
       //TODO HANDLE MORE TAGS LATER, LET ADMIN CHOOSE BEST TAGS OR SIMPLY LET CONTENT CONTAIN MORE TAGS
       //TODO USER PROPER STATE PATTERN INSTEAD OF THIS CRAZY VARIABLING
       setState(() {
         for (TagCoinector tag in merchant.tagsInput) {
           allSelectedTags.add(tag);
           searchTagsDelegate.alreadySelectedTagIndexes.add(tag.id);
+          if (allSelectedTags.length >= MIN_INPUT_TAGS)
+            drawFormStep(FormStep.SELECT_IMAGES);
+          else
+            drawFormStep(FormStep.SELECT_TAGS);
         }
       });
       loadGooglePlacePhotos(placeId);
     }
-  }
-
-  void offerGoogleBusinessSignup() {
-    Toaster.showMerchantNotFoundOnGoogleMaps(context);
-    showRegisterOnGmaps();
-    hideSearchBtn();
-    // resetTags();
-    // hideInputTag();
-    // scrollToWithAnimation(0.0);
   }
 
   Future<void> loadMerchantsDetailsPrefillAddress(String placeId) async {
@@ -231,18 +229,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
     prefillName(merchant);
     prefillAddress(merchant);
-    hideRegisterOnGmaps();
-    hideSearchBtn();
-    _fieldFocusChange(context, focusNodeInputAdr,
-        null); //TODO READ THE FUNCTION NAME THIS UI CHANGES HERE IS RIDICULOUS
-    _fieldFocusChange(context, focusNodeInputName, null);
-    scrollToWithAnimation(INPUT_TAGS_POS);
   }
 
   void prefillAddress(Merchant merchant) {
     controllerInputAdr.clear();
     controllerInputAdr.text = merchant.location;
-    showInputAddress();
     updateInputAdr(merchant.location);
   }
 
@@ -444,8 +435,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
               : 1.0,
       child: buildColumnAdr(ctx));
 
-  bool hasInputAllTags() =>
-      allSelectedTags.length == TagCoinector.MAX_INPUT_TAGS;
+  bool hasInputAllTags() => allSelectedTags.length == MIN_INPUT_TAGS;
 
   /* Widget wrapBuildColumnDASHyBCH(ctx) => AnimatedOpacity(
       curve: DEFAULT_ANIMATION_CURVE,
@@ -736,7 +726,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             ctx,
             focusNodeInputAdr,
             null,
-            INPUT_ADR_POS,
+            SCROLL_POS_ADR,
             Icons.local_post_office,
             MAX_INPUT_ADR,
             i18n(ctx, "address"),
@@ -747,6 +737,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   SizedBox buildSizedBoxSeparator({multiplier = 1.0}) =>
       SizedBox(height: 10.0 * multiplier);
+
   void handleAddTagButton(ctx) async {
     if (allSelectedTags.length >= MIN_INPUT_TAGS) {
       //Dialogs.confirmShowResetTags(ctx, () {
@@ -769,17 +760,15 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     if (!kReleaseMode) print("\nSELECTED:" + selected.toString());
     addSelectedTag(selected);
 
-    if (allSelectedTags.length == TagCoinector.MAX_INPUT_TAGS) {
-      showInputBCHyDASH();
-      FocusScope.of(context).requestFocus(focusNodeInputDASH);
-      scrollController.jumpTo(INPUT_DASH_POS);
+    if (allSelectedTags.length == MIN_INPUT_TAGS) {
+      drawFormStep(FormStep.SELECT_IMAGES);
+      // showInputBCHyDASH();
+      // FocusScope.of(context).requestFocus(focusNodeInputDASH);
+      // scrollController.jumpTo(SCROLL_POS_DASH);
     } else {
-      scrollController.jumpTo(INPUT_TAGS_POS);
+      drawFormStep(FormStep.SELECT_TAGS);
+      // scrollController.jumpTo(SCROLL_POS_TAGS);
     }
-
-    setState(() {
-      showSubmitBtn = true;
-    });
   }
 
   void overwriteTagsIfSelectionChanged() {
@@ -787,19 +776,16 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void resetTags() {
-    setState(() {
-      allSelectedTags = Set.from([]);
-      searchTagsDelegate.alreadySelectedTagIndexes = Set.from([]);
-      showInputDASHyBCH = false;
-      showSubmitBtn = false;
-    });
+    allSelectedTags = Set.from([]);
+    searchTagsDelegate.alreadySelectedTagIndexes = Set.from([]);
+    // showInputDASHyBCH = false;
   }
-
+/*
   void showInputBCHyDASH() {
     setState(() {
       showInputDASHyBCH = true;
     });
-  }
+  }*/
 
   _fieldFocusChange(
       BuildContext context, FocusNode currentFocus, FocusNode nextFocus) {
@@ -899,46 +885,39 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       fontWeight: FontWeight.w300);
 
   void showInputAddress() {
-    setState(() {
-      showInputAdr = true;
-    });
+    showInputAdr = true;
   }
 
   void showRegisterOnGmaps() {
-    setState(() {
-      showRegisterOnGMapsButton = true;
-    });
+    showRegisterOnGMapsButton = true;
   }
 
   void hideRegisterOnGmaps() {
-    setState(() {
-      showRegisterOnGMapsButton = false;
-    });
+    showRegisterOnGMapsButton = false;
   }
 
   void hideSearchBtn() {
-    setState(() {
-      showSearchButton = false;
-    });
+    showSearchButton = false;
   }
 
   void showSearchBtn() {
-    setState(() {
-      showSearchButton = true;
-    });
+    showSearchButton = true;
   }
 
   void showInputTag() {
-    scrollToWithAnimation(INPUT_TAGS_POS);
-    setState(() {
-      showInputTags = true;
-    });
+    showInputTags = true;
   }
 
   void hideInputTag() {
-    setState(() {
-      showInputTags = false;
-    });
+    showInputTags = false;
+  }
+
+  void hideSubmit() {
+    showSubmitBtn = false;
+  }
+
+  void showSubmit() {
+    showSubmitBtn = true;
   }
 
 /*
@@ -994,32 +973,20 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       if (input == KEYWORD_CONTROLLER_ACTION &&
           lastInputAdrWithCommand == KEYWORD_CONTROLLER_ACTION) {
         _fieldFocusChange(context, focusNodeInputAdr, null);
-        scrollToWithAnimation(INPUT_TAGS_POS);
+        scrollToWithAnimation(SCROLL_POS_TAGS);
         lastInputAdr = inputAdr;
         return;
       }
     }
 
-    if (inputAdr.length >= MIN_INPUT_ADR &&
-        inputName.length >= MIN_INPUT_NAME &&
-        input != KEYWORD_CONTROLLER_ACTION) {
-      resetForm();
+    if (hasMinInputsForNameAndAdr(input)) {
+      drawFormStep(FormStep.HIT_SEARCH);
     }
 
     lastInputAdrWithCommand = input;
     if (input != KEYWORD_CONTROLLER_ACTION) {
       inputAdr = input;
     }
-  }
-
-  void resetForm() {
-    showSearchBtn();
-    hideRegisterOnGmaps();
-    resetTags();
-    resetImages();
-    hideInputTag();
-    scrollToWithAnimation(0.0);
-    //cancelAllImageLoads = true; TODO Would make sense here but there is a sync issue, you need to use better state pattern
   }
 
   void updateInputName(String input) {
@@ -1035,20 +1002,26 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       }
     }
 
-    if (input.length >= MIN_INPUT_NAME && input != KEYWORD_CONTROLLER_ACTION) {
-      showInputAddress();
-    }
-
-    if (inputAdr.length >= MIN_INPUT_ADR &&
-        inputName.length >= MIN_INPUT_NAME &&
-        input != KEYWORD_CONTROLLER_ACTION) {
-      resetForm();
+    if (hasMinInputsForNameAndAdr(input)) {
+      drawFormStep(FormStep.HIT_SEARCH);
+    } else if (hasMinInputsForName(input)) {
+      drawFormStep(FormStep.IN_ADR);
     }
 
     lastInputNameWithCommand = input;
     if (input != KEYWORD_CONTROLLER_ACTION) {
       inputName = input;
     }
+  }
+
+  bool hasMinInputsForName(String input) {
+    return input.length >= MIN_INPUT_NAME && input != KEYWORD_CONTROLLER_ACTION;
+  }
+
+  bool hasMinInputsForNameAndAdr(String input) {
+    return inputAdr.length >= MIN_INPUT_ADR &&
+        inputName.length >= MIN_INPUT_NAME &&
+        input != KEYWORD_CONTROLLER_ACTION;
   }
 
   void addSelectedTag(TagCoinector selected) {
@@ -1082,7 +1055,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                 width: IMAGE_WIDTH.toDouble(),
                 child: GestureDetector(
                   onLongPress: () {
-                    if (!hasSelectedImages) hasSelectedImagesNow();
+                    if (!hasSelectedImages) drawFormStep(FormStep.SUBMIT);
                   },
                   onDoubleTap: () {
                     if (!hasSelectedImages) addImageToSelection(index);
@@ -1112,7 +1085,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void loadGooglePlacePhotos(String placeId) async {
-    resetImages();
+    // resetImages();
     const sleepDuration = const Duration(milliseconds: 2000);
     var result = await this.googlePlace.details.get(placeId);
     if (result != null && result.result != null) {
@@ -1135,13 +1108,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void resetImages() {
-    setState(() {
-      images = [];
-      selectedImages = [];
-      imagesSuccess = Set<String>();
-      hasSelectedImages = false;
-      // cancelAllImageLoads = false;
-    });
+    images = [];
+    selectedImages = [];
+    imagesSuccess = Set<String>();
+    hasSelectedImages = false;
+    cancelAllImageLoads = false;
   }
 
   Future<void> loadGooglePlacePhoto(Photo photo, index) async {
@@ -1176,19 +1147,84 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       selectedImages.add(images[index]);
       images.removeAt(index);
       if (selectedImages.length == 3 || selectedImages.length == images.length)
-        lockSelectedImages();
-      if (hasSelectedImages) images.clear();
+        drawFormStep(FormStep.SUBMIT);
     });
   }
 
-  void hasSelectedImagesNow() {
-    setState(() {
-      lockSelectedImages();
-    });
-  }
-
-  void lockSelectedImages() async {
-    // cancelAllImageLoads = true;
+  void lockSelectedImages() {
+    cancelAllImageLoads = true;
     hasSelectedImages = true;
+    images.clear();
+  }
+
+  void drawFormStep(FormStep step) {
+    setState(() {
+      switch (step) {
+        case FormStep.IN_NAME:
+          drawStepInit();
+          scrollToWithAnimation(SCROLL_POS_NAME);
+          break;
+        case FormStep.IN_ADR:
+          drawStepInit();
+          scrollToWithAnimation(SCROLL_POS_ADR);
+          break;
+        case FormStep.HIT_SEARCH:
+          showSearchBtn();
+          drawStepSearch();
+          scrollToWithAnimation(SCROLL_POS_ADR);
+          break;
+        case FormStep.HIT_GOOGLE:
+          Toaster.showMerchantNotFoundOnGoogleMaps(context);
+          hideSearchBtn();
+          showRegisterOnGmaps();
+          resetTagsAndImages();
+          scrollToWithAnimation(SCROLL_POS_ADR);
+          break;
+        case FormStep.SELECT_TAGS:
+          hideSearchBtn();
+          hideRegisterOnGmaps();
+          showInputTag();
+          focusAwayFromInputs();
+          scrollToWithAnimation(SCROLL_POS_TAGS);
+          break;
+        case FormStep.SELECT_IMAGES:
+          hideSearchBtn();
+          hideRegisterOnGmaps();
+          showInputTag();
+          focusAwayFromInputs();
+          scrollToWithAnimation(SCROLL_POS_IMAGES);
+          break;
+        case FormStep.SUBMIT:
+          hideSearchBtn();
+          hideRegisterOnGmaps();
+          lockSelectedImages();
+          showSubmit();
+          break;
+        default:
+          throw Exception("invalid step");
+      }
+    });
+  }
+
+  void focusAwayFromInputs() {
+    _fieldFocusChange(context, focusNodeInputAdr, null);
+    _fieldFocusChange(context, focusNodeInputName, null);
+  }
+
+  void drawStepSearch() {
+    hideRegisterOnGmaps();
+    resetTagsAndImages();
+  }
+
+  void resetTagsAndImages() {
+    hideInputTag();
+    resetTags();
+    resetImages();
+    cancelAllImageLoads = true;
+  }
+
+  void drawStepInit() {
+    hideSearchBtn();
+    drawStepSearch();
   }
 }
