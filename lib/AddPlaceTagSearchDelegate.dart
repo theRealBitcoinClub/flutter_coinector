@@ -1,13 +1,14 @@
+import 'package:Coinector/Localizer.dart';
+import 'package:Coinector/TagFactory.dart';
 import 'package:Coinector/translator.dart';
 import 'package:flutter/material.dart';
 
 import 'SuggestionList.dart';
-import 'Tag.dart';
+import 'TagCoinector.dart';
 import 'Toaster.dart';
-import 'UrlLauncher.dart';
 
 class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
-  Set<int> alreadySelected = Set.from([]);
+  Set<int> alreadySelectedTagIndexes = Set.from([]);
 
   @override
   Widget buildLeading(BuildContext context) {
@@ -24,30 +25,13 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
   }
 
   _getSuggestions(String pattern, ctx) {
-    Set<String> matches = Set.from([]);
-
-    switch (UrlLauncher.getLocale(ctx)) {
-      case "de":
-        addMatches(pattern, matches, Tags.tagTextDE);
-        break;
-      case "es":
-        addMatches(pattern, matches, Tags.tagTextES);
-        break;
-      case "ja":
-        addMatches(pattern, matches, Tags.tagTextJP1);
-        addMatches(pattern, matches, Tags.tagTextJP2);
-        break;
-      case "fr":
-        addMatches(pattern, matches, Tags.tagTextFR);
-        break;
-      case "id":
-        addMatches(pattern, matches, Tags.tagTextINDONESIA);
-        break;
-      case "it":
-        addMatches(pattern, matches, Tags.tagTextIT);
-        break;
-    }
-    addMatches(pattern, matches, Tags.tagText);
+    Set<String> matches = {};
+    addMatches(pattern, matches, TagFactory.getTags(ctx));
+    addMatches(
+        pattern,
+        matches,
+        TagFactory.getTags(ctx,
+            lang: LangCode.EN)); //Adding english always as default
 
     if (matches.length == 0) {
       matches.add(Translator.translate(ctx, "try_another_word"));
@@ -57,10 +41,11 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
     return matches;
   }
 
-  void addMatches(String pattern, Set<String> matches, sourceSet) {
+  void addMatches(
+      String pattern, Set<String> matches, Set<TagCoinector> sourceSet) {
     for (int x = 0; x < sourceSet.length; x++) {
-      if (alreadySelected.contains(x)) continue;
-      addMatch(x, pattern, matches, sourceSet.elementAt(x));
+      if (alreadySelectedTagIndexes.contains(x)) continue;
+      addMatch(x, pattern, matches, sourceSet.elementAt(x).toUI());
     }
   }
 
@@ -74,15 +59,12 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
   bool startsWith(String currentItem, String pattern) =>
       currentItem.toLowerCase().startsWith(pattern.toLowerCase());
 
-  //static const COINECTOR_SUPPORTS_MANY_LANGUAGES =
-  // "🇪🇸 🇩🇪 🇫🇷 🇮🇹 🇬🇧 🇯🇵 🇮🇩";
-
   Set<String> unfilteredSuggestions;
 
   @override
   Widget buildSuggestions(BuildContext ctx) {
     Set<String> suggestions = Set.from([
-      //  COINECTOR_SUPPORTS_MANY_LANGUAGES,
+      //  Localizer.COINECTOR_SUPPORTS_MANY_LANGUAGES,
       Translator.translate(ctx, "you_can_scroll")
     ]);
 
@@ -106,28 +88,9 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
   }
 
   Set<String> addAllTagsInAllLanguages(Set<String> suggestions, ctx) {
-    switch (UrlLauncher.getLocale(ctx)) {
-      case "de":
-        suggestions.addAll(cleanSuggestions(Tags.tagTextDE));
-        break;
-      case "es":
-        suggestions.addAll(cleanSuggestions(Tags.tagTextES));
-        break;
-      case "ja":
-        suggestions.addAll(cleanSuggestions(Tags.tagTextJP1));
-        suggestions.addAll(cleanSuggestions(Tags.tagTextJP2));
-        break;
-      case "fr":
-        suggestions.addAll(cleanSuggestions(Tags.tagTextFR));
-        break;
-      case "id":
-        suggestions.addAll(cleanSuggestions(Tags.tagTextINDONESIA));
-        break;
-      case "it":
-        suggestions.addAll(cleanSuggestions(Tags.tagTextIT));
-        break;
-    }
-    suggestions.addAll(cleanSuggestions(Tags.tagText));
+    suggestions.addAll(parseTagsToSuggestions(TagFactory.getTags(ctx)));
+    suggestions.addAll(
+        parseTagsToSuggestions(TagFactory.getTags(ctx, lang: LangCode.EN)));
     return suggestions;
   }
 
@@ -160,25 +123,22 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
     ];
   }
 
-  Set<String> cleanSuggestions(Set<String> suggestions) {
-    Set<String> cleanSuggestions = Set.from([]);
-    int index = 0;
-
-    suggestions.forEach((String suggestion) {
-      if (!suggestion.contains("🍔🍔🍔")) {
-        cleanSuggestions = checkIfAlreadySelectedAndAddIfNot(
-            index, suggestion, cleanSuggestions);
+  Set<String> parseTagsToSuggestions(Set<TagCoinector> tags) {
+    Set<String> parsedSuggestions = Set.from([]);
+    tags.forEach((TagCoinector t) {
+      if (!t.text.contains("🍔🍔🍔")) {
+        parsedSuggestions =
+            checkIfAlreadySelectedAndAddIfNot(t, parsedSuggestions);
       }
-      index++;
     });
-    return cleanSuggestions;
+    return parsedSuggestions;
   }
 
   Set<String> checkIfAlreadySelectedAndAddIfNot(
-      int currenItemIndex, String suggestion, Set<String> cleanSuggestions) {
-    if (alreadySelected.length == 0 ||
-        !alreadySelected.contains(currenItemIndex)) {
-      cleanSuggestions.add(suggestion);
+      TagCoinector t, Set<String> cleanSuggestions) {
+    if (alreadySelectedTagIndexes.length == 0 ||
+        !alreadySelectedTagIndexes.contains(t.id)) {
+      cleanSuggestions.add(t.toUI());
     }
     return cleanSuggestions;
   }

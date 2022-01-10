@@ -1,9 +1,9 @@
+import 'package:Coinector/TagCoinector.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hovering/hovering.dart';
 
 import 'Merchant.dart';
-import 'TagParser.dart';
 
 class TagFilterCallback {
   doFilter(String search) {}
@@ -29,7 +29,7 @@ class ItemInfoStackLayer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var splittedTags = merchant.tags.split(",");
+    var splittedTags = merchant.tagsDatabaseFormat.split(",");
     return Container(
       height: height,
       child: ListView(
@@ -76,7 +76,7 @@ class ItemInfoStackLayer extends StatelessWidget {
     return splittedTags.map((tagId) {
       if (tagId == "104")
         return SizedBox(); //return empty box in case of placeholder tag 104
-      var parsedTag = TagParser.parseTag(tagId);
+      var parsedTag = TagCoinector.parseTag(tagId);
       var splittedTag = parsedTag.split(" ");
       return HoverButton(
           padding: EdgeInsets.all(0.0),
@@ -96,6 +96,6 @@ class ItemInfoStackLayer extends StatelessWidget {
   }
 
   void restartWidgetWithFilter(ctx, String title) {
-    filterCallback.doFilter(TagParser.parseTag(title));
+    filterCallback.doFilter(TagCoinector.parseTag(title));
   }
 }

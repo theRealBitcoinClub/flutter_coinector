@@ -1,53 +1,112 @@
 // Identifier a
 
-class Tags {
-  final String content;
+class TagCoinector {
+  static const String PLACEHOLDER_TAG = "104";
+  static const int MAX_INPUT_TAGS = 4;
+  final String text;
+  final String emoji;
   final int id;
 
-  Tags(this.content, this.id);
+  TagCoinector(this.id, this.text, this.emoji);
 
-  static int getTagIndex(String searchTerm) {
-    if (!Tags.tagText.any((String e) {
-          return e.toLowerCase().contains(searchTerm.toLowerCase());
-        }) &&
-        !Tags.tagTextES.contains(searchTerm) &&
-        !Tags.tagTextDE.contains(searchTerm) &&
-        !Tags.tagTextFR.contains(searchTerm) &&
-        !Tags.tagTextIT.contains(searchTerm) &&
-        !Tags.tagTextINDONESIA.contains(searchTerm) &&
-        !Tags.tagTextJP1.contains(searchTerm) &&
-        !Tags.tagTextJP2.contains(searchTerm)) return -1;
+  String toUI() {
+    return text.toUpperCase() + " " + emoji;
+  }
 
-    int result = -1;
-    if ((result = _findTagIndex(searchTerm, Tags.tagText)) == -1) if ((result =
-            _findTagIndex(searchTerm, Tags.tagTextES)) ==
-        -1) if ((result =
-            _findTagIndex(searchTerm, Tags.tagTextDE)) ==
-        -1) if ((result =
-            _findTagIndex(searchTerm, Tags.tagTextFR)) ==
-        -1) if ((result =
-            _findTagIndex(searchTerm, Tags.tagTextIT)) ==
-        -1) if ((result =
-            _findTagIndex(searchTerm, Tags.tagTextINDONESIA)) ==
-        -1) if ((result = _findTagIndex(searchTerm, Tags.tagTextJP1)) == -1)
-      result = _findTagIndex(searchTerm, Tags.tagTextJP2);
+  String toString() {
+    return id.toString() + text + emoji;
+  }
+
+  static String parseTagIndexToText(List<String> splittedtags) {
+    return parseElementAt(splittedtags, 0) +
+        parseElementAt(splittedtags, 1) +
+        parseElementAt(splittedtags, 2) +
+        parseElementAt(splittedtags, 3);
+  }
+
+  static String parseElementAt(splittedTags, int pos) {
+    var tagIndex = splittedTags.elementAt(pos);
+
+    String addSeparator = "";
+    if (pos != 0) addSeparator = "   ";
+
+    return addSeparator + parseTag(tagIndex);
+  }
+
+  static String parseTag(String index) {
+    if (index == PLACEHOLDER_TAG) return "";
+
+    try {
+      return TagCoinector.tagTextEN.elementAt(int.parse(index));
+    } catch (e) {
+      print("INVALID TAG INDEX:" + index);
+      return "";
+    }
+  }
+
+  static String parseTagsToDatabaseFormat(Set<TagCoinector> inputTags) {
+    String r = inputTags.toString();
+    String results = inputTags.isNotEmpty
+        ? r.substring(1, r.length - 1)
+        : PLACEHOLDER_TAG +
+            "," +
+            PLACEHOLDER_TAG +
+            "," +
+            PLACEHOLDER_TAG +
+            "," +
+            PLACEHOLDER_TAG;
+    return results;
+  }
+
+  static String buildJsonTag(TagCoinector tag) {
+    return '{"tag":"' + tag.text + '", "id":"' + tag.id.toString() + '"}';
+  }
+
+  static String appendPlaceholderTags(String results) {
+    for (var i = results.split(",").length; i < MAX_INPUT_TAGS; i++) {
+      results += ",104";
+    }
+    return results;
+  }
+
+  static TagCoinector findTag(String searchTerm) {
+    TagCoinector result;
+    if ((result = _findTagIndex(searchTerm, TagCoinector.tagTextEN)) == null) if ((result =
+            _findTagIndex(searchTerm, TagCoinector.tagTextES)) ==
+        null) if ((result =
+            _findTagIndex(searchTerm, TagCoinector.tagTextDE)) ==
+        null) if ((result =
+            _findTagIndex(searchTerm, TagCoinector.tagTextFR)) ==
+        null) if ((result =
+            _findTagIndex(searchTerm, TagCoinector.tagTextES)) ==
+        null) if ((result =
+            _findTagIndex(searchTerm, TagCoinector.tagTextDE)) ==
+        null) if ((result =
+            _findTagIndex(searchTerm, TagCoinector.tagTextFR)) ==
+        null) if ((result =
+            _findTagIndex(searchTerm, TagCoinector.tagTextIT)) ==
+        null) if ((result =
+            _findTagIndex(searchTerm, TagCoinector.tagTextINDONESIA)) ==
+        null) if ((result = _findTagIndex(searchTerm, TagCoinector.tagTextJP1)) == null)
+      result = _findTagIndex(searchTerm, TagCoinector.tagTextJP2);
 
     return result;
   }
 
-  static int _findTagIndex(String searchTerm, tags) {
+  static TagCoinector _findTagIndex(String searchTerm, Set<String> tags) {
     for (int i = 0; i < tags.length; i++) {
       String item = tags.elementAt(i);
       if (item.toLowerCase().startsWith(searchTerm.toLowerCase())) {
-        return i;
+        List<String> splittedTag = item.split(" ");
+        return TagCoinector(i, splittedTag[0],  splittedTag.length > 0 ? splittedTag[1] : "");
       }
     }
-    return -1;
+    return null;
   }
 
   //Only if the tag is totally unused, that means there are zero results when searching inside the app, then it can be replaced by another tag
 
-  static final tagText = const {
+  static final tagTextEN = const {
     'Spicy 🌶️', //0
     'Salty 🥨',
     'Sour 😜',

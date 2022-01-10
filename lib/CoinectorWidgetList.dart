@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:Coinector/InternetConnectivityChecker.dart';
 import 'package:Coinector/ItemInfoStackLayer.dart';
 import 'package:Coinector/Snackbars.dart';
+import 'package:Coinector/TagNames.dart';
 import 'package:Coinector/translator.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
@@ -33,7 +34,7 @@ import 'Merchant.dart';
 import 'MyColors.dart';
 import 'SearchDemoSearchDelegate.dart';
 import 'Suggestions.dart';
-import 'Tag.dart';
+import 'TagCoinector.dart';
 import 'UrlLauncher.dart';
 import 'pages.dart';
 
@@ -142,11 +143,11 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     super.dispose();
   }
 
-  void loadAssets(
-      ctx, int filterWordIndex, String locationFilter, String fileName) async {
+  void loadAssets(ctx, TagCoinector tagFilter, String locationOrTitleFilter,
+      String fileName) async {
     updateCurrentPosition();
 
-    if (_isUnfilteredSearch(filterWordIndex)) {
+    if (tagFilter == null && locationOrTitleFilter == null) {
       _updateDistanceToAllMerchantsIfNotDoneYet();
       if (isUnfilteredList) return;
       //if (unfilteredLists.length != 0) updateListModel(unfilteredLists);
@@ -158,9 +159,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     initListModel();
 
     if (!kReleaseMode || fileName == null) {
-      _loadAndParseAllPlaces(filterWordIndex, locationFilter);
+      _loadAndParseAllPlaces(tagFilter, locationOrTitleFilter);
     } else {
-      _loadAndParseAsset(filterWordIndex, locationFilter, fileName);
+      _loadAndParseAsset(tagFilter, locationOrTitleFilter, fileName);
     }
   }
 
@@ -219,47 +220,47 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       }); MAYBE THE USER IS ALREADY OK WITH THE DATA AND THERE IS NO NEED TO RESTART*/
   }
 
-  void _loadAndParseAllPlaces(int filterWordIndex, String locationFilter) {
+  void _loadAndParseAllPlaces(TagCoinector tag, String locationFilter) {
     if (!kReleaseMode)
-      _loadAndParseAsset(filterWordIndex, locationFilter, "places");
+      _loadAndParseAsset(tag, locationFilter, "places");
     else {
-      _loadAndParseAsset(filterWordIndex, locationFilter, 'am');
-      _loadAndParseAsset(filterWordIndex, locationFilter, 'as');
-      _loadAndParseAsset(filterWordIndex, locationFilter, 'au');
-      _loadAndParseAsset(filterWordIndex, locationFilter, 'e');
+      _loadAndParseAsset(tag, locationFilter, 'am');
+      _loadAndParseAsset(tag, locationFilter, 'as');
+      _loadAndParseAsset(tag, locationFilter, 'au');
+      _loadAndParseAsset(tag, locationFilter, 'e');
     }
   }
 
   Future _loadAndParseAsset(
-      int filterWordIndex, String locationFilter, String fileName) async {
+      TagCoinector tag, String locationOrTitleFilter, String fileName) async {
     var decoded;
     if (!kReleaseMode)
       decoded = await FileCache.loadAndDecodeAsset("places");
     else {
       decoded = await FileCache.loadAndDecodeAsset(fileName);
     }
-    parseAssetUpdateListModel(
-        filterWordIndex, locationFilter, decoded, fileName, fileName != null);
+    parseAssetUpdateListModel(tag, locationOrTitleFilter, decoded, fileName);
   }
 
-  bool _isUnfilteredSearch(int filterWordIndex) => filterWordIndex == -999;
-
   Future<void> parseAssetUpdateListModel(
-      int selectedTagIndex,
-      String locationFilter,
+      TagCoinector tag,
+      String locationTitleFilter,
       List places,
-      String serverId,
-      bool isLocationSearch) async {
+      String serverIdOrFileName) async {
     initTempListModel();
     for (int i = 0; i < places.length; i++) {
       Merchant m2 = Merchant.fromJson(places.elementAt(i));
-      m2.serverId = serverId;
+      m2.serverIdOrFileName = serverIdOrFileName;
       //at the moment there is no PAY feature: m2.isPayEnabled = await AssetLoader.loadReceivingAddress(m2.id) != null;
 
-      _insertIntoTempList(m2, selectedTagIndex, locationFilter);
+      bool isLocation = Suggestions.locations.contains(locationTitleFilter);
+      bool isTitle = SuggestionsTitles.titleTags.contains(locationTitleFilter);
+
+      _insertIntoTempList(m2, tag, locationTitleFilter, isLocation, isTitle);
     }
 
-    if (!isLocationSearch) mapPosition = null;
+    //TODO FIX MAP POSITIONING
+    if (locationTitleFilter == null && tag == null) mapPosition = null;
 
     if (unfilteredLists.length == 0) initUnfilteredLists();
 
@@ -373,12 +374,13 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     updateList(unfilteredLists, tempLists, false);
   }
 
-  bool matchesFilteredTag(Merchant m, int filterWordIndex) {
-    var splittedTags = m.tags.split(',');
+  bool matchesFilteredTag(Merchant m, TagCoinector filterTag) {
+    var splittedTags = m.tagsDatabaseFormat.split(',');
     for (int i = 0; i < splittedTags.length; i++) {
       try {
-        var currentTag = int.parse(splittedTags[i]);
-        if (currentTag == filterWordIndex) {
+        //TODO use merchants tags int list only use text for db
+        int currentTag = int.parse(splittedTags[i]);
+        if (currentTag == filterTag.id) {
           return true;
         }
       } catch (e) {
@@ -390,7 +392,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   bool _containsLocation(Merchant m, String location) {
-    return _containsString(m.location, location);
+    return _containsString(m.location, location.split(" ")[0]);
   }
 
   bool _containsTitle(Merchant m, String title) {
@@ -404,12 +406,21 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     return src.toLowerCase().contains(pattern.toLowerCase());
   }
 
-  void _insertIntoTempList(Merchant m2, int filterWordIndex, String location) {
-    if (!isUnfilteredRequest(filterWordIndex) &&
-        filterWordIndexDoesNotMatch(filterWordIndex, m2) &&
-        !_containsLocation(m2, location) &&
-        !_containsTitle(m2, location)) return;
-    if (filterWordIndex == -1)
+  void _insertIntoTempList(Merchant m2, TagCoinector tag,
+      String locationTitleOrTag, bool isLocation, bool isTitle) {
+    if (tag != null && filterWordIndexDoesNotMatch(tag, m2)
+        // &&
+        // !_containsLocation(m2, location) &&
+        // !_containsTitle(m2, locationTitleOrTag)
+        ) return;
+    if (locationTitleOrTag != null) {
+      if (isLocation && !_containsLocation(m2, locationTitleOrTag)) return;
+      if (isTitle && !_containsTitle(m2, locationTitleOrTag)) return;
+    }
+
+    if (tag == null &&
+        locationTitleOrTag !=
+            null) //TODO why is this setting the position on every single merchant????
       mapPosition = Position(
           latitude: m2.x,
           longitude: m2.y,
@@ -448,20 +459,10 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     }
   }
 
-  bool filterWordIndexDoesNotMatch(int tagFilterWordIndex, Merchant m2) {
-    return !hasFilterWordIndex(tagFilterWordIndex) ||
-        (hasFilterWordIndex(tagFilterWordIndex) &&
-            !matchesFilteredTag(m2, tagFilterWordIndex));
+  bool filterWordIndexDoesNotMatch(TagCoinector filterTag, Merchant m2) {
+    return filterTag == null ||
+        (filterTag != null && !matchesFilteredTag(m2, filterTag));
   }
-
-  bool hasFilterWordIndex(int filterWordIndex) {
-    return filterWordIndex != null &&
-        filterWordIndex != -1 &&
-        !isUnfilteredRequest(filterWordIndex);
-  }
-
-  bool isUnfilteredRequest(int filterWordIndex) =>
-      _isUnfilteredSearch(filterWordIndex);
 
   void initListModelSeveralTimes(List lists, bool keepListKeys) {
     lists.clear();
@@ -726,7 +727,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   StreamSubscription<Position> positionStream;
 
-  void loadAssetsUnfiltered(ctx) => loadAssets(ctx, -999, null, null);
+  void loadAssetsUnfiltered(ctx) => loadAssets(ctx, null, null, null);
 
   //TODO test if I can simply call that in the build function (once) to avoid calling it from different locations
   void _updateDistanceToAllMerchantsIfNotDoneYet() {
@@ -1165,11 +1166,11 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   void startProcessSearch(BuildContext ctx, String selected, hideInfoBox) {
     InternetConnectivityChecker.resumeAutoChecker();
-
+/* TODO BRING BACK THE INFO BOX
     if (/*hasNotHitSearch() && */ !hideInfoBox) {
       Dialogs.showInfoDialogWithCloseButton(ctx);
       //handleSearchButtonAnimationAndPersistHit();
-    }
+    }*/
     //TODO ask users to rate the app as they are using this advanced feature multiple times
 
     if (selected != null) {
@@ -1203,23 +1204,28 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     showFilterResults(fileName, selectedLocationOrTag, ctx, search);
   }
 
-  void showFilterResults(
-      String fileName, String selectedLocationOrTag, ctx, String search) {
+  void showFilterResults(String fileName, String selectedLocationOrTag, ctx,
+      String locationTitleOrTag) {
     if (fileName != null) {
       zoomMapAfterSelectLocation = true;
     } else {
       zoomMapAfterSelectLocation = false;
     }
 
-    var index = Tags.getTagIndex(selectedLocationOrTag);
-    Snackbars.showMatchingSnackBar(
-        _scaffoldKey, ctx, fileName, capitalize(search), index);
+    //TODO get the tag index directly from the search without having to find it afterwards, just like location is also returned fully but displayed differently
+    //beware that the tag returned by clicking tags is different than the one in search
+    TagCoinector tag = selectedLocationOrTag == locationTitleOrTag
+        ? TagCoinector.findTag(selectedLocationOrTag)
+        : null;
 
-    loadAssets(ctx, index, search, fileName);
+    Snackbars.showMatchingSnackBar(
+        _scaffoldKey, ctx, fileName, capitalize(locationTitleOrTag), tag);
+
+    loadAssets(ctx, tag, tag != null ? null : selectedLocationOrTag, fileName);
 
     setState(() {
-      _searchTerm = search;
-      titleActionBar = capitalize(search);
+      _searchTerm = locationTitleOrTag;
+      titleActionBar = capitalize(locationTitleOrTag);
     });
   }
 

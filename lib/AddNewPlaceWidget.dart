@@ -2,8 +2,11 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:Coinector/ConfigReader.dart';
+import 'package:Coinector/Localizer.dart';
 import 'package:Coinector/Merchant.dart';
 import 'package:Coinector/TagBrands.dart';
+import 'package:Coinector/TagCoinector.dart';
+import 'package:Coinector/TagFactory.dart';
 import 'package:Coinector/translator.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -14,7 +17,6 @@ import 'package:google_place/google_place.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';
 import 'Dialogs.dart';
-import 'Tag.dart';
 import 'Toaster.dart';
 import 'UrlLauncher.dart';
 
@@ -41,7 +43,6 @@ const int MAX_INPUT_NAME = 50;
 const int MAX_INPUT_DASH = 36; //dash:XintDskT8uV59N9HNvbpJ27nKNtbyHiyUn
 const int MAX_INPUT_BCH =
     54; //bitcoincash:qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a
-const int MAX_INPUT_TAGS = 4;
 
 class AddNewPlaceWidget extends StatefulWidget {
   final int selectedType;
@@ -105,7 +106,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   var textStyleButtons = TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0);
 
-  Set<String> allSelectedTags = Set.from([]);
+  Set<TagCoinector> allSelectedTags = {};
 
   var scrollController = ScrollController();
 
@@ -125,7 +126,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   CommitUser commitUser;
 
-  bool cancelAllImageLoads = false;
+  // bool cancelAllImageLoads = false;
 
   Set<String> imagesSuccess;
 
@@ -208,9 +209,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       //TODO HANDLE MORE TAGS LATER, LET ADMIN CHOOSE BEST TAGS OR SIMPLY LET CONTENT CONTAIN MORE TAGS
       //TODO USER PROPER STATE PATTERN INSTEAD OF THIS CRAZY VARIABLING
       setState(() {
-        for (int tagIndex in merchant.inputTags) {
-          allSelectedTags.add(Tags.tagText.elementAt(tagIndex));
-          searchTagsDelegate.alreadySelected.add(tagIndex);
+        for (TagCoinector tag in merchant.tagsInput) {
+          allSelectedTags.add(tag);
+          searchTagsDelegate.alreadySelectedTagIndexes.add(tag.id);
         }
       });
       loadGooglePlacePhotos(placeId);
@@ -228,8 +229,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   Future<void> loadMerchantsDetailsPrefillAddress(String placeId) async {
     merchant = await findPlaceIdDetails(placeId);
-    //overwriteTagsIfSelectionChanged();
-    githubUploadPlaceDetails();
 
     prefillName(merchant);
     prefillAddress(merchant);
@@ -270,13 +269,14 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   Merchant parseGmapsDataToMerchant(placeId, data) {
     var reviews = data["reviews"];
-    Set<int> resultTags = parseReviewsSearchForMatchingTags(reviews);
+    Set<TagCoinector> resultTags = parseReviewsSearchForMatchingTags(reviews);
     String tags = prefillTags(resultTags);
 
     return createMerchant(data, placeId, tags, resultTags);
   }
 
-  Merchant createMerchant(data, placeId, String tags, Set<int> inputTags) {
+  Merchant createMerchant(
+      data, placeId, String tags, Set<TagCoinector> tagsInput) {
     var location = data["geometry"]["location"];
     Merchant m = Merchant(
         placeId,
@@ -291,62 +291,64 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         data["formatted_address"],
         4,
         "0");
-    m.inputTags = inputTags;
+    m.tagsInput = tagsInput;
     return m;
   }
 
-  String prefillTags(Set<int> inputTags) {
+  String prefillTags(Set<TagCoinector> inputTags) {
     resetTags();
 
     //TODO order the proposed tags by number, smaller number is a more important tag, but have to write a complete converter for that to reparse all existing data or reparse all data once and dismiss old tags which havent been priority anyways
 
-    var r = inputTags.toString();
-    String results =
-        inputTags.isNotEmpty ? r.substring(1, r.length - 1) : "104,104,104,104";
+    String results = TagCoinector.parseTagsToDatabaseFormat(inputTags);
 
-    if (inputTags.length < MAX_INPUT_TAGS)
-      results = appendPlaceholderTags(results);
+    if (inputTags.length < TagCoinector.MAX_INPUT_TAGS)
+      results = TagCoinector.appendPlaceholderTags(results);
 
     if (!kReleaseMode) print("\nTAGS:\n" + results + "\n");
     return results;
   }
 
-  Set<int> parseReviewsSearchForMatchingTags(reviews) {
-    Set<int> resultTags = {};
+  Set<TagCoinector> parseReviewsSearchForMatchingTags(reviews) {
+    Set<TagCoinector> resultTags = {};
     for (var r in reviews) {
-      int index = 0;
-      String review = r["text"].toString().toLowerCase();
-      //print(review + "\n");
+      String review = r["text"].toString();
+      if (!kReleaseMode) print("REVIEW:\n" + review + "\n");
       //TODO replace accented characters with normal ones to match more, use normalize method
-      matchTags(resultTags, index, review, Tags.tagText);
-      matchTags(resultTags, index, review, Tags.tagTextDE);
-      matchTags(resultTags, index, review, Tags.tagTextES);
-      matchTags(resultTags, index, review, Tags.tagTextFR);
-      matchTags(resultTags, index, review, Tags.tagTextINDONESIA);
-      matchTags(resultTags, index, review, Tags.tagTextIT);
-      matchTags(resultTags, index, review, Tags.tagTextJP1);
-      matchTags(resultTags, index, review, Tags.tagTextJP2);
+      for (LangCode lang in LangCode.values) {
+        matchTags(resultTags, review, TagFactory.getTags(context, lang: lang));
+      }
     }
     return resultTags;
   }
 
-  matchTags(Set<int> allTags, int index, String review, tags) {
-    for (String t in tags) {
-      String tag = t.split(" ")[0].trim().toLowerCase();
-      //print(tag);
-      if (index != 104 && review.contains(tag) && tag.isNotEmpty) {
-        print("index:" + index.toString() + "\ntag:" + tag + "\n");
-        //The tag 107 is men and very short it appears in many other words
-        if (index != 107 ||
-            (index == 107 && review.contains(" " + tag + " "))) {
-          if (allTags.length < MAX_INPUT_TAGS) {
-            allTags.add(index);
+  matchTags(Set<TagCoinector> allTags, String review, Set<TagCoinector> tags) {
+    review = review.toLowerCase();
+    for (TagCoinector t in tags) {
+      String tagText = t.text.toLowerCase();
+      //print(tagText);
+      if (t.id != 104 && review.contains(tagText) && tagText.isNotEmpty) {
+        if (!kReleaseMode)
+          print("index:" + t.id.toString() + "\ntagText:" + tagText + "\n");
+        if (!isTagTextMen(t) ||
+            (isTagTextMen(t) && reviewContainsTagAsFullWord(review, tagText))) {
+          if (hasLessThanMaxTags(allTags)) {
+            //TODO EXPAND APP TO SUPPORT MORE THAN FOUR TAGS FOR EACH PLACE
+            allTags.add(t);
           }
         }
       }
-      index++;
     }
   }
+
+  bool hasLessThanMaxTags(Set<TagCoinector> allTags) =>
+      allTags.length < TagCoinector.MAX_INPUT_TAGS;
+
+  //The tagText 107 is men and very short it appears in many other words
+  bool isTagTextMen(TagCoinector t) => t.id == 107;
+
+  bool reviewContainsTagAsFullWord(String review, String tagText) =>
+      review.contains(" " + tagText + " ");
 
   void printWrapped(String text) {
     final pattern = new RegExp('.{1,800}'); // 800 is the size of each chunk
@@ -443,7 +445,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
               : 1.0,
       child: buildColumnAdr(ctx));
 
-  bool hasInputAllTags() => allSelectedTags.length == MAX_INPUT_TAGS;
+  bool hasInputAllTags() =>
+      allSelectedTags.length == TagCoinector.MAX_INPUT_TAGS;
 
   Widget wrapBuildColumnDASHyBCH(ctx) => AnimatedOpacity(
       curve: DEFAULT_ANIMATION_CURVE,
@@ -597,7 +600,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           padding: EdgeInsets.only(bottom: 10.0),
           child: Text(allSelectedTags.length <= index
               ? ""
-              : allSelectedTags.elementAt(index) + "  "),
+              : allSelectedTags.elementAt(index).toUI() + "  "),
         ));
   }
 
@@ -605,10 +608,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       allSelectedTags.length > index ? 1.0 : 0.0;
 
   List<Widget> buildTagsRow() {
-    return allSelectedTags.map<Widget>((String tag) {
+    return allSelectedTags.map<Widget>((TagCoinector tag) {
       return Padding(
         padding: EdgeInsets.only(bottom: 10.0),
-        child: Text(tag + "  "),
+        child: Text(tag.toUI() + "  "),
       );
     }).toList();
   }
@@ -642,14 +645,13 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void submitData(ctx) async {
-    //Dialogs.confirmSendEmail(context, () {
+    //overwriteTagsIfSelectionChanged();
+    await githubUploadPlaceDetails();
+    await githubUploadPlaceImages();
 
-    UrlLauncher.launchEmailClientAddPlace(
-        ctx, inputDASH, inputBCH, buildJsonToSubmitViaEmail(),
-        (String content) {
-      print("Add Place Submit:\n" + Uri.decodeComponent(content));
-      Toaster.showToastEmailNotConfigured(ctx);
-    });
+    //TODO SHOW PROGRESS BAR OF UPLOADS USING MULTIPLE FUTURE BLOCKS FOR EACH IMAGE
+    Navigator.pop(context);
+    //Dialogs.confirmSendEmail(context, () {
     //});
     /*Dialogs.confirmDownloadPdf(context, () {
       UrlLauncher.launchQrCodeGeneratorUrl(
@@ -788,7 +790,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     return createFile;
   }
 
-  void githubUploadPlaceImages() async {
+  Future<void> githubUploadPlaceImages() async {
     for (Uint8List img in selectedImages) {
       await githubSendDataToRepository(
           "flutter_coinector", githubCreateFileMerchantImage(commitUser, img));
@@ -869,14 +871,14 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
     if (selected == null || selected.isEmpty) return;
 
-    inputTag(selected);
+    inputTag(TagCoinector.findTag(selected));
   }
 
-  void inputTag(String selected) {
-    if (!kReleaseMode) print("\nSELECTED:" + selected);
+  void inputTag(TagCoinector selected) {
+    if (!kReleaseMode) print("\nSELECTED:" + selected.toString());
     addSelectedTag(selected);
 
-    if (allSelectedTags.length == MAX_INPUT_TAGS) {
+    if (allSelectedTags.length == TagCoinector.MAX_INPUT_TAGS) {
       showInputBCHyDASH();
       FocusScope.of(context).requestFocus(focusNodeInputDASH);
       scrollController.jumpTo(INPUT_DASH_POS);
@@ -890,13 +892,13 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void overwriteTagsIfSelectionChanged() {
-    if (merchant != null) merchant.tags = parseTagsFromInputs();
+    if (merchant != null) merchant.tagsDatabaseFormat = parseTagsFromInputs();
   }
 
   void resetTags() {
     setState(() {
       allSelectedTags = Set.from([]);
-      searchTagsDelegate.alreadySelected = Set.from([]);
+      searchTagsDelegate.alreadySelectedTagIndexes = Set.from([]);
       showInputDASHyBCH = false;
       showSubmitBtn = false;
     });
@@ -1126,7 +1128,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     resetImages();
     hideInputTag();
     scrollToWithAnimation(0.0);
-    cancelAllImageLoads = true;
+    //cancelAllImageLoads = true; TODO Would make sense here but there is a sync issue, you need to use better state pattern
   }
 
   void updateInputName(String input) {
@@ -1158,62 +1160,23 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     }
   }
 
-  void addSelectedTag(String selected) {
+  void addSelectedTag(TagCoinector selected) {
     setState(() {
-      //TODO DO NOT UPDATE THE STATE WITHIN AN ASYNC TASK, DO THAT AFTERWARDS BULKED
       allSelectedTags.add(selected);
     });
-    searchTagsDelegate.alreadySelected.add(Tags.getTagIndex(selected));
-  }
-
-  String buildJsonToSubmitViaEmail() {
-    return Uri.encodeComponent('{"n":"' +
-        inputName.trim() +
-        '","type":"' +
-        typeTitle.trim() +
-        '","bch":"' +
-        inputBCH.trim() +
-        '","dash":"' +
-        inputDASH.trim() +
-        '","l":"' +
-        inputAdr.trim() +
-        '","tags":"[' +
-        buildJsonTag(allSelectedTags.elementAt(0)) +
-        ',' +
-        buildJsonTag(allSelectedTags.elementAt(1)) +
-        ',' +
-        buildJsonTag(allSelectedTags.elementAt(2)) +
-        ',' +
-        buildJsonTag(allSelectedTags.elementAt(3)) +
-        '],"a":"' +
-        parseTagsFromInputs() +
-        '"}');
-  }
-
-  String buildJsonTag(tag) {
-    return '{"tag":"' +
-        tag +
-        '", "id":"' +
-        Tags.getTagIndex(tag).toString() +
-        '"}';
+    searchTagsDelegate.alreadySelectedTagIndexes.add(selected.id);
   }
 
   String parseTagsFromInputs() {
-    return searchTagsDelegate.alreadySelected.elementAt(0).toString() +
+    return searchTagsDelegate.alreadySelectedTagIndexes
+            .elementAt(0)
+            .toString() +
         "," +
-        searchTagsDelegate.alreadySelected.elementAt(1).toString() +
+        searchTagsDelegate.alreadySelectedTagIndexes.elementAt(1).toString() +
         "," +
-        searchTagsDelegate.alreadySelected.elementAt(2).toString() +
+        searchTagsDelegate.alreadySelectedTagIndexes.elementAt(2).toString() +
         "," +
-        searchTagsDelegate.alreadySelected.elementAt(3).toString();
-  }
-
-  String appendPlaceholderTags(String results) {
-    int targetLength = 4;
-    for (var i = results.split(",").length; i < targetLength; i++) {
-      results += ",104";
-    }
-    return results;
+        searchTagsDelegate.alreadySelectedTagIndexes.elementAt(3).toString();
   }
 
   Column wrapBuildColumnImages() {
@@ -1266,7 +1229,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         print("PHOTOCOUNT: " + result.result.photos.length.toString());
         for (int x = 0; x < 10; x++)
           for (var photo in result.result.photos) {
-            if (cancelAllImageLoads) return;
+            // if (cancelAllImageLoads) retbmap_merchant_images_jpegurn;
             if (!imagesSuccess.contains(photo.photoReference)) {
               print("loadGooglePlacePhoto: " +
                   x.toString() +
@@ -1285,9 +1248,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       images = [];
       selectedImages = [];
       imagesSuccess = Set<String>();
+      hasSelectedImages = false;
+      // cancelAllImageLoads = false;
     });
-    hasSelectedImages = false;
-    cancelAllImageLoads = false;
   }
 
   Future<void> loadGooglePlacePhoto(Photo photo, index) async {
@@ -1308,7 +1271,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     await Future.delayed(const Duration(milliseconds: 100));
     if (result != null) {
       setState(() {
-        if (cancelAllImageLoads) return;
+        // if (cancelAllImageLoads) return;
         images.add(result);
         print(
             "imagesSuccess: " + index.toString() + " " + photo.photoReference);
@@ -1322,22 +1285,19 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       selectedImages.add(images[index]);
       images.removeAt(index);
       if (selectedImages.length == 3 || selectedImages.length == images.length)
-        lockSelectedImagesAndUpload();
+        lockSelectedImages();
       if (hasSelectedImages) images.clear();
     });
   }
 
   void hasSelectedImagesNow() {
     setState(() {
-      lockSelectedImagesAndUpload();
+      lockSelectedImages();
     });
   }
 
-  void lockSelectedImagesAndUpload() async {
-    cancelAllImageLoads = true;
+  void lockSelectedImages() async {
+    // cancelAllImageLoads = true;
     hasSelectedImages = true;
-    await githubUploadPlaceDetails();
-    await githubUploadPlaceImages();
-    Navigator.pop(context);
   }
 }

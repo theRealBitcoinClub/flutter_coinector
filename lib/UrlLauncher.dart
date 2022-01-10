@@ -1,5 +1,4 @@
 import 'package:Coinector/translator.dart';
-import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'AddNewPlaceWidget.dart';
@@ -105,12 +104,6 @@ class UrlLauncher {
         Translator.translate(ctx, "email_text_add_new_place") +
         content;
     await _launchEmail(ctx, urlString, onEmailClientNotFound(content));
-  }
-
-  static String getLocale(ctx) {
-    Locale myLocale = Localizations.localeOf(ctx);
-    final String countryCode = myLocale.toString();
-    return countryCode;
   }
 
   static bool hasInput(String input) => input.length > MIN_INPUT_BCHyDASH;

@@ -329,9 +329,9 @@ class CardItem extends StatelessWidget {
   //TODO get data from places ip to accelerate search on addresses with all zipcpde search, cities and states
 
   String getServerId() {
-    return (merchant.serverId.contains('-')
-        ? merchant.serverId.split('-')[0]
-        : merchant.serverId);
+    return (merchant.serverIdOrFileName.contains('-')
+        ? merchant.serverIdOrFileName.split('-')[0]
+        : merchant.serverIdOrFileName);
   }
 
   Container buildGradientContainer(Color infoBoxBackgroundColor) {
