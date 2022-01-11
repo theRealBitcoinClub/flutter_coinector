@@ -1,6 +1,5 @@
 import 'dart:typed_data';
 
-import 'package:Coinector/ConfigReader.dart';
 import 'package:Coinector/GithubCoinector.dart';
 import 'package:Coinector/GooglePlacesApiCoinector.dart';
 import 'package:Coinector/Localizer.dart';
@@ -11,6 +10,7 @@ import 'package:Coinector/translator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';
 import 'Dialogs.dart';
@@ -123,12 +123,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   var scrollController = ScrollController();
 
-  Merchant merchant;
-
   bool hasTriedSearch = false;
   bool showRegisterOnGMapsButton = false;
-
-  static String GOOGLE_PLACES_KEY = ConfigReader.getGooglePlacesKey();
 
   bool hasSelectedImages = false;
 
@@ -137,6 +133,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   Set<String> imagesSuccess;
 
   GithubCoinector githubCoinector = GithubCoinector();
+
+  Merchant merchant;
 
   _AddNewPlaceWidgetState(
       this.selectedType, this.accentColor, this.typeTitle, this.actionBarColor);
@@ -198,15 +196,15 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     } else if (placeId == GoogleErrors.MULTIPLE.toString()) {
       Toaster.showMerchantSearchHasMultipleResults(context);
     } else {
-      await loadDetailsFromGoogle();
+      merchant = await loadDetailsFromGoogleCreateMerchant(selectedType);
       //TODO HANDLE MORE TAGS LATER, LET ADMIN CHOOSE BEST TAGS OR SIMPLY LET CONTENT CONTAIN MORE TAGS
       //TODO USER PROPER STATE PATTERN INSTEAD OF THIS CRAZY VARIABLING
-      prefillNameAddressAndTags();
+      prefillNameAddressAndTags(merchant);
       loadGooglePlacePhotos(merchant.placeDetailsData);
     }
   }
 
-  void prefillNameAddressAndTags() {
+  void prefillNameAddressAndTags(Merchant merchant) {
     setState(() {
       prefillName(merchant);
       prefillAddress(merchant);
@@ -221,37 +219,18 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     });
   }
 
-  Future<void> loadDetailsFromGoogle() async {
+  Future<Merchant> loadDetailsFromGoogleCreateMerchant(int placeType) async {
     var data = await GooglePlacesApiCoinector.findPlaceIdDetails(placeId);
-    merchant = parseGmapsDataToMerchant(placeId, data);
-    merchant.placeDetailsData = data;
+    Merchant m = parseGmapsDataToMerchant(placeId, data, placeType);
+    m.placeDetailsData = data;
+    return m;
   }
 
-  Merchant parseGmapsDataToMerchant(String placeId, data) {
+  Merchant parseGmapsDataToMerchant(String placeId, data, int placeType) {
     var reviews = data["reviews"];
     Set<TagCoinector> resultTags = parseReviewsSearchForMatchingTags(reviews);
-    String tags = prefillTags(resultTags);
-    return createMerchant(data, placeId, tags, resultTags);
-  }
-
-  Merchant createMerchant(
-      data, placeId, String tags, Set<TagCoinector> tagsInput) {
-    var location = data["geometry"]["location"];
-    Merchant m = Merchant(
-        placeId,
-        location["lat"],
-        location["lng"],
-        data["name"],
-        selectedType /*TODO add function to map google types to bmap types*/,
-        data["user_ratings_total"].toString(),
-        data["rating"].toString(),
-        0,
-        tags,
-        data["formatted_address"],
-        4,
-        "0");
-    m.tagsInput = tagsInput;
-    return m;
+    return Merchant.createMerchantFromInputs(
+        data, placeId, resultTags, placeType);
   }
 
   void prefillAddress(Merchant merchant) {
@@ -339,6 +318,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     controllerInputName.dispose();
     githubCoinector.dispose();
     Dialogs.dismissDialog();
+    Loader.hide();
     super.dispose();
   }
 
@@ -599,9 +579,19 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void submitData(ctx) async {
-    //overwriteTagsIfSelectionChanged();
+    merchant = overwriteTagsIfSelectionChanged(merchant);
     await githubCoinector.githubUploadPlaceDetails(merchant);
+    Loader.show(context, progressIndicator: LinearProgressIndicator());
+    /* Loader.show(context,
+        isSafeAreaOverlay: false,
+        isAppbarOverlay: true,
+        isBottomBarOverlay: false,
+        progressIndicator: CircularProgressIndicator(),
+        themeData: Theme.of(context)
+            .copyWith(accentColor: Colors.black38),
+        overlayColor: Color(0x99E8EAF6));*/
     await githubCoinector.githubUploadPlaceImages(selectedImages, merchant);
+    Loader.hide();
 
     //TODO SHOW PROGRESS BAR OF UPLOADS USING MULTIPLE FUTURE BLOCKS FOR EACH IMAGE
     Navigator.pop(context);
@@ -739,8 +729,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     }
   }
 
-  void overwriteTagsIfSelectionChanged() {
-    if (merchant != null) merchant.tagsDatabaseFormat = parseTagsFromInputs();
+  Merchant overwriteTagsIfSelectionChanged(Merchant m) {
+    if (m != null) m.tagsDatabaseFormat = parseTagsFromInputs();
+    return m;
   }
 
   void resetTags() {

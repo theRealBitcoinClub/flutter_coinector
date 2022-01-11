@@ -18,6 +18,7 @@ environment:
   sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
+  flutter_overlay_loader: ^1.0.3
   #web_scraper: 0.1.4
   github: ^9.0.0
   hovering: ^1.0.4

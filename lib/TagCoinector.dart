@@ -46,7 +46,7 @@ class TagCoinector {
 
   static String parseTagsToDatabaseFormat(Set<TagCoinector> inputTags) {
     String r = inputTags.toString();
-    String results = inputTags.isNotEmpty
+    String results = inputTags == null || inputTags.isNotEmpty
         ? r.substring(1, r.length - 1)
         : PLACEHOLDER_TAG +
             "," +

@@ -39,6 +39,27 @@ class Merchant {
     geohash = Geohash.encode(x,y);
     latLngAndGeohash = LatLngAndGeohash(LatLng(x, y));
   }*/
+
+  static Merchant createMerchantFromInputs(
+      data, placeId, Set<TagCoinector> tagsInput, int placeType) {
+    var location = data["geometry"]["location"];
+    Merchant m = Merchant(
+        placeId,
+        location["lat"],
+        location["lng"],
+        data["name"],
+        placeType /*TODO add function to map google types to bmap types*/,
+        data["user_ratings_total"].toString(),
+        data["rating"].toString(),
+        0,
+        TagCoinector.parseTagsToDatabaseFormat(tagsInput),
+        data["formatted_address"],
+        4,
+        "0");
+    m.tagsInput = tagsInput;
+    return m;
+  }
+
   String getBmapDataJson() {
     return '{"p":"' +
         id +

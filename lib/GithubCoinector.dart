@@ -32,8 +32,6 @@ class GithubCoinector {
 
   Future<String> githubUploadPlaceDetails(Merchant merchant) async {
     if (merchant == null) return null;
-    // Dialogs.confirmUploadPlace(context, () {
-
     if (_lastMerchantUploadId != null && _lastMerchantUploadId == merchant.id) {
       print("That place has already been uploaded");
       return null;
@@ -45,8 +43,6 @@ class GithubCoinector {
     _lastMerchantUploadId = merchant.id;
     Clipboard.setData(ClipboardData(text: merchant.getBmapDataJson()));
     return merchant.id;
-    //  });
-    return null;
   }
 
   CreateFile githubCreateFileMerchantDetails(
