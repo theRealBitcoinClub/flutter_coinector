@@ -187,15 +187,15 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     placeId = await GooglePlacesApiCoinector.findPlaceId(search);
 
     if (!kReleaseMode) print("placeid: " + placeId.toString());
-    if (placeId == "interneterror")
+    if (placeId == GoogleErrors.INTERNET_ERROR.toString())
       Toaster.showToastInternetError(context);
-    else if (placeId == "notfound" && !hasTriedSearch) {
+    else if (placeId == GoogleErrors.NOT_FOUND.toString() && !hasTriedSearch) {
       hasTriedSearch = true;
       //TODO always use snackbar or toasts but dont mix them
       Toaster.showMerchantNotFoundOnGoogleMapsTryAgain(context);
-    } else if (placeId == "notfound" && hasTriedSearch) {
+    } else if (placeId == GoogleErrors.NOT_FOUND.toString() && hasTriedSearch) {
       drawFormStep(FormStep.HIT_GOOGLE);
-    } else if (placeId == "multiple") {
+    } else if (placeId == GoogleErrors.MULTIPLE.toString()) {
       Toaster.showMerchantSearchHasMultipleResults(context);
     } else {
       await loadDetailsFromGoogle();

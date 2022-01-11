@@ -5,6 +5,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
+enum GoogleErrors { MULTIPLE, NOT_FOUND, INTERNET_ERROR }
+
 class GooglePlacesApiCoinector {
   static Future<String> findPlaceId(String search) async {
     String encoded = Uri.encodeComponent(search);
@@ -17,14 +19,15 @@ class GooglePlacesApiCoinector {
     try {
       var result = await new Dio().get(path);
       if (!kReleaseMode) print(result.toString());
-      if (result.data['status'].toString() == "ZERO_RESULTS") return null;
+      if (result.data['status'].toString() == "ZERO_RESULTS")
+        return GoogleErrors.NOT_FOUND.toString();
       List<dynamic> candidates = result.data['candidates'];
-      if (candidates.length > 1) return "multiple";
+      if (candidates.length > 1) return GoogleErrors.MULTIPLE.toString();
       placeId = candidates[0]["place_id"].toString();
       if (!kReleaseMode) print(placeId);
     } catch (e) {
       print("INTERNET ERROR on " + path);
-      return "interneterror";
+      return GoogleErrors.INTERNET_ERROR.toString();
     }
     return placeId;
   }
