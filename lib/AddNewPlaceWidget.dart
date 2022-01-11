@@ -25,8 +25,6 @@ const DEFAULT_DURATION_SCROLL_ANIMATION = Duration(milliseconds: 2000);
 const DEFAULT_ANIMATION_CURVE = Curves.decelerate;
 const DEFAULT_DURATION_OPACITY_FADE = Duration(milliseconds: 3000);
 const DURATION_OPACITY_FADE_SUBMIT_BTN = Duration(milliseconds: 5000);
-// const SCROLL_POS_DASH = 550.0;
-// const SCROLL_POS_BCH = 700.0;
 const SCROLL_POS_IMAGES = 250.0;
 const SCROLL_POS_TAGS = 200.0;
 const SCROLL_POS_ADR = 130.0;
@@ -565,10 +563,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             Toaster.showAddExactlyFourTags(ctx);
             return;
           }
-          /*if (!hasMinInput(inputBCH) && !hasMinInput(inputDASH)) {
-            Toaster.showAddAtleastOneReceivingAddress(ctx);
-            return;
-          }*/
 
           submitData(ctx);
         },
@@ -580,6 +574,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     printWrapped("BRAND" + _selectedBrand.toString());
     printWrapped("COIN0" + _selectedCoin[0].toString());
     printWrapped("COIN1" + _selectedCoin[1].toString());
+    //TODO PARSE BRANDS AND COINS HERE TO ADD THEM TO MERCHANT AND REMOVE THE PRESELECT CONFIGS OR READ IN THE PRESELECTED STATE FROM LAST SUBMIT TO MAKE ADMIN INTERFACE EASIER FOR THESE WHO FOCUS ON THEIR BRAND ADDING MULTIPLE PLACES
     /*merchant = overwriteTagsIfSelectionChanged(merchant);
     await githubCoinector.githubUploadPlaceDetails(merchant);
     Loader.show(context, progressIndicator: LinearProgressIndicator());
@@ -596,6 +591,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     //TODO SHOW PROGRESS BAR OF UPLOADS USING MULTIPLE FUTURE BLOCKS FOR EACH IMAGE
     Navigator.pop(context);
 */
+    //TODO OFFER PDF DOWNLOAD AND LET USER INPUT HIS EMAIL MAYBE TO RECEIVE IT VIA EMAIL TOO???
     //Dialogs.confirmSendEmail(context, () {
     //});
     /*Dialogs.confirmDownloadPdf(context, () {
@@ -604,62 +600,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           bch: hasMinInput(inputBCH) ? inputBCH : "");
     });*/
   }
-
-/*
-  bool hasMinInput(input) => input.length > MIN_INPUT_BCHyDASH;
-  Column buildColumnDASHyBCH(ctx) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: <Widget>[
-        buildSizedBoxSeparator(multiplier: 2.0),
-        Text(
-          i18n(ctx, "what_is_your_dash"),
-          style: textStyleLabel(),
-        ),
-        buildSizedBoxSeparator(),
-        Text(
-          i18n(ctx, "open_your_dash_wallet"),
-          style: textStyleHint(),
-        ),
-        buildTextField(
-            controllerInputDASH,
-            false,
-            ctx,
-            focusNodeInputDASH,
-            focusNodeInputBCH,
-            INPUT_DASH_POS,
-            Icons.monetization_on,
-            MAX_INPUT_DASH,
-            i18n(ctx, "dash_adr"),
-            updateInputDASH),
-        buildSizedBoxSeparator(multiplier: 2.0),
-        Text(
-          i18n(ctx, "receiving_adr"),
-          style: textStyleLabel(),
-        ),
-        buildSizedBoxSeparator(),
-        Text(
-          i18n(ctx, "copy_adr_instructions"),
-          style: textStyleHint(),
-        ),
-        buildTextField(
-            controllerInputBCH,
-            true,
-            ctx,
-            focusNodeInputBCH,
-            null,
-            INPUT_BCH_POS,
-            Icons.monetization_on,
-            MAX_INPUT_BCH,
-            i18n(ctx, "bch_adr"),
-            updateInputBCH),
-        buildSizedBoxSeparator(multiplier: 5.0),
-      ],
-    );
-  }
-
- */
 
   Column buildColumnAdr(ctx) {
     return Column(
@@ -691,6 +631,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     );
   }
 
+  //TODO you could integrate binance pay or elly pay or whatever here
   Column buildColumnBrands(ctx) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -723,6 +664,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     );
   }
 
+  //TODO for now we keep this simply here, but it could make sense to pull these out as statefulwidgets as soon as you enable entering specific addresses
   List<CheckboxListTile> buildTagCoinWidgets() {
     var tc = TagCoin.getTagCoins().map((TagCoin e) {
       return CheckboxListTile(
@@ -743,13 +685,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   void handleAddTagButton(ctx) async {
     if (allSelectedTags.length >= MIN_INPUT_TAGS) {
-      //Dialogs.confirmShowResetTags(ctx, () {
       setState(() {
         resetTags();
       });
-      //});
-      //return;
-
     }
 
     final String selected = await showSearch<String>(
@@ -768,12 +706,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
     if (allSelectedTags.length == MIN_INPUT_TAGS) {
       drawFormStep(FormStep.SELECT_IMAGES);
-      // showInputBCHyDASH();
-      // FocusScope.of(context).requestFocus(focusNodeInputDASH);
-      // scrollController.jumpTo(SCROLL_POS_DASH);
     } else {
       drawFormStep(FormStep.SELECT_TAGS);
-      // scrollController.jumpTo(SCROLL_POS_TAGS);
     }
   }
 
@@ -785,14 +719,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   void resetTags() {
     allSelectedTags = Set.from([]);
     searchTagsDelegate.alreadySelectedTagIndexes = Set.from([]);
-    // showInputDASHyBCH = false;
   }
-/*
-  void showInputBCHyDASH() {
-    setState(() {
-      showInputDASHyBCH = true;
-    });
-  }*/
 
   _fieldFocusChange(
       BuildContext context, FocusNode currentFocus, FocusNode nextFocus) {
@@ -927,65 +854,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     showSubmitBtn = true;
   }
 
-/*
-  void updateInputBCH(String input) {
-    var hasMinInput = inputBCH.length >= MIN_INPUT_BCHyDASH;
-
-    if (hasMinInput && lastInputBCH != inputBCH) {
-      if (input == KEYWORD_CONTROLLER_ACTION &&
-          lastInputBCHWithCommand == KEYWORD_CONTROLLER_ACTION) {
-        submitData(context);
-        _fieldFocusChange(context, focusNodeInputBCH, null);
-        lastInputBCH = inputBCH;
-        return;
-      }
-    }
-    lastInputBCHWithCommand = input;
-    if (input != KEYWORD_CONTROLLER_ACTION) {
-      inputBCH = input;
-    }
-  }
-  var youSaidIt = false;
-
-  void updateInputDASH(String input) {
-    var hasMinInput = inputDASH.length >= MIN_INPUT_BCHyDASH;
-
-    if (hasMinInput && lastInputDASH != inputDASH) {
-      if (input == KEYWORD_CONTROLLER_ACTION &&
-          lastInputDASHWithCommand == KEYWORD_CONTROLLER_ACTION) {
-        _fieldFocusChange(context, focusNodeInputDASH, focusNodeInputBCH);
-        scrollToWithAnimation(INPUT_BCH_POS);
-        lastInputDASH = inputDASH;
-        return;
-      }
-    }
-
-    if (input.length >= MIN_INPUT_BCHyDASH &&
-        input != KEYWORD_CONTROLLER_ACTION &&
-        !youSaidIt) {
-      Toaster.showToastAttractCustomers(context);
-      youSaidIt = true;
-    }
-
-    lastInputDASHWithCommand = input;
-    if (input != KEYWORD_CONTROLLER_ACTION) {
-      inputDASH = input;
-    }
-  }*/
-
   void updateInputAdr(String input) {
-    // var hasMinInput = inputAdr.length >= MIN_INPUT_ADR;
-
-    /*if (hasMinInput && lastInputAdr != inputAdr) {
-      if (input == KEYWORD_CONTROLLER_ACTION &&
-          lastInputAdrWithCommand == KEYWORD_CONTROLLER_ACTION) {
-        _fieldFocusChange(context, focusNodeInputAdr, null);
-        scrollToWithAnimation(SCROLL_POS_TAGS);
-        lastInputAdr = inputAdr;
-        return;
-      }
-    }*/
-
     if (hasMinInputsForNameAndAdr(input)) {
       drawFormStep(FormStep.HIT_SEARCH);
     }
@@ -997,18 +866,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void updateInputName(String input) {
-    // var hasMinInput = inputName.length >= MIN_INPUT_NAME;
-
-    /*if (hasMinInput && lastInputName != inputName) {
-      if (input == KEYWORD_CONTROLLER_ACTION &&
-          lastInputNameWithCommand == KEYWORD_CONTROLLER_ACTION) {
-        // _fieldFocusChange(context, null, focusNodeInputAdr);
-        //TODO reactivate scrollToWithAnimation(INPUT_ADR_POS);
-        lastInputName = inputName;
-        return;
-      }
-    }*/
-
     if (hasMinInputsForNameAndAdr(input)) {
       drawFormStep(FormStep.HIT_SEARCH);
     } else if (hasMinInputsForName(input)) {
