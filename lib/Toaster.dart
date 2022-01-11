@@ -140,4 +140,9 @@ class Toaster {
     _showWarning(
         Translator.translate(ctx, "merchant_not_found_on_gmaps_try_again"));
   }
+
+  static void showMerchantSearchHasMultipleResults(BuildContext ctx) {
+    _showWarning(Translator.translate(
+        ctx, "merchant_not_found_on_gmaps_be_more_specific"));
+  }
 }

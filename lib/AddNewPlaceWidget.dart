@@ -8,7 +8,6 @@ import 'package:Coinector/Merchant.dart';
 import 'package:Coinector/TagCoinector.dart';
 import 'package:Coinector/TagFactory.dart';
 import 'package:Coinector/translator.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -181,28 +180,23 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   //TODO let them remove each tag separately to add a replacement tag
 
-  void searchOnGoogleMapsPrefillFields({String debugSearch}) async {
+  void searchOnGoogleMapsPrefillFields() async {
     var search = inputName + " " + inputAdr;
     if (!kReleaseMode) print("inputs: " + search);
 
-    placeId = await findPlaceId(debugSearch != null ? debugSearch : search);
-    if (placeId == "multiple") placeId = null;
+    placeId = await GooglePlacesApiCoinector.findPlaceId(search);
 
     if (!kReleaseMode) print("placeid: " + placeId.toString());
-
-    if (placeId == null) {
-      //if (hasTriedSearch) {
-      //if (!kReleaseMode) print("has tried search true");
-      drawFormStep(FormStep.HIT_GOOGLE);
-      //} else {
-      //if (!kReleaseMode) print("has tried search false");
+    if (placeId == "interneterror")
+      Toaster.showToastInternetError(context);
+    else if (placeId == "notfound" && !hasTriedSearch) {
+      hasTriedSearch = true;
       //TODO always use snackbar or toasts but dont mix them
-      //Toaster.showMerchantNotFoundOnGoogleMapsTryAgain(context);
-      //setState(() {
-      //  hasTriedSearch = true;
-      // showInputAdr = true;
-      // });
-      //}
+      Toaster.showMerchantNotFoundOnGoogleMapsTryAgain(context);
+    } else if (placeId == "notfound" && hasTriedSearch) {
+      drawFormStep(FormStep.HIT_GOOGLE);
+    } else if (placeId == "multiple") {
+      Toaster.showMerchantSearchHasMultipleResults(context);
     } else {
       await loadDetailsFromGoogle();
       //TODO HANDLE MORE TAGS LATER, LET ADMIN CHOOSE BEST TAGS OR SIMPLY LET CONTENT CONTAIN MORE TAGS
@@ -330,22 +324,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   void printWrapped(String text) {
     final pattern = new RegExp('.{1,800}'); // 800 is the size of each chunk
     pattern.allMatches(text).forEach((match) => print(match.group(0)));
-  }
-
-  Future<String> findPlaceId(String search) async {
-    var encoded = Uri.encodeComponent(search);
-    var result = await new Dio().get(
-        "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?inputtype=textquery&key=" +
-            GOOGLE_PLACES_KEY +
-            "&input=" +
-            encoded);
-    if (!kReleaseMode) printWrapped(result.toString());
-    if (result.data['status'].toString() == "ZERO_RESULTS") return null;
-    List<dynamic> candidates = result.data['candidates'];
-    if (candidates.length > 1) return "multiple";
-    var placeId = candidates[0]["place_id"].toString();
-    if (!kReleaseMode) print(placeId);
-    return placeId;
   }
 
   @override
@@ -957,9 +935,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }*/
 
   void updateInputAdr(String input) {
-    var hasMinInput = inputAdr.length >= MIN_INPUT_ADR;
+    // var hasMinInput = inputAdr.length >= MIN_INPUT_ADR;
 
-    if (hasMinInput && lastInputAdr != inputAdr) {
+    /*if (hasMinInput && lastInputAdr != inputAdr) {
       if (input == KEYWORD_CONTROLLER_ACTION &&
           lastInputAdrWithCommand == KEYWORD_CONTROLLER_ACTION) {
         _fieldFocusChange(context, focusNodeInputAdr, null);
@@ -967,7 +945,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         lastInputAdr = inputAdr;
         return;
       }
-    }
+    }*/
 
     if (hasMinInputsForNameAndAdr(input)) {
       drawFormStep(FormStep.HIT_SEARCH);
@@ -980,9 +958,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void updateInputName(String input) {
-    var hasMinInput = inputName.length >= MIN_INPUT_NAME;
+    // var hasMinInput = inputName.length >= MIN_INPUT_NAME;
 
-    if (hasMinInput && lastInputName != inputName) {
+    /*if (hasMinInput && lastInputName != inputName) {
       if (input == KEYWORD_CONTROLLER_ACTION &&
           lastInputNameWithCommand == KEYWORD_CONTROLLER_ACTION) {
         // _fieldFocusChange(context, null, focusNodeInputAdr);
@@ -990,7 +968,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         lastInputName = inputName;
         return;
       }
-    }
+    }*/
 
     if (hasMinInputsForNameAndAdr(input)) {
       drawFormStep(FormStep.HIT_SEARCH);
@@ -1152,38 +1130,37 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       switch (step) {
         case FormStep.IN_NAME:
           drawStepInit();
-          scrollToWithAnimation(SCROLL_POS_NAME);
+          // scrollToWithAnimation(SCROLL_POS_NAME);
           break;
         case FormStep.IN_ADR:
           drawStepInit();
           showInputAddress();
-          scrollToWithAnimation(SCROLL_POS_ADR);
+          // scrollToWithAnimation(SCROLL_POS_ADR);
           break;
         case FormStep.HIT_SEARCH:
           showSearchBtn();
           drawStepSearch();
-          scrollToWithAnimation(SCROLL_POS_ADR);
+          // scrollToWithAnimation(SCROLL_POS_ADR);
           break;
         case FormStep.HIT_GOOGLE:
-          Toaster.showMerchantNotFoundOnGoogleMaps(context);
           hideSearchBtn();
           showRegisterOnGmaps();
           resetTagsAndImages();
-          scrollToWithAnimation(SCROLL_POS_ADR);
+          // scrollToWithAnimation(SCROLL_POS_ADR);
           break;
         case FormStep.SELECT_TAGS:
           hideSearchBtn();
           hideRegisterOnGmaps();
           showInputTag();
           focusAwayFromInputs();
-          scrollToWithAnimation(SCROLL_POS_TAGS);
+          // scrollToWithAnimation(SCROLL_POS_TAGS);
           break;
         case FormStep.SELECT_IMAGES:
           hideSearchBtn();
           hideRegisterOnGmaps();
           showInputTag();
           focusAwayFromInputs();
-          scrollToWithAnimation(SCROLL_POS_IMAGES);
+          // scrollToWithAnimation(SCROLL_POS_IMAGES);
           break;
         case FormStep.SUBMIT:
           hideSearchBtn();
