@@ -5,6 +5,7 @@ import 'package:Coinector/GooglePlacesApiCoinector.dart';
 import 'package:Coinector/Localizer.dart';
 import 'package:Coinector/Merchant.dart';
 import 'package:Coinector/TagCoinector.dart';
+import 'package:Coinector/TagCoins.dart';
 import 'package:Coinector/TagFactory.dart';
 import 'package:Coinector/translator.dart';
 import 'package:flutter/foundation.dart';
@@ -14,6 +15,7 @@ import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';
 import 'Dialogs.dart';
+import 'TagBrands.dart';
 import 'Toaster.dart';
 import 'UrlLauncher.dart';
 
@@ -30,7 +32,6 @@ const SCROLL_POS_TAGS = 200.0;
 const SCROLL_POS_ADR = 130.0;
 const SCROLL_POS_NAME = 0.0;
 const KEYWORD_CONTROLLER_ACTION = "controller";
-
 const int MIN_INPUT_ADR =
     5; //TODO validate the address it shall contain a zip code and a country or use separate fields
 const int MIN_INPUT_NAME = 5;
@@ -42,7 +43,6 @@ const int MAX_INPUT_NAME = 50;
 const int MAX_INPUT_DASH = 36; //dash:XintDskT8uV59N9HNvbpJ27nKNtbyHiyUn
 const int MAX_INPUT_BCH =
     54; //bitcoincash:qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a
-
 const int IMAGE_HEIGHT = 336; //kReleaseMode ? 336 : 112;
 const int IMAGE_WIDTH = 640; //kReleaseMode ? 640 : 213;
 
@@ -95,7 +95,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   TextEditingController controllerInputBCH;
   TextEditingController controllerInputAdr;
   TextEditingController controllerInputName;
-
   String inputName = "";
   String lastInputNameWithCommand = "";
   String lastInputName = "";
@@ -116,26 +115,21 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   String placeId;
   List<Uint8List> images = [];
   List<Uint8List> selectedImages = [];
-
   var textStyleButtons = TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0);
-
   Set<TagCoinector> allSelectedTags = {};
-
   var scrollController = ScrollController();
-
   bool hasTriedSearch = false;
   bool showRegisterOnGMapsButton = false;
-
   bool hasSelectedImages = false;
-
   bool cancelAllImageLoads = false;
-
   Set<String> imagesSuccess;
-
   GithubCoinector githubCoinector = GithubCoinector();
-
   Merchant merchant;
 
+  var _selectedBrand;
+
+  List<dynamic> _selectedCoin =
+      List.filled(TagCoin.getTagCoins().length, false);
   _AddNewPlaceWidgetState(
       this.selectedType, this.accentColor, this.typeTitle, this.actionBarColor);
 
@@ -182,7 +176,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     var search = inputName + " " + inputAdr;
     if (!kReleaseMode) print("inputs: " + search);
 
+    Loader.show(context);
     placeId = await GooglePlacesApiCoinector.findPlaceId(search);
+    Loader.hide();
 
     if (!kReleaseMode) print("placeid: " + placeId.toString());
     if (placeId == GoogleErrors.INTERNET_ERROR.toString())
@@ -346,6 +342,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                       wrapBuildColumnTag(ctx),
                       wrapBuildSelectedTagsList(),
                       wrapBuildColumnImages(),
+                      buildColumnCoins(ctx),
+                      buildColumnBrands(ctx)
                       // wrapBuildColumnDASHyBCH(ctx),
                     ],
                   ),
@@ -579,7 +577,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void submitData(ctx) async {
-    merchant = overwriteTagsIfSelectionChanged(merchant);
+    printWrapped("BRAND" + _selectedBrand.toString());
+    printWrapped("COIN0" + _selectedCoin[0].toString());
+    printWrapped("COIN1" + _selectedCoin[1].toString());
+    /*merchant = overwriteTagsIfSelectionChanged(merchant);
     await githubCoinector.githubUploadPlaceDetails(merchant);
     Loader.show(context, progressIndicator: LinearProgressIndicator());
     /* Loader.show(context,
@@ -592,9 +593,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         overlayColor: Color(0x99E8EAF6));*/
     await githubCoinector.githubUploadPlaceImages(selectedImages, merchant);
     Loader.hide();
-
     //TODO SHOW PROGRESS BAR OF UPLOADS USING MULTIPLE FUTURE BLOCKS FOR EACH IMAGE
     Navigator.pop(context);
+*/
     //Dialogs.confirmSendEmail(context, () {
     //});
     /*Dialogs.confirmDownloadPdf(context, () {
@@ -688,6 +689,53 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             updateInputAdr),
       ],
     );
+  }
+
+  Column buildColumnBrands(ctx) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: buildTagBrandWidgets(),
+    );
+  }
+
+  List<RadioListTile> buildTagBrandWidgets() {
+    var tc = TagBrand.getBrands().map((TagBrand e) {
+      return RadioListTile(
+        title: Text(e.long),
+        groupValue: _selectedBrand,
+        value: e.index,
+        onChanged: (value) {
+          setState(() {
+            _selectedBrand = value;
+          });
+        },
+      );
+    }).toList();
+    return tc;
+  }
+
+  Column buildColumnCoins(ctx) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: buildTagCoinWidgets(),
+    );
+  }
+
+  List<CheckboxListTile> buildTagCoinWidgets() {
+    var tc = TagCoin.getTagCoins().map((TagCoin e) {
+      return CheckboxListTile(
+        title: Text(e.short + " - " + e.long),
+        value: _selectedCoin[e.index],
+        onChanged: (value) {
+          setState(() {
+            _selectedCoin[e.index] = value;
+          });
+        },
+      );
+    }).toList();
+    return tc;
   }
 
   SizedBox buildSizedBoxSeparator({multiplier = 1.0}) =>

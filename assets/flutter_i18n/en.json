@@ -61,6 +61,8 @@
   "choose_four_tags" : "OK, now choose four words that best describe your products/service.",
   "postal_adr" : "What is the postal address?",
   "street_number" : "Street + Number, City, Country",
+  "label_brand" : "Brand:",
+  "label_coins" : "Coins:",
   "address" : "address",
   "name" : "name",
   "add_title" : "ADD: ",

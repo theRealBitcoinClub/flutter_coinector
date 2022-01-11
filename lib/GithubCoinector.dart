@@ -62,7 +62,7 @@ class GithubCoinector {
             "_" +
             merchant.name.replaceAll(RegExp('[^A-Za-z0-9]'), 'x') +
             "_" +
-            TagBrands.tagBrands.elementAt(merchant.brand) +
+            TagBrand.getBrands().elementAt(merchant.brand).short +
             "_" +
             t.millisecondsSinceEpoch.toString() +
             ".json",

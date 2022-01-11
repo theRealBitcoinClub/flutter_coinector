@@ -243,7 +243,7 @@ class CardItem extends StatelessWidget {
                   borderRadius: BorderRadius.only(
                       topRight: buildRadius(), bottomRight: buildRadius()),
                   color: backGroundColor),
-              child: Text(TagBrands.tagBrands.elementAt(merchant.brand),
+              child: Text(TagBrand.getBrands().elementAt(merchant.brand).long,
                   style: TextStyle(color: Colors.white70)),
             )
           : Container(),
@@ -267,7 +267,7 @@ class CardItem extends StatelessWidget {
                 children: merchant.acceptedCoins
                     .split(",")
                     .map((e) => Text(
-                          TagCoins.tagCoins.elementAt(int.parse(e)),
+                          TagCoin.getTagCoins().elementAt(int.parse(e)).short,
                           style: tStyle.copyWith(fontWeight: FontWeight.bold),
                         ))
                     .toList(),
