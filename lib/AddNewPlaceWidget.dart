@@ -122,7 +122,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   bool cancelAllImageLoads = false;
   Set<String> imagesSuccess;
   GithubCoinector githubCoinector = GithubCoinector();
-  Merchant merchant;
+  Merchant _merchant;
 
   var _selectedBrand;
 
@@ -190,11 +190,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     } else if (placeId == GoogleErrors.MULTIPLE.toString()) {
       Toaster.showMerchantSearchHasMultipleResults(context);
     } else {
-      merchant = await loadDetailsFromGoogleCreateMerchant(selectedType);
+      _merchant = await loadDetailsFromGoogleCreateMerchant(selectedType);
       //TODO HANDLE MORE TAGS LATER, LET ADMIN CHOOSE BEST TAGS OR SIMPLY LET CONTENT CONTAIN MORE TAGS
       //TODO USER PROPER STATE PATTERN INSTEAD OF THIS CRAZY VARIABLING
-      prefillNameAddressAndTags(merchant);
-      loadGooglePlacePhotos(merchant.placeDetailsData);
+      prefillNameAddressAndTags(_merchant);
+      loadGooglePlacePhotos(_merchant.placeDetailsData);
     }
   }
 
@@ -571,12 +571,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void submitData(ctx) async {
-    printWrapped("BRAND" + _selectedBrand.toString());
-    printWrapped("COIN0" + _selectedCoin[0].toString());
-    printWrapped("COIN1" + _selectedCoin[1].toString());
     //TODO PARSE BRANDS AND COINS HERE TO ADD THEM TO MERCHANT AND REMOVE THE PRESELECT CONFIGS OR READ IN THE PRESELECTED STATE FROM LAST SUBMIT TO MAKE ADMIN INTERFACE EASIER FOR THESE WHO FOCUS ON THEIR BRAND ADDING MULTIPLE PLACES
-    /*merchant = overwriteTagsIfSelectionChanged(merchant);
-    await githubCoinector.githubUploadPlaceDetails(merchant);
+    _merchant = parseInputsToMerchant(_merchant);
+    await githubCoinector.githubUploadPlaceDetails(_merchant);
     Loader.show(context, progressIndicator: LinearProgressIndicator());
     /* Loader.show(context,
         isSafeAreaOverlay: false,
@@ -586,11 +583,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         themeData: Theme.of(context)
             .copyWith(accentColor: Colors.black38),
         overlayColor: Color(0x99E8EAF6));*/
-    await githubCoinector.githubUploadPlaceImages(selectedImages, merchant);
+    await githubCoinector.githubUploadPlaceImages(selectedImages, _merchant);
     Loader.hide();
     //TODO SHOW PROGRESS BAR OF UPLOADS USING MULTIPLE FUTURE BLOCKS FOR EACH IMAGE
     Navigator.pop(context);
-*/
+
     //TODO OFFER PDF DOWNLOAD AND LET USER INPUT HIS EMAIL MAYBE TO RECEIVE IT VIA EMAIL TOO???
     //Dialogs.confirmSendEmail(context, () {
     //});
@@ -599,6 +596,28 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           dash: hasMinInput(inputDASH) ? inputDASH : "",
           bch: hasMinInput(inputBCH) ? inputBCH : "");
     });*/
+  }
+
+  Merchant parseInputsToMerchant(Merchant m) {
+    m = overwriteTagsIfSelectionChanged(m);
+    m.brand = _selectedBrand != null ? _selectedBrand : 0;
+    m = parseInputCoinsToMerchant(m);
+    return m;
+  }
+
+  Merchant parseInputCoinsToMerchant(Merchant m) {
+    StringBuffer acceptedCoins = StringBuffer();
+    for (int x = 0; x < _selectedCoin.length; x++) {
+      if (_selectedCoin[x]) {
+        acceptedCoins.write(x);
+        acceptedCoins.write(",");
+      }
+    }
+    if (acceptedCoins.isNotEmpty) {
+      var s = acceptedCoins.toString();
+      m.acceptedCoins = s.substring(0, s.length - 1);
+    }
+    return m;
   }
 
   Column buildColumnAdr(ctx) {
@@ -896,15 +915,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   String parseTagsFromInputs() {
-    return searchTagsDelegate.alreadySelectedTagIndexes
-            .elementAt(0)
-            .toString() +
-        "," +
-        searchTagsDelegate.alreadySelectedTagIndexes.elementAt(1).toString() +
-        "," +
-        searchTagsDelegate.alreadySelectedTagIndexes.elementAt(2).toString() +
-        "," +
-        searchTagsDelegate.alreadySelectedTagIndexes.elementAt(3).toString();
+    StringBuffer b = StringBuffer();
+    b.writeAll(searchTagsDelegate.alreadySelectedTagIndexes, ',');
+    return b.toString();
   }
 
   Column wrapBuildColumnImages() {

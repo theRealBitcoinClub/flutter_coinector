@@ -54,8 +54,8 @@ class Merchant {
         0,
         TagCoinector.parseTagsToDatabaseFormat(tagsInput),
         data["formatted_address"],
-        4,
-        "0");
+        null,
+        null);
     m.tagsInput = tagsInput;
     return m;
   }
