@@ -948,7 +948,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                         hasSelectedImages
                             ? selectedImages[index]
                             : images[index],
-                        fit: BoxFit.cover,
+                        fit: BoxFit.contain,
                         height: IMAGE_HEIGHT.toDouble(),
                         width: IMAGE_WIDTH.toDouble(),
                       ),

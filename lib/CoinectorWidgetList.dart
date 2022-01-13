@@ -38,6 +38,8 @@ import 'TagCoinector.dart';
 import 'UrlLauncher.dart';
 import 'pages.dart';
 
+const bool isAdminMode = true;
+
 class CoinectorWidget extends StatefulWidget {
   final String search;
 
@@ -50,10 +52,6 @@ class CoinectorWidget extends StatefulWidget {
 class _CoinectorWidgetState extends State<CoinectorWidget>
     with TickerProviderStateMixin, WidgetsBindingObserver, TagFilterCallback {
   SearchDemoSearchDelegate searchDelegate;
-
-  //bool isDataSaverOfflineMode = false;
-
-  //CustomScroller _verticalScroller;
 
   _CoinectorWidgetState(String search) {
     urlSearch = search;
@@ -1354,7 +1352,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   void openAddNewPlaceWidget(BuildContext ctx) async {
-    if (kReleaseMode) {
+    if (!isAdminMode && kReleaseMode) {
       UrlLauncher.launchSubmitForm();
       return;
     } else
