@@ -50,7 +50,7 @@ enum FormStep {
   HIT_SEARCH,
   HIT_GOOGLE,
   SELECT_TAGS,
-  SELECT_IMAGES,
+  // SELECT_IMAGES,
   SELECT_BRAND,
   SELECT_COINS,
   SUBMIT
@@ -207,7 +207,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         searchTagsDelegate.alreadySelectedTagIndexes.add(tag.id);
       }
       if (allSelectedTags.length >= MIN_INPUT_TAGS)
-        drawFormStep(FormStep.SELECT_IMAGES);
+        drawFormStep(FormStep.SUBMIT);
       else
         drawFormStep(FormStep.SELECT_TAGS);
     });
@@ -732,7 +732,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     addSelectedTag(selected);
 
     if (allSelectedTags.length == MIN_INPUT_TAGS) {
-      drawFormStep(FormStep.SELECT_IMAGES);
+      drawFormStep(FormStep.SUBMIT);
     } else {
       drawFormStep(FormStep.SELECT_TAGS);
     }
@@ -939,9 +939,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             return Container(
                 width: IMAGE_WIDTH.toDouble(),
                 child: GestureDetector(
-                  onLongPress: () {
+                  /*onLongPress: () {
                     if (!hasSelectedImages) drawFormStep(FormStep.SUBMIT);
-                  },
+                  },*/
                   onDoubleTap: () {
                     if (!hasSelectedImages) addImageToSelection(index);
                   },
@@ -1031,8 +1031,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     setState(() {
       selectedImages.add(images[index]);
       images.removeAt(index);
-      if (selectedImages.length == 3 || selectedImages.length == images.length)
-        drawFormStep(FormStep.SUBMIT);
     });
   }
 
@@ -1072,17 +1070,17 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           focusAwayFromInputs();
           // scrollToWithAnimation(SCROLL_POS_TAGS);
           break;
-        case FormStep.SELECT_IMAGES:
+        /*case FormStep.SELECT_IMAGES:
           hideSearchBtn();
           hideRegisterOnGmaps();
           showInputTag();
           focusAwayFromInputs();
           // scrollToWithAnimation(SCROLL_POS_IMAGES);
-          break;
+          break;*/
         case FormStep.SUBMIT:
           hideSearchBtn();
           hideRegisterOnGmaps();
-          lockSelectedImages();
+          // lockSelectedImages();
           showSubmit();
           break;
         default:
