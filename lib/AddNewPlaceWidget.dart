@@ -931,7 +931,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   Column wrapBuildColumnImages() {
     return Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
       Container(
-        height: IMAGE_HEIGHT.toDouble(),
+        height: images.length == 0 && selectedImages.length == 0
+            ? 0
+            : IMAGE_HEIGHT.toDouble(),
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: hasSelectedImages ? selectedImages.length : images.length,
@@ -1080,6 +1082,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         case FormStep.SUBMIT:
           hideSearchBtn();
           hideRegisterOnGmaps();
+          showInputTag();
           // lockSelectedImages();
           showSubmit();
           break;
