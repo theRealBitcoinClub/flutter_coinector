@@ -13,7 +13,7 @@ class Snackbars {
       snackbarAction,
       duration = const Duration(milliseconds: 5000),
       removeLatest = false}) {
-    if (isWidgetUnmounted(ctx, _scaffoldKey)) return;
+    if (_isWidgetUnmounted(ctx, _scaffoldKey)) return;
     if (removeLatest) ScaffoldMessenger.of(ctx).removeCurrentSnackBar();
     ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(
       action: snackbarAction,
@@ -29,7 +29,7 @@ class Snackbars {
     ));
   }
 
-  static bool isWidgetUnmounted(
+  static bool _isWidgetUnmounted(
           BuildContext ctx, GlobalKey<ScaffoldState> _scaffoldKey) =>
       ctx.widget == null ||
       _scaffoldKey == null ||
@@ -64,7 +64,7 @@ class Snackbars {
         duration: Duration(seconds: 3));
   }
 
-  static void showMatchingSnackBar(
+  static void showFilterSearchSnackBar(
       scaffoldKey, ctx, String fileName, String search, TagCoinector tag) {
     if (fileName != null)
       _showSnackBar(scaffoldKey, ctx, "snackbar_filtered_by_location",

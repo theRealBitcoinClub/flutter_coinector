@@ -1216,7 +1216,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         ? TagCoinector.findTag(selectedLocationOrTag)
         : null;
 
-    Snackbars.showMatchingSnackBar(
+    Snackbars.showFilterSearchSnackBar(
         _scaffoldKey, ctx, fileName, capitalize(locationTitleOrTag), tag);
 
     loadAssets(ctx, tag, tag != null ? null : selectedLocationOrTag, fileName);

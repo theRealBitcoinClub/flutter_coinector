@@ -60,7 +60,7 @@ class GithubCoinector {
             t.month.toString() +
             t.day.toString() +
             "_" +
-            merchant.name.replaceAll(RegExp('[^A-Za-z0-9]'), 'x') +
+            merchant.name.replaceAll(RegExp('[^A-Za-z0-9]'), '-') +
             "_" +
             TagBrand.getBrands().elementAt(merchant.brand).short +
             "_" +

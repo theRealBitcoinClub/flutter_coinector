@@ -43,6 +43,9 @@ class Merchant {
   static Merchant createMerchantFromInputs(
       data, placeId, Set<TagCoinector> tagsInput, int placeType) {
     var location = data["geometry"]["location"];
+    var cleanAdr =
+        data["adr_address"].toString().replaceAll(RegExp('<[^>]+>'), '').trim();
+    print(cleanAdr);
     Merchant m = Merchant(
         placeId,
         location["lat"],
@@ -53,7 +56,7 @@ class Merchant {
         data["rating"].toString(),
         0,
         TagCoinector.parseTagsToDatabaseFormat(tagsInput),
-        data["formatted_address"],
+        cleanAdr,
         null,
         null);
     m.tagsInput = tagsInput;
