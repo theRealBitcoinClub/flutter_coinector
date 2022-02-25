@@ -526,11 +526,19 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         curve: DEFAULT_ANIMATION_CURVE,
         duration: DEFAULT_DURATION_OPACITY_FADE,
         opacity: hasTagWithThatIndexThenShowIt(index),
-        child: Padding(
-          padding: EdgeInsets.only(bottom: 10.0),
-          child: Text(allSelectedTags.length <= index
-              ? ""
-              : allSelectedTags.elementAt(index).toUI() + "  "),
+        child: GestureDetector(
+          onDoubleTap: () {
+            print("DOUBLE TAP TAG INDEX" + index.toString());
+            setState(() {
+              allSelectedTags.remove(allSelectedTags.elementAt(index));
+            });
+          },
+          child: Padding(
+            padding: EdgeInsets.only(bottom: 10.0),
+            child: Text(allSelectedTags.length <= index
+                ? ""
+                : allSelectedTags.elementAt(index).toUI() + "  "),
+          ),
         ));
   }
 
