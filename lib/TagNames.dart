@@ -1,4 +1,74 @@
 class SuggestionsTitles {
+  static final searchCombosAustralia = const {
+    'Acacia Limousines, Currajong QLD, Australia',
+    '',
+    '',
+    '',
+    ''
+  };
+  
+  static final searchCombosEurope = const {
+    'Joels Crepes, The Headrow, Leeds, Europe',
+    'The Block, Lisboa, Europe',
+    'Sailing Munich, Munich, Germany',
+    'Country House "La Grancia", Treia, Macerata, Italy',
+    '',
+    '',
+    '',
+    '',
+    '',
+    ''
+  };
+  
+  static final searchCombosAsia = const {
+    '',
+    '',
+    '',
+    '',
+    ''
+  };
+  
+  static final searchCombosAfrica = const {
+    '',
+    '',
+    '',
+    '',
+    ''
+  };
+  
+  static final searchCombosSouthAmerica = const {
+    'Newpoint, Cuyagua, Venezuela, America',
+    'Burger Center, Caracas, Venezuela, America',
+    'metromercados, Heredia, Costa Rica',
+    '',
+    '',
+    '',
+    ''
+  };
+  
+  static final searchCombosNorthAmerica = const {
+    '',
+    '',
+    '',
+    '',
+    ''
+  };
+ 
+  static final searchCombosAll = const {
+    'Joels Crepes, The Headrow, Leeds',
+    'Newpoint, Cuyagua, Venezuela',
+    'Burger Center, Caracas, Venezuela',
+    'metromercados, Heredia, Costa Rica',
+    'Sailing Munich, Munich, Germany',
+    'Country House "La Grancia", Treia, Macerata, Italy',
+    '',
+    '',
+    '',
+    '',
+    '',
+    ''
+  };
+  
   static final titleTags = const {
     'Muerde La Carne',
     'Caffe Meranto',
