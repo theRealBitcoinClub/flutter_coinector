@@ -5,33 +5,38 @@ class SuggestionsTitles {
   static final List<Map<String, dynamic>> continents = const [
     {
       'value': 0,
-      'label': 'Africa',
+      'label': 'Select Continent',
     },
     {
       'value': 1,
+      'label': 'Africa',
+    },
+    {
+      'value': 2,
       'label': 'Asia',
       //'textStyle': TextStyle(color: Colors.red),
     },
     {
-      'value': 2,
+      'value': 3,
       'label': 'Australia',
       //'icon': Icon(Icons.stop),
     },
     {
-      'value': 3,
+      'value': 4,
       'label': 'Europe',
     },
     {
-      'value': 4,
+      'value': 5,
       'label': 'North America',
     },
     {
-      'value': 5,
+      'value': 6,
       'label': 'South America',
     }
   ];
 
   static final List searchCombos = [
+    searchCombosFake,
     searchCombosAfrica,
     searchCombosAsia,
     searchCombosAustralia,
@@ -39,30 +44,40 @@ class SuggestionsTitles {
     searchCombosNorthAmerica,
     searchCombosSouthAmerica
   ];
+  static final List<Map<String, dynamic>> searchCombosFake = const [
+    {
+      'value': 0,
+      'label': '',
+    }
+  ];
 
   static final List<Map<String, dynamic>> searchCombosAustralia = const [
     {
       'value': 0,
-      'label': 'Acacia Limousines, Currajong QLD, Australia',
+      'label': 'Select Place in Australia',
     },
     {
       'value': 1,
-      'label': 'Alt Brew, Townsville City QLD, Australia',
+      'label': 'Acacia Limousines, Currajong QLD, Australia',
     },
     {
       'value': 2,
-      'label': 'Aptissio Australia Pty Ltd, Townsville QLD, Australia',
+      'label': 'Alt Brew, Townsville City QLD, Australia',
     },
     {
       'value': 3,
-      'label': 'Archer Mobile Coffee, Garbutt QLD, Australia',
+      'label': 'Aptissio Australia Pty Ltd, Townsville QLD, Australia',
     },
     {
       'value': 4,
-      'label': 'Aroi Bangkok Thai Restaurant, Hermit Park QLD, Australia',
+      'label': 'Archer Mobile Coffee, Garbutt QLD, Australia',
     },
     {
       'value': 5,
+      'label': 'Aroi Bangkok Thai Restaurant, Hermit Park QLD, Australia',
+    },
+    {
+      'value': 6,
       'label': 'Aussie Thai Fusion, North Ward QLD, Australia',
     }
   ];
@@ -70,26 +85,34 @@ class SuggestionsTitles {
   static final List<Map<String, dynamic>> searchCombosEurope = const [
     {
       'value': 0,
-      'label': 'Joels Crepes, The Headrow, Leeds',
+      'label': 'Select Place in Europe',
     },
     {
       'value': 1,
-      'label': 'The Block, Lisboa',
+      'label': 'Joels Crepes, The Headrow, Leeds',
     },
     {
       'value': 2,
-      'label': 'Sailing Munich, Munich, Germany',
+      'label': 'The Block, Lisboa',
     },
     {
       'value': 3,
+      'label': 'Sailing Munich, Munich, Germany',
+    },
+    {
+      'value': 4,
       'label': 'Country House "La Grancia", Treia, Macerata, Italy',
     },
   ];
 
   static final List<Map<String, dynamic>> searchCombosAfrica = const [
-    {
+    /*{
       'value': 0,
       'label': 'Froggs & Habit Intergalactic Trading Corporation, South Africa',
+    },*/
+    {
+      'value': 0,
+      'label': 'Select Place in Africa',
     },
     {
       'value': 1,
@@ -116,31 +139,35 @@ class SuggestionsTitles {
   static final List<Map<String, dynamic>> searchCombosAsia = const [
     {
       'value': 0,
-      'label': 'ジェムキャッスルゆきざき 熊本店, Japan',
+      'label': 'Select Place in Asia',
     },
     {
       'value': 1,
-      'label': 'Yuji Kajiwara ゆうじ・かじわらの店, Japan',
+      'label': 'ジェムキャッスルゆきざき 熊本店, Japan',
     },
     {
       'value': 2,
-      'label': 'Yakiniku Nurubon, 焼肉ヌルボン 大名Kitchen, Japan',
+      'label': 'Yuji Kajiwara ゆうじ・かじわらの店, Japan',
     },
     {
       'value': 3,
-      'label': 'ジェムキャッスルゆきざき 福岡セレクト館, Japan',
+      'label': 'Yakiniku Nurubon, 焼肉ヌルボン 大名Kitchen, Japan',
     },
     {
       'value': 4,
+      'label': 'ジェムキャッスルゆきざき 福岡セレクト館, Japan',
+    },
+    {
+      'value': 5,
       'label':
           'ジェムキャッスルゆきざき 福岡本店 天神 婚約指輪, Japan, 〒810-0001 Fukuoka, Chuo Ward, Tenjin, 2 Chome−6−14 ゆきざきビル',
     },
     {
-      'value': 5,
+      'value': 6,
       'label': 'Gem Castle Yukizaki Nakasu, Japan',
     },
     {
-      'value': 6,
+      'value': 7,
       'label': 'Kyushu Diamond Center (KDC) 九州ダイヤモンドセンター, Japan',
     }
   ];
@@ -148,38 +175,42 @@ class SuggestionsTitles {
   static final List<Map<String, dynamic>> searchCombosSouthAmerica = const [
     {
       'value': 0,
-      'label': 'Newpoint, Cuyagua, Venezuela',
+      'label': 'Select Place in South America',
     },
     {
       'value': 1,
-      'label': 'Burger Center, Caracas, Venezuela',
+      'label': 'Newpoint, Cuyagua, Venezuela',
     },
     {
       'value': 2,
-      'label': 'metromercados, Heredia, Costa Rica',
+      'label': 'Burger Center, Caracas, Venezuela',
     },
     {
       'value': 3,
-      'label': 'Kullawa Shop, Cuyagua, Venezuela',
+      'label': 'metromercados, Heredia, Costa Rica',
     },
     {
       'value': 4,
-      'label': 'Bodegon El Saman Cuyaguero, Cuyagua, Venezuela',
+      'label': 'Kullawa Shop, Cuyagua, Venezuela',
     },
     {
       'value': 5,
-      'label': 'Posada Casa Grande, Cuyagua, Venezuela',
+      'label': 'Bodegon El Saman Cuyaguero, Cuyagua, Venezuela',
     },
     {
       'value': 6,
-      'label': 'Pura Vida Cuyagua Surf y Moda Playera, Cuyagua, Venezuela',
+      'label': 'Posada Casa Grande, Cuyagua, Venezuela',
     },
     {
       'value': 7,
-      'label': "Cacao's Canela, El Castano, Maracay, Venezuela",
+      'label': 'Pura Vida Cuyagua Surf y Moda Playera, Cuyagua, Venezuela',
     },
     {
       'value': 8,
+      'label': "Cacao's Canela, El Castano, Maracay, Venezuela",
+    },
+    {
+      'value': 9,
       'label': "Supermercado Walio, El Castano, Maracay, Venezuela",
     }
   ];
@@ -187,7 +218,7 @@ class SuggestionsTitles {
   static final List<Map<String, dynamic>> searchCombosNorthAmerica = const [
     {
       'value': 0,
-      'label': '',
+      'label': 'Select Place in North America',
     },
   ];
 

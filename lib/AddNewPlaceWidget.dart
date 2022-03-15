@@ -138,6 +138,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   @override
   void initState() {
     super.initState();
+    //_initContinent();
     githubCoinector.init();
 
     initFocusNodes();
@@ -453,7 +454,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       children: <Widget>[
         SelectFormField(
             type: SelectFormFieldType.dropdown, // or can be dialog
-            initialValue: "-1",
+            initialValue: "0",
             icon: Icon(Icons.accessibility),
             labelText: 'Area',
             items: SuggestionsTitles.continents,
@@ -469,7 +470,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       children: <Widget>[
         SelectFormField(
             type: SelectFormFieldType.dropdown, // or can be dialog
-            initialValue: "-1",
+            initialValue: "0",
             icon: Icon(Icons.account_balance),
             labelText: 'Place',
             items: SuggestionsTitles.searchCombos[_currentContinent],
@@ -1025,7 +1026,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void loadGooglePlacePhotos(var data) async {
-    // resetImages();
+    resetImages();
     const sleepDuration = const Duration(milliseconds: 1000);
     var result = data;
     if (result != null) {
@@ -1184,18 +1185,35 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       child: buildColumnPreFillPlaceSelectBox(ctx));
 
   _selectContinent(var index) {
+    var contiIndex = int.parse(index);
+    if (contiIndex == 0) {
+      //drawFormStep(FormStep.HIT_GOOGLE);
+      return;
+    }
     setState(() {
-      _currentContinent = int.parse(index);
+      _currentContinent = contiIndex;
     });
   }
 
   _selectPlace(String place) {
     setState(() {
+      var placeIndex = int.parse(place);
+      if (placeIndex == 0) {
+        //TODO RESET ALL resetTagsAndImages();
+        return;
+      }
       var chosenItem =
-          SuggestionsTitles.searchCombos[_currentContinent][int.parse(place)];
+          SuggestionsTitles.searchCombos[_currentContinent][placeIndex];
       //String blub = jsonEncode(bla);
       //var blub2 = jsonDecode(blub);
       _searchForPrefill(chosenItem["label"]);
     });
   }
+
+  /*void _initContinent() async {
+    Position position = await Geolocator.getLastKnownPosition();
+    if (position == null)
+      return;
+    _currentContinent = int.parse(position.);
+  }*/
 }
