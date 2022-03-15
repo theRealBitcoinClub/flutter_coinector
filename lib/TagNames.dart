@@ -42,6 +42,26 @@ class SuggestionsTitles {
       'value': 0,
       'label': 'Acacia Limousines, Currajong QLD, Australia',
     },
+    {
+      'value': 1,
+      'label': '',
+    },
+    {
+      'value': 2,
+      'label': '',
+    },
+    {
+      'value': 3,
+      'label': '',
+    },
+    {
+      'value': 4,
+      'label': '',
+    },
+    {
+      'value': 5,
+      'label': '',
+    }
   ];
 
   static final List<Map<String, dynamic>> searchCombosEurope = const [
@@ -66,8 +86,28 @@ class SuggestionsTitles {
   static final List<Map<String, dynamic>> searchCombosAfrica = const [
     {
       'value': 0,
-      'label': '',
+      'label': 'Froggs & Habit Intergalactic Trading Corporation, South Africa',
     },
+    {
+      'value': 1,
+      'label': 'Citihoppers (Pty) Ltd, Joubertina, South Africa',
+    },
+    {
+      'value': 2,
+      'label': 'Nduli, Ceres, South Africa',
+    },
+    {
+      'value': 3,
+      'label': 'JMK Apartment Rentals, Cape Town, South Africa',
+    },
+    {
+      'value': 4,
+      'label': 'The Scone Shack, Cape Town, South Africa',
+    },
+    {
+      'value': 5,
+      'label': 'Damas Bodyworks Express, Cape Town, South Africa',
+    }
   ];
 
   static final List<Map<String, dynamic>> searchCombosAsia = const [
