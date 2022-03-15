@@ -32,6 +32,7 @@ const SCROLL_POS_TAGS = 200.0;
 const SCROLL_POS_ADR = 130.0;
 const SCROLL_POS_NAME = 0.0;
 const KEYWORD_CONTROLLER_ACTION = "controller";
+const int MAX_IMAGES_UPLOAD = 3;
 const int MIN_INPUT_ADR =
     5; //TODO validate the address it shall contain a zip code and a country or use separate fields
 const int MIN_INPUT_NAME = 5;
@@ -1085,6 +1086,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       selectedImages.add(images[index]);
       images.removeAt(index);
     });
+
+    if (selectedImages.length >= MAX_IMAGES_UPLOAD ||
+        (images.length == 0 && selectedImages.length != 0))
+      lockSelectedImages();
   }
 
   void lockSelectedImages() {

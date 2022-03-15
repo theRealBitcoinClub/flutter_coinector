@@ -83,15 +83,19 @@ class GithubCoinector {
       String repository, CreateFile createFile) async {
     ContentCreation response = await _github.repositories.createFile(
         RepositorySlug("theRealBitcoinClub", repository), createFile);
-    var url = response.content.downloadUrl;
-    print(repository +
-        "\nresponse github downloadUrl:" +
-        url +
-        "\n" +
-        "https://ezgif.com/crop?url=" +
-        url +
-        "\nhttps://ezgif.com/resize?url=" +
-        url);
+    if (response == null || response.content == null)
+      print("\nRESPONSE NULL repo: " + repository);
+    else {
+      var url = response.content.downloadUrl;
+      print(repository +
+          "\nresponse github downloadUrl:" +
+          url +
+          "\n" +
+          "https://ezgif.com/crop?url=" +
+          url +
+          "\nhttps://ezgif.com/resize?url=" +
+          url);
+    }
   }
 
   CreateFile githubCreateFileMerchantImage(Uint8List img, Merchant merchant) {
