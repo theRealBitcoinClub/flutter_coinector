@@ -130,16 +130,21 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   int _currentContinent = 0;
   int _currentPlace = 0;
 
-  var _selectedBrand;
+  var _selectedBrand = 0;
 
   List<dynamic> _selectedCoin =
       List.filled(TagCoin.getTagCoins().length, false);
+
+  bool _uploadWithLessThanFourTags = false;
+  String _textSubmitButton = "";
   _AddNewPlaceWidgetState(
       this.selectedType, this.accentColor, this.typeTitle, this.actionBarColor);
 
   @override
   void initState() {
     super.initState();
+    _selectedCoin[0] = true;
+    _textSubmitButton = i18n(context, "send");
     //_initContinent();
     githubCoinector.init();
 
@@ -204,6 +209,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       prefillNameAddressAndTags(_merchant);
       loadGooglePlacePhotos(_merchant.placeDetailsData);
     }
+    drawFormStep(FormStep.SUBMIT);
   }
 
   void prefillNameAddressAndTags(Merchant merchant) {
@@ -623,15 +629,19 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             Toaster.showAddFullAdr(ctx);
             return;
           }
-          if (allSelectedTags.length < MIN_INPUT_TAGS) {
+          if (!_uploadWithLessThanFourTags &&
+              allSelectedTags.length < MIN_INPUT_TAGS) {
             Toaster.showAddExactlyFourTags(ctx);
+            _uploadWithLessThanFourTags = true;
+            _textSubmitButton = "Upload";
             return;
           }
 
+          _uploadWithLessThanFourTags = false;
           submitData(ctx);
         },
         icon: Icon(Icons.send),
-        label: Text(i18n(ctx, "send")));
+        label: Text(_textSubmitButton));
   }
 
   void submitData(ctx) async {
@@ -787,11 +797,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     if (!kReleaseMode) print("\nSELECTED:" + selected.toString());
     addSelectedTag(selected);
 
-    if (allSelectedTags.length == MIN_INPUT_TAGS) {
+    /*if (allSelectedTags.length == MIN_INPUT_TAGS) {
       drawFormStep(FormStep.SUBMIT);
     } else {
       drawFormStep(FormStep.SELECT_TAGS);
-    }
+    }*/
   }
 
   Merchant overwriteTagsIfSelectionChanged(Merchant m) {
@@ -800,6 +810,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void resetTags() {
+    _uploadWithLessThanFourTags = false;
     allSelectedTags = Set.from([]);
     searchTagsDelegate.alreadySelectedTagIndexes = Set.from([]);
   }
