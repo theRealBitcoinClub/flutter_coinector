@@ -125,7 +125,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   Set<String> imagesSuccess;
   GithubCoinector githubCoinector = GithubCoinector();
   Merchant _merchant;
-  int _currentContinent;
+  int _currentContinent = 0;
 
   var _selectedBrand;
 
@@ -175,7 +175,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   void searchOnGoogleMapsPrefillFields(String input) async {
     var search = inputName + " " + inputAdr;
-    if (input.isNotEmpty) search = input;
+    if (input != null && input.isNotEmpty) search = input;
     if (!kReleaseMode) print("inputs: " + search);
 
     Loader.show(context);
@@ -338,7 +338,16 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      wrapBuildColumnPreFill(ctx),
+                      wrapBuildColumnPreFillContinent(ctx),
+                      SizedBox(
+                        height: 10,
+                        width: 10,
+                      ),
+                      wrapBuildColumnPreFillPlace(ctx),
+                      SizedBox(
+                        height: 30,
+                        width: 10,
+                      ),
                       wrapBuildColumnName(ctx),
                       wrapBuildColumnAdr(ctx),
                       wrapBuildGoogleButtons(ctx),
@@ -437,9 +446,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   final List<Map<String, dynamic>> _items = [
     {
-      'value': 2,
-      'label': 'Australia',
-      //'icon': Icon(Icons.stop),
+      'value': 0,
+      'label': 'Africa',
     },
     {
       'value': 1,
@@ -447,12 +455,13 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       //'textStyle': TextStyle(color: Colors.red),
     },
     {
-      'value': 3,
-      'label': 'Europe',
+      'value': 2,
+      'label': 'Australia',
+      //'icon': Icon(Icons.stop),
     },
     {
-      'value': 0,
-      'label': 'Africa',
+      'value': 3,
+      'label': 'Europe',
     },
     {
       'value': 4,
@@ -475,7 +484,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             icon: Icon(Icons.accessibility),
             labelText: 'Area',
             items: _items,
-            onChanged: (val) => _selectContinent(val)),
+            onChanged: (val) => _selectContinent(val))
       ],
     );
   }
@@ -487,11 +496,12 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       children: <Widget>[
         SelectFormField(
             type: SelectFormFieldType.dropdown, // or can be dialog
-            initialValue: "x",
-            icon: Icon(Icons.accessibility),
+            initialValue: "-1",
+            icon: Icon(Icons.account_balance),
             labelText: 'Place',
             items: SuggestionsTitles.searchCombos[_currentContinent],
-            onChanged: (val) => _selectPlace(val)),
+            onChanged: (val) => _selectPlace(val),
+            onFieldSubmitted: (val) => _selectPlace(val))
       ],
     );
   }
@@ -1184,21 +1194,31 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     drawStepSearch();
   }
 
-  Widget wrapBuildColumnPreFill(ctx) => AnimatedOpacity(
+  Widget wrapBuildColumnPreFillContinent(ctx) => AnimatedOpacity(
       curve: DEFAULT_ANIMATION_CURVE,
       duration: DEFAULT_DURATION_OPACITY_FADE,
       opacity: 1.0,
       child: buildColumnPreFillContinentSelectBox(ctx));
 
+  Widget wrapBuildColumnPreFillPlace(ctx) => AnimatedOpacity(
+      curve: DEFAULT_ANIMATION_CURVE,
+      duration: DEFAULT_DURATION_OPACITY_FADE,
+      opacity: 1.0,
+      child: buildColumnPreFillPlaceSelectBox(ctx));
+
   _selectContinent(var index) {
     setState(() {
-      _currentContinent = SuggestionsTitles.searchCombos[index];
+      _currentContinent = int.parse(index);
     });
   }
 
   _selectPlace(String place) {
     setState(() {
-      _searchForPrefill(place);
+      var chosenItem =
+          SuggestionsTitles.searchCombos[_currentContinent][int.parse(place)];
+      //String blub = jsonEncode(bla);
+      //var blub2 = jsonDecode(blub);
+      _searchForPrefill(chosenItem["label"]);
     });
   }
 }
