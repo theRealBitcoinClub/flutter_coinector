@@ -260,7 +260,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   Set<TagCoinector> parseReviewsSearchForMatchingTags(reviews) {
     Set<TagCoinector> resultTags = {};
-    if (reviews != null || reviews == "null") return resultTags;
+    if (reviews == null || reviews == "null") return resultTags;
     for (var r in reviews) {
       String review = r["text"].toString();
       if (!kReleaseMode) print("REVIEW:\n" + review + "\n");

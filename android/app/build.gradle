@@ -33,6 +33,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
+    ext.kotlin_version = '1.6.10'
     compileSdkVersion 31
 
     lintOptions {
