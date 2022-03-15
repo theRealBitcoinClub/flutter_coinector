@@ -1,4 +1,7 @@
 class SuggestionsTitles {
+  //DONE
+  // south japon, south africa
+
   static final List<Map<String, dynamic>> continents = const [
     {
       'value': 0,
