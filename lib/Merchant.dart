@@ -75,9 +75,9 @@ class Merchant {
         '","t":"' +
         type.toString() +
         '","c":"' +
-        (reviewCount != null ? reviewCount.toString() : '0') +
+        (reviewCount != "null" ? reviewCount.toString() : '0') +
         '","s":"' +
-        (reviewStars != null ? reviewStars.toString() : '0.0') +
+        (reviewStars != "null" ? reviewStars.toString() : '0.0') +
         '","d":"' +
         discount.toString() +
         '","a":"' +
