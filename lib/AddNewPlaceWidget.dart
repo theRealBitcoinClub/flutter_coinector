@@ -123,10 +123,12 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   bool showRegisterOnGMapsButton = false;
   bool hasSelectedImages = false;
   bool cancelAllImageLoads = false;
+  double _contiVisibility = 1.0;
   Set<String> imagesSuccess;
   GithubCoinector githubCoinector = GithubCoinector();
   Merchant _merchant;
   int _currentContinent = 0;
+  int _currentPlace = 0;
 
   var _selectedBrand;
 
@@ -1175,7 +1177,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   Widget wrapBuildColumnPreFillContinent(ctx) => AnimatedOpacity(
       curve: DEFAULT_ANIMATION_CURVE,
       duration: DEFAULT_DURATION_OPACITY_FADE,
-      opacity: 1.0,
+      opacity: _contiVisibility,
       child: buildColumnPreFillContinentSelectBox(ctx));
 
   Widget wrapBuildColumnPreFillPlace(ctx) => AnimatedOpacity(
@@ -1193,17 +1195,18 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     setState(() {
       _currentContinent = contiIndex;
     });
+    _contiVisibility = 0.0;
   }
 
   _selectPlace(String place) {
     setState(() {
-      var placeIndex = int.parse(place);
-      if (placeIndex == 0) {
+      _currentPlace = int.parse(place);
+      if (_currentPlace == 0) {
         drawFormStep(FormStep.HIT_SEARCH);
         return;
       }
       var chosenItem =
-          SuggestionsTitles.searchCombos[_currentContinent][placeIndex];
+          SuggestionsTitles.searchCombos[_currentContinent][_currentPlace];
       //String blub = jsonEncode(bla);
       //var blub2 = jsonDecode(blub);
       _searchForPrefill(chosenItem["label"]);
