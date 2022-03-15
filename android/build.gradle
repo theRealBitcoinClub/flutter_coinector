@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '1.6.10' // Change here
+    //ext.kotlin_version = '1.6.10' // Change here
     repositories {
         google()
         jcenter()
@@ -14,10 +14,9 @@ buildscript {
         //classpath 'com.google.gms:google-services:4.3.10'
         //classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:0.12.1'
     }
-}d
+}
 
 allprojects {
-    ext.kotlin_version = '1.6.10' // Change here
     repositories {
         google()
         jcenter()
