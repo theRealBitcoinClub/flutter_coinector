@@ -1,74 +1,75 @@
 class SuggestionsTitles {
-  static final searchCombosAustralia = const {
-    'Acacia Limousines, Currajong QLD, Australia',
-    '',
-    '',
-    '',
-    ''
-  };
-  
-  static final searchCombosEurope = const {
-    'Joels Crepes, The Headrow, Leeds, Europe',
-    'The Block, Lisboa, Europe',
-    'Sailing Munich, Munich, Germany',
-    'Country House "La Grancia", Treia, Macerata, Italy',
-    '',
-    '',
-    '',
-    '',
-    '',
-    ''
-  };
-  
-  static final searchCombosAsia = const {
-    '',
-    '',
-    '',
-    '',
-    ''
-  };
-  
-  static final searchCombosAfrica = const {
-    '',
-    '',
-    '',
-    '',
-    ''
-  };
-  
-  static final searchCombosSouthAmerica = const {
-    'Newpoint, Cuyagua, Venezuela, America',
-    'Burger Center, Caracas, Venezuela, America',
-    'metromercados, Heredia, Costa Rica',
-    '',
-    '',
-    '',
-    ''
-  };
-  
-  static final searchCombosNorthAmerica = const {
-    '',
-    '',
-    '',
-    '',
-    ''
-  };
- 
-  static final searchCombosAll = const {
-    'Joels Crepes, The Headrow, Leeds',
-    'Newpoint, Cuyagua, Venezuela',
-    'Burger Center, Caracas, Venezuela',
-    'metromercados, Heredia, Costa Rica',
-    'Sailing Munich, Munich, Germany',
-    'Country House "La Grancia", Treia, Macerata, Italy',
-    '',
-    '',
-    '',
-    '',
-    '',
-    ''
-  };
-  
+  static final List searchCombos = [
+    searchCombosAfrica,
+    searchCombosAsia,
+    searchCombosAustralia,
+    searchCombosEurope,
+    searchCombosNorthAmerica,
+    searchCombosSouthAmerica
+  ];
+
+  static final List<Map<String, dynamic>> searchCombosAustralia = const [
+    {
+      'value': 0,
+      'label': 'Acacia Limousines, Currajong QLD, Australia',
+    },
+  ];
+
+  static final List<Map<String, dynamic>> searchCombosEurope = const [
+    {
+      'value': 0,
+      'label': 'Joels Crepes, The Headrow, Leeds, Europe',
+    },
+    {
+      'value': 1,
+      'label': 'The Block, Lisboa, Europe',
+    },
+    {
+      'value': 2,
+      'label': 'Sailing Munich, Munich, Germany',
+    },
+    {
+      'value': 3,
+      'label': 'Country House "La Grancia", Treia, Macerata, Italy',
+    },
+  ];
+
+  static final List<Map<String, dynamic>> searchCombosAfrica = const [
+    {
+      'value': 0,
+      'label': '',
+    },
+  ];
+
+  static final List<Map<String, dynamic>> searchCombosAsia = const [
+    {
+      'value': 0,
+      'label': '',
+    },
+  ];
+
+  static final List<Map<String, dynamic>> searchCombosSouthAmerica = const [
+    {
+      'value': 0,
+      'label': 'Newpoint, Cuyagua, Venezuela, America',
+    },
+    {
+      'value': 1,
+      'label': 'Burger Center, Caracas, Venezuela, America',
+    },
+    {
+      'value': 2,
+      'label': 'metromercados, Heredia, Costa Rica',
+    }
+  ];
+
+  static final List<Map<String, dynamic>> searchCombosNorthAmerica = const [
+    {
+      'value': 0,
+      'label': '',
+    },
+  ];
+
   static final titleTags = const {
     'Muerde La Carne',
     'Caffe Meranto',

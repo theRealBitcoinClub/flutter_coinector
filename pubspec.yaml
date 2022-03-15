@@ -18,24 +18,25 @@ environment:
   sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
+  select_form_field: ^2.2.0
   flutter_overlay_loader: ^1.0.3
   #web_scraper: 0.1.4
-  github: ^9.0.0
+  github: ^9.0.2
   hovering: ^1.0.4
   firebase_core: ^1.11.0
   flutter_easyrefresh: ^2.2.1
   fluttertoast: ^8.0.8
-  permission_handler: ^8.3.0
+  permission_handler: ^9.2.0
   synchronized: ^3.0.0
   awesome_dialog: ^2.1.2
   flutter_phoenix: ^1.0.0
   loading_animations: ^2.2.0
-  shared_preferences: ^2.0.11
+  shared_preferences: ^2.0.13
   share: ^2.0.4
   dio: ^4.0.4
-  responsive_framework: ^0.1.5
+  responsive_framework: ^0.1.7
   connectivity: ^3.0.6
-  in_app_review: ^2.0.3
+  in_app_review: ^2.0.4
   transparent_image: ^2.0.0
   smooth_star_rating: ^1.1.1
   google_maps_flutter: ^2.1.1

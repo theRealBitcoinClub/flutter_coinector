@@ -12,10 +12,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
+import 'package:select_form_field/select_form_field.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';
 import 'Dialogs.dart';
 import 'TagBrands.dart';
+import 'TagNames.dart';
 import 'Toaster.dart';
 import 'UrlLauncher.dart';
 
@@ -123,6 +125,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   Set<String> imagesSuccess;
   GithubCoinector githubCoinector = GithubCoinector();
   Merchant _merchant;
+  int _currentContinent;
 
   var _selectedBrand;
 
@@ -170,8 +173,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   //TODO let them remove each tag separately to add a replacement tag
 
-  void searchOnGoogleMapsPrefillFields() async {
+  void searchOnGoogleMapsPrefillFields(String input) async {
     var search = inputName + " " + inputAdr;
+    if (input.isNotEmpty) search = input;
     if (!kReleaseMode) print("inputs: " + search);
 
     Loader.show(context);
@@ -334,6 +338,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
+                      wrapBuildColumnPreFill(ctx),
                       wrapBuildColumnName(ctx),
                       wrapBuildColumnAdr(ctx),
                       wrapBuildGoogleButtons(ctx),
@@ -430,6 +435,67 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     );
   }
 
+  final List<Map<String, dynamic>> _items = [
+    {
+      'value': 2,
+      'label': 'Australia',
+      //'icon': Icon(Icons.stop),
+    },
+    {
+      'value': 1,
+      'label': 'Asia',
+      //'textStyle': TextStyle(color: Colors.red),
+    },
+    {
+      'value': 3,
+      'label': 'Europe',
+    },
+    {
+      'value': 0,
+      'label': 'Africa',
+    },
+    {
+      'value': 4,
+      'label': 'North America',
+    },
+    {
+      'value': 5,
+      'label': 'South America',
+    }
+  ];
+
+  Column buildColumnPreFillContinentSelectBox(ctx) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        SelectFormField(
+            type: SelectFormFieldType.dropdown, // or can be dialog
+            initialValue: "-1",
+            icon: Icon(Icons.accessibility),
+            labelText: 'Area',
+            items: _items,
+            onChanged: (val) => _selectContinent(val)),
+      ],
+    );
+  }
+
+  Column buildColumnPreFillPlaceSelectBox(ctx) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        SelectFormField(
+            type: SelectFormFieldType.dropdown, // or can be dialog
+            initialValue: "x",
+            icon: Icon(Icons.accessibility),
+            labelText: 'Place',
+            items: SuggestionsTitles.searchCombos[_currentContinent],
+            onChanged: (val) => _selectPlace(val)),
+      ],
+    );
+  }
+
   Column wrapBuildGoogleButtons(ctx) {
     return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -469,10 +535,14 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         style: textStyleButtons,
       ),
       onPressed: () {
-        hideSearchBtn();
-        searchOnGoogleMapsPrefillFields();
+        _searchForPrefill(null);
       },
     );
+  }
+
+  void _searchForPrefill(String search) {
+    hideSearchBtn();
+    searchOnGoogleMapsPrefillFields(search);
   }
 
   Column buildColumnTag(ctx) {
@@ -1112,5 +1182,23 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   void drawStepInit() {
     hideSearchBtn();
     drawStepSearch();
+  }
+
+  Widget wrapBuildColumnPreFill(ctx) => AnimatedOpacity(
+      curve: DEFAULT_ANIMATION_CURVE,
+      duration: DEFAULT_DURATION_OPACITY_FADE,
+      opacity: 1.0,
+      child: buildColumnPreFillContinentSelectBox(ctx));
+
+  _selectContinent(var index) {
+    setState(() {
+      _currentContinent = SuggestionsTitles.searchCombos[index];
+    });
+  }
+
+  _selectPlace(String place) {
+    setState(() {
+      _searchForPrefill(place);
+    });
   }
 }
