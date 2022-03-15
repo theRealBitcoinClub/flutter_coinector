@@ -1187,7 +1187,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   _selectContinent(var index) {
     var contiIndex = int.parse(index);
     if (contiIndex == 0) {
-      //drawFormStep(FormStep.HIT_GOOGLE);
+      drawFormStep(FormStep.HIT_SEARCH);
       return;
     }
     setState(() {
@@ -1199,7 +1199,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     setState(() {
       var placeIndex = int.parse(place);
       if (placeIndex == 0) {
-        //TODO RESET ALL resetTagsAndImages();
+        drawFormStep(FormStep.HIT_SEARCH);
         return;
       }
       var chosenItem =
