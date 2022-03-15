@@ -73,8 +73,33 @@ class SuggestionsTitles {
   static final List<Map<String, dynamic>> searchCombosAsia = const [
     {
       'value': 0,
-      'label': '',
+      'label': 'ジェムキャッスルゆきざき 熊本店, Japan',
     },
+    {
+      'value': 1,
+      'label': 'Yuji Kajiwara ゆうじ・かじわらの店, Japan',
+    },
+    {
+      'value': 2,
+      'label': 'Yakiniku Nurubon, 焼肉ヌルボン 大名Kitchen, Japan',
+    },
+    {
+      'value': 3,
+      'label': 'ジェムキャッスルゆきざき 福岡セレクト館, Japan',
+    },
+    {
+      'value': 4,
+      'label':
+          'ジェムキャッスルゆきざき 福岡本店 天神 婚約指輪, Japan, 〒810-0001 Fukuoka, Chuo Ward, Tenjin, 2 Chome−6−14 ゆきざきビル',
+    },
+    {
+      'value': 5,
+      'label': 'Gem Castle Yukizaki Nakasu, Japan',
+    },
+    {
+      'value': 6,
+      'label': 'Kyushu Diamond Center (KDC) 九州ダイヤモンドセンター, Japan',
+    }
   ];
 
   static final List<Map<String, dynamic>> searchCombosSouthAmerica = const [
