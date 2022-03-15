@@ -1,4 +1,33 @@
 class SuggestionsTitles {
+  static final List<Map<String, dynamic>> continents = const [
+    {
+      'value': 0,
+      'label': 'Africa',
+    },
+    {
+      'value': 1,
+      'label': 'Asia',
+      //'textStyle': TextStyle(color: Colors.red),
+    },
+    {
+      'value': 2,
+      'label': 'Australia',
+      //'icon': Icon(Icons.stop),
+    },
+    {
+      'value': 3,
+      'label': 'Europe',
+    },
+    {
+      'value': 4,
+      'label': 'North America',
+    },
+    {
+      'value': 5,
+      'label': 'South America',
+    }
+  ];
+
   static final List searchCombos = [
     searchCombosAfrica,
     searchCombosAsia,

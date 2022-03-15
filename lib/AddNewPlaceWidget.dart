@@ -444,35 +444,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     );
   }
 
-  final List<Map<String, dynamic>> _items = [
-    {
-      'value': 0,
-      'label': 'Africa',
-    },
-    {
-      'value': 1,
-      'label': 'Asia',
-      //'textStyle': TextStyle(color: Colors.red),
-    },
-    {
-      'value': 2,
-      'label': 'Australia',
-      //'icon': Icon(Icons.stop),
-    },
-    {
-      'value': 3,
-      'label': 'Europe',
-    },
-    {
-      'value': 4,
-      'label': 'North America',
-    },
-    {
-      'value': 5,
-      'label': 'South America',
-    }
-  ];
-
   Column buildColumnPreFillContinentSelectBox(ctx) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -483,7 +454,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             initialValue: "-1",
             icon: Icon(Icons.accessibility),
             labelText: 'Area',
-            items: _items,
+            items: SuggestionsTitles.continents,
             onChanged: (val) => _selectContinent(val))
       ],
     );
