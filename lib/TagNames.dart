@@ -47,23 +47,23 @@ class SuggestionsTitles {
     },
     {
       'value': 1,
-      'label': '',
+      'label': 'Alt Brew, Townsville City QLD, Australia',
     },
     {
       'value': 2,
-      'label': '',
+      'label': 'Aptissio Australia Pty Ltd, Townsville QLD, Australia',
     },
     {
       'value': 3,
-      'label': '',
+      'label': 'Archer Mobile Coffee, Garbutt QLD, Australia',
     },
     {
       'value': 4,
-      'label': '',
+      'label': 'Aroi Bangkok Thai Restaurant, Hermit Park QLD, Australia',
     },
     {
       'value': 5,
-      'label': '',
+      'label': 'Aussie Thai Fusion, North Ward QLD, Australia',
     }
   ];
 
