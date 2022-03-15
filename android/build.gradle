@@ -18,6 +18,7 @@ ext.kotlin_version = '1.6.10' // Change here
 }
 
 allprojects {
+    ext.kotlin_version = '1.6.10' // Change here
     repositories {
         google()
         jcenter()
