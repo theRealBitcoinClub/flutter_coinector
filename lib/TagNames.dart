@@ -47,11 +47,11 @@ class SuggestionsTitles {
   static final List<Map<String, dynamic>> searchCombosEurope = const [
     {
       'value': 0,
-      'label': 'Joels Crepes, The Headrow, Leeds, Europe',
+      'label': 'Joels Crepes, The Headrow, Leeds',
     },
     {
       'value': 1,
-      'label': 'The Block, Lisboa, Europe',
+      'label': 'The Block, Lisboa',
     },
     {
       'value': 2,
@@ -80,15 +80,39 @@ class SuggestionsTitles {
   static final List<Map<String, dynamic>> searchCombosSouthAmerica = const [
     {
       'value': 0,
-      'label': 'Newpoint, Cuyagua, Venezuela, America',
+      'label': 'Newpoint, Cuyagua, Venezuela',
     },
     {
       'value': 1,
-      'label': 'Burger Center, Caracas, Venezuela, America',
+      'label': 'Burger Center, Caracas, Venezuela',
     },
     {
       'value': 2,
       'label': 'metromercados, Heredia, Costa Rica',
+    },
+    {
+      'value': 3,
+      'label': 'Kullawa Shop, Cuyagua, Venezuela',
+    },
+    {
+      'value': 4,
+      'label': 'Bodegon El Saman Cuyaguero, Cuyagua, Venezuela',
+    },
+    {
+      'value': 5,
+      'label': 'Posada Casa Grande, Cuyagua, Venezuela',
+    },
+    {
+      'value': 6,
+      'label': 'Pura Vida Cuyagua Surf y Moda Playera, Cuyagua, Venezuela',
+    },
+    {
+      'value': 7,
+      'label': "Cacao's Canela, El Castano, Maracay, Venezuela",
+    },
+    {
+      'value': 8,
+      'label': "Supermercado Walio, El Castano, Maracay, Venezuela",
     }
   ];
 
