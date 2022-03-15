@@ -36,7 +36,8 @@ const int MAX_IMAGES_UPLOAD = 3;
 const int MIN_INPUT_ADR =
     5; //TODO validate the address it shall contain a zip code and a country or use separate fields
 const int MIN_INPUT_NAME = 5;
-const int MIN_INPUT_TAGS = 4;
+const int MIN_INPUT_TAGS = 2;
+const int MAX_INPUT_TAGS = 4;
 const int MIN_INPUT_BCHyDASH =
     32; //TODO offer an address field for each coin right after checking its box
 const int MAX_INPUT_ADR = 250;
@@ -130,7 +131,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   int _currentContinent = 0;
   int _currentPlace = 0;
 
-  var _selectedBrand = 0;
+  int _selectedBrand;
 
   List<dynamic> _selectedCoin =
       List.filled(TagCoin.getTagCoins().length, false);
@@ -144,7 +145,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   void initState() {
     super.initState();
     _selectedCoin[0] = true;
-    _textSubmitButton = i18n(context, "send");
     //_initContinent();
     githubCoinector.init();
 
@@ -252,7 +252,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     controllerInputName.text = merchant.name;
     updateInputName(merchant.name);
   }
-
+/*
   String prefillTags(Set<TagCoinector> inputTags) {
     resetTags();
 
@@ -265,7 +265,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
     if (!kReleaseMode) print("\nTAGS:\n" + results + "\n");
     return results;
-  }
+  }*/
 
   Set<TagCoinector> parseReviewsSearchForMatchingTags(reviews) {
     Set<TagCoinector> resultTags = {};
@@ -641,7 +641,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           submitData(ctx);
         },
         icon: Icon(Icons.send),
-        label: Text(_textSubmitButton));
+        label: Text(
+            _textSubmitButton != "Upload" ? i18n(context, "send") : "Upload"));
   }
 
   void submitData(ctx) async {
@@ -777,7 +778,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       SizedBox(height: 10.0 * multiplier);
 
   void handleAddTagButton(ctx) async {
-    if (allSelectedTags.length >= MIN_INPUT_TAGS) {
+    if (allSelectedTags.length >= MAX_INPUT_TAGS) {
       setState(() {
         resetTags();
       });
@@ -1006,11 +1007,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           itemCount: hasSelectedImages ? selectedImages.length : images.length,
           itemBuilder: (context, index) {
             return Container(
-                width: IMAGE_WIDTH.toDouble(),
+                height: IMAGE_HEIGHT.toDouble() / 2,
+                width: IMAGE_WIDTH.toDouble() / 2,
                 child: GestureDetector(
-                  /*onLongPress: () {
-                    if (!hasSelectedImages) drawFormStep(FormStep.SUBMIT);
-                  },*/
                   onDoubleTap: () {
                     if (!hasSelectedImages) addImageToSelection(index);
                   },

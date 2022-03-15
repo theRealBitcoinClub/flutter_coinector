@@ -55,6 +55,8 @@ class TagCoinector {
             PLACEHOLDER_TAG +
             "," +
             PLACEHOLDER_TAG;
+    /*if (inputTags.length < TagCoinector.MAX_INPUT_TAGS)
+      results = TagCoinector.appendPlaceholderTags(results);*/
     return results;
   }
 
