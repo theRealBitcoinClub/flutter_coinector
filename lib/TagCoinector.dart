@@ -1,6 +1,7 @@
 // Identifier a
 
 class TagCoinector {
+  //TODO TRANSLATE ENG TAGS IN ALL LANGUAGES AND ADD EMOTICON TO SPANISH
   static const String PLACEHOLDER_TAG = "104";
   static const int MAX_INPUT_TAGS = 4;
   final String text;
@@ -1762,46 +1763,46 @@ class TagCoinector {
     '🍔🍔🍔Matcha 🍵',
     '🍔🍔🍔Oden 🍢', //170
     '🍔🍔🍔Latte ☕',
-    'Piscina', //'DASHText Ð',
-    'Pire acond.', //'CoinTigo',
-    'Planta Electr.', //'CoinText',
-    'Alquiler', //'Salamantex',//175
-    'Bodegon', //'CryptoBuyer',
-    'Kiosco', //'XPay',
-    'Electro', //'Panmoni'
-    'Telefonos', //180
-    'Estacionamiento',
-    'Accesorios',
-    'Zapatos',
-    'Playa',
-    'Rio', //185
-    'Naturista',
-    'Importado',
-    'Bicicleta',
-    'Harina',
-    'Limpieza', //190
-    'Jabon',
-    'Detergente',
-    'Farmacia',
-    'Azucar',
-    'Tarjeta Sim', //195
-    'MicroSD',
-    'Bateria',
-    'Agua',
-    'Reloj', //200,
-    'Llave',
-    'Candado',
-    'Mascota',
-    'Nino',
-    'Pelicula', //205
-    'Foto',
-    'Camara',
-    'Seguridad',
-    'Colchon',
-    'Mantenimiento', //210
-    'Lavadora',
-    'Salsicha',
-    'Huevo',
-    'Leche'
+    'Piscina 🏊', //'DASHText Ð', //
+    'Aire Acond. ❄', //'CoinTigo',
+    'Planta Elec. 🔌', //'CoinText',
+    'Alquiler 🏠', //'Salamantex',//175
+    'Bodegon 🧺', //'CryptoBuyer',
+    'Kiosco 🏪', //'XPay',
+    'Electro 💻', //'Panmoni'
+    'Telefono 📱', //180
+    'Estacion. 🅿️',
+    'Accesorios 💠',
+    'Zapatos 👞',
+    'Playa 🏖️',
+    'Rio 🏞️', //185
+    'Naturista 🌲',
+    'Importado 🌎',
+    'Herramienta 🔨',
+    'Harina 🥖',
+    'Limpieza 🧹', //190
+    'Jabon 🧼',
+    'Detergente ☢',
+    'Farmacia 🏥',
+    'Azucar 😍',
+    'SIM 📶', //195
+    'MicroSD 💾',
+    'Bateria 🔋',
+    'Agua 🚰',
+    'Reloj ⌚', //200,
+    'LLave 🔑',
+    'Candado 🔒',
+    'Mascota 🐶',
+    'Ninos 🚸',
+    'Pelicula 🎥', //205
+    'Foto 📸',
+    'Camara 📷',
+    'Seguridad 👮',
+    'Colchon 🛏️',
+    'Mantenimiento 🔧', //210
+    'Lavadora 🚿',
+    'Salsicha 🌭',
+    'Huevo 🥚',
+    'Leche 🥛'
   };
 }
