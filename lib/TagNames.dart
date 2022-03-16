@@ -79,6 +79,195 @@ class SuggestionsTitles {
     {
       'value': 6,
       'label': 'Aussie Thai Fusion, North Ward QLD, Australia',
+    },
+    {
+      'value': 7,
+      'label':
+          'Australian Hotel, 11 Palmer St, South Townsville QLD 4810, Australia',
+    },
+    {
+      'value': 8,
+      'label': 'Liquor Legends South Townsville, Australia',
+    },
+    {
+      'value': 9,
+      'label':
+          'BFQ Accountants, Mitchell Street, North Ward Queensland, Australia',
+    },
+    {
+      'value': 10,
+      'label':
+          'Bitcoin Cash, Flinders Street, Townsville Queensland, Australia',
+    },
+    {
+      'value': 11,
+      'label':
+          'BNG Sports Bicycle Central Hyde Park, Kings Road, Hyde Park QLD, Australia',
+    },
+    {
+      'value': 12,
+      'label':
+          'Bounce Coffee Company, 87 Ingham Rd, Townsville QLD 4810, Australia',
+    },
+    {
+      'value': 13,
+      'label':
+          'Restaurant Le Paradis Brasserie & Take Away @ Nelly, Sooning Street, Nelly Bay Queensland, Australia',
+    },
+    {
+      'value': 14,
+      'label':
+          'Cafe Society - Kmart Centre, 145 Nathan St, Aitkenvale QLD 4814, Australia',
+    },
+    {
+      'value': 15,
+      'label': 'Cafe Spuntino, 143 Walker St, Townsville QLD 4810, Australia',
+    },
+    {
+      'value': 16,
+      'label':
+          "Cate's Chemist Garbutt, 223 Ingham Rd, Garbutt QLD 4814, Australia",
+    },
+    {
+      'value': 17,
+      'label':
+          "Cate's Chemist Hyde Park, 87 Charters Towers Rd, Hyde Park QLD 4812, Australia",
+    },
+    {
+      'value': 18,
+      'label':
+          "Cate's Chemist TAIHS, 57-59 Gorden St, Garbutt QLD 4814, Australia",
+    },
+    {
+      'value': 19,
+      'label': "Checker Cabs, 31-33 Keane St, Currajong QLD 4812, Australia",
+    },
+    {
+      'value': 20,
+      'label': "City Oasis Inn, 143 Wills St, Townsville QLD 4810, Australia",
+    },
+    {
+      'value': 21,
+      'label':
+          "Code Valley Corp Pty Ltd, 435 Woolcock St, Garbutt QLD 4814, Australia",
+    },
+    {
+      'value': 22,
+      'label':
+          "Colour It/Man It, 124A Woolcock St, Pimlico QLD 4812, Australia",
+    },
+    {
+      'value': 23,
+      'label':
+          "Dawson Moving & Storage NQ, 5 Everett St, Bohle QLD 4818, Australia",
+    },
+    {
+      'value': 24,
+      'label':
+          'Dr Kosh Hazratwala (Townsville Lower Limb Clinic)	Pimlico QLD, Australia',
+    },
+    {
+      'value': 25,
+      'label':
+          'Eraza Laser Tattoo Removal Clinic Townsville, QLD 4810, Australia',
+    },
+    {
+      'value': 26,
+      'label':
+          'Family Life Organics, 238/262 Woolcock St, Currajong QLD 4812, Australia',
+    },
+    {
+      'value': 27,
+      'label':
+          'MI Rentals Car Hire & Jeeps On Maggie, Mandalay Avenue, Nelly Bay Queensland, Australia',
+    },
+    {
+      'value': 28,
+      'label': 'Fruits N Scoops, 4 Arcadia Rd, Nelly Bay QLD 4819, Australia ',
+    },
+    {
+      'value': 29,
+      'label':
+          'Gentleman Jones, 108 Charters Towers Rd, Townsville, QLD 4812, Australia ',
+    },
+    {
+      'value': 30,
+      'label': "Grandma's, Shop 14/45 Eyre St, North Ward QLD 4810, Australia",
+    },
+    {
+      'value': 31,
+      'label':
+          'Health First Development, 2/62 Keane St, Currajong QLD 4812, Australia',
+    },
+    {
+      'value': 32,
+      'label':
+          'Jim Chaillons Auto Service, 25 Casey St, Aitkenvale Townsville, QLD 4814, Australia',
+    },
+    {
+      'value': 33,
+      'label':
+          'John Gray Constructions, 265 Ingham Rd, Garbutt QLD 4814, Australia',
+    },
+    {
+      'value': 34,
+      'label': 'Key Motors, 241 Dalrymple Road, Garbutt QLD 4814, Australia',
+    },
+    {
+      'value': 35,
+      'label':
+          'King Konz School of Music, Hamilton Street, Townsville Queensland, Australia',
+    },
+    {
+      'value': 36,
+      'label':
+          'Kumusha African Shop Townsville, 310-330 Ross River Rd, Aitkenvale QLD 4814, Australia',
+    },
+    {
+      'value': 37,
+      'label':
+          'Little Pegs Cafe, 210 Charters Towers Rd, Hermit Park QLD 4812, Australia',
+    },
+    {
+      'value': 38,
+      'label': "Mad Maggie's Promotions, Townsville, Queensland, Australia",
+    },
+    {
+      'value': 39,
+      'label':
+          'Mission 2 Repair, 440 Flinders St, Townsville QLD 4810, Australia',
+    },
+    {
+      'value': 40,
+      'label':
+          'Moksha Room Hair & Beauty, 2 Dibbs St, South Townsville QLD 4810, Australia',
+    },
+    {
+      'value': 41,
+      'label':
+          'oceans jewels on magnetic, SHOP 3/98-100 Sooning St, Nelly Bay QLD 4819, Australia',
+    },
+    {
+      'value': 42,
+      'label': 'Ola Barbers, 278 Bayswater Rd, Currajong QLD 4812, Australia',
+    },
+    {
+      'value': 43,
+      'label':
+          'OracleStudio, 107 Kings Road, Pimlico Townsville, QLD 4812, Australia',
+    },
+    {
+      'value': 44,
+      'label': "Otto's Market Warrina, Illuka Street, Currajong QLD, Australia",
+    },
+    {
+      'value': 45,
+      'label': 'Otto’s Market Precinct, Village Drive, Idalia QLD, Australia',
+    },
+    {
+      'value': 46,
+      'label':
+          'Premise - Townsville Office, 84 Denham St, Townsville QLD 4810, Australia',
     }
   ];
 
