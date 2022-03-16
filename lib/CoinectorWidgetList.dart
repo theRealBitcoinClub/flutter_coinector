@@ -203,11 +203,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     await FileCache.loadFromWebAndPersistCache('am');
     await FileCache.loadFromWebAndPersistCache('as');
     await FileCache.loadFromWebAndPersistCache('au');
-    await FileCache.loadFromWebAndPersistCache('as-jap');
-    await FileCache.loadFromWebAndPersistCache('am-ven-car');
-    await FileCache.loadFromWebAndPersistCache('am-ven');
     await FileCache.loadFromWebAndPersistCache('e');
-    await FileCache.loadFromWebAndPersistCache('e-spa');
 
     await FileCache.loadFromWebAndPersistCache('addr');
     await FileCache.loadFromWebAndPersistCache('placesId');
@@ -219,24 +215,25 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   void _loadAndParseAllPlaces(TagCoinector tag, String locationFilter) {
-    if (!kReleaseMode)
+    /*if (!kReleaseMode)
       _loadAndParseAsset(tag, locationFilter, "places");
-    else {
-      _loadAndParseAsset(tag, locationFilter, 'am');
-      _loadAndParseAsset(tag, locationFilter, 'as');
-      _loadAndParseAsset(tag, locationFilter, 'au');
-      _loadAndParseAsset(tag, locationFilter, 'e');
-    }
+    else {*/
+    _loadAndParseAsset(tag, locationFilter, 'am');
+    _loadAndParseAsset(tag, locationFilter, 'as');
+    _loadAndParseAsset(tag, locationFilter, 'au');
+    _loadAndParseAsset(tag, locationFilter, 'e');
   }
 
   Future _loadAndParseAsset(
       TagCoinector tag, String locationOrTitleFilter, String fileName) async {
-    var decoded;
+    var decoded
+        /*;
     if (!kReleaseMode)
       decoded = await FileCache.loadAndDecodeAsset("places");
     else {
-      decoded = await FileCache.loadAndDecodeAsset(fileName);
-    }
+      decoded */
+        = await FileCache.loadAndDecodeAsset(fileName);
+
     parseAssetUpdateListModel(tag, locationOrTitleFilter, decoded, fileName);
   }
 

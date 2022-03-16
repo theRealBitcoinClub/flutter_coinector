@@ -4,13 +4,9 @@ class Assets {
 
   static const String assetsAddr = 'assets/addr.json';
   static const String assetsAm = 'assets/am.json';
-  static const String assetsAmven = 'assets/am-ven.json';
-  static const String assetsAmvencar = 'assets/am-ven-car.json';
   static const String assetsAs = 'assets/as.json';
-  static const String assetsAsjap = 'assets/as-jap.json';
   static const String assetsAu = 'assets/au.json';
   static const String assetsE = 'assets/e.json';
-  static const String assetsEspa = 'assets/e-spa.json';
   static const String assetsFlutterI18nDe = 'assets/flutter_i18n/de.json';
   static const String assetsFlutterI18nEn = 'assets/flutter_i18n/en.json';
   static const String assetsFlutterI18nEs = 'assets/flutter_i18n/es.json';
@@ -19,7 +15,8 @@ class Assets {
   static const String assetsFlutterI18nIt = 'assets/flutter_i18n/it.json';
   static const String assetsFlutterI18nJa = 'assets/flutter_i18n/ja.json';
   static const String assetsPendiente = 'assets/pendiente';
-  static const String assetsPlaceholder640x480 = 'assets/placeholder640x480.jpg';
+  static const String assetsPlaceholder640x480 =
+      'assets/placeholder640x480.jpg';
   static const String assetsPlacesId = 'assets/placesId.json';
   static const String assetsREADMEDATA = 'assets/README-DATA.md';
   static const String assetsTags = 'assets/tags.txt';
@@ -53,5 +50,4 @@ class Assets {
   static const String markerTakeaway = 'assets/marker/takeaway.png';
   static const String markerTakeawaymd = 'assets/marker/takeaway-md.png';
   static const String markerTakeawaysm = 'assets/marker/takeaway-sm.png';
-
 }
