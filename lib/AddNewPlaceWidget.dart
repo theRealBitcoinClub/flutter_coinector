@@ -1199,20 +1199,22 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     setState(() {
       _currentContinent = contiIndex;
     });
-    _contiVisibility = 0.0;
+    _contiVisibility = 0.4;
   }
 
   _selectPlace(String place) {
+    _currentPlace = int.parse(place);
+    if (_currentPlace == 0) {
+      drawFormStep(FormStep.HIT_SEARCH);
+      return;
+    }
     setState(() {
-      _currentPlace = int.parse(place);
-      if (_currentPlace == 0) {
-        drawFormStep(FormStep.HIT_SEARCH);
-        return;
-      }
       var chosenItem =
           SuggestionsTitles.searchCombos[_currentContinent][_currentPlace];
       //String blub = jsonEncode(bla);
       //var blub2 = jsonDecode(blub);
+
+      resetImages();
       _searchForPrefill(chosenItem["label"]);
     });
   }
