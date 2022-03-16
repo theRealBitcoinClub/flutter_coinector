@@ -155,4 +155,44 @@
 ,{"p":"ducatuscafesingapore","x":"1.2784458","y":"103.848261","n":"Ducatus Cafe Singapore","t":"2","c":"22","s":"4.1","d":"0","a":"15,16,8,150","l":"Singapore, Malaysia, Asia"}
 ,{"p":"qamara","x":"6.0814119","y":"102.2072121","n":"QAMARO COKLAT - Chocolate Shop","t":"0","c":"0.0","s":"0","d":"0","a":"62,59,60,61","l":"Kampung Wakaf Merah, Kampung Tendong, 17030 Pasir Mas, Kelantan, Malaysia"}
 ,{"p":"baencafe","x":"5.332393","y":"100.217897","n":"Baen Cafe Power Of Sedekah","t":"0","c":"2","s":"4.5","d":"0","a":"62,59,60,61","l":"11000 Balik Pulau, Penang, Malaysia"}
-,{"p":"coincafeandbar","x":"11.5483212","y":"104.9205696","n":"Coin Cafe n Bar","t":"0","c":"36","s":"4.6","d":"0","a":"60,61,59,104","l":"#5D Eo Street 360, 12304, Phnom Penh, Cambodia"}]
+,{"p":"coincafeandbar","x":"11.5483212","y":"104.9205696","n":"Coin Cafe n Bar","t":"0","c":"36","s":"4.6","d":"0","a":"60,61,59,104","l":"#5D Eo Street 360, 12304, Phnom Penh, Cambodia"}
+, {
+  "p": "sanandaj1",
+  "x": "35.3185285",
+  "y": "46.9902407",
+  "n": "پیرایش پونو",
+  "t": "999",
+  "c": "1",
+  "s": "5.0",
+  "d": "0",
+  "a": "27,93,45,52",
+  "l": "Sanandaj, Kurdistan Province, Iran",
+  "b": "0",
+  "w": "0,1,2"
+}, {
+  "p": "instacrypto",
+  "x": "12.9804076",
+  "y": "77.6006358",
+  "n": "Instacrypto",
+  "t": "999",
+  "c": "2",
+  "s": "5.0",
+  "d": "0",
+  "a": "104,104,104,104",
+  "l": "9th Main Rd, Vyalikaval, Kodandarampura, Malleshwaram, Bengaluru, Karnataka 560003, India",
+  "b": "0",
+  "w": "0,1,2"
+}, {
+  "p": "seabreeze",
+  "x": "13.7845451",
+  "y": "100.5355842",
+  "n": "Sea Breeze ซีฟู้ด",
+  "t": "0",
+  "c": "286",
+  "s": "4.0",
+  "d": "0",
+  "a": "135,100,96,97",
+  "l": "9 ถนน พระรามที่ 6 Samsen Nai, Phaya Thai, Bangkok 10400, Tailandia",
+  "b": "0",
+  "w": "0,1,2"
+}]
