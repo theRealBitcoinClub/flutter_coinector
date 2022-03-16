@@ -53,24 +53,27 @@ class UrlLauncher {
   }
 
   static void launchSubmitForm() {
-    String langCode = Platform.localeName.split("_")[0];
     String append = "add";
-
-    switch (langCode) {
-      case "es":
-      case "ja":
-      case "jp":
-      case "it":
-      case "fr":
-      case "de":
-      case "id":
-        append = langCode;
-        break;
-      default:
-        break;
+    try {
+      String langCode = Platform.localeName.split("_")[0];
+      switch (langCode) {
+        case "es":
+        case "ja":
+        case "jp":
+        case "it":
+        case "fr":
+        case "de":
+        case "id":
+          append = langCode;
+          break;
+        default:
+          break;
+      }
+      launchURI("http://bmap.app/" +
+          append /*, forceWebView: true TEST IF THAT FIXES THE ERROR ON DEVICE*/);
+    } catch (e) {
+      launchURI("http://bmap.app/add");
     }
-    launchURI("http://bmap.app/" +
-        append /*, forceWebView: true TEST IF THAT FIXES THE ERROR ON DEVICE*/);
   }
 
   static void launchBitcoinMap() {
