@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:Coinector/translator.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -51,8 +53,24 @@ class UrlLauncher {
   }
 
   static void launchSubmitForm() {
-    launchURI(
-        "http://bitcoinmap.cash/submit" /*, forceWebView: true TEST IF THAT FIXES THE ERROR ON DEVICE*/);
+    String langCode = Platform.localeName.split("_")[0];
+    String append = "add";
+
+    switch (langCode) {
+      case "es":
+      case "ja":
+      case "jp":
+      case "it":
+      case "fr":
+      case "de":
+      case "id":
+        append = langCode;
+        break;
+      default:
+        break;
+    }
+    launchURI("http://bmap.app/" +
+        append /*, forceWebView: true TEST IF THAT FIXES THE ERROR ON DEVICE*/);
   }
 
   static void launchBitcoinMap() {
