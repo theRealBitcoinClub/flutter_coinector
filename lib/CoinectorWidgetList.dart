@@ -38,7 +38,7 @@ import 'TagCoinector.dart';
 import 'UrlLauncher.dart';
 import 'pages.dart';
 
-const bool isAdminMode = true;
+const bool isManagerModeRelease = true;
 
 class CoinectorWidget extends StatefulWidget {
   final String search;
@@ -1352,8 +1352,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   void openAddNewPlaceWidget(BuildContext ctx) async {
-    if (kIsWeb /*!isAdminMode && kReleaseMode*/) {
+    if (!isManagerModeRelease || kIsWeb) {
       UrlLauncher.launchSubmitForm();
+      //TODO LAUNCH LANGUAGE SPECIFIC GOOGLE FORM, EASY FIRST STEP
       return;
     } else
       await Navigator.push(
