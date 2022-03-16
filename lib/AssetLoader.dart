@@ -8,13 +8,9 @@ import 'Place.dart';
 
 class AssetLoader {
   static List<dynamic> assetsAm;
-  static List<dynamic> assetsAmVen;
-  static List<dynamic> assetsAmVenCar;
   static List<dynamic> assetsAs;
-  static List<dynamic> assetsAsJap;
   static List<dynamic> assetsAu;
   static List<dynamic> assetsE;
-  static List<dynamic> assetsESpa;
   static List addresses;
   static List places;
 
