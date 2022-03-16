@@ -350,15 +350,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       wrapBuildColumnPreFillContinent(ctx),
-                      SizedBox(
-                        height: 10,
-                        width: 10,
-                      ),
+                      buildSizedBoxSeparator(),
                       wrapBuildColumnPreFillPlace(ctx),
-                      SizedBox(
-                        height: 30,
-                        width: 10,
-                      ),
+                      buildSizedBoxSeparator(multiplier: 3.0),
                       wrapBuildColumnName(ctx),
                       wrapBuildColumnAdr(ctx),
                       wrapBuildGoogleButtons(ctx),
