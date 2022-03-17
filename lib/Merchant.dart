@@ -60,6 +60,8 @@ class Merchant {
         null,
         null);
     m.tagsInput = tagsInput;
+    //create fake Place object to use new id thats equal to place id
+    if (m.id.length == 27) m.place = new Place(m.id, m.id);
     return m;
   }
 
