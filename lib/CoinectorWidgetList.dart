@@ -5,7 +5,6 @@ import 'dart:io';
 import 'package:Coinector/InternetConnectivityChecker.dart';
 import 'package:Coinector/ItemInfoStackLayer.dart';
 import 'package:Coinector/Snackbars.dart';
-import 'package:Coinector/TagNames.dart';
 import 'package:Coinector/translator.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
@@ -38,7 +37,7 @@ import 'TagCoinector.dart';
 import 'UrlLauncher.dart';
 import 'pages.dart';
 
-const bool isManagerModeRelease = false;
+const bool isManagerModeRelease = true;
 
 class CoinectorWidget extends StatefulWidget {
   final String search;
@@ -249,7 +248,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       //at the moment there is no PAY feature: m2.isPayEnabled = await AssetLoader.loadReceivingAddress(m2.id) != null;
 
       bool isLocation = Suggestions.locations.contains(locationTitleFilter);
-      bool isTitle = SuggestionsTitles.titleTags.contains(locationTitleFilter);
+      bool isTitle =
+          true; //SuggestionsTitles.titleTags.contains(locationTitleFilter);
 
       _insertIntoTempList(m2, tag, locationTitleFilter, isLocation, isTitle);
     }
@@ -410,7 +410,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         ) return;
     if (locationTitleOrTag != null) {
       if (isLocation && !_containsLocation(m2, locationTitleOrTag)) return;
-      if (isTitle && !_containsTitle(m2, locationTitleOrTag)) return;
+      if (isTitle &&
+          !_containsTitle(m2, locationTitleOrTag) &&
+          !_containsLocation(m2, locationTitleOrTag)) return;
     }
 
     if (tag == null &&
