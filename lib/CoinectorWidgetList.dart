@@ -248,13 +248,20 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       Merchant m2 = Merchant.fromJson(places.elementAt(i));
       m2.serverIdOrFileName = serverIdOrFileName;
       //at the moment there is no PAY feature: m2.isPayEnabled = await AssetLoader.loadReceivingAddress(m2.id) != null;
-
-      bool isLocation = Suggestions.locations.contains(locationTitleFilter);
-      int brand = containsBrand(locationTitleFilter);
-      String coins = containsCoin(locationTitleFilter);
-      bool isTitle =
-          true; //SuggestionsTitles.titleTags.contains(locationTitleFilter);
-
+      bool isLocation = false;
+      int brand = -1;
+      bool isTitle = true;
+      String coins = "";
+      if (locationTitleFilter != null && locationTitleFilter != "null") {
+        locationTitleFilter = locationTitleFilter.toLowerCase();
+        isLocation = Suggestions.locations.contains(locationTitleFilter);
+        brand = m2.brand != null ? containsBrand(m2, locationTitleFilter) : -1;
+        coins = m2.acceptedCoins != null
+            ? containsCoin(m2, locationTitleFilter)
+            : "";
+        //TODO CURRENTLY TITLE IS CHECKED WHEN ALL OTHER CHECKS ARE RESULTLESS
+        // isTitle = SuggestionsTitles.titleTags.contains(locationTitleFilter);
+      }
       _insertIntoTempList(
           m2, tag, locationTitleFilter, isLocation, isTitle, brand, coins);
     }
@@ -267,14 +274,22 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     updateListModel(tempLists);
   }
 
-  containsBrand(String locationTitleFilter) {
+  containsBrand(Merchant m2, String locationTitleFilter) {
+    // print("\nBRAND" + m2.brand.toString());
     int brandIndex = -1;
-    TagBrand.getBrands().forEach(
-        (TagBrand e) => brandIndex = checkBrand(e, locationTitleFilter));
+
+    for (int x = 0; x < TagBrand.getBrands().length; x++) {
+      TagBrand e = TagBrand.getBrands().elementAt(x);
+      brandIndex = checkBrand(e, locationTitleFilter);
+      if (brandIndex != -1) break;
+    }
+
+    // print("\brandIndex" + brandIndex.toString());
     return brandIndex;
   }
 
-  String containsCoin(String locationTitleFilter) {
+  String containsCoin(Merchant m2, String locationTitleFilter) {
+    // print("\nCOINS" + m2.acceptedCoins.toString());
     StringBuffer coins = new StringBuffer();
     TagCoin.getTagCoins()
         .forEach((TagCoin e) => checkCoin(e, locationTitleFilter, coins));
@@ -432,15 +447,33 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       bool isTitle,
       int brand,
       String coins) {
-    if (tag != null && filterWordIndexDoesNotMatch(tag, m2)) return;
+    if (coins.isNotEmpty && !m2.acceptedCoins.contains(coins)) {
+      print("coinfilter");
+      return;
+    }
+    if (brand != -1 && m2.brand != brand) {
+      print("brandfilter");
+      return;
+    }
+    if (tag != null && filterWordIndexDoesNotMatch(tag, m2)) {
+      print("tagfilter");
+      return;
+    }
     if (locationTitleOrTag != null) {
-      if (isLocation && !_containsLocationPrefilled(m2, locationTitleOrTag))
+      if (isLocation && !_containsLocationPrefilled(m2, locationTitleOrTag)) {
+        print("locationPrefilledFilter");
         return;
-      if (isTitle &&
+      }
+      if (tag == null &&
+          !isLocation &&
+          coins.isEmpty &&
+          brand == -1 &&
+          isTitle &&
           !_containsTitle(m2, locationTitleOrTag) &&
-          !_containsLocationFreeSearch(m2, locationTitleOrTag)) return;
-      if (brand != -1 && m2.brand != brand) return;
-      if (coins.isNotEmpty && !m2.acceptedCoins.contains(coins)) return;
+          !_containsLocationFreeSearch(m2, locationTitleOrTag)) {
+        print("titlefilter");
+        return;
+      }
     }
 
     if (tag == null &&
@@ -1446,14 +1479,20 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   int checkBrand(TagBrand e, locationTitleFilter) {
-    if (e.short.contains(locationTitleFilter)) {
+    // print("checkBrand" + e.index.toString());
+    // print("filter" + locationTitleFilter);
+    if (e.long.toLowerCase().contains(locationTitleFilter)) {
+      // print("checkBrandSUCCESS");
       return e.index;
     }
+    // print("checkBrandFAIL");
     return -1;
   }
 
   void checkCoin(TagCoin e, String locationTitleFilter, StringBuffer coins) {
-    if (e.short.contains(locationTitleFilter)) {
+    // print("checkCoin" + e.index.toString());
+    if (e.long.toLowerCase().contains(locationTitleFilter)) {
+      // print("checkCoinSUCCESS");
       if (coins.isEmpty) {
         coins.write(e.index);
       } else {
