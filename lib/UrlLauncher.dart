@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:Coinector/translator.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -52,7 +54,7 @@ class UrlLauncher {
 
   static void launchSubmitForm() {
     //TODO LAUNCH LANGUAGE SPECIFIC GOOGLE FORM, EASY FIRST STEP
-    /*String append = "add";
+    String append = "add";
     try {
       String langCode = Platform.localeName.split("_")[0];
       switch (langCode) {
@@ -68,11 +70,11 @@ class UrlLauncher {
         default:
           break;
       }
-      launchURI("http://bmap.app/" +
-          append /*, forceWebView: true TEST IF THAT FIXES THE ERROR ON DEVICE*/);
-    } catch (e) {*/
-    launchURI("http://bmap.app/add");
-    //}
+      launchURI("http://bmap.app/" + append);
+      /*, forceWebView: true TEST IF THAT FIXES THE ERROR ON DEVICE*/
+    } catch (e) {
+      launchURI("http://bmap.app/add");
+    }
   }
 
   static void launchBitcoinMap() {
