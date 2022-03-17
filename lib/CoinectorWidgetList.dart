@@ -386,8 +386,12 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     return false;
   }
 
-  bool _containsLocation(Merchant m, String location) {
+  bool _containsLocationPrefilled(Merchant m, String location) {
     return _containsString(m.location, location.split(" ")[0]);
+  }
+
+  bool _containsLocationFreeSearch(Merchant m, String location) {
+    return _containsString(m.location, location.trim());
   }
 
   bool _containsTitle(Merchant m, String title) {
@@ -409,10 +413,10 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         // !_containsTitle(m2, locationTitleOrTag)
         ) return;
     if (locationTitleOrTag != null) {
-      if (isLocation && !_containsLocation(m2, locationTitleOrTag)) return;
+      if (isLocation && !_containsLocationPrefilled(m2, locationTitleOrTag)) return;
       if (isTitle &&
           !_containsTitle(m2, locationTitleOrTag) &&
-          !_containsLocation(m2, locationTitleOrTag)) return;
+          !_containsLocationFreeSearch(m2, locationTitleOrTag)) return;
     }
 
     if (tag == null &&
