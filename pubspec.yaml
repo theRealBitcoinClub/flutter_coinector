@@ -15,7 +15,7 @@ description: Coinecting to coimunity...
 version: 4.20.2+253878
 
 environment:
-  sdk: ">=2.2.0 <3.0.0"
+  sdk: ">=2.2.2 <3.0.0"
 
 dependencies:
   select_form_field: ^2.2.0

@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:Coinector/InternetConnectivityChecker.dart';
 import 'package:Coinector/ItemInfoStackLayer.dart';
 import 'package:Coinector/Snackbars.dart';
+import 'package:Coinector/TagCoins.dart';
 import 'package:Coinector/translator.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
@@ -33,6 +34,7 @@ import 'Merchant.dart';
 import 'MyColors.dart';
 import 'SearchDemoSearchDelegate.dart';
 import 'Suggestions.dart';
+import 'TagBrands.dart';
 import 'TagCoinector.dart';
 import 'UrlLauncher.dart';
 import 'pages.dart';
@@ -248,10 +250,13 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       //at the moment there is no PAY feature: m2.isPayEnabled = await AssetLoader.loadReceivingAddress(m2.id) != null;
 
       bool isLocation = Suggestions.locations.contains(locationTitleFilter);
+      int brand = containsBrand(locationTitleFilter);
+      String coins = containsCoin(locationTitleFilter);
       bool isTitle =
           true; //SuggestionsTitles.titleTags.contains(locationTitleFilter);
 
-      _insertIntoTempList(m2, tag, locationTitleFilter, isLocation, isTitle);
+      _insertIntoTempList(
+          m2, tag, locationTitleFilter, isLocation, isTitle, brand, coins);
     }
 
     //TODO FIX MAP POSITIONING
@@ -260,6 +265,20 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     if (unfilteredLists.length == 0) initUnfilteredLists();
 
     updateListModel(tempLists);
+  }
+
+  containsBrand(String locationTitleFilter) {
+    int brandIndex = -1;
+    TagBrand.getBrands().forEach(
+        (TagBrand e) => brandIndex = checkBrand(e, locationTitleFilter));
+    return brandIndex;
+  }
+
+  String containsCoin(String locationTitleFilter) {
+    StringBuffer coins = new StringBuffer();
+    TagCoin.getTagCoins()
+        .forEach((TagCoin e) => checkCoin(e, locationTitleFilter, coins));
+    return coins.toString();
   }
 
   Future<int> updateList(
@@ -405,18 +424,23 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     return src.toLowerCase().contains(pattern.toLowerCase());
   }
 
-  void _insertIntoTempList(Merchant m2, TagCoinector tag,
-      String locationTitleOrTag, bool isLocation, bool isTitle) {
-    if (tag != null && filterWordIndexDoesNotMatch(tag, m2)
-        // &&
-        // !_containsLocation(m2, location) &&
-        // !_containsTitle(m2, locationTitleOrTag)
-        ) return;
+  void _insertIntoTempList(
+      Merchant m2,
+      TagCoinector tag,
+      String locationTitleOrTag,
+      bool isLocation,
+      bool isTitle,
+      int brand,
+      String coins) {
+    if (tag != null && filterWordIndexDoesNotMatch(tag, m2)) return;
     if (locationTitleOrTag != null) {
-      if (isLocation && !_containsLocationPrefilled(m2, locationTitleOrTag)) return;
+      if (isLocation && !_containsLocationPrefilled(m2, locationTitleOrTag))
+        return;
       if (isTitle &&
           !_containsTitle(m2, locationTitleOrTag) &&
           !_containsLocationFreeSearch(m2, locationTitleOrTag)) return;
+      if (brand != -1 && m2.brand != brand) return;
+      if (coins.isNotEmpty && !m2.acceptedCoins.contains(coins)) return;
     }
 
     if (tag == null &&
@@ -1419,5 +1443,23 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   @override
   doFilter(String search) {
     return startProcessSearch(context, search, true);
+  }
+
+  int checkBrand(TagBrand e, locationTitleFilter) {
+    if (e.short.contains(locationTitleFilter)) {
+      return e.index;
+    }
+    return -1;
+  }
+
+  void checkCoin(TagCoin e, String locationTitleFilter, StringBuffer coins) {
+    if (e.short.contains(locationTitleFilter)) {
+      if (coins.isEmpty) {
+        coins.write(e.index);
+      } else {
+        coins.write(",");
+        coins.write(e.index);
+      }
+    }
   }
 }
