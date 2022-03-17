@@ -25,7 +25,7 @@ dependencies:
   hovering: ^1.0.4
   firebase_core: ^1.11.0
   flutter_easyrefresh: ^2.2.1
-  fluttertoast: ^8.0.8
+  fluttertoast: ^8.0.9
   permission_handler: ^9.2.0
   synchronized: ^3.0.0
   awesome_dialog: ^2.1.2
@@ -39,13 +39,13 @@ dependencies:
   in_app_review: ^2.0.4
   transparent_image: ^2.0.0
   smooth_star_rating: ^1.1.1
-  google_maps_flutter: ^2.1.1
-  google_maps_flutter_web: 0.3.2
-  url_launcher: ^6.0.17
-  flutter_i18n: ^0.31.0
-  geolocator: ^8.0.1
+  google_maps_flutter: ^2.1.2
+  google_maps_flutter_web: ^0.3.2+1
+  url_launcher: ^6.0.20
+  flutter_i18n: ^0.32.1
+  geolocator: ^8.2.0
   crypto: ^3.0.1
-  path_provider: ^2.0.8
+  path_provider: ^2.0.9
   provider: ^6.0.2
   #device_preview: ^0.4.8
   #desktop_window: ^0.3.0
