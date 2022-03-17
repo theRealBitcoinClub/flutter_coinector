@@ -1351,7 +1351,6 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   void openAddNewPlaceWidget(BuildContext ctx) async {
     if (!isManagerModeRelease || kIsWeb) {
       UrlLauncher.launchSubmitForm();
-      //TODO LAUNCH LANGUAGE SPECIFIC GOOGLE FORM, EASY FIRST STEP
       return;
     } else
       await Navigator.push(
