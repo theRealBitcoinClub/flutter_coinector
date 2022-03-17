@@ -37,7 +37,7 @@ import 'TagCoinector.dart';
 import 'UrlLauncher.dart';
 import 'pages.dart';
 
-const bool isManagerModeRelease = true;
+const bool isManagerModeRelease = false;
 
 class CoinectorWidget extends StatefulWidget {
   final String search;
