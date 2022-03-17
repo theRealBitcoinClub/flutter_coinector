@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:Coinector/translator.dart';
+import 'package:flutter/foundation.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'AddNewPlaceWidget.dart';
@@ -53,6 +54,11 @@ class UrlLauncher {
   }
 
   static void launchSubmitForm() {
+    if (kIsWeb) {
+      launchURI("http://bmap.app/add");
+      return;
+    }
+
     //TODO LAUNCH LANGUAGE SPECIFIC GOOGLE FORM, EASY FIRST STEP
     String append = "add";
     try {
