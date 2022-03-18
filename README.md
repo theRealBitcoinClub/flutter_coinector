@@ -2,16 +2,13 @@
 
 https://bitcoinmap.cash/install
 
-FOR WINDOWS USERS RUN THIS COMMAND TO AVOID CHECKING IN FILES WITH CHANGED LINE ENDINGS: 
-git config --global core.autocrlf true
-
 ## Coinector Video Tutorial
 
-Click the image to play a YouTube video showing the features of this app.
+Play a YouTube video showing the features of this app.
 
 [![Coinector Video Tutorial](https://img.youtube.com/vi/NyIQlYw2vGI/0.jpg)](https://www.youtube.com/watch?v=NyIQlYw2vGI)
 
-## Releases
+## APK Releases
 
 Download:https://github.com/theRealBitcoinClub/flutter_coinector/releases
 
