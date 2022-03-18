@@ -1,3 +1,7 @@
+## EASY INSTALL ALL THE THINGZ
+
+https://bitcoinmap.cash/install
+
 FOR WINDOWS USERS RUN THIS COMMAND TO AVOID CHECKING IN FILES WITH CHANGED LINE ENDINGS: 
 git config --global core.autocrlf true
 
