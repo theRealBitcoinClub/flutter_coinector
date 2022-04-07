@@ -50,16 +50,19 @@ In the web version of this app the map functionality links to http://bitcoinmap.
 
 # Add Places
 
-Currently the add places functionality has been simplified and is using this Google Form: http://bitcoinmap.cash/submit
+English: http://bmap.app/en
 
-We might re-activate the more complex approach as soon as the demand for that feature increases.
+Espanol: http://bmap.app/es
 
-1. The user who sends an Email to add a place, triggers an automated action, which creates an Issue on Gitlab & Github:
-https://gitlab.com/bmap.cash/bmap.cash/issues & https://github.com/theRealBitcoinClub/bmap.cash/issues
-2. Places can be updated via Github repository, they are sorted by continent per JSON file, can be broken down in finer groups (countries) as the database grows:
-https://github.com/theRealBitcoinClub/flutter_coinector/tree/master/assets
-3. Images must be added to the main repo of bmap.cash in GIF format 640x480:
-https://github.com/theRealBitcoinClub/BITCOINMAP.CASH---Browser-PWA/raw/master/public/img/app/
+Deutsch: http://bmap.app/de
+
+Japan: http://bmap.app/ja
+
+French: http://bmap.app/fr
+
+Indonesian: http://bmap.app/id
+
+Italian: http://bmap.app/it
 
 ## QR-Code PDF download
 
