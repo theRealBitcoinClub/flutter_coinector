@@ -40,7 +40,7 @@ After tapping the visit button on the CardItem the user is being forwarded to th
 
 ## Review
 
-On each card there is a REVIEW button which forwards the user to a website which opens the review action for Google Maps, so that users can give reviews easily and smooth after visiting and consuming with bitcoins. 
+On each card there is a REVIEW button that forwards the user to a website which opens the review action for Google Maps, so that users can give reviews easily and smooth after visiting and paying with bitcoins. 
 
 # MAP
 
