@@ -268,6 +268,115 @@ class SuggestionsTitles {
       'value': 46,
       'label':
           'Premise - Townsville Office, 84 Denham St, Townsville QLD 4810, Australia',
+    },
+    {
+      'value': 47,
+      'label': 'ROCK APE RECORDS, Sturt Street, Townsville QLD, Australia',
+    },
+    {
+      'value': 48,
+      'label':
+          'Roofguard (Roof Painting), Ramsay Street, Garbutt QLD, Australia',
+    },
+    {
+      'value': 49,
+      'label': 'RowanAir Pty Ltd, Leyland Street, Garbutt QLD, Australia',
+    },
+    {
+      'value': 50,
+      'label': "Rowan's Body Works, Reardon Street, Currajong QLD, Australia",
+    },
+    {
+      'value': 51,
+      'label': 'Rydweld, Crocodile Crescent, Mount Saint John QLD, Australia',
+    },
+    {
+      'value': 52,
+      'label':
+          "Sandi's on Magnetic Island, Magnetic Island, Pacific Drive, Magnetic Island QLD, Australia",
+    },
+    {
+      'value': 53,
+      'label':
+          "Serenity Massage with Sarah Speerstra - Remedial Massage Therapist, Halifax Street, Garbutt QLD, Australia",
+    },
+    {
+      'value': 54,
+      'label': "Skin Ski + Surf, Flinders Street, Townsville QLD, Australia",
+    },
+    {
+      'value': 55,
+      'label': "Skinnys Supa Deli, Banfield Drive, Mount Louisa QLD, Australia",
+    },
+    {
+      'value': 56,
+      'label': "Solex, Somer Street, Hyde Park QLD, Australia",
+    },
+    {
+      'value': 57,
+      'label':
+          "SOS - Stuffed on Seafood, Arcadia Road, Nelly Bay QLD, Australia",
+    },
+    {
+      'value': 58,
+      'label':
+          "Spark Movement Studio, Denham Street, Townsville QLD, Australia",
+    },
+    {
+      'value': 59,
+      'label': "Speerstra Interiors, Halifax Street, Garbutt QLD, Australia",
+    },
+    {
+      'value': 60,
+      'label': "Squeaky Clean Townsville, Cranbrook QLD, Australia",
+    },
+    {
+      'value': 61,
+      'label': "Strand Fitness, Flinders Street, Townsville QLD, Australia",
+    },
+    {
+      'value': 62,
+      'label': "Stripes Coffee, Echlin Street, West End QLD, Australia",
+    },
+    {
+      'value': 63,
+      'label': "",
+    },
+    {
+      'value': 60,
+      'label': "",
+    },
+    {
+      'value': 60,
+      'label': "",
+    },
+    {
+      'value': 60,
+      'label': "",
+    },
+    {
+      'value': 60,
+      'label': "",
+    },
+    {
+      'value': 60,
+      'label': "",
+    },
+    {
+      'value': 60,
+      'label': "",
+    },
+    {
+      'value': 60,
+      'label': "",
+    },
+    {
+      'value': 60,
+      'label': "",
+    },
+    {
+      'value': 60,
+      'label': "",
     }
   ];
 
