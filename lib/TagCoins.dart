@@ -18,6 +18,7 @@ class TagCoin {
       _tagCoins.add(TagCoin(4, "Binance USD", "BUSD"));
       _tagCoins.add(TagCoin(5, "Flex USD", "FUSD"));
       _tagCoins.add(TagCoin(6, "Maker DAI", "DAI"));
+      _tagCoins.add(TagCoin(7, "Reserve", "RUSD"));
     }
     return _tagCoins;
   }
