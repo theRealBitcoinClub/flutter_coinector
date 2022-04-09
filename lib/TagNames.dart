@@ -535,6 +535,172 @@ class SuggestionsTitles {
     {
       'value': 7,
       'label': 'Kyushu Diamond Center (KDC) 九州ダイヤモンドセンター, Japan',
+    },
+    {
+      'value': 8,
+      'label':
+          'Japan, Okayama, Kita Ward, Shimoishii, 2 Chome−1−18 ORIX HIKARI CLINIC (ひかりクリニック）',
+    },
+    {
+      'value': 9,
+      'label': 'Japan, Wakayama, Gobo, Sono, 467 ビットコインヴィラ',
+    },
+    {
+      'value': 10,
+      'label': 'OKINAWA MINSYUKU KARIYUSHI1, Shirahama, Wakayama, Japan',
+    },
+    {
+      'value': 11,
+      'label': 'Japan, Wakayama, Shirahama, 1335-60 シーサイドペンションプチ白浜',
+    },
+    {
+      'value': 12,
+      'label':
+          'Japan, Osaka, Kita Ward, Umeda, 1 Chome−8−17 ジェムキャッスルゆきざき 大阪駅前店',
+    },
+    {
+      'value': 13,
+      'label':
+          'Japón, Prefectura de OsakaOsakaChūō-kuShinsaibashisuji, 2 Chome−6−1 ジェムキャッスルゆきざき 心斎橋筋商店街店',
+    },
+    {
+      'value': 14,
+      'label':
+          'Lucky 29, 2 Chome-4 Higashishinsaibashi, Chūō-ku, Osaka, Prefectura de Osaka, Japón',
+    },
+    {
+      'value': 15,
+      'label':
+          'Japón, Prefectura de AichiNagoyaNaka Ward, Nishiki, 3 Chome−8−1 ジェムキャッスルゆきざき 錦店',
+    },
+    {
+      'value': 16,
+      'label':
+          'Japón, Prefectura de AichiNagoyaNaka Ward, Osu, 2 Chome−5−17 ジェムキャッスルゆきざき 大須店',
+    },
+    {
+      'value': 17,
+      'label':
+          'Japón, Prefectura de NaganoAzuminoHotakakashiwabara, 2260-10 堀川工房',
+    },
+    {
+      'value': 18,
+      'label':
+          'Japón, Prefectura de YamanashiShōwaSaijo, WOMBAT and DUET （ウォンバット&デュエット）',
+    },
+    {
+      'value': 19,
+      'label':
+          'Niigata Airport, Aeropuerto de Niigata (KIJ), Matsuhamacho, Higashi Ward, Niigata 950-0001, Japan',
+    },
+    {
+      'value': 20,
+      'label':
+          'Aeropuerto Internacional de Narita (NRT), 1-1 Furugome, Narita, Prefectura de Chiba, Japón',
+    },
+    {
+      'value': 21,
+      'label':
+          'Japón, Prefectura de KanagawaYokohamaMinami Ward, Idogaya Shimomachi, 47-5 こりもみはんど',
+    },
+    {
+      'value': 22,
+      'label':
+          'Alex Live, 1 Chome-18-8 Minowacho, Kōhoku-ku, Yokohama, Prefectura de Kanagawa, Japón',
+    },
+    {
+      'value': 23,
+      'label': 'Japón, TokioTamaNagayama, 1 Chome−８−17 ホルモンすず 多摩永山店',
+    },
+    {
+      'value': 24,
+      'label': 'Japón, TokioNakanoNogata, 6 Chome−8−4 はたもカイロ整体院',
+    },
+    {
+      'value': 25,
+      'label':
+          'Coaster Craft Beer & Burger コスター・クラフトビール＆バーガー, 5 Chome-19-13 Daizawa, Setagaya, Tokio, Japón',
+    },
+    {
+      'value': 26,
+      'label':
+          'Japón, TokioMeguroJiyugaoka, 2 Chome−8−8 OIL & VINEGAR レストラン 瑞穂',
+    },
+    {
+      'value': 27,
+      'label': 'Japón, TokioMeguroKamimeguro, 2 Chome−44−12 Y2T STAND',
+    },
+    {
+      'value': 29,
+      'label': '',
+    },
+    {
+      'value': 29,
+      'label': '',
+    },
+    {
+      'value': 30,
+      'label': '',
+    },
+    {
+      'value': 30,
+      'label': '',
+    },
+    {
+      'value': 30,
+      'label': '',
+    },
+    {
+      'value': 30,
+      'label': '',
+    },
+    {
+      'value': 30,
+      'label': '',
+    },
+    {
+      'value': 30,
+      'label': '',
+    },
+    {
+      'value': 30,
+      'label': '',
+    },
+    {
+      'value': 30,
+      'label': '',
+    },
+    {
+      'value': 30,
+      'label': '',
+    },
+    {
+      'value': 30,
+      'label': '',
+    },
+    {
+      'value': 30,
+      'label': '',
+    },
+    {
+      'value': 30,
+      'label': '',
+    },
+    {
+      'value': 30,
+      'label': '',
+    },
+    {
+      'value': 30,
+      'label': '',
+    },
+    {
+      'value': 30,
+      'label': '',
+    },
+    {
+      'value': 30,
+      'label': '',
     }
   ];
 
