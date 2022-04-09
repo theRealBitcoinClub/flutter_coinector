@@ -374,63 +374,77 @@ class SuggestionsTitles {
     },
     {
       'value': 70,
-      'label': "",
+      'label': "Townsville WaterSports, The Strand, Townsville QLD, Australia",
     },
     {
-      'value': 70,
-      'label': "",
+      'value': 71,
+      'label':
+          "Voltec Services Pty. Ltd., Deschamp Street, Heatley QLD, Australia",
     },
     {
-      'value': 70,
-      'label': "",
+      'value': 72,
+      'label':
+          "WaterLeaf Skin Health And Beauty, Charters Towers Road, Hyde Park QLD, Australia",
     },
     {
-      'value': 70,
-      'label': "",
+      'value': 73,
+      'label':
+          "Yongala Lodge by The Strand, Fryer Street, North Ward QLD, Australia",
     },
     {
-      'value': 70,
-      'label': "",
+      'value': 74,
+      'label':
+          "Inner Light Meditation Centre, Flinders Street, Townsville QLD, Australia ",
     },
     {
-      'value': 70,
-      'label': "",
+      'value': 75,
+      'label': "Rising Sun FPV, Civil Road, Garbutt QLD, Australia",
     },
     {
-      'value': 70,
-      'label': "",
+      'value': 76,
+      'label': "Beach Hire, Horseshoe Bay Road, Horseshoe Bay QLD, Australia",
     },
     {
-      'value': 70,
-      'label': "",
+      'value': 77,
+      'label': "TerreCom Pty Ltd, Flinders Street, Townsville QLD, Australia ",
     },
     {
-      'value': 70,
-      'label': "",
+      'value': 78,
+      'label': "fix my home townsville",
     },
     {
-      'value': 70,
-      'label': "",
+      'value': 79,
+      'label': "Skin Ski + Surf, Flinders Street, Townsville QLD, Australia",
     },
     {
-      'value': 70,
-      'label': "",
+      'value': 80,
+      'label': "JMF Kebabs Townsville",
     },
     {
-      'value': 70,
-      'label': "",
+      'value': 81,
+      'label': "The Door Shop, Somer Street, Hyde Park QLD, Australia",
     },
     {
-      'value': 70,
-      'label': "",
+      'value': 82,
+      'label': "Little Bee Marketing, Leyland Street, Garbutt QLD, Australia",
     },
     {
-      'value': 70,
-      'label': "",
+      'value': 83,
+      'label':
+          "Opposite Lock Townsville, Woolcock Street, Garbutt QLD, Australia",
     },
     {
-      'value': 70,
-      'label': "",
+      'value': 84,
+      'label': "Just My Barberz, Eyre Street, North Ward QLD, Australia",
+    },
+    {
+      'value': 85,
+      'label': "Cafe Bambini Verde, Flinders Street, Townsville QLD, Australia",
+    },
+    {
+      'value': 86,
+      'label':
+          "Lucy Holland Naturopath - Remedial Massage, Digestive Health & Naturopath Townsville, Kent Street, Gulliver QLD, Australia ",
     }
   ];
 
