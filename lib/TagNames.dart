@@ -779,6 +779,144 @@ class SuggestionsTitles {
     {
       'value': 9,
       'label': "Supermercado Walio, El Castano, Maracay, Venezuela",
+    },
+    {
+      'value': 10,
+      'label': "Campo verde minimarket, sector corozal 1, Maracay, Aragua",
+    },
+    {
+      'value': 11,
+      'label': "Bossa Café, Avenida Las Delicias, Maracay, Aragua",
+    },
+    {
+      'value': 12,
+      'label':
+          "Krispy Donuts Coffee & Lunch, Avenida Las Delicias, Maracay, Aragua",
+    },
+    {
+      'value': 13,
+      'label': "Noa Noa Show & Cocteles, Avenida Las Delicias, Maracay, Aragua",
+    },
+    {
+      'value': 14,
+      'label': "Baraki Bodegon, Maracay, Aragua",
+    },
+    {
+      'value': 15,
+      'label': "Supermercado Luxor, Maracay, Aragua",
+    },
+    {
+      'value': 16,
+      'label':
+          "Krispy Donuts, Zona Postal, Avenida Las Delicias, Maracay, Aragua",
+    },
+    {
+      'value': 17,
+      'label': "ORGANI´K, Maracay, Aragua",
+    },
+    {
+      'value': 18,
+      'label': "Mahalo poke, Maracay, Aragua",
+    },
+    {
+      'value': 19,
+      'label': "Ola Pop Bar, maracay, Aragua",
+    },
+    {
+      'value': 20,
+      'label': "La Kolacheria, Aragua",
+    },
+    {
+      'value': 21,
+      'label': "Wok Asían Food",
+    },
+    {
+      'value': 22,
+      'label': "El conde hotel, Avenida Miranda, Maracay, Aragua",
+    },
+    {
+      'value': 23,
+      'label': "Hotel Mar de Plata, Maracay, Aragua",
+    },
+    {
+      'value': 24,
+      'label': "Ferreled Center, C.A., Sector Farenachi, Maracay, Aragua",
+    },
+    {
+      'value': 25,
+      'label': "Hierro Maracay, Avenida Bolívar, Maracay, Aragua",
+    },
+    {
+      'value': 26,
+      'label': "Ferramenta R y S, C.A., Maracay, Aragua",
+    },
+    {
+      'value': 27,
+      'label': "Todo Cable Center, C.A., Maracay, Aragua",
+    },
+    {
+      'value': 28,
+      'label': "Digitel Estación Central, Maracay, Aragua",
+    },
+    {
+      'value': 29,
+      'label': "Gtech maracay, Maracay, Aragua",
+    },
+    {
+      'value': 30,
+      'label': "RALVIA Maracay, Avenida Los Cedros, Maracay, Aragua",
+    },
+    {
+      'value': 31,
+      'label': "Krispy Donuts El Bosque",
+    },
+    {
+      'value': 32,
+      'label': "Krispy Donuts Avenida Miranda, Maracay, Aragua",
+    },
+    {
+      'value': 33,
+      'label':
+          "Krispy Donuts San Jacinto, Zona Postal, Avenida Bolívar, Maracay, Aragua",
+    },
+    {
+      'value': 34,
+      'label': "Krispy Donuts La Encrucijada, Turmero, Aragua",
+    },
+    {
+      'value': 35,
+      'label': "Ridery, Avenida Andrés Bello, Caracas, Capital District",
+    },
+    {
+      'value': 36,
+      'label': "Fruty centro La victoria, La Victoria, Aragua",
+    },
+    {
+      'value': 37,
+      'label': "La Lagunita, Aragua",
+    },
+    {
+      'value': 38,
+      'label':
+          "Restaurante Moritz, Carretera La Victoria - Colonia Tovar, Colonia Tovar, Aragua",
+    },
+    {
+      'value': 39,
+      'label': "La Tasquita Mittenwald, Colonia Tovar, Aragua",
+    },
+    {
+      'value': 41,
+      'label':
+          "La Casita del Chocolate, Carretera Colonia Tovar - La Victoria, Colonia Tovar, Aragua",
+    },
+    {
+      'value': 42,
+      'label':
+          "Bodegón La Tovareña, Calle principal Codazzi, Colonia Tovar, Aragua",
+    },
+    {
+      'value': 43,
+      'label': "Restaurante La Cava, Colonia Tovar, Aragua",
     }
   ];
 
