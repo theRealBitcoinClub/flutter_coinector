@@ -340,42 +340,96 @@ class SuggestionsTitles {
     },
     {
       'value': 63,
+      'label':
+          "Supreme Automotive - Car Mechanic Currajong, Keane Street, Currajong QLD, Australia",
+    },
+    {
+      'value': 64,
+      'label':
+          "The Mac Doctors, Charters Towers Road, Mysterton QLD, Australia",
+    },
+    {
+      'value': 65,
+      'label':
+          "The Old Railway Cafe, Flinders Street, Townsville QLD, Australia",
+    },
+    {
+      'value': 66,
+      'label': "Tidy Towing Townsville",
+    },
+    {
+      'value': 67,
+      'label':
+          "Townsville Helicopters - Training, Scenic, Charter & Aerial Work, Old Common Road, Rowes Bay QLD, Australia",
+    },
+    {
+      'value': 68,
+      'label':
+          "Townsville Massage and Soul Bar, Denham Street, Townsville QLD, Australia ",
+    },
+    {
+      'value': 69,
+      'label':
+          "Townsville Titan Security and Electrical, Charters Towers Road, Hyde Park QLD, Australia",
+    },
+    {
+      'value': 70,
       'label': "",
     },
     {
-      'value': 60,
+      'value': 70,
       'label': "",
     },
     {
-      'value': 60,
+      'value': 70,
       'label': "",
     },
     {
-      'value': 60,
+      'value': 70,
       'label': "",
     },
     {
-      'value': 60,
+      'value': 70,
       'label': "",
     },
     {
-      'value': 60,
+      'value': 70,
       'label': "",
     },
     {
-      'value': 60,
+      'value': 70,
       'label': "",
     },
     {
-      'value': 60,
+      'value': 70,
       'label': "",
     },
     {
-      'value': 60,
+      'value': 70,
       'label': "",
     },
     {
-      'value': 60,
+      'value': 70,
+      'label': "",
+    },
+    {
+      'value': 70,
+      'label': "",
+    },
+    {
+      'value': 70,
+      'label': "",
+    },
+    {
+      'value': 70,
+      'label': "",
+    },
+    {
+      'value': 70,
+      'label': "",
+    },
+    {
+      'value': 70,
       'label': "",
     }
   ];
