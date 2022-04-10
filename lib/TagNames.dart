@@ -1359,18 +1359,6 @@ class SuggestionsTitles {
     {
       'value': 147,
       'label': "Evoualji, Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 140,
-      'label': "",
-    },
-    {
-      'value': 140,
-      'label': "",
-    },
-    {
-      'value': 140,
-      'label': "",
     }
   ];
 
