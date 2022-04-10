@@ -1122,78 +1122,163 @@ class SuggestionsTitles {
     },
     {
       'value': 92,
-      'label': "",
+      'label':
+          "EL PARAÍSO • Panadería & Market, Avenida Caroní, Barquisimeto, Lara ",
     },
     {
       'value': 93,
-      'label': "",
+      'label': "11:11 Sport Bar Restaurant, Barquisimeto, Lara ",
     },
     {
       'value': 94,
-      'label': "",
+      'label': "Kilauea, Avenida Caracas, Barquisimeto, Lara ",
     },
     {
       'value': 95,
-      'label': "",
+      'label': "Marketmon, Calle Guatopo, Barquisimeto, Lara ",
     },
     {
       'value': 96,
-      'label': "",
+      'label':
+          "Mr mascotas, planta baja cc.trinitarias, local 25g, Barquisimeto, Lara ",
     },
     {
       'value': 97,
-      'label': "",
+      'label': "Mavi lingerie, Barquisimeto, Lara ",
     },
     {
       'value': 98,
-      'label': "",
+      'label': "Agüita Fresca, Barquisimeto, Lara ",
     },
     {
       'value': 99,
-      'label': "",
+      'label': "ANACOCO FOOD, de, calle 1, Barquisimeto, Lara ",
     },
     {
       'value': 100,
+      'label': "Ysifran Moto, El Cují, Lara",
+    },
+    {
+      'value': 101,
+      'label': "Licoreria Maurapas, El Cují, Lara, Venezuela ",
+    },
+    {
+      'value': 102,
+      'label': "Ferretería Armoris, C.A., El Cují, Lara ",
+    },
+    {
+      'value': 103,
+      'label': "Multiservicios Barreto, Barquisimeto, Lara ",
+    },
+    {
+      'value': 104,
+      'label':
+          "Paletas del Norte y algo Más, Avenida Intercomunal Barquisimeto - El Cují, Barquisimeto, Lara ",
+    },
+    {
+      'value': 105,
+      'label': "Centro Comercial Sinai, Barquisimeto, Lara ",
+    },
+    {
+      'value': 106,
+      'label':
+          "A la parrilla Grill Express, Avenida Intercomunal Barquisimeto - Duaca, Tamaca, Lara ",
+    },
+    {
+      'value': 107,
+      'label': "Royal Society BarberShop, Calle Queja, Tamaca, Lara ",
+    },
+    {
+      'value': 108,
+      'label': "Dulce tentación, Avenida Principal, Tamaca, Lara ",
+    },
+    {
+      'value': 109,
+      'label': "Mojito House, Guanare, Portuguesa, Venezuela",
+    },
+    {
+      'value': 110,
+      'label': "Pizzas Rafucho, Los Próceres, Guanare, Portuguesa ",
+    },
+    {
+      'value': 111,
+      'label': "Inversiones Don Miguelacho, Guanare, Portuguesa ",
+    },
+    {
+      'value': 112,
+      'label': "Pidiendo y Comiendo Pizzeria, Calle 9, Guanare, Portuguesa ",
+    },
+    {
+      'value': 113,
+      'label': "Makeup Vino, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 114,
+      'label': "Inversiones Tecnológicas Lemus C.A., Guanare, Portuguesa ",
+    },
+    {
+      'value': 115,
+      'label':
+          "Ferretería Don Andrés C.A, Calle Josefa Camejo, Punto Fijo, Falcón ",
+    },
+    {
+      'value': 116,
+      'label': "Tu Cuevita Repostera, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 117,
       'label': "",
     },
     {
-      'value': 100,
+      'value': 118,
       'label': "",
     },
     {
-      'value': 100,
+      'value': 119,
       'label': "",
     },
     {
-      'value': 100,
+      'value': 120,
       'label': "",
     },
     {
-      'value': 100,
+      'value': 120,
       'label': "",
     },
     {
-      'value': 100,
+      'value': 120,
       'label': "",
     },
     {
-      'value': 100,
+      'value': 120,
       'label': "",
     },
     {
-      'value': 100,
+      'value': 120,
       'label': "",
     },
     {
-      'value': 100,
+      'value': 120,
       'label': "",
     },
     {
-      'value': 100,
+      'value': 120,
       'label': "",
     },
     {
-      'value': 100,
+      'value': 120,
+      'label': "",
+    },
+    {
+      'value': 120,
+      'label': "",
+    },
+    {
+      'value': 120,
+      'label': "",
+    },
+    {
+      'value': 120,
       'label': "",
     }
   ];
