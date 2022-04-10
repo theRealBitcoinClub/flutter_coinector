@@ -1355,10 +1355,10 @@ class SuggestionsTitles {
     },
     {
       'value': 95,
-      'label': "",
+      'label': "Nasau Resort & Villas, Nadi, Fiji",
     },
     {
-      'value': 90,
+      'value': 96,
       'label': "",
     },
     {
