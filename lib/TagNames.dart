@@ -1747,39 +1747,49 @@ class SuggestionsTitles {
     },
     {
       'value': 183,
-      'label': "",
+      'label': "AH Metallbau, Mozartgasse, Zwentendorf, Austria ",
     },
     {
-      'value': 180,
-      'label': "",
+      'value': 184,
+      'label': "Autohaus Seidl, Hafnerstraße, Molln, Austria ",
     },
     {
-      'value': 180,
-      'label': "",
+      'value': 185,
+      'label':
+          "Autohaus Seidl Gleisdorf - Gebrauchtwagen auf autoseidl.at, Schubertgasse, Gleisdorf, Austria",
     },
     {
-      'value': 180,
-      'label': "",
+      'value': 186,
+      'label': "kaufdahoam.at, Linzer Straße, Gmunden, Austria ",
     },
     {
-      'value': 180,
-      'label': "",
+      'value': 187,
+      'label': "RENAULT Weiermeier, Jageredtstraße, Nußbach, Austria ",
     },
     {
-      'value': 180,
-      'label': "",
+      'value': 188,
+      'label': "BIKE-MASTER, Hauptstraße, Wartberg an der Krems, Austria ",
     },
     {
-      'value': 180,
-      'label': "",
+      'value': 189,
+      'label': "Reisinger KFZ, Eisenstraße, Großraming, Austria ",
     },
     {
-      'value': 180,
-      'label': "",
+      'value': 190,
+      'label': "APOTHEKE U1 TROSTSTRASSE, Favoritenstraße, Vienna, Austria ",
     },
     {
-      'value': 180,
-      'label': "",
+      'value': 191,
+      'label': "Teichbau GmbH, Oberschlierbach, Austria",
+    },
+    {
+      'value': 192,
+      'label':
+          "AAinFo - Soluções em Informática e tecnologia - Rua Uva Niágara, 50 - Morada das Vinhas, Jundiaí - State of São Paulo, Brazil ",
+    },
+    {
+      'value': 193,
+      'label': "Tandy Consulting Inc, North Pomona Avenue, Fullerton, CA, USA ",
     }
   ];
 
