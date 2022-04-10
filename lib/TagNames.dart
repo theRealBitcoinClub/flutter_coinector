@@ -1227,58 +1227,149 @@ class SuggestionsTitles {
     },
     {
       'value': 117,
-      'label': "",
+      'label': "Ferreteria Arturo G, Guanare, Portuguesa ",
     },
     {
       'value': 118,
-      'label': "",
+      'label': "Plásticos y Algo Mas CA, Guanare, Portuguesa, Venezuela ",
     },
     {
       'value': 119,
-      'label': "",
+      'label': "Mucho Más Que Pizza, Guanare, Portuguesa ",
     },
     {
       'value': 120,
+      'label':
+          "Vespa Shoes Store, entre carrera, Avenida Unda, Guanare, Portuguesa ",
+    },
+    {
+      'value': 121,
+      'label':
+          "Bodegón RMR, edificio Aura, Carrera 12, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 122,
+      'label': "Panda Verde, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 123,
+      'label': "Mango de Oro C.A., Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 124,
+      'label': "FRUTAS y Mas, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 125,
+      'label':
+          "Globoland Store, Edificio Colegio Cuatricentenario, Avenida Unda, Guanare, Portuguesa ",
+    },
+    {
+      'value': 126,
+      'label': "Inversiones Fermil centro, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 127,
+      'label':
+          "Inversiones Foncho Peña, Local 08, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 128,
+      'label': "Pizzería Unda, Local 12, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 129,
+      'label':
+          "Mundo de Azúcar, f.p., Avenida Unda, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 130,
+      'label': "BODEGON DE LA OCHO, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 131,
+      'label':
+          "Diseños & creaciones Snarpy, Avenida Unda, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 132,
+      'label':
+          "Kau Modass Boutique, Avenida Unda, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 133,
+      'label': "Kau Kids, Avenida Unda, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 134,
+      'label': "El Tinajero Hogar C.A., Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 135,
+      'label': "Flamingru, Carrera 6, Guanare, Portuguesa ",
+    },
+    {
+      'value': 136,
+      'label':
+          "Inversiones Marcelo, C.C. Eustoquio, Calle 12, Guanare, Portuguesa ",
+    },
+    {
+      'value': 137,
+      'label':
+          "Iluminaciones Alvarez, Carrera 7, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 138,
+      'label': "Dulce Panela Cafe, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 139,
+      'label': "El Punto Andino, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 140,
+      'label': "Café Plaza, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 141,
+      'label': "todoimpress C.A., Carrera 5, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 142,
+      'label':
+          "Zapatería Jkamy Boutique segundo piso local 1, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 143,
+      'label': "JKAMY Boutique, Calle 18, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 144,
+      'label':
+          "Tiendas Artes y Cueros, Calle 18, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 145,
+      'label': "Intenxys Boutique, Calle 18, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 146,
+      'label': "Koala tecnología, Calle 18, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 147,
+      'label': "Evoualji, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 140,
       'label': "",
     },
     {
-      'value': 120,
+      'value': 140,
       'label': "",
     },
     {
-      'value': 120,
-      'label': "",
-    },
-    {
-      'value': 120,
-      'label': "",
-    },
-    {
-      'value': 120,
-      'label': "",
-    },
-    {
-      'value': 120,
-      'label': "",
-    },
-    {
-      'value': 120,
-      'label': "",
-    },
-    {
-      'value': 120,
-      'label': "",
-    },
-    {
-      'value': 120,
-      'label': "",
-    },
-    {
-      'value': 120,
-      'label': "",
-    },
-    {
-      'value': 120,
+      'value': 140,
       'label': "",
     }
   ];
