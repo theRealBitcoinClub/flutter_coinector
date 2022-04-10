@@ -1359,22 +1359,70 @@ class SuggestionsTitles {
     },
     {
       'value': 96,
+      'label': "WorldWideAuto, Avinguda de Ramón y Cajal, Tarragona, España",
+    },
+    {
+      'value': 97,
+      'label':
+          "Complejo Doña Olga, Santa Cruz, La Rioja, La Rioja Province, Argentina",
+    },
+    {
+      'value': 98,
+      'label':
+          "Max Home Alava Sl, Alto de Armentia Kalea, 10, Vitoria-Gasteiz, Álava, España ",
+    },
+    {
+      'value': 99,
+      'label':
+          "Australian Rock Walls, 37 Township Drive, Burleigh Heads QLD, Australia ",
+    },
+    {
+      'value': 100,
+      'label':
+          "Filippo Esmaily Photography, Boulevard de la Fraternité, Luxembourg",
+    },
+    {
+      'value': 101,
       'label': "",
     },
     {
-      'value': 90,
+      'value': 102,
       'label': "",
     },
     {
-      'value': 90,
+      'value': 103,
       'label': "",
     },
     {
-      'value': 90,
+      'value': 104,
       'label': "",
     },
     {
-      'value': 90,
+      'value': 105,
+      'label': "",
+    },
+    {
+      'value': 106,
+      'label': "",
+    },
+    {
+      'value': 107,
+      'label': "",
+    },
+    {
+      'value': 108,
+      'label': "",
+    },
+    {
+      'value': 109,
+      'label': "",
+    },
+    {
+      'value': 110,
+      'label': "",
+    },
+    {
+      'value': 100,
       'label': "",
     }
   ];
