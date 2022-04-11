@@ -1727,47 +1727,64 @@ class SuggestionsTitles {
     },
     {
       'value': 230,
-      'label': "",
+      'label':
+          "McCormack Asociados, Arquitectos, Fray Justo Santa María de Oro, FOQ, Buenos Aires, Argentina ",
     },
     {
       'value': 231,
-      'label': "",
+      'label': "Nelly Nieto Malpartida, Sinclair, Buenos Aires, Argentina ",
     },
     {
       'value': 232,
-      'label': "",
+      'label':
+          "Kiosco TXV, Avenida General Indalecio Chenaut, Buenos Aires, Argentina",
     },
     {
       'value': 233,
-      'label': "",
+      'label': "Costa Rica 4709 m24, C1414 BSK, Buenos Aires, Argentina",
     },
     {
       'value': 234,
-      'label': "",
+      'label': "Alquilá tu Cancha, Avenida Cabildo, Buenos Aires, Argentina ",
     },
     {
       'value': 235,
-      'label': "",
+      'label':
+          "Benjipoint 2 Centro de Copiado, Acevedo, Buenos Aires, Argentina ",
     },
     {
       'value': 236,
-      'label': "",
+      'label': "Benjipoint3, Avenida Corrientes, Buenos Aires, Argentina ",
     },
     {
       'value': 237,
-      'label': "",
+      'label': "Che Bonche, Serrano, Buenos Aires, Argentina ",
     },
     {
       'value': 238,
-      'label': "",
+      'label': "Envíos Bakanos, Serrano 725, Buenos Aires, Argentina ",
     },
     {
       'value': 239,
-      'label': "",
+      'label': "Los Hermanos J C, Miñones, Buenos Aires, Argentina ",
     },
     {
-      'value': 230,
-      'label': "",
+      'value': 240,
+      'label': "Shawarma Al-Amir, Montañeses, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 241,
+      'label':
+          "𝙁𝙧𝙚𝙣𝙘𝙝 𝙘𝙧𝙚̂𝙥𝙚𝙨 𝘽𝘼, Montañeses, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 242,
+      'label': "Agencia Cantalupe, Avenida Cabildo, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 243,
+      'label':
+          "Buena Birra Social Club - Colegiales, Zapiola, Buenos Aires, Argentina ",
     }
   ];
 
