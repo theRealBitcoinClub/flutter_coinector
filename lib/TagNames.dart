@@ -1359,6 +1359,187 @@ class SuggestionsTitles {
     {
       'value': 147,
       'label': "Evoualji, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 148,
+      'label':
+          "Tu market y algo más C.A, Centro Comercial Cap Conte, Bolívar Avenue, Naguanagua, Carabobo ",
+    },
+    {
+      'value': 149,
+      'label': "Krispy Donuts Avenida Bolívar, Valencia, Carabobo, Venezuela ",
+    },
+    {
+      'value': 150,
+      'label': "O&J Suministros C.A, San Diego, Carabobo, Venezuela ",
+    },
+    {
+      'value': 151,
+      'label':
+          "Oxígenos cabriales C.A, Avenida Don Julio Centeno, San Diego, Carabobo, Venezuela ",
+    },
+    {
+      'value': 152,
+      'label':
+          "Antojitos de Ysabell, C.A, Calle Ricaurte, Valencia, Carabobo, Venezuela ",
+    },
+    {
+      'value': 153,
+      'label':
+          "Víveres Guacara F.P, Calle Laurencio Silva, Guacara, Carabobo, Venezuela ",
+    },
+    {
+      'value': 154,
+      'label':
+          "MULTISERVICIOS EL PUENTE II, C.A., Guacara, Carabobo, Venezuela ",
+    },
+    {
+      'value': 155,
+      'label': "Comercial LEC C.A, Guacara, Carabobo, Venezuela ",
+    },
+    {
+      'value': 156,
+      'label': "La Coromotana C.A, Avenida 110, Tocuyito, Carabobo, Venezuela ",
+    },
+    {
+      'value': 157,
+      'label': "Delicateses la Gloria de Dios, Tocuyito, Carabobo, Venezuela ",
+    },
+    {
+      'value': 158,
+      'label':
+          "Inversiones Georgis JRS CA, Principal, Tocuyito, Carabobo, Venezuela ",
+    },
+    {
+      'value': 159,
+      'label': "Herica Nails, 1, Tocuyito, Carabobo ",
+    },
+    {
+      'value': 160,
+      'label': "Variedades Mauped C.A, Principal, Tocuyito, Carabobo ",
+    },
+    {
+      'value': 161,
+      'label': "Variedades Mis Tesoros, Tocuyito, Carabobo, Venezuela ",
+    },
+    {
+      'value': 162,
+      'label':
+          "Abasto A Dios JL, Los Chorritos, Calle Las Bateas, Tocuyito, Carabobo, Venezuela ",
+    },
+    {
+      'value': 163,
+      'label': "AHOPE Style, Calle Rondon, Tocuyito, Carabobo, Venezuela ",
+    },
+    {
+      'value': 164,
+      'label':
+          "Inversiones Peña Nuñez 2015 C.A, Tocuyito, Carabobo, Venezuela ",
+    },
+    {
+      'value': 165,
+      'label': "Darwinos, Calle 2 Norte, Cucuta, North Santander, Colombia ",
+    },
+    {
+      'value': 166,
+      'label': "Inmelozano ca, Calle 17, Ureña, Táchira, Táchira ",
+    },
+    {
+      'value': 167,
+      'label': "El Universo Del Churro, San Cristobal, Táchira, Venezuela ",
+    },
+    {
+      'value': 168,
+      'label': "Barber Tatto 911, Táriba, Táchira, Venezuela ",
+    },
+    {
+      'value': 169,
+      'label':
+          "Haru Nails Studio, Troncal 1, San Cristóbal, Táchira, Venezuela ",
+    },
+    {
+      'value': 170,
+      'label': "Respuestos Pirineos, 5ta. Avenida "Francisco García de Hevia", San Cristóbal, Táchira, Venezuela ",
+    },
+    {
+      'value': 171,
+      'label': "Centro de Rehabilitación Física Quirón, San Cristobal, Táchira ",
+    },
+    {
+      'value': 172,
+      'label': "Kaska-Nueces, San Cristóbal, Táchira, Venezuela ",
+    },
+    {
+      'value': 173,
+      'label': "Gigi Playa, San Cristóbal 5001, Táchira, Venezuela ",
+    },
+    {
+      'value': 174,
+      'label': "Gürt Cocina Vegetariana, San Cristobal, Táchira ",
+    },
+    {
+      'value': 175,
+      'label': 'Respuestos Pirineos, 5ta. Avenida "Francisco García de Hevia", San Cristóbal, Táchira, Venezuela ',
+    },
+    {
+      'value': 176,
+      'label': "Papelería Moderna, Séptima Avenida, San Cristóbal 5001, Táchira, Venezuela ",
+    },
+    {
+      'value': 177,
+      'label': "Inversiones aleksey, Calle 3, San Cristóbal, Táchira, Venezuela ",
+    },
+    {
+      'value': 178,
+      'label': "Panaderia Y Pasteleria Monquita, San Cristóbal 5001, Táchira, Venezuela ",
+    },
+    {
+      'value': 179,
+      'label': "Korea Partes Táchira, San Cristóbal 5001, Táchira, Venezuela ",
+    },
+    {
+      'value': 180,
+      'label': "",
+    },
+    {
+      'value': 180,
+      'label': "",
+    },
+    {
+      'value': 180,
+      'label': "",
+    },
+    {
+      'value': 180,
+      'label': "",
+    },
+    {
+      'value': 180,
+      'label': "",
+    },
+    {
+      'value': 180,
+      'label': "",
+    },
+    {
+      'value': 180,
+      'label': "",
+    },
+    {
+      'value': 180,
+      'label': "",
+    },
+    {
+      'value': 180,
+      'label': "",
+    },
+    {
+      'value': 180,
+      'label': "",
+    },
+    {
+      'value': 180,
+      'label': "",
     }
   ];
 
