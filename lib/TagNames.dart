@@ -1655,70 +1655,118 @@ class SuggestionsTitles {
     },
     {
       'value': 214,
-      'label': "",
+      'label': "Video Club, Piso 1, Maturín, Monagas, Venezuela ",
     },
     {
       'value': 215,
-      'label': "",
+      'label': "FRUTTY MANIA, Via Viboral, Maturín, Monagas, Venezuela ",
     },
     {
       'value': 216,
-      'label': "",
+      'label':
+          "BB Store SERVICE, C.A, Via Viboral, Maturín, Monagas, Venezuela ",
     },
     {
       'value': 217,
-      'label': "",
+      'label':
+          "Strong Physical Center, C.A, Via Viboral, Maturín, Monagas, Venezuela ",
     },
     {
       'value': 218,
-      'label': "",
+      'label':
+          "La Plata Seguros, C. 9 835, B1900 La Plata, Provincia de Buenos Aires, Argentina ",
     },
     {
       'value': 219,
-      'label': "",
+      'label':
+          "akataka, Guillermo Hudson, Provincia de Buenos Aires, Argentina ",
     },
     {
       'value': 220,
+      'label':
+          "Royal Fitness 24hs, Berazategui Centro, Provincia de Buenos Aires, Argentina ",
+    },
+    {
+      'value': 221,
+      'label':
+          "Selectos - Café de Especialidad, Reconquista, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 222,
+      'label': "Envios Bakanos, Florida, AAI, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 223,
+      'label': "Kiosco el Solar, Adolfo Alsina, AAE, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 224,
+      'label': "Buenos Aires Footgolf, Campana, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 225,
+      'label': "Servir Viajes, Uruguay, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 226,
+      'label':
+          "Kioscobelisco, Avenida Roque Sáenz Peña, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 227,
+      'label':
+          "Diego Hernan Farias, ALT, Avenida del Libertador, La Lucila, Buenos Aires Province, Argentina ",
+    },
+    {
+      'value': 228,
+      'label': "En El Kiosquito, Carlos Pellegrini, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 229,
+      'label': "Capote Grosso Kiosco, Malabia, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 230,
       'label': "",
     },
     {
-      'value': 220,
+      'value': 231,
       'label': "",
     },
     {
-      'value': 220,
+      'value': 232,
       'label': "",
     },
     {
-      'value': 220,
+      'value': 233,
       'label': "",
     },
     {
-      'value': 220,
+      'value': 234,
       'label': "",
     },
     {
-      'value': 220,
+      'value': 235,
       'label': "",
     },
     {
-      'value': 220,
+      'value': 236,
       'label': "",
     },
     {
-      'value': 220,
+      'value': 237,
       'label': "",
     },
     {
-      'value': 220,
+      'value': 238,
       'label': "",
     },
     {
-      'value': 220,
+      'value': 239,
       'label': "",
     },
     {
-      'value': 220,
+      'value': 230,
       'label': "",
     }
   ];
