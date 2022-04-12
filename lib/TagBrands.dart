@@ -26,6 +26,7 @@ class TagBrand {
       _brands.add(TagBrand(12, "CMAP", "Coinmap.org"));
       _brands.add(TagBrand(13, "DASH", "Discover Dash"));
       _brands.add(TagBrand(14, "SAT", "Satoshi Angels"));
+      _brands.add(TagBrand(15, "CAT", "Cripto Catia"));
     }
     return _brands;
   }
