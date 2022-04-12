@@ -586,7 +586,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           onDoubleTap: () {
             print("DOUBLE TAP TAG INDEX" + index.toString());
             setState(() {
-              searchTagsDelegate.alreadySelectedTagIndexes.elementAt(index);
+              searchTagsDelegate.alreadySelectedTagIndexes.remove(
+                  searchTagsDelegate.alreadySelectedTagIndexes
+                      .elementAt(index));
               allSelectedTags.remove(allSelectedTags.elementAt(index));
             });
           },
