@@ -53,6 +53,12 @@ class GithubCoinector {
         committer: commitUser,
         content: base64.encode(utf8.encode(merchant.getBmapDataJson())),
         path: "uploaded/" +
+            t.year.toString() +
+            "/" +
+            t.month.toString() +
+            "/" +
+            t.day.toString() +
+            "/" +
             merchant.id +
             "/" +
             "addplace_" +
@@ -99,11 +105,18 @@ class GithubCoinector {
   }
 
   CreateFile githubCreateFileMerchantImage(Uint8List img, Merchant merchant) {
+    var t = DateTime.now();
     var createFile = CreateFile(
         branch: "master",
         committer: commitUser,
         content: base64.encode(img),
         path: "uploaded/" +
+            t.year.toString() +
+            "/" +
+            t.month.toString() +
+            "/" +
+            t.day.toString() +
+            "/" +
             merchant.id +
             "/" +
             IMAGE_WIDTH.toString() +
