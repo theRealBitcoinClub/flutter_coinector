@@ -20,13 +20,12 @@ class TagBrand {
       _brands.add(TagBrand(6, "SAL", "Salamantex"));
       _brands.add(TagBrand(7, "CBUY", "CryptoBuyer"));
       _brands.add(TagBrand(8, "XPAY", "XPay"));
-      _brands.add(TagBrand(9, "BJP", "Bitcoin.jp"));
+      _brands.add(TagBrand(9, "CAT", "Cripto Catia"));
       _brands.add(TagBrand(10, "BCOM", "Bitcoin.com"));
       _brands.add(TagBrand(11, "BARN", "Bitcoinstad Arnhem"));
       _brands.add(TagBrand(12, "CMAP", "Coinmap.org"));
       _brands.add(TagBrand(13, "DASH", "Discover Dash"));
       _brands.add(TagBrand(14, "SAT", "Satoshi Angels"));
-      _brands.add(TagBrand(15, "CAT", "Cripto Catia"));
     }
     return _brands;
   }
