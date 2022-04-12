@@ -800,7 +800,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   Merchant overwriteTagsIfSelectionChanged(Merchant m) {
-    if (m != null) m.tagsDatabaseFormat = parseTagsFromInputs();
+    if (m != null)
+      m.tagsDatabaseFormat =
+          TagCoinector.appendPlaceholderTags(parseTagsFromInputs());
     return m;
   }
 
