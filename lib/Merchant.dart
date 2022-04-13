@@ -73,7 +73,7 @@ class Merchant {
         '","y":"' +
         y.toString() +
         '","n":"' +
-        name +
+        name.replaceAll('"', '') +
         '","t":"' +
         type.toString() +
         '","c":"' +
@@ -85,7 +85,7 @@ class Merchant {
         '","a":"' +
         tagsDatabaseFormat +
         '","l":"' +
-        location +
+        location.replaceAll('"', '') +
         '","b":"' +
         brand.toString() +
         '","w":"' +
