@@ -3279,8 +3279,7 @@ class SuggestionsTitles {
     },
     {
       'value': 64,
-      'label':
-          "Decumani Hotel de Charme, Via San Giovanni Maggiore Pignatelli, Naples, Metropolitan City of Naples, Italy ",
+      'label': "bla",
     },
     {
       'value': 65,
