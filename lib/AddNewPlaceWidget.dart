@@ -355,6 +355,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                       buildSizedBoxSeparator(multiplier: 3.0),
                       wrapBuildColumnName(ctx),
                       wrapBuildColumnAdr(ctx),
+                      wrapBuildColumnCategory(ctx),
                       wrapBuildGoogleButtons(ctx),
                       wrapBuildColumnTag(ctx),
                       wrapBuildSelectedTagsList(),
@@ -374,6 +375,12 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       duration: DEFAULT_DURATION_OPACITY_FADE,
       opacity: showInputAdr ? OPACITY_ITEM_VALIDATED : 1.0,
       child: buildColumnNameWithSearch(ctx));
+
+  Widget wrapBuildColumnCategory(ctx) => AnimatedOpacity(
+      curve: DEFAULT_ANIMATION_CURVE,
+      duration: DEFAULT_DURATION_OPACITY_FADE,
+      opacity: !showInputTags ? OPACITY_ITEM_DEACTIVATED : 1.0,
+      child: buildColumnCategory(ctx));
 
   Widget wrapBuildColumnTag(ctx) => AnimatedOpacity(
       curve: DEFAULT_ANIMATION_CURVE,
@@ -529,6 +536,21 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   void _searchForPrefill(String search) {
     hideSearchBtn();
     searchOnGoogleMapsPrefillFields(search);
+  }
+
+  Column buildColumnCategory(ctx) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        buildSizedBoxSeparator(multiplier: 1.0),
+        Text(
+          _merchant != null ? _merchant.gmapsCategory : "",
+          style: textStyleHint(),
+        ),
+        buildSizedBoxSeparator(multiplier: 1.0),
+      ],
+    );
   }
 
   Column buildColumnTag(ctx) {

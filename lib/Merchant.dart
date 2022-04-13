@@ -33,6 +33,8 @@ class Merchant {
   String acceptedCoins; //TODO SPLIT TAGS ON FIRST READ
 
   var placeDetailsData;
+
+  var gmapsCategory = "";
   //LatLngAndGeohash latLngAndGeohash;
 
   /*calcGeoHash () {
@@ -59,6 +61,7 @@ class Merchant {
         cleanAdr,
         null,
         null);
+    m.gmapsCategory = data["types"].toString();
     m.tagsInput = tagsInput;
     //create fake Place object to use new id thats equal to place id
     if (m.id.length == 27) m.place = new Place(m.id, m.id);
