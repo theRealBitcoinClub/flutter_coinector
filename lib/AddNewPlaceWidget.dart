@@ -35,7 +35,7 @@ const KEYWORD_CONTROLLER_ACTION = "controller";
 const int MAX_IMAGES_UPLOAD = 3;
 const int MIN_INPUT_ADR =
     5; //TODO validate the address it shall contain a zip code and a country or use separate fields
-const int MIN_INPUT_NAME = 5;
+const int MIN_INPUT_NAME = 2;
 const int MIN_INPUT_TAGS = 2;
 const int MAX_INPUT_TAGS = 4;
 const int MIN_INPUT_BCHyDASH =
