@@ -1,4 +1,4 @@
-import 'Suggestions.dart';
+import 'LocationSuggestions.dart';
 
 class SuggestionMatch {
   const SuggestionMatch(
@@ -28,7 +28,7 @@ class SuggestionMatch {
   }
 
   static SuggestionMatch parseString(String input, int index) {
-    var inputArray = input.split(Suggestions.separator);
+    var inputArray = input.split(LocationSuggestions.separator);
     var title = inputArray[0];
     var titleArray = inputArray[0].split(" - ");
     var state = titleArray.length > 1 ? titleArray[1] : null;

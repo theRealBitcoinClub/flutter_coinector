@@ -2,7 +2,7 @@
 /// the second part is the filename to load
 /// the third part is the type of suggestion (continent;state;city)
 
-class Suggestions {
+class LocationSuggestions {
   static final String separator = ";";
   static final locations = const {
     //TODO add continents to search for; then show full list without filter when selected a continent

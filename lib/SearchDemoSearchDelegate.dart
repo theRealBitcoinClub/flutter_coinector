@@ -1,14 +1,14 @@
 import 'package:Coinector/Localizer.dart';
 import 'package:Coinector/TagCoinector.dart';
 import 'package:Coinector/TagFactory.dart';
+import 'package:Coinector/TitleSuggestions.dart';
 import 'package:Coinector/translator.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'LocationSuggestions.dart';
 import 'SuggestionList.dart';
-import 'Suggestions.dart';
-import 'TagNames.dart';
 
 class SearchDemoSearchDelegate extends SearchDelegate<String> {
   final Set<String> _historyBackup = {}; //Set.from(Suggestions.locations);
@@ -78,8 +78,8 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
     addMatchesLangSpecific(ctx, pattern, matches);
     addMatchesEnglish(pattern, matches, ctx);
 
-    addMatchesString(pattern, matches, Suggestions.locations);
-    addMatchesString(pattern, matches, SuggestionsTitles.titleTags);
+    addMatchesString(pattern, matches, LocationSuggestions.locations);
+    addMatchesString(pattern, matches, TitleSuggestions.titleTags);
 
     hasResults = true;
     if (matches.length == 0) {
@@ -158,7 +158,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
       query: query,
       suggestions: suggestions.map<String>((String i) => i).toList(),
       onSelected: (String match) {
-        String title = match.split(Suggestions.separator)[0];
+        String title = match.split(LocationSuggestions.separator)[0];
         query = title.split(" - ")[0];
         _addHistoryItem(match);
         close(context, match);

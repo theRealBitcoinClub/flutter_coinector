@@ -16,8 +16,8 @@ import 'package:select_form_field/select_form_field.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';
 import 'Dialogs.dart';
+import 'ReviewPlaces.dart';
 import 'TagBrands.dart';
-import 'TagNames.dart';
 import 'Toaster.dart';
 import 'UrlLauncher.dart';
 
@@ -466,7 +466,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             initialValue: "0",
             icon: Icon(Icons.accessibility),
             labelText: 'Area',
-            items: SuggestionsTitles.continents,
+            items: ReviewPlaces.continents,
             onChanged: (val) => _selectContinent(val))
       ],
     );
@@ -482,7 +482,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             initialValue: "0",
             icon: Icon(Icons.account_balance),
             labelText: 'Place',
-            items: SuggestionsTitles.searchCombos[_currentContinent],
+            items: ReviewPlaces.searchCombos[_currentContinent],
             onChanged: (val) => _selectPlace(val),
             onFieldSubmitted: (val) => _selectPlace(val))
       ],
@@ -1237,7 +1237,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     }
     setState(() {
       var chosenItem =
-          SuggestionsTitles.searchCombos[_currentContinent][_currentPlace];
+          ReviewPlaces.searchCombos[_currentContinent][_currentPlace];
       //String blub = jsonEncode(bla);
       //var blub2 = jsonDecode(blub);
 

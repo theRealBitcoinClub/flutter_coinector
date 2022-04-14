@@ -29,11 +29,11 @@ import 'CardItemBuilder.dart';
 import 'Dialogs.dart';
 import 'FileCache.dart';
 import 'ListModel.dart';
+import 'LocationSuggestions.dart';
 import 'MapSample.dart';
 import 'Merchant.dart';
 import 'MyColors.dart';
 import 'SearchDemoSearchDelegate.dart';
-import 'Suggestions.dart';
 import 'TagBrands.dart';
 import 'TagCoinector.dart';
 import 'UrlLauncher.dart';
@@ -254,7 +254,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       String coins = "";
       if (locationTitleFilter != null && locationTitleFilter != "null") {
         locationTitleFilter = locationTitleFilter.toLowerCase();
-        isLocation = Suggestions.locations.contains(locationTitleFilter);
+        isLocation =
+            LocationSuggestions.locations.contains(locationTitleFilter);
         brand = m2.brand != null ? containsBrand(m2, locationTitleFilter) : -1;
         coins = m2.acceptedCoins != null
             ? containsCoin(m2, locationTitleFilter)
@@ -1254,7 +1255,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   //bool hasNotHitSearch() => hasHitSearch == null || !hasHitSearch;
 
   void filterListUpdateTitle(ctx, String selectedLocationOrTag) {
-    var selectedArray = selectedLocationOrTag.split(Suggestions.separator);
+    var selectedArray =
+        selectedLocationOrTag.split(LocationSuggestions.separator);
     final String title = selectedArray[0];
     final String search = title.split(" - ")[0];
     //if selectedItem contains separator ; it has the filename attached
