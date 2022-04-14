@@ -80,6 +80,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
 
     addMatchesString(pattern, matches, LocationSuggestions.locations);
     addMatchesString(pattern, matches, TitleSuggestions.titleTags);
+    addMatchesString(pattern, matches, TitleSuggestions.reviewedTitles);
 
     hasResults = true;
     if (matches.length == 0) {
@@ -121,7 +122,11 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
   void addMatch(
       int x, String pattern, Set<String> matches, String currentItem) {
     if (startsWith(currentItem, pattern)) {
-      matches.add(currentItem);
+      var split = currentItem.split(",");
+      if (split.length > 0)
+        matches.add(split[0]);
+      else
+        matches.add(currentItem);
     }
   }
 
