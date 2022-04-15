@@ -365,7 +365,7 @@ class TagCoinector {
     'Veterinarian 👨‍⚕',
     'Hospital 🏥',
     'Nails 💅',
-    'Electronics 🤖',//255
+    '------',//255
     'Promotion 🐰',
     'Phone 📱',
     'Mobile 📱',
