@@ -4,10 +4,10 @@ import 'package:Coinector/GithubCoinector.dart';
 import 'package:Coinector/GooglePlacesApiCoinector.dart';
 import 'package:Coinector/Localizer.dart';
 import 'package:Coinector/Merchant.dart';
+import 'package:Coinector/TabPageCategory.dart';
 import 'package:Coinector/TagCoinector.dart';
 import 'package:Coinector/TagCoins.dart';
 import 'package:Coinector/TagFactory.dart';
-import 'package:Coinector/pages.dart';
 import 'package:Coinector/translator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -543,7 +543,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   List<RadioListTile> buildCategorySelector() {
-    var tc = TabPages.pages.map((TabPage e) {
+    var tc = TabPages.pages.map((TabPageCategory e) {
       return RadioListTile(
         title: Text(e.title),
         groupValue: _selectedCategory,

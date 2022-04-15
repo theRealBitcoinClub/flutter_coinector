@@ -34,10 +34,10 @@ import 'MapSample.dart';
 import 'Merchant.dart';
 import 'MyColors.dart';
 import 'SearchDemoSearchDelegate.dart';
+import 'TabPageCategory.dart';
 import 'TagBrands.dart';
 import 'TagCoinector.dart';
 import 'UrlLauncher.dart';
-import 'pages.dart';
 
 const bool isManagerModeRelease = true;
 
@@ -979,7 +979,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
           controller: tabController,
           isScrollable: true,
           indicator: getIndicator(),
-          tabs: TabPages.pages.map<Tab>((TabPage page) {
+          tabs: TabPages.pages.map<Tab>((TabPageCategory page) {
             return buildColoredTab(page);
           }).toList(),
         ),
@@ -1011,7 +1011,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         )));
   }
 
-  Tab buildColoredTab(TabPage page) {
+  Tab buildColoredTab(TabPageCategory page) {
     return _lists[page.tabIndex].length > 0
         ? Tab(
             text: page.text,

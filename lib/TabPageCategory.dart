@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class TabPage {
-  const TabPage(
+class TabPageCategory {
+  const TabPageCategory(
       {this.text, this.icon, this.title, this.tabIndex, this.typeIndex});
   final String text;
   final String title;
@@ -11,38 +11,38 @@ class TabPage {
 }
 
 class TabPages {
-  static const List<TabPage> pages = <TabPage>[
-    TabPage(
+  static const List<TabPageCategory> pages = <TabPageCategory>[
+    TabPageCategory(
         text: 'EAT',
         icon: Icons.restaurant,
         title: 'RESTAURANT',
         tabIndex: 0,
         typeIndex: 0),
-    TabPage(
+    TabPageCategory(
         text: 'TOGO',
         icon: Icons.restaurant_menu,
         title: 'TAKE-AWAY-FOOD',
         tabIndex: 1,
         typeIndex: 1),
-    TabPage(
+    TabPageCategory(
         text: 'BAR',
         icon: Icons.local_bar,
         title: 'BAR, CLUB, CAFE',
         tabIndex: 2,
         typeIndex: 2),
-    TabPage(
+    TabPageCategory(
         text: 'MARKET',
         icon: Icons.shopping_cart,
         title: 'SUPERMARKET',
         tabIndex: 3,
         typeIndex: 3),
-    TabPage(
+    TabPageCategory(
         text: 'SHOP',
         icon: Icons.shopping_basket,
         title: 'SHOP & FASHION',
         tabIndex: 4,
         typeIndex: 4),
-    TabPage(
+    TabPageCategory(
         text: 'HOTEL',
         icon: Icons.hotel,
         title: 'HOTEL & BnB',
@@ -54,7 +54,7 @@ class TabPages {
       title: 'TELLER & TRADER',
       tabIndex: 6,
       typeIndex: 99),*/
-    TabPage(
+    TabPageCategory(
         text: 'OTHER',
         icon: Icons.spa,
         title: 'Other',
