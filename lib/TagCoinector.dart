@@ -289,88 +289,88 @@ class TagCoinector {
     'Supply 🧺', //'CryptoBuyer',
     'Kiosk 🏪', //'XPay',
     'Electronic 💻', //'Panmoni'
-    'Cellphone 📱', //180
-    'Parking 🅿️',
+    'Cellphone 📱',
+    'Parking 🅿️',//180
     'Accessories 💠',
     'Shoes 👞',
     'Beach 🏖️',
-    'River 🏞️', //185
-    'Natural 🌲',
+    'River 🏞️',
+    'Natural 🌲',//185
     'Imported 🌎',
     'Tools 🔨',
     'Flour 🥖',
-    'Cleaning 🧹', //190
-    'Soap 🧼',
+    'Cleaning 🧹',
+    'Soap 🧼',//190
     'Detergent ☢',
     'Pharmacy 🏥',
     'Sugar 😍',
-    'Simcard 📶', //195
-    'Microsd 💾',
+    'Simcard 📶',
+    'Microsd 💾',//195
     'Battery 🔋',
     'Water 🚰',
-    'Clock ⌚', //200,
+    'Clock ⌚',
     'Key 🔑',
-    'Padlock 🔒',
+    'Padlock 🔒',//200,
     'Pet 🐶',
     'Kids 🚸',
-    'Movie 🎥', //205
+    'Movie 🎥',
     'Photo 📸',
-    'Camera 📷',
+    'Camera 📷',//205
     'Security 👮',
     'Mattress 🛏️',
-    'Maintenance 🔧', //210
+    'Maintenance 🔧',
     'Washingmachine 🚿',
-    'Sausage 🌭',
+    'Sausage 🌭', //210
     'Egg 🥚',
     'Milk 🥛',
     'Surf 🏄',
     'Skate ⛸',
-    'Tabacco 🔥',
+    'Tabacco 🔥',//215
     'Art 🎨',
     'Museum 🖼️',
     'Gallery 🖼️',
     'Ski ⛷',
-    'Board 🏂',
+    'Board 🏂',//220
     'Jewelry 💠',
     'Diamond 💎',
     'Gold 🥇',
     'Bracelet ❤',
-    'Ring 💍',
+    'Ring 💍',//225
     'Necklace 📿',
     'Watch ⌚',
     'Taxi 🚕',
     'Spirit ✨',
-    'Church ⛪',
+    'Church ⛪', //230
     'Synagoge 🕍',
     'Temple 🛕',
     'Transport 🚌',
     'Global 🚚',
-    'Worldwide 📦',
+    'Worldwide 📦',//235
     'Lebanese 🇱🇧',
     'African 🌍',
     'French 🇫🇷',
     'Criole 😊',
-    'Spanish 🇪🇸',
+    'Spanish 🇪🇸',//240
     'Adult 💃',
     'Free 😁',
     'Dance 🕺🏽',
     'Meal 🍽️',
-    'After-Hour 🎶',
+    'After-Hour 🎶',//245
     'Sightseeing 📰',
     'Marketing 🖥️',
     'Advertisement 🖥️',
     'Agency 🖥️',
-    'Service 🖥️',
+    'Service 🖥️',//250
     'Doctor 👨‍⚕',
     'Veterinarian 👨‍⚕',
     'Hospital 🏥',
     'Nails 💅',
-    'Electronics 🤖',
+    'Electronics 🤖',//255
     'Promotion 🐰',
     'Phone 📱',
     'Mobile 📱',
     'Communication 📡',
-    'Internet 📡',
+    'Internet 📡',//260
     'Mechanic 🔧',
     'Repair 🔧'
   };
