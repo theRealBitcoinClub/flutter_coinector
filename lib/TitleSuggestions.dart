@@ -1,5 +1,8 @@
 class TitleSuggestions {
   static final reviewedTitles = const {
+    "Incredible Fitness & More, Rhine Road, Philipsburg, Sint Maarten",
+    "Studio Fam Hair Salon & Spa, Sint Maarten, Sint Maarten",
+    "Stevez Bar, Rhine Road, Sint Maarten",
     "Be you by Perrine, Rue de la Liberté, Marigot, Saint Martin",
     "Icon, Marigot 97150, Saint Martin",
     "TROPISMES GALLERY, Boulevard de Grande Case, Grand Case, Saint Martin",
