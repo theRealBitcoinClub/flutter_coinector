@@ -110,6 +110,8 @@ class AssetLoader {
 
   //TODO split contents in one file for each continent
   Future<Place> loadPlace(String id) async {
+    if (id.startsWith("ChI")) return Place(id, id);
+
     if (placesIdCache == null) {
       String data =
           await FileCache.getCachedAssetWithDefaultFallback("placesId");
