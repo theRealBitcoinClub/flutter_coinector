@@ -55,9 +55,9 @@ class TabPages {
       tabIndex: 6,
       typeIndex: 99),*/
     TabPage(
-        text: 'SPA',
+        text: 'OTHER',
         icon: Icons.spa,
-        title: 'WELLNESS & BEAUTY',
+        title: 'Other',
         tabIndex: 6,
         typeIndex: 999),
   ];

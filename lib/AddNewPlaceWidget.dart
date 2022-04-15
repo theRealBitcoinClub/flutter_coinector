@@ -7,6 +7,7 @@ import 'package:Coinector/Merchant.dart';
 import 'package:Coinector/TagCoinector.dart';
 import 'package:Coinector/TagCoins.dart';
 import 'package:Coinector/TagFactory.dart';
+import 'package:Coinector/pages.dart';
 import 'package:Coinector/translator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -138,6 +139,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   bool _uploadWithLessThanFourTags = false;
   String _textSubmitButton = "";
+
+  int _selectedCategory;
   _AddNewPlaceWidgetState(
       this.selectedType, this.accentColor, this.typeTitle, this.actionBarColor);
 
@@ -539,17 +542,44 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     searchOnGoogleMapsPrefillFields(search);
   }
 
+  List<RadioListTile> buildCategorySelector() {
+    var tc = TabPages.pages.map((TabPage e) {
+      return RadioListTile(
+        title: Text(e.title),
+        groupValue: _selectedCategory,
+        value: e.typeIndex,
+        onChanged: (value) {
+          setState(() {
+            _selectedCategory = value;
+          });
+        },
+      );
+    }).toList();
+    return tc;
+  }
+
   Column buildColumnCategory(ctx) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
-        buildSizedBoxSeparator(multiplier: 1.0),
-        Text(
-          _merchant != null ? _merchant.gmapsCategory : "",
-          style: textStyleHint(),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            buildSizedBoxSeparator(multiplier: 1.0),
+            Text(
+              _merchant != null ? _merchant.gmapsCategory : "",
+              style: textStyleHint(),
+            ),
+            buildSizedBoxSeparator(multiplier: 1.0),
+          ],
         ),
-        buildSizedBoxSeparator(multiplier: 1.0),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: buildCategorySelector(),
+        )
       ],
     );
   }
@@ -696,6 +726,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   Merchant parseInputsToMerchant(Merchant m) {
     m = overwriteTagsIfSelectionChanged(m);
     m.brand = _selectedBrand != null ? _selectedBrand : 0;
+    m.type = _selectedCategory != null ? _selectedCategory : 999;
     m = parseInputCoinsToMerchant(m);
     return m;
   }

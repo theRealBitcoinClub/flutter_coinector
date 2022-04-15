@@ -820,6 +820,13 @@ class ReviewPlaces {
     }
   ];
 
+  static final List<Map<String, dynamic>> searchCombosEuropeRestaurants =
+      const [];
+
+  static final List<Map<String, dynamic>> searchCombosEuropeTakeaway = const [];
+
+  static final List<Map<String, dynamic>> searchCombosEuropeBars = const [];
+
   static final List<Map<String, dynamic>> searchCombosEurope = const [
     {
       'value': 0,
