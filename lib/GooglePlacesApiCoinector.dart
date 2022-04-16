@@ -5,10 +5,12 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
+import 'Toaster.dart';
+
 enum GoogleErrors { MULTIPLE, NOT_FOUND, INTERNET_ERROR }
 
 class GooglePlacesApiCoinector {
-  static Future<String> findPlaceId(String search) async {
+  static Future<String> findPlaceId(String search, ctx) async {
     String encoded = Uri.encodeComponent(search);
     String placeId;
     String path =
@@ -21,9 +23,15 @@ class GooglePlacesApiCoinector {
       if (!kReleaseMode) print(result.toString());
       if (result.data['status'].toString() == "ZERO_RESULTS")
         return GoogleErrors.NOT_FOUND.toString();
-      List<dynamic> candidates = result.data['candidates'];
-      if (candidates.length > 1) return GoogleErrors.MULTIPLE.toString();
-      placeId = candidates[0]["place_id"].toString();
+      var candidates = result.data['candidates'];
+      if (candidates.length > 1) {
+        placeId = "MULTIPLE";
+        Toaster.showMerchantSearchHasMultipleResults(ctx);
+        for (int x = 0; x < candidates.length; x++) {
+          placeId += ";" + candidates[x]["place_id"].toString();
+        }
+      } else
+        placeId = candidates[0]["place_id"].toString();
       if (!kReleaseMode) print(placeId);
     } catch (e) {
       print("INTERNET ERROR on " + path);

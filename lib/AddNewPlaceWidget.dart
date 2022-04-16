@@ -185,14 +185,24 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   //TODO let them remove each tag separately to add a replacement tag
 
-  void searchOnGoogleMapsPrefillFields(String input) async {
-    var search = inputName + " " + inputAdr;
-    if (input != null && input.isNotEmpty) search = input;
-    if (!kReleaseMode) print("inputs: " + search);
+  List multiplePlacesFoundSplit = [];
+  int multiplePlacesCurrentIndex = 1;
 
-    Loader.show(context);
-    placeId = await GooglePlacesApiCoinector.findPlaceId(search);
-    Loader.hide();
+  void onShowMultiplePlaceNextPlace() {
+    if (multiplePlacesFoundSplit.length - 1 == multiplePlacesCurrentIndex)
+      multiplePlacesCurrentIndex = 0;
+    searchOnGoogleMapsPrefillFields("",
+        placesId: multiplePlacesFoundSplit[++multiplePlacesCurrentIndex]);
+  }
+
+  void searchOnGoogleMapsPrefillFields(String input, {String placesId}) async {
+    if (placesId == null) {
+      multiplePlacesFoundSplit = [];
+      multiplePlacesCurrentIndex = 1;
+      placeId = await findPlaceIdForSearchQuery(input);
+    } else {
+      placeId = placesId;
+    }
 
     if (!kReleaseMode) print("placeid: " + placeId.toString());
     if (placeId == GoogleErrors.INTERNET_ERROR.toString())
@@ -203,16 +213,37 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       Toaster.showMerchantNotFoundOnGoogleMapsTryAgain(context);
     } else if (placeId == GoogleErrors.NOT_FOUND.toString() && hasTriedSearch) {
       drawFormStep(FormStep.HIT_GOOGLE);
-    } else if (placeId == GoogleErrors.MULTIPLE.toString()) {
-      Toaster.showMerchantSearchHasMultipleResults(context);
     } else {
-      _merchant = await loadDetailsFromGoogleCreateMerchant(selectedType);
+      if (placeId.startsWith(GoogleErrors.MULTIPLE.toString().split(".")[1])) {
+        chooseFirstCandidate();
+        // Toaster.showMerchantSearchHasMultipleResults(context); moved inside findPlaceId
+      }
+      _merchant =
+          await loadDetailsFromGoogleCreateMerchant(selectedType, placeId);
       //TODO HANDLE MORE TAGS LATER, LET ADMIN CHOOSE BEST TAGS OR SIMPLY LET CONTENT CONTAIN MORE TAGS
       //TODO USER PROPER STATE PATTERN INSTEAD OF THIS CRAZY VARIABLING
       prefillNameAddressAndTags(_merchant);
       loadGooglePlacePhotos(_merchant.placeDetailsData);
     }
     drawFormStep(FormStep.SUBMIT);
+  }
+
+  void chooseFirstCandidate() {
+    setState(() {
+      multiplePlacesFoundSplit = placeId.split(";");
+      placeId = multiplePlacesFoundSplit[1];
+    });
+  }
+
+  Future<String> findPlaceIdForSearchQuery(String input) async {
+    var search = inputName + " " + inputAdr;
+    if (input != null && input.isNotEmpty) search = input;
+    if (!kReleaseMode) print("inputs: " + search);
+
+    Loader.show(context);
+    String id = await GooglePlacesApiCoinector.findPlaceId(search, context);
+    Loader.hide();
+    return id;
   }
 
   void prefillNameAddressAndTags(Merchant merchant) {
@@ -230,7 +261,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     });
   }
 
-  Future<Merchant> loadDetailsFromGoogleCreateMerchant(int placeType) async {
+  Future<Merchant> loadDetailsFromGoogleCreateMerchant(
+      int placeType, String placeId) async {
+    printWrapped("\nLOADPLACE:\n" + placeId);
     var data = await GooglePlacesApiCoinector.findPlaceIdDetails(placeId);
     Merchant m = parseGmapsDataToMerchant(placeId, data, placeType);
     m.placeDetailsData = data;
@@ -359,8 +392,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                       buildSizedBoxSeparator(multiplier: 3.0),
                       wrapBuildColumnName(ctx),
                       wrapBuildColumnAdr(ctx),
-                      wrapBuildColumnCategory(ctx),
                       wrapBuildGoogleButtons(ctx),
+                      wrapBuildMultipleSwitchButton(ctx),
+                      wrapBuildColumnCategory(ctx),
                       wrapBuildColumnTag(ctx),
                       wrapBuildSelectedTagsList(),
                       wrapBuildColumnImages(),
@@ -492,6 +526,31 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       ],
     );
   }
+
+  Column wrapBuildMultipleSwitchButton(ctx) {
+    return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          hasMultipleResults()
+              ? AnimatedOpacity(
+                  curve: DEFAULT_ANIMATION_CURVE,
+                  duration: DEFAULT_DURATION_OPACITY_FADE,
+                  opacity: hasMultipleResults() ? 1.0 : 0.0,
+                  child: ElevatedButton(
+                    child: Text(
+                      'SWITCH MULTIPLE RESULTS',
+                      style: textStyleButtons,
+                    ),
+                    onPressed: () {
+                      onShowMultiplePlaceNextPlace();
+                    },
+                  ))
+              : SizedBox()
+        ]);
+  }
+
+  bool hasMultipleResults() => multiplePlacesFoundSplit.length > 2;
 
   Column wrapBuildGoogleButtons(ctx) {
     return Column(
