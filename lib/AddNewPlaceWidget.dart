@@ -1126,6 +1126,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                     if (!hasSelectedImages) addImageToSelection(index);
                   },
                   child: Card(
+                    color: hasSelectedImages
+                        ? Colors.greenAccent.withOpacity(0.5)
+                        : Colors.black12,
                     elevation: 4,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5.0),
