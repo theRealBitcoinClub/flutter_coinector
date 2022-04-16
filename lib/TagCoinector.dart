@@ -372,7 +372,37 @@ class TagCoinector {
     'Communication 📡',
     'Internet 📡',//260
     'Mechanic 🔧',
-    'Repair 🔧'
+    'Repair 🔧',
+    'Relax 🤗',
+    'Chill 😏',
+    'Moon 🌝',
+    'Sunshine ☀',
+    'Bets 🎰',
+    'Poker 🎰',
+    'Airport ✈',
+    'Autobus 🚌',
+    'Travel 🗺️',
+    'Show 🤡',
+    'Theatre 🤡',
+    'Lawyer ⚖',
+    'Accounting 🔒',
+    'Tourist ℹ',
+    'Shawarma 🍗',
+    'Camping ⛺',
+    'Fire 🔥',
+    'Resort ⛵',
+    'Lounge 🛋️',
+    'Lodging 🛏️',
+    'Thai 🇹🇭',
+    'Construction 🪛',
+    'Hardware 🔨',
+    'Gasoline ⛽',
+    'Convenience 🏪',
+    'Grocery 🥫',
+    'Fitness ❤',
+    'Gym ❤',
+    'Household 🏪',
+    'Halal حلال'
   };
 
   static final tagTextJP1 = const {
