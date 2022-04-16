@@ -1680,10 +1680,6 @@ class ReviewPlaces {
     /*{
       'value': 0,
       'label': 'Froggs & Habit Intergalactic Trading Corporation, South Africa',
-    },*/
-    {
-      'value': 0,
-      'label': 'Select Place in Africa',
     },
     {
       'value': 1,
@@ -1704,6 +1700,449 @@ class ReviewPlaces {
     {
       'value': 5,
       'label': 'Damas Bodyworks Express, Cape Town, South Africa',
+    }*/
+    {
+      'value': 0,
+      'label': 'Select Place in Africa',
+    },
+    {
+      'value': 1,
+      'label': "Licoreria Maurapas, El Cují, Lara, Venezuela ",
+    },
+    {
+      'value': 2,
+      'label': "Ferretería Armoris, C.A., El Cují, Lara ",
+    },
+    {
+      'value': 3,
+      'label': "Multiservicios Barreto, Barquisimeto, Lara ",
+    },
+    {
+      'value': 4,
+      'label':
+          "Paletas del Norte y algo Más, Avenida Intercomunal Barquisimeto - El Cují, Barquisimeto, Lara ",
+    },
+    {
+      'value': 5,
+      'label': "Centro Comercial Sinai, Barquisimeto, Lara ",
+    },
+    {
+      'value': 6,
+      'label':
+          "A la parrilla Grill Express, Avenida Intercomunal Barquisimeto - Duaca, Tamaca, Lara ",
+    },
+    {
+      'value': 7,
+      'label': "Royal Society BarberShop, Calle Queja, Tamaca, Lara ",
+    },
+    {
+      'value': 8,
+      'label': "Dulce tentación, Avenida Principal, Tamaca, Lara ",
+    },
+    {
+      'value': 9,
+      'label': "Mojito House, Guanare, Portuguesa, Venezuela",
+    },
+    {
+      'value': 10,
+      'label': "Pizzas Rafucho, Los Próceres, Guanare, Portuguesa ",
+    },
+    {
+      'value': 11,
+      'label': "Inversiones Don Miguelacho, Guanare, Portuguesa ",
+    },
+    {
+      'value': 12,
+      'label': "Pidiendo y Comiendo Pizzeria, Calle 9, Guanare, Portuguesa ",
+    },
+    {
+      'value': 13,
+      'label': "Makeup Vino, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 14,
+      'label': "Inversiones Tecnológicas Lemus C.A., Guanare, Portuguesa ",
+    },
+    {
+      'value': 15,
+      'label':
+          "Ferretería Don Andrés C.A, Calle Josefa Camejo, Punto Fijo, Falcón ",
+    },
+    {
+      'value': 16,
+      'label': "Tu Cuevita Repostera, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 17,
+      'label': "Ferreteria Arturo G, Guanare, Portuguesa ",
+    },
+    {
+      'value': 18,
+      'label': "Plásticos y Algo Mas CA, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 19,
+      'label': "Mucho Más Que Pizza, Guanare, Portuguesa ",
+    },
+    {
+      'value': 20,
+      'label':
+          "Vespa Shoes Store, entre carrera, Avenida Unda, Guanare, Portuguesa ",
+    },
+    {
+      'value': 21,
+      'label':
+          "Bodegón RMR, edificio Aura, Carrera 12, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 22,
+      'label': "Panda Verde, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 23,
+      'label': "Mango de Oro C.A., Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 24,
+      'label': "FRUTAS y Mas, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 25,
+      'label':
+          "Globoland Store, Edificio Colegio Cuatricentenario, Avenida Unda, Guanare, Portuguesa ",
+    },
+    {
+      'value': 26,
+      'label': "Inversiones Fermil centro, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 27,
+      'label':
+          "Inversiones Foncho Peña, Local 08, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 28,
+      'label': "Pizzería Unda, Local 12, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 29,
+      'label':
+          "Mundo de Azúcar, f.p., Avenida Unda, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 30,
+      'label': "BODEGON DE LA OCHO, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 31,
+      'label':
+          "Diseños & creaciones Snarpy, Avenida Unda, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 32,
+      'label':
+          "Kau Modass Boutique, Avenida Unda, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 33,
+      'label': "Kau Kids, Avenida Unda, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 34,
+      'label': "El Tinajero Hogar C.A., Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 35,
+      'label': "Flamingru, Carrera 6, Guanare, Portuguesa ",
+    },
+    {
+      'value': 36,
+      'label':
+          "Inversiones Marcelo, C.C. Eustoquio, Calle 12, Guanare, Portuguesa ",
+    },
+    {
+      'value': 37,
+      'label':
+          "Iluminaciones Alvarez, Carrera 7, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 38,
+      'label': "Dulce Panela Cafe, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 39,
+      'label': "El Punto Andino, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 40,
+      'label': "Café Plaza, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 41,
+      'label': "todoimpress C.A., Carrera 5, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 42,
+      'label':
+          "Zapatería Jkamy Boutique segundo piso local 1, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 43,
+      'label': "JKAMY Boutique, Calle 18, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 44,
+      'label':
+          "Tiendas Artes y Cueros, Calle 18, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 45,
+      'label': "Intenxys Boutique, Calle 18, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 46,
+      'label': "Koala tecnología, Calle 18, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 47,
+      'label': "Evoualji, Guanare, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 48,
+      'label':
+          "Tu market y algo más C.A, Centro Comercial Cap Conte, Bolívar Avenue, Naguanagua, Carabobo ",
+    },
+    {
+      'value': 49,
+      'label': "Krispy Donuts Avenida Bolívar, Valencia, Carabobo, Venezuela ",
+    },
+    {
+      'value': 50,
+      'label': "O&J Suministros C.A, San Diego, Carabobo, Venezuela ",
+    },
+    {
+      'value': 51,
+      'label':
+          "Oxígenos cabriales C.A, Avenida Don Julio Centeno, San Diego, Carabobo, Venezuela ",
+    },
+    {
+      'value': 52,
+      'label':
+          "Antojitos de Ysabell, C.A, Calle Ricaurte, Valencia, Carabobo, Venezuela ",
+    },
+    {
+      'value': 53,
+      'label':
+          "Víveres Guacara F.P, Calle Laurencio Silva, Guacara, Carabobo, Venezuela ",
+    },
+    {
+      'value': 54,
+      'label':
+          "MULTISERVICIOS EL PUENTE II, C.A., Guacara, Carabobo, Venezuela ",
+    },
+    {
+      'value': 55,
+      'label': "Comercial LEC C.A, Guacara, Carabobo, Venezuela ",
+    },
+    {
+      'value': 56,
+      'label': "La Coromotana C.A, Avenida 110, Tocuyito, Carabobo, Venezuela ",
+    },
+    {
+      'value': 57,
+      'label': "Delicateses la Gloria de Dios, Tocuyito, Carabobo, Venezuela ",
+    },
+    {
+      'value': 58,
+      'label':
+          "Inversiones Georgis JRS CA, Principal, Tocuyito, Carabobo, Venezuela ",
+    },
+    {
+      'value': 59,
+      'label': "Herica Nails, 1, Tocuyito, Carabobo ",
+    },
+    {
+      'value': 60,
+      'label': "Variedades Mauped C.A, Principal, Tocuyito, Carabobo ",
+    },
+    {
+      'value': 61,
+      'label': "Variedades Mis Tesoros, Tocuyito, Carabobo, Venezuela ",
+    },
+    {
+      'value': 62,
+      'label':
+          "Abasto A Dios JL, Los Chorritos, Calle Las Bateas, Tocuyito, Carabobo, Venezuela ",
+    },
+    {
+      'value': 63,
+      'label': "AHOPE Style, Calle Rondon, Tocuyito, Carabobo, Venezuela ",
+    },
+    {
+      'value': 64,
+      'label':
+          "Inversiones Peña Nuñez 2015 C.A, Tocuyito, Carabobo, Venezuela ",
+    },
+    {
+      'value': 65,
+      'label': "Darwinos, Calle 2 Norte, Cucuta, North Santander, Colombia ",
+    },
+    {
+      'value': 66,
+      'label': "Inmelozano ca, Calle 17, Ureña, Táchira, Táchira ",
+    },
+    {
+      'value': 67,
+      'label': "El Universo Del Churro, San Cristobal, Táchira, Venezuela ",
+    },
+    {
+      'value': 68,
+      'label': "Barber Tatto 911, Táriba, Táchira, Venezuela ",
+    },
+    {
+      'value': 69,
+      'label':
+          "Haru Nails Studio, Troncal 1, San Cristóbal, Táchira, Venezuela ",
+    },
+    {
+      'value': 70,
+      'label':
+          'Respuestos Pirineos, 5ta. Avenida "Francisco García de Hevia", San Cristóbal, Táchira, Venezuela ',
+    },
+    {
+      'value': 71,
+      'label':
+          "Centro de Rehabilitación Física Quirón, San Cristobal, Táchira ",
+    },
+    {
+      'value': 72,
+      'label': "Kaska-Nueces, San Cristóbal, Táchira, Venezuela ",
+    },
+    {
+      'value': 73,
+      'label': "Gigi Playa, San Cristóbal 5001, Táchira, Venezuela ",
+    },
+    {
+      'value': 74,
+      'label': "Gürt Cocina Vegetariana, San Cristobal, Táchira ",
+    },
+    {
+      'value': 75,
+      'label':
+          'Respuestos Pirineos, 5ta. Avenida "Francisco García de Hevia", San Cristóbal, Táchira, Venezuela ',
+    },
+    {
+      'value': 76,
+      'label':
+          "Papelería Moderna, Séptima Avenida, San Cristóbal 5001, Táchira, Venezuela ",
+    },
+    {
+      'value': 77,
+      'label':
+          "Inversiones aleksey, Calle 3, San Cristóbal, Táchira, Venezuela ",
+    },
+    {
+      'value': 78,
+      'label':
+          "Panaderia Y Pasteleria Monquita, San Cristóbal 5001, Táchira, Venezuela ",
+    },
+    {
+      'value': 79,
+      'label': "Korea Partes Táchira, San Cristóbal 5001, Táchira, Venezuela ",
+    },
+    {
+      'value': 80,
+      'label': "Moto los andes, 4, San Cristóbal 5001, Táchira, Venezuela",
+    },
+    {
+      'value': 81,
+      'label': "Mangueras los Molinos, San Cristobal, Táchira ",
+    },
+    {
+      'value': 82,
+      'label': "Repuestos Cordillera, San Cristóbal, Táchira, Venezuela ",
+    },
+    {
+      'value': 83,
+      'label': "Recol Repuestos, San Cristóbal, Táchira, Venezuela ",
+    },
+    {
+      'value': 84,
+      'label':
+          "REPUESTOS CANCHICA, Calle 4, San Cristóbal, Táchira, Venezuela ",
+    },
+    {
+      'value': 85,
+      'label':
+          "Jhony Car's Repuestos, Calle 4 Bis, San Cristóbal, Táchira, Venezuela ",
+    },
+    {
+      'value': 86,
+      'label':
+          "AUTO REPUESTOS CHERYFORD, Calle 4 Bis, San Cristóbal, Táchira, Venezuela ",
+    },
+    {
+      'value': 87,
+      'label':
+          "SH GENERICOS Y MAS, Calle 4 Bis, San Cristóbal 5001, Táchira, Venezuela ",
+    },
+    {
+      'value': 88,
+      'label': "Auto repuestos Canmar, Calle5, San Cristobal, Táchira ",
+    },
+    {
+      'value': 89,
+      'label':
+          "ToyoMotors Malpica, Calle 5, La Concordia, San Cristóbal, Táchira ",
+    },
+    {
+      'value': 90,
+      'label': "ToyoFord, Calle5, San Cristóbal 5001, Táchira, Venezuela ",
+    },
+    {
+      'value': 91,
+      'label':
+          "La Principal Renault F-1 C.A, San Cristóbal 5001, Táchira, Venezuela ",
+    },
+    {
+      'value': 92,
+      'label':
+          "Andina Venezolana del Repuesto, Carrera 6 Bis, San Cristóbal 5001, Táchira, Venezuela ",
+    },
+    {
+      'value': 93,
+      'label':
+          "Repuestos y Rodamientos REBERCA, San Cristóbal, Táchira, Venezuela ",
+    },
+    {
+      'value': 94,
+      'label': "Repuestos Orlando Motos, Calle 5, San Cristobal, Táchira ",
+    },
+    {
+      'value': 95,
+      'label': "Cafetin con sabor chacaro, Calle 5 Bis, San Cristóbal, Táchira",
+    },
+    {
+      'value': 96,
+      'label':
+          "Auto repuestos 2000, Calle 5 Bis, San Cristóbal, Táchira, Venezuela ",
+    },
+    {
+      'value': 97,
+      'label': "Repuestos Guayas Car's, Carrera 6 Bis, San Cristobal, Táchira ",
+    },
+    {
+      'value': 98,
+      'label':
+          "Autopartes Hidalgo Todo Corsa, Avenida Francisco García de Hevia, San Cristobal, Táchira ",
+    },
+    {
+      'value': 99,
+      'label': "Repuestos Orlando Motos, Calle 5, San Cristobal, Táchira ",
+    },
+    {
+      'value': 100,
+      'label': "AdriCar's, carrera 5, San Cristóbal 5001, Táchira, Venezuela ",
     }
   ];
 
@@ -1712,6 +2151,196 @@ class ReviewPlaces {
       'value': 0,
       'label': 'Select Place in Asia',
     },
+    {
+      'value': 1,
+      'label':
+          'MOTORCYCLES LOS ANDES C.A, al M. Publico, 5ta. Avenida "Francisco García de Hevia", San Cristobal, Táchira ',
+    },
+    {
+      'value': 2,
+      'label':
+          "Cerámicas y Materiales Carmire, C.A., 6, Guanarito, Portuguesa ",
+    },
+    {
+      'value': 3,
+      'label':
+          "Inversiones Densor, Carrera 8, Guanarito, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 4,
+      'label': "D Vivas Shop, Guanarito, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 5,
+      'label': "La Tiendita GA Saavedra, Guanarito, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 6,
+      'label': "Districar, Guanarito, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 7,
+      'label':
+          "Baby chic Boutique, Carrera 8, Guanarito, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 8,
+      'label': "Mundo Repuestos Panda, Guanarito, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 9,
+      'label': "Lio's Store, Guanarito, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 10,
+      'label': "Cachorra Palma CA, Acarigua, Portuguesa ",
+    },
+    {
+      'value': 11,
+      'label': "L'Italia Restaurant, Acarigua, Portuguesa ",
+    },
+    {
+      'value': 12,
+      'label': "Fanatic Sport Bar, Calle 31, Acarigua, Portuguesa, Venezuela ",
+    },
+    {
+      'value': 13,
+      'label': "Xtremo Julkar 27, C.A.",
+    },
+    {
+      'value': 14,
+      'label': "Video Club, Piso 1, Maturín, Monagas, Venezuela ",
+    },
+    {
+      'value': 15,
+      'label': "FRUTTY MANIA, Via Viboral, Maturín, Monagas, Venezuela ",
+    },
+    {
+      'value': 16,
+      'label':
+          "BB Store SERVICE, C.A, Via Viboral, Maturín, Monagas, Venezuela ",
+    },
+    {
+      'value': 17,
+      'label':
+          "Strong Physical Center, C.A, Via Viboral, Maturín, Monagas, Venezuela ",
+    },
+    {
+      'value': 18,
+      'label':
+          "La Plata Seguros, C. 9 835, B1900 La Plata, Provincia de Buenos Aires, Argentina ",
+    },
+    {
+      'value': 19,
+      'label':
+          "akataka, Guillermo Hudson, Provincia de Buenos Aires, Argentina ",
+    },
+    {
+      'value': 20,
+      'label':
+          "Royal Fitness 24hs, Berazategui Centro, Provincia de Buenos Aires, Argentina ",
+    },
+    {
+      'value': 21,
+      'label':
+          "Selectos - Café de Especialidad, Reconquista, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 22,
+      'label': "Envios Bakanos, Florida, AAI, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 23,
+      'label': "Kiosco el Solar, Adolfo Alsina, AAE, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 24,
+      'label': "Buenos Aires Footgolf, Campana, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 25,
+      'label': "Servir Viajes, Uruguay, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 26,
+      'label':
+          "Kioscobelisco, Avenida Roque Sáenz Peña, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 27,
+      'label':
+          "Diego Hernan Farias, ALT, Avenida del Libertador, La Lucila, Buenos Aires Province, Argentina ",
+    },
+    {
+      'value': 28,
+      'label': "En El Kiosquito, Carlos Pellegrini, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 29,
+      'label': "Capote Grosso Kiosco, Malabia, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 30,
+      'label':
+          "McCormack Asociados, Arquitectos, Fray Justo Santa María de Oro, FOQ, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 31,
+      'label': "Nelly Nieto Malpartida, Sinclair, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 32,
+      'label':
+          "Kiosco TXV, Avenida General Indalecio Chenaut, Buenos Aires, Argentina",
+    },
+    {
+      'value': 33,
+      'label': "Costa Rica 4709 m24, C1414 BSK, Buenos Aires, Argentina",
+    },
+    {
+      'value': 34,
+      'label': "Alquilá tu Cancha, Avenida Cabildo, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 35,
+      'label':
+          "Benjipoint 2 Centro de Copiado, Acevedo, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 36,
+      'label': "Benjipoint3, Avenida Corrientes, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 37,
+      'label': "Che Bonche, Serrano, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 38,
+      'label': "Envíos Bakanos, Serrano 725, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 39,
+      'label': "Los Hermanos J C, Miñones, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 40,
+      'label': "Shawarma Al-Amir, Montañeses, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 41,
+      'label':
+          "𝙁𝙧𝙚𝙣𝙘𝙝 𝙘𝙧𝙚̂𝙥𝙚𝙨 𝘽𝘼, Montañeses, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 42,
+      'label': "Agencia Cantalupe, Avenida Cabildo, Buenos Aires, Argentina ",
+    },
+    {
+      'value': 43,
+      'label':
+          "Buena Birra Social Club - Colegiales, Zapiola, Buenos Aires, Argentina ",
+    }
+    /*,
     {
       'value': 1,
       'label': 'ジェムキャッスルゆきざき 熊本店, Japan',
@@ -1941,7 +2570,7 @@ class ReviewPlaces {
     {
       'value': 51,
       'label': 'Japón, Prefectura de ChibaIchiharaAraoi, ATSU FOOTBALL FIELD',
-    }
+    }*/
   ];
 
   static final List<Map<String, dynamic>> searchCombosSouthAmerica = const [
@@ -2362,634 +2991,6 @@ class ReviewPlaces {
     {
       'value': 100,
       'label': "Ysifran Moto, El Cují, Lara",
-    },
-    {
-      'value': 101,
-      'label': "Licoreria Maurapas, El Cují, Lara, Venezuela ",
-    },
-    {
-      'value': 102,
-      'label': "Ferretería Armoris, C.A., El Cují, Lara ",
-    },
-    {
-      'value': 103,
-      'label': "Multiservicios Barreto, Barquisimeto, Lara ",
-    },
-    {
-      'value': 104,
-      'label':
-          "Paletas del Norte y algo Más, Avenida Intercomunal Barquisimeto - El Cují, Barquisimeto, Lara ",
-    },
-    {
-      'value': 105,
-      'label': "Centro Comercial Sinai, Barquisimeto, Lara ",
-    },
-    {
-      'value': 106,
-      'label':
-          "A la parrilla Grill Express, Avenida Intercomunal Barquisimeto - Duaca, Tamaca, Lara ",
-    },
-    {
-      'value': 107,
-      'label': "Royal Society BarberShop, Calle Queja, Tamaca, Lara ",
-    },
-    {
-      'value': 108,
-      'label': "Dulce tentación, Avenida Principal, Tamaca, Lara ",
-    },
-    {
-      'value': 109,
-      'label': "Mojito House, Guanare, Portuguesa, Venezuela",
-    },
-    {
-      'value': 110,
-      'label': "Pizzas Rafucho, Los Próceres, Guanare, Portuguesa ",
-    },
-    {
-      'value': 111,
-      'label': "Inversiones Don Miguelacho, Guanare, Portuguesa ",
-    },
-    {
-      'value': 112,
-      'label': "Pidiendo y Comiendo Pizzeria, Calle 9, Guanare, Portuguesa ",
-    },
-    {
-      'value': 113,
-      'label': "Makeup Vino, Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 114,
-      'label': "Inversiones Tecnológicas Lemus C.A., Guanare, Portuguesa ",
-    },
-    {
-      'value': 115,
-      'label':
-          "Ferretería Don Andrés C.A, Calle Josefa Camejo, Punto Fijo, Falcón ",
-    },
-    {
-      'value': 116,
-      'label': "Tu Cuevita Repostera, Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 117,
-      'label': "Ferreteria Arturo G, Guanare, Portuguesa ",
-    },
-    {
-      'value': 118,
-      'label': "Plásticos y Algo Mas CA, Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 119,
-      'label': "Mucho Más Que Pizza, Guanare, Portuguesa ",
-    },
-    {
-      'value': 120,
-      'label':
-          "Vespa Shoes Store, entre carrera, Avenida Unda, Guanare, Portuguesa ",
-    },
-    {
-      'value': 121,
-      'label':
-          "Bodegón RMR, edificio Aura, Carrera 12, Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 122,
-      'label': "Panda Verde, Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 123,
-      'label': "Mango de Oro C.A., Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 124,
-      'label': "FRUTAS y Mas, Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 125,
-      'label':
-          "Globoland Store, Edificio Colegio Cuatricentenario, Avenida Unda, Guanare, Portuguesa ",
-    },
-    {
-      'value': 126,
-      'label': "Inversiones Fermil centro, Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 127,
-      'label':
-          "Inversiones Foncho Peña, Local 08, Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 128,
-      'label': "Pizzería Unda, Local 12, Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 129,
-      'label':
-          "Mundo de Azúcar, f.p., Avenida Unda, Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 130,
-      'label': "BODEGON DE LA OCHO, Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 131,
-      'label':
-          "Diseños & creaciones Snarpy, Avenida Unda, Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 132,
-      'label':
-          "Kau Modass Boutique, Avenida Unda, Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 133,
-      'label': "Kau Kids, Avenida Unda, Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 134,
-      'label': "El Tinajero Hogar C.A., Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 135,
-      'label': "Flamingru, Carrera 6, Guanare, Portuguesa ",
-    },
-    {
-      'value': 136,
-      'label':
-          "Inversiones Marcelo, C.C. Eustoquio, Calle 12, Guanare, Portuguesa ",
-    },
-    {
-      'value': 137,
-      'label':
-          "Iluminaciones Alvarez, Carrera 7, Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 138,
-      'label': "Dulce Panela Cafe, Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 139,
-      'label': "El Punto Andino, Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 140,
-      'label': "Café Plaza, Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 141,
-      'label': "todoimpress C.A., Carrera 5, Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 142,
-      'label':
-          "Zapatería Jkamy Boutique segundo piso local 1, Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 143,
-      'label': "JKAMY Boutique, Calle 18, Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 144,
-      'label':
-          "Tiendas Artes y Cueros, Calle 18, Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 145,
-      'label': "Intenxys Boutique, Calle 18, Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 146,
-      'label': "Koala tecnología, Calle 18, Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 147,
-      'label': "Evoualji, Guanare, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 148,
-      'label':
-          "Tu market y algo más C.A, Centro Comercial Cap Conte, Bolívar Avenue, Naguanagua, Carabobo ",
-    },
-    {
-      'value': 149,
-      'label': "Krispy Donuts Avenida Bolívar, Valencia, Carabobo, Venezuela ",
-    },
-    {
-      'value': 150,
-      'label': "O&J Suministros C.A, San Diego, Carabobo, Venezuela ",
-    },
-    {
-      'value': 151,
-      'label':
-          "Oxígenos cabriales C.A, Avenida Don Julio Centeno, San Diego, Carabobo, Venezuela ",
-    },
-    {
-      'value': 152,
-      'label':
-          "Antojitos de Ysabell, C.A, Calle Ricaurte, Valencia, Carabobo, Venezuela ",
-    },
-    {
-      'value': 153,
-      'label':
-          "Víveres Guacara F.P, Calle Laurencio Silva, Guacara, Carabobo, Venezuela ",
-    },
-    {
-      'value': 154,
-      'label':
-          "MULTISERVICIOS EL PUENTE II, C.A., Guacara, Carabobo, Venezuela ",
-    },
-    {
-      'value': 155,
-      'label': "Comercial LEC C.A, Guacara, Carabobo, Venezuela ",
-    },
-    {
-      'value': 156,
-      'label': "La Coromotana C.A, Avenida 110, Tocuyito, Carabobo, Venezuela ",
-    },
-    {
-      'value': 157,
-      'label': "Delicateses la Gloria de Dios, Tocuyito, Carabobo, Venezuela ",
-    },
-    {
-      'value': 158,
-      'label':
-          "Inversiones Georgis JRS CA, Principal, Tocuyito, Carabobo, Venezuela ",
-    },
-    {
-      'value': 159,
-      'label': "Herica Nails, 1, Tocuyito, Carabobo ",
-    },
-    {
-      'value': 160,
-      'label': "Variedades Mauped C.A, Principal, Tocuyito, Carabobo ",
-    },
-    {
-      'value': 161,
-      'label': "Variedades Mis Tesoros, Tocuyito, Carabobo, Venezuela ",
-    },
-    {
-      'value': 162,
-      'label':
-          "Abasto A Dios JL, Los Chorritos, Calle Las Bateas, Tocuyito, Carabobo, Venezuela ",
-    },
-    {
-      'value': 163,
-      'label': "AHOPE Style, Calle Rondon, Tocuyito, Carabobo, Venezuela ",
-    },
-    {
-      'value': 164,
-      'label':
-          "Inversiones Peña Nuñez 2015 C.A, Tocuyito, Carabobo, Venezuela ",
-    },
-    {
-      'value': 165,
-      'label': "Darwinos, Calle 2 Norte, Cucuta, North Santander, Colombia ",
-    },
-    {
-      'value': 166,
-      'label': "Inmelozano ca, Calle 17, Ureña, Táchira, Táchira ",
-    },
-    {
-      'value': 167,
-      'label': "El Universo Del Churro, San Cristobal, Táchira, Venezuela ",
-    },
-    {
-      'value': 168,
-      'label': "Barber Tatto 911, Táriba, Táchira, Venezuela ",
-    },
-    {
-      'value': 169,
-      'label':
-          "Haru Nails Studio, Troncal 1, San Cristóbal, Táchira, Venezuela ",
-    },
-    {
-      'value': 170,
-      'label':
-          'Respuestos Pirineos, 5ta. Avenida "Francisco García de Hevia", San Cristóbal, Táchira, Venezuela ',
-    },
-    {
-      'value': 171,
-      'label':
-          "Centro de Rehabilitación Física Quirón, San Cristobal, Táchira ",
-    },
-    {
-      'value': 172,
-      'label': "Kaska-Nueces, San Cristóbal, Táchira, Venezuela ",
-    },
-    {
-      'value': 173,
-      'label': "Gigi Playa, San Cristóbal 5001, Táchira, Venezuela ",
-    },
-    {
-      'value': 174,
-      'label': "Gürt Cocina Vegetariana, San Cristobal, Táchira ",
-    },
-    {
-      'value': 175,
-      'label':
-          'Respuestos Pirineos, 5ta. Avenida "Francisco García de Hevia", San Cristóbal, Táchira, Venezuela ',
-    },
-    {
-      'value': 176,
-      'label':
-          "Papelería Moderna, Séptima Avenida, San Cristóbal 5001, Táchira, Venezuela ",
-    },
-    {
-      'value': 177,
-      'label':
-          "Inversiones aleksey, Calle 3, San Cristóbal, Táchira, Venezuela ",
-    },
-    {
-      'value': 178,
-      'label':
-          "Panaderia Y Pasteleria Monquita, San Cristóbal 5001, Táchira, Venezuela ",
-    },
-    {
-      'value': 179,
-      'label': "Korea Partes Táchira, San Cristóbal 5001, Táchira, Venezuela ",
-    },
-    {
-      'value': 180,
-      'label': "Moto los andes, 4, San Cristóbal 5001, Táchira, Venezuela",
-    },
-    {
-      'value': 181,
-      'label': "Mangueras los Molinos, San Cristobal, Táchira ",
-    },
-    {
-      'value': 182,
-      'label': "Repuestos Cordillera, San Cristóbal, Táchira, Venezuela ",
-    },
-    {
-      'value': 183,
-      'label': "Recol Repuestos, San Cristóbal, Táchira, Venezuela ",
-    },
-    {
-      'value': 184,
-      'label':
-          "REPUESTOS CANCHICA, Calle 4, San Cristóbal, Táchira, Venezuela ",
-    },
-    {
-      'value': 185,
-      'label':
-          "Jhony Car's Repuestos, Calle 4 Bis, San Cristóbal, Táchira, Venezuela ",
-    },
-    {
-      'value': 186,
-      'label':
-          "AUTO REPUESTOS CHERYFORD, Calle 4 Bis, San Cristóbal, Táchira, Venezuela ",
-    },
-    {
-      'value': 187,
-      'label':
-          "SH GENERICOS Y MAS, Calle 4 Bis, San Cristóbal 5001, Táchira, Venezuela ",
-    },
-    {
-      'value': 188,
-      'label': "Auto repuestos Canmar, Calle5, San Cristobal, Táchira ",
-    },
-    {
-      'value': 189,
-      'label':
-          "ToyoMotors Malpica, Calle 5, La Concordia, San Cristóbal, Táchira ",
-    },
-    {
-      'value': 190,
-      'label': "ToyoFord, Calle5, San Cristóbal 5001, Táchira, Venezuela ",
-    },
-    {
-      'value': 191,
-      'label':
-          "La Principal Renault F-1 C.A, San Cristóbal 5001, Táchira, Venezuela ",
-    },
-    {
-      'value': 192,
-      'label':
-          "Andina Venezolana del Repuesto, Carrera 6 Bis, San Cristóbal 5001, Táchira, Venezuela ",
-    },
-    {
-      'value': 193,
-      'label':
-          "Repuestos y Rodamientos REBERCA, San Cristóbal, Táchira, Venezuela ",
-    },
-    {
-      'value': 194,
-      'label': "Repuestos Orlando Motos, Calle 5, San Cristobal, Táchira ",
-    },
-    {
-      'value': 195,
-      'label': "Cafetin con sabor chacaro, Calle 5 Bis, San Cristóbal, Táchira",
-    },
-    {
-      'value': 196,
-      'label':
-          "Auto repuestos 2000, Calle 5 Bis, San Cristóbal, Táchira, Venezuela ",
-    },
-    {
-      'value': 197,
-      'label': "Repuestos Guayas Car's, Carrera 6 Bis, San Cristobal, Táchira ",
-    },
-    {
-      'value': 198,
-      'label':
-          "Autopartes Hidalgo Todo Corsa, Avenida Francisco García de Hevia, San Cristobal, Táchira ",
-    },
-    {
-      'value': 199,
-      'label': "Repuestos Orlando Motos, Calle 5, San Cristobal, Táchira ",
-    },
-    {
-      'value': 200,
-      'label': "AdriCar's, carrera 5, San Cristóbal 5001, Táchira, Venezuela ",
-    },
-    {
-      'value': 201,
-      'label':
-          'MOTORCYCLES LOS ANDES C.A, al M. Publico, 5ta. Avenida "Francisco García de Hevia", San Cristobal, Táchira ',
-    },
-    {
-      'value': 202,
-      'label':
-          "Cerámicas y Materiales Carmire, C.A., 6, Guanarito, Portuguesa ",
-    },
-    {
-      'value': 203,
-      'label':
-          "Inversiones Densor, Carrera 8, Guanarito, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 204,
-      'label': "D Vivas Shop, Guanarito, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 205,
-      'label': "La Tiendita GA Saavedra, Guanarito, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 206,
-      'label': "Districar, Guanarito, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 207,
-      'label':
-          "Baby chic Boutique, Carrera 8, Guanarito, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 208,
-      'label': "Mundo Repuestos Panda, Guanarito, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 209,
-      'label': "Lio's Store, Guanarito, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 210,
-      'label': "Cachorra Palma CA, Acarigua, Portuguesa ",
-    },
-    {
-      'value': 211,
-      'label': "L'Italia Restaurant, Acarigua, Portuguesa ",
-    },
-    {
-      'value': 212,
-      'label': "Fanatic Sport Bar, Calle 31, Acarigua, Portuguesa, Venezuela ",
-    },
-    {
-      'value': 213,
-      'label': "Xtremo Julkar 27, C.A.",
-    },
-    {
-      'value': 214,
-      'label': "Video Club, Piso 1, Maturín, Monagas, Venezuela ",
-    },
-    {
-      'value': 215,
-      'label': "FRUTTY MANIA, Via Viboral, Maturín, Monagas, Venezuela ",
-    },
-    {
-      'value': 216,
-      'label':
-          "BB Store SERVICE, C.A, Via Viboral, Maturín, Monagas, Venezuela ",
-    },
-    {
-      'value': 217,
-      'label':
-          "Strong Physical Center, C.A, Via Viboral, Maturín, Monagas, Venezuela ",
-    },
-    {
-      'value': 218,
-      'label':
-          "La Plata Seguros, C. 9 835, B1900 La Plata, Provincia de Buenos Aires, Argentina ",
-    },
-    {
-      'value': 219,
-      'label':
-          "akataka, Guillermo Hudson, Provincia de Buenos Aires, Argentina ",
-    },
-    {
-      'value': 220,
-      'label':
-          "Royal Fitness 24hs, Berazategui Centro, Provincia de Buenos Aires, Argentina ",
-    },
-    {
-      'value': 221,
-      'label':
-          "Selectos - Café de Especialidad, Reconquista, Buenos Aires, Argentina ",
-    },
-    {
-      'value': 222,
-      'label': "Envios Bakanos, Florida, AAI, Buenos Aires, Argentina ",
-    },
-    {
-      'value': 223,
-      'label': "Kiosco el Solar, Adolfo Alsina, AAE, Buenos Aires, Argentina ",
-    },
-    {
-      'value': 224,
-      'label': "Buenos Aires Footgolf, Campana, Buenos Aires, Argentina ",
-    },
-    {
-      'value': 225,
-      'label': "Servir Viajes, Uruguay, Buenos Aires, Argentina ",
-    },
-    {
-      'value': 226,
-      'label':
-          "Kioscobelisco, Avenida Roque Sáenz Peña, Buenos Aires, Argentina ",
-    },
-    {
-      'value': 227,
-      'label':
-          "Diego Hernan Farias, ALT, Avenida del Libertador, La Lucila, Buenos Aires Province, Argentina ",
-    },
-    {
-      'value': 228,
-      'label': "En El Kiosquito, Carlos Pellegrini, Buenos Aires, Argentina ",
-    },
-    {
-      'value': 229,
-      'label': "Capote Grosso Kiosco, Malabia, Buenos Aires, Argentina ",
-    },
-    {
-      'value': 230,
-      'label':
-          "McCormack Asociados, Arquitectos, Fray Justo Santa María de Oro, FOQ, Buenos Aires, Argentina ",
-    },
-    {
-      'value': 231,
-      'label': "Nelly Nieto Malpartida, Sinclair, Buenos Aires, Argentina ",
-    },
-    {
-      'value': 232,
-      'label':
-          "Kiosco TXV, Avenida General Indalecio Chenaut, Buenos Aires, Argentina",
-    },
-    {
-      'value': 233,
-      'label': "Costa Rica 4709 m24, C1414 BSK, Buenos Aires, Argentina",
-    },
-    {
-      'value': 234,
-      'label': "Alquilá tu Cancha, Avenida Cabildo, Buenos Aires, Argentina ",
-    },
-    {
-      'value': 235,
-      'label':
-          "Benjipoint 2 Centro de Copiado, Acevedo, Buenos Aires, Argentina ",
-    },
-    {
-      'value': 236,
-      'label': "Benjipoint3, Avenida Corrientes, Buenos Aires, Argentina ",
-    },
-    {
-      'value': 237,
-      'label': "Che Bonche, Serrano, Buenos Aires, Argentina ",
-    },
-    {
-      'value': 238,
-      'label': "Envíos Bakanos, Serrano 725, Buenos Aires, Argentina ",
-    },
-    {
-      'value': 239,
-      'label': "Los Hermanos J C, Miñones, Buenos Aires, Argentina ",
-    },
-    {
-      'value': 240,
-      'label': "Shawarma Al-Amir, Montañeses, Buenos Aires, Argentina ",
-    },
-    {
-      'value': 241,
-      'label':
-          "𝙁𝙧𝙚𝙣𝙘𝙝 𝙘𝙧𝙚̂𝙥𝙚𝙨 𝘽𝘼, Montañeses, Buenos Aires, Argentina ",
-    },
-    {
-      'value': 242,
-      'label': "Agencia Cantalupe, Avenida Cabildo, Buenos Aires, Argentina ",
-    },
-    {
-      'value': 243,
-      'label':
-          "Buena Birra Social Club - Colegiales, Zapiola, Buenos Aires, Argentina ",
     }
   ];
 
