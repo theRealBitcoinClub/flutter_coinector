@@ -319,19 +319,31 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   matchTags(Set<TagCoinector> allTags, String review, Set<TagCoinector> tags) {
     review = review.toLowerCase();
+    if (!hasLessThanMaxTags(allTags)) return;
     for (TagCoinector t in tags) {
       String tagText = t.text.toLowerCase();
       //print(tagText);
       if (t.id != 104 && review.contains(tagText) && tagText.isNotEmpty) {
+        List<String> words = review.split(" ");
+        for (String word in words) {
+          if (hasLessThanMaxTags(allTags)) {
+            if (isShortTag(t) && word.toLowerCase() == tagText) {
+              allTags.add(t);
+            } else if (!isShortTag(t) && word.toLowerCase().contains(tagText)) {
+              allTags.add(t);
+            }
+          } else
+            break;
+        }
         if (!kReleaseMode)
           print("index:" + t.id.toString() + "\ntagText:" + tagText + "\n");
-        if (!isShortTag(t) ||
+        /*if (!isShortTag(t) ||
             (isShortTag(t) && reviewContainsTagAsFullWord(review, tagText))) {
           if (hasLessThanMaxTags(allTags)) {
             //TODO EXPAND APP TO SUPPORT MORE THAN FOUR TAGS FOR EACH PLACE
             allTags.add(t);
           }
-        }
+        }*/
       }
     }
   }
@@ -341,7 +353,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   //The tagText 107 is men and very short it appears in many other words
   bool isShortTag(TagCoinector t) =>
-      TagCoinector.parseTag(t.id.toString()).length <= 3;
+      TagCoinector.parseTag(t.id.toString()).length <= 4;
 
   bool reviewContainsTagAsFullWord(String review, String tagText) =>
       review.contains(" " + tagText + " ");
