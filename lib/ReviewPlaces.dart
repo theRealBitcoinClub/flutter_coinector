@@ -1275,7 +1275,7 @@ class ReviewPlaces {
     /*,
     {
       'value': 1,
-      'label': 'Joels Crepes, The Headrow, Leeds',
+      'label': 'Joel Crepes, The Headrow, Leeds',
     },
     {
       'value': 2,
@@ -1410,7 +1410,7 @@ class ReviewPlaces {
       'value': 33,
       'label': "Beirut sxm, 29 Airport Rd, Simpson Bay, Sint Maarten ",
     },
-    {
+    { CURRENT LATEST ITEM
       'value': 34,
       'label': "Smart Car Rental, Simpson Bay Road, Simpson Bay, Sint Maarten ",
     },
