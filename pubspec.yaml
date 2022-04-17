@@ -12,7 +12,7 @@ description: Coinecting to coimunity...
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 
-version: 6.9.26+253906
+version: 6.9.27+253907
 
 environment:
   sdk: ">=2.2.2 <3.0.0"
@@ -127,6 +127,7 @@ flutter:
     - assets/e.json
     - assets/placesId.json
     - assets/places.json
+    - assets/reviewable.json
     - config/app_config.json
 
   # An image asset can refer to one or more resolution-specific "variants", see

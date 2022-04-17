@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:Coinector/GithubCoinector.dart';
@@ -16,6 +17,7 @@ import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 import 'package:select_form_field/select_form_field.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';
+import 'AssetLoader.dart';
 import 'Dialogs.dart';
 import 'ReviewPlaces.dart';
 import 'TagBrands.dart';
@@ -141,6 +143,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   String _textSubmitButton = "";
 
   int _selectedCategory;
+  List<Merchant> reviewableMerchants = [];
+  List<Map<String, dynamic>> reviewableData = [];
+
+  bool reviewMode = true;
   _AddNewPlaceWidgetState(
       this.selectedType, this.accentColor, this.typeTitle, this.actionBarColor);
 
@@ -155,6 +161,39 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     initInputListener();
 
     drawFormStep(FormStep.IN_NAME);
+    if (reviewMode) {
+      initReviewableDataSet();
+    }
+  }
+
+  void initReviewableDataSet() async {
+    var data = await AssetLoader.loadString('assets/reviewable.json');
+    List<dynamic> reviewables = jsonDecode(data);
+    int index = 0;
+    List<Map<String, dynamic>> allItems = [];
+    reviewables.forEach((item) {
+      if (index == 0) {
+        final itemData = Map<String, dynamic>();
+        itemData['value'] = 0;
+        itemData['label'] = "Select Reviewable";
+        allItems.add(itemData);
+      }
+      index++;
+      reviewableMerchants.add(Merchant.fromJson(item));
+
+      final itemData = Map<String, dynamic>();
+      itemData['value'] = index;
+      itemData['label'] = index.toString() + " " + item["n"];
+      allItems.add(itemData);
+    });
+
+    setState(() {
+      reviewableData = allItems;
+    });
+  }
+
+  bool hasReviewable() {
+    return reviewableData.length > 0;
   }
 
   void initInputListener() {
@@ -398,6 +437,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
+                      wrapBuildColumnPreFillReviewables(ctx),
+                      buildSizedBoxSeparator(),
                       wrapBuildColumnPreFillContinent(ctx),
                       buildSizedBoxSeparator(),
                       wrapBuildColumnPreFillPlace(ctx),
@@ -506,6 +547,22 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     );
   }
 
+  Column buildColumnPreFillReviewablesSelectBox(ctx) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: <Widget>[
+        SelectFormField(
+            type: SelectFormFieldType.dropdown, // or can be dialog
+            initialValue: "0",
+            icon: Icon(Icons.search),
+            labelText: 'Reviewables',
+            items: reviewableData,
+            onChanged: (val) => _selectReviewable(val))
+      ],
+    );
+  }
+
   Column buildColumnPreFillContinentSelectBox(ctx) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -514,7 +571,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         SelectFormField(
             type: SelectFormFieldType.dropdown, // or can be dialog
             initialValue: "0",
-            icon: Icon(Icons.accessibility),
+            icon: Icon(Icons.airplanemode_active),
             labelText: 'Area',
             items: ReviewPlaces.continents,
             onChanged: (val) => _selectContinent(val))
@@ -528,9 +585,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         SelectFormField(
-            type: SelectFormFieldType.dropdown, // or can be dialog
+            type: SelectFormFieldType.dialog, // or can be dialog
             initialValue: "0",
-            icon: Icon(Icons.account_balance),
+            icon: Icon(Icons.place_outlined),
             labelText: 'Place',
             items: ReviewPlaces.searchCombos[_currentContinent],
             onChanged: (val) => _selectPlace(val),
@@ -1311,6 +1368,12 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     drawStepSearch();
   }
 
+  Widget wrapBuildColumnPreFillReviewables(ctx) => AnimatedOpacity(
+      curve: DEFAULT_ANIMATION_CURVE,
+      duration: DEFAULT_DURATION_OPACITY_FADE,
+      opacity: hasReviewable() ? 1.0 : 0.2,
+      child: buildColumnPreFillReviewablesSelectBox(ctx));
+
   Widget wrapBuildColumnPreFillContinent(ctx) => AnimatedOpacity(
       curve: DEFAULT_ANIMATION_CURVE,
       duration: DEFAULT_DURATION_OPACITY_FADE,
@@ -1322,6 +1385,19 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       duration: DEFAULT_DURATION_OPACITY_FADE,
       opacity: 1.0,
       child: buildColumnPreFillPlaceSelectBox(ctx));
+
+  _selectReviewable(var index) {
+    int i = int.parse(index);
+    if (i == 0) {
+      drawFormStep(FormStep.HIT_SEARCH);
+      return;
+    }
+    setState(() {
+      _merchant = reviewableMerchants.elementAt(i - 1);
+    });
+    resetImages();
+    _searchForPrefill(_merchant.name + ", " + _merchant.location);
+  }
 
   _selectContinent(var index) {
     var contiIndex = int.parse(index);
