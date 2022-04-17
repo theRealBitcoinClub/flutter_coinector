@@ -588,7 +588,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             type: SelectFormFieldType.dialog, // or can be dialog
             initialValue: "0",
             icon: Icon(Icons.place_outlined),
-            labelText: 'Place',
+            labelText: "Place",
             items: ReviewPlaces.searchCombos[_currentContinent],
             onChanged: (val) => _selectPlace(val),
             onFieldSubmitted: (val) => _selectPlace(val))
