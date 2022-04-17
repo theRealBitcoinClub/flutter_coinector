@@ -1410,7 +1410,7 @@ class ReviewPlaces {
       'value': 33,
       'label': "Beirut sxm, 29 Airport Rd, Simpson Bay, Sint Maarten ",
     },
-    { CURRENT LATEST ITEM
+    {
       'value': 34,
       'label': "Smart Car Rental, Simpson Bay Road, Simpson Bay, Sint Maarten ",
     },
@@ -1454,7 +1454,7 @@ class ReviewPlaces {
     },
     {
       'value': 44,
-      'label': "Coffee lounge 2.0, Welfare Road, Cole Bay, Sint Maarten",
+        'label': "Coffee lounge 2.0, Welfare Road, Cole Bay, Sint Maarten",
     },
     {
       'value': 45,
@@ -1477,7 +1477,7 @@ class ReviewPlaces {
       'value': 49,
       'label': "Victors Cosmetics & More, Sint Maarten",
     },
-    {
+    { HIER
       'value': 50,
       'label': "Tech Hub, Bush Road, Philipsburg, Sint Maarten",
     },
