@@ -22,8 +22,14 @@ class TagFactory {
    */
 
   static Set<TagCoinector> _createTags(LangCode lang) {
+    Set tags = _createTagsFromRaw(_getRawTags(lang));
+    if (lang != LangCode.EN) //add english tags as default
+      tags.add(_createTagsFromRaw(_getRawTags(LangCode.EN)));
+    return tags;
+  }
+
+  static Set<TagCoinector> _createTagsFromRaw(Set<String> rawTags) {
     Set<TagCoinector> tags = {};
-    Set<String> rawTags = _getRawTags(lang);
     int index = 0;
     for (String rawTag in rawTags) {
       if (rawTag != null && rawTag.isNotEmpty) {

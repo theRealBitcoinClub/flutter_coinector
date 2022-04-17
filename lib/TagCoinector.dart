@@ -365,7 +365,7 @@ class TagCoinector {
     'Veterinarian 👨‍⚕',
     'Hospital 🏥',
     'Nails 💅',
-    '------',//255
+    'Halal حلال',//255
     'Promotion 🐰',
     'Phone 📱',
     'Mobile 📱',
@@ -375,34 +375,33 @@ class TagCoinector {
     'Repair 🔧',
     'Relax 🤗',
     'Chill 😏',
-    'Moon 🌝',
+    'Moon 🌝',//265
     'Sunshine ☀',
     'Bets 🎰',
     'Poker 🎰',
     'Airport ✈',
-    'Autobus 🚌',
+    'Autobus 🚌',//270
     'Travel 🗺️',
     'Show 🤡',
     'Theatre 🤡',
     'Lawyer ⚖',
-    'Accounting 🔒',
+    'Accounting 🔒',//275
     'Tourist ℹ',
     'Shawarma 🍗',
     'Camping ⛺',
     'Fire 🔥',
-    'Resort ⛵',
+    'Resort ⛵',//280
     'Lounge 🛋️',
     'Lodging 🛏️',
     'Thai 🇹🇭',
     'Construction 🪛',
-    'Hardware 🔨',
+    'Hardware 🔨',//285
     'Gasoline ⛽',
     'Convenience 🏪',
     'Grocery 🥫',
     'Fitness ❤',
-    'Gym ❤',
-    'Household 🏪',
-    'Halal حلال'
+    'Gym ❤',//290
+    'Household 🏪'
   };
 
   static final tagTextJP1 = const {
