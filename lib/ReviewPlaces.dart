@@ -1689,7 +1689,7 @@ class ReviewPlaces {
       'value': 99,
       'label': "Sun Pharmacy, Basseterre, Saint Kitts and Nevis ",
     },*/
-    /*{
+    /*{ HIER
       'value': 0,
       'label':
           "Sol Gas Station, Victoria Road, Basseterre, Saint Kitts and Nevis ",
