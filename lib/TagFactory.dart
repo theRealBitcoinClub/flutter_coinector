@@ -24,7 +24,7 @@ class TagFactory {
   static Set<TagCoinector> _createTags(LangCode lang) {
     Set tags = _createTagsFromRaw(_getRawTags(lang));
     if (lang != LangCode.EN) //add english tags as default
-      tags.add(_createTagsFromRaw(_getRawTags(LangCode.EN)));
+      tags.addAll(_createTagsFromRaw(_getRawTags(LangCode.EN)));
     return tags;
   }
 
