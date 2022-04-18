@@ -1,5 +1,7 @@
 class TitleSuggestions {
   static final reviewedTitles = const {
+    "Di-Masi Vinos C.A.",
+    "VIMAS GROUP",
     "Pollos Don Guillo, Carrera 65 ##38-03, Medellín",
     "Gtech maracay, Maracay, Aragua",
     "Digitel Estación Central, Maracay, Aragua",
