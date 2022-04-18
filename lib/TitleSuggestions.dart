@@ -1,5 +1,6 @@
 class TitleSuggestions {
   static final reviewedTitles = const {
+    "Pollos Don Guillo, Carrera 65 ##38-03, Medellín",
     "Gtech maracay, Maracay, Aragua",
     "Digitel Estación Central, Maracay, Aragua",
     "Todo Cable Center, C.A., Maracay, Aragua",
