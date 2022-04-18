@@ -1555,10 +1555,10 @@ class TagCoinector {
     '🍔🍔🍔Retro 🦄',
     '🍔🍔🍔Feta 🐐',
     '🍔🍔🍔WiFi', //59
-    'Centro Comercial', //'BTC',
-    'Hipermercado', //'BCH',
-    'Cigarro', //'Anypay',
-    'Recarga', //'ETH',
+    'Centro Comercial 🛍️', //'BTC',
+    'Hipermercado 🏬', //'BCH',
+    'Cigarro 🚬', //'Anypay',
+    'Recarga 📱', //'ETH',
     'PerroCal. 🌭', //64
     'Rapido ⏩',
     '🍔🍔🍔Kosher 🦄',
