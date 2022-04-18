@@ -1939,7 +1939,7 @@ class ReviewPlaces {
     },
     {
       'value': 5,
-      'label': 'Bodegon El Saman Cuyaguero, Cuyagua, Venezuela',
+      'label': 'Bodegón El Saman Cuyaguero, Cuyagua, Venezuela',
     },
     {
       'value': 6,
@@ -2037,7 +2037,7 @@ class ReviewPlaces {
     },
     {
       'value': 29,
-      'label': "Gtech maracay, Maracay, Aragua",
+      'label': "######################Gtech maracay, Maracay, Aragua",
     },
     {
       'value': 30,
