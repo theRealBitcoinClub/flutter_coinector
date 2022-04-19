@@ -437,8 +437,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      wrapBuildColumnPreFillReviewables(ctx),
-                      buildSizedBoxSeparator(),
+                      // wrapBuildColumnPreFillReviewables(ctx),
+                      // buildSizedBoxSeparator(),
                       wrapBuildColumnPreFillContinent(ctx),
                       buildSizedBoxSeparator(),
                       wrapBuildColumnPreFillPlace(ctx),
