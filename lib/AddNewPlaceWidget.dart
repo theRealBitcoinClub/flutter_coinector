@@ -585,7 +585,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         SelectFormField(
-            type: SelectFormFieldType.dialog, // or can be dialog
+            type: SelectFormFieldType.dropdown, // or can be dialog
             initialValue: "0",
             icon: Icon(Icons.place_outlined),
             labelText: "Place",
