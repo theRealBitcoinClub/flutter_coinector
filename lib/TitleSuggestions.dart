@@ -1,5 +1,6 @@
 class TitleSuggestions {
   static final reviewedTitles = const {
+    "Las Delicias de Vicenta",
     "Di-Masi Vinos C.A.",
     "VIMAS GROUP",
     "Pollos Don Guillo, Carrera 65 ##38-03, Medellín",
@@ -258,7 +259,21 @@ class TitleSuggestions {
     'Joel Crepes, The Headrow, Leeds',
     "TIMELESS SPIRITS, Rue du Président Kennedy, Marigot, Saint Martin ",
     "Country House La Grancia, Treia, Macerata, Italy",
-    "SURF'ACE Saint Martin, Marigot, Saint Martin"
+    "SURF'ACE Saint Martin, Marigot, Saint Martin",
+    "Doravila Restaurante C.A",
+    "Kuang Hua",
+    "Spa Beautiful Fitness",
+    "La Spezia Cafe",
+    "Casa Torino",
+    "Toromaima mini market",
+    "Juan Express Licores",
+    "Bodegón Daroy",
+    "Monumental Tours C.A",
+    "Kiosco Mene Grande",
+    "Inversiones exótica doris",
+    "A Granel",
+    "HOTEL GIRASOL70",
+    "El Compy Delicias venezolanas",
   };
   static final titleTags = const {
     'Muerde La Carne',
