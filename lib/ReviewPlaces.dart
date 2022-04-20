@@ -66,7 +66,7 @@ class ReviewPlaces {
     },
     {
       'value': 3,
-      'label': 'Aptissio Australia Pty Ltd, Townsville QLD, Australia',
+      'label': 'Aptissio Australia, Townsville QLD, Australia',
     },
     {
       'value': 4,
