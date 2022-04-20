@@ -430,12 +430,13 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   bool _containsLocationFreeSearch(Merchant m, String location) {
-    return _containsString(m.location, location) ||
-        _containsString(location, m.location);
+    String locationClean = location.split(" - ")[0];
+    return _containsString(m.location, locationClean) ||
+        _containsString(locationClean, m.location);
   }
 
   bool _containsTitle(Merchant m, String title) {
-    var titleClean = title.split(" - ")[0].split(",")[0];
+    String titleClean = title.split(" - ")[0].split(",")[0];
     return _containsString(m.name, titleClean) ||
         _containsString(titleClean, m.name);
   }
