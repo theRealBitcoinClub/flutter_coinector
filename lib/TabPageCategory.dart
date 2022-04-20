@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'Merchant.dart';
+
 class TabPageCategory {
   const TabPageCategory(
       {this.text, this.icon, this.title, this.tabIndex, this.typeIndex});
@@ -61,4 +63,8 @@ class TabPages {
         tabIndex: 6,
         typeIndex: 999),
   ];
+
+  static getTabIndex(Merchant m) {
+    return m.type != 999 ? m.type : 6;
+  }
 }

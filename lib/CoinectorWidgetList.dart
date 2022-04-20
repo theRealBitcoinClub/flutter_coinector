@@ -381,11 +381,11 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     isInitialized = true;
   }
 
-  void animateToFirstResult(merchant) async {
+  void animateToFirstResult(Merchant merchant) async {
     if (tabController.indexIsChanging) return;
 
     if (merchant != null) {
-      tabController.animateTo(merchant.type);
+      animateToTab(merchant);
       return;
     }
 
@@ -393,10 +393,14 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       ListModel<Merchant> model = _lists[i];
       for (int x = 0; x < model.length; x++) {
         Merchant m = model[x];
-        tabController.animateTo(m.type);
+        animateToTab(m);
         return;
       }
     }
+  }
+
+  void animateToTab(Merchant merchant) {
+    tabController.animateTo(TabPages.getTabIndex(merchant));
   }
 
   void initUnfilteredLists() {
@@ -426,18 +430,21 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   bool _containsLocationFreeSearch(Merchant m, String location) {
-    return _containsString(m.location, location.trim());
+    return _containsString(m.location, location) ||
+        _containsString(location, m.location);
   }
 
   bool _containsTitle(Merchant m, String title) {
-    return _containsString(m.name, title);
+    var titleClean = title.split(" - ")[0].split(",")[0];
+    return _containsString(m.name, titleClean) ||
+        _containsString(titleClean, m.name);
   }
 
   bool _containsString(String src, String pattern) {
     if (pattern == null || pattern.isEmpty || src == null || src.isEmpty)
       return false;
 
-    return src.toLowerCase().contains(pattern.toLowerCase());
+    return src.toLowerCase().contains(pattern.toLowerCase().trim());
   }
 
   void _insertIntoTempList(
