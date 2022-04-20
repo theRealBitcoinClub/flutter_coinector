@@ -1,6 +1,6 @@
 class ReviewPlaces {
   //DONE
-  // south japon, south africa, jason
+  // carribean, japon, jason, australia
 
   static final List<Map<String, dynamic>> continents = const [
     {
@@ -14,12 +14,10 @@ class ReviewPlaces {
     {
       'value': 2,
       'label': 'Asia',
-      //'textStyle': TextStyle(color: Colors.red),
     },
     {
       'value': 3,
       'label': 'Australia',
-      //'icon': Icon(Icons.stop),
     },
     {
       'value': 4,
