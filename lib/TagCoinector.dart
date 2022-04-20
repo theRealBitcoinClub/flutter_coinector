@@ -401,7 +401,32 @@ class TagCoinector {
     'Grocery 🥫',
     'Fitness ❤',
     'Gym ❤',//290
-    'Household 🏪'
+    'Household 🏪',
+    'Book 📗',
+    'Boutique 🏪',
+    'Digital 📀',
+    'Glasses 👓',//295
+    'Optic 👓',
+    'Parfume ✨',
+    'Flower 🌻',
+    'Garden 🏡',
+    'Copies 💾',//300
+    'Talks 😃',
+    'Meeting 🤝',
+    'Office 🏢',
+    'Software ⚙',
+    'Crypto 🛡️',//305
+    'Wellness 🥰',
+    'Asian 🌏',
+    'Nuts 🥜',
+    'Storage 🏠',
+    'Exposition 🏟️',//310
+    'Gourmet ✨',
+    'Yoga ✨',
+    'Furniture 🛋️',
+    'Design 🎭',
+    'Paint 🎨',//315
+    'Kitchen ⏲',
   };
 
   static final tagTextJP1 = const {
