@@ -602,9 +602,9 @@ class TitleSuggestions {
     "Bitcoin Tutor Bot, McLeod Street, Cairns City Queensland, Australia ",
     "Tropi-Cool Air Conditioning Refrigeration, McCormack Street, Manunda QLD, Australia ",
     "Brother Jenkins Cafe, 177 Martyn St, Manunda QLD 4870, Australia ",
-    "Blvk Temple Tattoo, Lake Street, Cairns City Queensland, Australia ",
-    "Slap and Pickle Low and Slow Smokehouse, Shields Street, Cairns City Queensland, Australia ",
-    "Country Solar NT, Verrinder Road, Berrimah Territorio del Norte, Australia ",
+    "Blvk Temple Tattoo - Lake Street, Cairns City Queensland, Australia ",
+    "Slap and Pickle Low and Slow Smokehouse - Shields Street, Cairns City Queensland, Australia ",
+    "Country Solar NT - Verrinder Road, Berrimah Territorio del Norte, Australia ",
   };
   static final titleTags = const {
     'Muerde La Carne',
