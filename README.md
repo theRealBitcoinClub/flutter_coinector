@@ -70,9 +70,13 @@ Italian: http://bmap.app/it
 
 User can download a PDF file with QR Codes after adding a place
 
-## Programming language
+## Project Setup
 
 This project is written in dart using the flutter framework.
+
+You need a GitHub api access token and a Google Places Cloud API access token in a file called app_config.json, you can find an empty sample file here https://github.com/theRealBitcoinClub/flutter_coinector/tree/master/config
+
+You also need a keystore file from the Google Play Store if you want to publish that app on the Play Store, you can configure Play Store builds inside the key.properties file: https://github.com/theRealBitcoinClub/flutter_coinector/tree/master/android
 
 # How To Support
 
