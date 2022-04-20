@@ -122,11 +122,11 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
   void addMatch(
       int x, String pattern, Set<String> matches, String currentItem) {
     if (startsWith(currentItem, pattern)) {
-      var split = currentItem.split(",");
+      /*var split = currentItem.split(",");
       if (split.length > 0)
         matches.add(split[0]);
-      else
-        matches.add(currentItem);
+      else*/
+      matches.add(currentItem);
     }
   }
 
@@ -164,7 +164,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
       suggestions: suggestions.map<String>((String i) => i).toList(),
       onSelected: (String match) {
         String title = match.split(LocationSuggestions.separator)[0];
-        query = title.split(" - ")[0];
+        query = title.split(" - ")[0].split(",")[0].trim();
         _addHistoryItem(match);
         close(context, match);
       },
