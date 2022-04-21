@@ -560,7 +560,7 @@ class ReviewPlaces {
           "AltePay - Buy and Sell cryptocurrencies for cash (crypto exchange), Cēsu iela, Vidzeme Suburb, Riga, Riga, Latvia",
     },
     {
-      'value': 59,
+      'value': 9,
       'label':
           "Palma Central, Av. Kukulkan 6, Palma Central, 77760 Tulum, Q.R., México",
     },
@@ -604,7 +604,7 @@ class ReviewPlaces {
           "Juicefly Wine & Spirits | Alcohol & Vape Delivery, Jefferson Boulevard, Culver City, CA, USA",
     },
     {
-      'value': 69,
+      'value': 19,
       'label':
           "Sea Breeze ซีฟู้ด, ถนน พระรามที่ 6 Samsen Nai, Phaya Thai, Bangkok, Thailand",
     },
