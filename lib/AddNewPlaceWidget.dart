@@ -839,7 +839,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     await githubCoinector.githubUploadPlaceImages(selectedImages, _merchant);
     Loader.hide();
     //TODO SHOW PROGRESS BAR OF UPLOADS USING MULTIPLE FUTURE BLOCKS FOR EACH IMAGE
-    Navigator.pop(context);
+    // Navigator.pop(context);
 
     //TODO OFFER PDF DOWNLOAD AND LET USER INPUT HIS EMAIL MAYBE TO RECEIVE IT VIA EMAIL TOO???
     //Dialogs.confirmSendEmail(context, () {
