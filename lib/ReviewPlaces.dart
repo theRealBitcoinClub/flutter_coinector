@@ -293,220 +293,6 @@ class ReviewPlaces {
     {
       'value': 50,
       'label': "Moser Solar, Pesendorf, Austria ",
-    },
-    {
-      'value': 51,
-      'label': "All4Life Group, Feldbach, Lochen am See, Austria",
-    },
-    {
-      'value': 52,
-      'label':
-          "Extrutherm Kunststofftechnik GmbH, Welser Straße, Gunskirchen, Austria ",
-    },
-    {
-      'value': 53,
-      'label': "Harmonie im Garten GmbH, Schloßau, Seeboden, Austria ",
-    },
-    {
-      'value': 54,
-      'label': "drugstores.at CBD-Store, Ardaggerstraße, Amstetten, Austria",
-    },
-    {
-      'value': 55,
-      'label': "drugstores.at CBD-Store, Pfarrgasse, Steyr, Austria",
-    },
-    {
-      'value': 56,
-      'label': "Drugstores.at CBD-Store, Dr.-Salzmann-Straße, Wels, Austria ",
-    },
-    {
-      'value': 57,
-      'label':
-          "Michael Gärner Brillen Kontaktlinsen Hörgeräte GmbH, Hauptplatz, Ried im Innkreis, Austria ",
-    },
-    {
-      'value': 58,
-      'label': "A1 Shop, Europastraße, Salzburg, Austria",
-    },
-    {
-      'value': 59,
-      'label': "A1 Shop, Maria-Theresien-Straße, Innsbruck, Austria ",
-    },
-    {
-      'value': 60,
-      'label': "A1 Shop, Landstraße, Linz, Austria ",
-    },
-    {
-      'value': 61,
-      'label': "A1 Shop, Kärntner Straße, Vienna, Austria ",
-    },
-    {
-      'value': 62,
-      'label': "A1 Shop, Wiener Straße, Krems an der Donau, Austria ",
-    },
-    {
-      'value': 63,
-      'label': "A1 Telekom Austria AG, Herrengasse, Graz, Austria ",
-    },
-    {
-      'value': 64,
-      'label': "A1 Shop Wien Mitte, Landstraßer Hauptstraße, Vienna, Austria ",
-    },
-    {
-      'value': 65,
-      'label': "Exotique, Triq Sqaq Lourdes, Saint Julian's, Malta",
-    },
-    {
-      'value': 66,
-      'label':
-          "Hyundai-Partner KFZ - Schweiger Martin, Vorchdorfer Straße, Pettenbach, Austria ",
-    },
-    {
-      'value': 67,
-      'label': "Zweirad-Center Steyr, Ennser Straße, Steyr, Austria ",
-    },
-    {
-      'value': 68,
-      'label': "Gemeinschaft beflügelt, Waidhofner Straße, Amstetten, Austria ",
-    },
-    {
-      'value': 69,
-      'label': "E-Projekt, Liesingbachstraße, Vienna, Austria ",
-    },
-    {
-      'value': 70,
-      'label': "Hübner Uhrmachermeister, Graben, Vienna, Austria ",
-    },
-    {
-      'value': 71,
-      'label':
-          "denkapparat - Photovoltaik Stromspeicher Ökoenergie, Diepersdorf, Austria ",
-    },
-    {
-      'value': 72,
-      'label':
-          "Bamminger Kraftfahrzeuge GesmbH, Sportplatzstraße, Sattledt, Austria ",
-    },
-    {
-      'value': 73,
-      'label':
-          "LEHNER'S Bar & Dine, Obertshausener Straße, Laakirchen, Austria ",
-    },
-    {
-      'value': 74,
-      'label': "Timberland Store Linz, Hauptplatz, Linz, Austria ",
-    },
-    {
-      'value': 75,
-      'label': "Tierra-Tonöfen, 2770, Austria ",
-    },
-    {
-      'value': 76,
-      'label':
-          "Calma Luxury Villas, Ulica doktor Franje Tuđmana, Starigrad, Croatia ",
-    },
-    {
-      'value': 77,
-      'label': "McExpert, Ingenieur-Pesendorfer-Straße, Bad Hall, Austria ",
-    },
-    {
-      'value': 78,
-      'label': "Hotel Vienna, Große Stadtgutgasse, Vienna, Austria ",
-    },
-    {
-      'value': 79,
-      'label':
-          "1a Installateur - Hauer Hubmer GmbH, Hauptstraße, Wartberg an der Krems, Austria ",
-    },
-    {
-      'value': 80,
-      'label': "E & S Group, Saint Julian's, Malta ",
-    },
-    {
-      'value': 81,
-      'label':
-          "Watches & Jewelery Böheim, Linz, Schmidtorstraße, Linz, Austria ",
-    },
-    {
-      'value': 82,
-      'label':
-          "Honda Magnum, Thomas Datscher KG, Kremstalstraße, Traun, Austria ",
-    },
-    {
-      'value': 83,
-      'label': "AH Metallbau, Mozartgasse, Zwentendorf, Austria ",
-    },
-    {
-      'value': 84,
-      'label': "Autohaus Seidl, Hafnerstraße, Molln, Austria ",
-    },
-    {
-      'value': 85,
-      'label':
-          "Autohaus Seidl Gleisdorf - Gebrauchtwagen auf autoseidl.at, Schubertgasse, Gleisdorf, Austria",
-    },
-    {
-      'value': 86,
-      'label': "kaufdahoam.at, Linzer Straße, Gmunden, Austria ",
-    },
-    {
-      'value': 87,
-      'label': "RENAULT Weiermeier, Jageredtstraße, Nußbach, Austria ",
-    },
-    {
-      'value': 88,
-      'label': "BIKE-MASTER, Hauptstraße, Wartberg an der Krems, Austria ",
-    },
-    {
-      'value': 89,
-      'label': "Reisinger KFZ, Eisenstraße, Großraming, Austria ",
-    },
-    {
-      'value': 90,
-      'label': "APOTHEKE U1 TROSTSTRASSE, Favoritenstraße, Vienna, Austria ",
-    },
-    {
-      'value': 91,
-      'label': "Teichbau GmbH, Oberschlierbach, Austria",
-    },
-    {
-      'value': 92,
-      'label':
-          "AAinFo - Soluções em Informática e tecnologia - Rua Uva Niágara, 50 - Morada das Vinhas, Jundiaí - State of São Paulo, Brazil ",
-    },
-    {
-      'value': 93,
-      'label': "Tandy Consulting Inc, North Pomona Avenue, Fullerton, CA, USA ",
-    },
-    {
-      'value': 94,
-      'label': "Ours private chef, st. maarten",
-    },
-    {
-      'value': 95,
-      'label': "sxm loc, 97150, Saint Martin",
-    },
-    {
-      'value': 96,
-      'label': "Nature Animal Hope Hill, 97150, Saint Martin",
-    },
-    {
-      'value': 97,
-      'label': "O temps des marques, 97150, Saint Martin ",
-    },
-    {
-      'value': 98,
-      'label': "Rainbow Café, Grand-Case, Saint Martin ",
-    },
-    {
-      'value': 99,
-      'label':
-          "Cabinet kiné Grand Case - Physio Cab BRACH Pierre-Jean, rue franklin laurence, Grand Case, Saint Martin ",
-    },
-    {
-      'value': 100,
-      'label':
-          "Nature Animal, 209 Rue de Hollande, Marigot 97150, Saint Martin ",
     }
   ];
 
@@ -514,6 +300,220 @@ class ReviewPlaces {
     {
       'value': 0,
       'label': 'Select Place in Africa',
+    },
+    {
+      'value': 1,
+      'label': "All4Life Group, Feldbach, Lochen am See, Austria",
+    },
+    {
+      'value': 2,
+      'label':
+          "Extrutherm Kunststofftechnik GmbH, Welser Straße, Gunskirchen, Austria ",
+    },
+    {
+      'value': 3,
+      'label': "Harmonie im Garten GmbH, Schloßau, Seeboden, Austria ",
+    },
+    {
+      'value': 4,
+      'label': "drugstores.at CBD-Store, Ardaggerstraße, Amstetten, Austria",
+    },
+    {
+      'value': 5,
+      'label': "drugstores.at CBD-Store, Pfarrgasse, Steyr, Austria",
+    },
+    {
+      'value': 6,
+      'label': "Drugstores.at CBD-Store, Dr.-Salzmann-Straße, Wels, Austria ",
+    },
+    {
+      'value': 7,
+      'label':
+          "Michael Gärner Brillen Kontaktlinsen Hörgeräte GmbH, Hauptplatz, Ried im Innkreis, Austria ",
+    },
+    {
+      'value': 8,
+      'label': "A1 Shop, Europastraße, Salzburg, Austria",
+    },
+    {
+      'value': 9,
+      'label': "A1 Shop, Maria-Theresien-Straße, Innsbruck, Austria ",
+    },
+    {
+      'value': 10,
+      'label': "A1 Shop, Landstraße, Linz, Austria ",
+    },
+    {
+      'value': 11,
+      'label': "A1 Shop, Kärntner Straße, Vienna, Austria ",
+    },
+    {
+      'value': 12,
+      'label': "A1 Shop, Wiener Straße, Krems an der Donau, Austria ",
+    },
+    {
+      'value': 13,
+      'label': "A1 Telekom Austria AG, Herrengasse, Graz, Austria ",
+    },
+    {
+      'value': 14,
+      'label': "A1 Shop Wien Mitte, Landstraßer Hauptstraße, Vienna, Austria ",
+    },
+    {
+      'value': 15,
+      'label': "Exotique, Triq Sqaq Lourdes, Saint Julian's, Malta",
+    },
+    {
+      'value': 16,
+      'label':
+          "Hyundai-Partner KFZ - Schweiger Martin, Vorchdorfer Straße, Pettenbach, Austria ",
+    },
+    {
+      'value': 17,
+      'label': "Zweirad-Center Steyr, Ennser Straße, Steyr, Austria ",
+    },
+    {
+      'value': 18,
+      'label': "Gemeinschaft beflügelt, Waidhofner Straße, Amstetten, Austria ",
+    },
+    {
+      'value': 19,
+      'label': "E-Projekt, Liesingbachstraße, Vienna, Austria ",
+    },
+    {
+      'value': 20,
+      'label': "Hübner Uhrmachermeister, Graben, Vienna, Austria ",
+    },
+    {
+      'value': 21,
+      'label':
+          "denkapparat - Photovoltaik Stromspeicher Ökoenergie, Diepersdorf, Austria ",
+    },
+    {
+      'value': 22,
+      'label':
+          "Bamminger Kraftfahrzeuge GesmbH, Sportplatzstraße, Sattledt, Austria ",
+    },
+    {
+      'value': 23,
+      'label':
+          "LEHNER'S Bar & Dine, Obertshausener Straße, Laakirchen, Austria ",
+    },
+    {
+      'value': 24,
+      'label': "Timberland Store Linz, Hauptplatz, Linz, Austria ",
+    },
+    {
+      'value': 25,
+      'label': "Tierra-Tonöfen, 2770, Austria ",
+    },
+    {
+      'value': 26,
+      'label':
+          "Calma Luxury Villas, Ulica doktor Franje Tuđmana, Starigrad, Croatia ",
+    },
+    {
+      'value': 27,
+      'label': "McExpert, Ingenieur-Pesendorfer-Straße, Bad Hall, Austria ",
+    },
+    {
+      'value': 28,
+      'label': "Hotel Vienna, Große Stadtgutgasse, Vienna, Austria ",
+    },
+    {
+      'value': 29,
+      'label':
+          "1a Installateur - Hauer Hubmer GmbH, Hauptstraße, Wartberg an der Krems, Austria ",
+    },
+    {
+      'value': 30,
+      'label': "E & S Group, Saint Julian's, Malta ",
+    },
+    {
+      'value': 31,
+      'label':
+          "Watches & Jewelery Böheim, Linz, Schmidtorstraße, Linz, Austria ",
+    },
+    {
+      'value': 32,
+      'label':
+          "Honda Magnum, Thomas Datscher KG, Kremstalstraße, Traun, Austria ",
+    },
+    {
+      'value': 33,
+      'label': "AH Metallbau, Mozartgasse, Zwentendorf, Austria ",
+    },
+    {
+      'value': 34,
+      'label': "Autohaus Seidl, Hafnerstraße, Molln, Austria ",
+    },
+    {
+      'value': 35,
+      'label':
+          "Autohaus Seidl Gleisdorf - Gebrauchtwagen auf autoseidl.at, Schubertgasse, Gleisdorf, Austria",
+    },
+    {
+      'value': 36,
+      'label': "kaufdahoam.at, Linzer Straße, Gmunden, Austria ",
+    },
+    {
+      'value': 37,
+      'label': "RENAULT Weiermeier, Jageredtstraße, Nußbach, Austria ",
+    },
+    {
+      'value': 38,
+      'label': "BIKE-MASTER, Hauptstraße, Wartberg an der Krems, Austria ",
+    },
+    {
+      'value': 39,
+      'label': "Reisinger KFZ, Eisenstraße, Großraming, Austria ",
+    },
+    {
+      'value': 40,
+      'label': "APOTHEKE U1 TROSTSTRASSE, Favoritenstraße, Vienna, Austria ",
+    },
+    {
+      'value': 41,
+      'label': "Teichbau GmbH, Oberschlierbach, Austria",
+    },
+    {
+      'value': 42,
+      'label':
+          "AAinFo - Soluções em Informática e tecnologia - Rua Uva Niágara, 50 - Morada das Vinhas, Jundiaí - State of São Paulo, Brazil ",
+    },
+    {
+      'value': 43,
+      'label': "Tandy Consulting Inc, North Pomona Avenue, Fullerton, CA, USA ",
+    },
+    {
+      'value': 44,
+      'label': "Ours private chef, st. maarten",
+    },
+    {
+      'value': 45,
+      'label': "sxm loc, 97150, Saint Martin",
+    },
+    {
+      'value': 46,
+      'label': "Nature Animal Hope Hill, 97150, Saint Martin",
+    },
+    {
+      'value': 47,
+      'label': "O temps des marques, 97150, Saint Martin ",
+    },
+    {
+      'value': 48,
+      'label': "Rainbow Café, Grand-Case, Saint Martin ",
+    },
+    {
+      'value': 49,
+      'label':
+          "Cabinet kiné Grand Case - Physio Cab BRACH Pierre-Jean, rue franklin laurence, Grand Case, Saint Martin ",
+    },
+    {
+      'value': 50,
+      'label':
+          "Nature Animal, 209 Rue de Hollande, Marigot 97150, Saint Martin ",
     }
   ];
 
@@ -521,6 +521,233 @@ class ReviewPlaces {
     {
       'value': 0,
       'label': 'Select Place in Asia',
+    },
+    {
+      'value': 1,
+      'label':
+          "Abracadabra Juguetes, Manzanares 2060, C1429 Buenos Aires, Argentina",
+    },
+    {
+      'value': 2,
+      'label':
+          "Fun Over Fifty Holidays - Immersive tours & adventures, Murrajong Road, Springwood QLD, Australia",
+    },
+    {
+      'value': 3,
+      'label':
+          "Tecnoaguas Tratamiento de Efluentes, General Juan Lavalle, Villa Martelli, Buenos Aires Province, Argentina ",
+    },
+    {
+      'value': 4,
+      'label': "vouka, Afitos, Halkidiki, Greece",
+    },
+    {
+      'value': 5,
+      'label': "Ying Bin, Hendrik Consciencestraat, Mechelen, Belgium",
+    },
+    {
+      'value': 6,
+      'label':
+          "Nixcome, La Retama, Naucalpan de Juárez, State of Mexico, Mexico",
+    },
+    {
+      'value': 7,
+      'label': "Studio Cerámica, Calle Bermúdez, Estepona, Spain",
+    },
+    {
+      'value': 8,
+      'label':
+          "AltePay - Buy and Sell cryptocurrencies for cash (crypto exchange), Cēsu iela, Vidzeme Suburb, Riga, Riga, Latvia",
+    },
+    {
+      'value': 59,
+      'label':
+          "Palma Central, Av. Kukulkan 6, Palma Central, 77760 Tulum, Q.R., México",
+    },
+    {
+      'value': 10,
+      'label': "Masia Villalonga, L'Alcora, Spain",
+    },
+    {
+      'value': 11,
+      'label': "Subway, Gleisstraße, Hockenheim, Germany",
+    },
+    {
+      'value': 12,
+      'label': "PIANO RESIDENCE, Jána Milca, Žilina, Slovakia ",
+    },
+    {
+      'value': 13,
+      'label': "LOW COST WI-FI® Huelva S.L.U., Cartaya, Spain",
+    },
+    {
+      'value': 14,
+      'label': "bla",
+    },
+    {
+      'value': 15,
+      'label':
+          "SPAZIO ENEL PARTNER ROMA, Via della Lega Lombarda, Rome, Metropolitan City of Rome, Italy",
+    },
+    {
+      'value': 16,
+      'label':
+          "Spazio Enel Partner Roma Via Cipriano Facchinetti 60, Via Cipriano Facchinetti, Rome, Metropolitan City of Rome, Italy ",
+    },
+    {
+      'value': 17,
+      'label': "Motorova koloběžka.eu, Lonkova, Pardubice II, Czechia",
+    },
+    {
+      'value': 18,
+      'label':
+          "Juicefly Wine & Spirits | Alcohol & Vape Delivery, Jefferson Boulevard, Culver City, CA, USA",
+    },
+    {
+      'value': 69,
+      'label':
+          "Sea Breeze ซีฟู้ด, ถนน พระรามที่ 6 Samsen Nai, Phaya Thai, Bangkok, Thailand",
+    },
+    {
+      'value': 20,
+      'label': "The Gibraltar, Perú, Buenos Aires, Argentina",
+    },
+    {
+      'value': 21,
+      'label': "Paralelní Polis, Dělnická, Prague 7-Holešovice, Czechia",
+    },
+    {
+      'value': 22,
+      'label':
+          "Achrainer-Moosen | Urlaub am Bio-Bauernhof / Ferienwohnung / Appartment, Grafenweg 36, 6361 Grafenweg, Tirol, Austria",
+    },
+    {
+      'value': 23,
+      'label': "Roma Restaurant & Hotel, Libreville, Gabon",
+    },
+    {
+      'value': 24,
+      'label':
+          "InstaCrypto.In, 9th Main Rd, Vyalikaval, Kodandarampura, Malleswaram, Bengaluru, Karnataka, India ",
+    },
+    {
+      'value': 25,
+      'label':
+          "जिप्सीबुद, Gypsybud Street, Gandhi Nagar, Jaipur, Rajasthan, India",
+    },
+    {
+      'value': 26,
+      'label': "BTC Wine, Rue Notre Dame, Bordeaux, France",
+    },
+    {
+      'value': 27,
+      'label':
+          "Munchies Smokehouse and Bar, Paseo Marítimo Rey de España, 43, 29640 Fuengirola, Málaga, Spain ",
+    },
+    {
+      'value': 28,
+      'label': "Walmart Supercenter, South Robert Street, Saint Paul, MN, USA",
+    },
+    {
+      'value': 29,
+      'label': "Masseria Le Lamie, Villa Castelli, BR, Italy",
+    },
+    {
+      'value': 30,
+      'label':
+          "Su Bici - La Palma Active, 38712 Los Cancajos, Canary Islands, Spain",
+    },
+    {
+      'value': 31,
+      'label':
+          "Alfa Vidrios y Aberturas, Coronel Pringles 2042, BHY, Ituzaingó, Buenos Aires, Argentina",
+    },
+    {
+      'value': 32,
+      'label': "La Dulce parada, Ramon y Cajal, Valencia, Spain",
+    },
+    {
+      'value': 33,
+      'label': "Wallaroo Media, 78 W Center St, Provo, UT 84601, USA ",
+    },
+    {
+      'value': 34,
+      'label': "ERP-Solutions GmbH, Waasen, Austria",
+    },
+    {
+      'value': 35,
+      'label':
+          "Múscari Empresario Distribuidor, Carrera 44, Cali, Valle del Cauca, Colombia",
+    },
+    {
+      'value': 36,
+      'label': "PROMOCIONES Y GESTION INMOBILIARIA ALBOLUNCA S.L, Vera, Spain",
+    },
+    {
+      'value': 37,
+      'label':
+          "Kingofood.com, Via Cassia, 52047 Marciano della Chiana, Province of Arezzo, Italy",
+    },
+    {
+      'value': 38,
+      'label':
+          "Lañin Amoblamientos, Libertad 1034, AAV, Buenos Aires, Argentina",
+    },
+    {
+      'value': 39,
+      'label':
+          "791 Hotel, Ingeniero Jacobacci, Las Grutas, Río Negro, Argentina",
+    },
+    {
+      'value': 40,
+      'label':
+          "MG Mesón Galea Torrevieja - Aceptamos Bitcoin, Calle Cerezo, 515, 03184 Torrevieja, Alicante, España ",
+    },
+    {
+      'value': 41,
+      'label': "EM1191 13-6, Loulé, Portugal ",
+    },
+    {
+      'value': 42,
+      'label':
+          "Casa Monte Isabel, Calle 8, Provincia de Puntarenas, Monteverde, Costa Rica ",
+    },
+    {
+      'value': 43,
+      'label': "Ecotros, L'Ametlla de Mar, Tarragona, España",
+    },
+    {
+      'value': 44,
+      'label':
+          "Olé Idiomas, Torre D - Avenida Chedid Jafet - Vila Olímpia, São Paulo - State of São Paulo, Brazil",
+    },
+    {
+      'value': 45,
+      'label': "Nasau Resort & Villas, Nadi, Fiji",
+    },
+    {
+      'value': 46,
+      'label': "WorldWideAuto, Avinguda de Ramón y Cajal, Tarragona, España",
+    },
+    {
+      'value': 47,
+      'label':
+          "Complejo Doña Olga, Santa Cruz, La Rioja, La Rioja Province, Argentina",
+    },
+    {
+      'value': 48,
+      'label':
+          "Max Home Alava Sl, Alto de Armentia Kalea, 10, Vitoria-Gasteiz, Álava, España ",
+    },
+    {
+      'value': 49,
+      'label':
+          "Australian Rock Walls, 37 Township Drive, Burleigh Heads QLD, Australia ",
+    },
+    {
+      'value': 50,
+      'label':
+          "Filippo Esmaily Photography, Boulevard de la Fraternité, Luxembourg",
     }
   ];
 
@@ -528,420 +755,6 @@ class ReviewPlaces {
     {
       'value': 0,
       'label': 'Select Place in South America',
-    },
-    {
-      'value': 1,
-      'label': 'Newpoint, Cuyagua, Venezuela',
-    },
-    {
-      'value': 2,
-      'label': 'Burger Center, Caracas, Venezuela',
-    },
-    {
-      'value': 3,
-      'label': 'metromercados, Heredia, Costa Rica',
-    },
-    {
-      'value': 4,
-      'label': 'Kullawa Shop, Cuyagua, Venezuela',
-    },
-    {
-      'value': 5,
-      'label': 'Bodegón El Saman Cuyaguero, Cuyagua, Venezuela',
-    },
-    {
-      'value': 6,
-      'label': 'Posada Casa Grande, Cuyagua, Venezuela',
-    },
-    {
-      'value': 7,
-      'label': 'Pura Vida Cuyagua Surf y Moda Playera, Cuyagua, Venezuela',
-    },
-    {
-      'value': 8,
-      'label': "Cacao's Canela, El Castano, Maracay, Venezuela",
-    },
-    {
-      'value': 9,
-      'label': "Supermercado Walio, El Castano, Maracay, Venezuela",
-    },
-    {
-      'value': 10,
-      'label': "Campo verde minimarket, sector corozal 1, Maracay, Aragua",
-    },
-    {
-      'value': 11,
-      'label': "Bossa Café, Avenida Las Delicias, Maracay, Aragua",
-    },
-    {
-      'value': 12,
-      'label':
-          "Krispy Donuts Coffee & Lunch, Avenida Las Delicias, Maracay, Aragua",
-    },
-    {
-      'value': 13,
-      'label': "Noa Noa Show & Cocteles, Avenida Las Delicias, Maracay, Aragua",
-    },
-    {
-      'value': 14,
-      'label': "Baraki Bodegon, Maracay, Aragua",
-    },
-    {
-      'value': 15,
-      'label': "Supermercado Luxor, Maracay, Aragua",
-    },
-    {
-      'value': 16,
-      'label':
-          "Krispy Donuts, Zona Postal, Avenida Las Delicias, Maracay, Aragua",
-    },
-    {
-      'value': 17,
-      'label': "ORGANI´K, Maracay, Aragua",
-    },
-    {
-      'value': 18,
-      'label': "Mahalo poke, Maracay, Aragua",
-    },
-    {
-      'value': 19,
-      'label': "Ola Pop Bar, maracay, Aragua",
-    },
-    {
-      'value': 20,
-      'label': "La Kolacheria, Aragua",
-    },
-    {
-      'value': 21,
-      'label': "Wok Asían Food",
-    },
-    {
-      'value': 22,
-      'label': "El conde hotel, Avenida Miranda, Maracay, Aragua",
-    },
-    {
-      'value': 23,
-      'label': "Hotel Mar de Plata, Maracay, Aragua",
-    },
-    {
-      'value': 24,
-      'label': "Ferreled Center, C.A., Sector Farenachi, Maracay, Aragua",
-    },
-    {
-      'value': 25,
-      'label': "Hierro Maracay, Avenida Bolívar, Maracay, Aragua",
-    },
-    {
-      'value': 26,
-      'label': "Ferramenta R y S, C.A., Maracay, Aragua",
-    },
-    {
-      'value': 27,
-      'label': "Todo Cable Center, C.A., Maracay, Aragua",
-    },
-    {
-      'value': 28,
-      'label': "Digitel Estación Central, Maracay, Aragua",
-    },
-    {
-      'value': 29,
-      'label': "######################Gtech maracay, Maracay, Aragua",
-    },
-    {
-      'value': 30,
-      'label': "RALVIA Maracay, Avenida Los Cedros, Maracay, Aragua",
-    },
-    {
-      'value': 31,
-      'label': "Krispy Donuts El Bosque",
-    },
-    {
-      'value': 32,
-      'label': "Krispy Donuts Avenida Miranda, Maracay, Aragua",
-    },
-    {
-      'value': 33,
-      'label':
-          "Krispy Donuts San Jacinto, Zona Postal, Avenida Bolívar, Maracay, Aragua",
-    },
-    {
-      'value': 34,
-      'label': "Krispy Donuts La Encrucijada, Turmero, Aragua",
-    },
-    {
-      'value': 35,
-      'label': "Ridery, Avenida Andrés Bello, Caracas, Capital District",
-    },
-    {
-      'value': 36,
-      'label': "Fruty centro La victoria, La Victoria, Aragua",
-    },
-    {
-      'value': 37,
-      'label': "La Lagunita, Aragua",
-    },
-    {
-      'value': 38,
-      'label':
-          "Restaurante Moritz, Carretera La Victoria - Colonia Tovar, Colonia Tovar, Aragua",
-    },
-    {
-      'value': 39,
-      'label': "La Tasquita Mittenwald, Colonia Tovar, Aragua",
-    },
-    {
-      'value': 41,
-      'label':
-          "La Casita del Chocolate, Carretera Colonia Tovar - La Victoria, Colonia Tovar, Aragua",
-    },
-    {
-      'value': 42,
-      'label':
-          "Bodegón La Tovareña, Calle principal Codazzi, Colonia Tovar, Aragua",
-    },
-    {
-      'value': 43,
-      'label': "Restaurante La Cava, Colonia Tovar, Aragua",
-    },
-    {
-      'value': 44,
-      'label': "Chicken Blue, Santa Isabel, La Asuncion, Nueva Esparta ",
-    },
-    {
-      'value': 45,
-      'label':
-          "Hotel Plaza Royal Margarita, Avenida 4 de Mayo, Porlamar, Nueva Esparta ",
-    },
-    {
-      'value': 46,
-      'label':
-          "Dr. Beard Barbershop, Calle Jesus Maria Patino, Porlamar, Nueva Esparta ",
-    },
-    {
-      'value': 47,
-      'label': "PASTERIA MARGARITA, Porlamar, Nueva Esparta",
-    },
-    {
-      'value': 48,
-      'label': "Dolphin crepes, Pampatar, Nueva Esparta ",
-    },
-    {
-      'value': 49,
-      'label':
-          "Diverland, Avenida Jóvito Villalba, Pampatar, Nueva Esparta, Venezuela ",
-    },
-    {
-      'value': 50,
-      'label':
-          "Galatea Aesthetics Center, Area Comercial del Hotel MarBellaMar, Avenida Aldonza Manrique, Pampatar, Nueva Esparta ",
-    },
-    {
-      'value': 51,
-      'label':
-          "Imagen Café, Avenida Jóvito Villalba, Pampatar, Nueva Esparta, Venezuela ",
-    },
-    {
-      'value': 52,
-      'label':
-          "Margarita Laser Center, Calle El Calvario, Porlamar, Nueva Esparta, Venezuela ",
-    },
-    {
-      'value': 53,
-      'label': "Panadería La Gran Reina, Cumana, Sucre ",
-    },
-    {
-      'value': 54,
-      'label':
-          "Genesis Import C.a, Avenida Bermúdez, Cumaná, Sucre, Venezuela ",
-    },
-    {
-      'value': 55,
-      'label': "Centro Comercial La Frontera, Cumana, Sucre ",
-    },
-    {
-      'value': 56,
-      'label': "Inversiones El Olivo RC, C.A., Quíbor, Lara",
-    },
-    {
-      'value': 57,
-      'label': "Pastello Express, Barquisimeto, Lara ",
-    },
-    {
-      'value': 58,
-      'label': "Bodegón Los Tesoros de Papá, Barquisimeto, Lara ",
-    },
-    {
-      'value': 59,
-      'label': "Centro Comencial Socialista Bequito, Barquisimeto, Lara ",
-    },
-    {
-      'value': 60,
-      'label': "MUNDO FRIO R C.A, C. 27, Barquisimeto 3001, Lara, Venezuela ",
-    },
-    {
-      'value': 61,
-      'label':
-          "Inversiones Lara Partes C.A, Venta de Repuestos para Carros Jeep, Dodge y Chrysler. Repuestos Originales Mopar. Barquisimeto, Edo. Lara, Barquisimeto, Lara ",
-    },
-    {
-      'value': 62,
-      'label': "Nexus INC C.A, Barquisimeto, Lara ",
-    },
-    {
-      'value': 63,
-      'label': "Inversiones Invica, Barquisimeto, Lara ",
-    },
-    {
-      'value': 64,
-      'label': "Distribuidora Olivo C.A, Calle 33, Barquisimeto, Lara ",
-    },
-    {
-      'value': 65,
-      'label': "comercial monalisa 3000, Barquisimeto, Lara ",
-    },
-    {
-      'value': 66,
-      'label': "Cosasdulcesbqto, Calle 24, Barquisimeto, Lara ",
-    },
-    {
-      'value': 67,
-      'label': "Distribuidora El Gran Pollo, Barquisimeto, Lara ",
-    },
-    {
-      'value': 68,
-      'label': "Heladería ozuna, Barquisimeto, Lara, Venezuela ",
-    },
-    {
-      'value': 69,
-      'label':
-          "Panificadora Los Chaguaramos C.A., Av Carabobo, Barquisimeto, Lara ",
-    },
-    {
-      'value': 70,
-      'label': "Ferremetale.l, C.A, Barquisimeto, Lara ",
-    },
-    {
-      'value': 71,
-      'label': "URBE PRODUCCIONES, C.A., Barquisimeto, Lara ",
-    },
-    {
-      'value': 72,
-      'label': "BRIZUELA 2000 COSMOS C.A, Barquisimeto, Lara ",
-    },
-    {
-      'value': 73,
-      'label': "Brooklyn 1990, Avenida 20, Barquisimeto, Lara ",
-    },
-    {
-      'value': 74,
-      'label': "Sandy's gourmet c.a, Barquisimeto, Lara ",
-    },
-    {
-      'value': 75,
-      'label': "Distribuidora El Gran Yo Soy 33, C.A, Barquisimeto, Lara ",
-    },
-    {
-      'value': 76,
-      'label': "Boss Store, Avenida 20, Barquisimeto, Lara",
-    },
-    {
-      'value': 77,
-      'label': "Inversiones Masshopping, Barquisimeto, Lara",
-    },
-    {
-      'value': 78,
-      'label': "Teque Brother's Kairos, Calle 28, Barquisimeto, Lara",
-    },
-    {
-      'value': 79,
-      'label':
-          "Panadería y pastelería la bendición VP, Carrera 28, Barquisimeto, Lara ",
-    },
-    {
-      'value': 80,
-      'label': "Dulces y algo más, Calle 25, Barquisimeto, Lara ",
-    },
-    {
-      'value': 81,
-      'label': "Bodega la 30, Barquisimeto, Lara ",
-    },
-    {
-      'value': 82,
-      'label': "Gordo Burguer, Carrera 28, Barquisimeto, Lara ",
-    },
-    {
-      'value': 83,
-      'label': "Heladeria Mi Antojito, Carrera 31, Barquisimeto, Lara ",
-    },
-    {
-      'value': 84,
-      'label': "Valeth13maquillaje, Barquisimeto, Lara ",
-    },
-    {
-      'value': 85,
-      'label': "Arabissimoo restaurant, Troncal7, Barquisimeto, Lara ",
-    },
-    {
-      'value': 86,
-      'label': "La Barbería style, Avenida Concordia, Barquisimeto, Lara ",
-    },
-    {
-      'value': 87,
-      'label': "La Pizzería del Este, Carrera 1, Barquisimeto, Lara ",
-    },
-    {
-      'value': 88,
-      'label': "Eagle Store, 8, Barquisimeto, Lara ",
-    },
-    {
-      'value': 89,
-      'label': "Sambil Barquisimeto, Barquisimeto, Lara ",
-    },
-    {
-      'value': 90,
-      'label': "LR Barber Studio, Pizza de Verdad, Barquisimeto, Lara ",
-    },
-    {
-      'value': 91,
-      'label': "Floristería El Chalet de mis Flores, Barquisimeto, Lara ",
-    },
-    {
-      'value': 92,
-      'label':
-          "EL PARAÍSO • Panadería & Market, Avenida Caroní, Barquisimeto, Lara ",
-    },
-    {
-      'value': 93,
-      'label': "11:11 Sport Bar Restaurant, Barquisimeto, Lara ",
-    },
-    {
-      'value': 94,
-      'label': "Kilauea, Avenida Caracas, Barquisimeto, Lara ",
-    },
-    {
-      'value': 95,
-      'label': "Marketmon, Calle Guatopo, Barquisimeto, Lara ",
-    },
-    {
-      'value': 96,
-      'label':
-          "Mr mascotas, planta baja cc.trinitarias, local 25g, Barquisimeto, Lara ",
-    },
-    {
-      'value': 97,
-      'label': "Mavi lingerie, Barquisimeto, Lara ",
-    },
-    {
-      'value': 98,
-      'label': "Agüita Fresca, Barquisimeto, Lara ",
-    },
-    {
-      'value': 99,
-      'label': "ANACOCO FOOD, de, calle 1, Barquisimeto, Lara ",
-    },
-    {
-      'value': 100,
-      'label': "Ysifran Moto, El Cují, Lara",
     }
   ];
 
@@ -1177,233 +990,6 @@ class ReviewPlaces {
       'value': 50,
       'label':
           "Black Diamond Custom Tattoos, 4444 W Craig Rd, North Las Vegas, Nevada 89032, USA",
-    },
-    {
-      'value': 51,
-      'label':
-          "Abracadabra Juguetes, Manzanares 2060, C1429 Buenos Aires, Argentina",
-    },
-    {
-      'value': 52,
-      'label':
-          "Fun Over Fifty Holidays - Immersive tours & adventures, Murrajong Road, Springwood QLD, Australia",
-    },
-    {
-      'value': 53,
-      'label':
-          "Tecnoaguas Tratamiento de Efluentes, General Juan Lavalle, Villa Martelli, Buenos Aires Province, Argentina ",
-    },
-    {
-      'value': 54,
-      'label': "vouka, Afitos, Halkidiki, Greece",
-    },
-    {
-      'value': 55,
-      'label': "Ying Bin, Hendrik Consciencestraat, Mechelen, Belgium",
-    },
-    {
-      'value': 56,
-      'label':
-          "Nixcome, La Retama, Naucalpan de Juárez, State of Mexico, Mexico",
-    },
-    {
-      'value': 57,
-      'label': "Studio Cerámica, Calle Bermúdez, Estepona, Spain",
-    },
-    {
-      'value': 58,
-      'label':
-          "AltePay - Buy and Sell cryptocurrencies for cash (crypto exchange), Cēsu iela, Vidzeme Suburb, Riga, Riga, Latvia",
-    },
-    {
-      'value': 59,
-      'label':
-          "Palma Central, Av. Kukulkan 6, Palma Central, 77760 Tulum, Q.R., México",
-    },
-    {
-      'value': 60,
-      'label': "Masia Villalonga, L'Alcora, Spain",
-    },
-    {
-      'value': 61,
-      'label': "Subway, Gleisstraße, Hockenheim, Germany",
-    },
-    {
-      'value': 62,
-      'label': "PIANO RESIDENCE, Jána Milca, Žilina, Slovakia ",
-    },
-    {
-      'value': 63,
-      'label': "LOW COST WI-FI® Huelva S.L.U., Cartaya, Spain",
-    },
-    {
-      'value': 64,
-      'label': "bla",
-    },
-    {
-      'value': 65,
-      'label':
-          "SPAZIO ENEL PARTNER ROMA, Via della Lega Lombarda, Rome, Metropolitan City of Rome, Italy",
-    },
-    {
-      'value': 66,
-      'label':
-          "Spazio Enel Partner Roma Via Cipriano Facchinetti 60, Via Cipriano Facchinetti, Rome, Metropolitan City of Rome, Italy ",
-    },
-    {
-      'value': 67,
-      'label': "Motorova koloběžka.eu, Lonkova, Pardubice II, Czechia",
-    },
-    {
-      'value': 68,
-      'label':
-          "Juicefly Wine & Spirits | Alcohol & Vape Delivery, Jefferson Boulevard, Culver City, CA, USA",
-    },
-    {
-      'value': 69,
-      'label':
-          "Sea Breeze ซีฟู้ด, ถนน พระรามที่ 6 Samsen Nai, Phaya Thai, Bangkok, Thailand",
-    },
-    {
-      'value': 70,
-      'label': "The Gibraltar, Perú, Buenos Aires, Argentina",
-    },
-    {
-      'value': 71,
-      'label': "Paralelní Polis, Dělnická, Prague 7-Holešovice, Czechia",
-    },
-    {
-      'value': 72,
-      'label':
-          "Achrainer-Moosen | Urlaub am Bio-Bauernhof / Ferienwohnung / Appartment, Grafenweg 36, 6361 Grafenweg, Tirol, Austria",
-    },
-    {
-      'value': 73,
-      'label': "Roma Restaurant & Hotel, Libreville, Gabon",
-    },
-    {
-      'value': 74,
-      'label':
-          "InstaCrypto.In, 9th Main Rd, Vyalikaval, Kodandarampura, Malleswaram, Bengaluru, Karnataka, India ",
-    },
-    {
-      'value': 75,
-      'label':
-          "जिप्सीबुद, Gypsybud Street, Gandhi Nagar, Jaipur, Rajasthan, India",
-    },
-    {
-      'value': 76,
-      'label': "BTC Wine, Rue Notre Dame, Bordeaux, France",
-    },
-    {
-      'value': 77,
-      'label':
-          "Munchies Smokehouse and Bar, Paseo Marítimo Rey de España, 43, 29640 Fuengirola, Málaga, Spain ",
-    },
-    {
-      'value': 78,
-      'label': "Walmart Supercenter, South Robert Street, Saint Paul, MN, USA",
-    },
-    {
-      'value': 79,
-      'label': "Masseria Le Lamie, Villa Castelli, BR, Italy",
-    },
-    {
-      'value': 80,
-      'label':
-          "Su Bici - La Palma Active, 38712 Los Cancajos, Canary Islands, Spain",
-    },
-    {
-      'value': 81,
-      'label':
-          "Alfa Vidrios y Aberturas, Coronel Pringles 2042, BHY, Ituzaingó, Buenos Aires, Argentina",
-    },
-    {
-      'value': 82,
-      'label': "La Dulce parada, Ramon y Cajal, Valencia, Spain",
-    },
-    {
-      'value': 83,
-      'label': "Wallaroo Media, 78 W Center St, Provo, UT 84601, USA ",
-    },
-    {
-      'value': 84,
-      'label': "ERP-Solutions GmbH, Waasen, Austria",
-    },
-    {
-      'value': 85,
-      'label':
-          "Múscari Empresario Distribuidor, Carrera 44, Cali, Valle del Cauca, Colombia",
-    },
-    {
-      'value': 86,
-      'label': "PROMOCIONES Y GESTION INMOBILIARIA ALBOLUNCA S.L, Vera, Spain",
-    },
-    {
-      'value': 87,
-      'label':
-          "Kingofood.com, Via Cassia, 52047 Marciano della Chiana, Province of Arezzo, Italy",
-    },
-    {
-      'value': 88,
-      'label':
-          "Lañin Amoblamientos, Libertad 1034, AAV, Buenos Aires, Argentina",
-    },
-    {
-      'value': 89,
-      'label':
-          "791 Hotel, Ingeniero Jacobacci, Las Grutas, Río Negro, Argentina",
-    },
-    {
-      'value': 90,
-      'label':
-          "MG Mesón Galea Torrevieja - Aceptamos Bitcoin, Calle Cerezo, 515, 03184 Torrevieja, Alicante, España ",
-    },
-    {
-      'value': 91,
-      'label': "EM1191 13-6, Loulé, Portugal ",
-    },
-    {
-      'value': 92,
-      'label':
-          "Casa Monte Isabel, Calle 8, Provincia de Puntarenas, Monteverde, Costa Rica ",
-    },
-    {
-      'value': 93,
-      'label': "Ecotros, L'Ametlla de Mar, Tarragona, España",
-    },
-    {
-      'value': 94,
-      'label':
-          "Olé Idiomas, Torre D - Avenida Chedid Jafet - Vila Olímpia, São Paulo - State of São Paulo, Brazil",
-    },
-    {
-      'value': 95,
-      'label': "Nasau Resort & Villas, Nadi, Fiji",
-    },
-    {
-      'value': 96,
-      'label': "WorldWideAuto, Avinguda de Ramón y Cajal, Tarragona, España",
-    },
-    {
-      'value': 97,
-      'label':
-          "Complejo Doña Olga, Santa Cruz, La Rioja, La Rioja Province, Argentina",
-    },
-    {
-      'value': 98,
-      'label':
-          "Max Home Alava Sl, Alto de Armentia Kalea, 10, Vitoria-Gasteiz, Álava, España ",
-    },
-    {
-      'value': 99,
-      'label':
-          "Australian Rock Walls, 37 Township Drive, Burleigh Heads QLD, Australia ",
-    },
-    {
-      'value': 100,
-      'label':
-          "Filippo Esmaily Photography, Boulevard de la Fraternité, Luxembourg",
     }
   ];
 }

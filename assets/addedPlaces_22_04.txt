@@ -2558,3 +2558,428 @@
                       'value': 100,
                       'label': "AdriCar's - carrera 5, San Cristóbal 5001, Táchira, Venezuela ",
                     }*/
+
+
+
+
+
+
+
+
+
+
+                    /*,
+                        {
+                          'value': 1,
+                          'label': 'Newpoint, Cuyagua, Venezuela',
+                        },
+                        {
+                          'value': 2,
+                          'label': 'Burger Center, Caracas, Venezuela',
+                        },
+                        {
+                          'value': 3,
+                          'label': 'metromercados, Heredia, Costa Rica',
+                        },
+                        {
+                          'value': 4,
+                          'label': 'Kullawa Shop, Cuyagua, Venezuela',
+                        },
+                        {
+                          'value': 5,
+                          'label': 'Bodegón El Saman Cuyaguero, Cuyagua, Venezuela',
+                        },
+                        {
+                          'value': 6,
+                          'label': 'Posada Casa Grande, Cuyagua, Venezuela',
+                        },
+                        {
+                          'value': 7,
+                          'label': 'Pura Vida Cuyagua Surf y Moda Playera, Cuyagua, Venezuela',
+                        },
+                        {
+                          'value': 8,
+                          'label': "Cacao's Canela, El Castano, Maracay, Venezuela",
+                        },
+                        {
+                          'value': 9,
+                          'label': "Supermercado Walio, El Castano, Maracay, Venezuela",
+                        },
+                        {
+                          'value': 10,
+                          'label': "Campo verde minimarket, sector corozal 1, Maracay, Aragua",
+                        },
+                        {
+                          'value': 11,
+                          'label': "Bossa Café, Avenida Las Delicias, Maracay, Aragua",
+                        },
+                        {
+                          'value': 12,
+                          'label':
+                              "Krispy Donuts Coffee & Lunch, Avenida Las Delicias, Maracay, Aragua",
+                        },
+                        {
+                          'value': 13,
+                          'label': "Noa Noa Show & Cocteles, Avenida Las Delicias, Maracay, Aragua",
+                        },
+                        {
+                          'value': 14,
+                          'label': "Baraki Bodegon, Maracay, Aragua",
+                        },
+                        {
+                          'value': 15,
+                          'label': "Supermercado Luxor, Maracay, Aragua",
+                        },
+                        {
+                          'value': 16,
+                          'label':
+                              "Krispy Donuts, Zona Postal, Avenida Las Delicias, Maracay, Aragua",
+                        },
+                        {
+                          'value': 17,
+                          'label': "ORGANI´K, Maracay, Aragua",
+                        },
+                        {
+                          'value': 18,
+                          'label': "Mahalo poke, Maracay, Aragua",
+                        },
+                        {
+                          'value': 19,
+                          'label': "Ola Pop Bar, maracay, Aragua",
+                        },
+                        {
+                          'value': 20,
+                          'label': "La Kolacheria, Aragua",
+                        },
+                        {
+                          'value': 21,
+                          'label': "Wok Asían Food",
+                        },
+                        {
+                          'value': 22,
+                          'label': "El conde hotel, Avenida Miranda, Maracay, Aragua",
+                        },
+                        {
+                          'value': 23,
+                          'label': "Hotel Mar de Plata, Maracay, Aragua",
+                        },
+                        {
+                          'value': 24,
+                          'label': "Ferreled Center, C.A., Sector Farenachi, Maracay, Aragua",
+                        },
+                        {
+                          'value': 25,
+                          'label': "Hierro Maracay, Avenida Bolívar, Maracay, Aragua",
+                        },
+                        {
+                          'value': 26,
+                          'label': "Ferramenta R y S, C.A., Maracay, Aragua",
+                        },
+                        {
+                          'value': 27,
+                          'label': "Todo Cable Center, C.A., Maracay, Aragua",
+                        },
+                        {
+                          'value': 28,
+                          'label': "Digitel Estación Central, Maracay, Aragua",
+                        },
+                        {
+                          'value': 29,
+                          'label': "######################Gtech maracay, Maracay, Aragua",
+                        },
+                        {
+                          'value': 30,
+                          'label': "RALVIA Maracay - Avenida Los Cedros, Maracay, Aragua",
+                        },
+                        {
+                          'value': 31,
+                          'label': "Krispy Donuts El Bosque",
+                        },
+                        {
+                          'value': 32,
+                          'label': "Krispy Donuts Avenida Miranda - Maracay, Aragua",
+                        },
+                        {
+                          'value': 33,
+                          'label':
+                              "Krispy Donuts San Jacinto - Zona Postal, Avenida Bolívar, Maracay, Aragua",
+                        },
+                        {
+                          'value': 34,
+                          'label': "Krispy Donuts La Encrucijada - Turmero, Aragua",
+                        },
+                        {
+                          'value': 35,
+                          'label': "Ridery - Avenida Andrés Bello, Caracas, Capital District",
+                        },
+                        {
+                          'value': 36,
+                          'label': "Fruty centro La victoria - La Victoria, Aragua",
+                        },
+                        {
+                          'value': 37,
+                          'label': "La Lagunita - Aragua",
+                        },
+                        {
+                          'value': 38,
+                          'label':
+                              "Restaurante Moritz - Carretera La Victoria - Colonia Tovar, Colonia Tovar, Aragua",
+                        },
+                        {
+                          'value': 39,
+                          'label': "La Tasquita Mittenwald - Colonia Tovar, Aragua",
+                        },
+                        {
+                          'value': 41,
+                          'label':
+                              "La Casita del Chocolate - Carretera Colonia Tovar - La Victoria, Colonia Tovar, Aragua",
+                        },
+                        {
+                          'value': 42,
+                          'label':
+                              "Bodegón La Tovareña - Calle principal Codazzi, Colonia Tovar, Aragua",
+                        },
+                        {
+                          'value': 43,
+                          'label': "Restaurante La Cava - Colonia Tovar, Aragua",
+                        },
+                        {
+                          'value': 44,
+                          'label': "Chicken Blue - Santa Isabel, La Asuncion, Nueva Esparta ",
+                        },
+                        {
+                          'value': 45,
+                          'label':
+                              "Hotel Plaza Royal Margarita - Avenida 4 de Mayo, Porlamar, Nueva Esparta ",
+                        },
+                        {
+                          'value': 46,
+                          'label':
+                              "Dr. Beard Barbershop - Calle Jesus Maria Patino, Porlamar, Nueva Esparta ",
+                        },
+                        {
+                          'value': 47,
+                          'label': "PASTERIA MARGARITA - Porlamar, Nueva Esparta",
+                        },
+                        {
+                          'value': 48,
+                          'label': "Dolphin crepes - Pampatar, Nueva Esparta ",
+                        },
+                        {
+                          'value': 49,
+                          'label':
+                              "Diverland - Avenida Jóvito Villalba, Pampatar, Nueva Esparta, Venezuela ",
+                        },
+                        {
+                          'value': 50,
+                          'label':
+                              "Galatea Aesthetics Center - Area Comercial del Hotel MarBellaMar, Avenida Aldonza Manrique, Pampatar, Nueva Esparta ",
+                        },
+                        {
+                          'value': 51,
+                          'label':
+                              "Imagen Café - Avenida Jóvito Villalba, Pampatar, Nueva Esparta, Venezuela ",
+                        },
+                        {
+                          'value': 52,
+                          'label':
+                              "Margarita Laser Center - Calle El Calvario, Porlamar, Nueva Esparta, Venezuela ",
+                        },
+                        {
+                          'value': 53,
+                          'label': "Panadería La Gran Reina - Cumana, Sucre ",
+                        },
+                        {
+                          'value': 54,
+                          'label':
+                              "Genesis Import C.a - Avenida Bermúdez, Cumaná, Sucre, Venezuela ",
+                        },
+                        {
+                          'value': 55,
+                          'label': "Centro Comercial La Frontera - Cumana, Sucre ",
+                        },
+                        {
+                          'value': 56,
+                          'label': "Inversiones El Olivo RC - C.A., Quíbor, Lara",
+                        },
+                        {
+                          'value': 57,
+                          'label': "Pastello Express - Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 58,
+                          'label': "Bodegón Los Tesoros de Papá - Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 59,
+                          'label': "Centro Comencial Socialista Bequito - Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 60,
+                          'label': "MUNDO FRIO R C.A - C. 27, Barquisimeto 3001, Lara, Venezuela ",
+                        },
+                        {
+                          'value': 61,
+                          'label':
+                              "Inversiones Lara Partes C.A, Venta de Repuestos para Carros Jeep, Dodge y Chrysler. Repuestos Originales Mopar. Barquisimeto, Edo. Lara, Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 62,
+                          'label': "Nexus INC C.A - Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 63,
+                          'label': "Inversiones Invica - Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 64,
+                          'label': "Distribuidora Olivo C.A - Calle 33, Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 65,
+                          'label': "comercial monalisa 3000 - Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 66,
+                          'label': "Cosasdulcesbqto - Calle 24, Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 67,
+                          'label': "Distribuidora El Gran Pollo - Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 68,
+                          'label': "Heladería ozuna - Barquisimeto, Lara, Venezuela ",
+                        },
+                        {
+                          'value': 69,
+                          'label':
+                              "Panificadora Los Chaguaramos C.A. - Av Carabobo, Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 70,
+                          'label': "Ferremetale.l, C.A - Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 71,
+                          'label': "URBE PRODUCCIONES - C.A., Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 72,
+                          'label': "BRIZUELA 2000 COSMOS C.A - Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 73,
+                          'label': "Brooklyn 1990 - Avenida 20, Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 74,
+                          'label': "Sandy's gourmet c.a - Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 75,
+                          'label': "Distribuidora El Gran Yo Soy 33 - C.A, Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 76,
+                          'label': "Boss Store - Avenida 20, Barquisimeto, Lara",
+                        },
+                        {
+                          'value': 77,
+                          'label': "Inversiones Masshopping - Barquisimeto, Lara",
+                        },
+                        {
+                          'value': 78,
+                          'label': "Teque Brother's Kairos - Calle 28, Barquisimeto, Lara",
+                        },
+                        {
+                          'value': 79,
+                          'label':
+                              "Panadería y pastelería la bendición VP - Carrera 28, Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 80,
+                          'label': "Dulces y algo más - Calle 25, Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 81,
+                          'label': "Bodega la 30 - Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 82,
+                          'label': "Gordo Burguer - Carrera 28, Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 83,
+                          'label': "Heladeria Mi Antojito - Carrera 31, Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 84,
+                          'label': "Valeth13maquillaje - Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 85,
+                          'label': "Arabissimoo restaurant - Troncal7, Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 86,
+                          'label': "La Barbería style - Avenida Concordia, Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 87,
+                          'label': "La Pizzería del Este - Carrera 1, Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 88,
+                          'label': "Eagle Store - 8, Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 89,
+                          'label': "C.C SAMBIL (Barquisimeto) - Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 90,
+                          'label': "LR Barber Studio - Pizza de Verdad, Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 91,
+                          'label': "Floristería El Chalet de mis Flores - Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 92,
+                          'label':
+                              "EL PARAÍSO • Panadería & Market - Avenida Caroní, Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 93,
+                          'label': "11:11 Sport Bar Restaurant - Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 94,
+                          'label': "Kilauea, Avenida Caracas, Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 95,
+                          'label': "Marketmon - Calle Guatopo, Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 96,
+                          'label':
+                              "Mr mascotas - planta baja cc.trinitarias, local 25g, Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 97,
+                          'label': "Mavi lingerie - Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 98,
+                          'label': "Agüita Fresca - Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 99,
+                          'label': "ANACOCO FOOD, de, calle 1, Barquisimeto, Lara ",
+                        },
+                        {
+                          'value': 100,
+                          'label': "Ysifran Moto - El Cují, Lara",
+                        }*/
