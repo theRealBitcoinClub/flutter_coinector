@@ -517,29 +517,29 @@ class ReviewPlaces {
     },
     {
       'value': 1,
-      'label': "Licoreria Maurapas, El Cují, Lara, Venezuela ",
+      'label': "Licoreria Maurapas - El Cují, Lara, Venezuela ",
     },
     {
       'value': 2,
-      'label': "Ferretería Armoris, C.A., El Cují, Lara ",
+      'label': "Ferretería Armoris - C.A., El Cují, Lara ",
     },
     {
       'value': 3,
-      'label': "Multiservicios Barreto, Barquisimeto, Lara ",
+      'label': "Multiservicios Barreto - Barquisimeto, Lara ",
     },
     {
       'value': 4,
       'label':
-          "Paletas del Norte y algo Más, Avenida Intercomunal Barquisimeto - El Cují, Barquisimeto, Lara ",
+          "Paletas del Norte y algo Más - Avenida Intercomunal Barquisimeto - El Cují, Barquisimeto, Lara ",
     },
     {
       'value': 5,
-      'label': "Centro Comercial Sinai, Barquisimeto, Lara ",
+      'label': "Centro Comercial Sinai - Barquisimeto, Lara ",
     },
     {
       'value': 6,
       'label':
-          "A la parrilla Grill Express, Avenida Intercomunal Barquisimeto - Duaca, Tamaca, Lara ",
+          "A la parrilla Grill Express - Avenida Intercomunal Barquisimeto - Duaca, Tamaca, Lara ",
     },
     {
       'value': 7,
@@ -547,84 +547,84 @@ class ReviewPlaces {
     },
     {
       'value': 8,
-      'label': "Dulce tentación, Avenida Principal, Tamaca, Lara ",
+      'label': "Dulce tentación - Avenida Principal, Tamaca, Lara ",
     },
     {
       'value': 9,
-      'label': "Mojito House, Guanare, Portuguesa, Venezuela",
+      'label': "Mojito House - Guanare, Portuguesa, Venezuela",
     },
     {
       'value': 10,
-      'label': "Pizzas Rafucho, Los Próceres, Guanare, Portuguesa ",
+      'label': "Pizzas Rafucho - Los Próceres, Guanare, Portuguesa ",
     },
     {
       'value': 11,
-      'label': "Inversiones Don Miguelacho, Guanare, Portuguesa ",
+      'label': "Inversiones Don Miguelacho - Guanare, Portuguesa ",
     },
     {
       'value': 12,
-      'label': "Pidiendo y Comiendo Pizzeria, Calle 9, Guanare, Portuguesa ",
+      'label': "Pidiendo y Comiendo Pizzeria - Calle 9, Guanare, Portuguesa ",
     },
     {
       'value': 13,
-      'label': "Makeup Vino, Guanare, Portuguesa, Venezuela ",
+      'label': "Makeup Vino - Guanare, Portuguesa, Venezuela ",
     },
     {
       'value': 14,
-      'label': "Inversiones Tecnológicas Lemus C.A., Guanare, Portuguesa ",
+      'label': "Inversiones Tecnológicas Lemus C.A. - Guanare, Portuguesa ",
     },
     {
       'value': 15,
       'label':
-          "Ferretería Don Andrés C.A, Calle Josefa Camejo, Punto Fijo, Falcón ",
+          "Ferretería Don Andrés C.A - Calle Josefa Camejo, Punto Fijo, Falcón ",
     },
     {
       'value': 16,
-      'label': "Tu Cuevita Repostera, Guanare, Portuguesa, Venezuela ",
+      'label': "Tu Cuevita Repostera - Guanare, Portuguesa, Venezuela ",
     },
     {
       'value': 17,
-      'label': "### Ferreteria Arturo G, Guanare, Portuguesa ",
+      'label': "Ferreteria Arturo G, Guanare, Portuguesa ",
     },
     {
       'value': 18,
-      'label': "Plásticos y Algo Mas CA, Guanare, Portuguesa, Venezuela ",
+      'label': "Plásticos y Algo Mas CA - Guanare, Portuguesa, Venezuela ",
     },
     {
       'value': 19,
-      'label': "Mucho Más Que Pizza, Guanare, Portuguesa ",
+      'label': "Mucho Mas Que Pizza - Guanare, Portuguesa ",
     },
     {
       'value': 20,
       'label':
-          "Vespa Shoes Store, entre carrera, Avenida Unda, Guanare, Portuguesa ",
+          "Vespa Shoes Store - entre carrera, Avenida Unda, Guanare, Portuguesa ",
     },
     {
       'value': 21,
       'label':
-          "Bodegón RMR, edificio Aura, Carrera 12, Guanare, Portuguesa, Venezuela ",
+          "Bodegón RMR - edificio Aura, Carrera 12, Guanare, Portuguesa, Venezuela ",
     },
     {
       'value': 22,
-      'label': "Panda Verde, Guanare, Portuguesa, Venezuela ",
+      'label': "Panda Verde - Guanare, Portuguesa, Venezuela ",
     },
     {
       'value': 23,
-      'label': "Mango de Oro C.A., Guanare, Portuguesa, Venezuela ",
+      'label': "Mango de Oro C.A. - Guanare, Portuguesa, Venezuela ",
     },
     {
       'value': 24,
-      'label': "FRUTAS y Mas, Guanare, Portuguesa, Venezuela ",
+      'label': "FRUTAS y Mas - Guanare, Portuguesa, Venezuela ",
     },
     {
       'value': 25,
       'label':
-          "Globoland Store, Edificio Colegio Cuatricentenario, Avenida Unda, Guanare, Portuguesa ",
+          "Globoland Store - Edificio Colegio Cuatricentenario, Avenida Unda, Guanare, Portuguesa ",
     },
     {
       'value': 26,
-      'label': "Inversiones Fermil centro, Guanare, Portuguesa, Venezuela ",
-    },
+      'label': "Inversiones Fermil centro - Guanare, Portuguesa, Venezuela ",
+    }, //HIER
     {
       'value': 27,
       'label':
