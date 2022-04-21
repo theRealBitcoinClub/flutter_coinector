@@ -680,7 +680,6 @@ class TitleSuggestions {
     'エフライン',
     'Kagurazaka aka be e tasuki',
     '神楽坂 あかべえ 襷｜神楽坂 焼き鳥 ワイン 日本酒',
-    'New Salsa Sudada',
     'サルサスダーダ',
     'Good Heavens',
     'Greek bar',

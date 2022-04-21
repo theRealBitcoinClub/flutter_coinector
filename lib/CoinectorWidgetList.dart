@@ -1067,7 +1067,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         _updateDistanceToAllMerchantsIfNotDoneYet();
         if (result != null) {
           showFilterResults(null, result.name, ctx, result.name);
-          tabController.animateTo(result.type);
+          animateToTab(result);
           //showSnackBar("Showing selected merchant: " + result.name);
         } else {
           showUnfilteredLists(ctx);
