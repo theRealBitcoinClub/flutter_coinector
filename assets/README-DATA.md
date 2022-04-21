@@ -21,7 +21,7 @@ e-spa.json <- Europe, Spain (contains an array of all the filenames within spain
 Comma separated suggestion object: 'Barcelona - Spain - Europe, e-spa-bar, city',
 
 The user searches for "Caracas" -> We suggest him to choose "Caracas, Venezuela, America"
-The user hits the suggestion and the data search is initialized:
+The user hits the suggestion and the data search is initialized::
 1. Get the filename from the SuggestionMatch.fileName property
 2. Open the file and show all the results
 
