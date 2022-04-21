@@ -514,7 +514,7 @@ class ReviewPlaces {
     {
       'value': 0,
       'label': 'Select Place in Africa',
-    },
+    } /*,
     {
       'value': 1,
       'label': "Licoreria Maurapas - El Cují, Lara, Venezuela ",
@@ -628,73 +628,73 @@ class ReviewPlaces {
     {
       'value': 27,
       'label':
-          "Inversiones Foncho Peña, Local 08, Guanare, Portuguesa, Venezuela ",
+          "Inversiones Foncho Peña - Local 08, Guanare, Portuguesa, Venezuela ",
     },
     {
       'value': 28,
-      'label': "Pizzería Unda, Local 12, Guanare, Portuguesa, Venezuela ",
+      'label': "Pizzería Unda - Local 12, Guanare, Portuguesa, Venezuela ",
     },
     {
       'value': 29,
       'label':
-          "Mundo de Azúcar, f.p., Avenida Unda, Guanare, Portuguesa, Venezuela ",
+          "Mundo de Azúcar - f.p., Avenida Unda, Guanare, Portuguesa, Venezuela ",
     },
     {
       'value': 30,
-      'label': "BODEGON DE LA OCHO, Guanare, Portuguesa, Venezuela ",
+      'label': "BODEGON DE LA OCHO - Guanare, Portuguesa, Venezuela ",
     },
     {
       'value': 31,
       'label':
-          "Diseños & creaciones Snarpy, Avenida Unda, Guanare, Portuguesa, Venezuela ",
+          "Diseños & creaciones Snarpy - Avenida Unda, Guanare, Portuguesa, Venezuela ",
     },
     {
       'value': 32,
       'label':
-          "Kau Modass Boutique, Avenida Unda, Guanare, Portuguesa, Venezuela ",
+          "Kau Modass Boutique - Avenida Unda, Guanare, Portuguesa, Venezuela ",
     },
     {
       'value': 33,
-      'label': "Kau Kids, Avenida Unda, Guanare, Portuguesa, Venezuela ",
+      'label': "Kau Kids - Avenida Unda, Guanare, Portuguesa, Venezuela ",
     },
     {
       'value': 34,
-      'label': "El Tinajero Hogar C.A., Guanare, Portuguesa, Venezuela ",
+      'label': "El Tinajero Hogar C.A. - Guanare, Portuguesa, Venezuela ",
     },
     {
       'value': 35,
-      'label': "Flamingru, Carrera 6, Guanare, Portuguesa ",
+      'label': "Flamingru - Carrera 6, Guanare, Portuguesa ",
     },
     {
       'value': 36,
       'label':
-          "Inversiones Marcelo, C.C. Eustoquio, Calle 12, Guanare, Portuguesa ",
+          "Inversiones Marcelo - C.C. Eustoquio, Calle 12, Guanare, Portuguesa ",
     },
     {
       'value': 37,
       'label':
-          "Iluminaciones Alvarez, Carrera 7, Guanare, Portuguesa, Venezuela ",
+          "Iluminaciones Alvarez - Carrera 7, Guanare, Portuguesa, Venezuela ",
     },
     {
       'value': 38,
-      'label': "Dulce Panela Cafe, Guanare, Portuguesa, Venezuela ",
+      'label': "Dulce Panela Cafe - Guanare, Portuguesa, Venezuela ",
     },
     {
       'value': 39,
-      'label': "El Punto Andino, Guanare, Portuguesa, Venezuela ",
+      'label': "El Punto Andino - Guanare, Portuguesa, Venezuela ",
     },
     {
       'value': 40,
-      'label': "Café Plaza, Guanare, Portuguesa, Venezuela ",
+      'label': "Café Plaza - Guanare, Portuguesa, Venezuela ",
     },
     {
       'value': 41,
-      'label': "todoimpress C.A., Carrera 5, Guanare, Portuguesa, Venezuela ",
+      'label': "todoimpress C.A. - Carrera 5, Guanare, Portuguesa, Venezuela ",
     },
     {
       'value': 42,
       'label':
-          "Zapatería Jkamy Boutique segundo piso local 1, Guanare, Portuguesa, Venezuela ",
+          "Zapatería Jkamy Boutique segundo piso local 1 - Guanare, Portuguesa, Venezuela ",
     },
     {
       'value': 43,
@@ -703,28 +703,28 @@ class ReviewPlaces {
     {
       'value': 44,
       'label':
-          "Tiendas Artes y Cueros, Calle 18, Guanare, Portuguesa, Venezuela ",
+          "Tiendas Artes y Cueros - Calle 18, Guanare, Portuguesa, Venezuela ",
     },
     {
       'value': 45,
-      'label': "Intenxys Boutique, Calle 18, Guanare, Portuguesa, Venezuela ",
+      'label': "Intenxys Boutique - Calle 18, Guanare, Portuguesa, Venezuela ",
     },
     {
       'value': 46,
-      'label': "Koala tecnología, Calle 18, Guanare, Portuguesa, Venezuela ",
+      'label': "Koala tecnología - Calle 18, Guanare, Portuguesa, Venezuela ",
     },
     {
       'value': 47,
-      'label': "Evoualji, Guanare, Portuguesa, Venezuela ",
+      'label': "Evoualji - Guanare, Portuguesa, Venezuela ",
     },
     {
       'value': 48,
       'label':
-          "Tu market y algo más C.A, Centro Comercial Cap Conte, Bolívar Avenue, Naguanagua, Carabobo ",
+          "Tu market y algo más C.A - Centro Comercial Cap Conte, Bolívar Avenue, Naguanagua, Carabobo ",
     },
     {
       'value': 49,
-      'label': "Krispy Donuts Avenida Bolívar, Valencia, Carabobo, Venezuela ",
+      'label': "Krispy Donuts Avenida Bolívar - Valencia, Carabobo, Venezuela ",
     },
     {
       'value': 50,
@@ -953,7 +953,7 @@ class ReviewPlaces {
     {
       'value': 100,
       'label': "AdriCar's, carrera 5, San Cristóbal 5001, Táchira, Venezuela ",
-    }
+    }*/
   ];
 
   static final List<Map<String, dynamic>> searchCombosAsia = const [
