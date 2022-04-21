@@ -44,7 +44,7 @@ const int MAX_INPUT_TAGS = 4;
 const int MIN_INPUT_BCHyDASH =
     32; //TODO offer an address field for each coin right after checking its box
 const int MAX_INPUT_ADR = 250;
-const int MAX_INPUT_NAME = 100;
+const int MAX_INPUT_NAME = 200;
 const int MAX_INPUT_DASH = 36; //dash:XintDskT8uV59N9HNvbpJ27nKNtbyHiyUn
 const int MAX_INPUT_BCH =
     54; //bitcoincash:qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a
