@@ -1068,7 +1068,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         if (result != null) {
           showFilterResults(null, result.name, ctx, result.name);
           animateToTab(result);
-          //showSnackBar("Showing selected merchant: " + result.name);
+          // showSnackBar("Showing selected merchant: " + result.name);
         } else {
           showUnfilteredLists(ctx);
         }
