@@ -307,7 +307,7 @@ class ReviewPlaces {
     {
       'value': 0,
       'label': 'Select Place in Asia',
-    },
+    } /*,
     {
       'value': 1,
       'label':
@@ -534,7 +534,7 @@ class ReviewPlaces {
       'value': 50,
       'label':
           "Filippo Esmaily Photography, Boulevard de la Fraternité, Luxembourg",
-    }
+    }*/
   ];
 
   static final List<Map<String, dynamic>> searchCombosSouthAmerica = const [
