@@ -548,7 +548,7 @@ class ReviewPlaces {
     {
       'value': 0,
       'label': 'Select Place in North America',
-    },
+    } /*,
     {
       'value': 1,
       'label':
@@ -776,6 +776,6 @@ class ReviewPlaces {
       'value': 50,
       'label':
           "Black Diamond Custom Tattoos, 4444 W Craig Rd, North Las Vegas, Nevada 89032, USA",
-    }
+    }*/
   ];
 }
