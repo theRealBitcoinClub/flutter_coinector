@@ -13,7 +13,7 @@ class ReviewPlaces {
     },
     {
       'value': 2,
-      'label': 'Asia',
+      'label': 'Asia.',
     },
     {
       'value': 3,
