@@ -67,7 +67,7 @@ class ReviewPlaces {
     {
       'value': 0,
       'label': 'Select Place in Europe',
-    },
+    } /*,
     {
       'value': 1,
       'label':
@@ -120,7 +120,7 @@ class ReviewPlaces {
     },
     {
       'value': 12,
-      'label': "Győr, ABC, József Attila u. 43, 9028 Hungary",
+      'label': "ABC - Győr, József Attila u. 43, 9028 Hungary",
     },
     {
       'value': 13,
@@ -293,7 +293,7 @@ class ReviewPlaces {
     {
       'value': 50,
       'label': "Moser Solar, Pesendorf, Austria ",
-    }
+    }*/
   ];
 
   static final List<Map<String, dynamic>> searchCombosAfrica = const [
