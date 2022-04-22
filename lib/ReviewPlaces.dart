@@ -61,194 +61,249 @@ class ReviewPlaces {
     },
     {
       'value': 2,
-      'label': "",
+      'label':
+          "Diljeet Auto Parts, Kuchesar Road, near HP Petrol Pump, B.B. Nagar, Uttar Pradesh, India ",
     },
     {
       'value': 3,
-      'label': "",
+      'label':
+          "HTML ECOSYSTEM, Block AG, Sanjay Gandhi Transport Nagar, Delhi, India ",
     },
     {
       'value': 4,
-      'label': "",
+      'label': "NottyBoy® (Oddway Icare Private Limited) ",
     },
     {
       'value': 5,
-      'label': "",
+      'label': "Digi195, Prem Nagar, Najafgarh, Delhi, India ",
     },
     {
       'value': 6,
-      'label': "",
+      'label':
+          "Advertising & Public Relations Branch, New Delhi, Delhi, India ",
     },
     {
       'value': 7,
-      'label': "",
+      'label':
+          "DailyVery Grocery mart, South Bopal, Ahmedabad, Gujarat, India ",
     },
     {
       'value': 8,
-      'label': "",
+      'label':
+          "Shah Property Solution, Jahangirabad, Sima Nagar, Surat, Gujarat, India ",
     },
     {
       'value': 9,
-      'label': "",
+      'label':
+          "Radha krishna textile Market, Jay Laxmi Market, Moti Begumwadi, Begampura, Surat, Gujarat, India ",
     },
     {
       'value': 10,
-      'label': "",
+      'label':
+          "B&Z LUXURY WORLD LLP, 1ST CROSS LANE, Swami Samarth Nagar, Lokhandwala Complex, Andheri West, Mumbai, Maharashtra, India ",
     },
     {
       'value': 11,
-      'label': "",
+      'label':
+          "Kino Cottage, Aram Nagar, Versova, Andheri West, Mumbai, Maharashtra, India ",
     },
     {
       'value': 12,
-      'label': "",
+      'label':
+          "Hosanna House Montessori, Veera Desai Road, Mhada Colony, Azad Nagar, Andheri West, Mumbai, Maharashtra, India ",
     },
     {
       'value': 13,
-      'label': "",
+      'label':
+          "Haute Dog Pet Salon & Boutique Store, Jukarwadi, Juhu, Mumbai, Maharashtra, India ",
     },
     {
       'value': 14,
-      'label': "",
+      'label':
+          "Copa, North South Road Number 13, Gaothan Number 2, Vithal Nagar, Juhu, Mumbai, Maharashtra, India ",
     },
     {
       'value': 15,
-      'label': "",
+      'label':
+          "Sunder Niwas, Malviya Road, Satsang CHSL, Navpada, Vile Parle East, Vile Parle, Mumbai, Maharashtra, India ",
     },
     {
       'value': 16,
-      'label': "",
+      'label':
+          "Paramount sports n nutrition, Road Number 18, Chembur Gaothan, Chembur, Mumbai, Maharashtra, India ",
     },
     {
       'value': 17,
-      'label': "",
+      'label':
+          "VIG Refreshments, Camp East, Chembur Colony, Chembur, Mumbai, Maharashtra, India ",
     },
     {
       'value': 18,
-      'label': "",
+      'label':
+          "Jo Hukum Mere Aaka, M G Road, Laxminagar, Khopoli, Maharashtra, India ",
     },
     {
       'value': 19,
-      'label': "",
+      'label':
+          "Bharat Adventure Tours, Shivaji Colony, Tilakwadi, Belagavi, Karnataka, India ",
     },
     {
       'value': 20,
-      'label': "",
+      'label': "Black Bull Goa, Anjuna, Goa, India ",
     },
     {
       'value': 21,
-      'label': "",
+      'label': "Mish-Mar, Majorda-Utorda, Dongorim, Margao, Goa, India ",
     },
     {
       'value': 22,
-      'label': "",
+      'label': "Squirr Salon & Spa, Poovangal, Kozhikode, Kerala, India",
     },
     {
       'value': 23,
-      'label': "",
+      'label': "Kookal Paradise, Kodaikanal, Tamil Nadu, India ",
     },
     {
       'value': 24,
-      'label': "",
+      'label': "Club India Resorts, Poombarai, Tamil Nadu, India ",
     },
     {
       'value': 25,
-      'label': "",
+      'label':
+          "Passiflora Ristorante Italiano, Mannavanur to Kodaikanal Rd, Poombarai, Tamil Nadu 624103, India ",
     },
     {
       'value': 26,
-      'label': "",
+      'label':
+          "Boho Kodai, Thomas Summer House, Kurunji Nagar Road, Kodaikanal, Tamil Nadu, India ",
     },
     {
       'value': 27,
-      'label': "",
+      'label':
+          "The Craft Chain, Club Rd, Kodaikanal, Tamil Nadu 624101, India ",
     },
     {
       'value': 28,
-      'label': "",
+      'label': "VJ Organic farms, Taluka, Hadoli, Maharashtra, India ",
     },
     {
       'value': 29,
-      'label': "",
+      'label':
+          "Sankar Srinivasan, Muthu cycle traders, Kulamangalam Main Road, Bama Nagar, Meenambalpuram, Tamil Nadu, India ",
     },
     {
       'value': 30,
-      'label': "",
+      'label':
+          "K9 Connection, Kalakruti Avenue, Hanuman Colony, Royal Enclave Extn, Sakthi Vinayakar Nagar, Injambakkam, Chennai, Tamil Nadu, India ",
     },
     {
       'value': 31,
-      'label': "",
+      'label':
+          "FIB-SOL Life Technologies Pvt. Ltd., OMR Road, Perungudi, Chennai, Tamil Nadu, India ",
     },
     {
       'value': 32,
-      'label': "",
+      'label': "SMS ENTERPRISES, Mahalakshmi Layout, Kolar, Karnataka, India ",
     },
     {
       'value': 33,
-      'label': "",
+      'label':
+          "R N S Bikes Sales & Service, Venkatamma Layout, Subbayianiah Palyam, Kammanahalli, Bengaluru, Karnataka, India ",
     },
     {
       'value': 34,
-      'label': "",
+      'label':
+          "Tracy Tech Works, beside MRO Office, Ajit Singh Nagar, PNT Colony, Vijayawada, Andhra Pradesh 520015, India ",
     },
     {
       'value': 35,
-      'label': "",
+      'label':
+          "Samyuktha's Designer Studio, Kistamma Enclave, Alwal, Hyderabad, Telangana, India ",
     },
     {
       'value': 36,
-      'label': "",
+      'label':
+          "Chandra Bar and Restaurant, New Bustand, Korutla, Telangana, India ",
     },
     {
       'value': 37,
-      'label': "",
+      'label': "Vilas avhad, Tadlimbla, Maharashtra, India ",
     },
     {
       'value': 38,
-      'label': "",
+      'label':
+          "SUNRISE SPORTS, near maharaja statue, Paralakhemundi, Odisha, India ",
     },
     {
       'value': 39,
-      'label': "",
+      'label': "Tapas Jharsuguda, Odisha, India",
     },
     {
       'value': 40,
-      'label': "",
+      'label':
+          "Self employed, Dada Nagar, Azad Nagar, Kanpur, Uttar Pradesh, India ",
     },
     {
       'value': 41,
-      'label': "",
+      'label':
+          "Azhar Textiles, National Highway 33, Nathnagar, Bhagalpur, Bihar, India ",
     },
     {
       'value': 42,
-      'label': "",
+      'label':
+          "Dhan Lakshmi, Canning Street, Bagree Market, Bortola, Barabazar Market, Kolkata, West Bengal, India ",
     },
     {
       'value': 43,
-      'label': "",
+      'label':
+          "Couch Potato, Abhedananda Road, Girish Park, Darjipara, Ward Number 17, Kolkata, West Bengal, India ",
     },
     {
       'value': 44,
-      'label': "",
+      'label':
+          "CryptoKon IT & Consultancy Services, Pioneer Park, Chkravartipara, Barasat, Kolkata, West Bengal, India ",
     },
     {
       'value': 45,
-      'label': "",
+      'label':
+          "Fancy Bedding Store, Pundooah Station Road, Pandua, West Bengal, India ",
     },
     {
       'value': 46,
-      'label': "",
+      'label': "Ar veraities store, Captain Monir Road, Cumilla, Bangladesh ",
     },
     {
       'value': 47,
-      'label': "",
+      'label': "Ashuran Jame Masjid, Bangladesh ",
     },
     {
       'value': 48,
-      'label': "",
+      'label': "IT Soft Ltd, Katasur Road, Dhaka, Bangladesh ",
     },
     {
       'value': 49,
+      'label':
+          "ওয়েস্টার্ন ইউনিয়ন মানি ট্রান্সফার, Begum Rokeya Avenue, Dhaka, Bangladesh ",
+    },
+    {
+      'value': 50,
+      'label': "RFL Best Buy - Uttara 10, Dhaka, Bangladesh ",
+    },
+    {
+      'value': 51,
+      'label':
+          "DISCOUNT STORE, Lukram Leirak Rd, Mayaikoibi, Imphal, Manipur, India ",
+    },
+    {
+      'value': 50,
+      'label': "",
+    },
+    {
+      'value': 50,
+      'label': "",
+    },
+    {
+      'value': 50,
       'label': "",
     },
     {
