@@ -53,6 +53,207 @@ class ReviewPlaces {
     {
       'value': 0,
       'label': 'Select Place in Australia',
+    },
+    {
+      'value': 1,
+      'label':
+          "Janta Printing Press, Mill Road, near Agrasen Park, Shamli, Uttar Pradesh, India ",
+    },
+    {
+      'value': 2,
+      'label': "",
+    },
+    {
+      'value': 3,
+      'label': "",
+    },
+    {
+      'value': 4,
+      'label': "",
+    },
+    {
+      'value': 5,
+      'label': "",
+    },
+    {
+      'value': 6,
+      'label': "",
+    },
+    {
+      'value': 7,
+      'label': "",
+    },
+    {
+      'value': 8,
+      'label': "",
+    },
+    {
+      'value': 9,
+      'label': "",
+    },
+    {
+      'value': 10,
+      'label': "",
+    },
+    {
+      'value': 11,
+      'label': "",
+    },
+    {
+      'value': 12,
+      'label': "",
+    },
+    {
+      'value': 13,
+      'label': "",
+    },
+    {
+      'value': 14,
+      'label': "",
+    },
+    {
+      'value': 15,
+      'label': "",
+    },
+    {
+      'value': 16,
+      'label': "",
+    },
+    {
+      'value': 17,
+      'label': "",
+    },
+    {
+      'value': 18,
+      'label': "",
+    },
+    {
+      'value': 19,
+      'label': "",
+    },
+    {
+      'value': 20,
+      'label': "",
+    },
+    {
+      'value': 21,
+      'label': "",
+    },
+    {
+      'value': 22,
+      'label': "",
+    },
+    {
+      'value': 23,
+      'label': "",
+    },
+    {
+      'value': 24,
+      'label': "",
+    },
+    {
+      'value': 25,
+      'label': "",
+    },
+    {
+      'value': 26,
+      'label': "",
+    },
+    {
+      'value': 27,
+      'label': "",
+    },
+    {
+      'value': 28,
+      'label': "",
+    },
+    {
+      'value': 29,
+      'label': "",
+    },
+    {
+      'value': 30,
+      'label': "",
+    },
+    {
+      'value': 31,
+      'label': "",
+    },
+    {
+      'value': 32,
+      'label': "",
+    },
+    {
+      'value': 33,
+      'label': "",
+    },
+    {
+      'value': 34,
+      'label': "",
+    },
+    {
+      'value': 35,
+      'label': "",
+    },
+    {
+      'value': 36,
+      'label': "",
+    },
+    {
+      'value': 37,
+      'label': "",
+    },
+    {
+      'value': 38,
+      'label': "",
+    },
+    {
+      'value': 39,
+      'label': "",
+    },
+    {
+      'value': 40,
+      'label': "",
+    },
+    {
+      'value': 41,
+      'label': "",
+    },
+    {
+      'value': 42,
+      'label': "",
+    },
+    {
+      'value': 43,
+      'label': "",
+    },
+    {
+      'value': 44,
+      'label': "",
+    },
+    {
+      'value': 45,
+      'label': "",
+    },
+    {
+      'value': 46,
+      'label': "",
+    },
+    {
+      'value': 47,
+      'label': "",
+    },
+    {
+      'value': 48,
+      'label': "",
+    },
+    {
+      'value': 49,
+      'label': "",
+    },
+    {
+      'value': 50,
+      'label': "",
     }
   ];
 
@@ -67,6 +268,206 @@ class ReviewPlaces {
     {
       'value': 0,
       'label': 'Select Place in Europe',
+    },
+    {
+      'value': 1,
+      'label': "",
+    },
+    {
+      'value': 2,
+      'label': "",
+    },
+    {
+      'value': 3,
+      'label': "",
+    },
+    {
+      'value': 4,
+      'label': "",
+    },
+    {
+      'value': 5,
+      'label': "",
+    },
+    {
+      'value': 6,
+      'label': "",
+    },
+    {
+      'value': 7,
+      'label': "",
+    },
+    {
+      'value': 8,
+      'label': "",
+    },
+    {
+      'value': 9,
+      'label': "",
+    },
+    {
+      'value': 10,
+      'label': "",
+    },
+    {
+      'value': 11,
+      'label': "",
+    },
+    {
+      'value': 12,
+      'label': "",
+    },
+    {
+      'value': 13,
+      'label': "",
+    },
+    {
+      'value': 14,
+      'label': "",
+    },
+    {
+      'value': 15,
+      'label': "",
+    },
+    {
+      'value': 16,
+      'label': "",
+    },
+    {
+      'value': 17,
+      'label': "",
+    },
+    {
+      'value': 18,
+      'label': "",
+    },
+    {
+      'value': 19,
+      'label': "",
+    },
+    {
+      'value': 20,
+      'label': "",
+    },
+    {
+      'value': 21,
+      'label': "",
+    },
+    {
+      'value': 22,
+      'label': "",
+    },
+    {
+      'value': 23,
+      'label': "",
+    },
+    {
+      'value': 24,
+      'label': "",
+    },
+    {
+      'value': 25,
+      'label': "",
+    },
+    {
+      'value': 26,
+      'label': "",
+    },
+    {
+      'value': 27,
+      'label': "",
+    },
+    {
+      'value': 28,
+      'label': "",
+    },
+    {
+      'value': 29,
+      'label': "",
+    },
+    {
+      'value': 30,
+      'label': "",
+    },
+    {
+      'value': 31,
+      'label': "",
+    },
+    {
+      'value': 32,
+      'label': "",
+    },
+    {
+      'value': 33,
+      'label': "",
+    },
+    {
+      'value': 34,
+      'label': "",
+    },
+    {
+      'value': 35,
+      'label': "",
+    },
+    {
+      'value': 36,
+      'label': "",
+    },
+    {
+      'value': 37,
+      'label': "",
+    },
+    {
+      'value': 38,
+      'label': "",
+    },
+    {
+      'value': 39,
+      'label': "",
+    },
+    {
+      'value': 40,
+      'label': "",
+    },
+    {
+      'value': 41,
+      'label': "",
+    },
+    {
+      'value': 42,
+      'label': "",
+    },
+    {
+      'value': 43,
+      'label': "",
+    },
+    {
+      'value': 44,
+      'label': "",
+    },
+    {
+      'value': 45,
+      'label': "",
+    },
+    {
+      'value': 46,
+      'label': "",
+    },
+    {
+      'value': 47,
+      'label': "",
+    },
+    {
+      'value': 48,
+      'label': "",
+    },
+    {
+      'value': 49,
+      'label': "",
+    },
+    {
+      'value': 50,
+      'label': "",
     }
   ];
 
@@ -342,38 +743,6 @@ class ReviewPlaces {
     {
       'value': 62,
       'label': 'Kefas Shopping Plaza, Galadima Aminu Road, Jimeta, Nigeria ',
-    },
-    {
-      'value': 63,
-      'label': '',
-    },
-    {
-      'value': 60,
-      'label': '',
-    },
-    {
-      'value': 60,
-      'label': '',
-    },
-    {
-      'value': 60,
-      'label': '',
-    },
-    {
-      'value': 60,
-      'label': '',
-    },
-    {
-      'value': 60,
-      'label': '',
-    },
-    {
-      'value': 60,
-      'label': '',
-    },
-    {
-      'value': 60,
-      'label': '',
     }
   ];
 
@@ -381,6 +750,218 @@ class ReviewPlaces {
     {
       'value': 0,
       'label': 'Select Place in Asia',
+    },
+    {
+      'value': 1,
+      'label': "Business Village - Dubai - United Arab Emirates",
+    },
+    {
+      'value': 2,
+      'label': "Crypto Currency Exchange - Dubai - United Arab Emirates ",
+    },
+    {
+      'value': 3,
+      'label':
+          "Franck Muller Middle East and India - Dubai - United Arab Emirates ",
+    },
+    {
+      'value': 4,
+      'label': "Coinsfera - 5th floor - Dubai - United Arab Emirates ",
+    },
+    {
+      'value': 5,
+      'label':
+          "Bermuda Diving Center - Al Wasl Road - Dubai - United Arab Emirates ",
+    },
+    {
+      'value': 6,
+      'label': "X Factor Restaurant - Dubai - United Arab Emirates ",
+    },
+    {
+      'value': 7,
+      'label': "Perfetto Pizzeria - Al Majara - Dubai - United Arab Emirates ",
+    },
+    {
+      'value': 8,
+      'label': "Tandoori Junction - Cluster F - Dubai - United Arab Emirates ",
+    },
+    {
+      'value': 9,
+      'label': "Masala Mantra - Jvc - Dubai - United Arab Emirates ",
+    },
+    {
+      'value': 10,
+      'label': "Sumworks W.L.L, Manama, Bahrain ",
+    },
+    {
+      'value': 11,
+      'label': "הום זול - אופקים, ז'בוטינסקי, אופקים, ישראל",
+    },
+    {
+      'value': 12,
+      'label': "GURme and Gurman.com, Habaron Hirsh, Petah Tikva, Israel ",
+    },
+    {
+      'value': 13,
+      'label': "BeEng.co.il",
+    },
+    {
+      'value': 14,
+      'label': "Fly Guy, Yehud-Monosson, Israel",
+    },
+    {
+      'value': 15,
+      'label': "Wix Master, יהוד, ישראל ",
+    },
+    {
+      'value': 16,
+      'label': "Soft, Aluf Kalman Magen Street, Tel Aviv-Yafo, Israel",
+    },
+    {
+      'value': 17,
+      'label': "Bitcoin change, King George Street, Tel Aviv-Yafo, Israel ",
+    },
+    {
+      'value': 18,
+      'label': "L'Olivier, Yona HaNavi St 48, Tel Aviv-Yafo, Israel ",
+    },
+    {
+      'value': 19,
+      'label': "נונו אנג׳לו פיצה, Ben Yehuda Street 147, Tel Aviv, Israel ",
+    },
+    {
+      'value': 20,
+      'label': "בורקס העגלה, Derech HaAtsma'ut, Haifa, Israel ",
+    },
+    {
+      'value': 21,
+      'label': "Buy Bitcoin in Lebanon (BuyBitcoinLeb), Beirut, Lebanon ",
+    },
+    {
+      'value': 22,
+      'label': "CLEVERFIXING SOLUTIONS, Stylianou Apostolidi, Larnaca, Cyprus ",
+    },
+    {
+      'value': 23,
+      'label': "Cyprus Hobbit ",
+    },
+    {
+      'value': 24,
+      'label': "Cyprus Flower Boutique, Kato Polemidia, Cyprus ",
+    },
+    {
+      'value': 25,
+      'label': "Etosstar, Lemesou Avenue 122D, Nicosia, Cyprus ",
+    },
+    {
+      'value': 26,
+      'label': "Olives & Burgers, Prodromou, Nicosia, Cyprus ",
+    },
+    {
+      'value': 27,
+      'label': "Dynamex Solutions & Exchange",
+    },
+    {
+      'value': 28,
+      'label': "Charlie Lisi Organic Cafe, Tbilisi, Georgia ",
+    },
+    {
+      'value': 29,
+      'label':
+          "Tbilisi Gate gallery, Nikoloz Baratashvili St, Tbilisi, Georgia ",
+    },
+    {
+      'value': 30,
+      'label': "GoogleStore.ge, Ivane Franguliani Street, Tbilisi, Georgia ",
+    },
+    {
+      'value': 31,
+      'label':
+          "کلینیک کسب و کار کولاک, Naqadeh, West Azerbaijan Province, Iran ",
+    },
+    {
+      'value': 32,
+      'label': "Arman tattoo studio, Downtown, Erbil, Iraq ",
+    },
+    {
+      'value': 33,
+      'label': "Kurdistan Province, Sanandaj, پاسداران،, دیجی استوک, Iran",
+    },
+    {
+      'value': 34,
+      'label':
+          "Hamadan Province, Hamedan, District 1, Mirzadeh Eshqi Street, آتلیه کاغذی، Iran ",
+    },
+    {
+      'value': 35,
+      'label': "Asre Jadid Pizza, Shahrak-e-Qods, Arak, Markazi Province, Iran",
+    },
+    {
+      'value': 36,
+      'label': "فروشگاه پوشاک aronstudios, Tehran, Iran ",
+    },
+    {
+      'value': 37,
+      'label': "monazon, District 2, Tehran, Tehran Province, Iran ",
+    },
+    {
+      'value': 38,
+      'label':
+          "Hillarys Lingerie and Clothing, District 22, Tehran, Tehran Province, Iran ",
+    },
+    {
+      'value': 39,
+      'label':
+          "Tehran Province, Tehran, Saadi Street, تعمیرات چمدان وکیف حسام, Iran ",
+    },
+    {
+      'value': 40,
+      'label':
+          "Tehran Province, Qods, District 21, Fath Highway, dastvarz trading بازرگانی دست ورز, Iran",
+    },
+    {
+      'value': 41,
+      'label':
+          "Tehran Province, Tehran, District 1, Oruzi, Luisa Spagnoli Palladium, Iran ",
+    },
+    {
+      'value': 42,
+      'label': "CJ Original, District 1, Tehran, Tehran Province, Iran ",
+    },
+    {
+      'value': 43,
+      'label': "Roomita | رومیتا, Pardis, Tehran Province, Iran ",
+    },
+    {
+      'value': 44,
+      'label': "Mashhad, مشهد،صیاد شیرازی ۶۵, عسل رزاقی, Iran",
+    },
+    {
+      'value': 45,
+      'label': "Mashhad, Rahnamaei Street, عسل برسلان, Iran ",
+    },
+    {
+      'value': 46,
+      'label':
+          "Sistan and Baluchestan Province, Zahedan, Molavi Hossein Bor Street, پاساژ منصور تاناکورا سامیار, Iran",
+    },
+    {
+      'value': 47,
+      'label':
+          "Shopon, Major Shabbir Sharif Shaheed, Officers Colony, Multan, Pakistan",
+    },
+    {
+      'value': 48,
+      'label': "Handwoven Cashmere, near brands showroom, Hawal, Srinagar ",
+    },
+    {
+      'value': 49,
+      'label': "Darshan Kumar Naresh Kumar, Bhucho Mandi, Punjab, India ",
+    },
+    {
+      'value': 50,
+      'label':
+          "Dm electronic, Ujha Road, near HP GAS godown, Ekta Vihar, Panipat, Haryana, India ",
     }
   ];
 
@@ -388,6 +969,206 @@ class ReviewPlaces {
     {
       'value': 0,
       'label': 'Select Place in South America',
+    },
+    {
+      'value': 1,
+      'label': "",
+    },
+    {
+      'value': 2,
+      'label': "",
+    },
+    {
+      'value': 3,
+      'label': "",
+    },
+    {
+      'value': 4,
+      'label': "",
+    },
+    {
+      'value': 5,
+      'label': "",
+    },
+    {
+      'value': 6,
+      'label': "",
+    },
+    {
+      'value': 7,
+      'label': "",
+    },
+    {
+      'value': 8,
+      'label': "",
+    },
+    {
+      'value': 9,
+      'label': "",
+    },
+    {
+      'value': 10,
+      'label': "",
+    },
+    {
+      'value': 11,
+      'label': "",
+    },
+    {
+      'value': 12,
+      'label': "",
+    },
+    {
+      'value': 13,
+      'label': "",
+    },
+    {
+      'value': 14,
+      'label': "",
+    },
+    {
+      'value': 15,
+      'label': "",
+    },
+    {
+      'value': 16,
+      'label': "",
+    },
+    {
+      'value': 17,
+      'label': "",
+    },
+    {
+      'value': 18,
+      'label': "",
+    },
+    {
+      'value': 19,
+      'label': "",
+    },
+    {
+      'value': 20,
+      'label': "",
+    },
+    {
+      'value': 21,
+      'label': "",
+    },
+    {
+      'value': 22,
+      'label': "",
+    },
+    {
+      'value': 23,
+      'label': "",
+    },
+    {
+      'value': 24,
+      'label': "",
+    },
+    {
+      'value': 25,
+      'label': "",
+    },
+    {
+      'value': 26,
+      'label': "",
+    },
+    {
+      'value': 27,
+      'label': "",
+    },
+    {
+      'value': 28,
+      'label': "",
+    },
+    {
+      'value': 29,
+      'label': "",
+    },
+    {
+      'value': 30,
+      'label': "",
+    },
+    {
+      'value': 31,
+      'label': "",
+    },
+    {
+      'value': 32,
+      'label': "",
+    },
+    {
+      'value': 33,
+      'label': "",
+    },
+    {
+      'value': 34,
+      'label': "",
+    },
+    {
+      'value': 35,
+      'label': "",
+    },
+    {
+      'value': 36,
+      'label': "",
+    },
+    {
+      'value': 37,
+      'label': "",
+    },
+    {
+      'value': 38,
+      'label': "",
+    },
+    {
+      'value': 39,
+      'label': "",
+    },
+    {
+      'value': 40,
+      'label': "",
+    },
+    {
+      'value': 41,
+      'label': "",
+    },
+    {
+      'value': 42,
+      'label': "",
+    },
+    {
+      'value': 43,
+      'label': "",
+    },
+    {
+      'value': 44,
+      'label': "",
+    },
+    {
+      'value': 45,
+      'label': "",
+    },
+    {
+      'value': 46,
+      'label': "",
+    },
+    {
+      'value': 47,
+      'label': "",
+    },
+    {
+      'value': 48,
+      'label': "",
+    },
+    {
+      'value': 49,
+      'label': "",
+    },
+    {
+      'value': 50,
+      'label': "",
     }
   ];
 
@@ -395,6 +1176,206 @@ class ReviewPlaces {
     {
       'value': 0,
       'label': 'Select Place in North America',
+    },
+    {
+      'value': 1,
+      'label': "",
+    },
+    {
+      'value': 2,
+      'label': "",
+    },
+    {
+      'value': 3,
+      'label': "",
+    },
+    {
+      'value': 4,
+      'label': "",
+    },
+    {
+      'value': 5,
+      'label': "",
+    },
+    {
+      'value': 6,
+      'label': "",
+    },
+    {
+      'value': 7,
+      'label': "",
+    },
+    {
+      'value': 8,
+      'label': "",
+    },
+    {
+      'value': 9,
+      'label': "",
+    },
+    {
+      'value': 10,
+      'label': "",
+    },
+    {
+      'value': 11,
+      'label': "",
+    },
+    {
+      'value': 12,
+      'label': "",
+    },
+    {
+      'value': 13,
+      'label': "",
+    },
+    {
+      'value': 14,
+      'label': "",
+    },
+    {
+      'value': 15,
+      'label': "",
+    },
+    {
+      'value': 16,
+      'label': "",
+    },
+    {
+      'value': 17,
+      'label': "",
+    },
+    {
+      'value': 18,
+      'label': "",
+    },
+    {
+      'value': 19,
+      'label': "",
+    },
+    {
+      'value': 20,
+      'label': "",
+    },
+    {
+      'value': 21,
+      'label': "",
+    },
+    {
+      'value': 22,
+      'label': "",
+    },
+    {
+      'value': 23,
+      'label': "",
+    },
+    {
+      'value': 24,
+      'label': "",
+    },
+    {
+      'value': 25,
+      'label': "",
+    },
+    {
+      'value': 26,
+      'label': "",
+    },
+    {
+      'value': 27,
+      'label': "",
+    },
+    {
+      'value': 28,
+      'label': "",
+    },
+    {
+      'value': 29,
+      'label': "",
+    },
+    {
+      'value': 30,
+      'label': "",
+    },
+    {
+      'value': 31,
+      'label': "",
+    },
+    {
+      'value': 32,
+      'label': "",
+    },
+    {
+      'value': 33,
+      'label': "",
+    },
+    {
+      'value': 34,
+      'label': "",
+    },
+    {
+      'value': 35,
+      'label': "",
+    },
+    {
+      'value': 36,
+      'label': "",
+    },
+    {
+      'value': 37,
+      'label': "",
+    },
+    {
+      'value': 38,
+      'label': "",
+    },
+    {
+      'value': 39,
+      'label': "",
+    },
+    {
+      'value': 40,
+      'label': "",
+    },
+    {
+      'value': 41,
+      'label': "",
+    },
+    {
+      'value': 42,
+      'label': "",
+    },
+    {
+      'value': 43,
+      'label': "",
+    },
+    {
+      'value': 44,
+      'label': "",
+    },
+    {
+      'value': 45,
+      'label': "",
+    },
+    {
+      'value': 46,
+      'label': "",
+    },
+    {
+      'value': 47,
+      'label': "",
+    },
+    {
+      'value': 48,
+      'label': "",
+    },
+    {
+      'value': 49,
+      'label': "",
+    },
+    {
+      'value': 50,
+      'label': "",
     }
   ];
 }
