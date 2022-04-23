@@ -314,11 +314,12 @@ class ReviewPlaces {
     },
     {
       'value': 13,
-      'label': "",
+      'label':
+          "The Vegan Personal Chef, La Veleta, Tulum, Quintana Roo, Mexico ",
     },
     {
       'value': 14,
-      'label': "",
+      'label': "Frida Flowers, La Veleta, Tulum, Quintana Roo, Mexico ",
     },
     {
       'value': 15,

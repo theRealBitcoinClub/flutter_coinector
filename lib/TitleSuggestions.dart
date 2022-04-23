@@ -991,7 +991,6 @@ class TitleSuggestions {
     'Windschief',
     'Beach',
     'Casa Sofia Inn',
-    'Maya Lous Place',
     'Plaza',
     'City Center',
     'Rempah Rempah',
