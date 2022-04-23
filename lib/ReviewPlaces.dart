@@ -293,22 +293,6 @@ class ReviewPlaces {
       'value': 51,
       'label':
           "DISCOUNT STORE, Lukram Leirak Rd, Mayaikoibi, Imphal, Manipur, India ",
-    },
-    {
-      'value': 50,
-      'label': "",
-    },
-    {
-      'value': 50,
-      'label': "",
-    },
-    {
-      'value': 50,
-      'label': "",
-    },
-    {
-      'value': 50,
-      'label': "",
     }
   ];
 
@@ -326,203 +310,245 @@ class ReviewPlaces {
     },
     {
       'value': 1,
-      'label': "",
+      'label':
+          "Satoshi House, 236 Pasakhangwaeng Waeng Chiang Rai 57150 TH, Ban Pasakhangwaeng Waeng, Chiang Saen District, 57150, Thailand",
     },
     {
       'value': 2,
-      'label': "",
+      'label':
+          "Catmosphere Cat Café, 233/5 Huay Kaew Rd, Suthep, Mueang Chiang Mai District, Chiang Mai 50300, Thailand ",
     },
     {
       'value': 3,
-      'label': "",
+      'label':
+          "บ้านไร่ ส.ทรัพย์รุ่งเรือง KM. ไร่​ ส.ทรัพย์​รุ่งเรือง​ KM DPT. Alley, Ban Mai, Si Chomphu District, Khon Kaen, Thailand ",
     },
     {
       'value': 4,
-      'label': "",
+      'label':
+          "ບ້ານຊຳຄອນ, ເມືອງລ້ອງຊານ, ແຂວງໄຊ​ສົມບູນ Meung Hom ເມືອງລ້ອງຊານ ແຂວງໄຊ​ສົມບູນ Vientiane, Laos ",
     },
     {
       'value': 5,
-      'label': "",
+      'label':
+          "vuhaison doanh nghiep nho, Lý Thường Kiệt, Thành phố Yên Bái, Yên Bái, Viet Nam ",
     },
     {
       'value': 6,
-      'label': "",
+      'label':
+          "Agribank phòng giao dịch Nguyễn Trãi, Đường Nguyễn Trãi, Thượng Đình, Thanh Xuân, Hà Nội, Việt Nam ",
     },
     {
       'value': 7,
-      'label': "",
+      'label':
+          "Agribank - Atm, Nguyễn Trãi, Sao Do, Chí Linh, Hải Dương, Việt Nam ",
     },
     {
       'value': 8,
-      'label': "",
+      'label':
+          "Agribank Chi nhánh Đại Tân, Hoàng Tân, Chí Linh District, Hai Duong, Vietnam ",
     },
     {
       'value': 9,
-      'label': "",
+      'label':
+          "Mc Khánh Duy, An Định, Thụy Văn, Thái Thụy, Thai Binh, Vietnam ",
     },
     {
       'value': 10,
-      'label': "",
+      'label': "Pilgrim's Kitchen & Inn, Savannakhet, Laos ",
     },
     {
       'value': 11,
-      'label': "",
+      'label':
+          "SA เฉลิมวงค์ Chiang Yuen, Chiang Yuen District, Maha Sarakham 44160, Thailand ",
     },
     {
       'value': 12,
-      'label': "",
+      'label':
+          "Melody Buffet BBQ, Lê Đức Thọ, Thọ Quang, Sơn Trà, Đà Nẵng, Viet Nam ",
     },
     {
       'value': 13,
-      'label': "",
+      'label':
+          "YOLO Apartment Homes, Trần Bạch Đằng, Phước Mỹ, Sơn Trà, Đà Nẵng, Vietnam ",
     },
     {
       'value': 14,
-      'label': "",
+      'label':
+          "COMPANY LIMITED TRADING HONG AN Import Export Service, Hồ Văn Leo, khu phố 1 p, Tam Hòa, Thành phố Biên Hòa, Dong Nai, Vietnam ",
     },
     {
       'value': 15,
-      'label': "",
+      'label':
+          "Sofa Êm, Cityland Center Hills, Phường 7, Gò Vấp, Ho Chi Minh City, Vietnam ",
     },
     {
       'value': 16,
-      'label': "",
+      'label': "Sofa Êm, Nguyễn An Ninh, Vũng Tàu, Ba Ria - Vung Tau, Vietnam ",
     },
     {
       'value': 17,
-      'label': "",
+      'label':
+          "Future.Travel, Shop 6, Đường Lê Văn Huân, Phường 13, Tân Bình, Ho Chi Minh City, Vietnam ",
     },
     {
       'value': 18,
-      'label': "",
+      'label':
+          "Bitcoin ATM by BitcoinVN, Hưng Gia 3, Tân Phong, District 7, Ho Chi Minh City, Vietnam ",
     },
     {
       'value': 19,
-      'label': "",
+      'label':
+          "Bitcoin ATM by BitcoinVN, Located inside Italiani's Pizza, Hàn Thuyên, Bến Nghé, District 1, Ho Chi Minh City, Vietnam ",
     },
     {
       'value': 20,
-      'label': "",
+      'label':
+          "Bitcoin ATM by BitcoinVN, Pizza 8, Đường số 49B, Khu Phố 4, Thao Dien, District 2, Ho Chi Minh City, Vietnam ",
     },
     {
       'value': 21,
-      'label': "",
+      'label':
+          "Bitcoin ATM by BitcoinVN, Pig BBQ & Beer, Truong Son Street, Phường 2, Tân Bình, Ho Chi Minh City, Vietnam ",
     },
     {
       'value': 22,
-      'label': "",
+      'label':
+          "Italiani's Pizza Han Thuyen, Bến Nghé, Ho Chi Minh, Hồ Chí Minh, Việt Nam ",
     },
     {
       'value': 23,
-      'label': "",
+      'label':
+          "Shop Men Fashion, Đường Độc Lập, Phú Mỹ, Tân Thành, Ba Ria - Vung Tau, Vietnam ",
     },
     {
       'value': 24,
-      'label': "",
+      'label': "Kep Coffee, Krong Kaeb, Cambodia ",
     },
     {
       'value': 25,
-      'label': "",
+      'label': "Karma Traders Kampot, Red Rd, Krong Kampot, Cambodia ",
     },
     {
       'value': 26,
-      'label': "",
+      'label': "Lao Sreyneang Shop, Phnom Penh, Cambodia ",
     },
     {
       'value': 27,
-      'label': "",
+      'label': "Burgershack, Street 51, Phnom Penh, Cambodia ",
     },
     {
       'value': 28,
-      'label': "",
+      'label':
+          "KOOMPI Boran & Research Lab, Preah Ang Yukanthor Street (19), Phnom Penh, Cambodia ",
     },
     {
       'value': 29,
-      'label': "",
+      'label': "Treetop Bungalows, Wat Svay Road, Krong Siem Reap, Cambodia ",
     },
     {
       'value': 30,
-      'label': "",
+      'label':
+          "My Pattaya Condo, Kasetsin, Pattaya City, Bang Lamung District, Chon Buri, Thailand ",
     },
     {
       'value': 31,
-      'label': "",
+      'label':
+          "Pattaya Beer Garden Beach Rd, Pattaya City, Bang Lamung District, Chon Buri 20260, Thailand ",
     },
     {
       'value': 32,
-      'label': "",
+      'label':
+          "Let's Hyde 4 Star Resort & Villas, ถนน พัทยา-นาเกลือ 18/2 ตำบล นาเกลือ Bang Lamung District, Chon Buri, Thailand ",
     },
     {
       'value': 33,
-      'label': "",
+      'label':
+          "ปูไข่ดองคลองขลุง บางนา, King Kaew 37 Alley, Racha Thewa, Bang Phli District, Samut Prakan, Thailand ",
     },
     {
       'value': 34,
-      'label': "",
+      'label': "Thailand, Bangkok, Sukhumvit Road, JINGI ",
     },
     {
       'value': 35,
-      'label': "",
+      'label':
+          "AwesomeSauce Truck, ถนน สุขุมวิท Phra Khanong Nuea, Watthana, Bangkok, Thailand ",
     },
     {
       'value': 36,
-      'label': "",
+      'label':
+          "AwesomeSauce Truck (Habito Mall) Habito Road, Phra Khanong Nuea, Watthana, Bangkok, Thailand ",
     },
     {
       'value': 37,
-      'label': "",
+      'label':
+          "Washcoin​ Plus​ สาขา Plum Rangsit Alive 1 ตึก A Khlong Nueng, Khlong Luang District, Pathum Thani, Thailand ",
     },
     {
       'value': 38,
-      'label': "",
+      'label':
+          "Washcoin Plus วงศ์สว่าง11 Wong Sawang 11 Alley, Wong Sawang, Bang Sue, Bangkok, Thailand ",
     },
     {
       'value': 39,
-      'label': "",
+      'label':
+          "WashCoin Plus สาขา เอกสินคอนโด ตึก D Ngamwongwarn 23 Alley, Lane 8, Bang Khen, Mueang Nonthaburi District, Nonthaburi, Thailand ",
     },
     {
       'value': 40,
-      'label': "",
+      'label':
+          "WashCoin Plus สาขา เกกีงาม 3 (พระจอมเกล้าฯลาดกระบัง) ซอย เกกีงาม 3 Lat Krabang, Bangkok, Thailand ",
     },
     {
       'value': 41,
-      'label': "",
+      'label':
+          "หลักสองยางยนต์ LS Auto, Phet Kasem 65/2 Alley, Road, Bang Khae, Bangkok, Thailand ",
     },
     {
       'value': 42,
-      'label': "",
+      'label':
+          "Trimers the barbershop Bang Krasaw, Mueang Nonthaburi District, Nonthaburi, Thailand ",
     },
     {
       'value': 43,
-      'label': "",
+      'label':
+          "Boom&Boom salon ซอย81/1 ถนนเพชรเกษม แขวงหนองค้างพลู Nong Khaem, Bangkok, Thailand ",
     },
     {
       'value': 44,
-      'label': "",
+      'label':
+          "Inner Beauty - อินเนอร์บิวติ้, Sutthisan Winitchai Road, Samsen Nok, Huai Khwang, Bangkok, Thailand ",
     },
     {
       'value': 45,
-      'label': "",
+      'label':
+          "Landhaus Bakery Phahon Yothin 5, Samsen Nai, Phaya Thai, Bangkok, Thailand ",
     },
     {
       'value': 46,
-      'label': "",
+      'label':
+          "Bitcoin Center Thailand Bang Kapi, Huai Khwang, Bangkok, Thailand ",
     },
     {
       'value': 47,
-      'label': "",
+      'label':
+          "KOSY Massage & Cut, Soi Sukhumvit 23, Khlong Toei Nuea, Watthana, Bangkok, Thailand ",
     },
     {
       'value': 48,
-      'label': "",
+      'label':
+          "Aspire, Sukhumvit Soi 16, Y SPA, Khlong Toei, Bangkok, Thailand ",
     },
     {
       'value': 49,
-      'label': "",
+      'label':
+          "MASH craft brews & bites, Convent Road, Silom, Bang Rak, Bangkok, Thailand ",
     },
     {
       'value': 50,
-      'label': "",
+      'label':
+          "The New Yorker Cafe, Sukhumvit Soi 22, Khlong Toei, Bangkok, Thailand ",
     }
   ];
 
