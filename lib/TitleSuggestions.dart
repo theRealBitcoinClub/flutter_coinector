@@ -992,7 +992,6 @@ class TitleSuggestions {
     'Beach',
     'Casa Sofia Inn',
     'Maya Lous Place',
-    'Artehelado Villahermosa',
     'Plaza',
     'City Center',
     'Rempah Rempah',

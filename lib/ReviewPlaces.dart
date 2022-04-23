@@ -266,43 +266,51 @@ class ReviewPlaces {
     },
     {
       'value': 3,
-      'label': "",
+      'label':
+          "Fundación Ocularis, Ignacio Allende, Centro de Linares, Linares, N.L., México ",
     },
     {
       'value': 4,
-      'label': "",
+      'label': "Floreria Petalo, Centro, Jalpan de Serra, Qro., México ",
     },
     {
       'value': 5,
-      'label': "",
+      'label':
+          "Prodental Depósito Dental, Cadereyta, zona dos extendida, Estrella, Santiago de Querétaro, Qro., Mexico ",
     },
     {
       'value': 6,
-      'label': "",
+      'label':
+          "Clinica Dental Polanco Denttify, Lope de Vega, Chapultepec Morales, Polanco V Sección, Mexico City, CDMX, Mexico ",
     },
     {
       'value': 7,
-      'label': "",
+      'label':
+          "High Clinical Medicine Specialty, Avenida San Fernando, Toriello Guerra, Mexico City, CDMX, Mexico ",
     },
     {
       'value': 8,
-      'label': "",
+      'label':
+          "Audio Acústica y Electrónica, S.A. De C.V., Chimalcoyotl, Chimalcoyoc, CDMX, Mexico ",
     },
     {
       'value': 9,
-      'label': "",
+      'label':
+          "Iphone Puebla, Avenida Antiguo Rancho a Morillotla, Real Fraccionamento de San Pedro, Atzala, San Andrés Cholula, Puebla, Mexico ",
     },
     {
       'value': 10,
-      'label': "",
+      'label': "Gammers Style, INFONAVIT el Carmen, Puebla, Mexico ",
     },
     {
       'value': 11,
-      'label': "",
+      'label':
+          "Truxgo S. de R.L. de C.V, Héroes de Puebla, Heroica Puebla de Zaragoza, Pue., Mexico ",
     },
     {
       'value': 12,
-      'label': "",
+      'label':
+          "Verde Pistache & Vegan, Horacio Nelson, Fraccionamento Costa Azul, Costa Azul, Acapulco, Guerrero, Mexico",
     },
     {
       'value': 13,
