@@ -53,7 +53,7 @@ class ReviewPlaces {
     {
       'value': 0,
       'label': 'Select Place in Australia',
-    },
+    } /*,
     {
       'value': 1,
       'label':
@@ -293,7 +293,7 @@ class ReviewPlaces {
       'value': 51,
       'label':
           "DISCOUNT STORE, Lukram Leirak Rd, Mayaikoibi, Imphal, Manipur, India ",
-    }
+    }*/
   ];
 
   static final List<Map<String, dynamic>> searchCombosEuropeRestaurants =
@@ -307,7 +307,7 @@ class ReviewPlaces {
     {
       'value': 0,
       'label': 'Select Place in Europe',
-    },
+    } /*,
     {
       'value': 1,
       'label':
@@ -549,14 +549,14 @@ class ReviewPlaces {
       'value': 50,
       'label':
           "The New Yorker Cafe, Sukhumvit Soi 22, Khlong Toei, Bangkok, Thailand ",
-    }
+    }*/
   ];
 
   static final List<Map<String, dynamic>> searchCombosAfrica = const [
     {
       'value': 0,
       'label': 'Select Place in Africa',
-    },
+    } /*,
     {
       'value': 1,
       'label':
@@ -824,14 +824,14 @@ class ReviewPlaces {
     {
       'value': 62,
       'label': 'Kefas Shopping Plaza, Galadima Aminu Road, Jimeta, Nigeria ',
-    }
+    }*/
   ];
 
   static final List<Map<String, dynamic>> searchCombosAsia = const [
     {
       'value': 0,
       'label': 'Select Place in Asia',
-    },
+    } /*,
     {
       'value': 1,
       'label': "Business Village - Dubai - United Arab Emirates",
@@ -1043,7 +1043,7 @@ class ReviewPlaces {
       'value': 50,
       'label':
           "Dm electronic, Ujha Road, near HP GAS godown, Ekta Vihar, Panipat, Haryana, India ",
-    }
+    }*/
   ];
 
   static final List<Map<String, dynamic>> searchCombosSouthAmerica = const [
@@ -1512,22 +1512,6 @@ class ReviewPlaces {
       'value': 46,
       'label':
           "Gull Henderson Henderson Valley Road, Henderson, Auckland, New Zealand ",
-    },
-    {
-      'value': 47,
-      'label': "",
-    },
-    {
-      'value': 48,
-      'label': "",
-    },
-    {
-      'value': 49,
-      'label': "",
-    },
-    {
-      'value': 50,
-      'label': "",
     }
   ];
 }
