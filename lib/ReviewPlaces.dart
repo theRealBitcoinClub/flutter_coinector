@@ -514,140 +514,140 @@ class ReviewPlaces {
     {
       'value': 7,
       'label':
-          "DailyVery Grocery mart, South Bopal, Ahmedabad, Gujarat, India ",
+          "DailyVery Grocery mart - South Bopal, Ahmedabad, Gujarat, India ",
     },
     {
       'value': 8,
       'label':
-          "Shah Property Solution, Jahangirabad, Sima Nagar, Surat, Gujarat, India ",
+          "Shah Property Solution - Jahangirabad, Sima Nagar, Surat, Gujarat, India ",
     },
     {
       'value': 9,
       'label':
-          "Radha krishna textile Market, Jay Laxmi Market, Moti Begumwadi, Begampura, Surat, Gujarat, India ",
+          "Radha krishna textile Market - Jay Laxmi Market, Moti Begumwadi, Begampura, Surat, Gujarat, India ",
     },
     {
       'value': 10,
       'label':
-          "B&Z LUXURY WORLD LLP, 1ST CROSS LANE, Swami Samarth Nagar, Lokhandwala Complex, Andheri West, Mumbai, Maharashtra, India ",
+          "B&Z LUXURY WORLD LLP - 1ST CROSS LANE, Swami Samarth Nagar, Lokhandwala Complex, Andheri West, Mumbai, Maharashtra, India ",
     },
     {
       'value': 11,
       'label':
-          "Kino Cottage, Aram Nagar, Versova, Andheri West, Mumbai, Maharashtra, India ",
+          "Kino Cottage - Aram Nagar, Versova, Andheri West, Mumbai, Maharashtra, India ",
     },
     {
       'value': 12,
       'label':
-          "Hosanna House Montessori, Veera Desai Road, Mhada Colony, Azad Nagar, Andheri West, Mumbai, Maharashtra, India ",
+          "Hosanna House Montessori - Veera Desai Road, Mhada Colony, Azad Nagar, Andheri West, Mumbai, Maharashtra, India ",
     },
     {
       'value': 13,
       'label':
-          "Haute Dog Pet Salon & Boutique Store, Jukarwadi, Juhu, Mumbai, Maharashtra, India ",
+          "Haute Dog Pet Salon & Boutique Store - Jukarwadi, Juhu, Mumbai, Maharashtra, India ",
     },
     {
       'value': 14,
       'label':
-          "Copa, North South Road Number 13, Gaothan Number 2, Vithal Nagar, Juhu, Mumbai, Maharashtra, India ",
+          "Copa - North South Road Number 13, Gaothan Number 2, Vithal Nagar, Juhu, Mumbai, Maharashtra, India ",
     },
     {
       'value': 15,
       'label':
-          "Sunder Niwas, Malviya Road, Satsang CHSL, Navpada, Vile Parle East, Vile Parle, Mumbai, Maharashtra, India ",
+          "Sunder Niwas - Malviya Road, Satsang CHSL, Navpada, Vile Parle East, Vile Parle, Mumbai, Maharashtra, India ",
     },
     {
       'value': 16,
       'label':
-          "Paramount sports n nutrition, Road Number 18, Chembur Gaothan, Chembur, Mumbai, Maharashtra, India ",
+          "Paramount sports n nutrition - Road Number 18, Chembur Gaothan, Chembur, Mumbai, Maharashtra, India ",
     },
     {
       'value': 17,
       'label':
-          "VIG Refreshments, Camp East, Chembur Colony, Chembur, Mumbai, Maharashtra, India ",
+          "VIG Refreshments - Camp East, Chembur Colony, Chembur, Mumbai, Maharashtra, India ",
     },
     {
       'value': 18,
       'label':
-          "Jo Hukum Mere Aaka, M G Road, Laxminagar, Khopoli, Maharashtra, India ",
+          "Jo Hukum Mere Aaka - M G Road, Laxminagar, Khopoli, Maharashtra, India ",
     },
     {
       'value': 19,
       'label':
-          "Bharat Adventure Tours, Shivaji Colony, Tilakwadi, Belagavi, Karnataka, India ",
+          "Bharat Adventure Tours - Shivaji Colony, Tilakwadi, Belagavi, Karnataka, India ",
     },
     {
       'value': 20,
-      'label': "Black Bull Goa, Anjuna, Goa, India ",
+      'label': "Black Bull Goa - Anjuna, Goa, India ",
     },
     {
       'value': 21,
-      'label': "Mish-Mar, Majorda-Utorda, Dongorim, Margao, Goa, India ",
+      'label': "Mish-Mar - Majorda-Utorda, Dongorim, Margao, Goa, India ",
     },
     {
       'value': 22,
-      'label': "Squirr Salon & Spa, Poovangal, Kozhikode, Kerala, India",
+      'label': "Squirr Salon & Spa - Poovangal, Kozhikode, Kerala, India",
     },
     {
       'value': 23,
-      'label': "Kookal Paradise, Kodaikanal, Tamil Nadu, India ",
+      'label': "Kookal Paradise - Kodaikanal, Tamil Nadu, India ",
     },
     {
       'value': 24,
-      'label': "Club India Resorts, Poombarai, Tamil Nadu, India ",
+      'label': "Club India Resorts - Poombarai, Tamil Nadu, India ",
     },
     {
       'value': 25,
       'label':
-          "Passiflora Ristorante Italiano, Mannavanur to Kodaikanal Rd, Poombarai, Tamil Nadu 624103, India ",
+          "Passiflora Ristorante Italiano - Mannavanur to Kodaikanal Rd, Poombarai, Tamil Nadu 624103, India ",
     },
     {
       'value': 26,
       'label':
-          "Boho Kodai, Thomas Summer House, Kurunji Nagar Road, Kodaikanal, Tamil Nadu, India ",
+          "Boho Kodai - Thomas Summer House, Kurunji Nagar Road, Kodaikanal, Tamil Nadu, India ",
     },
     {
       'value': 27,
       'label':
-          "The Craft Chain, Club Rd, Kodaikanal, Tamil Nadu 624101, India ",
+          "The Craft Chain - Club Rd, Kodaikanal, Tamil Nadu 624101, India ",
     },
     {
       'value': 28,
-      'label': "VJ Organic farms, Taluka, Hadoli, Maharashtra, India ",
+      'label': "VJ Organic farms - Taluka, Hadoli, Maharashtra, India ",
     },
     {
       'value': 29,
       'label':
-          "Sankar Srinivasan, Muthu cycle traders, Kulamangalam Main Road, Bama Nagar, Meenambalpuram, Tamil Nadu, India ",
+          "Sankar Srinivasan - Muthu cycle traders, Kulamangalam Main Road, Bama Nagar, Meenambalpuram, Tamil Nadu, India ",
     },
     {
       'value': 30,
       'label':
-          "K9 Connection, Kalakruti Avenue, Hanuman Colony, Royal Enclave Extn, Sakthi Vinayakar Nagar, Injambakkam, Chennai, Tamil Nadu, India ",
+          "K9 Connection - Kalakruti Avenue, Hanuman Colony, Royal Enclave Extn, Sakthi Vinayakar Nagar, Injambakkam, Chennai, Tamil Nadu, India ",
     },
     {
       'value': 31,
       'label':
-          "FIB-SOL Life Technologies Pvt. Ltd., OMR Road, Perungudi, Chennai, Tamil Nadu, India ",
+          "FIB-SOL Life Technologies Pvt. Ltd. - OMR Road, Perungudi, Chennai, Tamil Nadu, India ",
     },
     {
       'value': 32,
-      'label': "SMS ENTERPRISES, Mahalakshmi Layout, Kolar, Karnataka, India ",
+      'label': "SMS ENTERPRISES - Mahalakshmi Layout, Kolar, Karnataka, India ",
     },
     {
       'value': 33,
       'label':
-          "R N S Bikes Sales & Service, Venkatamma Layout, Subbayianiah Palyam, Kammanahalli, Bengaluru, Karnataka, India ",
+          "R N S Bikes Sales & Service - Venkatamma Layout, Subbayianiah Palyam, Kammanahalli, Bengaluru, Karnataka, India ",
     },
     {
       'value': 34,
       'label':
-          "Tracy Tech Works, beside MRO Office, Ajit Singh Nagar, PNT Colony, Vijayawada, Andhra Pradesh 520015, India ",
+          "Tracy Tech Works - beside MRO Office, Ajit Singh Nagar, PNT Colony, Vijayawada, Andhra Pradesh 520015, India ",
     },
     {
       'value': 35,
       'label':
-          "Samyuktha's Designer Studio, Kistamma Enclave, Alwal, Hyderabad, Telangana, India ",
+          "Samyuktha's Designer Studio - Kistamma Enclave, Alwal, Hyderabad, Telangana, India ",
     },
     {
       'value': 36,
