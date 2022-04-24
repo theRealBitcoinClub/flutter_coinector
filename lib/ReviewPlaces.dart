@@ -509,32 +509,32 @@ class ReviewPlaces {
     } /*,
     {
       'value': 1,
-      'label': "ROCA 4G, 9 de Julio, General Roca, Río Negro, Argentina ",
+      'label': "ROCA 4G - 9 de Julio, General Roca, Río Negro, Argentina ",
     },
     {
       'value': 2,
       'label':
-          "Dot Co working, Chacabuco 1512, R8332 Gral. Roca, Río Negro, Argentina ",
+          "Dot Co working - Chacabuco 1512, R8332 Gral. Roca, Río Negro, Argentina ",
     },
     {
       'value': 3,
       'label':
-          "Helados Lomoro, Lamadrid, Coronel Suárez, Buenos Aires Province, Argentina ",
+          "Helados Lomoro - Lamadrid, Coronel Suárez, Buenos Aires Province, Argentina ",
     },
     {
       'value': 4,
       'label':
-          "Theos café, bar y crypto, Bartolomé Mitre, Mar del Plata, Buenos Aires Province, Argentina ",
+          "Theos café, bar y crypto - Bartolomé Mitre, Mar del Plata, Buenos Aires Province, Argentina ",
     },
     {
       'value': 5,
       'label':
-          "Caffè Firenze, La Rioja 2055, Mar del Plata, Provincia de Buenos Aires, Argentina ",
+          "Caffè Firenze - La Rioja 2055, Mar del Plata, Provincia de Buenos Aires, Argentina ",
     },
     {
       'value': 6,
       'label':
-          "Indiana Beer & Food, Mendoza, Santa Rosa de Calamuchita, Cordoba, Argentina ",
+          "Indiana Beer & Food - Mendoza, Santa Rosa de Calamuchita, Cordoba, Argentina ",
     },
     {
       'value': 7,
@@ -544,7 +544,7 @@ class ReviewPlaces {
     {
       'value': 8,
       'label':
-          "La banana loca, Virgen de la Merced, San Miguel de Tucumán, Tucumán, Argentina ",
+          "La banana loca - Virgen de la Merced, San Miguel de Tucumán, Tucumán, Argentina ",
     },
     {
       'value': 9,
@@ -554,24 +554,24 @@ class ReviewPlaces {
     {
       'value': 10,
       'label':
-          "Maxi Cero, Bv. Presidente Julio A. Roca, Rafaela, Santa Fe Province, Argentina",
+          "Maxi Cero - Bv. Presidente Julio A. Roca, Rafaela, Santa Fe Province, Argentina",
     },
     {
       'value': 11,
-      'label': "Mitica Viajes, Rafaela, Santa Fe Province, Argentina ",
+      'label': "Mitica Viajes - Rafaela, Santa Fe Province, Argentina ",
     },
     {
       'value': 12,
-      'label': "Corework Argentina",
+      'label': "Coreworks CoWorking - Argentina",
     },
     {
       'value': 13,
-      'label': "Ken't Cultura Urbana, San Martín, DVA, Entre Ríos, Argentina ",
+      'label': "Ken't Cultura Urbana - San Martín, DVA, Entre Ríos, Argentina ",
     },
     {
       'value': 14,
       'label':
-          "Mae sport, El Rosedal, Granadero Baigorria, Santa Fe Province, Argentina ",
+          "Mae sport - El Rosedal, Granadero Baigorria, Santa Fe Province, Argentina ",
     },
     {
       'value': 15,
@@ -586,12 +586,12 @@ class ReviewPlaces {
     {
       'value': 17,
       'label':
-          "Mical Materiales, Avenida Hipólito Yrigoyen, Chacabuco, Buenos Aires Province, Argentina ",
+          "Mical Materiales - Avenida Hipólito Yrigoyen, Chacabuco, Buenos Aires Province, Argentina ",
     },
     {
       'value': 18,
       'label':
-          "Cimientos Materiales para la Construcción, BYG, Avenida General San Martín, Belén de Escobar, Buenos Aires Province, Argentina ",
+          "Cimientos Materiales para la Construcción - BYG, Avenida General San Martín, Belén de Escobar, Buenos Aires Province, Argentina ",
     },
     {
       'value': 19,
@@ -600,59 +600,59 @@ class ReviewPlaces {
     {
       'value': 20,
       'label':
-          "CM make up studio, Moreno, Pilar Centro, Buenos Aires Province, Argentina",
+          "CM make up studio - Moreno, Pilar Centro, Buenos Aires Province, Argentina",
     },
     {
       'value': 21,
       'label':
-          "Estacionamiento Paseo del Corralón, ARJ, Bartolomé Mitre, Luján, Buenos Aires Province, Argentina ",
+          "Estacionamiento Paseo del Corralón - ARJ, Bartolomé Mitre, Luján, Buenos Aires Province, Argentina ",
     },
     {
       'value': 22,
       'label':
-          "LosTatosRestobar, Mariano Acosta, Pilar Centro, Buenos Aires Province, Argentina ",
+          "LosTatosRestobar - Mariano Acosta, Pilar Centro, Buenos Aires Province, Argentina ",
     },
     {
       'value': 23,
       'label':
-          'Kiosco "El Tari", Labardén 1051, José C. Paz, Provincia de Buenos Aires, Argentina ',
+          'Kiosco El Tari - Labardén 1051, José C. Paz, Provincia de Buenos Aires, Argentina ',
     },
     {
       'value': 24,
       'label':
-          "Dr. Pablo Javier Baglioni, Cardiólogo, Doctor Gabriel Ardoino, Ramos Mejía, Buenos Aires Province, Argentina",
+          "Dr. Pablo Javier Baglioni - Cardiólogo, Doctor Gabriel Ardoino, Ramos Mejía, Buenos Aires Province, Argentina",
     },
     {
       'value': 25,
       'label':
-          "Domenica Pizza y Cafe Av. Dr. Ignacio Arieta 3596, B1754 San Justo, Provincia de Buenos Aires, Argentina ",
+          "Domenica Pizza y Cafe - Av. Dr. Ignacio Arieta 3596, B1754 San Justo, Provincia de Buenos Aires, Argentina ",
     },
     {
       'value': 26,
-      'label': "Club Larrazabal, Av. Larrazábal, Buenos Aires, Argentina ",
+      'label': "Club Larrazabal - Av. Larrazábal, Buenos Aires, Argentina ",
     },
     {
       'value': 27,
       'label':
-          "Carmelita Beauty, Mitre 3885, B1650 San Martín, Provincia de Buenos Aires, Argentina ",
+          "Carmelita Beauty - Mitre 3885, B1650 San Martín, Provincia de Buenos Aires, Argentina ",
     },
     {
       'value': 28,
       'label':
-          "K24, Av. de los Constituyentes, C1431 EZJ, Buenos Aires, Argentina ",
+          "K24 - Av. de los Constituyentes, C1431 EZJ, Buenos Aires, Argentina ",
     },
     {
       'value': 29,
-      'label': "K24, Av. Lope de Vega 3527, C1419 Buenos Aires, Argentina ",
+      'label': "K24 - Av. Lope de Vega 3527, C1419 Buenos Aires, Argentina ",
     },
     {
       'value': 30,
       'label':
-          "Hazme Limpio, Avenida Fondo de la Legua, Villa Adelina, Provincia de Buenos Aires, Argentina ",
+          "Hazme Limpio - Avenida Fondo de la Legua, Villa Adelina, Provincia de Buenos Aires, Argentina ",
     },
     {
       'value': 31,
-      'label': "Kiosco Monroe, Avenida Monroe, Buenos Aires, Argentina ",
+      'label': "Kiosco Monroe - Avenida Monroe, Buenos Aires, Argentina ",
     },
     {
       'value': 32,
@@ -661,12 +661,12 @@ class ReviewPlaces {
     },
     {
       'value': 33,
-      'label': "K24 (Kiosco) Av. Álvarez Thomas 801, Buenos Aires, Argentina",
+      'label': "K24 - (Kiosco) Av. Álvarez Thomas 801, Buenos Aires, Argentina",
     },
     {
       'value': 34,
       'label':
-          "Kiosco K24, General José Gervasio Artigas, Buenos Aires, Argentina ",
+          "Kiosco K24 - General José Gervasio Artigas, Buenos Aires, Argentina ",
     },
     {
       'value': 35,
@@ -675,27 +675,27 @@ class ReviewPlaces {
     {
       'value': 36,
       'label':
-          "K24 Kioscos, Avenida Francisco Beiró, C1419HZY, Buenos Aires, Argentina",
+          "K24 Kioscos - Avenida Francisco Beiró, C1419HZY, Buenos Aires, Argentina",
     },
     {
       'value': 37,
       'label':
-          "M24 Market Lope de Vega, Avenida Lope de Vega, Buenos Aires, Argentina ",
+          "M24 Market Lope de Vega - Avenida Lope de Vega, Buenos Aires, Argentina ",
     },
     {
       'value': 38,
       'label':
-          "Kiosco M24 Market, Cuenca 2599, C1417AAG, Buenos Aires, Argentina ",
+          "Kiosco M24 Market - Cuenca 2599, C1417AAG, Buenos Aires, Argentina ",
     } ,
     {
       'value': 1,
       'label':
-          'Froggs & Habit Intergalactic Trading Corporation, Lakeside Road, Farms, Gqeberha, South Africa',
+          'Froggs & Habit Intergalactic Trading Corporation - Lakeside Road, Farms, Gqeberha, South Africa',
     },
     {
       'value': 2,
       'label':
-          'Linen and Bath Vaal Mall, Barrage Road, Vanderbijlpark S. W. 2, Vanderbijlpark, South Africa',
+          'Linen and Bath Vaal Mall - Barrage Road, Vanderbijlpark S. W. 2, Vanderbijlpark, South Africa',
     },
     {
       'value': 3,
