@@ -270,62 +270,63 @@ class ReviewPlaces {
     },
     {
       'value': 1,
-      'label': "CARLO UOMO, Bogota, Colombia ",
+      'label': "CARLO UOMO - Bogota, Colombia ",
     },
     {
       'value': 2,
       'label':
-          "Fast Food Cachorros Asados, Carrera 56, Cali, Valle del Cauca, Colombia ",
+          "Fast Food Cachorros Asados - Carrera 56, Cali, Valle del Cauca, Colombia ",
     },
     {
       'value': 3,
-      'label': "FUNCTIONAL BOX, Cali, Valle, Colombia ",
+      'label': "FUNCTIONAL BOX - Cali, Valle, Colombia ",
     },
     {
       'value': 4,
-      'label': "Baby Premium, Carrera 11, Popayán, Cauca, Colombia ",
+      'label': "Baby Premium - Carrera 11, Popayán, Cauca, Colombia ",
     },
     {
       'value': 5,
-      'label': "SPA Motos Racing, Calle 8, Popayán, Cauca, Colombia ",
+      'label': "SPA Motos Racing - Calle 8, Popayán, Cauca, Colombia ",
     },
     {
       'value': 6,
       'label':
-          "CASA BLANCA Eventos Popayán, Calle 6, Popayán, Cauca, Colombia ",
+          "CASA BLANCA Eventos Popayán - Calle 6, Popayán, Cauca, Colombia ",
     },
     {
       'value': 7,
-      'label': "Vida Sana, Pasto, Narino, Colombia ",
+      'label': "Vida Sana - Pasto, Narino, Colombia ",
     },
     {
       'value': 8,
-      'label': "ILAR Arte+Diseño, Pasto, Nariño, Colombia ",
+      'label': "ILAR Arte+Diseño - Pasto, Nariño, Colombia ",
     },
     {
       'value': 9,
-      'label': "Hostel Coco Loco, Canoa, Manabí, Ecuador ",
+      'label': "Hostel Coco Loco - Canoa, Manabí, Ecuador ",
     },
     {
       'value': 10,
-      'label': "Hotel San Antonio, Jr. Amazonas, Bagua, Peru ",
+      'label': "Hotel San Antonio - Jr. Amazonas, Bagua, Peru ",
     },
     {
       'value': 11,
-      'label': "PCGerente, Guayaquil, Ecuador ",
+      'label': "PCGerente - Guayaquil, Ecuador ",
     },
     {
       'value': 12,
-      'label': "DediSpace Networks, Manzana 6, Guayaquil, Ecuador ",
+      'label': "DediSpace Networks - Manzana 6, Guayaquil, Ecuador ",
     },
     {
       'value': 13,
-      'label': "Inter Apart Hotel, Salta - Capital, Salta Province, Argentina ",
+      'label':
+          "Inter Apart Hotel - Salta - Capital, Salta Province, Argentina ",
     },
     {
       'value': 14,
       'label':
-          "Agua de Mar Salta, Avenida San Martín, Salta, Salta Province, Argentina ",
+          "Agua de Mar Salta - Avenida San Martín, Salta, Salta Province, Argentina ",
     },
     {
       'value': 15,
@@ -334,7 +335,7 @@ class ReviewPlaces {
     {
       'value': 16,
       'label':
-          "Panadería Dos Espigas, Avellaneda, Guaymallén, Mendoza, Argentina ",
+          "Panadería Dos Espigas - Avellaneda, Guaymallén, Mendoza, Argentina ",
     },
     {
       'value': 17,
@@ -363,7 +364,7 @@ class ReviewPlaces {
     {
       'value': 22,
       'label':
-          "Fisk Inglês e Espanhol - Rua Boticário Moncorvo - Centro, Feira de Santana - BA, Brasil ",
+          "Fisk English and Spanish - Rua Boticário Moncorvo - Centro, Feira de Santana - BA, Brasil ",
     },
     {
       'value': 23,
@@ -388,12 +389,12 @@ class ReviewPlaces {
     {
       'value': 27,
       'label':
-          "Manacá Prumirim B&B, BR101 Condomínio Prumirim - Vereda Três - Prumirim Beach, Ubatuba - State of São Paulo, Brazil ",
+          "Manacá Prumirim B&B - BR101 Condomínio Prumirim - Vereda Três - Prumirim Beach, Ubatuba - State of São Paulo, Brazil ",
     },
     {
       'value': 28,
       'label':
-          "Restaurante Mestiço - Rua Fernando de Albuquerque - Consolação, São Paulo - SP, Brasil ",
+          "Mestiço - Rua Fernando de Albuquerque - Consolação, São Paulo - SP, Brasil ",
     },
     {
       'value': 29,
