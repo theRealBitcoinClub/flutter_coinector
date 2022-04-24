@@ -253,476 +253,7 @@ class ReviewPlaces {
     {
       'value': 0,
       'label': 'Select Place in Australia',
-    } /*,
-    {
-      'value': 1,
-      'label':
-          "Corazón HiFi - Calzada A. de Juambelz, Jardines reforma, Torreón, Coah., Mexico ",
-    },
-    {
-      'value': 2,
-      'label':
-          "Ancona Ocular - Avenida Ignacio Morones Prieto, Sertoma, Monterrey, Nuevo Leon, Mexico ",
-    },
-    {
-      'value': 3,
-      'label':
-          "Fundación Ocularis - Ignacio Allende, Centro de Linares, Linares, N.L., México ",
-    },
-    {
-      'value': 4,
-      'label': "Floreria Petalo - Centro, Jalpan de Serra, Qro., México ",
-    },
-    {
-      'value': 5,
-      'label':
-          "Prodental Depósito Dental, Cadereyta, zona dos extendida, Estrella, Santiago de Querétaro, Qro., Mexico ",
-    },
-    {
-      'value': 6,
-      'label':
-          "Clinica Dental Polanco Denttify - Lope de Vega, Chapultepec Morales, Polanco V Sección, Mexico City, CDMX, Mexico ",
-    },
-    {
-      'value': 7,
-      'label':
-          "High Clinical Medicine Specialty - Avenida San Fernando, Toriello Guerra, Mexico City, CDMX, Mexico ",
-    },
-    {
-      'value': 8,
-      'label':
-          "Audio Acústica y Electrónica - S.A. De C.V., Chimalcoyotl, Chimalcoyoc, CDMX, Mexico ",
-    },
-    {
-      'value': 9,
-      'label':
-          "IphonePuebla.com - Avenida Antiguo Rancho a Morillotla, Real Fraccionamento de San Pedro, Atzala, San Andrés Cholula, Puebla, Mexico ",
-    },
-    {
-      'value': 10,
-      'label': "Gammers Style - INFONAVIT el Carmen, Puebla, Mexico ",
-    },
-    {
-      'value': 11,
-      'label':
-          "Truxgo S. de R.L. de C.V - Héroes de Puebla, Heroica Puebla de Zaragoza, Pue., Mexico ",
-    },
-    {
-      'value': 12,
-      'label':
-          "Verde Pistache & Vegan - Horacio Nelson, Fraccionamento Costa Azul, Costa Azul, Acapulco, Guerrero, Mexico",
-    },
-    {
-      'value': 13,
-      'label':
-          "The Vegan Personal Chef - La Veleta, Tulum, Quintana Roo, Mexico ",
-    },
-    {
-      'value': 14,
-      'label': "Frida Flowers - La Veleta, Tulum, Quintana Roo, Mexico ",
-    },
-    {
-      'value': 15,
-      'label': "SKÅL Antigua - 4a Calle Oriente, Antigua Guatemala, Guatemala ",
-    },
-    {
-      'value': 16,
-      'label': "Wasap comida rápida y más - San Salvador, El Salvador ",
-    },
-    {
-      'value': 17,
-      'label': "Airport X Managua Hotel - Managua, Nicaragua ",
-    },
-    {
-      'value': 18,
-      'label': "Perfumescss Metrocenter - Centro, Caracas, Capital District ",
-    },
-    {
-      'value': 19,
-      'label': "Art Hotel Managua - 19.ª Av Suroeste, Managua, Nicaragua ",
-    },
-    {
-      'value': 20,
-      'label': "Surf Ranch Hotel & Resort - Popoyo, Las Salinas, Nicaragua ",
-    },
-    {
-      'value': 21,
-      'label': "Surf Ranch Hotel & Resort - San Juan del Sur, Nicaragua ",
-    },
-    {
-      'value': 22,
-      'label':
-          "Surf Ranch Tamarindo - Calle Central, Guanacaste Province, Tamarindo, Costa Rica ",
-    },
-    {
-      'value': 23,
-      'label':
-          "SEO Costa Rica - Calle Hernández, Sector San Francisco, Heredia Province, Costa Rica ",
-    },
-    {
-      'value': 24,
-      'label': "MotoRacer CR Cosa Rica",
-    },
-    {
-      'value': 25,
-      'label': "Quepoa Expeditions - Puntarenas Province, Quepos, Costa Rica ",
-    },
-    {
-      'value': 26,
-      'label':
-          "Show Pony Beach Resort - Las Lajas, Las Lajas, Chiriquí, Panama ",
-    },
-    {
-      'value': 27,
-      'label':
-          "Picasso Restaurant - Corner of Avendias Eisenmann, Avenida Punta Prieta, Las Lajas, Panamá Oeste, Panama ",
-    },
-    {
-      'value': 28,
-      'label': "Disvimol - Táchira Venezuela, Vista Alegre, Panamá ",
-    },
-    {
-      'value': 29,
-      'label': "Avantika Cocina Tailandesa y Lounge - Panamá, Panama ",
-    },
-    {
-      'value': 30,
-      'label': "TRIXEL, Cra 51B #80-58, Barranquilla, Atlántico, Colombia ",
-    },
-    {
-      'value': 31,
-      'label':
-          "Juan Express Licores - Calle 30, Provincia de Cartagena, Bolívar, Colombia ",
-    },
-    {
-      'value': 32,
-      'label':
-          "La Cocina de la Abuela - Calle 34, Bucaramanga, Santander, Colombia ",
-    },
-    {
-      'value': 33,
-      'label': "REALTATUADORA - Calle 53#73-51, Medellín, Antioquia, Colombia ",
-    },
-    {
-      'value': 34,
-      'label':
-          "Baruc Shop /Street Clothing - Cl. 51 #73-134, Medellín, Medellin, Antioquia, Colombia ",
-    },
-    {
-      'value': 35,
-      'label':
-          "CANGURO - Cra. 52ᴬ #47-27, Medellín, Medellin, Antioquia, Colombia ",
-    },
-    {
-      'value': 36,
-      'label':
-          "The House Technology - Carrera 68A, Medellín, Antioquia, Colombia ",
-    },
-    {
-      'value': 37,
-      'label':
-          "Lithography Rocco Charts, Calle 42, Medellín, Antioquia, Colombia ",
-    },
-    {
-      'value': 38,
-      'label':
-          "Burger Las Diosas - Cra. 74 #40-02, Medellín, Medellin, Antioquia, Colombia ",
-    },
-    {
-      'value': 39,
-      'label':
-          "Heladería Vakiatto - Cl. 32C #6546, Medellín, Medellin, Antioquia, Colombia ",
-    },
-    {
-      'value': 40,
-      'label':
-          "ENVICARGO COMPANYS SAS - Calle 9, Medellin, Antioquia, Colombia ",
-    },
-    {
-      'value': 41,
-      'label': "Athena Bitcoin Inc - Carrera 32, Medellin, Antioquia, Colombia ",
-    },
-    {
-      'value': 42,
-      'label':
-          "MyF Import S.A.S - Cra. 23 ## 53-8, Manizales, Caldas, Colombia ",
-    },
-    {
-      'value': 43,
-      'label':
-          "Seguridad Informática DragonJAR SAS - Manizales, Caldas, Colombia ",
-    },
-    {
-      'value': 44,
-      'label': "Super Ideas - Cra. 13, Pereira, Risaralda, Colombia ",
-    },
-    {
-      'value': 45,
-      'label':
-          "Compudemano - Tienda Apple y DJI, Carrera 15, Pereira, Risaralda, Colombia ",
-    },
-    {
-      'value': 46,
-      'label': "MAITEK SAS - Cota, Cundinamarca, Colombia ",
-    },
-    {
-      'value': 47,
-      'label':
-          "FIT TEC (Gimnasio de Electroestimulacion) - Cl. 106 #14-30, Bogotá, Bogotá, Colombia ",
-    },
-    {
-      'value': 48,
-      'label':
-          'Mr. Isaac Fast Food., Calle 68d Sur, Bogotá, Bogota, Colombia ',
-    },
-    {
-      'value': 49,
-      'label': "Representaciones Herdanys Fashion - Caracas, Capital District ",
-    },
-    {
-      'value': 50,
-      'label': "Panda Express Cafeteria - Carrera 5, Bogota, Colombia ",
-    } ,
-    {
-      'value': 1,
-      'label':
-          "Janta Printing Press - Mill Road, near Agrasen Park, Shamli, Uttar Pradesh, India ",
-    },
-    {
-      'value': 2,
-      'label':
-          "Diljeet Auto Parts - Kuchesar Road, near HP Petrol Pump, B.B. Nagar, Uttar Pradesh, India ",
-    },
-    {
-      'value': 3,
-      'label':
-          "HTML ECOSYSTEM - Block AG, Sanjay Gandhi Transport Nagar, Delhi, India ",
-    },
-    {
-      'value': 4,
-      'label': "NottyBoy® (Oddway Icare Private Limited) ",
-    },
-    {
-      'value': 5,
-      'label': "Digi195 - Prem Nagar, Najafgarh, Delhi, India ",
-    },
-    {
-      'value': 6,
-      'label':
-          "Advertising & Public Relations Branch, New Delhi, Delhi, India ",
-    },
-    {
-      'value': 7,
-      'label':
-          "DailyVery Grocery mart - South Bopal, Ahmedabad, Gujarat, India ",
-    },
-    {
-      'value': 8,
-      'label':
-          "Shah Property Solution - Jahangirabad, Sima Nagar, Surat, Gujarat, India ",
-    },
-    {
-      'value': 9,
-      'label':
-          "Radha krishna textile Market - Jay Laxmi Market, Moti Begumwadi, Begampura, Surat, Gujarat, India ",
-    },
-    {
-      'value': 10,
-      'label':
-          "B&Z LUXURY WORLD LLP - 1ST CROSS LANE, Swami Samarth Nagar, Lokhandwala Complex, Andheri West, Mumbai, Maharashtra, India ",
-    },
-    {
-      'value': 11,
-      'label':
-          "Kino Cottage - Aram Nagar, Versova, Andheri West, Mumbai, Maharashtra, India ",
-    },
-    {
-      'value': 12,
-      'label':
-          "Hosanna House Montessori - Veera Desai Road, Mhada Colony, Azad Nagar, Andheri West, Mumbai, Maharashtra, India ",
-    },
-    {
-      'value': 13,
-      'label':
-          "Haute Dog Pet Salon & Boutique Store - Jukarwadi, Juhu, Mumbai, Maharashtra, India ",
-    },
-    {
-      'value': 14,
-      'label':
-          "Copa - North South Road Number 13, Gaothan Number 2, Vithal Nagar, Juhu, Mumbai, Maharashtra, India ",
-    },
-    {
-      'value': 15,
-      'label':
-          "Sunder Niwas - Malviya Road, Satsang CHSL, Navpada, Vile Parle East, Vile Parle, Mumbai, Maharashtra, India ",
-    },
-    {
-      'value': 16,
-      'label':
-          "Paramount sports n nutrition - Road Number 18, Chembur Gaothan, Chembur, Mumbai, Maharashtra, India ",
-    },
-    {
-      'value': 17,
-      'label':
-          "VIG Refreshments - Camp East, Chembur Colony, Chembur, Mumbai, Maharashtra, India ",
-    },
-    {
-      'value': 18,
-      'label':
-          "Jo Hukum Mere Aaka - M G Road, Laxminagar, Khopoli, Maharashtra, India ",
-    },
-    {
-      'value': 19,
-      'label':
-          "Bharat Adventure Tours - Shivaji Colony, Tilakwadi, Belagavi, Karnataka, India ",
-    },
-    {
-      'value': 20,
-      'label': "Black Bull Goa - Anjuna, Goa, India ",
-    },
-    {
-      'value': 21,
-      'label': "Mish-Mar - Majorda-Utorda, Dongorim, Margao, Goa, India ",
-    },
-    {
-      'value': 22,
-      'label': "Squirr Salon & Spa - Poovangal, Kozhikode, Kerala, India",
-    },
-    {
-      'value': 23,
-      'label': "Kookal Paradise - Kodaikanal, Tamil Nadu, India ",
-    },
-    {
-      'value': 24,
-      'label': "Club India Resorts - Poombarai, Tamil Nadu, India ",
-    },
-    {
-      'value': 25,
-      'label':
-          "Passiflora Ristorante Italiano - Mannavanur to Kodaikanal Rd, Poombarai, Tamil Nadu 624103, India ",
-    },
-    {
-      'value': 26,
-      'label':
-          "Boho Kodai - Thomas Summer House, Kurunji Nagar Road, Kodaikanal, Tamil Nadu, India ",
-    },
-    {
-      'value': 27,
-      'label':
-          "The Craft Chain - Club Rd, Kodaikanal, Tamil Nadu 624101, India ",
-    },
-    {
-      'value': 28,
-      'label': "VJ Organic farms - Taluka, Hadoli, Maharashtra, India ",
-    },
-    {
-      'value': 29,
-      'label':
-          "Sankar Srinivasan - Muthu cycle traders, Kulamangalam Main Road, Bama Nagar, Meenambalpuram, Tamil Nadu, India ",
-    },
-    {
-      'value': 30,
-      'label':
-          "K9 Connection - Kalakruti Avenue, Hanuman Colony, Royal Enclave Extn, Sakthi Vinayakar Nagar, Injambakkam, Chennai, Tamil Nadu, India ",
-    },
-    {
-      'value': 31,
-      'label':
-          "FIB-SOL Life Technologies Pvt. Ltd. - OMR Road, Perungudi, Chennai, Tamil Nadu, India ",
-    },
-    {
-      'value': 32,
-      'label': "SMS ENTERPRISES - Mahalakshmi Layout, Kolar, Karnataka, India ",
-    },
-    {
-      'value': 33,
-      'label':
-          "R N S Bikes Sales & Service - Venkatamma Layout, Subbayianiah Palyam, Kammanahalli, Bengaluru, Karnataka, India ",
-    },
-    {
-      'value': 34,
-      'label':
-          "Tracy Tech Works - beside MRO Office, Ajit Singh Nagar, PNT Colony, Vijayawada, Andhra Pradesh 520015, India ",
-    },
-    {
-      'value': 35,
-      'label':
-          "Samyuktha's Designer Studio - Kistamma Enclave, Alwal, Hyderabad, Telangana, India ",
-    },
-    {
-      'value': 36,
-      'label':
-          "Chandra Bar and Restaurant, New Bustand, Korutla, Telangana, India ",
-    },
-    {
-      'value': 37,
-      'label': "Vilas avhad, Tadlimbla, Maharashtra, India ",
-    },
-    {
-      'value': 38,
-      'label':
-          "SUNRISE SPORTS, near maharaja statue, Paralakhemundi, Odisha, India ",
-    },
-    {
-      'value': 39,
-      'label': "Tapas Jharsuguda, Odisha, India",
-    },
-    {
-      'value': 40,
-      'label':
-          "Self employed, Dada Nagar, Azad Nagar, Kanpur, Uttar Pradesh, India ",
-    },
-    {
-      'value': 41,
-      'label':
-          "Azhar Textiles, National Highway 33, Nathnagar, Bhagalpur, Bihar, India ",
-    },
-    {
-      'value': 42,
-      'label':
-          "Dhan Lakshmi, Canning Street, Bagree Market, Bortola, Barabazar Market, Kolkata, West Bengal, India ",
-    },
-    {
-      'value': 43,
-      'label':
-          "Couch Potato, Abhedananda Road, Girish Park, Darjipara, Ward Number 17, Kolkata, West Bengal, India ",
-    },
-    {
-      'value': 44,
-      'label':
-          "CryptoKon IT & Consultancy Services, Pioneer Park, Chkravartipara, Barasat, Kolkata, West Bengal, India ",
-    },
-    {
-      'value': 45,
-      'label':
-          "Fancy Bedding Store, Pundooah Station Road, Pandua, West Bengal, India ",
-    },
-    {
-      'value': 46,
-      'label': "Ar veraities store, Captain Monir Road, Cumilla, Bangladesh ",
-    },
-    {
-      'value': 47,
-      'label': "Ashuran Jame Masjid, Bangladesh ",
-    },
-    {
-      'value': 48,
-      'label': "IT Soft Ltd, Katasur Road, Dhaka, Bangladesh ",
-    },
-    {
-      'value': 49,
-      'label':
-          "ওয়েস্টার্ন ইউনিয়ন মানি ট্রান্সফার, Begum Rokeya Avenue, Dhaka, Bangladesh ",
-    },
-    {
-      'value': 50,
-      'label': "RFL Best Buy - Uttara 10, Dhaka, Bangladesh ",
-    },
-    {
-      'value': 51,
-      'label':
-          "DISCOUNT STORE, Lukram Leirak Rd, Mayaikoibi, Imphal, Manipur, India ",
-    }*/
+    }
   ];
 
   static final List<Map<String, dynamic>> searchCombosEuropeRestaurants =
@@ -972,32 +503,32 @@ class ReviewPlaces {
     {
       'value': 1,
       'label':
-          "Satoshi House, 236 Pasakhangwaeng Waeng Chiang Rai 57150 TH, Ban Pasakhangwaeng Waeng, Chiang Saen District, 57150, Thailand",
+          "Satoshi House - 236 Pasakhangwaeng Waeng Chiang Rai 57150 TH, Ban Pasakhangwaeng Waeng, Chiang Saen District, 57150, Thailand",
     },
     {
       'value': 2,
       'label':
-          "Catmosphere Cat Café, 233/5 Huay Kaew Rd, Suthep, Mueang Chiang Mai District, Chiang Mai 50300, Thailand ",
+          "Catmosphere Cat Café - 233/5 Huay Kaew Rd, Suthep, Mueang Chiang Mai District, Chiang Mai 50300, Thailand ",
     },
     {
       'value': 3,
       'label':
-          "บ้านไร่ ส.ทรัพย์รุ่งเรือง KM. ไร่​ ส.ทรัพย์​รุ่งเรือง​ KM DPT. Alley, Ban Mai, Si Chomphu District, Khon Kaen, Thailand ",
+          "บ้านไร่ ส.ทรัพย์รุ่งเรือง KM. - ไร่​ ส.ทรัพย์​รุ่งเรือง​ KM DPT. Alley, Ban Mai, Si Chomphu District, Khon Kaen, Thailand ",
     },
     {
       'value': 4,
       'label':
-          "ບ້ານຊຳຄອນ, ເມືອງລ້ອງຊານ, ແຂວງໄຊ​ສົມບູນ Meung Hom ເມືອງລ້ອງຊານ ແຂວງໄຊ​ສົມບູນ Vientiane, Laos ",
+          "ບ້ານຊຳຄອນ, ເມືອງລ້ອງຊານ - ແຂວງໄຊ​ສົມບູນ Meung Hom ເມືອງລ້ອງຊານ ແຂວງໄຊ​ສົມບູນ Vientiane, Laos ",
     },
     {
       'value': 5,
       'label':
-          "vuhaison doanh nghiep nho, Lý Thường Kiệt, Thành phố Yên Bái, Yên Bái, Viet Nam ",
+          "vuhaison doanh nghiep nho - Lý Thường Kiệt, Thành phố Yên Bái, Yên Bái, Viet Nam ",
     },
     {
       'value': 6,
       'label':
-          "Agribank phòng giao dịch Nguyễn Trãi, Đường Nguyễn Trãi, Thượng Đình, Thanh Xuân, Hà Nội, Việt Nam ",
+          "Agribank phòng giao dịch Nguyễn Trãi - Đường Nguyễn Trãi, Thượng Đình, Thanh Xuân, Hà Nội, Việt Nam ",
     },
     {
       'value': 7,
@@ -1007,41 +538,41 @@ class ReviewPlaces {
     {
       'value': 8,
       'label':
-          "Agribank Chi nhánh Đại Tân, Hoàng Tân, Chí Linh District, Hai Duong, Vietnam ",
+          "Agribank Chi nhánh Đại Tân - Hoàng Tân, Chí Linh District, Hai Duong, Vietnam ",
     },
     {
       'value': 9,
       'label':
-          "Mc Khánh Duy, An Định, Thụy Văn, Thái Thụy, Thai Binh, Vietnam ",
+          "Mc Khánh Duy - An Định, Thụy Văn, Thái Thụy, Thai Binh, Vietnam ",
     },
     {
       'value': 10,
-      'label': "Pilgrim's Kitchen & Inn, Savannakhet, Laos ",
+      'label': "Pilgrim's Kitchen & Inn - Savannakhet, Laos ",
     },
     {
       'value': 11,
       'label':
-          "SA เฉลิมวงค์ Chiang Yuen, Chiang Yuen District, Maha Sarakham 44160, Thailand ",
+          "SA เฉลิมวงค์ - Chiang Yuen, Chiang Yuen District, Maha Sarakham 44160, Thailand ",
     },
     {
       'value': 12,
       'label':
-          "Melody Buffet BBQ, Lê Đức Thọ, Thọ Quang, Sơn Trà, Đà Nẵng, Viet Nam ",
+          "Melody Buffet BBQ - Lê Đức Thọ, Thọ Quang, Sơn Trà, Đà Nẵng, Viet Nam ",
     },
     {
       'value': 13,
       'label':
-          "YOLO Apartment Homes, Trần Bạch Đằng, Phước Mỹ, Sơn Trà, Đà Nẵng, Vietnam ",
+          "YOLO Apartment Homes - Trần Bạch Đằng, Phước Mỹ, Sơn Trà, Đà Nẵng, Vietnam ",
     },
     {
       'value': 14,
       'label':
-          "COMPANY LIMITED TRADING HONG AN Import Export Service, Hồ Văn Leo, khu phố 1 p, Tam Hòa, Thành phố Biên Hòa, Dong Nai, Vietnam ",
+          "COMPANY LIMITED TRADING HONG AN Import Export Service - Hồ Văn Leo, khu phố 1 p, Tam Hòa, Thành phố Biên Hòa, Dong Nai, Vietnam ",
     },
     {
       'value': 15,
       'label':
-          "Sofa Êm, Cityland Center Hills, Phường 7, Gò Vấp, Ho Chi Minh City, Vietnam ",
+          "Sofa Êm - Cityland Center Hills, Phường 7, Gò Vấp, Ho Chi Minh City, Vietnam ",
     },
     {
       'value': 16,
