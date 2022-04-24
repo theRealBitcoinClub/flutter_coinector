@@ -1297,6 +1297,20 @@ class TitleSuggestions {
     "Hotel Atlántida - Avenida Manuel Belgrano 582, Río Grande, Tierra del Fuego Province, Argentina ",
     "Quemehuencho - Roque Sáenz Peña, Puerto Madryn, Chubut Province, Argentina ",
     "Navone Juan Servicio Tecnico - Avenida Juan Domingo Perón, Carmen de Patagones, Buenos Aires Province, Argentina ",
+    "Aspire Club - Soi Sukhumvit 23, Klongtoey Nue, Watthana, Bangkok, Thailand ",
+    "The Sport Corner - Sukhumvit Rd., Klongtoey Khlong Toei, Thailand Bangkok 10110, Thailand ",
+    "Cute Corner Cuisine - Sukhumvit Soi 18, Khlong Toei, Bangkok, Thailand ",
+    "Cute Concept constant beauty - Sukhumvit Soi 18, Khlong Toei, Bangkok, Thailand ",
+    "Panini MAFIA - Soi Ekkamai 5, Klongton Nua, Watthana, Bangkok, Thailand ",
+    "Sole Mio - Akkhara Phat Alley, Khlong Tan Nuea, Watthana, Bangkok, Thailand ",
+    "UnionSPACE - Sukhumvit 61 Alley, Khlong Tan Nuea, Watthana, Bangkok, Thailand ",
+    "LBD™ - La Bombona Diving™, MAIN CENTER, Ko Tao, Koh Tao Surat Thani, Thailand ",
+    "Drift by Big Blue - Ko Tao, Ko Pha-ngan District, Surat Thani, Thailand ",
+    "Buddha Cafe - Ko Pha-ngan Sub-district, Ko Pha-ngan District, Surat Thani, Thailand ",
+    "BEACHUB - Ko Pha-ngan Sub-district, Ko Pha-ngan District, Surat Thani 84280, Thailand ",
+    "Bliss Villas - Koh Phangan, Ko Pha-ngan District, Surat Thani, Thailand ",
+    "One Love Dome - Ko Pha-ngan Sub-district, Ko Pha-ngan District, Surat Thani 84280, Thailand ",
+    "Out back Bar & Restaurant - Ban Tai, Kohphangan, Surat Thani, Thailand ",
   };
 
   static final titleTags = const {

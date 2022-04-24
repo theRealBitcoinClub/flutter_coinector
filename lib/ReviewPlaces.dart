@@ -492,37 +492,37 @@ class ReviewPlaces {
     {
       'value': 1,
       'label':
-          "Aspire Club, Soi Sukhumvit 23, Klongtoey Nue, Watthana, Bangkok, Thailand ",
+          "Aspire Club - Soi Sukhumvit 23, Klongtoey Nue, Watthana, Bangkok, Thailand ",
     },
     {
       'value': 2,
       'label':
-          "The Sport Corner Sukhumvit Rd., Klongtoey Khlong Toei, Thailand Bangkok 10110, Thailand ",
+          "The Sport Corner - Sukhumvit Rd., Klongtoey Khlong Toei, Thailand Bangkok 10110, Thailand ",
     },
     {
       'value': 3,
       'label':
-          "Cute Corner Cuisine, Sukhumvit Soi 18, Khlong Toei, Bangkok, Thailand ",
+          "Cute Corner Cuisine - Sukhumvit Soi 18, Khlong Toei, Bangkok, Thailand ",
     },
     {
       'value': 4,
       'label':
-          "Cute Concept constant beauty, Sukhumvit Soi 18, Khlong Toei, Bangkok, Thailand ",
+          "Cute Concept constant beauty - Sukhumvit Soi 18, Khlong Toei, Bangkok, Thailand ",
     },
     {
       'value': 5,
       'label':
-          "Panini MAFIA, Soi Ekkamai 5, Klongton Nua, Watthana, Bangkok, Thailand ",
+          "Panini MAFIA - Soi Ekkamai 5, Klongton Nua, Watthana, Bangkok, Thailand ",
     },
     {
       'value': 6,
       'label':
-          "Sole Mio Akkhara Phat Alley, Khlong Tan Nuea, Watthana, Bangkok, Thailand ",
+          "Sole Mio - Akkhara Phat Alley, Khlong Tan Nuea, Watthana, Bangkok, Thailand ",
     },
     {
       'value': 7,
       'label':
-          "UnionSPACE, Sukhumvit 61 Alley, Khlong Tan Nuea, Watthana, Bangkok, Thailand ",
+          "UnionSPACE - Sukhumvit 61 Alley, Khlong Tan Nuea, Watthana, Bangkok, Thailand ",
     },
     {
       'value': 8,
@@ -532,32 +532,32 @@ class ReviewPlaces {
     {
       'value': 9,
       'label':
-          "Drift by Big Blue, Ko Tao, Ko Pha-ngan District, Surat Thani, Thailand ",
+          "Drift by Big Blue - Ko Tao, Ko Pha-ngan District, Surat Thani, Thailand ",
     },
     {
       'value': 10,
       'label':
-          "Buddha Cafe, Ko Pha-ngan Sub-district, Ko Pha-ngan District, Surat Thani, Thailand ",
+          "Buddha Cafe - Ko Pha-ngan Sub-district, Ko Pha-ngan District, Surat Thani, Thailand ",
     },
     {
       'value': 11,
       'label':
-          "BEACHUB, Ko Pha-ngan Sub-district, Ko Pha-ngan District, Surat Thani 84280, Thailand ",
+          "BEACHUB - Ko Pha-ngan Sub-district, Ko Pha-ngan District, Surat Thani 84280, Thailand ",
     },
     {
       'value': 12,
       'label':
-          "Bliss Villas, Koh Phangan, Ko Pha-ngan District, Surat Thani, Thailand ",
+          "Bliss Villas - Koh Phangan, Ko Pha-ngan District, Surat Thani, Thailand ",
     },
     {
       'value': 13,
       'label':
-          "One Love Dome, Ko Pha-ngan Sub-district, Ko Pha-ngan District, Surat Thani 84280, Thailand ",
+          "One Love Dome - Ko Pha-ngan Sub-district, Ko Pha-ngan District, Surat Thani 84280, Thailand ",
     },
     {
       'value': 14,
       'label':
-          "Out back Bar & Restaurant, Ban Tai, Kohphangan, Surat Thani, Thailand ",
+          "Out back Bar & Restaurant - Ban Tai, Kohphangan, Surat Thani, Thailand ",
     },
     {
       'value': 15,
