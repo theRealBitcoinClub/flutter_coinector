@@ -754,7 +754,7 @@ class ReviewPlaces {
     },
     {
       'value': 10,
-      'label': "Sumworks W.L.L, Manama, Bahrain ",
+      'label': "Sumworks W.L.L - Manama, Bahrain ",
     },
     {
       'value': 11,
@@ -762,7 +762,7 @@ class ReviewPlaces {
     },
     {
       'value': 12,
-      'label': "GURme and Gurman.com, Habaron Hirsh, Petah Tikva, Israel ",
+      'label': "GURme and Gurman.com - Habaron Hirsh, Petah Tikva, Israel ",
     },
     {
       'value': 13,
@@ -770,27 +770,27 @@ class ReviewPlaces {
     },
     {
       'value': 14,
-      'label': "Fly Guy, Yehud-Monosson, Israel",
+      'label': "Fly Guy - Yehud-Monosson, Israel",
     },
     {
       'value': 15,
-      'label': "Wix Master, יהוד, ישראל ",
+      'label': "Wix Master - יהוד, ישראל ",
     },
     {
       'value': 16,
-      'label': "Soft, Aluf Kalman Magen Street, Tel Aviv-Yafo, Israel",
+      'label': "Soft - Aluf Kalman Magen Street, Tel Aviv-Yafo, Israel",
     },
     {
       'value': 17,
-      'label': "Bitcoin change, King George Street, Tel Aviv-Yafo, Israel ",
+      'label': "Bitcoin change - King George Street, Tel Aviv-Yafo, Israel ",
     },
     {
       'value': 18,
-      'label': "L'Olivier, Yona HaNavi St 48, Tel Aviv-Yafo, Israel ",
+      'label': "L'Olivier - Yona HaNavi St 48, Tel Aviv-Yafo, Israel ",
     },
     {
       'value': 19,
-      'label': "נונו אנג׳לו פיצה, Ben Yehuda Street 147, Tel Aviv, Israel ",
+      'label': "נונו אנג׳לו פיצה - Ben Yehuda Street 147, Tel Aviv, Israel ",
     },
     {
       'value': 20,
@@ -798,7 +798,7 @@ class ReviewPlaces {
     },
     {
       'value': 21,
-      'label': "Buy Bitcoin in Lebanon (BuyBitcoinLeb), Beirut, Lebanon ",
+      'label': "Buy Bitcoin in Lebanon (BuyBitcoinLeb) - Beirut, Lebanon ",
     },
     {
       'value': 22,
