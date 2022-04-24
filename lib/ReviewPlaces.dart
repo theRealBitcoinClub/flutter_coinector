@@ -253,25 +253,25 @@ class ReviewPlaces {
     {
       'value': 0,
       'label': 'Select Place in Australia',
-    },
+    } /*,
     {
       'value': 1,
       'label':
-          "Corazón HiFi, Calzada A. de Juambelz, Jardines reforma, Torreón, Coah., Mexico ",
+          "Corazón HiFi - Calzada A. de Juambelz, Jardines reforma, Torreón, Coah., Mexico ",
     },
     {
       'value': 2,
       'label':
-          "Ancona Ocular, Avenida Ignacio Morones Prieto, Sertoma, Monterrey, Nuevo Leon, Mexico ",
+          "Ancona Ocular - Avenida Ignacio Morones Prieto, Sertoma, Monterrey, Nuevo Leon, Mexico ",
     },
     {
       'value': 3,
       'label':
-          "Fundación Ocularis, Ignacio Allende, Centro de Linares, Linares, N.L., México ",
+          "Fundación Ocularis - Ignacio Allende, Centro de Linares, Linares, N.L., México ",
     },
     {
       'value': 4,
-      'label': "Floreria Petalo, Centro, Jalpan de Serra, Qro., México ",
+      'label': "Floreria Petalo - Centro, Jalpan de Serra, Qro., México ",
     },
     {
       'value': 5,
@@ -281,65 +281,65 @@ class ReviewPlaces {
     {
       'value': 6,
       'label':
-          "Clinica Dental Polanco Denttify, Lope de Vega, Chapultepec Morales, Polanco V Sección, Mexico City, CDMX, Mexico ",
+          "Clinica Dental Polanco Denttify - Lope de Vega, Chapultepec Morales, Polanco V Sección, Mexico City, CDMX, Mexico ",
     },
     {
       'value': 7,
       'label':
-          "High Clinical Medicine Specialty, Avenida San Fernando, Toriello Guerra, Mexico City, CDMX, Mexico ",
+          "High Clinical Medicine Specialty - Avenida San Fernando, Toriello Guerra, Mexico City, CDMX, Mexico ",
     },
     {
       'value': 8,
       'label':
-          "Audio Acústica y Electrónica, S.A. De C.V., Chimalcoyotl, Chimalcoyoc, CDMX, Mexico ",
+          "Audio Acústica y Electrónica - S.A. De C.V., Chimalcoyotl, Chimalcoyoc, CDMX, Mexico ",
     },
     {
       'value': 9,
       'label':
-          "Iphone Puebla, Avenida Antiguo Rancho a Morillotla, Real Fraccionamento de San Pedro, Atzala, San Andrés Cholula, Puebla, Mexico ",
+          "IphonePuebla.com - Avenida Antiguo Rancho a Morillotla, Real Fraccionamento de San Pedro, Atzala, San Andrés Cholula, Puebla, Mexico ",
     },
     {
       'value': 10,
-      'label': "Gammers Style, INFONAVIT el Carmen, Puebla, Mexico ",
+      'label': "Gammers Style - INFONAVIT el Carmen, Puebla, Mexico ",
     },
     {
       'value': 11,
       'label':
-          "Truxgo S. de R.L. de C.V, Héroes de Puebla, Heroica Puebla de Zaragoza, Pue., Mexico ",
+          "Truxgo S. de R.L. de C.V - Héroes de Puebla, Heroica Puebla de Zaragoza, Pue., Mexico ",
     },
     {
       'value': 12,
       'label':
-          "Verde Pistache & Vegan, Horacio Nelson, Fraccionamento Costa Azul, Costa Azul, Acapulco, Guerrero, Mexico",
+          "Verde Pistache & Vegan - Horacio Nelson, Fraccionamento Costa Azul, Costa Azul, Acapulco, Guerrero, Mexico",
     },
     {
       'value': 13,
       'label':
-          "The Vegan Personal Chef, La Veleta, Tulum, Quintana Roo, Mexico ",
+          "The Vegan Personal Chef - La Veleta, Tulum, Quintana Roo, Mexico ",
     },
     {
       'value': 14,
-      'label': "Frida Flowers, La Veleta, Tulum, Quintana Roo, Mexico ",
+      'label': "Frida Flowers - La Veleta, Tulum, Quintana Roo, Mexico ",
     },
     {
       'value': 15,
-      'label': "SKÅL Antigua, 4a Calle Oriente, Antigua Guatemala, Guatemala ",
+      'label': "SKÅL Antigua - 4a Calle Oriente, Antigua Guatemala, Guatemala ",
     },
     {
       'value': 16,
-      'label': "Wasap comida rápida y más, San Salvador, El Salvador ",
+      'label': "Wasap comida rápida y más - San Salvador, El Salvador ",
     },
     {
       'value': 17,
-      'label': "Airport X Managua Hotel, Managua, Nicaragua ",
+      'label': "Airport X Managua Hotel - Managua, Nicaragua ",
     },
     {
       'value': 18,
-      'label': "Perfumescss Metrocenter, Centro, Caracas, Capital District ",
+      'label': "Perfumescss Metrocenter - Centro, Caracas, Capital District ",
     },
     {
       'value': 19,
-      'label': "Art Hotel Managua, 19.ª Av Suroeste, Managua, Nicaragua ",
+      'label': "Art Hotel Managua - 19.ª Av Suroeste, Managua, Nicaragua ",
     },
     {
       'value': 20,
@@ -347,17 +347,17 @@ class ReviewPlaces {
     },
     {
       'value': 21,
-      'label': "Surf Ranch Hotel & Resort, San Juan del Sur, Nicaragua ",
+      'label': "Surf Ranch Hotel & Resort - San Juan del Sur, Nicaragua ",
     },
     {
       'value': 22,
       'label':
-          "Surf Ranch Tamarindo, Calle Central, Guanacaste Province, Tamarindo, Costa Rica ",
+          "Surf Ranch Tamarindo - Calle Central, Guanacaste Province, Tamarindo, Costa Rica ",
     },
     {
       'value': 23,
       'label':
-          "SEO Costa Rica, Calle Hernández, Sector San Francisco, Heredia Province, Costa Rica ",
+          "SEO Costa Rica - Calle Hernández, Sector San Francisco, Heredia Province, Costa Rica ",
     },
     {
       'value': 24,
@@ -365,25 +365,25 @@ class ReviewPlaces {
     },
     {
       'value': 25,
-      'label': "Quepoa Expeditions, Puntarenas Province, Quepos, Costa Rica ",
+      'label': "Quepoa Expeditions - Puntarenas Province, Quepos, Costa Rica ",
     },
     {
       'value': 26,
       'label':
-          "Show Pony Beach Resort, Las Lajas, Las Lajas, Chiriquí, Panama ",
+          "Show Pony Beach Resort - Las Lajas, Las Lajas, Chiriquí, Panama ",
     },
     {
       'value': 27,
       'label':
-          "Picasso Restaurant, Corner of Avendias Eisenmann, Avenida Punta Prieta, Las Lajas, Panamá Oeste, Panama ",
+          "Picasso Restaurant - Corner of Avendias Eisenmann, Avenida Punta Prieta, Las Lajas, Panamá Oeste, Panama ",
     },
     {
       'value': 28,
-      'label': "Disvimol, Táchira Venezuela, Vista Alegre, Panamá ",
+      'label': "Disvimol - Táchira Venezuela, Vista Alegre, Panamá ",
     },
     {
       'value': 29,
-      'label': "Avantika Cocina Tailandesa y Lounge, Panamá, Panama ",
+      'label': "Avantika Cocina Tailandesa y Lounge - Panamá, Panama ",
     },
     {
       'value': 30,
@@ -392,69 +392,69 @@ class ReviewPlaces {
     {
       'value': 31,
       'label':
-          "Juan Express Licores, Calle 30, Provincia de Cartagena, Bolívar, Colombia ",
+          "Juan Express Licores - Calle 30, Provincia de Cartagena, Bolívar, Colombia ",
     },
     {
       'value': 32,
       'label':
-          "La Cocina de la Abuela, Calle 34, Bucaramanga, Santander, Colombia ",
+          "La Cocina de la Abuela - Calle 34, Bucaramanga, Santander, Colombia ",
     },
     {
       'value': 33,
-      'label': "REALTATUADORA, Calle 53#73-51, Medellín, Antioquia, Colombia ",
+      'label': "REALTATUADORA - Calle 53#73-51, Medellín, Antioquia, Colombia ",
     },
     {
       'value': 34,
       'label':
-          "Baruc Shop /Street Clothing, Cl. 51 #73-134, Medellín, Medellin, Antioquia, Colombia ",
+          "Baruc Shop /Street Clothing - Cl. 51 #73-134, Medellín, Medellin, Antioquia, Colombia ",
     },
     {
       'value': 35,
       'label':
-          "CANGURO, Cra. 52ᴬ #47-27, Medellín, Medellin, Antioquia, Colombia ",
+          "CANGURO - Cra. 52ᴬ #47-27, Medellín, Medellin, Antioquia, Colombia ",
     },
     {
       'value': 36,
       'label':
-          "The House Technology, Carrera 68A, Medellín, Antioquia, Colombia ",
+          "The House Technology - Carrera 68A, Medellín, Antioquia, Colombia ",
     },
     {
       'value': 37,
       'label':
-          "Litografía Rocco Gráficas, Calle 42, Medellín, Antioquia, Colombia ",
+          "Lithography Rocco Charts, Calle 42, Medellín, Antioquia, Colombia ",
     },
     {
       'value': 38,
       'label':
-          "Burger Las Diosas, Cra. 74 #40-02, Medellín, Medellin, Antioquia, Colombia ",
+          "Burger Las Diosas - Cra. 74 #40-02, Medellín, Medellin, Antioquia, Colombia ",
     },
     {
       'value': 39,
       'label':
-          "Heladería Vakiatto, Cl. 32C #6546, Medellín, Medellin, Antioquia, Colombia ",
+          "Heladería Vakiatto - Cl. 32C #6546, Medellín, Medellin, Antioquia, Colombia ",
     },
     {
       'value': 40,
       'label':
-          "ENVICARGO COMPANYS SAS, Calle 9, Medellin, Antioquia, Colombia ",
+          "ENVICARGO COMPANYS SAS - Calle 9, Medellin, Antioquia, Colombia ",
     },
     {
       'value': 41,
-      'label': "Athena Bitcoin Inc, Carrera 32, Medellin, Antioquia, Colombia ",
+      'label': "Athena Bitcoin Inc - Carrera 32, Medellin, Antioquia, Colombia ",
     },
     {
       'value': 42,
       'label':
-          "MyF Import S.A.S, Cra. 23 ## 53-8, Manizales, Caldas, Colombia ",
+          "MyF Import S.A.S - Cra. 23 ## 53-8, Manizales, Caldas, Colombia ",
     },
     {
       'value': 43,
       'label':
-          "Seguridad Informática DragonJAR SAS, Manizales, Caldas, Colombia ",
+          "Seguridad Informática DragonJAR SAS - Manizales, Caldas, Colombia ",
     },
     {
       'value': 44,
-      'label': "Super Ideas, Cra. 13, Pereira, Risaralda, Colombia ",
+      'label': "Super Ideas - Cra. 13, Pereira, Risaralda, Colombia ",
     },
     {
       'value': 45,
@@ -463,40 +463,40 @@ class ReviewPlaces {
     },
     {
       'value': 46,
-      'label': "MAITEK SAS, Cota, Cundinamarca, Colombia ",
+      'label': "MAITEK SAS - Cota, Cundinamarca, Colombia ",
     },
     {
       'value': 47,
       'label':
-          "FIT TEC (Gimnasio de Electroestimulacion), Cl. 106 #14-30, Bogotá, Bogotá, Colombia ",
+          "FIT TEC (Gimnasio de Electroestimulacion) - Cl. 106 #14-30, Bogotá, Bogotá, Colombia ",
     },
     {
       'value': 48,
       'label':
-          'Mr. Isaac "Fast Food"., Calle 68d Sur, Bogotá, Bogota, Colombia ',
+          'Mr. Isaac Fast Food., Calle 68d Sur, Bogotá, Bogota, Colombia ',
     },
     {
       'value': 49,
-      'label': "Representaciones Herdanys Fashion, Caracas, Capital District ",
+      'label': "Representaciones Herdanys Fashion - Caracas, Capital District ",
     },
     {
       'value': 50,
-      'label': "Panda Express Cafeteria, Carrera 5, Bogota, Colombia ",
-    } /*,
+      'label': "Panda Express Cafeteria - Carrera 5, Bogota, Colombia ",
+    } ,
     {
       'value': 1,
       'label':
-          "Janta Printing Press, Mill Road, near Agrasen Park, Shamli, Uttar Pradesh, India ",
+          "Janta Printing Press - Mill Road, near Agrasen Park, Shamli, Uttar Pradesh, India ",
     },
     {
       'value': 2,
       'label':
-          "Diljeet Auto Parts, Kuchesar Road, near HP Petrol Pump, B.B. Nagar, Uttar Pradesh, India ",
+          "Diljeet Auto Parts - Kuchesar Road, near HP Petrol Pump, B.B. Nagar, Uttar Pradesh, India ",
     },
     {
       'value': 3,
       'label':
-          "HTML ECOSYSTEM, Block AG, Sanjay Gandhi Transport Nagar, Delhi, India ",
+          "HTML ECOSYSTEM - Block AG, Sanjay Gandhi Transport Nagar, Delhi, India ",
     },
     {
       'value': 4,
@@ -504,7 +504,7 @@ class ReviewPlaces {
     },
     {
       'value': 5,
-      'label': "Digi195, Prem Nagar, Najafgarh, Delhi, India ",
+      'label': "Digi195 - Prem Nagar, Najafgarh, Delhi, India ",
     },
     {
       'value': 6,
@@ -968,7 +968,7 @@ class ReviewPlaces {
       'value': 50,
       'label':
           "Navone Juan Servicio Tecnico, Avenida Juan Domingo Perón, Carmen de Patagones, Buenos Aires Province, Argentina ",
-    } /*,
+    } /* ,
     {
       'value': 1,
       'label':
@@ -1217,7 +1217,7 @@ class ReviewPlaces {
     {
       'value': 0,
       'label': 'Select Place in Africa',
-    },
+    } /*,
     {
       'value': 1,
       'label': "ROCA 4G, 9 de Julio, General Roca, Río Negro, Argentina ",
@@ -1397,7 +1397,7 @@ class ReviewPlaces {
       'value': 38,
       'label':
           "Kiosco M24 Market, Cuenca 2599, C1417AAG, Buenos Aires, Argentina ",
-    } /*,
+    } ,
     {
       'value': 1,
       'label':
