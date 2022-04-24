@@ -961,11 +961,13 @@ class ReviewPlaces {
     },
     {
       'value': 49,
-      'label': "",
+      'label':
+          "Quemehuencho, Roque Sáenz Peña, Puerto Madryn, Chubut Province, Argentina ",
     },
     {
       'value': 50,
-      'label': "",
+      'label':
+          "Navone Juan Servicio Tecnico, Avenida Juan Domingo Perón, Carmen de Patagones, Buenos Aires Province, Argentina ",
     } /*,
     {
       'value': 1,
@@ -1218,203 +1220,183 @@ class ReviewPlaces {
     },
     {
       'value': 1,
-      'label': "",
+      'label': "ROCA 4G, 9 de Julio, General Roca, Río Negro, Argentina ",
     },
     {
       'value': 2,
-      'label': "",
+      'label':
+          "Dot Co working, Chacabuco 1512, R8332 Gral. Roca, Río Negro, Argentina ",
     },
     {
       'value': 3,
-      'label': "",
+      'label':
+          "Helados Lomoro, Lamadrid, Coronel Suárez, Buenos Aires Province, Argentina ",
     },
     {
       'value': 4,
-      'label': "",
+      'label':
+          "Theos café, bar y crypto, Bartolomé Mitre, Mar del Plata, Buenos Aires Province, Argentina ",
     },
     {
       'value': 5,
-      'label': "",
+      'label':
+          "Caffè Firenze, La Rioja 2055, Mar del Plata, Provincia de Buenos Aires, Argentina ",
     },
     {
       'value': 6,
-      'label': "",
+      'label':
+          "Indiana Beer & Food, Mendoza, Santa Rosa de Calamuchita, Cordoba, Argentina ",
     },
     {
       'value': 7,
-      'label': "",
+      'label':
+          "Taos Pueblo | cabañas de montaña - Capilla del Monte, Capilla del Monte, Cordoba, Argentina ",
     },
     {
       'value': 8,
-      'label': "",
+      'label':
+          "La banana loca, Virgen de la Merced, San Miguel de Tucumán, Tucumán, Argentina ",
     },
     {
       'value': 9,
-      'label': "",
+      'label':
+          "Yugoo - Desarrollos Informáticos, Gobernador Lagraña 271, Corrientes, Argentina ",
     },
     {
       'value': 10,
-      'label': "",
+      'label':
+          "Maxi Cero, Bv. Presidente Julio A. Roca, Rafaela, Santa Fe Province, Argentina",
     },
     {
       'value': 11,
-      'label': "",
+      'label': "Mitica Viajes, Rafaela, Santa Fe Province, Argentina ",
     },
     {
       'value': 12,
-      'label': "",
+      'label': "Corework Argentina",
     },
     {
       'value': 13,
-      'label': "",
+      'label': "Ken't Cultura Urbana, San Martín, DVA, Entre Ríos, Argentina ",
     },
     {
       'value': 14,
-      'label': "",
+      'label':
+          "Mae sport, El Rosedal, Granadero Baigorria, Santa Fe Province, Argentina ",
     },
     {
       'value': 15,
-      'label': "",
+      'label':
+          "El Patio de Normita, Lavardén, Funes, Santa Fe Province, Argentina ",
     },
     {
       'value': 16,
-      'label': "",
+      'label':
+          "Estudio Rohner R&R - Jurídico y Agrimensura, Leandro N. Alem, Las Flores, Buenos Aires Province, Argentina ",
     },
     {
       'value': 17,
-      'label': "",
+      'label':
+          "Mical Materiales, Avenida Hipólito Yrigoyen, Chacabuco, Buenos Aires Province, Argentina ",
     },
     {
       'value': 18,
-      'label': "",
+      'label':
+          "Cimientos Materiales para la Construcción, BYG, Avenida General San Martín, Belén de Escobar, Buenos Aires Province, Argentina ",
     },
     {
       'value': 19,
-      'label': "",
+      'label': "Viejo Wence Argentina",
     },
     {
       'value': 20,
-      'label': "",
+      'label':
+          "CM make up studio, Moreno, Pilar Centro, Buenos Aires Province, Argentina",
     },
     {
       'value': 21,
-      'label': "",
+      'label':
+          "Estacionamiento Paseo del Corralón, ARJ, Bartolomé Mitre, Luján, Buenos Aires Province, Argentina ",
     },
     {
       'value': 22,
-      'label': "",
+      'label':
+          "LosTatosRestobar, Mariano Acosta, Pilar Centro, Buenos Aires Province, Argentina ",
     },
     {
       'value': 23,
-      'label': "",
+      'label':
+          'Kiosco "El Tari", Labardén 1051, José C. Paz, Provincia de Buenos Aires, Argentina ',
     },
     {
       'value': 24,
-      'label': "",
+      'label':
+          "Dr. Pablo Javier Baglioni, Cardiólogo, Doctor Gabriel Ardoino, Ramos Mejía, Buenos Aires Province, Argentina",
     },
     {
       'value': 25,
-      'label': "",
+      'label':
+          "Domenica Pizza y Cafe Av. Dr. Ignacio Arieta 3596, B1754 San Justo, Provincia de Buenos Aires, Argentina ",
     },
     {
       'value': 26,
-      'label': "",
+      'label': "Club Larrazabal, Av. Larrazábal, Buenos Aires, Argentina ",
     },
     {
       'value': 27,
-      'label': "",
+      'label':
+          "Carmelita Beauty, Mitre 3885, B1650 San Martín, Provincia de Buenos Aires, Argentina ",
     },
     {
       'value': 28,
-      'label': "",
+      'label':
+          "K24, Av. de los Constituyentes, C1431 EZJ, Buenos Aires, Argentina ",
     },
     {
       'value': 29,
-      'label': "",
+      'label': "K24, Av. Lope de Vega 3527, C1419 Buenos Aires, Argentina ",
     },
     {
       'value': 30,
-      'label': "",
+      'label':
+          "Hazme Limpio, Avenida Fondo de la Legua, Villa Adelina, Provincia de Buenos Aires, Argentina ",
     },
     {
       'value': 31,
-      'label': "",
+      'label': "Kiosco Monroe, Avenida Monroe, Buenos Aires, Argentina ",
     },
     {
       'value': 32,
-      'label': "",
+      'label':
+          "Kiosco TXV, Avenida General Indalecio Chenaut, Buenos Aires, Argentina ",
     },
     {
       'value': 33,
-      'label': "",
+      'label': "K24 (Kiosco) Av. Álvarez Thomas 801, Buenos Aires, Argentina",
     },
     {
       'value': 34,
-      'label': "",
+      'label':
+          "Kiosco K24, General José Gervasio Artigas, Buenos Aires, Argentina ",
     },
     {
       'value': 35,
-      'label': "",
+      'label': "K24 (Kiosco) Neuquén 1698, C1406 FOD, Buenos Aires",
     },
     {
       'value': 36,
-      'label': "",
+      'label':
+          "K24 Kioscos, Avenida Francisco Beiró, C1419HZY, Buenos Aires, Argentina",
     },
     {
       'value': 37,
-      'label': "",
+      'label':
+          "M24 Market Lope de Vega, Avenida Lope de Vega, Buenos Aires, Argentina ",
     },
     {
       'value': 38,
-      'label': "",
-    },
-    {
-      'value': 39,
-      'label': "",
-    },
-    {
-      'value': 40,
-      'label': "",
-    },
-    {
-      'value': 41,
-      'label': "",
-    },
-    {
-      'value': 42,
-      'label': "",
-    },
-    {
-      'value': 43,
-      'label': "",
-    },
-    {
-      'value': 44,
-      'label': "",
-    },
-    {
-      'value': 45,
-      'label': "",
-    },
-    {
-      'value': 46,
-      'label': "",
-    },
-    {
-      'value': 47,
-      'label': "",
-    },
-    {
-      'value': 48,
-      'label': "",
-    },
-    {
-      'value': 49,
-      'label': "",
-    },
-    {
-      'value': 50,
-      'label': "",
+      'label':
+          "Kiosco M24 Market, Cuenca 2599, C1417AAG, Buenos Aires, Argentina ",
     } /*,
     {
       'value': 1,
