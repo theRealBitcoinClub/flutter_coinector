@@ -1373,6 +1373,17 @@ class TitleSuggestions {
     "十三人 Home 13 Café - 台灣新北市板橋區陽明街 ",
     "Duciduci - Supsongmaeul 1-ro, Ilsandong-gu, Goyang-si, Gyeonggi-do, South Korea ",
     "Kaireva Beach House - Rarotonga, Rarotonga, Cook Islands ",
+    "Mystic Closet Boutiques - Pahoa Village Road, Pāhoa, HI, USA ",
+    "Perfect Harmony Boutique & Tea Room - Keawe Street, Hilo, HI, USA ",
+    "The Mystic Closet - Kamehameha Avenue, Hilo, HI, USA ",
+    "Hands Down Massage Hawaii - Opelo Road, Waimea, HI, USA ",
+    "GasmanQt - McMillan Road, Arthurs Point, Queenstown, New Zealand ",
+    "Nutrient Depot - 31 Birmingham Dr, Middleton, Christchurch 8024, New Zealand ",
+    "Kuske - Individual Eyewear Hardy Street, Nelson, New Zealand ",
+    "3Design NZ - Aerodrome Road, Hanger 1, Mount Maunganui, New Zealand ",
+    "Z Energy - Dublin Street, Whanganui, New Zealand ",
+    "Ray White Papamoa - Domain Road, Papamoa Beach, Papamoa, New Zealand ",
+    "Gull Henderson - Henderson Valley Road, Henderson, Auckland, New Zealand ",
   };
 
   static final titleTags = const {
