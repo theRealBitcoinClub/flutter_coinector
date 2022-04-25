@@ -499,17 +499,17 @@ class ReviewPlaces {
     {
       'value': 1,
       'label':
-          "Bandung Web Agency, Padasuka, Bandung City, West Java, Indonesia ",
+          "Bandung Web Agency - Padasuka, Bandung City, West Java, Indonesia ",
     },
     {
       'value': 2,
       'label':
-          "RS Gunung Jati, Jalan Kesambi, Kesambi, Kota Cirebon, Jawa Barat, Indonesia ",
+          "RSD Gunung Jati Kota Cirebon - Jalan Kesambi, Kesambi, Kota Cirebon, Jawa Barat, Indonesia ",
     },
     {
       'value': 3,
       'label':
-          "KRAVEFORMORE, Pradahkalikendal, Surabaya City, East Java, Indonesia ",
+          "KRAVEFORMORE - Pradahkalikendal, Surabaya City, East Java, Indonesia ",
     },
     {
       'value': 4,
@@ -524,26 +524,26 @@ class ReviewPlaces {
     {
       'value': 6,
       'label':
-          "M2M Catfish, Jalan Tanah Mas, Baamang Hulu, East Kotawaringin Regency, Central Kalimantan, Indonesia ",
+          "M2M Catfish - Jalan Tanah Mas, Baamang Hulu, East Kotawaringin Regency, Central Kalimantan, Indonesia ",
     },
     {
       'value': 7,
       'label':
-          "Rose Bakeshop, Roxas St, Barangay 4, San Francisco, Agusan del Sur, Philippines",
+          "Rose Bakeshop - Roxas St, Barangay 4, San Francisco, Agusan del Sur, Philippines",
     },
     {
       'value': 8,
-      'label': "Arc's Pizza Hub Poblacion 3, Hamtic, Antique ",
+      'label': "Arc's Pizza Hub - Poblacion 3, Hamtic, Antique ",
     },
     {
       'value': 9,
       'label':
-          "Jollibee Cadiz, Villena Street, Cadiz City, Negros Occidental, Philippines ",
+          "Jollibee Cadiz - Villena Street, Cadiz City, Negros Occidental, Philippines ",
     },
     {
       'value': 10,
       'label':
-          "9 Starts Sari-Sari Store And Snack House, Naga, Camarines Sur, Philippines",
+          "9 Starts Sari-Sari Store And Snack House - Naga, Camarines Sur, Philippines",
     },
     {
       'value': 11,

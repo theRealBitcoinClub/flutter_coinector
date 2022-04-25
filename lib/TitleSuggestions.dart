@@ -1344,6 +1344,16 @@ class TitleSuggestions {
     "Bitcoins Crypto - Jl. Jambu II, Depok Jaya, Depok City, West Java, Indonesia ",
     "Wisata Budidaya Jahe - Leuit Jahe, Pasir Lame Kubang, Cikadu, West Bandung Regency, West Java, Indonesia",
     "BTC Fashion Mall - Jalan Doktor Djunjunan, Pajajaran, Bandung City, West Java, Indonesia ",
+    "Bandung Web Agency - Padasuka, Bandung City, West Java, Indonesia ",
+    "RSD Gunung Jati Kota Cirebon - Jalan Kesambi, Kesambi, Kota Cirebon, Jawa Barat, Indonesia ",
+    "KRAVEFORMORE - Pradahkalikendal, Surabaya City, East Java, Indonesia ",
+    "iTech Ubud - Apple Repair and Service, Jalan Arjuna, Ubud, Gianyar, Gianyar Regency, Bali, Indonesia ",
+    "iTech Seminyak - Apple Repair and Service - Android Repair, Jalan Kunti I, Seminyak, Badung Regency, Bali, Indonesia ",
+    "M2M Catfish - Jalan Tanah Mas, Baamang Hulu, East Kotawaringin Regency, Central Kalimantan, Indonesia ",
+    "Rose Bakeshop - Roxas St, Barangay 4, San Francisco, Agusan del Sur, Philippines",
+    "Arc's Pizza Hub - Poblacion 3, Hamtic, Antique ",
+    "Jollibee Cadiz - Villena Street, Cadiz City, Negros Occidental, Philippines ",
+    "9 Starts Sari-Sari Store And Snack House - Naga, Camarines Sur, Philippines",
   };
 
   static final titleTags = const {
