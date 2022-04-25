@@ -548,11 +548,11 @@ class ReviewPlaces {
     {
       'value': 11,
       'label':
-          "Elly Jean Store, National Highway, Anilao, Iloilo, Philippines ",
+          "Elly Jean Store - National Highway, Anilao, Iloilo, Philippines ",
     },
     {
       'value': 12,
-      'label': "Gemma Store and Internet Cafe, Zarraga, Iloilo, Philippines ",
+      'label': "Gemma Store and Internet Cafe - Zarraga, Iloilo, Philippines ",
     },
     {
       'value': 13,
@@ -562,48 +562,48 @@ class ReviewPlaces {
     {
       'value': 14,
       'label':
-          "ERRAVILLE CCTV, Blumentritt Street, Naga, Camarines Sur, Philippines ",
+          "ERRAVILLE CCTV - Blumentritt Street, Naga, Camarines Sur, Philippines ",
     },
     {
       'value': 15,
       'label':
-          "Bestra Aircon & Refrigeration Trading, Blumentritt Street, Naga, Camarines Sur, Philippines ",
+          "Bestra Aircon & Refrigeration Trading - Blumentritt Street, Naga, Camarines Sur, Philippines ",
     },
     {
       'value': 16,
-      'label': "Parmar COOP, Pateros, Metro Manila, Philippines ",
+      'label': "Parmar COOP - Pateros, Metro Manila, Philippines ",
     },
     {
       'value': 17,
       'label':
-          "Odfjell Ship Management Phils. Inc., Malate, Manila, Metro Manila, Philippines ",
+          "Odfjell Ship Management Phils. Inc. - Malate, Manila, Metro Manila, Philippines ",
     },
     {
       'value': 18,
       'label':
-          "Bitcoin.com, Benita Street, Gagalangin tondo, Manila, Metro Manila, Philippines ",
+          "Bitcoin.com - Benita Street, Gagalangin tondo, Manila, Metro Manila, Philippines ",
     },
     {
       'value': 19,
-      'label': "Lone rider club, Marilao, Bulacan, Philippines ",
+      'label': "Lone rider club - Marilao, Bulacan, Philippines ",
     },
     {
       'value': 20,
-      'label': "台灣高雄市左營區重立路502巷8vermore Yoga & English ",
+      'label': "8vermore Yoga & English - 台灣高雄市左營區重立路502巷 ",
     },
     {
       'value': 21,
       'label':
-          "Taiwan, Tainan City, Guiren District, Section 1st, Zhongshan Road, Wow waffles 美味鬆餅の專門店-歸仁店 ",
+          "Wow waffles 美味鬆餅の專門店-歸仁店 - Taiwan, Tainan City, Guiren District, Section 1st, Zhongshan Road",
     },
     {
       'value': 22,
       'label':
-          "Taiwan, Tainan City, South District, Lane 21, Section 2, Jinhua Road, Wow waffles 美味鬆餅の專門店 ",
+          "Wow waffles 美味鬆餅の專門店 - Taiwan, Tainan City, South District, Lane 21, Section 2, Jinhua Road",
     },
     {
       'value': 23,
-      'label': "台灣台南市中西區金華路四段雙品香酥豬排 ",
+      'label': "雙品香酥豬排 - 台灣台南市中西區金華路四段 ",
     },
     {
       'value': 24,
@@ -613,16 +613,16 @@ class ReviewPlaces {
     {
       'value': 25,
       'label':
-          "Taiwan, Taichung City, South District, Lane 146th, Xuefu Road, 恆日1989 ",
+          "恆日1989 - Taiwan, Taichung City, South District, Lane 146th, Xuefu Road",
     },
     {
       'value': 26,
-      'label': "台灣台中市西區精誠路UPH氫呼吸體驗館 臺中店 ",
+      'label': "UPH氫呼吸體驗館 臺中店 - 台灣台中市西區精誠路UPH氫呼吸體驗館 ",
     },
     {
       'value': 27,
       'label':
-          "魂猴設計工作室 SoMonkey Design Studio, 金湖街 Su'ao Township, Yilan County, Taiwan ",
+          "魂猴設計工作室 SoMonkey Design Studio - 金湖街 Su'ao Township, Yilan County, Taiwan ",
     },
     {
       'value': 28,
@@ -630,11 +630,11 @@ class ReviewPlaces {
     },
     {
       'value': 29,
-      'label': "台灣台北市萬華區中華路理工法律事務所 ",
+      'label': "理工法律事務所 - 台灣台北市萬華區中華路 ",
     },
     {
       'value': 30,
-      'label': "台灣新北市板橋區陽明街十三人 Home 13 Café ",
+      'label': "十三人 Home 13 Café - 台灣新北市板橋區陽明街 ",
     },
     {
       'value': 31,
@@ -644,7 +644,7 @@ class ReviewPlaces {
     {
       'value': 32,
       'label':
-          "Duciduci, Supsongmaeul 1-ro, Ilsandong-gu, Goyang-si, Gyeonggi-do, South Korea ",
+          "Duciduci - Supsongmaeul 1-ro, Ilsandong-gu, Goyang-si, Gyeonggi-do, South Korea ",
     },
     {
       'value': 33,
