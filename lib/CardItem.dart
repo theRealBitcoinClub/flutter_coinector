@@ -158,10 +158,16 @@ class CardItem extends StatelessWidget {
   }
 
   Widget buildImageContainer(String gifUrl, BuildContext ctx) {
+    double imgHeight = kIsWeb
+        ? isWebMobile
+            ? 240
+            : 280
+        : 228;
+    double imgWidth = 640;
     return Stack(children: <Widget>[
       SizedBox(
           height: 160,
-          width: 640,
+          width: imgWidth,
           child: Align(
             alignment: Alignment.bottomCenter,
             //child: GestureDetector(
@@ -187,12 +193,8 @@ class CardItem extends StatelessWidget {
         fadeInDuration: Duration(milliseconds: 500),
         placeholder: kTransparentImage,
         image: gifUrl,
-        width: 640,
-        height: kIsWeb
-            ? isWebMobile
-                ? 240
-                : 280
-            : 228,
+        width: imgWidth,
+        height: imgHeight,
         alignment: Alignment.center,
       )
     ]);
