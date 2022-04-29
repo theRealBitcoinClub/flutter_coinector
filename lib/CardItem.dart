@@ -108,10 +108,18 @@ class CardItem extends StatelessWidget {
 
   Widget buildContentStack(BuildContext ctx, TextStyle textStyle,
       TextStyle textStyle2, TagFilterCallback tagFilterCallback) {
-    var gifUrl =
-        'https://raw.githubusercontent.com/theRealBitcoinClub/BITCOINMAP.CASH---Browser-PWA/master/public/img/app/' +
+    var imgUrl =
+        'https://raw.githubusercontent.com/theRealBitcoinClub/BITCOINMAP.CASH---Browser-PWA/master/public/img/app/jpg/' +
             merchant.id +
             ".gif";
+
+    if (merchant.id.startsWith("ChI"))
+      imgUrl =
+          "https://raw.githubusercontent.com/theRealBitcoinClub/bmap_webp/main/jpg/" +
+              merchant.id +
+              ".jpg";
+
+    if (!kReleaseMode) print("\n" + imgUrl);
 
     var backGroundColor = Colors.grey[900].withOpacity(0.80);
     return Stack(
@@ -120,8 +128,8 @@ class CardItem extends StatelessWidget {
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(10.0),
                 topRight: Radius.circular(10.0)),
-            child: kReleaseMode
-                ? buildImageContainer(gifUrl, ctx)
+            child: !kReleaseMode
+                ? buildImageContainer(imgUrl, ctx)
                 : buildPlaceHolderOfflineVersion(ctx)),
         buildStackInfoTextWithBackgroundAndShadow(
             backGroundColor, textStyle, textStyle2, tagFilterCallback),
@@ -157,7 +165,7 @@ class CardItem extends StatelessWidget {
     );
   }
 
-  Widget buildImageContainer(String gifUrl, BuildContext ctx) {
+  Widget buildImageContainer(String imgUrl, BuildContext ctx) {
     double imgHeight = kIsWeb
         ? isWebMobile
             ? 240
@@ -192,7 +200,7 @@ class CardItem extends StatelessWidget {
         fit: BoxFit.fitWidth,
         fadeInDuration: Duration(milliseconds: 500),
         placeholder: kTransparentImage,
-        image: gifUrl,
+        image: imgUrl,
         width: imgWidth,
         height: imgHeight,
         alignment: Alignment.center,
