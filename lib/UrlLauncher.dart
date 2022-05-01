@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:Coinector/translator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import 'AddNewPlaceWidget.dart';
 import 'Merchant.dart';
@@ -10,8 +11,14 @@ import 'Toaster.dart';
 
 class UrlLauncher {
   static void launchURI(url, {bool forceWebView = false}) async {
-    if (await canLaunch(url)) {
-      await launch(url, forceWebView: forceWebView, enableJavaScript: true);
+    if (await canLaunchUrlString(url)) {
+      await launchUrlString(url,
+          mode: forceWebView
+              ? LaunchMode.inAppWebView
+              : LaunchMode.platformDefault,
+          webViewConfiguration: WebViewConfiguration(
+              enableDomStorage: true, enableJavaScript: true),
+          webOnlyWindowName: "BMAP - TRBC");
     } else {
       throw 'Could not launch $url';
     }
@@ -31,7 +38,7 @@ class UrlLauncher {
 
   static void launchReviewUrl(context, place) async {
     var url =
-        'http://search.google.com/local/writereview?placeid=' + place.placesId;
+        'https://search.google.com/local/writereview?placeid=' + place.placesId;
     launchURI(url);
   }
 
@@ -41,7 +48,7 @@ class UrlLauncher {
   }
 
   static String buildGoogleMapsSearchQueryUrl(Merchant merchant) =>
-      'http://www.google.com/maps/search/?api=1&query=' +
+      'https://www.google.com/maps/search/?api=1&query=' +
       merchant.x.toString() +
       ',' +
       merchant.y.toString();
@@ -55,7 +62,7 @@ class UrlLauncher {
 
   static void launchSubmitForm() {
     if (kIsWeb) {
-      launchURI("http://bmap.app/add");
+      launchURI("https://bmap.app/add");
       return;
     }
 
@@ -76,21 +83,21 @@ class UrlLauncher {
         default:
           break;
       }
-      launchURI("http://bmap.app/" + append);
+      launchURI("https://bmap.app/" + append);
       /*, forceWebView: true TEST IF THAT FIXES THE ERROR ON DEVICE*/
     } catch (e) {
-      launchURI("http://bmap.app/add");
+      launchURI("https://bmap.app/add");
     }
   }
 
   static void launchBitcoinMap() {
-    launchURI("http://bitcoinmap.cash");
+    launchURI("https://bitcoinmap.cash");
   }
 
   static void launchQrCodeGeneratorUrl(
       {String bch = "", String dash = ""}) async {
     String targetUrl =
-        "http://bitcoinmap.cash/bitcoin-bch-dash-qr-code-generator";
+        "https://bitcoinmap.cash/bitcoin-bch-dash-qr-code-generator";
     if (bch.isNotEmpty) {
       targetUrl += "?bch=" + bch;
       if (dash.isNotEmpty) {

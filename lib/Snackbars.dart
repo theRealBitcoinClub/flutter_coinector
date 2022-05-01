@@ -108,8 +108,8 @@ class Snackbars {
     //THIS METHOD IS ONLY FOR THE WEB APP, in case that someone opens the web app with a mobile phone
     /*if (!kIsWeb) return;
     String appstore = "Android";
-    String chosenUrl = "http://bitcoinmap.cash/coinector";
-    final iphoneUrl = "http://bitcoinmap.cash/iphone";
+    String chosenUrl = "https://bitcoinmap.cash/coinector";
+    final iphoneUrl = "https://bitcoinmap.cash/iphone";
 
     try {
       if (browser.isSafari || operatingSystem.isMac) {
