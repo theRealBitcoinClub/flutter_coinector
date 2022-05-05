@@ -47,7 +47,6 @@ class Merchant {
     var location = data["geometry"]["location"];
     var cleanAdr =
         data["adr_address"].toString().replaceAll(RegExp('<[^>]+>'), '').trim();
-    print(cleanAdr);
     Merchant m = Merchant(
         placeId,
         location["lat"],
