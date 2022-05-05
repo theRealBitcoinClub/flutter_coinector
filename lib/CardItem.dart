@@ -109,7 +109,7 @@ class CardItem extends StatelessWidget {
   Widget buildContentStack(BuildContext ctx, TextStyle textStyle,
       TextStyle textStyle2, TagFilterCallback tagFilterCallback) {
     var imgUrl =
-        'https://raw.githubusercontent.com/theRealBitcoinClub/BITCOINMAP.CASH---Browser-PWA/master/public/img/app/jpg/' +
+        'https://raw.githubusercontent.com/theRealBitcoinClub/bmap_gif/main/' +
             merchant.id +
             ".gif";
 
