@@ -2,11 +2,23 @@
 
 class TagBrand {
   static Set<TagBrand> _brands;
+  static Set<String> _suggestions;
   int index;
   String short;
   String long;
 
   TagBrand(this.index, this.short, this.long);
+
+  static Set<String> getSuggestions() {
+    if (_suggestions == null) {
+      _suggestions = {};
+      getBrands().forEach((TagBrand element) {
+        _suggestions.add(element.long);
+      });
+    }
+
+    return _suggestions;
+  }
 
   static Set<TagBrand> getBrands() {
     if (_brands == null) {

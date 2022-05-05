@@ -1,5 +1,7 @@
 // Identifier a
 
+import 'package:flutter/foundation.dart';
+
 class TagCoinector {
   //TODO TRANSLATE ENG TAGS IN ALL LANGUAGES AND ADD EMOTICON TO SPANISH
   static const String PLACEHOLDER_TAG = "104";
@@ -100,8 +102,9 @@ class TagCoinector {
     for (int i = 0; i < tags.length; i++) {
       String item = tags.elementAt(i);
       if (item.toLowerCase().startsWith(searchTerm.toLowerCase())) {
+        if (!kReleaseMode) print("TAG FOUND:" + item + " index:" + i.toString());
         List<String> splittedTag = item.split(" ");
-        return TagCoinector(i, splittedTag[0],  splittedTag.length > 0 ? splittedTag[1] : "");
+        return TagCoinector(i, splittedTag[0],  splittedTag.length > 1 ? splittedTag[1] : "");
       }
     }
     return null;
@@ -1398,17 +1401,17 @@ class TagCoinector {
     '🍔🍔🍔Retro 🦄',
     'Ziegenkäse 🐐',
     '🍔🍔🍔WiFi', //59
-    'BTC',
-    'BCH',
-    'BSV',
-    'ETH',
+    '🍔🍔🍔BTC',
+    '🍔🍔🍔BCH',
+    '🍔🍔🍔BSV',
+    '🍔🍔🍔ETH',
     'Wurst 🌭', //64
     'Schnell ⏩',
     '🍔🍔🍔Kosher 🦄',
     '🍔🍔🍔Sushi 🍣',
     'Motorrad 🛵',
     'Auto 🚘', //69
-    'GoCrypto',
+    '🍔🍔🍔GoCrypto',
     'Huhn 🐔',
     'Hase 🐰',
     'Kartoffel 🥔',
@@ -1590,7 +1593,7 @@ class TagCoinector {
     '🍔🍔🍔Sushi 🍣',
     'Moto 🛵', //TODO translate in original to english
     'Coche 🚘', //69
-    '', //GoCrypto
+    '🍔🍔🍔GoCrypto', //GoCrypto
     'Pollo 🐔',
     'Conejo 🐰',
     'Patata 🥔',

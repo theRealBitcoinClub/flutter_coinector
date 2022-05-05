@@ -2,11 +2,24 @@
 
 class TagCoin {
   static Set<TagCoin> _tagCoins;
+  static Set<String> _suggestions;
   int index;
   String long;
   String short;
 
   TagCoin(this.index, this.long, this.short);
+
+  static Set<String> getSuggestions() {
+    if (_suggestions == null) {
+      _suggestions = {};
+      getTagCoins().forEach((TagCoin element) {
+        _suggestions.add(element.long);
+        _suggestions.add(element.short);
+      });
+    }
+
+    return _suggestions;
+  }
 
   static Set<TagCoin> getTagCoins() {
     if (_tagCoins == null) {

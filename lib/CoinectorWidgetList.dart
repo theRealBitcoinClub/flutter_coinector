@@ -251,20 +251,20 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       bool isLocation = false;
       int brand = -1;
       bool isTitle = true;
-      String coins = "";
+      String coin = "";
       if (locationTitleFilter != null && locationTitleFilter != "null") {
         locationTitleFilter = locationTitleFilter.toLowerCase();
         isLocation =
             LocationSuggestions.locations.contains(locationTitleFilter);
         brand = m2.brand != null ? containsBrand(m2, locationTitleFilter) : -1;
-        coins = m2.acceptedCoins != null
+        coin = m2.acceptedCoins != null
             ? containsCoin(m2, locationTitleFilter)
             : "";
         //TODO CURRENTLY TITLE IS CHECKED WHEN ALL OTHER CHECKS ARE RESULTLESS
         // isTitle = SuggestionsTitles.titleTags.contains(locationTitleFilter);
       }
       _insertIntoTempList(
-          m2, tag, locationTitleFilter, isLocation, isTitle, brand, coins);
+          m2, tag, locationTitleFilter, isLocation, isTitle, brand, coin);
     }
 
     //TODO FIX MAP POSITIONING
@@ -455,32 +455,32 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       bool isLocation,
       bool isTitle,
       int brand,
-      String coins) {
-    if (coins.isNotEmpty && !m2.acceptedCoins.contains(coins)) {
-      print("coinfilter");
+      String coin) {
+    if (coin.isNotEmpty && !m2.acceptedCoins.contains(coin)) {
+      if (!kReleaseMode) print("coinfilter");
       return;
     }
     if (brand != -1 && m2.brand != brand) {
-      print("brandfilter");
+      if (!kReleaseMode) print("brandfilter");
       return;
     }
     if (tag != null && filterWordIndexDoesNotMatch(tag, m2)) {
-      print("tagfilter");
+      if (!kReleaseMode) print("tagfilter");
       return;
     }
     if (locationTitleOrTag != null) {
       if (isLocation && !_containsLocationPrefilled(m2, locationTitleOrTag)) {
-        print("locationPrefilledFilter");
+        if (!kReleaseMode) print("locationPrefilledFilter");
         return;
       }
       if (tag == null &&
           !isLocation &&
-          coins.isEmpty &&
+          coin.isEmpty &&
           brand == -1 &&
           isTitle &&
           !_containsTitle(m2, locationTitleOrTag) &&
           !_containsLocationFreeSearch(m2, locationTitleOrTag)) {
-        print("titlefilter");
+        if (!kReleaseMode) print("titlefilter");
         return;
       }
     }
@@ -1488,10 +1488,11 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     return startProcessSearch(context, search, true);
   }
 
-  int checkBrand(TagBrand e, locationTitleFilter) {
+  int checkBrand(TagBrand e, String locationTitleFilter) {
     // print("checkBrand" + e.index.toString());
     // print("filter" + locationTitleFilter);
-    if (e.long.toLowerCase().contains(locationTitleFilter)) {
+    var filter = locationTitleFilter.toLowerCase().trim();
+    if (e.long.toLowerCase().trim() == filter) {
       // print("checkBrandSUCCESS");
       return e.index;
     }
@@ -1499,16 +1500,14 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     return -1;
   }
 
-  void checkCoin(TagCoin e, String locationTitleFilter, StringBuffer coins) {
+  void checkCoin(TagCoin currentCoin, String locationTitleFilter,
+      StringBuffer resultCoin) {
     // print("checkCoin" + e.index.toString());
-    if (e.long.toLowerCase().contains(locationTitleFilter)) {
+    var filter = locationTitleFilter.toLowerCase().trim();
+    if (currentCoin.short.toLowerCase().trim() == filter ||
+        currentCoin.long.toLowerCase().trim() == filter) {
       // print("checkCoinSUCCESS");
-      if (coins.isEmpty) {
-        coins.write(e.index);
-      } else {
-        coins.write(",");
-        coins.write(e.index);
-      }
+      resultCoin.write(currentCoin.index.toString());
     }
   }
 }

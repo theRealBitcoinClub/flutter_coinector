@@ -1,4 +1,5 @@
 import 'package:Coinector/Localizer.dart';
+import 'package:Coinector/TagBrands.dart';
 import 'package:Coinector/TagCoinector.dart';
 import 'package:Coinector/TagFactory.dart';
 import 'package:Coinector/TitleSuggestions.dart';
@@ -9,6 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'LocationSuggestions.dart';
 import 'SuggestionList.dart';
+import 'TagCoins.dart';
 
 class SearchDemoSearchDelegate extends SearchDelegate<String> {
   final Set<String> _historyBackup = {}; //Set.from(Suggestions.locations);
@@ -79,6 +81,8 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
     addMatchesEnglish(pattern, matches, ctx);
 
     addMatchesString(pattern, matches, LocationSuggestions.locations);
+    addMatchesString(pattern, matches, TagBrand.getSuggestions());
+    addMatchesString(pattern, matches, TagCoin.getSuggestions());
     addMatchesString(pattern, matches, TitleSuggestions.titleTags);
     addMatchesString(pattern, matches, TitleSuggestions.reviewedTitles);
 
