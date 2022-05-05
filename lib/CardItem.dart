@@ -166,18 +166,26 @@ class CardItem extends StatelessWidget {
   }
 
   Widget buildImageContainer(String imgUrl, BuildContext ctx) {
+    bool isGif = imgUrl.endsWith("gif");
+    double jpgHeightWeb = 360;
     double imgHeight = kIsWeb
         ? isWebMobile
-            ? 240
-            : 280
-        : 228;
+            ? isGif
+                ? 260
+                : jpgHeightWeb
+            : isGif
+                ? 280
+                : jpgHeightWeb
+        : isGif
+            ? 228
+            : jpgHeightWeb - 40;
     double imgWidth = 640;
     return Stack(children: <Widget>[
       SizedBox(
           height: 160,
           width: imgWidth,
           child: Align(
-            alignment: Alignment.bottomCenter,
+            alignment: Alignment.center,
             //child: GestureDetector(
             //  onTap: () => onTapActivateDataSaverOfflineMode(ctx),
             child: LoadingBouncingLine.circle(
