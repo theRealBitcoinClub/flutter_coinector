@@ -185,7 +185,7 @@ class CardItem extends StatelessWidget {
           height: 160,
           width: imgWidth,
           child: Align(
-            alignment: Alignment.center,
+            alignment: Alignment.bottomCenter,
             //child: GestureDetector(
             //  onTap: () => onTapActivateDataSaverOfflineMode(ctx),
             child: LoadingBouncingLine.circle(
