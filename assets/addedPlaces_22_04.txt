@@ -2094,7 +2094,7 @@
                 {
                   'value': 41,
                   'label':
-                      "𝙁𝙧𝙚𝙣𝙘𝙝 𝙘𝙧𝙚̂𝙥𝙚𝙨 𝘽𝘼 - Montañeses, Buenos Aires, Argentina ",
+                      "French Crepes BA - Montañeses, Buenos Aires, Argentina ",
                 },
                 {
                   'value': 42,
