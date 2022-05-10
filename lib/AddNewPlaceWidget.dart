@@ -10,6 +10,8 @@ import 'package:Coinector/TagCoinector.dart';
 import 'package:Coinector/TagCoins.dart';
 import 'package:Coinector/TagFactory.dart';
 import 'package:Coinector/translator.dart';
+import 'package:csv/csv.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -145,6 +147,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   int _selectedCategory;
   List<Merchant> reviewableMerchants = [];
   List<Map<String, dynamic>> reviewableData = [];
+  List<Map<String, dynamic>> reviewableDataAmerica = [];
+  List<Map<String, dynamic>> reviewableDataEurope = [];
+  List<Map<String, dynamic>> reviewableDataAustralia = [];
+  List<Map<String, dynamic>> reviewableDataAsia = [];
 
   bool reviewMode = true;
   _AddNewPlaceWidgetState(
@@ -163,7 +169,59 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     drawFormStep(FormStep.IN_NAME);
     if (reviewMode) {
       initReviewableDataSet();
+      initScrapedDataSet();
     }
+  }
+
+  Future<List<Map<String, dynamic>>> _loadReviewablesByContinent(
+      String continent) async {
+    try {
+      var response = await new Dio().get(
+          'https://raw.githubusercontent.com/theRealBitcoinClub/bmap_webp/main/review/' +
+              continent +
+              '/review.csv');
+      List<List<dynamic>> rowsAsListOfValues =
+          const CsvToListConverter().convert(response.data);
+
+      int index = 0;
+      int skipRows = 2;
+      List<Map<String, dynamic>> allItems = [];
+      rowsAsListOfValues[0].forEach((item) {
+        if (!item.toString().startsWith("Timestamp") &&
+            !item.toString().startsWith("Name, Address")) {
+          if (index == 0) {
+            final itemData = Map<String, dynamic>();
+            itemData['value'] = 0;
+            itemData['label'] = "Select Reviewable";
+            allItems.add(itemData);
+          }
+          index++;
+
+          final itemData = Map<String, dynamic>();
+          itemData['value'] = index;
+          itemData['label'] =
+              index.toString() + " " + item.toString().split("\n")[0];
+          allItems.add(itemData);
+        }
+      });
+      return allItems;
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  void initScrapedDataSet() async {
+    var america = await _loadReviewablesByContinent("am");
+    var asia = await _loadReviewablesByContinent("as");
+    var australia = await _loadReviewablesByContinent("au");
+    var europe = await _loadReviewablesByContinent("e");
+
+    setState(() {
+      reviewableDataAmerica = america;
+      reviewableDataAsia = asia;
+      reviewableDataAustralia = australia;
+      reviewableDataEurope = europe;
+    });
   }
 
   void initReviewableDataSet() async {

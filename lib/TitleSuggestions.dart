@@ -710,7 +710,7 @@ class TitleSuggestions {
     "Envíos Bakanos - Serrano 725, Buenos Aires, Argentina ",
     "Los Hermanos J C - Miñones, Buenos Aires, Argentina ",
     "Shawarma Al-Amir - Montañeses, Buenos Aires, Argentina ",
-    "𝙁𝙧𝙚𝙣𝙘𝙝 𝙘𝙧𝙚̂𝙥𝙚𝙨 𝘽𝘼 - Montañeses, Buenos Aires, Argentina ",
+    "French Crepes BA - Montañeses, Buenos Aires, Argentina ",
     "Agencia Cantalupe - Avenida Cabildo, Buenos Aires, Argentina ",
     "Social Club Buena Birra - Colegiales, Zapiola, Buenos Aires, Argentina ",
     "Licoreria Maurapas - El Cují, Lara, Venezuela ",
