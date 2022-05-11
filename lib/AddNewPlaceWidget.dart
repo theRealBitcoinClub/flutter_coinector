@@ -1510,7 +1510,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     var continentUpperCase = continent.toUpperCase();
     StringBuffer buff = StringBuffer("class AutoSuggestions" +
         continentUpperCase +
-        " { static final reviewedTitles = const {");
+        " { static final reviewedTitles" +
+        continentUpperCase +
+        " = const {");
     allSuggestions.forEach((element) {
       buff.writeln('"' + element + '",');
     });
