@@ -212,6 +212,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     } catch (e) {
       debugPrint(e.toString());
     }
+    return ReviewPlaces.searchCombosFake;
   }
 
   bool isRealItem(item) {
@@ -899,7 +900,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   void submitData(ctx) async {
     //TODO PARSE BRANDS AND COINS HERE TO ADD THEM TO MERCHANT AND REMOVE THE PRESELECT CONFIGS OR READ IN THE PRESELECTED STATE FROM LAST SUBMIT TO MAKE ADMIN INTERFACE EASIER FOR THESE WHO FOCUS ON THEIR BRAND ADDING MULTIPLE PLACES
     _merchant = parseInputsToMerchant(_merchant);
-    await githubCoinector.githubUploadPlaceDetails(_merchant);
+    await addPlaceToUploadStackAndUploadStack(
+        ReviewPlaces.getContinentAsText(_currentContinent));
     Loader.show(context, progressIndicator: LinearProgressIndicator());
     /* Loader.show(context,
         isSafeAreaOverlay: false,
@@ -1519,6 +1521,23 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     buff.writeln("};");
     buff.writeln("}");
     githubCoinector.githubUploadSuggestions(continent, buff.toString());
+  }
+
+  static List<String> uploadStack = [];
+
+  addPlaceToUploadStackAndUploadStack(String continent) async {
+    if (continent.isNotEmpty) {
+      uploadStack.add(_merchant.getBmapDataJson());
+      StringBuffer buff = StringBuffer();
+      buff.writeln("[");
+      uploadStack.forEach((element) {
+        buff.writeln(element + ",");
+      });
+      buff.writeln("]");
+      await githubCoinector.githubUploadPlaceDetailStack(
+          buff.toString(), continent);
+    }
+    await githubCoinector.githubUploadPlaceDetails(_merchant);
   }
 
   /*void _initContinent() async {

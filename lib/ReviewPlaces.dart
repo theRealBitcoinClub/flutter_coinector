@@ -489,4 +489,18 @@ class ReviewPlaces {
       'label': 'Select Place in North America',
     }
   ];
+
+  static String getContinentAsText(int currentContinent) {
+    switch (currentContinent) {
+      case 1:
+        return "am";
+      case 2:
+        return "as";
+      case 3:
+        return "au";
+      case 4:
+        return "e";
+    }
+    return "";
+  }
 }

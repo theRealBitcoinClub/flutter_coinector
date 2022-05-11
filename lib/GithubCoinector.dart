@@ -30,6 +30,14 @@ class GithubCoinector {
     print("GITHUB" + _github.toString());
   }
 
+  Future<void> githubUploadPlaceDetailStack(
+      String stack, String continent) async {
+    CreateFile createFile =
+        _githubCreateFileMerchantDetailStack(commitUser, stack, continent);
+    //TODO REMOVE ALL SPECIAL ACCENTED CHARACTERS FROM THE APP AS IT MAKES THINGS TOO COMPLICATED, ON THE INTERNET WE DO NOT HAVE ACCENTS, OBEY!!! USE THE NORMALIZE METHOD THEN REPLACE / and + with -_ again
+    _githubSendDataToRepository("flutter_coinector", createFile);
+  }
+
   Future<String> githubUploadPlaceDetails(Merchant merchant) async {
     if (merchant == null) return null;
     if (_lastMerchantUploadId != null && _lastMerchantUploadId == merchant.id) {
@@ -43,6 +51,28 @@ class GithubCoinector {
     _lastMerchantUploadId = merchant.id;
     Clipboard.setData(ClipboardData(text: merchant.getBmapDataJson()));
     return merchant.id;
+  }
+
+  CreateFile _githubCreateFileMerchantDetailStack(
+      CommitUser commitUser, String stack, String continent) {
+    var t = DateTime.now();
+    CreateFile createFile = CreateFile(
+        branch: "master",
+        committer: commitUser,
+        content: base64.encode(utf8.encode(stack)),
+        path: "uploaded/chunks/" +
+            "addplace_" +
+            continent.toUpperCase() +
+            "_" +
+            t.year.toString() +
+            t.month.toString() +
+            t.day.toString() +
+            "_" +
+            t.millisecondsSinceEpoch.toString() +
+            ".json",
+        message: "Add Place " + continent);
+    if (!kReleaseMode) print("\nPATH:\n" + createFile.path);
+    return createFile;
   }
 
   CreateFile _githubCreateFileMerchantDetails(
