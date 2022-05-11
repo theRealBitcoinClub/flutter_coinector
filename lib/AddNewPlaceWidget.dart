@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:Coinector/GithubCoinector.dart';
@@ -16,6 +17,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:select_form_field/select_form_field.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';
@@ -184,11 +186,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           const CsvToListConverter().convert(response.data);
 
       int index = 0;
-      int skipRows = 2;
       List<Map<String, dynamic>> allItems = [];
+      List<String> allSuggestions = [];
       rowsAsListOfValues[0].forEach((item) {
-        if (!item.toString().startsWith("Timestamp") &&
-            !item.toString().startsWith("Name, Address")) {
+        if (isRealItem(item)) {
           if (index == 0) {
             final itemData = Map<String, dynamic>();
             itemData['value'] = 0;
@@ -199,16 +200,26 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
           final itemData = Map<String, dynamic>();
           itemData['value'] = index;
-          itemData['label'] =
-              index.toString() + " " + item.toString().split("\n")[0];
+          String text = item.toString().split("\n")[0];
+          String suggestion = text.replaceFirst(",", " -");
+          itemData['label'] = index.toString() + " " + text;
           allItems.add(itemData);
+          allSuggestions.add(suggestion);
         }
       });
+      printSuggestions(allSuggestions, continent);
       return allItems;
     } catch (e) {
       debugPrint(e.toString());
     }
   }
+
+  bool isRealItem(item) {
+    return !item.toString().startsWith("Timestamp") &&
+        !item.toString().startsWith("Name, Address");
+  }
+
+  List reviewableCombos = [ReviewPlaces.searchCombosFake];
 
   void initScrapedDataSet() async {
     var america = await _loadReviewablesByContinent("am");
@@ -221,6 +232,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       reviewableDataAsia = asia;
       reviewableDataAustralia = australia;
       reviewableDataEurope = europe;
+      reviewableCombos.add(reviewableDataAmerica);
+      reviewableCombos.add(reviewableDataAsia);
+      reviewableCombos.add(reviewableDataAustralia);
+      reviewableCombos.add(reviewableDataEurope);
     });
   }
 
@@ -647,7 +662,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             initialValue: "0",
             icon: Icon(Icons.place_outlined),
             labelText: "Place",
-            items: ReviewPlaces.searchCombos[_currentContinent],
+            items: reviewableCombos[_currentContinent],
             onChanged: (val) => _selectPlace(val),
             onFieldSubmitted: (val) => _selectPlace(val))
       ],
@@ -1476,14 +1491,32 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       return;
     }
     setState(() {
-      var chosenItem =
-          ReviewPlaces.searchCombos[_currentContinent][_currentPlace];
+      var chosenItem = reviewableCombos[_currentContinent][_currentPlace];
       //String blub = jsonEncode(bla);
       //var blub2 = jsonDecode(blub);
 
       resetImages();
       _searchForPrefill(chosenItem["label"]);
     });
+  }
+
+  _write(String fileName, String text) async {
+    final Directory directory = await getApplicationDocumentsDirectory();
+    final File file = File('${directory.path}/' + fileName);
+    await file.writeAsString(text);
+  }
+
+  void printSuggestions(List<String> allSuggestions, String continent) async {
+    var continentUpperCase = continent.toUpperCase();
+    StringBuffer buff = StringBuffer("class AutoSuggestions" +
+        continentUpperCase +
+        " { static final reviewedTitles = const {");
+    allSuggestions.forEach((element) {
+      buff.writeln('"' + element + '",');
+    });
+    buff.writeln("}");
+    buff.writeln("}");
+    githubCoinector.githubUploadSuggestions(continent, buff.toString());
   }
 
   /*void _initContinent() async {

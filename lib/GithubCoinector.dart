@@ -37,15 +37,15 @@ class GithubCoinector {
       return null;
     }
     CreateFile createFile =
-        githubCreateFileMerchantDetails(commitUser, merchant);
+        _githubCreateFileMerchantDetails(commitUser, merchant);
     //TODO REMOVE ALL SPECIAL ACCENTED CHARACTERS FROM THE APP AS IT MAKES THINGS TOO COMPLICATED, ON THE INTERNET WE DO NOT HAVE ACCENTS, OBEY!!! USE THE NORMALIZE METHOD THEN REPLACE / and + with -_ again
-    githubSendDataToRepository("flutter_coinector", createFile);
+    _githubSendDataToRepository("flutter_coinector", createFile);
     _lastMerchantUploadId = merchant.id;
     Clipboard.setData(ClipboardData(text: merchant.getBmapDataJson()));
     return merchant.id;
   }
 
-  CreateFile githubCreateFileMerchantDetails(
+  CreateFile _githubCreateFileMerchantDetails(
       CommitUser commitUser, Merchant merchant) {
     var t = DateTime.now();
     CreateFile createFile = CreateFile(
@@ -77,15 +77,45 @@ class GithubCoinector {
     return createFile;
   }
 
+  Future<void> githubUploadSuggestions(
+      String continent, String fileContent) async {
+    CreateFile createFile =
+        _githubCreateFileSuggestions(commitUser, continent, fileContent);
+    _githubSendDataToRepository("flutter_coinector", createFile);
+  }
+
+  CreateFile _githubCreateFileSuggestions(
+      CommitUser commitUser, String continent, String fileContent) {
+    var t = DateTime.now();
+    CreateFile createFile = CreateFile(
+        branch: "master",
+        committer: commitUser,
+        content: base64.encode(utf8.encode(fileContent)),
+        path: "uploaded/suggestions/" +
+            t.year.toString() +
+            "_" +
+            t.month.toString() +
+            "_" +
+            t.day.toString() +
+            "_" +
+            continent.toUpperCase() +
+            "_" +
+            t.millisecondsSinceEpoch.toString() +
+            ".dart",
+        message: "Add Suggestions");
+    if (!kReleaseMode) print("\nPATH:\n" + createFile.path);
+    return createFile;
+  }
+
   Future<void> githubUploadPlaceImages(
       List<Uint8List> selectedImages, Merchant merchant) async {
     for (Uint8List img in selectedImages) {
-      await githubSendDataToRepository(
-          "flutter_coinector", githubCreateFileMerchantImage(img, merchant));
+      await _githubSendDataToRepository(
+          "flutter_coinector", _githubCreateFileMerchantImage(img, merchant));
     }
   }
 
-  Future<void> githubSendDataToRepository(
+  Future<void> _githubSendDataToRepository(
       String repository, CreateFile createFile) async {
     ContentCreation response = await _github.repositories.createFile(
         RepositorySlug("theRealBitcoinClub", repository), createFile);
@@ -104,7 +134,7 @@ class GithubCoinector {
     }
   }
 
-  CreateFile githubCreateFileMerchantImage(Uint8List img, Merchant merchant) {
+  CreateFile _githubCreateFileMerchantImage(Uint8List img, Merchant merchant) {
     var t = DateTime.now();
     var createFile = CreateFile(
         branch: "master",

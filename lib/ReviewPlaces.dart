@@ -9,11 +9,11 @@ class ReviewPlaces {
     },
     {
       'value': 1,
-      'label': 'Africa',
+      'label': 'America',
     },
     {
       'value': 2,
-      'label': 'Asia.',
+      'label': 'Asia',
     },
     {
       'value': 3,
@@ -22,14 +22,6 @@ class ReviewPlaces {
     {
       'value': 4,
       'label': 'Europe',
-    },
-    {
-      'value': 5,
-      'label': 'North America',
-    },
-    {
-      'value': 6,
-      'label': 'South America',
     }
   ];
 
