@@ -1514,7 +1514,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     allSuggestions.forEach((element) {
       buff.writeln('"' + element + '",');
     });
-    buff.writeln("}");
+    buff.writeln("};");
     buff.writeln("}");
     githubCoinector.githubUploadSuggestions(continent, buff.toString());
   }
