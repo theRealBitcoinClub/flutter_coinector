@@ -11,6 +11,7 @@ import 'package:Coinector/TagCoinector.dart';
 import 'package:Coinector/TagCoins.dart';
 import 'package:Coinector/TagFactory.dart';
 import 'package:Coinector/translator.dart';
+import 'package:country_codes/country_codes.dart';
 import 'package:csv/csv.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -149,10 +150,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   int _selectedCategory;
   List<Merchant> reviewableMerchants = [];
   List<Map<String, dynamic>> reviewableData = [];
-  List<Map<String, dynamic>> reviewableDataAmerica = [];
-  List<Map<String, dynamic>> reviewableDataEurope = [];
-  List<Map<String, dynamic>> reviewableDataAustralia = [];
-  List<Map<String, dynamic>> reviewableDataAsia = [];
+  List<Map<String, dynamic>> reviewableDataGoCrypto = [];
 
   bool reviewMode = true;
   _AddNewPlaceWidgetState(
@@ -170,6 +168,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
     drawFormStep(FormStep.IN_NAME);
     if (reviewMode) {
+      initReviewableDataSetGoCrypto();
       initReviewableDataSet();
       initScrapedDataSet();
     }
@@ -229,15 +228,54 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     var europe = await _loadReviewablesByContinent("e");
 
     setState(() {
-      reviewableDataAmerica = america;
-      reviewableDataAsia = asia;
-      reviewableDataAustralia = australia;
-      reviewableDataEurope = europe;
-      reviewableCombos.add(reviewableDataAmerica);
-      reviewableCombos.add(reviewableDataAsia);
-      reviewableCombos.add(reviewableDataAustralia);
-      reviewableCombos.add(reviewableDataEurope);
+      reviewableCombos.add(america);
+      reviewableCombos.add(asia);
+      reviewableCombos.add(australia);
+      reviewableCombos.add(europe);
     });
+  }
+
+  void initReviewableDataSetGoCrypto() async {
+    int fileCount = 23;
+    Map<String, List<Merchant>> reviewablesResultMap = new Map();
+    for (int index = 0; index < fileCount; index++) {
+      var response = await new Dio().get(
+          'https://raw.githubusercontent.com/theRealBitcoinClub/flutter_coinector/master/inputData/2022_04_gocrypto_' +
+              index.toString() +
+              '.txt');
+      List<dynamic> reviewables = jsonDecode(response.data);
+      List<List<Merchant>> hasPlaceId = [[], [], [], []];
+      List<List<Merchant>> missingPlaceId = [[], [], [], []];
+      reviewables.forEach((item) {
+        String pId = item['place_id'];
+        String countryCode = item['country'];
+        if (pId == null || pId.isEmpty || !pId.startsWith("ChI")) {
+          pId = "";
+        }
+
+        String country;
+        CountryCodes.countryCodes().forEach((CountryDetails details) {
+          if (details.alpha2Code == countryCode) {
+            country = details.name;
+          }
+        });
+
+        Merchant m = Merchant(pId, 0.0, 0.0, item['name'], 0, "0", "0.0", 0,
+            "104,104,104,104", item["city"] + ", " + country, 0, "0");
+
+        m.continent = countryCode;
+        reviewablesResultMap[countryCode].add(m);
+      });
+
+      reviewablesResultMap.forEach((key, List<Merchant> places) {
+        StringBuffer buff = StringBuffer("[");
+        places.forEach((Merchant item) {
+          buff.writeln(item.getBmapDataJson() + ",");
+        });
+        buff.writeln("]");
+        githubCoinector.githubUploadReviewablesGoCrypto(key, buff.toString());
+      });
+    }
   }
 
   void initReviewableDataSet() async {

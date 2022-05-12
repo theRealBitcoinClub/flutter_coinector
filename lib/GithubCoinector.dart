@@ -107,11 +107,41 @@ class GithubCoinector {
     return createFile;
   }
 
+  Future<void> githubUploadReviewablesGoCrypto(
+      String continent, String fileContent) async {
+    CreateFile createFile = _githubCreateFileReviewablesGoCrypto(
+        commitUser, continent, fileContent);
+    _githubSendDataToRepository("flutter_coinector", createFile);
+  }
+
   Future<void> githubUploadSuggestions(
       String continent, String fileContent) async {
     CreateFile createFile =
         _githubCreateFileSuggestions(commitUser, continent, fileContent);
     _githubSendDataToRepository("flutter_coinector", createFile);
+  }
+
+  CreateFile _githubCreateFileReviewablesGoCrypto(
+      CommitUser commitUser, String continent, String fileContent) {
+    var t = DateTime.now();
+    CreateFile createFile = CreateFile(
+        branch: "master",
+        committer: commitUser,
+        content: base64.encode(utf8.encode(fileContent)),
+        path: "uploaded/reviewables/gocrypto/" +
+            t.year.toString() +
+            "_" +
+            t.month.toString() +
+            "_" +
+            t.day.toString() +
+            "_" +
+            continent.toUpperCase() +
+            "_" +
+            t.millisecondsSinceEpoch.toString() +
+            ".json",
+        message: "Add Reviewables GoCrypto");
+    if (!kReleaseMode) print("\nPATH:\n" + createFile.path);
+    return createFile;
   }
 
   CreateFile _githubCreateFileSuggestions(
