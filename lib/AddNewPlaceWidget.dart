@@ -22,6 +22,7 @@ import 'package:select_form_field/select_form_field.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';
 import 'Dialogs.dart';
+import 'ImportData.dart';
 import 'ReviewPlaces.dart';
 import 'TagBrands.dart';
 import 'Toaster.dart';
@@ -890,11 +891,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void submitData(ctx) async {
+    Loader.show(context, progressIndicator: LinearProgressIndicator());
     //TODO PARSE BRANDS AND COINS HERE TO ADD THEM TO MERCHANT AND REMOVE THE PRESELECT CONFIGS OR READ IN THE PRESELECTED STATE FROM LAST SUBMIT TO MAKE ADMIN INTERFACE EASIER FOR THESE WHO FOCUS ON THEIR BRAND ADDING MULTIPLE PLACES
     _merchant = parseInputsToMerchant(_merchant);
     await addPlaceToUploadStackAndUploadStack(
         ReviewPlaces.getContinentAsText(_currentContinent));
-    Loader.show(context, progressIndicator: LinearProgressIndicator());
     /* Loader.show(context,
         isSafeAreaOverlay: false,
         isAppbarOverlay: true,
@@ -1518,6 +1519,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
     await githubCoinector.githubUploadPlaceDetailStack(
         buff.toString(), continent);
+
+    await ImportData(githubCoinector)
+        .printSuggestions(allSuggestions, continent);
 
     await githubCoinector.githubUploadPlaceDetails(_merchant);
   }
