@@ -21,7 +21,6 @@ import 'package:path_provider/path_provider.dart';
 import 'package:select_form_field/select_form_field.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';
-import 'AssetLoader.dart';
 import 'Dialogs.dart';
 import 'ReviewPlaces.dart';
 import 'TagBrands.dart';
@@ -232,8 +231,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void initReviewableDataSet() async {
-    var data = await AssetLoader.loadString('assets/reviewable.json');
-    List<dynamic> reviewables = jsonDecode(data);
+    var response = await new Dio().get(
+        'https://raw.githubusercontent.com/theRealBitcoinClub/bmap_webp/main/review/json/reviewable.json');
+    List<dynamic> reviewables = jsonDecode(response.data);
     int index = 0;
     List<Map<String, dynamic>> allItems = [];
     reviewables.forEach((item) {
