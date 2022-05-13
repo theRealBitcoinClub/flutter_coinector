@@ -1501,18 +1501,21 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     await file.writeAsString(text);
   }
 
-  static List<String> uploadStack = [];
-  static List<String> allSuggestions = [];
+  static Map<String, List<String>> uploadStack = Map();
+  static Map<String, List<String>> allSuggestions = Map();
 
   addPlaceToUploadStackAndUploadStack(String continent) async {
     if (continent.isEmpty) {
       continent = "REVIEW";
     }
-    allSuggestions.add(_merchant.name + " - " + _merchant.location);
-    uploadStack.add(_merchant.getBmapDataJson());
+    if (allSuggestions[continent] == null) allSuggestions[continent] = [];
+    if (uploadStack[continent] == null) uploadStack[continent] = [];
+
+    allSuggestions[continent].add(_merchant.name + " - " + _merchant.location);
+    uploadStack[continent].add(_merchant.getBmapDataJson());
     StringBuffer buff = StringBuffer();
     buff.writeln("[");
-    uploadStack.forEach((element) {
+    uploadStack[continent].forEach((element) {
       buff.writeln(element + ",");
     });
     buff.writeln("]");
@@ -1520,9 +1523,12 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     await githubCoinector.githubUploadPlaceDetailStack(
         buff.toString(), continent);
 
-    await ImportData(githubCoinector)
-        .printSuggestions(allSuggestions, continent);
-
+    allSuggestions.forEach((key, value) async {
+      if (value != null && value.isNotEmpty) {
+        await ImportData(githubCoinector)
+            .printSuggestions(value, key.toString());
+      }
+    });
     await githubCoinector.githubUploadPlaceDetails(_merchant);
   }
 
