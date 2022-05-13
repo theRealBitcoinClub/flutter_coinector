@@ -35,7 +35,7 @@ class GithubCoinector {
     CreateFile createFile =
         _githubCreateFileMerchantDetailStack(commitUser, stack, continent);
     //TODO REMOVE ALL SPECIAL ACCENTED CHARACTERS FROM THE APP AS IT MAKES THINGS TOO COMPLICATED, ON THE INTERNET WE DO NOT HAVE ACCENTS, OBEY!!! USE THE NORMALIZE METHOD THEN REPLACE / and + with -_ again
-    _githubSendDataToRepository("flutter_coinector", createFile);
+    await _uploadDataSafe(createFile);
   }
 
   Future<String> githubUploadPlaceDetails(Merchant merchant) async {
@@ -47,7 +47,7 @@ class GithubCoinector {
     CreateFile createFile =
         _githubCreateFileMerchantDetails(commitUser, merchant);
     //TODO REMOVE ALL SPECIAL ACCENTED CHARACTERS FROM THE APP AS IT MAKES THINGS TOO COMPLICATED, ON THE INTERNET WE DO NOT HAVE ACCENTS, OBEY!!! USE THE NORMALIZE METHOD THEN REPLACE / and + with -_ again
-    _githubSendDataToRepository("flutter_coinector", createFile);
+    await _uploadDataSafe(createFile);
     _lastMerchantUploadId = merchant.id;
     Clipboard.setData(ClipboardData(text: merchant.getBmapDataJson()));
     return merchant.id;
@@ -107,18 +107,27 @@ class GithubCoinector {
     return createFile;
   }
 
-  Future<void> githubUploadReviewablesGoCrypto(
+  Future<bool> githubUploadReviewablesGoCrypto(
       String continent, String fileContent) async {
     CreateFile createFile = _githubCreateFileReviewablesGoCrypto(
         commitUser, continent, fileContent);
-    await _githubSendDataToRepository("flutter_coinector", createFile);
+    await _uploadDataSafe(createFile);
+    return true;
   }
 
   Future<void> githubUploadSuggestions(
       String continent, String fileContent) async {
     CreateFile createFile =
         _githubCreateFileSuggestions(commitUser, continent, fileContent);
-    _githubSendDataToRepository("flutter_coinector", createFile);
+    await _uploadDataSafe(createFile);
+  }
+
+  Future<void> _uploadDataSafe(CreateFile createFile) async {
+    bool hasSent = false;
+    while (!hasSent) {
+      hasSent =
+          await _githubSendDataToRepository("flutter_coinector", createFile);
+    }
   }
 
   CreateFile _githubCreateFileReviewablesGoCrypto(
@@ -170,18 +179,18 @@ class GithubCoinector {
   Future<void> githubUploadPlaceImages(
       List<Uint8List> selectedImages, Merchant merchant) async {
     for (Uint8List img in selectedImages) {
-      await _githubSendDataToRepository(
-          "flutter_coinector", _githubCreateFileMerchantImage(img, merchant));
+      await _uploadDataSafe(_githubCreateFileMerchantImage(img, merchant));
     }
   }
 
-  Future<void> _githubSendDataToRepository(
+  Future<bool> _githubSendDataToRepository(
       String repository, CreateFile createFile) async {
     ContentCreation response = await _github.repositories.createFile(
         RepositorySlug("theRealBitcoinClub", repository), createFile);
-    if (response == null || response.content == null)
+    if (response == null || response.content == null) {
       print("\nRESPONSE NULL repo: " + repository);
-    else {
+      return false;
+    } else {
       var url = response.content.downloadUrl;
       print(repository +
           "\nresponse github downloadUrl:" +
@@ -192,6 +201,7 @@ class GithubCoinector {
           "\nhttps://ezgif.com/resize?url=" +
           url);
     }
+    return true;
   }
 
   CreateFile _githubCreateFileMerchantImage(Uint8List img, Merchant merchant) {
