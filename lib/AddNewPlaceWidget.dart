@@ -4,7 +4,6 @@ import 'dart:typed_data';
 
 import 'package:Coinector/GithubCoinector.dart';
 import 'package:Coinector/GooglePlacesApiCoinector.dart';
-import 'package:Coinector/ImportData.dart';
 import 'package:Coinector/Localizer.dart';
 import 'package:Coinector/Merchant.dart';
 import 'package:Coinector/TabPageCategory.dart';
@@ -149,7 +148,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   int _selectedCategory;
   List<Merchant> reviewableMerchants = [];
   List<Map<String, dynamic>> reviewableData = [];
-  List<Map<String, dynamic>> reviewableDataGoCrypto = [];
 
   bool reviewMode = true;
   _AddNewPlaceWidgetState(
@@ -167,7 +165,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
     drawFormStep(FormStep.IN_NAME);
     if (reviewMode) {
-      ImportData(githubCoinector).importDataSetGoCrypto();
+      // ImportData(githubCoinector).importDataSetGoCrypto();
       initReviewableDataSet();
       initScrapedDataSet();
     }
@@ -185,7 +183,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
       int index = 0;
       List<Map<String, dynamic>> allItems = [];
-      List<String> allSuggestions = [];
+      // List<String> allSuggestions = [];
       rowsAsListOfValues[0].forEach((item) {
         if (isRealItem(item)) {
           if (index == 0) {
@@ -199,13 +197,12 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           final itemData = Map<String, dynamic>();
           itemData['value'] = index;
           String text = item.toString().split("\n")[0];
-          String suggestion = text.replaceFirst(",", " -");
           itemData['label'] = index.toString() + " " + text;
           allItems.add(itemData);
-          allSuggestions.add(suggestion);
+          // allSuggestions.add(text.replaceFirst(",", " -"));
         }
       });
-      ImportData(githubCoinector).printSuggestions(allSuggestions, continent);
+      // ImportData(githubCoinector).printSuggestions(allSuggestions, continent);
       return allItems;
     } catch (e) {
       debugPrint(e.toString());
@@ -250,6 +247,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       reviewableMerchants.add(Merchant.fromJson(item));
 
       final itemData = Map<String, dynamic>();
+      String text = item["n"] + " - " + item["l"];
       itemData['value'] = index;
       itemData['label'] = index.toString() + " " + item["n"];
       allItems.add(itemData);
@@ -303,7 +301,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void searchOnGoogleMapsPrefillFields(String input, {String placesId}) async {
-    if (placesId == null) {
+    if (placesId == null || placesId.isEmpty) {
       multiplePlacesFoundSplit = [];
       multiplePlacesCurrentIndex = 1;
       placeId = await findPlaceIdForSearchQuery(input);
@@ -505,8 +503,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      // wrapBuildColumnPreFillReviewables(ctx),
-                      // buildSizedBoxSeparator(),
+                      wrapBuildColumnPreFillReviewables(ctx),
+                      buildSizedBoxSeparator(),
                       wrapBuildColumnPreFillContinent(ctx),
                       buildSizedBoxSeparator(),
                       wrapBuildColumnPreFillPlace(ctx),
@@ -733,9 +731,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     );
   }
 
-  void _searchForPrefill(String search) {
+  void _searchForPrefill(String search, {String placesId}) {
     hideSearchBtn();
-    searchOnGoogleMapsPrefillFields(search);
+    searchOnGoogleMapsPrefillFields(search, placesId: placesId);
   }
 
   List<RadioListTile> buildCategorySelector() {
@@ -1465,7 +1463,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       _merchant = reviewableMerchants.elementAt(i - 1);
     });
     resetImages();
-    _searchForPrefill(_merchant.name + ", " + _merchant.location);
+    _searchForPrefill(_merchant.name + ", " + _merchant.location,
+        placesId: _merchant.id);
   }
 
   _selectContinent(var index) {
@@ -1503,19 +1502,24 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   static List<String> uploadStack = [];
+  static List<String> allSuggestions = [];
 
   addPlaceToUploadStackAndUploadStack(String continent) async {
-    if (continent.isNotEmpty) {
-      uploadStack.add(_merchant.getBmapDataJson());
-      StringBuffer buff = StringBuffer();
-      buff.writeln("[");
-      uploadStack.forEach((element) {
-        buff.writeln(element + ",");
-      });
-      buff.writeln("]");
-      await githubCoinector.githubUploadPlaceDetailStack(
-          buff.toString(), continent);
+    if (continent.isEmpty) {
+      continent = "REVIEW";
     }
+    allSuggestions.add(_merchant.name + " - " + _merchant.location);
+    uploadStack.add(_merchant.getBmapDataJson());
+    StringBuffer buff = StringBuffer();
+    buff.writeln("[");
+    uploadStack.forEach((element) {
+      buff.writeln(element + ",");
+    });
+    buff.writeln("]");
+
+    await githubCoinector.githubUploadPlaceDetailStack(
+        buff.toString(), continent);
+
     await githubCoinector.githubUploadPlaceDetails(_merchant);
   }
 

@@ -60,14 +60,15 @@ class GooglePlacesApiCoinector {
   }
 
   static Future<Object> findPlaceIdDetails(String placeId) async {
-    var result = await Dio().get(
-        "https://maps.googleapis.com/maps/api/place/details/json" +
-            "?key=" +
-            ConfigReader.getGooglePlacesKey() +
-            "&place_id=" +
-            placeId);
+    String url = "https://maps.googleapis.com/maps/api/place/details/json" +
+        "?key=" +
+        ConfigReader.getGooglePlacesKey() +
+        "&place_id=" +
+        placeId;
+    debugPrint(url);
+    var result = await Dio().get(url);
     var data = result.data["result"];
-    // if (!kReleaseMode) printWrapped(m.getBmapDataJson());
+    debugPrint(data.toString());
     return data;
   }
 }
