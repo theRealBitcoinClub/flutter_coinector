@@ -12,13 +12,13 @@ description: Coinecting to coimunity...
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 
-version: 6.9.57+253945
+version: 6.9.58+253946
 
 environment:
   sdk: ">=2.2.2 <3.0.0"
 
 dependencies:
-  country_codes: 2.2.0
+  #country_codes: 2.2.0
   csv: 5.0.1
   select_form_field: ^2.2.0
   flutter_overlay_loader: ^1.0.3

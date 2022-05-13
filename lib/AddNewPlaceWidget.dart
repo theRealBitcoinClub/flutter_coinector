@@ -41,13 +41,12 @@ const SCROLL_POS_ADR = 130.0;
 const SCROLL_POS_NAME = 0.0;
 const KEYWORD_CONTROLLER_ACTION = "controller";
 const int MAX_IMAGES_UPLOAD = 3;
-const int MIN_INPUT_ADR =
-    5; //TODO validate the address it shall contain a zip code and a country or use separate fields
+const int MIN_INPUT_ADR = 5;
 const int MIN_INPUT_NAME = 2;
 const int MIN_INPUT_TAGS = 2;
 const int MAX_INPUT_TAGS = 4;
 const int MIN_INPUT_BCHyDASH =
-    32; //TODO offer an address field for each coin right after checking its box
+    32; //TODO offer an address field for each coin right after checking its box, activates pay button for that place
 const int MAX_INPUT_ADR = 250;
 const int MAX_INPUT_NAME = 200;
 const int MAX_INPUT_DASH = 36; //dash:XintDskT8uV59N9HNvbpJ27nKNtbyHiyUn
