@@ -21,8 +21,10 @@ class ImportData {
           'https://raw.githubusercontent.com/theRealBitcoinClub/flutter_coinector/master/inputData/2022_04_gocrypto_' +
               index.toString() +
               '.txt');
-      List<dynamic> reviewables = jsonDecode(response.data);
-      reviewables.forEach((item) {
+      var data = response.data;
+      //var results = data['results'];
+      var reviewables = jsonDecode(data);
+      reviewables['results'].forEach((item) {
         String pId = getPlaceId(item);
         String countryCode = item['country'];
         String country = getCountryName(countryCode);
@@ -30,16 +32,15 @@ class ImportData {
 
         addReviewableToResultsMap(reviewablesResultMap, countryCode, m);
       });
-
-      uploadResultsMapToGitHub(reviewablesResultMap);
     }
+    uploadResultsMapToGitHub(reviewablesResultMap);
   }
 
   void uploadResultsMapToGitHub(
-      Map<String, List<Merchant>> reviewablesResultMap) {
-    reviewablesResultMap.forEach((key, List<Merchant> places) {
+      Map<String, List<Merchant>> reviewablesResultMap) async {
+    reviewablesResultMap.forEach((key, List<Merchant> places) async {
       StringBuffer buff = printMerchantsResultList(places);
-      github.githubUploadReviewablesGoCrypto(key, buff.toString());
+      await github.githubUploadReviewablesGoCrypto(key, buff.toString());
     });
   }
 
@@ -62,8 +63,12 @@ class ImportData {
   }
 
   Merchant createMerchantForReview(String pId, item, String country) {
+    String city = item["city"] != null && item['city'].toString().isNotEmpty
+        ? item['city']
+        : "";
+    String location = city.isNotEmpty ? (city + ", " + country) : country;
     Merchant m = Merchant(pId, 0.0, 0.0, item['name'], 0, "0", "0.0", 0,
-        "104,104,104,104", item["city"] + ", " + country, 0, "0");
+        "104,104,104,104", location, 0, "0");
     return m;
   }
 

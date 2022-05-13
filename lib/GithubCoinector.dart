@@ -111,7 +111,7 @@ class GithubCoinector {
       String continent, String fileContent) async {
     CreateFile createFile = _githubCreateFileReviewablesGoCrypto(
         commitUser, continent, fileContent);
-    _githubSendDataToRepository("flutter_coinector", createFile);
+    await _githubSendDataToRepository("flutter_coinector", createFile);
   }
 
   Future<void> githubUploadSuggestions(

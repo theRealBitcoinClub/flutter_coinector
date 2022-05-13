@@ -1422,7 +1422,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   void openAddNewPlaceWidget(BuildContext ctx) async {
-    if (!isManagerModeRelease || kIsWeb) {
+    if (!isManagerModeRelease) {
       UrlLauncher.launchSubmitForm();
       return;
     } else
