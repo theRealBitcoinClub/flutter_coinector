@@ -1463,8 +1463,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       _merchant = reviewableMerchants.elementAt(i - 1);
     });
     resetImages();
-    _searchForPrefill(_merchant.name + ", " + _merchant.location,
-        placesId: _merchant.id);
+    _searchForPrefill(_merchant.name + ", " + _merchant.location);
   }
 
   _selectContinent(var index) {
