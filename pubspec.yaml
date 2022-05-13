@@ -18,7 +18,7 @@ environment:
   sdk: ">=2.2.2 <3.0.0"
 
 dependencies:
-  #country_codes: 2.2.0
+  country_codes: 2.2.0
   csv: 5.0.1
   select_form_field: ^2.2.0
   flutter_overlay_loader: ^1.0.3

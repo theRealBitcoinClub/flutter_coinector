@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:Coinector/GithubCoinector.dart';
-//import 'package:country_codes/country_codes.dart';
+import 'package:country_codes/country_codes.dart';
 import 'package:dio/dio.dart';
 
 import 'Merchant.dart';
@@ -73,14 +73,14 @@ class ImportData {
   }
 
   String getCountryName(String countryCode) {
-    /*String country;
+    String country;
     CountryCodes.countryCodes().forEach((CountryDetails details) {
       if (details.alpha2Code == countryCode) {
         country = details.name;
       }
     });
-    return country;*/
-    return countryCode;
+    return country;
+    //return countryCode;
   }
 
   String getPlaceId(item) {
