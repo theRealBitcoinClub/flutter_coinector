@@ -4,6 +4,7 @@ import 'dart:typed_data';
 
 import 'package:Coinector/GithubCoinector.dart';
 import 'package:Coinector/GooglePlacesApiCoinector.dart';
+import 'package:Coinector/ImportData.dart';
 import 'package:Coinector/Localizer.dart';
 import 'package:Coinector/Merchant.dart';
 import 'package:Coinector/TabPageCategory.dart';
@@ -11,7 +12,6 @@ import 'package:Coinector/TagCoinector.dart';
 import 'package:Coinector/TagCoins.dart';
 import 'package:Coinector/TagFactory.dart';
 import 'package:Coinector/translator.dart';
-import 'package:country_codes/country_codes.dart';
 import 'package:csv/csv.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -168,7 +168,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
     drawFormStep(FormStep.IN_NAME);
     if (reviewMode) {
-      initReviewableDataSetGoCrypto();
+      ImportData(githubCoinector).importDataSetGoCrypto();
       initReviewableDataSet();
       initScrapedDataSet();
     }
@@ -206,7 +206,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           allSuggestions.add(suggestion);
         }
       });
-      printSuggestions(allSuggestions, continent);
+      ImportData(githubCoinector).printSuggestions(allSuggestions, continent);
       return allItems;
     } catch (e) {
       debugPrint(e.toString());
@@ -233,49 +233,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       reviewableCombos.add(australia);
       reviewableCombos.add(europe);
     });
-  }
-
-  void initReviewableDataSetGoCrypto() async {
-    int fileCount = 23;
-    Map<String, List<Merchant>> reviewablesResultMap = new Map();
-    for (int index = 0; index < fileCount; index++) {
-      var response = await new Dio().get(
-          'https://raw.githubusercontent.com/theRealBitcoinClub/flutter_coinector/master/inputData/2022_04_gocrypto_' +
-              index.toString() +
-              '.txt');
-      List<dynamic> reviewables = jsonDecode(response.data);
-      List<List<Merchant>> hasPlaceId = [[], [], [], []];
-      List<List<Merchant>> missingPlaceId = [[], [], [], []];
-      reviewables.forEach((item) {
-        String pId = item['place_id'];
-        String countryCode = item['country'];
-        if (pId == null || pId.isEmpty || !pId.startsWith("ChI")) {
-          pId = "";
-        }
-
-        String country;
-        CountryCodes.countryCodes().forEach((CountryDetails details) {
-          if (details.alpha2Code == countryCode) {
-            country = details.name;
-          }
-        });
-
-        Merchant m = Merchant(pId, 0.0, 0.0, item['name'], 0, "0", "0.0", 0,
-            "104,104,104,104", item["city"] + ", " + country, 0, "0");
-
-        m.continent = countryCode;
-        reviewablesResultMap[countryCode].add(m);
-      });
-
-      reviewablesResultMap.forEach((key, List<Merchant> places) {
-        StringBuffer buff = StringBuffer("[");
-        places.forEach((Merchant item) {
-          buff.writeln(item.getBmapDataJson() + ",");
-        });
-        buff.writeln("]");
-        githubCoinector.githubUploadReviewablesGoCrypto(key, buff.toString());
-      });
-    }
   }
 
   void initReviewableDataSet() async {
@@ -1544,21 +1501,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     final Directory directory = await getApplicationDocumentsDirectory();
     final File file = File('${directory.path}/' + fileName);
     await file.writeAsString(text);
-  }
-
-  void printSuggestions(List<String> allSuggestions, String continent) async {
-    var continentUpperCase = continent.toUpperCase();
-    StringBuffer buff = StringBuffer("class AutoSuggestions" +
-        continentUpperCase +
-        " { static final reviewedTitles" +
-        continentUpperCase +
-        " = const {");
-    allSuggestions.forEach((element) {
-      buff.writeln('"' + element + '",');
-    });
-    buff.writeln("};");
-    buff.writeln("}");
-    githubCoinector.githubUploadSuggestions(continent, buff.toString());
   }
 
   static List<String> uploadStack = [];
