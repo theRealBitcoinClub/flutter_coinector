@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:Coinector/GithubCoinector.dart';
@@ -17,7 +16,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:select_form_field/select_form_field.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';
@@ -1298,7 +1296,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         // print("PHOTOCOUNT: " + result["photos"].length.toString());
         for (int x = 0; x < 10; x++)
           for (var photo in result["photos"]) {
-            // if (cancelAllImageLoads) return;
+            if (cancelAllImageLoads) return;
             if (!imagesSuccess.contains(photo["photo_reference"].toString())) {
               print("loadGooglePlacePhoto: " +
                   x.toString() +
@@ -1339,7 +1337,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     await Future.delayed(const Duration(milliseconds: 100));
     if (result != null) {
       setState(() {
-        // if (cancelAllImageLoads) return;
+        if (cancelAllImageLoads) return;
         images.add(result);
         print("imagesSuccess: " + index.toString() + " " + ref);
         imagesSuccess.add(ref.toString());
@@ -1369,43 +1367,30 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       switch (step) {
         case FormStep.IN_NAME:
           drawStepInit();
-          // scrollToWithAnimation(SCROLL_POS_NAME);
           break;
         case FormStep.IN_ADR:
           drawStepInit();
           showInputAddress();
-          // scrollToWithAnimation(SCROLL_POS_ADR);
           break;
         case FormStep.HIT_SEARCH:
           showSearchBtn();
           drawStepSearch();
-          // scrollToWithAnimation(SCROLL_POS_ADR);
           break;
         case FormStep.HIT_GOOGLE:
           hideSearchBtn();
           showRegisterOnGmaps();
           resetTagsAndImages();
-          // scrollToWithAnimation(SCROLL_POS_ADR);
           break;
         case FormStep.SELECT_TAGS:
           hideSearchBtn();
           hideRegisterOnGmaps();
           showInputTag();
           focusAwayFromInputs();
-          // scrollToWithAnimation(SCROLL_POS_TAGS);
           break;
-        /*case FormStep.SELECT_IMAGES:
-          hideSearchBtn();
-          hideRegisterOnGmaps();
-          showInputTag();
-          focusAwayFromInputs();
-          // scrollToWithAnimation(SCROLL_POS_IMAGES);
-          break;*/
         case FormStep.SUBMIT:
           hideSearchBtn();
           hideRegisterOnGmaps();
           showInputTag();
-          // lockSelectedImages();
           showSubmit();
           break;
         default:
@@ -1428,7 +1413,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     hideInputTag();
     resetTags();
     resetImages();
-    cancelAllImageLoads = true;
+    cancelAllImageLoads = false;
   }
 
   void drawStepInit() {
@@ -1487,18 +1472,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     }
     setState(() {
       var chosenItem = reviewableCombos[_currentContinent][_currentPlace];
-      //String blub = jsonEncode(bla);
-      //var blub2 = jsonDecode(blub);
-
       resetImages();
       _searchForPrefill(chosenItem["label"]);
     });
-  }
-
-  _write(String fileName, String text) async {
-    final Directory directory = await getApplicationDocumentsDirectory();
-    final File file = File('${directory.path}/' + fileName);
-    await file.writeAsString(text);
   }
 
   static Map<String, List<String>> uploadStack = Map();
@@ -1531,11 +1507,4 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     });
     await githubCoinector.githubUploadPlaceDetails(_merchant);
   }
-
-  /*void _initContinent() async {
-    Position position = await Geolocator.getLastKnownPosition();
-    if (position == null)
-      return;
-    _currentContinent = int.parse(position.);
-  }*/
 }
