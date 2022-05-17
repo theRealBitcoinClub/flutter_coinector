@@ -429,8 +429,7 @@ class TagCoinector {
     'Furniture 🛋️',
     'Design 🎭',
     'Paint 🎨',//315
-    'Kitchen ⏲',
-  };
+    'Kitchen ⏲'};
 
   static final tagTextJP1 = const {
     'スパイシー🌶️',
@@ -749,8 +748,7 @@ class TagCoinector {
     'Furniture 🛋️',
     'Design 🎭',
     'Paint 🎨',//315
-    'Kitchen ⏲',
-  };
+    'Kitchen ⏲'};
   static final tagTextJP2 = const {
     'supaishī 🌶️ ',
     'shioaji no 🥨',
@@ -1068,8 +1066,8 @@ class TagCoinector {
     'Furniture 🛋️',
     'Design 🎭',
     'Paint 🎨',//315
-    'Kitchen ⏲',
-  };
+    'Kitchen ⏲'};
+
   static final tagTextINDONESIA = const {
     'Pedas 🌶️', //0
     'Asin 🥨',
@@ -1387,8 +1385,7 @@ class TagCoinector {
     'Furniture 🛋️',
     'Design 🎭',
     'Paint 🎨',//315
-    'Kitchen ⏲',
-  };
+    'Kitchen ⏲'};
 
   static final tagTextIT = const {
     'Piccante 🌶️', //0
@@ -1707,8 +1704,7 @@ class TagCoinector {
     'Furniture 🛋️',
     'Design 🎭',
     'Paint 🎨',//315
-    'Kitchen ⏲',
-  };
+    'Kitchen ⏲'};
 
   static final tagTextFR = const {
     'Épicé 🌶️', //0 //TODO filter for éÈ
@@ -2027,8 +2023,7 @@ class TagCoinector {
     'Furniture 🛋️',
     'Design 🎭',
     'Paint 🎨',//315
-    'Kitchen ⏲',
-  };
+    'Kitchen ⏲'};
 
   static final tagTextDE = const {
     'Würzig 🌶️', //0
@@ -2347,8 +2342,7 @@ class TagCoinector {
     'Furniture 🛋️',
     'Design 🎭',
     'Paint 🎨',//315
-    'Kitchen ⏲',
-  };
+    'Kitchen ⏲'};
 
   static final tagTextES = const {
     'Picante 🌶️', //0
@@ -2667,6 +2661,5 @@ class TagCoinector {
     'Muebles 🛋️',
     'Diseno 🎭',
     'Colores 🎨',//315
-    'Cocina ⏲',
-  };
+    'Cocina ⏲'};
 }
