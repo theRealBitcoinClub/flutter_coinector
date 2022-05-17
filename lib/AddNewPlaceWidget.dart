@@ -441,13 +441,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         }
         if (!kReleaseMode)
           print("index:" + t.id.toString() + "\ntagText:" + tagText + "\n");
-        /*if (!isShortTag(t) ||
-            (isShortTag(t) && reviewContainsTagAsFullWord(review, tagText))) {
-          if (hasLessThanMaxTags(allTags)) {
-            //TODO EXPAND APP TO SUPPORT MORE THAN FOUR TAGS FOR EACH PLACE
-            allTags.add(t);
-          }
-        }*/
       }
     }
   }
@@ -458,9 +451,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   //The tagText 107 is men and very short it appears in many other words
   bool isShortTag(TagCoinector t) =>
       TagCoinector.parseTag(t.id.toString()).length <= 4;
-
-  bool reviewContainsTagAsFullWord(String review, String tagText) =>
-      review.contains(" " + tagText + " ");
 
   void printWrapped(String text) {
     final pattern = new RegExp('.{1,800}'); // 800 is the size of each chunk
@@ -502,8 +492,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      wrapBuildColumnPreFillReviewables(ctx),
-                      buildSizedBoxSeparator(),
+                      //wrapBuildColumnPreFillReviewables(ctx),
+                      //buildSizedBoxSeparator(),
                       wrapBuildColumnPreFillContinent(ctx),
                       buildSizedBoxSeparator(),
                       wrapBuildColumnPreFillPlace(ctx),

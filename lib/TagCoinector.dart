@@ -605,13 +605,151 @@ class TagCoinector {
     '抹茶🍵',
     'おでん🍢',
     'ラテ☕',
-    '🍔🍔🍔DASHText Ð',
-    '🍔🍔🍔CoinTigo',
-    '🍔🍔🍔CoinText',
-    '🍔🍔🍔Salamantex',
-    '🍔🍔🍔CryptoBuyer',
-    '🍔🍔🍔XPay',
-    '🍔🍔🍔Panmoni'
+    'Pool 🏊', //'DASHText Ð', //
+    'Air Cond. ❄', //'CoinTigo',
+    'Powerplant 🔌', //'CoinText',
+    'Rental 🏠', //'Salamantex',//175
+    'Supply 🧺', //'CryptoBuyer',
+    'Kiosk 🏪', //'XPay',
+    'Electronic 💻', //'Panmoni'
+    'Cellphone 📱',
+    'Parking 🅿️',//180
+    'Accessories 💠',
+    'Shoes 👞',
+    'Beach 🏖️',
+    'River 🏞️',
+    'Natural 🌲',//185
+    'Imported 🌎',
+    'Tools 🔨',
+    'Flour 🥖',
+    'Cleaning 🧹',
+    'Soap 🧼',//190
+    'Detergent ☢',
+    'Pharmacy 🏥',
+    'Sugar 😍',
+    'Simcard 📶',
+    'Microsd 💾',//195
+    'Battery 🔋',
+    'Water 🚰',
+    'Clock ⌚',
+    'Key 🔑',
+    'Padlock 🔒',//200,
+    'Pet 🐶',
+    'Kids 🚸',
+    'Movie 🎥',
+    'Photo 📸',
+    'Camera 📷',//205
+    'Security 👮',
+    'Mattress 🛏️',
+    'Maintenance 🔧',
+    'Washingmachine 🚿',
+    'Sausage 🌭', //210
+    'Egg 🥚',
+    'Milk 🥛',
+    'Surf 🏄',
+    'Skate ⛸',
+    'Tabacco 🔥',//215
+    'Art 🎨',
+    'Museum 🖼️',
+    'Gallery 🖼️',
+    'Ski ⛷',
+    'Board 🏂',//220
+    'Jewelry 💠',
+    'Diamond 💎',
+    'Gold 🥇',
+    'Bracelet ❤',
+    'Ring 💍',//225
+    'Necklace 📿',
+    'Watch ⌚',
+    'Taxi 🚕',
+    'Spirit ✨',
+    'Church ⛪', //230
+    'Synagoge 🕍',
+    'Temple 🛕',
+    'Transport 🚌',
+    'Global 🚚',
+    'Worldwide 📦',//235
+    'Lebanese 🇱🇧',
+    'African 🌍',
+    'French 🇫🇷',
+    'Criole 😊',
+    'Spanish 🇪🇸',//240
+    'Adult 💃',
+    'Free 😁',
+    'Dance 🕺🏽',
+    'Meal 🍽️',
+    'After-Hour 🎶',//245
+    'Sightseeing 📰',
+    'Marketing 🖥️',
+    'Advertisement 🖥️',
+    'Agency 🖥️',
+    'Service 🖥️',//250
+    'Doctor 👨‍⚕',
+    'Veterinarian 👨‍⚕',
+    'Hospital 🏥',
+    'Nails 💅',
+    'Halal حلال',//255
+    'Promotion 🐰',
+    'Phone 📱',
+    'Mobile 📱',
+    'Communication 📡',
+    'Internet 📡',//260
+    'Mechanic 🔧',
+    'Repair 🔧',
+    'Relax 🤗',
+    'Chill 😏',
+    'Moon 🌝',//265
+    'Sunshine ☀',
+    'Bets 🎰',
+    'Poker 🎰',
+    'Airport ✈',
+    'Autobus 🚌',//270
+    'Travel 🗺️',
+    'Show 🤡',
+    'Theatre 🤡',
+    'Lawyer ⚖',
+    'Accounting 🔒',//275
+    'Tourist ℹ',
+    'Shawarma 🍗',
+    'Camping ⛺',
+    'Fire 🔥',
+    'Resort ⛵',//280
+    'Lounge 🛋️',
+    'Lodging 🛏️',
+    'Thai 🇹🇭',
+    'Construction 🪛',
+    'Hardware 🔨',//285
+    'Gasoline ⛽',
+    'Convenience 🏪',
+    'Grocery 🥫',
+    'Fitness ❤',
+    'Gym ❤',//290
+    'Household 🏪',
+    'Book 📗',
+    'Boutique 🏪',
+    'Digital 📀',
+    'Glasses 👓',//295
+    'Optic 👓',
+    'Parfume ✨',
+    'Flower 🌻',
+    'Garden 🏡',
+    'Copies 💾',//300
+    'Talks 😃',
+    'Meeting 🤝',
+    'Office 🏢',
+    'Software ⚙',
+    'Crypto 🛡️',//305
+    'Wellness 🥰',
+    'Asian 🌏',
+    'Nuts 🥜',
+    'Storage 🏠',
+    'Exposition 🏟️',//310
+    'Gourmet ✨',
+    'Yoga ✨',
+    'Furniture 🛋️',
+    'Design 🎭',
+    'Paint 🎨',//315
+    'Kitchen ⏲',
   };
   static final tagTextJP2 = const {
     'supaishī 🌶️ ',
@@ -786,13 +924,151 @@ class TagCoinector {
     '🍔🍔🍔matcha 🍵',
     'oden 🍢',
     'rate ☕',
-    '🍔🍔🍔DASHText Ð',
-    '🍔🍔🍔CoinTigo',
-    '🍔🍔🍔CoinText',
-    '🍔🍔🍔Salamantex',
-    '🍔🍔🍔CryptoBuyer',
-    '🍔🍔🍔XPay',
-    '🍔🍔🍔Panmoni'
+    'Pool 🏊', //'DASHText Ð', //
+    'Air Cond. ❄', //'CoinTigo',
+    'Powerplant 🔌', //'CoinText',
+    'Rental 🏠', //'Salamantex',//175
+    'Supply 🧺', //'CryptoBuyer',
+    'Kiosk 🏪', //'XPay',
+    'Electronic 💻', //'Panmoni'
+    'Cellphone 📱',
+    'Parking 🅿️',//180
+    'Accessories 💠',
+    'Shoes 👞',
+    'Beach 🏖️',
+    'River 🏞️',
+    'Natural 🌲',//185
+    'Imported 🌎',
+    'Tools 🔨',
+    'Flour 🥖',
+    'Cleaning 🧹',
+    'Soap 🧼',//190
+    'Detergent ☢',
+    'Pharmacy 🏥',
+    'Sugar 😍',
+    'Simcard 📶',
+    'Microsd 💾',//195
+    'Battery 🔋',
+    'Water 🚰',
+    'Clock ⌚',
+    'Key 🔑',
+    'Padlock 🔒',//200,
+    'Pet 🐶',
+    'Kids 🚸',
+    'Movie 🎥',
+    'Photo 📸',
+    'Camera 📷',//205
+    'Security 👮',
+    'Mattress 🛏️',
+    'Maintenance 🔧',
+    'Washingmachine 🚿',
+    'Sausage 🌭', //210
+    'Egg 🥚',
+    'Milk 🥛',
+    'Surf 🏄',
+    'Skate ⛸',
+    'Tabacco 🔥',//215
+    'Art 🎨',
+    'Museum 🖼️',
+    'Gallery 🖼️',
+    'Ski ⛷',
+    'Board 🏂',//220
+    'Jewelry 💠',
+    'Diamond 💎',
+    'Gold 🥇',
+    'Bracelet ❤',
+    'Ring 💍',//225
+    'Necklace 📿',
+    'Watch ⌚',
+    'Taxi 🚕',
+    'Spirit ✨',
+    'Church ⛪', //230
+    'Synagoge 🕍',
+    'Temple 🛕',
+    'Transport 🚌',
+    'Global 🚚',
+    'Worldwide 📦',//235
+    'Lebanese 🇱🇧',
+    'African 🌍',
+    'French 🇫🇷',
+    'Criole 😊',
+    'Spanish 🇪🇸',//240
+    'Adult 💃',
+    'Free 😁',
+    'Dance 🕺🏽',
+    'Meal 🍽️',
+    'After-Hour 🎶',//245
+    'Sightseeing 📰',
+    'Marketing 🖥️',
+    'Advertisement 🖥️',
+    'Agency 🖥️',
+    'Service 🖥️',//250
+    'Doctor 👨‍⚕',
+    'Veterinarian 👨‍⚕',
+    'Hospital 🏥',
+    'Nails 💅',
+    'Halal حلال',//255
+    'Promotion 🐰',
+    'Phone 📱',
+    'Mobile 📱',
+    'Communication 📡',
+    'Internet 📡',//260
+    'Mechanic 🔧',
+    'Repair 🔧',
+    'Relax 🤗',
+    'Chill 😏',
+    'Moon 🌝',//265
+    'Sunshine ☀',
+    'Bets 🎰',
+    'Poker 🎰',
+    'Airport ✈',
+    'Autobus 🚌',//270
+    'Travel 🗺️',
+    'Show 🤡',
+    'Theatre 🤡',
+    'Lawyer ⚖',
+    'Accounting 🔒',//275
+    'Tourist ℹ',
+    'Shawarma 🍗',
+    'Camping ⛺',
+    'Fire 🔥',
+    'Resort ⛵',//280
+    'Lounge 🛋️',
+    'Lodging 🛏️',
+    'Thai 🇹🇭',
+    'Construction 🪛',
+    'Hardware 🔨',//285
+    'Gasoline ⛽',
+    'Convenience 🏪',
+    'Grocery 🥫',
+    'Fitness ❤',
+    'Gym ❤',//290
+    'Household 🏪',
+    'Book 📗',
+    'Boutique 🏪',
+    'Digital 📀',
+    'Glasses 👓',//295
+    'Optic 👓',
+    'Parfume ✨',
+    'Flower 🌻',
+    'Garden 🏡',
+    'Copies 💾',//300
+    'Talks 😃',
+    'Meeting 🤝',
+    'Office 🏢',
+    'Software ⚙',
+    'Crypto 🛡️',//305
+    'Wellness 🥰',
+    'Asian 🌏',
+    'Nuts 🥜',
+    'Storage 🏠',
+    'Exposition 🏟️',//310
+    'Gourmet ✨',
+    'Yoga ✨',
+    'Furniture 🛋️',
+    'Design 🎭',
+    'Paint 🎨',//315
+    'Kitchen ⏲',
   };
   static final tagTextINDONESIA = const {
     'Pedas 🌶️', //0
@@ -967,13 +1243,151 @@ class TagCoinector {
     '🍔🍔🍔Matcha 🍵',
     '🍔🍔🍔Oden 🍢', //170
     '🍔🍔🍔Latte ☕',
-    '🍔🍔🍔DASHText Ð',
-    '🍔🍔🍔CoinTigo',
-    '🍔🍔🍔CoinText',
-    '🍔🍔🍔Salamantex', //175
-    '🍔🍔🍔CryptoBuyer',
-    '🍔🍔🍔XPay',
-    '🍔🍔🍔Panmoni'
+    'Pool 🏊', //'DASHText Ð', //
+    'Air Cond. ❄', //'CoinTigo',
+    'Powerplant 🔌', //'CoinText',
+    'Rental 🏠', //'Salamantex',//175
+    'Supply 🧺', //'CryptoBuyer',
+    'Kiosk 🏪', //'XPay',
+    'Electronic 💻', //'Panmoni'
+    'Cellphone 📱',
+    'Parking 🅿️',//180
+    'Accessories 💠',
+    'Shoes 👞',
+    'Beach 🏖️',
+    'River 🏞️',
+    'Natural 🌲',//185
+    'Imported 🌎',
+    'Tools 🔨',
+    'Flour 🥖',
+    'Cleaning 🧹',
+    'Soap 🧼',//190
+    'Detergent ☢',
+    'Pharmacy 🏥',
+    'Sugar 😍',
+    'Simcard 📶',
+    'Microsd 💾',//195
+    'Battery 🔋',
+    'Water 🚰',
+    'Clock ⌚',
+    'Key 🔑',
+    'Padlock 🔒',//200,
+    'Pet 🐶',
+    'Kids 🚸',
+    'Movie 🎥',
+    'Photo 📸',
+    'Camera 📷',//205
+    'Security 👮',
+    'Mattress 🛏️',
+    'Maintenance 🔧',
+    'Washingmachine 🚿',
+    'Sausage 🌭', //210
+    'Egg 🥚',
+    'Milk 🥛',
+    'Surf 🏄',
+    'Skate ⛸',
+    'Tabacco 🔥',//215
+    'Art 🎨',
+    'Museum 🖼️',
+    'Gallery 🖼️',
+    'Ski ⛷',
+    'Board 🏂',//220
+    'Jewelry 💠',
+    'Diamond 💎',
+    'Gold 🥇',
+    'Bracelet ❤',
+    'Ring 💍',//225
+    'Necklace 📿',
+    'Watch ⌚',
+    'Taxi 🚕',
+    'Spirit ✨',
+    'Church ⛪', //230
+    'Synagoge 🕍',
+    'Temple 🛕',
+    'Transport 🚌',
+    'Global 🚚',
+    'Worldwide 📦',//235
+    'Lebanese 🇱🇧',
+    'African 🌍',
+    'French 🇫🇷',
+    'Criole 😊',
+    'Spanish 🇪🇸',//240
+    'Adult 💃',
+    'Free 😁',
+    'Dance 🕺🏽',
+    'Meal 🍽️',
+    'After-Hour 🎶',//245
+    'Sightseeing 📰',
+    'Marketing 🖥️',
+    'Advertisement 🖥️',
+    'Agency 🖥️',
+    'Service 🖥️',//250
+    'Doctor 👨‍⚕',
+    'Veterinarian 👨‍⚕',
+    'Hospital 🏥',
+    'Nails 💅',
+    'Halal حلال',//255
+    'Promotion 🐰',
+    'Phone 📱',
+    'Mobile 📱',
+    'Communication 📡',
+    'Internet 📡',//260
+    'Mechanic 🔧',
+    'Repair 🔧',
+    'Relax 🤗',
+    'Chill 😏',
+    'Moon 🌝',//265
+    'Sunshine ☀',
+    'Bets 🎰',
+    'Poker 🎰',
+    'Airport ✈',
+    'Autobus 🚌',//270
+    'Travel 🗺️',
+    'Show 🤡',
+    'Theatre 🤡',
+    'Lawyer ⚖',
+    'Accounting 🔒',//275
+    'Tourist ℹ',
+    'Shawarma 🍗',
+    'Camping ⛺',
+    'Fire 🔥',
+    'Resort ⛵',//280
+    'Lounge 🛋️',
+    'Lodging 🛏️',
+    'Thai 🇹🇭',
+    'Construction 🪛',
+    'Hardware 🔨',//285
+    'Gasoline ⛽',
+    'Convenience 🏪',
+    'Grocery 🥫',
+    'Fitness ❤',
+    'Gym ❤',//290
+    'Household 🏪',
+    'Book 📗',
+    'Boutique 🏪',
+    'Digital 📀',
+    'Glasses 👓',//295
+    'Optic 👓',
+    'Parfume ✨',
+    'Flower 🌻',
+    'Garden 🏡',
+    'Copies 💾',//300
+    'Talks 😃',
+    'Meeting 🤝',
+    'Office 🏢',
+    'Software ⚙',
+    'Crypto 🛡️',//305
+    'Wellness 🥰',
+    'Asian 🌏',
+    'Nuts 🥜',
+    'Storage 🏠',
+    'Exposition 🏟️',//310
+    'Gourmet ✨',
+    'Yoga ✨',
+    'Furniture 🛋️',
+    'Design 🎭',
+    'Paint 🎨',//315
+    'Kitchen ⏲',
   };
 
   static final tagTextIT = const {
@@ -1149,13 +1563,151 @@ class TagCoinector {
     '🍔🍔🍔Matcha 🍵',
     '🍔🍔🍔Oden 🍢', //170
     '🍔🍔🍔Latte ☕',
-    '🍔🍔🍔DASHText Ð',
-    '🍔🍔🍔CoinTigo',
-    '🍔🍔🍔CoinText',
-    '🍔🍔🍔Salamantex', //175
-    '🍔🍔🍔CryptoBuyer',
-    '🍔🍔🍔XPay',
-    '🍔🍔🍔Panmoni'
+    'Pool 🏊', //'DASHText Ð', //
+    'Air Cond. ❄', //'CoinTigo',
+    'Powerplant 🔌', //'CoinText',
+    'Rental 🏠', //'Salamantex',//175
+    'Supply 🧺', //'CryptoBuyer',
+    'Kiosk 🏪', //'XPay',
+    'Electronic 💻', //'Panmoni'
+    'Cellphone 📱',
+    'Parking 🅿️',//180
+    'Accessories 💠',
+    'Shoes 👞',
+    'Beach 🏖️',
+    'River 🏞️',
+    'Natural 🌲',//185
+    'Imported 🌎',
+    'Tools 🔨',
+    'Flour 🥖',
+    'Cleaning 🧹',
+    'Soap 🧼',//190
+    'Detergent ☢',
+    'Pharmacy 🏥',
+    'Sugar 😍',
+    'Simcard 📶',
+    'Microsd 💾',//195
+    'Battery 🔋',
+    'Water 🚰',
+    'Clock ⌚',
+    'Key 🔑',
+    'Padlock 🔒',//200,
+    'Pet 🐶',
+    'Kids 🚸',
+    'Movie 🎥',
+    'Photo 📸',
+    'Camera 📷',//205
+    'Security 👮',
+    'Mattress 🛏️',
+    'Maintenance 🔧',
+    'Washingmachine 🚿',
+    'Sausage 🌭', //210
+    'Egg 🥚',
+    'Milk 🥛',
+    'Surf 🏄',
+    'Skate ⛸',
+    'Tabacco 🔥',//215
+    'Art 🎨',
+    'Museum 🖼️',
+    'Gallery 🖼️',
+    'Ski ⛷',
+    'Board 🏂',//220
+    'Jewelry 💠',
+    'Diamond 💎',
+    'Gold 🥇',
+    'Bracelet ❤',
+    'Ring 💍',//225
+    'Necklace 📿',
+    'Watch ⌚',
+    'Taxi 🚕',
+    'Spirit ✨',
+    'Church ⛪', //230
+    'Synagoge 🕍',
+    'Temple 🛕',
+    'Transport 🚌',
+    'Global 🚚',
+    'Worldwide 📦',//235
+    'Lebanese 🇱🇧',
+    'African 🌍',
+    'French 🇫🇷',
+    'Criole 😊',
+    'Spanish 🇪🇸',//240
+    'Adult 💃',
+    'Free 😁',
+    'Dance 🕺🏽',
+    'Meal 🍽️',
+    'After-Hour 🎶',//245
+    'Sightseeing 📰',
+    'Marketing 🖥️',
+    'Advertisement 🖥️',
+    'Agency 🖥️',
+    'Service 🖥️',//250
+    'Doctor 👨‍⚕',
+    'Veterinarian 👨‍⚕',
+    'Hospital 🏥',
+    'Nails 💅',
+    'Halal حلال',//255
+    'Promotion 🐰',
+    'Phone 📱',
+    'Mobile 📱',
+    'Communication 📡',
+    'Internet 📡',//260
+    'Mechanic 🔧',
+    'Repair 🔧',
+    'Relax 🤗',
+    'Chill 😏',
+    'Moon 🌝',//265
+    'Sunshine ☀',
+    'Bets 🎰',
+    'Poker 🎰',
+    'Airport ✈',
+    'Autobus 🚌',//270
+    'Travel 🗺️',
+    'Show 🤡',
+    'Theatre 🤡',
+    'Lawyer ⚖',
+    'Accounting 🔒',//275
+    'Tourist ℹ',
+    'Shawarma 🍗',
+    'Camping ⛺',
+    'Fire 🔥',
+    'Resort ⛵',//280
+    'Lounge 🛋️',
+    'Lodging 🛏️',
+    'Thai 🇹🇭',
+    'Construction 🪛',
+    'Hardware 🔨',//285
+    'Gasoline ⛽',
+    'Convenience 🏪',
+    'Grocery 🥫',
+    'Fitness ❤',
+    'Gym ❤',//290
+    'Household 🏪',
+    'Book 📗',
+    'Boutique 🏪',
+    'Digital 📀',
+    'Glasses 👓',//295
+    'Optic 👓',
+    'Parfume ✨',
+    'Flower 🌻',
+    'Garden 🏡',
+    'Copies 💾',//300
+    'Talks 😃',
+    'Meeting 🤝',
+    'Office 🏢',
+    'Software ⚙',
+    'Crypto 🛡️',//305
+    'Wellness 🥰',
+    'Asian 🌏',
+    'Nuts 🥜',
+    'Storage 🏠',
+    'Exposition 🏟️',//310
+    'Gourmet ✨',
+    'Yoga ✨',
+    'Furniture 🛋️',
+    'Design 🎭',
+    'Paint 🎨',//315
+    'Kitchen ⏲',
   };
 
   static final tagTextFR = const {
@@ -1331,13 +1883,151 @@ class TagCoinector {
     '🍔🍔🍔Matcha 🍵',
     '🍔🍔🍔Oden 🍢', //170
     'Lait ☕',
-    '🍔🍔🍔DASHText Ð',
-    '🍔🍔🍔CoinTigo',
-    '🍔🍔🍔CoinText',
-    '🍔🍔🍔Salamantex', //175
-    '🍔🍔🍔CryptoBuyer',
-    '🍔🍔🍔XPay',
-    '🍔🍔🍔Panmoni'
+    'Pool 🏊', //'DASHText Ð', //
+    'Air Cond. ❄', //'CoinTigo',
+    'Powerplant 🔌', //'CoinText',
+    'Rental 🏠', //'Salamantex',//175
+    'Supply 🧺', //'CryptoBuyer',
+    'Kiosk 🏪', //'XPay',
+    'Electronic 💻', //'Panmoni'
+    'Cellphone 📱',
+    'Parking 🅿️',//180
+    'Accessories 💠',
+    'Shoes 👞',
+    'Beach 🏖️',
+    'River 🏞️',
+    'Natural 🌲',//185
+    'Imported 🌎',
+    'Tools 🔨',
+    'Flour 🥖',
+    'Cleaning 🧹',
+    'Soap 🧼',//190
+    'Detergent ☢',
+    'Pharmacy 🏥',
+    'Sugar 😍',
+    'Simcard 📶',
+    'Microsd 💾',//195
+    'Battery 🔋',
+    'Water 🚰',
+    'Clock ⌚',
+    'Key 🔑',
+    'Padlock 🔒',//200,
+    'Pet 🐶',
+    'Kids 🚸',
+    'Movie 🎥',
+    'Photo 📸',
+    'Camera 📷',//205
+    'Security 👮',
+    'Mattress 🛏️',
+    'Maintenance 🔧',
+    'Washingmachine 🚿',
+    'Sausage 🌭', //210
+    'Egg 🥚',
+    'Milk 🥛',
+    'Surf 🏄',
+    'Skate ⛸',
+    'Tabacco 🔥',//215
+    'Art 🎨',
+    'Museum 🖼️',
+    'Gallery 🖼️',
+    'Ski ⛷',
+    'Board 🏂',//220
+    'Jewelry 💠',
+    'Diamond 💎',
+    'Gold 🥇',
+    'Bracelet ❤',
+    'Ring 💍',//225
+    'Necklace 📿',
+    'Watch ⌚',
+    'Taxi 🚕',
+    'Spirit ✨',
+    'Church ⛪', //230
+    'Synagoge 🕍',
+    'Temple 🛕',
+    'Transport 🚌',
+    'Global 🚚',
+    'Worldwide 📦',//235
+    'Lebanese 🇱🇧',
+    'African 🌍',
+    'French 🇫🇷',
+    'Criole 😊',
+    'Spanish 🇪🇸',//240
+    'Adult 💃',
+    'Free 😁',
+    'Dance 🕺🏽',
+    'Meal 🍽️',
+    'After-Hour 🎶',//245
+    'Sightseeing 📰',
+    'Marketing 🖥️',
+    'Advertisement 🖥️',
+    'Agency 🖥️',
+    'Service 🖥️',//250
+    'Doctor 👨‍⚕',
+    'Veterinarian 👨‍⚕',
+    'Hospital 🏥',
+    'Nails 💅',
+    'Halal حلال',//255
+    'Promotion 🐰',
+    'Phone 📱',
+    'Mobile 📱',
+    'Communication 📡',
+    'Internet 📡',//260
+    'Mechanic 🔧',
+    'Repair 🔧',
+    'Relax 🤗',
+    'Chill 😏',
+    'Moon 🌝',//265
+    'Sunshine ☀',
+    'Bets 🎰',
+    'Poker 🎰',
+    'Airport ✈',
+    'Autobus 🚌',//270
+    'Travel 🗺️',
+    'Show 🤡',
+    'Theatre 🤡',
+    'Lawyer ⚖',
+    'Accounting 🔒',//275
+    'Tourist ℹ',
+    'Shawarma 🍗',
+    'Camping ⛺',
+    'Fire 🔥',
+    'Resort ⛵',//280
+    'Lounge 🛋️',
+    'Lodging 🛏️',
+    'Thai 🇹🇭',
+    'Construction 🪛',
+    'Hardware 🔨',//285
+    'Gasoline ⛽',
+    'Convenience 🏪',
+    'Grocery 🥫',
+    'Fitness ❤',
+    'Gym ❤',//290
+    'Household 🏪',
+    'Book 📗',
+    'Boutique 🏪',
+    'Digital 📀',
+    'Glasses 👓',//295
+    'Optic 👓',
+    'Parfume ✨',
+    'Flower 🌻',
+    'Garden 🏡',
+    'Copies 💾',//300
+    'Talks 😃',
+    'Meeting 🤝',
+    'Office 🏢',
+    'Software ⚙',
+    'Crypto 🛡️',//305
+    'Wellness 🥰',
+    'Asian 🌏',
+    'Nuts 🥜',
+    'Storage 🏠',
+    'Exposition 🏟️',//310
+    'Gourmet ✨',
+    'Yoga ✨',
+    'Furniture 🛋️',
+    'Design 🎭',
+    'Paint 🎨',//315
+    'Kitchen ⏲',
   };
 
   static final tagTextDE = const {
@@ -1513,13 +2203,151 @@ class TagCoinector {
     '🍔🍔🍔Matcha 🍵',
     '🍔🍔🍔Oden 🍢', //170
     'Milch ☕',
-    '🍔🍔🍔DASHText Ð',
-    '🍔🍔🍔CoinTigo',
-    '🍔🍔🍔CoinText',
-    '🍔🍔🍔Salamantex', //175
-    '🍔🍔🍔CryptoBuyer',
-    '🍔🍔🍔XPay',
-    '🍔🍔🍔Panmoni'
+    'Pool 🏊', //'DASHText Ð', //
+    'Air Cond. ❄', //'CoinTigo',
+    'Powerplant 🔌', //'CoinText',
+    'Rental 🏠', //'Salamantex',//175
+    'Supply 🧺', //'CryptoBuyer',
+    'Kiosk 🏪', //'XPay',
+    'Electronic 💻', //'Panmoni'
+    'Cellphone 📱',
+    'Parking 🅿️',//180
+    'Accessories 💠',
+    'Shoes 👞',
+    'Beach 🏖️',
+    'River 🏞️',
+    'Natural 🌲',//185
+    'Imported 🌎',
+    'Tools 🔨',
+    'Flour 🥖',
+    'Cleaning 🧹',
+    'Soap 🧼',//190
+    'Detergent ☢',
+    'Pharmacy 🏥',
+    'Sugar 😍',
+    'Simcard 📶',
+    'Microsd 💾',//195
+    'Battery 🔋',
+    'Water 🚰',
+    'Clock ⌚',
+    'Key 🔑',
+    'Padlock 🔒',//200,
+    'Pet 🐶',
+    'Kids 🚸',
+    'Movie 🎥',
+    'Photo 📸',
+    'Camera 📷',//205
+    'Security 👮',
+    'Mattress 🛏️',
+    'Maintenance 🔧',
+    'Washingmachine 🚿',
+    'Sausage 🌭', //210
+    'Egg 🥚',
+    'Milk 🥛',
+    'Surf 🏄',
+    'Skate ⛸',
+    'Tabacco 🔥',//215
+    'Art 🎨',
+    'Museum 🖼️',
+    'Gallery 🖼️',
+    'Ski ⛷',
+    'Board 🏂',//220
+    'Jewelry 💠',
+    'Diamond 💎',
+    'Gold 🥇',
+    'Bracelet ❤',
+    'Ring 💍',//225
+    'Necklace 📿',
+    'Watch ⌚',
+    'Taxi 🚕',
+    'Spirit ✨',
+    'Church ⛪', //230
+    'Synagoge 🕍',
+    'Temple 🛕',
+    'Transport 🚌',
+    'Global 🚚',
+    'Worldwide 📦',//235
+    'Lebanese 🇱🇧',
+    'African 🌍',
+    'French 🇫🇷',
+    'Criole 😊',
+    'Spanish 🇪🇸',//240
+    'Adult 💃',
+    'Free 😁',
+    'Dance 🕺🏽',
+    'Meal 🍽️',
+    'After-Hour 🎶',//245
+    'Sightseeing 📰',
+    'Marketing 🖥️',
+    'Advertisement 🖥️',
+    'Agency 🖥️',
+    'Service 🖥️',//250
+    'Doctor 👨‍⚕',
+    'Veterinarian 👨‍⚕',
+    'Hospital 🏥',
+    'Nails 💅',
+    'Halal حلال',//255
+    'Promotion 🐰',
+    'Phone 📱',
+    'Mobile 📱',
+    'Communication 📡',
+    'Internet 📡',//260
+    'Mechanic 🔧',
+    'Repair 🔧',
+    'Relax 🤗',
+    'Chill 😏',
+    'Moon 🌝',//265
+    'Sunshine ☀',
+    'Bets 🎰',
+    'Poker 🎰',
+    'Airport ✈',
+    'Autobus 🚌',//270
+    'Travel 🗺️',
+    'Show 🤡',
+    'Theatre 🤡',
+    'Lawyer ⚖',
+    'Accounting 🔒',//275
+    'Tourist ℹ',
+    'Shawarma 🍗',
+    'Camping ⛺',
+    'Fire 🔥',
+    'Resort ⛵',//280
+    'Lounge 🛋️',
+    'Lodging 🛏️',
+    'Thai 🇹🇭',
+    'Construction 🪛',
+    'Hardware 🔨',//285
+    'Gasoline ⛽',
+    'Convenience 🏪',
+    'Grocery 🥫',
+    'Fitness ❤',
+    'Gym ❤',//290
+    'Household 🏪',
+    'Book 📗',
+    'Boutique 🏪',
+    'Digital 📀',
+    'Glasses 👓',//295
+    'Optic 👓',
+    'Parfume ✨',
+    'Flower 🌻',
+    'Garden 🏡',
+    'Copies 💾',//300
+    'Talks 😃',
+    'Meeting 🤝',
+    'Office 🏢',
+    'Software ⚙',
+    'Crypto 🛡️',//305
+    'Wellness 🥰',
+    'Asian 🌏',
+    'Nuts 🥜',
+    'Storage 🏠',
+    'Exposition 🏟️',//310
+    'Gourmet ✨',
+    'Yoga ✨',
+    'Furniture 🛋️',
+    'Design 🎭',
+    'Paint 🎨',//315
+    'Kitchen ⏲',
   };
 
   static final tagTextES = const {
@@ -1735,6 +2563,110 @@ class TagCoinector {
     'Lavadora 🚿',
     'Salsicha 🌭',
     'Huevo 🥚',
-    'Leche 🥛'
+    'Leche 🥛',
+    'Surf 🏄',
+    'Patineta ⛸',
+    'Tabacco 🔥',//215
+    'Arte 🎨',
+    'Museo 🖼️',
+    'Galeria 🖼️',
+    'Ski ⛷',
+    'Board 🏂',//220
+    'Joyeria 💠',
+    'Diamante 💎',
+    'Oro 🥇',
+    'Pulsera ❤',
+    'Anillo 💍',//225
+    'Cadena 📿',
+    'Cronometro ⌚',
+    'Taxi 🚕',
+    'Espiritual ✨',
+    'Iglesia ⛪', //230
+    'Sinagoga 🕍',
+    'Templo 🛕',
+    'Transporte 🚌',
+    'Global 🚚',
+    'Mundial 📦',//235
+    'Libanes 🇱🇧',
+    'Africana 🌍',
+    'Francesa 🇫🇷',
+    'Criollo 😊',
+    'Espanol 🇪🇸',//240
+    'Adulto 💃',
+    'Gratis 😁',
+    'Baile 🕺🏽',
+    'Comida 🍽️',
+    'Despues-Hora 🎶',//245
+    'Pasear 📰',
+    'Marketing 🖥️',
+    'Anuncio publicitario 🖥️',
+    'Agencia 🖥️',
+    'Servicio 🖥️',//250
+    'Doctor 👨‍⚕',
+    'Veterinaria 👨‍⚕',
+    'Hospital 🏥',
+    'Unas 💅',
+    'Halal حلال',//255
+    'Promocion 🐰',
+    'Tele 📱',
+    'Movil📱',
+    'Comunicacion 📡',
+    'Internet 📡',//260
+    'Mecanica 🔧',
+    'Reparar 🔧',
+    'Relax 🤗',
+    'Chill 😏',
+    'Luna 🌝',//265
+    'Sol ☀',
+    'Apuestas 🎰',
+    'Poker 🎰',
+    'Aeropuerto ✈',
+    'Autobus 🚌',//270
+    'Viajar 🗺️',
+    'Show 🤡',
+    'Teatro 🤡',
+    'Abogado ⚖',
+    'Contabilidad 🔒',//275
+    'Turismo ℹ',
+    'Shawarma 🍗',
+    'Acampar ⛺',
+    'Fuego 🔥',
+    'Resort ⛵',//280
+    'Salon 🛋️',
+    'Alojamiento 🛏️',
+    'Thai 🇹🇭',
+    'Construccion 🪛',
+    'Materiales 🔨',//285
+    'Gasolina ⛽',
+    'Convenio 🏪',
+    'Almacen 🥫',
+    'Aptitud ❤',
+    'Gimnasio ❤',//290
+    'Domestico 🏪',
+    'Libro 📗',
+    'Boutique 🏪',
+    'Digital 📀',
+    'Gafas 👓',//295
+    'Optica 👓',
+    'Perfume ✨',
+    'Flor 🌻',
+    'Jardin 🏡',
+    'Copia 💾',//300
+    'Charlas 😃',
+    'Reunion 🤝',
+    'Oficina 🏢',
+    'Software ⚙',
+    'Cripto 🛡️',//305
+    'Bienestar 🥰',
+    'Asiatico 🌏',
+    'Nueces 🥜',
+    'Deposito 🏠',
+    'Exposicion 🏟️',//310
+    'Gourmet ✨',
+    'Yoga ✨',
+    'Muebles 🛋️',
+    'Diseno 🎭',
+    'Colores 🎨',//315
+    'Cocina ⏲',
   };
 }
