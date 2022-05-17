@@ -1736,5 +1736,109 @@ class TagCoinector {
     'Salsicha 🌭',
     'Huevo 🥚',
     'Leche 🥛'
+    'Surf 🏄',
+    'Patineta ⛸',
+    'Tabacco 🔥',//215
+    'Arte 🎨',
+    'Museo 🖼️',
+    'Galeria 🖼️',
+    'Ski ⛷',
+    'Board 🏂',//220
+    'Joyeria 💠',
+    'Diamante 💎',
+    'Oro 🥇',
+    'Pulsera ❤',
+    'Anillo 💍',//225
+    'Cadena 📿',
+    'Reloj ⌚',
+    'Taxi 🚕',
+    'Espiritual ✨',
+    'Iglesia ⛪', //230
+    'Sinagoga 🕍',
+    'Templo 🛕',
+    'Transporte 🚌',
+    'Global 🚚',
+    'Mundial 📦',//235
+    'Libanes 🇱🇧',
+    'Africana 🌍',
+    'Francesa 🇫🇷',
+    'Criollo 😊',
+    'Espanol 🇪🇸',//240
+    'Adulto 💃',
+    'Gratis 😁',
+    'Baile 🕺🏽',
+    'Comida 🍽️',
+    'Despues-Hora 🎶',//245
+    'Pasear 📰',
+    'Marketing 🖥️',
+    'Anuncio publicitario 🖥️',
+    'Agencia 🖥️',
+    'Servicio 🖥️',//250
+    'Doctor 👨‍⚕',
+    'Veterinaria 👨‍⚕',
+    'Hospital 🏥',
+    'Unas 💅',
+    'Halal حلال',//255
+    'Promocion 🐰',
+    'Telefono 📱',
+    'Movil📱',
+    'Comunicacion 📡',
+    'Internet 📡',//260
+    'Mecanica 🔧',
+    'Reparar 🔧',
+    'Relax 🤗',
+    'Chill 😏',
+    'Luna 🌝',//265
+    'Sol ☀',
+    'Apuestas 🎰',
+    'Poker 🎰',
+    'Aeropuerto ✈',
+    'Autobus 🚌',//270
+    'Viajar 🗺️',
+    'Show 🤡',
+    'Teatro 🤡',
+    'Abogado ⚖',
+    'Contabilidad 🔒',//275
+    'Turismo ℹ',
+    'Shawarma 🍗',
+    'Acampar ⛺',
+    'Fuego 🔥',
+    'Resort ⛵',//280
+    'Salon 🛋️',
+    'Alojamiento 🛏️',
+    'Thai 🇹🇭',
+    'Construccion 🪛',
+    'Materiales 🔨',//285
+    'Gasolina ⛽',
+    'Convenio 🏪',
+    'Almacen 🥫',
+    'Fitness ❤',
+    'Gimnasio ❤',//290
+    'Household 🏪',
+    'Book 📗',
+    'Boutique 🏪',
+    'Digital 📀',
+    'Glasses 👓',//295
+    'Optic 👓',
+    'Parfume ✨',
+    'Flower 🌻',
+    'Garden 🏡',
+    'Copies 💾',//300
+    'Talks 😃',
+    'Meeting 🤝',
+    'Office 🏢',
+    'Software ⚙',
+    'Crypto 🛡️',//305
+    'Wellness 🥰',
+    'Asian 🌏',
+    'Nuts 🥜',
+    'Storage 🏠',
+    'Exposition 🏟️',//310
+    'Gourmet ✨',
+    'Yoga ✨',
+    'Furniture 🛋️',
+    'Design 🎭',
+    'Paint 🎨',//315
+    'Kitchen ⏲',
   };
 }
