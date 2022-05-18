@@ -29,12 +29,11 @@ class TagCoinector {
   static List<String> emojis = [];
 
   static Future<List<String>> _loadEmojisFromFile() async {
-    if (emojis != null) return emojis;
+    if (emojis.isNotEmpty) return emojis;
 
     try {
       String input = await AssetLoader.loadString('assets/tags/emoji.csv');
-      List<List<dynamic>> rowsAsListOfValues =
-          const CsvToListConverter().convert(input);
+      List<List<dynamic>> rowsAsListOfValues = getValuesList(input);
 
       List<String> allItems = [];
       rowsAsListOfValues[0].forEach((item) {
@@ -47,12 +46,17 @@ class TagCoinector {
     }
   }
 
+  static List<List<dynamic>> getValuesList(String input) {
+    List<List<dynamic>> rowsAsListOfValues =
+        const CsvToListConverter().convert(input, fieldDelimiter: "\n");
+    return rowsAsListOfValues;
+  }
+
   static Future<List<String>> _loadTagsFromFile(LangCode lang) async {
     try {
       String input = await AssetLoader.loadString(
           'assets/tags/tags_' + lang.name.toLowerCase() + '.csv');
-      List<List<dynamic>> rowsAsListOfValues =
-          const CsvToListConverter().convert(input);
+      List<List<dynamic>> rowsAsListOfValues = getValuesList(input);
 
       int index = 0;
       List<String> allItems = [];
@@ -97,8 +101,8 @@ class TagCoinector {
 
     try {
       var i = int.parse(index);
-      return tagsCached[Localizer.getLangCode(ctx).name.toLowerCase()]
-          .elementAt(i);
+      var key = Localizer.getLangCode(ctx).name.toLowerCase();
+      return tagsCached[key].elementAt(i);
     } catch (e) {
       debugPrint(e.toString());
       print("INVALID TAG INDEX:" + index);
