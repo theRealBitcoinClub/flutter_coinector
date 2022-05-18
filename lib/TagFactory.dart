@@ -4,16 +4,14 @@ import 'package:flutter/foundation.dart';
 import 'TagCoinector.dart';
 
 class TagFactory {
-  static Set<TagCoinector> _tagz;
-  static LangCode _lastLangCode;
+  static Map<String, Set<TagCoinector>> _tagz = Map();
 
   static Set<TagCoinector> getTags(ctx, {LangCode lang}) {
-    LangCode currentLangCode = Localizer.getLangCode(ctx);
-    if (_tagz == null || currentLangCode != _lastLangCode)
-      _tagz = _createTags(lang != null ? lang : currentLangCode);
+    if (lang == null) lang = Localizer.getLangCode(ctx);
+    var langISO = lang.name.toLowerCase();
+    if (_tagz[langISO] == null) _tagz[langISO] = _createTags(lang);
 
-    _lastLangCode = currentLangCode;
-    return _tagz;
+    return _tagz[langISO];
   }
 
   /*
