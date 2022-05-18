@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-enum LangCode { EN, DE, ES, FR, ID, IT, JA }
+enum LangCode { RU, EN, DE, ES, FR, ID, IT, JA }
 
 //static const COINECTOR_SUPPORTS_MANY_LANGUAGES =
 // "🇪🇸 🇩🇪 🇫🇷 🇮🇹 🇬🇧 🇯🇵 🇮🇩";
