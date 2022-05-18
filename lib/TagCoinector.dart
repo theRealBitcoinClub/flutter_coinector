@@ -19,22 +19,46 @@ class TagCoinector {
   static Map<String, List<String>> tagsCached = Map();
 
   static initFromFiles() async {
+    emojis = await _loadEmojisFromFile();
+
     LangCode.values.forEach((LangCode lang) async {
-      tagsCached[lang.name.toLowerCase()]= await _loadTagsFromFile(lang);
+      tagsCached[lang.name.toLowerCase()] = await _loadTagsFromFile(lang);
     });
   }
 
-  static Future<List<String>> _loadTagsFromFile(
-      LangCode lang) async {
+  static List<String> emojis = [];
+
+  static Future<List<String>> _loadEmojisFromFile() async {
+    if (emojis != null) return emojis;
+
     try {
-      String input =
-      await AssetLoader.loadString('assets/tags/tags_' + lang.name.toLowerCase() + '.csv');
+      String input = await AssetLoader.loadString('assets/tags/emoji.csv');
       List<List<dynamic>> rowsAsListOfValues =
-      const CsvToListConverter().convert(input);
+          const CsvToListConverter().convert(input);
 
       List<String> allItems = [];
       rowsAsListOfValues[0].forEach((item) {
-          allItems.add(item.toString());
+        allItems.add(item.toString());
+      });
+      //ImportData(githubCoinector).printSuggestions(allSuggestions, continent);
+      return allItems;
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  static Future<List<String>> _loadTagsFromFile(LangCode lang) async {
+    try {
+      String input = await AssetLoader.loadString(
+          'assets/tags/tags_' + lang.name.toLowerCase() + '.csv');
+      List<List<dynamic>> rowsAsListOfValues =
+          const CsvToListConverter().convert(input);
+
+      int index = 0;
+      List<String> allItems = [];
+      rowsAsListOfValues[0].forEach((item) {
+        String emoji = emojis.elementAt(index++);
+        allItems.add(item.toString() + " " + emoji);
       });
       //ImportData(githubCoinector).printSuggestions(allSuggestions, continent);
       return allItems;
@@ -72,27 +96,17 @@ class TagCoinector {
 
     try {
       var i = int.parse(index);
-      switch (Localizer.getLangCode(ctx)) {
-        case LangCode.DE:
-          return fallbackToEN(TagCoinector.tagTextDE.elementAt(i), i);
-        case LangCode.ES:
-          return fallbackToEN(TagCoinector.tagTextES.elementAt(i), i);
-        case LangCode.FR:
-          return fallbackToEN(TagCoinector.tagTextFR.elementAt(i), i);
-        case LangCode.ID:
-          return fallbackToEN(TagCoinector.tagTextINDONESIA.elementAt(i), i);
-        case LangCode.JA:
-          return fallbackToEN(TagCoinector.tagTextJP1.elementAt(i), i);
-        case LangCode.IT:
-          return fallbackToEN(TagCoinector.tagTextIT.elementAt(i), i);
-        default:
-          return TagCoinector.tagTextEN.elementAt(i);
-      }
+      return tagsCached[Localizer.getLangCode(ctx).name.toLowerCase()]
+          .elementAt(i);
     } catch (e) {
       debugPrint(e.toString());
       print("INVALID TAG INDEX:" + index);
       return "";
     }
+  }
+
+  static List<String> getTagsByLangCode(LangCode lang) {
+    return tagsCached[lang.name.toLowerCase()];
   }
 
   static String parseTagsToDatabaseFormat(Set<TagCoinector> inputTags) {
@@ -124,18 +138,11 @@ class TagCoinector {
 
   static TagCoinector findTag(String searchTerm) {
     TagCoinector result;
-    if ((result = _findTagIndex(searchTerm, TagCoinector.tagTextEN)) ==
-        null) if ((result = _findTagIndex(searchTerm, TagCoinector.tagTextES)) == null) if ((result =
-            _findTagIndex(searchTerm, TagCoinector.tagTextDE)) ==
-        null) if ((result = _findTagIndex(searchTerm, TagCoinector.tagTextFR)) == null) if ((result =
-            _findTagIndex(searchTerm, TagCoinector.tagTextES)) ==
-        null) if ((result = _findTagIndex(searchTerm, TagCoinector.tagTextDE)) == null) if ((result =
-            _findTagIndex(searchTerm, TagCoinector.tagTextFR)) ==
-        null) if ((result =
-            _findTagIndex(searchTerm, TagCoinector.tagTextIT)) ==
-        null) if ((result =
-            _findTagIndex(searchTerm, TagCoinector.tagTextINDONESIA)) ==
-        null) result = _findTagIndex(searchTerm, TagCoinector.tagTextJP1);
+    LangCode.values.forEach((LangCode lang) {
+      if ((result =
+              _findTagIndex(searchTerm, tagsCached[lang.name.toLowerCase()])) !=
+          null) return result;
+    });
 
     return result;
   }
@@ -154,18 +161,9 @@ class TagCoinector {
     return null;
   }
 
-  //Only if the tag is totally unused, that means there are zero results when searching inside the app, then it can be replaced by another tag
-
-  static List<String> tagTextEN = [];
-  static List<String> tagTextJP1 = [];
-  static List<String> tagTextINDONESIA = [];
-  static List<String> tagTextIT = [];
-  static List<String> tagTextFR = [];
-  static List<String> tagTextES = [];
-  static List<String> tagTextDE = [];
-
   static String fallbackToEN(String t, int i) {
-    if (t.startsWith("🍔🍔🍔")) return TagCoinector.tagTextEN.elementAt(i);
+    if (t.startsWith("🍔🍔🍔"))
+      return tagsCached[LangCode.EN.name.toLowerCase()].elementAt(i);
     return t;
   }
 }

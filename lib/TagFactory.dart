@@ -22,13 +22,14 @@ class TagFactory {
    */
 
   static Set<TagCoinector> _createTags(LangCode lang) {
-    Set tags = _createTagsFromRaw(_getRawTags(lang));
+    Set tags = _createTagsFromRaw(TagCoinector.getTagsByLangCode(lang));
     if (lang != LangCode.EN) //add english tags as default
-      tags.addAll(_createTagsFromRaw(_getRawTags(LangCode.EN)));
+      tags.addAll(
+          _createTagsFromRaw(TagCoinector.getTagsByLangCode(LangCode.EN)));
     return tags;
   }
 
-  static Set<TagCoinector> _createTagsFromRaw(Set<String> rawTags) {
+  static Set<TagCoinector> _createTagsFromRaw(List<String> rawTags) {
     Set<TagCoinector> tags = {};
     int index = 0;
     for (String rawTag in rawTags) {
@@ -40,39 +41,5 @@ class TagFactory {
       }
     }
     return tags;
-  }
-
-  static Set<String> _getRawTags(LangCode lang) {
-    Set<String> rawTags = {};
-
-    switch (lang) {
-      case LangCode.EN:
-        rawTags = TagCoinector.tagTextEN;
-        break;
-      case LangCode.DE:
-        rawTags = TagCoinector.tagTextDE;
-        break;
-      case LangCode.IT:
-        rawTags = TagCoinector.tagTextIT;
-        break;
-      case LangCode.FR:
-        rawTags = TagCoinector.tagTextFR;
-        break;
-      case LangCode.ES:
-        rawTags = TagCoinector.tagTextES;
-        break;
-      case LangCode.ID:
-        rawTags = TagCoinector.tagTextINDONESIA;
-        break;
-      case LangCode.JA:
-        rawTags = TagCoinector.tagTextJP1;
-        rawTags.addAll(TagCoinector.tagTextJP1);
-        break;
-      default:
-        rawTags = TagCoinector.tagTextEN;
-        print("ERROR LANGUAGE CODE NOT FOUND");
-        break;
-    }
-    return rawTags;
   }
 }

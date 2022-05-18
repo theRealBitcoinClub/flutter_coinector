@@ -750,6 +750,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   @override
   void initState() {
     super.initState();
+    TagCoinector.initFromFiles();
     _scrollControl = ScrollController();
     //_verticalScroller = buildCustomScroller();
     WidgetsBinding.instance.addObserver(this);
