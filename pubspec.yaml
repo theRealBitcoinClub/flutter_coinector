@@ -129,6 +129,20 @@ flutter:
     - assets/e.json
     - assets/placesId.json
     - assets/places.json
+    - assets/tags/emoji.csv
+    - assets/tags/tags_ar.csv
+    - assets/tags/tags_ch.csv
+    - assets/tags/tags_de.csv
+    - assets/tags/tags_en.csv
+    - assets/tags/tags_es.csv
+    - assets/tags/tags_fr.csv
+    - assets/tags/tags_hi.csv
+    - assets/tags/tags_id.csv
+    - assets/tags/tags_it.csv
+    - assets/tags/tags_ja.csv
+    - assets/tags/tags_pt.csv
+    - assets/tags/tags_ru.csv
+    - assets/tags/tags_sl.csv
     - config/app_config.json
 
   # An image asset can refer to one or more resolution-specific "variants", see

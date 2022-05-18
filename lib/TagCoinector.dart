@@ -65,6 +65,7 @@ class TagCoinector {
     } catch (e) {
       print(e.toString());
     }
+    return null;
   }
 
   String toUI() {
