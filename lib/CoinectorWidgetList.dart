@@ -929,7 +929,13 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       const Locale('en'),
       const Locale('ja'),
       const Locale('id'),
-      const Locale('fr')
+      const Locale('fr'),
+      const Locale('ru'),
+      const Locale('pt'),
+      const Locale('ar'),
+      const Locale('hi'),
+      const Locale('ch'),
+      const Locale('sl')
     ];
   }
 
