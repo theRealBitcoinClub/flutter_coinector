@@ -126,7 +126,7 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
   Set<String> parseTagsToSuggestions(Set<TagCoinector> tags) {
     Set<String> parsedSuggestions = Set.from([]);
     tags.forEach((TagCoinector t) {
-      if (!t.text.contains("🍔🍔🍔")) {
+      if (!t.text.startsWith("🍔🍔🍔")) {
         parsedSuggestions =
             checkIfAlreadySelectedAndAddIfNot(t, parsedSuggestions);
       }

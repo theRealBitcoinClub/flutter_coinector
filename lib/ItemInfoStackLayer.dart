@@ -76,7 +76,7 @@ class ItemInfoStackLayer extends StatelessWidget {
     return splittedTags.map((tagId) {
       if (tagId == "104")
         return SizedBox(); //return empty box in case of placeholder tag 104
-      var parsedTag = TagCoinector.parseTag(tagId);
+      var parsedTag = TagCoinector.parseTag(ctx, tagId);
       var splittedTag = parsedTag.split(" ");
       return HoverButton(
           padding: EdgeInsets.all(0.0),
@@ -96,6 +96,6 @@ class ItemInfoStackLayer extends StatelessWidget {
   }
 
   void restartWidgetWithFilter(ctx, String title) {
-    filterCallback.doFilter(TagCoinector.parseTag(title));
+    filterCallback.doFilter(TagCoinector.parseTag(ctx, title));
   }
 }

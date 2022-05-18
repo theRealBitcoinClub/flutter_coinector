@@ -1,5 +1,7 @@
 // Identifier a
 
+import 'package:Coinector/Localizer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 
 class TagCoinector {
@@ -20,28 +22,38 @@ class TagCoinector {
     return id.toString() + text + emoji;
   }
 
-  static String parseTagIndexToText(List<String> splittedtags) {
-    return parseElementAt(splittedtags, 0) +
-        parseElementAt(splittedtags, 1) +
-        parseElementAt(splittedtags, 2) +
-        parseElementAt(splittedtags, 3);
+  static String parseTagIndexToText(ctx, List<String> splittedtags) {
+    return parseElementAt(ctx, splittedtags, 0) +
+        parseElementAt(ctx, splittedtags, 1) +
+        parseElementAt(ctx, splittedtags, 2) +
+        parseElementAt(ctx, splittedtags, 3);
   }
 
-  static String parseElementAt(splittedTags, int pos) {
+  static String parseElementAt(ctx, splittedTags, int pos) {
     var tagIndex = splittedTags.elementAt(pos);
 
     String addSeparator = "";
     if (pos != 0) addSeparator = "   ";
 
-    return addSeparator + parseTag(tagIndex);
+    return addSeparator + parseTag(ctx, tagIndex);
   }
 
-  static String parseTag(String index) {
+  static String parseTag(BuildContext ctx, String index) {
     if (index == PLACEHOLDER_TAG) return "";
 
     try {
-      return TagCoinector.tagTextEN.elementAt(int.parse(index));
+      var i = int.parse(index);
+      switch (Localizer.getLangCode(ctx)) {
+        case LangCode.DE: return fallbackToEN(TagCoinector.tagTextDE.elementAt(i), i);
+        case LangCode.ES: return fallbackToEN(TagCoinector.tagTextES.elementAt(i), i);
+        case LangCode.FR: return fallbackToEN(TagCoinector.tagTextFR.elementAt(i), i);
+        case LangCode.ID: return fallbackToEN(TagCoinector.tagTextINDONESIA.elementAt(i), i);
+        case LangCode.JA: return fallbackToEN(TagCoinector.tagTextJP1.elementAt(i), i);
+        case LangCode.IT: return fallbackToEN(TagCoinector.tagTextIT.elementAt(i), i);
+        default: return TagCoinector.tagTextEN.elementAt(i);
+      }
     } catch (e) {
+      debugPrint(e.toString());
       print("INVALID TAG INDEX:" + index);
       return "";
     }
@@ -328,7 +340,7 @@ class TagCoinector {
     'Milk 🥛',
     'Surf 🏄',
     'Skate ⛸',
-    'Tabacco 🔥',//215
+    'Tobacco 🔥',//215
     'Art 🎨',
     'Museum 🖼️',
     'Gallery 🖼️',
@@ -2199,78 +2211,78 @@ class TagCoinector {
     '🍔🍔🍔Oden 🍢', //170
     'Milch ☕',
     'Pool 🏊', //'DASHText Ð', //
-    'Air Cond. ❄', //'CoinTigo',
-    'Powerplant 🔌', //'CoinText',
-    'Rental 🏠', //'Salamantex',//175
-    'Supply 🧺', //'CryptoBuyer',
+    'Klima ❄', //'CoinTigo',
+    'Notstrom 🔌', //'CoinText',
+    'Miete 🏠', //'Salamantex',//175
+    'Versorgung 🧺', //'CryptoBuyer',
     'Kiosk 🏪', //'XPay',
-    'Electronic 💻', //'Panmoni'
-    'Cellphone 📱',
-    'Parking 🅿️',//180
-    'Accessories 💠',
-    'Shoes 👞',
-    'Beach 🏖️',
-    'River 🏞️',
-    'Natural 🌲',//185
-    'Imported 🌎',
-    'Tools 🔨',
-    'Flour 🥖',
-    'Cleaning 🧹',
-    'Soap 🧼',//190
-    'Detergent ☢',
-    'Pharmacy 🏥',
-    'Sugar 😍',
-    'Simcard 📶',
+    'Elektro 💻', //'Panmoni'
+    'Handy 📱',
+    'Parkplatz 🅿️',//180
+    'Zubehoer 💠',
+    'Schuhe 👞',
+    'Strand 🏖️',
+    'Fluss 🏞️',
+    'Natuerlich 🌲',//185
+    'Importiert 🌎',
+    'Werkzeug 🔨',
+    'Mehl 🥖',
+    'Reinigung 🧹',
+    'Seife 🧼',//190
+    'Reiniger ☢',
+    'Apotheke 🏥',
+    'Zucker 😍',
+    'Simkarte 📶',
     'Microsd 💾',//195
-    'Battery 🔋',
-    'Water 🚰',
-    'Clock ⌚',
-    'Key 🔑',
-    'Padlock 🔒',//200,
-    'Pet 🐶',
-    'Kids 🚸',
-    'Movie 🎥',
-    'Photo 📸',
-    'Camera 📷',//205
-    'Security 👮',
-    'Mattress 🛏️',
-    'Maintenance 🔧',
-    'Washingmachine 🚿',
-    'Sausage 🌭', //210
-    'Egg 🥚',
-    'Milk 🥛',
+    'Batterie 🔋',
+    'Wasser 🚰',
+    'Uhr ⌚',
+    'Schluessel 🔑',
+    'Schloss 🔒',//200,
+    'Haustier 🐶',
+    'Kinder 🚸',
+    'Film 🎥',
+    'Foto 📸',
+    'Kamera 📷',//205
+    'Sicherheit 👮',
+    'Matratze 🛏️',
+    'Wartung 🔧',
+    'Waschmaschine 🚿',
+    'Wiener 🌭', //210
+    'Ei 🥚',
+    'Milch 🥛',
     'Surf 🏄',
     'Skate ⛸',
-    'Tabacco 🔥',//215
-    'Art 🎨',
+    'Tabak 🔥',//215
+    'Kunst 🎨',
     'Museum 🖼️',
-    'Gallery 🖼️',
+    'Galerie 🖼️',
     'Ski ⛷',
     'Board 🏂',//220
-    'Jewelry 💠',
-    'Diamond 💎',
+    'Schmuck 💠',
+    'Diamant 💎',
     'Gold 🥇',
-    'Bracelet ❤',
+    'Armband ❤',
     'Ring 💍',//225
-    'Necklace 📿',
-    'Watch ⌚',
+    'Kette 📿',
+    'Armbanduhr ⌚',
     'Taxi 🚕',
-    'Spirit ✨',
-    'Church ⛪', //230
-    'Synagoge 🕍',
-    'Temple 🛕',
+    'Spirituell ✨',
+    'Kirche ⛪', //230
+    'Sinagoge 🕍',
+    'Tempel 🛕',
     'Transport 🚌',
     'Global 🚚',
-    'Worldwide 📦',//235
-    'Lebanese 🇱🇧',
-    'African 🌍',
-    'French 🇫🇷',
-    'Criole 😊',
-    'Spanish 🇪🇸',//240
-    'Adult 💃',
-    'Free 😁',
-    'Dance 🕺🏽',
-    'Meal 🍽️',
+    'Weltweit 📦',//235
+    'Libanesisch 🇱🇧',
+    'Afrikanisch 🌍',
+    'Franzoesisch 🇫🇷',
+    'Hausmanskost 😊',
+    'Spanisch 🇪🇸',//240
+    'Erwachsene 💃',
+    'Gratis 😁',
+    'Tanz 🕺🏽',
+    'Mahlzeit 🍽️',
     'After-Hour 🎶',//245
     'Sightseeing 📰',
     'Marketing 🖥️',
@@ -2662,4 +2674,10 @@ class TagCoinector {
     'Diseno 🎭',
     'Colores 🎨',//315
     'Cocina ⏲'};
+
+  static String fallbackToEN(String t, int i) {
+    if (t.startsWith("🍔🍔🍔"))
+      return TagCoinector.tagTextEN.elementAt(i);
+    return t;
+  }
 }

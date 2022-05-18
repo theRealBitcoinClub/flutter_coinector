@@ -224,7 +224,7 @@ class MapSampleState extends State<MapSample> {
         title: merchant.name +
             ": " +
             TagCoinector.parseTagIndexToText(
-                    merchant.tagsDatabaseFormat.split(","))
+                    context, merchant.tagsDatabaseFormat.split(","))
                 .toUpperCase(),
         onTap: () {
           closeMapReturnMerchant(merchant);
