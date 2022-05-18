@@ -829,12 +829,17 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           },
           child: Padding(
             padding: EdgeInsets.only(bottom: 10.0),
-            child: Text(allSelectedTags.length <= index
-                ? ""
-                : TagFactory.getTags(context)
-                        .elementAt(allSelectedTags.elementAt(index).id)
-                        .toString() +
-                    "  "),
+            child: Text(
+              allSelectedTags.length <= index
+                  ? ""
+                  : TagFactory.getTags(context)
+                          .elementAt(allSelectedTags.elementAt(index).id)
+                          .text
+                          .toUpperCase()
+                          .toString() +
+                      "  ",
+              style: TextStyle(letterSpacing: 1.1, fontWeight: FontWeight.bold),
+            ),
           ),
         ));
   }
