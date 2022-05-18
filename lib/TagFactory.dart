@@ -8,7 +8,7 @@ class TagFactory {
   static LangCode _lastLangCode;
 
   static Set<TagCoinector> getTags(ctx, {LangCode lang}) {
-    LangCode currentLangCode = Localizer.getLocale(ctx);
+    LangCode currentLangCode = Localizer.getLangCode(ctx);
     if (_tagz == null || currentLangCode != _lastLangCode)
       _tagz = _createTags(lang != null ? lang : currentLangCode);
 

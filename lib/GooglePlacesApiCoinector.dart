@@ -28,7 +28,10 @@ class GooglePlacesApiCoinector {
         placeId = "MULTIPLE";
         Toaster.showMerchantSearchHasMultipleResults(ctx);
         for (int x = 0; x < candidates.length; x++) {
-          placeId += ";" + candidates[x]["place_id"].toString();
+          var placeIdCandidate = candidates[x]["place_id"].toString();
+          // if (candidatesNameIsEqualToSearch(candidates, x, search))
+          //   return placeIdCandidate;
+          placeId += ";" + placeIdCandidate;
         }
       } else
         placeId = candidates[0]["place_id"].toString();
@@ -39,6 +42,10 @@ class GooglePlacesApiCoinector {
     }
     return placeId;
   }
+
+  static bool candidatesNameIsEqualToSearch(candidates, int x, String search) =>
+      candidates[x]["name"].toString().trim().toLowerCase() ==
+      search.split(",")[0].trim().toLowerCase();
 
   static Future<Object> loadPhoto(String reference,
       {int height, int width}) async {

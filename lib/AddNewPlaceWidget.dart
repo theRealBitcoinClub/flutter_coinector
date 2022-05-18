@@ -449,8 +449,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       allTags.length < TagCoinector.MAX_INPUT_TAGS;
 
   //The tagText 107 is men and very short it appears in many other words
-  bool isShortTag(TagCoinector t) =>
-      TagCoinector.parseTag(t.id.toString()).length <= 4;
+  bool isShortTag(TagCoinector t) => t.text.trim().length <= 4;
 
   void printWrapped(String text) {
     final pattern = new RegExp('.{1,800}'); // 800 is the size of each chunk
@@ -832,7 +831,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             padding: EdgeInsets.only(bottom: 10.0),
             child: Text(allSelectedTags.length <= index
                 ? ""
-                : allSelectedTags.elementAt(index).toUI() + "  "),
+                : TagFactory.getTags(context)
+                        .elementAt(allSelectedTags.elementAt(index).id)
+                        .toString() +
+                    "  "),
           ),
         ));
   }

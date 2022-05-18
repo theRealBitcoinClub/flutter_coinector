@@ -6,7 +6,7 @@ enum LangCode { EN, DE, ES, FR, ID, IT, JA }
 // "🇪🇸 🇩🇪 🇫🇷 🇮🇹 🇬🇧 🇯🇵 🇮🇩";
 
 class Localizer {
-  static LangCode getLocale(ctx) {
+  static LangCode getLangCode(ctx) {
     Locale myLocale = Localizations.localeOf(ctx);
     final String countryCode = myLocale.toString();
     LangCode langCode = LangCode.values.firstWhere(

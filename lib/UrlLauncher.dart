@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:Coinector/translator.dart';
 import 'package:flutter/foundation.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'AddNewPlaceWidget.dart';
@@ -146,8 +145,8 @@ class UrlLauncher {
   static Future _launchEmail(
       ctx, String urlString, onEmailClientNotFound) async {
     Toaster.showToastLaunchingEmailClient(ctx);
-    if (await canLaunch(urlString)) {
-      await launch(urlString);
+    if (await canLaunchUrlString(urlString)) {
+      await launchUrlString(urlString);
     } else {
       onEmailClientNotFound();
     }
