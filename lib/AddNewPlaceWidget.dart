@@ -428,16 +428,23 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       String tagText = t.text.toLowerCase();
       //print(tagText);
       if (t.id != 104 && review.contains(tagText) && tagText.isNotEmpty) {
-        List<String> words = review.split(" ");
-        for (String word in words) {
-          if (hasLessThanMaxTags(allTags)) {
-            if (isShortTag(t) && word.toLowerCase() == tagText) {
-              allTags.add(t);
-            } else if (!isShortTag(t) && word.toLowerCase().contains(tagText)) {
-              allTags.add(t);
-            }
-          } else
-            break;
+        bool hasThatId = false;
+        allTags.forEach((TagCoinector tag) {
+          if (tag.id == t.id) hasThatId = true;
+        });
+        if (!hasThatId) {
+          List<String> words = review.split(" ");
+          for (String word in words) {
+            if (hasLessThanMaxTags(allTags)) {
+              if (isShortTag(t) && word.toLowerCase() == tagText) {
+                allTags.add(t);
+              } else if (!isShortTag(t) &&
+                  word.toLowerCase().contains(tagText)) {
+                allTags.add(t);
+              }
+            } else
+              break;
+          }
         }
         if (!kReleaseMode)
           print("index:" + t.id.toString() + "\ntagText:" + tagText + "\n");
