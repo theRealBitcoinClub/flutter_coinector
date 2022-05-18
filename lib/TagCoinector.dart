@@ -125,323 +125,323 @@ class TagCoinector {
   //Only if the tag is totally unused, that means there are zero results when searching inside the app, then it can be replaced by another tag
 
   static final tagTextEN = const {
-    'Spicy 🌶️', //0
-    'Salty 🥨',
-    'Sour 😜',
-    'Organic 🐵',
-    'Vegetarian 🥕', //4
-    'Vegan 🐮',
-    'Healthy 💓',
-    'Burger 🍔',
-    'Sandwich 🥪',
-    'Muffin 🧁', //9 The muffin icon is invisible
-    'Brownie 🥮', //10 Brownie is invisible too
-    'Cake 🎂',
-    'Cookie 🍪',
-    'Arabic 🥙',
-    'Pizza 🍕', //14
-    'Salad 🥗',
-    'Smoothie 🥤',
-    'Fruit 🍓',
-    'IceCream 🍦',
-    'Raw 🥦', //19
-    'Handbag 👜',
-    'Cosmetic 💅',
-    'Tattoo ♣',
-    'Piercing 🌀',
-    'Souvenir 🎁', //24
-    'Hatha 🧘',
-    'Vinyasa 🧘',
-    'Massage 💆',
-    'Upcycled 🌲',
-    'Coffee ☕', //29
-    'NoGluten 🌽',
-    'Cocktails 🍹',
-    'Beer 🍺',
-    'Music 🎵',
-    'Chinese 🍜', //34
-    'Duck 🍱',
-    'Rock 🎸',
-    'LiveDJ 🎧',
-    'Terrace ☀',
-    'Seeds 🌱', //39
-    'Grinder 🍌',
-    'Papers 🚬',
-    'Advice 🌴',
-    'Calzone 🥟',
-    'Falafel 🥙', //44
-    'MakeUp 🤡',
-    'Gifts 🎁',
-    'Tapas 🍠',
-    'Copas 🍹',
-    'Piadina 🌮', //49
-    'Cheese 🧀',
-    'Grains 🌾',
-    'Fashion 👗',
-    'Fair 🤗',
-    'Women 👩', //54
-    'Drinks 🍹',
-    'TV 📺',
-    'Retro 🦄',
-    'Feta 🐐',
-    'WiFi 🌐', //'DASH Ð', //59
-    'Shopping Center 🛍️', //'BTC',
-    'Department Store 🏬', //'BCH',
-    'Cigarette 🚬', //'Anypay',
-    'Recharge 📱', //'ETH',
-    'HotDog 🌭', //64
-    'Fast ⏩',
-    'Kosher 🕍',
-    'Sushi 🍣',
-    'Motorbike 🛵', //DOUBLE CHECK DOWN AT MOTORBIKE
-    'Car 🚘', //69
-    'Bicycle 🚴', //'GoCrypto UNUSED',
-    'Chicken 🐔',
-    'Rabbit 🐰',
-    'Potato 🥔',
-    'Kumpir 🥔', //74
-    'Kebap 🐄',
-    'ATM 🏦',
-    'Gyros 🐖',
-    'Coconut 🥥',
-    'ToGo 📦', //79
-    'Meditation 🧘',
-    'Wine 🍷',
-    'Champagne 🥂',
-    'Alcohol 🍾',
-    'Booze 🥃', //84
-    'Pancakes 🥞', //You cant remove because we use fixed indexes, but replace with another string that is unlikely to be typed in by the user
-    'Croissant 🥐',
-    'Popcorn 🍿',
-    'SoftIce 🍦',
-    'Dango 🍡',
-    'BnB 🛏️', //90
-    'Haircut ✂',
-    'Candy 🍭',
-    'Beauty 💅',
-    'Miso 🍱',
-    'Chocolate 🍫', //95
-    'Rice 🍚',
-    'Seafood 🦀',
-    'Hostel 🛏️',
-    'Fries 🍟',
-    'Fish 🐟', //100
-    'Chips 🍟',
-    'Italian 🇮🇹',
-    'Whiskey 🥃',
-    ' - - - ', //This is number 104 the no tag indicator, currently not used //TODO hide this field from the suggestions
-    'Bourbon 🥃', //105
-    'Liquor 🥃',
-    'Men ♂',
-    'Pasta 🍝',
-    'Dessert 🍬', //109
-    'Starter 🥠', //110
-    'BBQ 🍗',
-    'Noodle 🍜',
-    'Korean 🥟',
-    'Market 🧺', //114 invisible item
-    'Bread 🥖',
-    'Bakery 🥨',
-    'Cafe ☕',
-    'Games 🎮',
-    'Snacks 🍿', //119
-    'Elegant 🕴️',
-    'Piano 🎹',
-    'Brunch 🍱',
-    'Nachos 🌽',
-    'Lunch 🥡',
-    'Breakfast 🥐', //125
-    'HappyHour 🥳', //hidden item
-    'LateNight 🌜',
-    'Mexican 🇲🇽',
-    'Burrito 🌯',
-    'Tortilla 🌮', //130
-    'Indonesian 🇮🇩',
-    'Sports 🏆',
-    'Pastry 🥧',
-    'Bistro 🍲',
-    'Soup 🥣', //135
-    'Tea 🍵',
-    'Onion 🧅',
-    'Steak 🥩',
-    'Shakes 🥤',
-    'Empanadas 🥟', //140
-    'Dinner 🍽️',
-    'Sweet 🍭',
-    'Fried 🍳',
-    'Omelette 🥚',
-    'Gin 🍸', //145
-    'Donut 🍩',
-    'Delivery 🚚',
-    'Cups ☕',
-    'Filter',
-    'Juice 🍊', //150
-    'Vietnamese 🇻🇳',
-    'Pie 🥮', //invisible item
-    'Unagi 🐡',
-    'Greek 🇬🇷',
-    'Japanese 🇯🇵', //155
-    'Tacos 🌮',
-    'Kombucha 🍵',
-    'Indian 🇮🇳',
-    'Nan 🥪', //
-    'Club 🎶', //160
-    'Honey 🍯',
-    'Pool 🎱',
-    'Hotel 🏨',
-    'Pork 🥓',
-    'Ribs 🍖', //165
-    'Kava 🍵',
-    'Chai 🍵',
-    'Izzy 🍵',
-    'Matcha 🍵',
-    'Oden 🍢', //170
-    'Latte ☕',
-    'Pool 🏊', //'DASHText Ð', //
-    'Air Cond. ❄', //'CoinTigo',
-    'Powerplant 🔌', //'CoinText',
-    'Rental 🏠', //'Salamantex',//175
-    'Supply 🧺', //'CryptoBuyer',
-    'Kiosk 🏪', //'XPay',
-    'Electronic 💻', //'Panmoni'
-    'Cellphone 📱',
-    'Parking 🅿️',//180
-    'Accessories 💠',
-    'Shoes 👞',
-    'Beach 🏖️',
-    'River 🏞️',
-    'Natural 🌲',//185
-    'Imported 🌎',
-    'Tools 🔨',
-    'Flour 🥖',
-    'Cleaning 🧹',
-    'Soap 🧼',//190
-    'Detergent ☢',
-    'Pharmacy 🏥',
-    'Sugar 😍',
-    'Simcard 📶',
-    'Microsd 💾',//195
-    'Battery 🔋',
-    'Water 🚰',
-    'Clock ⌚',
-    'Key 🔑',
-    'Padlock 🔒',//200,
-    'Pet 🐶',
-    'Kids 🚸',
-    'Movie 🎥',
-    'Photo 📸',
-    'Camera 📷',//205
-    'Security 👮',
-    'Mattress 🛏️',
-    'Maintenance 🔧',
-    'Washingmachine 🚿',
-    'Sausage 🌭', //210
-    'Egg 🥚',
-    'Milk 🥛',
-    'Surf 🏄',
-    'Skate ⛸',
-    'Tobacco 🔥',//215
-    'Art 🎨',
-    'Museum 🖼️',
-    'Gallery 🖼️',
-    'Ski ⛷',
-    'Board 🏂',//220
-    'Jewelry 💠',
-    'Diamond 💎',
-    'Gold 🥇',
-    'Bracelet ❤',
-    'Ring 💍',//225
-    'Necklace 📿',
-    'Watch ⌚',
-    'Taxi 🚕',
-    'Spirit ✨',
-    'Church ⛪', //230
-    'Synagoge 🕍',
-    'Temple 🛕',
-    'Transport 🚌',
-    'Global 🚚',
-    'Worldwide 📦',//235
-    'Lebanese 🇱🇧',
-    'African 🌍',
-    'French 🇫🇷',
-    'Criole 😊',
-    'Spanish 🇪🇸',//240
-    'Adult 💃',
-    'Free 😁',
-    'Dance 🕺🏽',
-    'Meal 🍽️',
-    'After-Hour 🎶',//245
-    'Sightseeing 📰',
-    'Marketing 🖥️',
-    'Advertisement 🖥️',
-    'Agency 🖥️',
-    'Service 🖥️',//250
-    'Doctor 👨‍⚕',
-    'Veterinarian 👨‍⚕',
-    'Hospital 🏥',
-    'Nails 💅',
-    'Halal حلال',//255
-    'Promotion 🐰',
-    'Phone 📱',
-    'Mobile 📱',
-    'Communication 📡',
-    'Internet 📡',//260
-    'Mechanic 🔧',
-    'Repair 🔧',
-    'Relax 🤗',
-    'Chill 😏',
-    'Moon 🌝',//265
-    'Sunshine ☀',
-    'Bets 🎰',
-    'Poker 🎰',
-    'Airport ✈',
-    'Autobus 🚌',//270
-    'Travel 🗺️',
-    'Show 🤡',
-    'Theatre 🤡',
-    'Lawyer ⚖',
-    'Accounting 🔒',//275
-    'Tourist ℹ',
-    'Shawarma 🍗',
-    'Camping ⛺',
-    'Fire 🔥',
-    'Resort ⛵',//280
-    'Lounge 🛋️',
-    'Lodging 🛏️',
-    'Thai 🇹🇭',
-    'Construction 🪛',
-    'Hardware 🔨',//285
-    'Gasoline ⛽',
-    'Convenience 🏪',
-    'Grocery 🥫',
-    'Fitness ❤',
-    'Gym ❤',//290
-    'Household 🏪',
-    'Book 📗',
-    'Boutique 🏪',
-    'Digital 📀',
-    'Glasses 👓',//295
-    'Optic 👓',
-    'Parfume ✨',
-    'Flower 🌻',
-    'Garden 🏡',
-    'Copies 💾',//300
-    'Talks 😃',
-    'Meeting 🤝',
-    'Office 🏢',
-    'Software ⚙',
-    'Crypto 🛡️',//305
-    'Wellness 🥰',
-    'Asian 🌏',
-    'Nuts 🥜',
-    'Storage 🏠',
-    'Exposition 🏟️',//310
-    'Gourmet ✨',
-    'Yoga ✨',
-    'Furniture 🛋️',
-    'Design 🎭',
-    'Paint 🎨',//315
-    'Kitchen ⏲'};
+    "Spicy 🌶️", //0
+    "Salty 🥨",
+    "Sour 😜",
+    "Organic 🐵",
+    "Vegetarian 🥕", //4
+    "Vegan 🐮",
+    "Healthy 💓",
+    "Burger 🍔",
+    "Sandwich 🥪",
+    "Muffin 🧁", //9
+    "Brownie 🥮",
+    "Cake 🎂",
+    "Cookie 🍪",
+    "Arabic 🥙",
+    "Pizza 🍕", //14
+    "Salad 🥗",
+    "Smoothie 🥤",
+    "Fruit 🍓",
+    "IceCream 🍦",
+    "Raw 🥦", //19
+    "Handbag 👜",
+    "Cosmetic 💅",
+    "Tattoo ♣",
+    "Piercing 🌀",
+    "Souvenir 🎁", //24
+    "Hatha 🧘",
+    "Vinyasa 🧘",
+    "Massage 💆",
+    "Upcycled 🌲",
+    "Coffee ☕", //29
+    "NoGluten 🌽",
+    "Cocktails 🍹",
+    "Beer 🍺",
+    "Music 🎵",
+    "Chinese 🍜", //34
+    "Duck 🍱",
+    "Rock 🎸",
+    "LiveDJ 🎧",
+    "Terrace ☀",
+    "Seeds 🌱", //39
+    "Grinder 🍌",
+    "Papers 🚬",
+    "Advice 🌴",
+    "Calzone 🥟",
+    "Falafel 🥙", //44
+    "MakeUp 🤡",
+    "Gifts 🎁",
+    "Tapas 🍠",
+    "Copas 🍹",
+    "Piadina 🌮", //49
+    "Cheese 🧀",
+    "Grains 🌾",
+    "Fashion 👗",
+    "Fair 🤗",
+    "Women 👩", //54
+    "Drinks 🍹",
+    "TV 📺",
+    "Retro 🦄",
+    "Feta 🐐",
+    "WiFi 🌐", //59
+    "Shopping Center 🛍️",
+    "Department Store 🏬",
+    "Cigarette 🚬",
+    "Recharge 📱",
+    "HotDog 🌭", //64
+    "Fast ⏩",
+    "Kosher 🕍",
+    "Sushi 🍣",
+    "Motorbike 🛵",
+    "Car 🚘", //69
+    "Bicycle 🚴",
+    "Chicken 🐔",
+    "Rabbit 🐰",
+    "Potato 🥔",
+    "Kumpir 🥔", //74
+    "Kebap 🐄",
+    "ATM 🏦",
+    "Gyros 🐖",
+    "Coconut 🥥",
+    "ToGo 📦", //79
+    "Meditation 🧘",
+    "Wine 🍷",
+    "Champagne 🥂",
+    "Alcohol 🍾",
+    "Booze 🥃", //84
+    "Pancakes 🥞",
+    "Croissant 🥐",
+    "Popcorn 🍿",
+    "SoftIce 🍦",
+    "Dango 🍡",
+    "BnB 🛏️", //90
+    "Haircut ✂",
+    "Candy 🍭",
+    "Beauty 💅",
+    "Miso 🍱",
+    "Chocolate 🍫", //95
+    "Rice 🍚",
+    "Seafood 🦀",
+    "Hostel 🛏️",
+    "Fries 🍟",
+    "Fish 🐟", //100
+    "Chips 🍟",
+    "Italian 🇮🇹",
+    "Whiskey 🥃",
+    " - - - ",
+    "Bourbon 🥃", //105
+    "Liquor 🥃",
+    "Men ♂",
+    "Pasta 🍝",
+    "Dessert 🍬", //109
+    "Starter 🥠", //110
+    "BBQ 🍗",
+    "Noodle 🍜",
+    "Korean 🥟",
+    "Market 🧺", //114
+    "Bread 🥖",
+    "Bakery 🥨",
+    "Cafe ☕",
+    "Games 🎮",
+    "Snacks 🍿", //119
+    "Elegant 🕴️",
+    "Piano 🎹",
+    "Brunch 🍱",
+    "Nachos 🌽",
+    "Lunch 🥡",
+    "Breakfast 🥐", //125
+    "HappyHour 🥳",
+    "LateNight 🌜",
+    "Mexican 🇲🇽",
+    "Burrito 🌯",
+    "Tortilla 🌮", //130
+    "Indonesian 🇮🇩",
+    "Sports 🏆",
+    "Pastry 🥧",
+    "Bistro 🍲",
+    "Soup 🥣", //135
+    "Tea 🍵",
+    "Onion 🧅",
+    "Steak 🥩",
+    "Shakes 🥤",
+    "Empanadas 🥟", //140
+    "Dinner 🍽️",
+    "Sweet 🍭",
+    "Fried 🍳",
+    "Omelette 🥚",
+    "Gin 🍸", //145
+    "Donut 🍩",
+    "Delivery 🚚",
+    "Cups ☕",
+    "Filter",
+    "Juice 🍊", //150
+    "Vietnamese 🇻🇳",
+    "Pie 🥮",
+    "Unagi 🐡",
+    "Greek 🇬🇷",
+    "Japanese 🇯🇵", //155
+    "Tacos 🌮",
+    "Kombucha 🍵",
+    "Indian 🇮🇳",
+    "Nan 🥪", //
+    "Club 🎶", //160
+    "Honey 🍯",
+    "Pool 🎱",
+    "Hotel 🏨",
+    "Pork 🥓",
+    "Ribs 🍖", //165
+    "Kava 🍵",
+    "Chai 🍵",
+    "Izzy 🍵",
+    "Matcha 🍵",
+    "Oden 🍢", //170
+    "Latte ☕",
+    "Pool 🏊",
+    "Air Cond. ❄",
+    "Powerplant 🔌",
+    "Rental 🏠", //175
+    "Supply 🧺",
+    "Kiosk 🏪",
+    "Electronic 💻",
+    "Cellphone 📱",
+    "Parking 🅿️",//180
+    "Accessories 💠",
+    "Shoes 👞",
+    "Beach 🏖️",
+    "River 🏞️",
+    "Natural 🌲",//185
+    "Imported 🌎",
+    "Tools 🔨",
+    "Flour 🥖",
+    "Cleaning 🧹",
+    "Soap 🧼",//190
+    "Detergent ☢",
+    "Pharmacy 🏥",
+    "Sugar 😍",
+    "Simcard 📶",
+    "Microsd 💾",//195
+    "Battery 🔋",
+    "Water 🚰",
+    "Clock ⌚",
+    "Key 🔑",
+    "Padlock 🔒",//200,
+    "Pet 🐶",
+    "Kids 🚸",
+    "Movie 🎥",
+    "Photo 📸",
+    "Camera 📷",//205
+    "Security 👮",
+    "Mattress 🛏️",
+    "Maintenance 🔧",
+    "Washingmachine 🚿",
+    "Sausage 🌭", //210
+    "Egg 🥚",
+    "Milk 🥛",
+    "Surf 🏄",
+    "Skate ⛸",
+    "Tobacco 🔥",//215
+    "Art 🎨",
+    "Museum 🖼️",
+    "Gallery 🖼️",
+    "Ski ⛷",
+    "Board 🏂",//220
+    "Jewelry 💠",
+    "Diamond 💎",
+    "Gold 🥇",
+    "Bracelet ❤",
+    "Ring 💍",//225
+    "Necklace 📿",
+    "Watch ⌚",
+    "Taxi 🚕",
+    "Spirit ✨",
+    "Church ⛪", //230
+    "Synagoge 🕍",
+    "Temple 🛕",
+    "Transport 🚌",
+    "Global 🚚",
+    "Worldwide 📦",//235
+    "Lebanese 🇱🇧",
+    "African 🌍",
+    "French 🇫🇷",
+    "Criole 😊",
+    "Spanish 🇪🇸",//240
+    "Adult 💃",
+    "Free 😁",
+    "Dance 🕺🏽",
+    "Meal 🍽️",
+    "After-Hour 🎶",//245
+    "Sightseeing 📰",
+    "Marketing 🖥️",
+    "Advertisement 🖥️",
+    "Agency 🖥️",
+    "Service 🖥️",//250
+    "Doctor 👨‍⚕",
+    "Veterinarian 👨‍⚕",
+    "Hospital 🏥",
+    "Nails 💅",
+    "Halal حلال",//255
+    "Promotion 🐰",
+    "Phone 📱",
+    "Mobile 📱",
+    "Communication 📡",
+    "Internet 📡",//260
+    "Mechanic 🔧",
+    "Repair 🔧",
+    "Relax 🤗",
+    "Chill 😏",
+    "Moon 🌝",//265
+    "Sunshine ☀",
+    "Bets 🎰",
+    "Poker 🎰",
+    "Airport ✈",
+    "Autobus 🚌",//270
+    "Travel 🗺️",
+    "Show 🤡",
+    "Theatre 🤡",
+    "Lawyer ⚖",
+    "Accounting 🔒",//275
+    "Tourist ℹ",
+    "Shawarma 🍗",
+    "Camping ⛺",
+    "Fire 🔥",
+    "Resort ⛵",//280
+    "Lounge 🛋️",
+    "Lodging 🛏️",
+    "Thai 🇹🇭",
+    "Construction 🪛",
+    "Hardware 🔨",//285
+    "Gasoline ⛽",
+    "Convenience 🏪",
+    "Grocery 🥫",
+    "Fitness ❤",
+    "Gym ❤",//290
+    "Household 🏪",
+    "Book 📗",
+    "Boutique 🏪",
+    "Digital 📀",
+    "Glasses 👓",//295
+    "Optic 👓",
+    "Parfume ✨",
+    "Flower 🌻",
+    "Garden 🏡",
+    "Copies 💾",//300
+    "Talks 😃",
+    "Meeting 🤝",
+    "Office 🏢",
+    "Software ⚙",
+    "Crypto 🛡️",//305
+    "Wellness 🥰",
+    "Asian 🌏",
+    "Nuts 🥜",
+    "Storage 🏠",
+    "Exposition 🏟️",//310
+    "Gourmet ✨",
+    "Yoga ✨",
+    "Furniture 🛋️",
+    "Design 🎭",
+    "Paint 🎨",//315
+    "Kitchen ⏲"};
 
   static final tagTextJP1 = const {
     'スパイシー🌶️',
