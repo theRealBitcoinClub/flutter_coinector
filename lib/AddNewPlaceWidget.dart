@@ -375,8 +375,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   Merchant parseGmapsDataToMerchant(String placeId, data, int placeType) {
-    var reviews = data["reviews"];
-    Set<TagCoinector> resultTags = parseReviewsSearchForMatchingTags(reviews);
+    Set<TagCoinector> resultTags =
+        parseReviewsSearchForMatchingTags(data["name"], data["reviews"]);
     return Merchant.createMerchantFromInputs(
         data, placeId, resultTags, placeType);
   }
@@ -407,7 +407,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     return results;
   }*/
 
-  Set<TagCoinector> parseReviewsSearchForMatchingTags(reviews) {
+  Set<TagCoinector> parseReviewsSearchForMatchingTags(String name, reviews) {
     Set<TagCoinector> resultTags = {};
     if (reviews == null || reviews == "null") return resultTags;
     for (var r in reviews) {
@@ -417,6 +417,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       for (LangCode lang in LangCode.values) {
         matchTags(resultTags, review, TagFactory.getTags(context, lang: lang));
       }
+    }
+    for (LangCode lang in LangCode.values) {
+      matchTags(resultTags, name, TagFactory.getTags(context, lang: lang));
     }
     return resultTags;
   }
