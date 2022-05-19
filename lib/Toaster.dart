@@ -1,4 +1,5 @@
 import 'package:Coinector/translator.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -46,7 +47,8 @@ class Toaster {
   }
 
   static Future<bool> cancel() async {
-    if (isToasting) await Fluttertoast.cancel();
+    if (isToasting && !kIsWeb)
+      await Fluttertoast.cancel(); //web doesnt implement this method
     isToasting = false;
     return isToasting;
   }

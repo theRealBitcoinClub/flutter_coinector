@@ -37,6 +37,7 @@ class GooglePlacesApiCoinector {
         placeId = candidates[0]["place_id"].toString();
       if (!kReleaseMode) print(placeId);
     } catch (e) {
+      print(e.toString());
       print("INTERNET ERROR on " + path);
       return GoogleErrors.INTERNET_ERROR.toString();
     }
