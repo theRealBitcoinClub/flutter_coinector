@@ -415,16 +415,19 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       if (!kReleaseMode) print("REVIEW:\n" + review + "\n");
       //TODO replace accented characters with normal ones to match more, use normalize method
       for (LangCode lang in LangCode.values) {
-        matchTags(resultTags, review, TagFactory.getTags(context, lang: lang));
+        matchTags(
+            resultTags, review, TagFactory.getTags(context, lang: lang), true);
       }
     }
     for (LangCode lang in LangCode.values) {
-      matchTags(resultTags, name, TagFactory.getTags(context, lang: lang));
+      matchTags(
+          resultTags, name, TagFactory.getTags(context, lang: lang), false);
     }
     return resultTags;
   }
 
-  matchTags(Set<TagCoinector> allTags, String review, Set<TagCoinector> tags) {
+  matchTags(Set<TagCoinector> allTags, String review, Set<TagCoinector> tags,
+      bool deepMatch) {
     review = review.toLowerCase();
     if (!hasLessThanMaxTags(allTags)) return;
     for (TagCoinector t in tags) {
@@ -436,18 +439,21 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           if (tag.id == t.id) hasThatId = true;
         });
         if (!hasThatId) {
-          List<String> words = review.split(" ");
-          for (String word in words) {
-            if (hasLessThanMaxTags(allTags)) {
-              if (isShortTag(t) && word.toLowerCase() == tagText) {
-                allTags.add(t);
-              } else if (!isShortTag(t) &&
-                  word.toLowerCase().contains(tagText)) {
-                allTags.add(t);
-              }
-            } else
-              break;
-          }
+          if (deepMatch) {
+            List<String> words = review.split(" ");
+            for (String word in words) {
+              if (hasLessThanMaxTags(allTags)) {
+                if (isShortTag(t) && word.toLowerCase() == tagText) {
+                  allTags.add(t);
+                } else if (!isShortTag(t) &&
+                    word.toLowerCase().contains(tagText)) {
+                  allTags.add(t);
+                }
+              } else
+                break;
+            }
+          } else
+            allTags.add(t);
         }
         if (!kReleaseMode)
           print("index:" + t.id.toString() + "\ntagText:" + tagText + "\n");
@@ -458,7 +464,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   bool hasLessThanMaxTags(Set<TagCoinector> allTags) =>
       allTags.length < TagCoinector.MAX_INPUT_TAGS;
 
-  //The tagText 107 is men and very short it appears in many other words
   bool isShortTag(TagCoinector t) => t.text.trim().length <= 4;
 
   void printWrapped(String text) {
