@@ -311,13 +311,14 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     if (!kReleaseMode) print("placeid: " + placeId.toString());
     if (placeId == GoogleErrors.INTERNET_ERROR.toString())
       Toaster.showToastInternetError(context);
-    else if (placeId == GoogleErrors.NOT_FOUND.toString() && !hasTriedSearch) {
-      hasTriedSearch = true;
+    else if (placeId == GoogleErrors.NOT_FOUND.toString()) {
       //TODO always use snackbar or toasts but dont mix them
       Toaster.showMerchantNotFoundOnGoogleMapsTryAgain(context);
-    } else if (placeId == GoogleErrors.NOT_FOUND.toString() && hasTriedSearch) {
-      drawFormStep(FormStep.HIT_GOOGLE);
-    } else {
+      drawFormStep(FormStep.IN_NAME);
+    } /*else if (placeId == GoogleErrors.NOT_FOUND.toString() && hasTriedSearch) {
+      drawFormStep(FormStep.IN_NAME); IRRELEVANT AS WE DO NOT WANT THEM TO SIGN UP ON GOOGLE IN MANAGER MODE
+    } */
+    else {
       if (placeId.startsWith(GoogleErrors.MULTIPLE.toString().split(".")[1])) {
         chooseFirstCandidate();
         // Toaster.showMerchantSearchHasMultipleResults(context); moved inside findPlaceId
@@ -328,8 +329,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       //TODO USER PROPER STATE PATTERN INSTEAD OF THIS CRAZY VARIABLING
       prefillNameAddressAndTags(_merchant);
       loadGooglePlacePhotos(_merchant.placeDetailsData);
+      drawFormStep(FormStep.SUBMIT);
     }
-    drawFormStep(FormStep.SUBMIT);
   }
 
   void chooseFirstCandidate() {
