@@ -136,7 +136,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   int _currentContinent = 0;
   int _currentPlace = 0;
 
-  int _selectedBrand;
+  int _selectedBrand = 4; //PRESELECT PANMONI
 
   List<dynamic> _selectedCoin =
       List.filled(TagCoin.getTagCoins().length, false);
