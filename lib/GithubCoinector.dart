@@ -31,9 +31,9 @@ class GithubCoinector {
   }
 
   Future<void> githubUploadPlaceDetailStack(
-      String stack, String continent) async {
-    CreateFile createFile =
-        _githubCreateFileMerchantDetailStack(commitUser, stack, continent);
+      String stack, String continent, String chunkId) async {
+    CreateFile createFile = _githubCreateFileMerchantDetailStack(
+        commitUser, stack, continent, chunkId);
     //TODO REMOVE ALL SPECIAL ACCENTED CHARACTERS FROM THE APP AS IT MAKES THINGS TOO COMPLICATED, ON THE INTERNET WE DO NOT HAVE ACCENTS, OBEY!!! USE THE NORMALIZE METHOD THEN REPLACE / and + with -_ again
     await _uploadDataSafe(createFile);
   }
@@ -54,7 +54,7 @@ class GithubCoinector {
   }
 
   CreateFile _githubCreateFileMerchantDetailStack(
-      CommitUser commitUser, String stack, String continent) {
+      CommitUser commitUser, String stack, String continent, String chunkId) {
     var t = DateTime.now();
     CreateFile createFile = CreateFile(
         branch: "master",
@@ -67,6 +67,8 @@ class GithubCoinector {
             t.year.toString() +
             t.month.toString() +
             t.day.toString() +
+            "_" +
+            chunkId +
             "_" +
             t.millisecondsSinceEpoch.toString() +
             ".json",
@@ -116,9 +118,9 @@ class GithubCoinector {
   }
 
   Future<void> githubUploadSuggestions(
-      String continent, String fileContent) async {
-    CreateFile createFile =
-        _githubCreateFileSuggestions(commitUser, continent, fileContent);
+      String continent, String chunckId, String fileContent) async {
+    CreateFile createFile = _githubCreateFileSuggestions(
+        commitUser, continent, chunckId, fileContent);
     await _uploadDataSafe(createFile);
   }
 
@@ -153,8 +155,8 @@ class GithubCoinector {
     return createFile;
   }
 
-  CreateFile _githubCreateFileSuggestions(
-      CommitUser commitUser, String continent, String fileContent) {
+  CreateFile _githubCreateFileSuggestions(CommitUser commitUser,
+      String continent, String chunckId, String fileContent) {
     var t = DateTime.now();
     CreateFile createFile = CreateFile(
         branch: "master",
@@ -168,6 +170,8 @@ class GithubCoinector {
             t.day.toString() +
             "_" +
             continent.toUpperCase() +
+            "_" +
+            chunckId +
             "_" +
             t.millisecondsSinceEpoch.toString() +
             ".dart",

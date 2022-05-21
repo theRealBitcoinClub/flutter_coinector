@@ -92,7 +92,7 @@ class ImportData {
   }
 
   Future<bool> printSuggestions(
-      List<String> allSuggestions, String continent) async {
+      List<String> allSuggestions, String continent, String chunckId) async {
     var continentUpperCase = continent.toUpperCase();
     StringBuffer buff = StringBuffer("class AutoSuggestions" +
         continentUpperCase +
@@ -104,7 +104,7 @@ class ImportData {
     });
     buff.writeln("};");
     buff.writeln("}");
-    github.githubUploadSuggestions(continent, buff.toString());
+    github.githubUploadSuggestions(continent, chunckId, buff.toString());
     return true;
   }
 }

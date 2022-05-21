@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 import 'dart:typed_data';
 
 import 'package:Coinector/GithubCoinector.dart';
@@ -326,7 +327,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       _merchant =
           await loadDetailsFromGoogleCreateMerchant(selectedType, placeId);
       //TODO HANDLE MORE TAGS LATER, LET ADMIN CHOOSE BEST TAGS OR SIMPLY LET CONTENT CONTAIN MORE TAGS
-      //TODO USER PROPER STATE PATTERN INSTEAD OF THIS CRAZY VARIABLING
       prefillNameAddressAndTags(_merchant);
       loadGooglePlacePhotos(_merchant.placeDetailsData);
       drawFormStep(FormStep.SUBMIT);
@@ -1489,6 +1489,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   static Map<String, List<String>> uploadStack = Map();
   static Map<String, List<String>> allSuggestions = Map();
+  static String chunkId = Random().nextInt(100000000).toString();
 
   addPlaceToUploadStackAndUploadStack(String continent) async {
     if (continent.isEmpty) {
@@ -1507,12 +1508,12 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     buff.writeln("]");
 
     await githubCoinector.githubUploadPlaceDetailStack(
-        buff.toString(), continent);
+        buff.toString(), continent, chunkId);
 
     allSuggestions.forEach((key, value) async {
       if (value != null && value.isNotEmpty) {
         await ImportData(githubCoinector)
-            .printSuggestions(value, key.toString());
+            .printSuggestions(value, chunkId, key.toString());
       }
     });
     await githubCoinector.githubUploadPlaceDetails(_merchant);
