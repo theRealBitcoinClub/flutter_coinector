@@ -165,7 +165,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     drawFormStep(FormStep.IN_NAME);
     if (reviewMode) {
       // ImportData(githubCoinector).importDataSetGoCrypto();
-      initReviewableDataSet();
+      //initReviewableDataSet();
       initScrapedDataSet();
     }
   }
@@ -217,17 +217,18 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   List reviewableCombos = [ReviewPlaces.searchCombosFake];
 
   void initScrapedDataSet() async {
+    Loader.show(context);
     var america = await _loadReviewablesByContinent("am");
     var asia = await _loadReviewablesByContinent("as");
     var australia = await _loadReviewablesByContinent("au");
     var europe = await _loadReviewablesByContinent("e");
-
     setState(() {
       reviewableCombos.add(america);
       reviewableCombos.add(asia);
       reviewableCombos.add(australia);
       reviewableCombos.add(europe);
     });
+    Loader.hide();
   }
 
   void initReviewableDataSet() async {
