@@ -6,14 +6,14 @@ import 'AssetLoader.dart';
 import 'MyColors.dart';
 
 /// Icons by svgrepo.com (https://www.svgrepo.com/collection/job-and-professions-3/)
-class PieChartSample3 extends StatefulWidget {
-  const PieChartSample3({Key key}) : super(key: key);
+class PieChartBrands extends StatefulWidget {
+  const PieChartBrands({Key key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => PieChartSample3State();
+  State<StatefulWidget> createState() => PieChartBrandsState();
 }
 
-class PieChartSample3State extends State {
+class PieChartBrandsState extends State {
   int touchedIndex = 0;
   Map<int, int> counter = Map();
 
@@ -21,12 +21,14 @@ class PieChartSample3State extends State {
     super.initState();
     AssetLoader.loadAndDecodeAsset("assets/places.json").then((places) {
       places.forEach((item) {
-        int type = int.parse(item['t']);
-        type = type == 999 ? 6 : type;
-        if (counter[type] == null) counter[type] = 0;
-        setState(() {
-          counter[type]++;
-        });
+        try {
+          int type = int.parse(item['t']);
+          type = type == 999 ? 6 : type;
+          if (counter[type] == null) counter[type] = 0;
+          setState(() {
+            counter[type]++;
+          });
+        } catch (e) {}
       });
     });
   }
