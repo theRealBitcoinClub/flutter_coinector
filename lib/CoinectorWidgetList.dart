@@ -826,11 +826,11 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   void updateAddButtonCategory() {
     setState(() {
-      addButtonCategory = TabPages.pages[tabController.index].text;
+      addButtonCategory = TabPages.pages[tabController.index].short;
     });
   }
 
-  String getTitleOfSelectedTab() => TabPages.pages[tabController.index].title;
+  String getTitleOfSelectedTab() => TabPages.pages[tabController.index].long;
 
   Color getColorOfSelectedTab() =>
       MyColors.getCardInfoBoxBackgroundColor(tabController.index);
@@ -1031,7 +1031,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   Tab buildColoredTab(TabPageCategory page) {
     return _lists[page.tabIndex].length > 0
         ? Tab(
-            text: page.text,
+            text: page.short,
             icon: Icon(
               page.icon,
               color: MyColors.getTabColor(page.typeIndex),
@@ -1110,19 +1110,19 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         CardItemBuilder(ctx, _lists, this /*, isDataSaverOfflineMode*/);
     return [
       buildTabContainer(ctx, _listKeys[0], _lists[0],
-          builder.buildItemRestaurant, TabPages.pages[0].title),
+          builder.buildItemRestaurant, TabPages.pages[0].long),
       buildTabContainer(ctx, _listKeys[1], _lists[1], builder.buildItemTogo,
-          TabPages.pages[1].title),
+          TabPages.pages[1].long),
       buildTabContainer(ctx, _listKeys[2], _lists[2], builder.buildItemBar,
-          TabPages.pages[2].title),
+          TabPages.pages[2].long),
       buildTabContainer(ctx, _listKeys[3], _lists[3], builder.buildItemMarket,
-          TabPages.pages[3].title),
+          TabPages.pages[3].long),
       buildTabContainer(ctx, _listKeys[4], _lists[4], builder.buildItemShop,
-          TabPages.pages[4].title),
+          TabPages.pages[4].long),
       buildTabContainer(ctx, _listKeys[5], _lists[5], builder.buildItemHotel,
-          TabPages.pages[5].title),
+          TabPages.pages[5].long),
       buildTabContainer(ctx, _listKeys[6], _lists[6], builder.buildItemWellness,
-          TabPages.pages[6].title),
+          TabPages.pages[6].long),
     ];
   }
 

@@ -77,7 +77,7 @@ class PieChartCategoriesState extends State {
       return PieChartSectionData(
         color: MyColors.getTabColor(i),
         value: getCounter(i),
-        title: TabPages.pages[i].text,
+        title: TabPages.pages[i].short,
         radius: radius,
         titleStyle: TextStyle(
             fontSize: fontSize,

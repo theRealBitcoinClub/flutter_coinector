@@ -5,14 +5,14 @@ import 'Merchant.dart';
 
 class TabPageCategory {
   TabPageCategory(
-      {this.text,
+      {this.short,
       this.icon,
-      this.title,
+      this.long,
       this.tabIndex,
       this.typeIndex,
       this.color});
-  final String text;
-  final String title;
+  final String short;
+  final String long;
   final IconData icon;
   final int tabIndex;
   final int typeIndex;
@@ -22,44 +22,44 @@ class TabPageCategory {
 class TabPages {
   static List<TabPageCategory> pages = <TabPageCategory>[
     TabPageCategory(
-        text: 'EAT',
+        short: 'EAT',
         icon: Icons.restaurant,
-        title: 'RESTAURANT',
+        long: 'RESTAURANT',
         tabIndex: 0,
         typeIndex: 0,
         color: MyColors.getTabColor(0)),
     TabPageCategory(
-        text: 'TOGO',
+        short: 'TOGO',
         icon: Icons.restaurant_menu,
-        title: 'TAKE-AWAY-FOOD',
+        long: 'TAKE-AWAY-FOOD',
         tabIndex: 1,
         typeIndex: 1,
         color: MyColors.getTabColor(1)),
     TabPageCategory(
-        text: 'BAR',
+        short: 'BAR',
         icon: Icons.local_bar,
-        title: 'BAR, CLUB, CAFE',
+        long: 'BAR, CLUB, CAFE',
         tabIndex: 2,
         typeIndex: 2,
         color: MyColors.getTabColor(2)),
     TabPageCategory(
-        text: 'MARKET',
+        short: 'MARKET',
         icon: Icons.shopping_cart,
-        title: 'SUPERMARKET',
+        long: 'SUPERMARKET',
         tabIndex: 3,
         typeIndex: 3,
         color: MyColors.getTabColor(3)),
     TabPageCategory(
-        text: 'SHOP',
+        short: 'SHOP',
         icon: Icons.shopping_basket,
-        title: 'SHOP & FASHION',
+        long: 'SHOP & FASHION',
         tabIndex: 4,
         typeIndex: 4,
         color: MyColors.getTabColor(4)),
     TabPageCategory(
-        text: 'HOTEL',
+        short: 'HOTEL',
         icon: Icons.hotel,
-        title: 'HOTEL & BnB',
+        long: 'HOTEL & BnB',
         tabIndex: 5,
         typeIndex: 5,
         color: MyColors.getTabColor(5)),
@@ -70,9 +70,9 @@ class TabPages {
       tabIndex: 6,
       typeIndex: 99),*/
     TabPageCategory(
-        text: 'OTHER',
+        short: 'OTHER',
         icon: Icons.spa,
-        title: 'Other',
+        long: 'Other',
         tabIndex: 6,
         typeIndex: 999,
         color: MyColors.getTabColor(6)),

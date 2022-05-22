@@ -741,7 +741,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   List<RadioListTile> buildCategorySelector() {
     var tc = TabPages.pages.map((TabPageCategory e) {
       return RadioListTile(
-        title: Text(e.title),
+        title: Text(e.long),
         groupValue: _selectedCategory,
         value: e.typeIndex,
         onChanged: (value) {

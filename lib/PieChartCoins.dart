@@ -21,6 +21,8 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
   Map<String, int> counter = Map();
   TabController _tabController;
 
+  String title;
+
   initState() {
     super.initState();
     _tabController =
@@ -113,10 +115,12 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
         forceElevated: true,
         leading: IconButton(
           icon: Icon(Icons.navigate_before),
+          color: Colors.lightBlueAccent,
           onPressed: () {
             Navigator.pop(context);
           },
         ),
+        centerTitle: true,
         bottom: TabBar(
           controller: _tabController,
           isScrollable: true,
@@ -125,11 +129,24 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
             return _buildTab(page);
           }).toList(),
         ),
-        actions: <Widget>[],
-        title: Text("Coins"),
+        actions: <Widget>[buildIconButtonClose()],
+        title: Text(
+          title,
+          style: TextStyle(fontWeight: FontWeight.w300),
+        ),
         floating: true,
         snap: true,
         pinned: false);
+  }
+
+  Widget buildIconButtonClose() {
+    return IconButton(
+        tooltip: "Close",
+        icon: Icon(Icons.close),
+        color: Colors.lightBlueAccent,
+        onPressed: () {
+          Navigator.pop(context);
+        });
   }
 
   List<PieChartSectionData> showingSections() {
@@ -149,7 +166,8 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
             fontSize: fontSize,
             fontWeight: FontWeight.w400,
             color: const Color.fromRGBO(255, 255, 255, 1.0)),
-        badgeWidget: _Badge(page.text, widgetSize, variety.color, page.icon),
+        badgeWidget:
+            _Badge(variety.short, widgetSize, variety.color, variety.icon),
         badgePositionPercentageOffset: .98,
       );
     });
@@ -194,7 +212,9 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
   }
 
   void _initTab(int i) {
+    title = TabPagesStatistics.pages[_tabController.index].title;
     AssetLoader.loadAndDecodeAsset("assets/places.json").then((places) {
+      counter.clear();
       places.forEach((item) {
         try {
           switch (i) {
