@@ -70,7 +70,7 @@ class PieChartCoinsState extends State {
   }
 
   List<PieChartSectionData> showingSections() {
-    return List.generate(TagCoin.getTagCoins().length, (i) {
+    return List.generate(3, (i) {
       final isTouched = i == touchedIndex;
       final fontSize = isTouched ? 16.0 : 14.0;
       final radius = isTouched ? 200.0 : 175.0;
