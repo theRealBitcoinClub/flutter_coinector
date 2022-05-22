@@ -49,6 +49,8 @@ dependencies:
   crypto: ^3.0.2
   path_provider: ^2.0.9
   provider: ^6.0.2
+  fl_chart: ^0.50.6
+  flutter_svg: 1.0.3
   #device_preview: ^0.4.8
   #desktop_window: ^0.3.0
   #js: ^0.6.2
@@ -130,6 +132,7 @@ flutter:
     - assets/placesId.json
     - assets/places.json
     - assets/tags/
+    - assets/marker/
     - config/app_config.json
 
   # An image asset can refer to one or more resolution-specific "variants", see

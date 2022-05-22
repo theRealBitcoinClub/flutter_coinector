@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:Coinector/InternetConnectivityChecker.dart';
 import 'package:Coinector/ItemInfoStackLayer.dart';
+import 'package:Coinector/PieChartSample3.dart';
 import 'package:Coinector/Snackbars.dart';
 import 'package:Coinector/TagCoins.dart';
 import 'package:Coinector/translator.dart';
@@ -999,6 +1000,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
           }).toList(),
         ),
         actions: <Widget>[
+          buildIconButtonStats(buildCtx),
           buildIconButtonMap(buildCtx),
         ],
         title: buildTitleWidget(),
@@ -1055,6 +1057,16 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         });
   }
 
+  Widget buildIconButtonStats(ctx) {
+    return IconButton(
+        tooltip: "Stats",
+        icon: Icon(Icons.thermostat_sharp),
+        color: Colors.lightBlueAccent,
+        onPressed: () {
+          handleStatsButtonClick(ctx);
+        });
+  }
+
   void handleMapButtonClick(ctx) async {
     try {
       if (Platform.isAndroid || Platform.isIOS) {
@@ -1084,6 +1096,13 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       //forward users to bitcoinmap.cash if app is started in web
       UrlLauncher.launchBitcoinMap();
     }
+  }
+
+  void handleStatsButtonClick(ctx) async {
+    await Navigator.push(
+      ctx,
+      MaterialPageRoute(builder: (buildCtx) => PieChartSample3()),
+    );
   }
 
   List<Widget> buildAllTabContainer(ctx) {

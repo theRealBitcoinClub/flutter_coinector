@@ -8,7 +8,7 @@ class MyColors {
       case 1:
         return Colors.red[400];
       case 2:
-        return Colors.yellow[400];
+        return Colors.yellow[700];
       case 3:
         return Colors.teal[400];
       case 4:
