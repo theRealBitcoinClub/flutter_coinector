@@ -22,6 +22,7 @@ class PieChartSample3State extends State {
     AssetLoader.loadAndDecodeAsset("assets/places.json").then((places) {
       places.forEach((item) {
         int type = int.parse(item['t']);
+        type = type == 999 ? 6 : type;
         if (counter[type] == null) counter[type] = 0;
         setState(() {
           counter[type]++;
@@ -66,20 +67,20 @@ class PieChartSample3State extends State {
   }
 
   List<PieChartSectionData> showingSections() {
-    return List.generate(5, (i) {
+    return List.generate(7, (i) {
       final isTouched = i == touchedIndex;
-      final fontSize = isTouched ? 20.0 : 16.0;
-      final radius = isTouched ? 110.0 : 100.0;
+      final fontSize = isTouched ? 16.0 : 14.0;
+      final radius = isTouched ? 200.0 : 175.0;
       final widgetSize = isTouched ? 55.0 : 40.0;
       return PieChartSectionData(
         color: MyColors.getTabColor(i),
         value: getCounter(i),
-        title: getCounter(i).toInt().toString(),
+        title: TabPages.pages[i].text,
         radius: radius,
         titleStyle: TextStyle(
             fontSize: fontSize,
-            fontWeight: FontWeight.w300,
-            color: const Color.fromRGBO(0, 0, 0, .8)),
+            fontWeight: FontWeight.w400,
+            color: const Color.fromRGBO(255, 255, 255, 1.0)),
         badgeWidget: _Badge(
           TabPages.pages[i].icon,
           size: widgetSize,
