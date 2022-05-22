@@ -24,9 +24,9 @@ class PieChartContinentsState extends State {
         places.forEach((item) {
           counter[continent] =
               counter[continent] == null ? 0 : counter[continent];
-          setState(() {
-            counter[continent]++;
-          });
+        });
+        setState(() {
+          counter[continent]++;
         });
       });
     });
@@ -132,7 +132,7 @@ class _Badge extends StatelessWidget {
       ),
       padding: EdgeInsets.all(size * .15),
       child: Center(
-        child: Text(text),
+        child: Text(text.toUpperCase()),
       ),
     );
   }

@@ -1,11 +1,14 @@
+import 'package:Coinector/TabPageCategory.dart';
+import 'package:Coinector/TabPageStatistics.dart';
+import 'package:Coinector/TagBrands.dart';
 import 'package:Coinector/TagCoins.dart';
+import 'package:Coinector/TagContinents.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'AssetLoader.dart';
 
-/// Icons by svgrepo.com (https://www.svgrepo.com/collection/job-and-professions-3/)
 class PieChartCoins extends StatefulWidget {
   const PieChartCoins({Key key}) : super(key: key);
 
@@ -13,27 +16,46 @@ class PieChartCoins extends StatefulWidget {
   State<StatefulWidget> createState() => PieChartCoinsState();
 }
 
-class PieChartCoinsState extends State {
+class PieChartCoinsState extends State with TickerProviderStateMixin {
   int touchedIndex = 0;
-  Map<int, int> counter = Map();
+  Map<String, int> counter = Map();
+  TabController _tabController;
 
   initState() {
     super.initState();
-    AssetLoader.loadAndDecodeAsset("assets/places.json").then((places) {
-      places.forEach((item) {
-        try {
-          List<String> coins = item['w'].toString().split(",");
-          coins.forEach((String c) {
-            int coin = int.parse(c);
-            if (counter[coin] == null) counter[coin] = 0;
-            setState(() {
-              counter[coin]++;
-            });
-          });
-        } catch (e) {}
+    _tabController =
+        TabController(vsync: this, length: TabPagesStatistics.pages.length);
+    _tabController.addListener(_handleTabSelection);
+    _initTab(0);
+  }
+
+  void _initTabCoins(item) {
+    List<String> coins = item['w'].toString().split(",");
+    coins.forEach((String c) {
+      if (counter[c] == null) counter[c] = 0;
+      setState(() {
+        counter[c]++;
       });
     });
   }
+
+  void _initTabBrand(item) {
+    _initCounter(item, 'b');
+  }
+
+  void _initCounter(item, attributeId) {
+    String brand = item[attributeId];
+    if (counter[brand] == null) counter[brand] = 0;
+    setState(() {
+      counter[brand]++;
+    });
+  }
+
+  void _initTabType(item) {
+    _initCounter(item, 't');
+  }
+
+  void _initTabContinent(item) {}
 
   @override
   Widget build(BuildContext context) {
@@ -95,16 +117,14 @@ class PieChartCoinsState extends State {
             Navigator.pop(context);
           },
         ),
-        /*
-        LET USER NAVIGATE FROM ONE TO THE NEXT CHART
         bottom: TabBar(
-          controller: tabController,
+          controller: _tabController,
           isScrollable: true,
-          indicator: getIndicator(),
-          tabs: TabPages.pages.map<Tab>((TabPageCategory page) {
-            return buildColoredTab(page);
+          indicator: const UnderlineTabIndicator(),
+          tabs: TabPagesStatistics.pages.map<Tab>((TabPageStatistics page) {
+            return _buildTab(page);
           }).toList(),
-        ),*/
+        ),
         actions: <Widget>[],
         title: Text("Coins"),
         floating: true,
@@ -113,46 +133,98 @@ class PieChartCoinsState extends State {
   }
 
   List<PieChartSectionData> showingSections() {
-    return List.generate(3, (i) {
+    var page = TabPagesStatistics.pages[_tabController.index];
+    return List.generate(page.varietyCount, (i) {
       final isTouched = i == touchedIndex;
       final fontSize = isTouched ? 16.0 : 14.0;
       final radius = isTouched ? 200.0 : 175.0;
       final widgetSize = isTouched ? 75.0 : 60.0;
-      var coin = TagCoin.getTagCoins().elementAt(i);
+      var variety = getVariety(i);
       return PieChartSectionData(
-        color: coin.color,
-        value: getCounter(i),
-        title: getCounter(i).toInt().toString(),
+        color: variety.color,
+        value: getCounter(i.toString()),
+        title: getCounter(i.toString()).toInt().toString(),
         radius: radius,
         titleStyle: TextStyle(
             fontSize: fontSize,
             fontWeight: FontWeight.w400,
             color: const Color.fromRGBO(255, 255, 255, 1.0)),
-        badgeWidget: _Badge(
-          coin.short,
-          size: widgetSize,
-          color: coin.color,
-        ),
+        badgeWidget: _Badge(page.text, widgetSize, variety.color, page.icon),
         badgePositionPercentageOffset: .98,
       );
     });
   }
 
-  double getCounter(int index) =>
+  getVariety(int i) {
+    var variety;
+    switch (_tabController.index) {
+      case 0:
+        variety = TagCoin.getTagCoins().elementAt(i);
+        break;
+      case 1:
+        variety = TagBrand.getBrands().elementAt(i);
+        break;
+      case 2:
+        variety = TabPages.pages.elementAt(i);
+        break;
+      case 3:
+        variety = TagContinent.getContinents().elementAt(i);
+        break;
+    }
+    return variety;
+  }
+
+  List<String> continents = ["am", "e", "au", "as"];
+
+  double getCounter(String index) =>
       counter[index] != null ? counter[index].toDouble() : 0.0;
+
+  void _handleTabSelection() async {
+    _initTab(_tabController.index);
+  }
+
+  Tab _buildTab(TabPageStatistics page) {
+    return Tab(
+        text: page.text,
+        icon: Icon(
+          page.icon,
+          color: page.color,
+          size: 22,
+        ));
+  }
+
+  void _initTab(int i) {
+    AssetLoader.loadAndDecodeAsset("assets/places.json").then((places) {
+      places.forEach((item) {
+        try {
+          switch (i) {
+            case 0:
+              _initTabCoins(item);
+              break;
+            case 1:
+              _initTabBrand(item);
+              break;
+            case 2:
+              _initTabType(item);
+              break;
+            case 3:
+              _initTabContinent(item);
+              break;
+          }
+        } catch (e) {}
+      });
+    });
+  }
 }
 
 class _Badge extends StatelessWidget {
   final String text;
+  final IconData icon;
   final double size;
   final Color color;
 
-  const _Badge(
-    this.text, {
-    Key key,
-    this.size,
-    this.color,
-  }) : super(key: key);
+  const _Badge(this.text, this.size, this.color, this.icon, {Key key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -177,7 +249,7 @@ class _Badge extends StatelessWidget {
       ),
       padding: EdgeInsets.all(size * .15),
       child: Center(
-        child: Text(text),
+        child: icon == null ? Text(text) : Icon(icon),
       ),
     );
   }
