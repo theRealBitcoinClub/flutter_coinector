@@ -71,12 +71,12 @@ class PieChartBrandsState extends State {
       final isTouched = i == touchedIndex;
       final fontSize = isTouched ? 16.0 : 14.0;
       final radius = isTouched ? 200.0 : 175.0;
-      final widgetSize = isTouched ? 55.0 : 40.0;
+      final widgetSize = isTouched ? 75.0 : 60.0;
       var brand = TagBrand.getBrands().elementAt(i);
       return PieChartSectionData(
         color: brand.color,
         value: getCounter(i),
-        title: brand.short,
+        title: getCounter(i).toInt().toString(),
         radius: radius,
         titleStyle: TextStyle(
             fontSize: fontSize,

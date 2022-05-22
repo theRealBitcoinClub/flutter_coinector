@@ -33,7 +33,7 @@ import 'LocationSuggestions.dart';
 import 'MapSample.dart';
 import 'Merchant.dart';
 import 'MyColors.dart';
-import 'PieChartCoins.dart';
+import 'PieChartBrands.dart';
 import 'SearchDemoSearchDelegate.dart';
 import 'TabPageCategory.dart';
 import 'TagBrands.dart';
@@ -1101,7 +1101,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   void handleStatsButtonClick(ctx) async {
     await Navigator.push(
       ctx,
-      MaterialPageRoute(builder: (buildCtx) => PieChartCoins()),
+      MaterialPageRoute(builder: (buildCtx) => PieChartBrands()),
     );
   }
 
