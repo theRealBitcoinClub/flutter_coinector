@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:Coinector/InternetConnectivityChecker.dart';
 import 'package:Coinector/ItemInfoStackLayer.dart';
+import 'package:Coinector/PieChartContinents.dart';
 import 'package:Coinector/Snackbars.dart';
 import 'package:Coinector/TagCoins.dart';
 import 'package:Coinector/translator.dart';
@@ -33,7 +34,6 @@ import 'LocationSuggestions.dart';
 import 'MapSample.dart';
 import 'Merchant.dart';
 import 'MyColors.dart';
-import 'PieChartBrands.dart';
 import 'SearchDemoSearchDelegate.dart';
 import 'TabPageCategory.dart';
 import 'TagBrands.dart';
@@ -1101,7 +1101,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   void handleStatsButtonClick(ctx) async {
     await Navigator.push(
       ctx,
-      MaterialPageRoute(builder: (buildCtx) => PieChartBrands()),
+      MaterialPageRoute(builder: (buildCtx) => PieChartContinents()),
     );
   }
 

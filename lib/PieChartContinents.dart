@@ -1,34 +1,33 @@
-import 'package:Coinector/TabPageCategory.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 import 'AssetLoader.dart';
-import 'MyColors.dart';
 
 /// Icons by svgrepo.com (https://www.svgrepo.com/collection/job-and-professions-3/)
-class PieChartBrands extends StatefulWidget {
-  const PieChartBrands({Key key}) : super(key: key);
+class PieChartContinents extends StatefulWidget {
+  const PieChartContinents({Key key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => PieChartBrandsState();
+  State<StatefulWidget> createState() => PieChartContinentsState();
 }
 
-class PieChartBrandsState extends State {
+class PieChartContinentsState extends State {
   int touchedIndex = 0;
-  Map<int, int> counter = Map();
+  Map<String, int> counter = Map();
+  List<String> continents = ["am", "e", "au", "as"];
 
   initState() {
     super.initState();
-    AssetLoader.loadAndDecodeAsset("assets/places.json").then((places) {
-      places.forEach((item) {
-        try {
-          int type = int.parse(item['t']);
-          type = type == 999 ? 6 : type;
-          if (counter[type] == null) counter[type] = 0;
+    continents.forEach((String continent) {
+      AssetLoader.loadAndDecodeAsset("assets/" + continent + ".json")
+          .then((places) {
+        places.forEach((item) {
+          counter[continent] =
+              counter[continent] == null ? 0 : counter[continent];
           setState(() {
-            counter[type]++;
+            counter[continent]++;
           });
-        } catch (e) {}
+        });
       });
     });
   }
@@ -69,41 +68,42 @@ class PieChartBrandsState extends State {
   }
 
   List<PieChartSectionData> showingSections() {
-    return List.generate(7, (i) {
+    return List.generate(continents.length, (i) {
       final isTouched = i == touchedIndex;
       final fontSize = isTouched ? 16.0 : 14.0;
       final radius = isTouched ? 200.0 : 175.0;
-      final widgetSize = isTouched ? 55.0 : 40.0;
+      final widgetSize = isTouched ? 75.0 : 60.0;
+      String continent = continents[i];
       return PieChartSectionData(
-        color: MyColors.getTabColor(i),
-        value: getCounter(i),
-        title: TabPages.pages[i].text,
+        color: Colors.green,
+        value: getCounter(continent),
+        title: getCounter(continent).toInt().toString(),
         radius: radius,
         titleStyle: TextStyle(
             fontSize: fontSize,
             fontWeight: FontWeight.w400,
             color: const Color.fromRGBO(255, 255, 255, 1.0)),
         badgeWidget: _Badge(
-          TabPages.pages[i].icon,
+          continent,
           size: widgetSize,
-          color: MyColors.getTabColor(i),
+          color: Colors.green,
         ),
         badgePositionPercentageOffset: .98,
       );
     });
   }
 
-  double getCounter(int index) =>
+  double getCounter(String index) =>
       counter[index] != null ? counter[index].toDouble() : 0.0;
 }
 
 class _Badge extends StatelessWidget {
-  final IconData ico;
+  final String text;
   final double size;
   final Color color;
 
   const _Badge(
-    this.ico, {
+    this.text, {
     Key key,
     this.size,
     this.color,
@@ -132,7 +132,7 @@ class _Badge extends StatelessWidget {
       ),
       padding: EdgeInsets.all(size * .15),
       child: Center(
-        child: Icon(ico),
+        child: Text(text),
       ),
     );
   }
