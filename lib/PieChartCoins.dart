@@ -28,6 +28,7 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
     _tabController =
         TabController(vsync: this, length: TabPagesStatistics.pages.length);
     _tabController.addListener(_handleTabSelection);
+    counter.clear();
     _initTab(0);
   }
 
@@ -57,7 +58,12 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
     _initCounter(item, 't');
   }
 
-  void _initTabContinent(item) {}
+  void _initTabContinent(String continent) {
+    if (counter[continent] == null) counter[continent] = 0;
+    setState(() {
+      counter[continent]++;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -166,8 +172,8 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
             fontSize: fontSize,
             fontWeight: FontWeight.w400,
             color: const Color.fromRGBO(255, 255, 255, 1.0)),
-        badgeWidget:
-            _Badge(variety.short, widgetSize, variety.color, variety.icon),
+        badgeWidget: _Badge(isTouched ? variety.long : variety.short,
+            widgetSize, variety.color, variety.icon),
         badgePositionPercentageOffset: .98,
       );
     });
@@ -192,13 +198,29 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
     return variety;
   }
 
-  List<String> continents = ["am", "e", "au", "as"];
+  double getCounter(String index) {
+    if (_tabController.index == 3)
+      index = TagContinent.getContinents()
+          .elementAt(int.parse(index))
+          .short
+          .toLowerCase();
 
-  double getCounter(String index) =>
-      counter[index] != null ? counter[index].toDouble() : 0.0;
+    return counter[index] != null ? counter[index].toDouble() : 0.0;
+  }
 
-  void _handleTabSelection() async {
-    _initTab(_tabController.index);
+  var _lastTab;
+
+  void _handleTabSelection() {
+    if (_lastTab != null && _lastTab == _tabController.index) return;
+
+    _lastTab = _tabController.index;
+    counter.clear();
+    if (_tabController.index == 3) {
+      TagContinent.getContinents().forEach((TagContinent element) {
+        _initTab(3, continent: element.short.toLowerCase());
+      });
+    } else
+      _initTab(_tabController.index);
   }
 
   Tab _buildTab(TabPageStatistics page) {
@@ -211,10 +233,12 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
         ));
   }
 
-  void _initTab(int i) {
+  void _initTab(int i, {String continent}) {
     title = TabPagesStatistics.pages[_tabController.index].title;
-    AssetLoader.loadAndDecodeAsset("assets/places.json").then((places) {
-      counter.clear();
+    AssetLoader.loadAndDecodeAsset(
+            "assets/" + (continent != null ? continent : "places") + ".json")
+        .then((places) {
+      String bla = "";
       places.forEach((item) {
         try {
           switch (i) {
@@ -228,7 +252,7 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
               _initTabType(item);
               break;
             case 3:
-              _initTabContinent(item);
+              _initTabContinent(continent);
               break;
           }
         } catch (e) {}

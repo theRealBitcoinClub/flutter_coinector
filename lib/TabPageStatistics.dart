@@ -35,7 +35,7 @@ class TabPagesStatistics {
         tabIndex: 1,
         color: Colors.yellow,
         file: "PieChartBrands",
-        varietyCount: 15),
+        varietyCount: 21),
     TabPageStatistics(
         text: 'TYPE',
         icon: Icons.category_outlined,
