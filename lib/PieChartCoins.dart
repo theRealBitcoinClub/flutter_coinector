@@ -1,9 +1,8 @@
-import 'package:Coinector/TabPageCategory.dart';
+import 'package:Coinector/TagCoins.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 import 'AssetLoader.dart';
-import 'MyColors.dart';
 
 /// Icons by svgrepo.com (https://www.svgrepo.com/collection/job-and-professions-3/)
 class PieChartCoins extends StatefulWidget {
@@ -22,11 +21,13 @@ class PieChartCoinsState extends State {
     AssetLoader.loadAndDecodeAsset("assets/places.json").then((places) {
       places.forEach((item) {
         try {
-          int type = int.parse(item['t']);
-          type = type == 999 ? 6 : type;
-          if (counter[type] == null) counter[type] = 0;
-          setState(() {
-            counter[type]++;
+          List<String> coins = item['w'].toString().split(",");
+          coins.forEach((String c) {
+            int coin = int.parse(c);
+            if (counter[coin] == null) counter[coin] = 0;
+            setState(() {
+              counter[coin]++;
+            });
           });
         } catch (e) {}
       });
@@ -69,24 +70,25 @@ class PieChartCoinsState extends State {
   }
 
   List<PieChartSectionData> showingSections() {
-    return List.generate(7, (i) {
+    return List.generate(TagCoin.getTagCoins().length, (i) {
       final isTouched = i == touchedIndex;
       final fontSize = isTouched ? 16.0 : 14.0;
       final radius = isTouched ? 200.0 : 175.0;
       final widgetSize = isTouched ? 55.0 : 40.0;
+      var coin = TagCoin.getTagCoins().elementAt(i);
       return PieChartSectionData(
-        color: MyColors.getTabColor(i),
+        color: coin.color,
         value: getCounter(i),
-        title: TabPages.pages[i].text,
+        title: coin.short,
         radius: radius,
         titleStyle: TextStyle(
             fontSize: fontSize,
             fontWeight: FontWeight.w400,
             color: const Color.fromRGBO(255, 255, 255, 1.0)),
         badgeWidget: _Badge(
-          TabPages.pages[i].icon,
+          coin.short,
           size: widgetSize,
-          color: MyColors.getTabColor(i),
+          color: coin.color,
         ),
         badgePositionPercentageOffset: .98,
       );
@@ -98,12 +100,12 @@ class PieChartCoinsState extends State {
 }
 
 class _Badge extends StatelessWidget {
-  final IconData ico;
+  final String text;
   final double size;
   final Color color;
 
   const _Badge(
-    this.ico, {
+    this.text, {
     Key key,
     this.size,
     this.color,
@@ -132,7 +134,7 @@ class _Badge extends StatelessWidget {
       ),
       padding: EdgeInsets.all(size * .15),
       child: Center(
-        child: Icon(ico),
+        child: Text(text),
       ),
     );
   }
