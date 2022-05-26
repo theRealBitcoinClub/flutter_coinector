@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:Coinector/TabPageCategory.dart';
 import 'package:Coinector/TabPageStatistics.dart';
 import 'package:Coinector/TagBrands.dart';
@@ -167,6 +169,7 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
       final widgetSize = isTouched ? 75.0 : 60.0;
       var variety = getVariety(passedMinimumShowThese[i]);
       var counter = getCounter(passedMinimumShowThese[i].toString());
+      sleep(Duration(milliseconds: 100));
       return PieChartSectionData(
         color: variety.color,
         value: counter,

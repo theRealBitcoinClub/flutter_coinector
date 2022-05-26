@@ -18,10 +18,10 @@ class TagContinent {
   static Set<TagContinent> getContinents() {
     if (_continents == null) {
       _continents = {};
-      _continents.add(TagContinent(0, "AM", "America", Colors.green));
-      _continents.add(TagContinent(1, "E", "Europe", Colors.blueAccent));
-      _continents.add(TagContinent(2, "AU", "Australia", Colors.redAccent));
-      _continents.add(TagContinent(3, "AS", "Asia", Colors.yellowAccent));
+      _continents.add(TagContinent(0, "AM", "America", Colors.green[800]));
+      _continents.add(TagContinent(1, "E", "Europe", Colors.blue[800]));
+      _continents.add(TagContinent(2, "AU", "Australia", Colors.red[800]));
+      _continents.add(TagContinent(3, "AS", "Asia", Colors.yellow[800]));
     }
     return _continents;
   }
