@@ -23,7 +23,7 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
 
   String title;
 
-  int MINIMUM_TO_APPEAR_IN_STATS = 40;
+  static const int MINIMUM_TO_APPEAR_IN_STATS = 40;
 
   initState() {
     super.initState();
@@ -255,7 +255,6 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
     AssetLoader.loadAndDecodeAsset(
             "assets/" + (continent != null ? continent : "places") + ".json")
         .then((places) {
-      String bla = "";
       places.forEach((item) {
         try {
           switch (i) {

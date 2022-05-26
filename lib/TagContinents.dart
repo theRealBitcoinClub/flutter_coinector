@@ -1,12 +1,9 @@
 // Identifier b
 
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class TagContinent {
   static Set<TagContinent> _continents;
-  static Set<String> _suggestions;
   int index;
   String short;
   String long;

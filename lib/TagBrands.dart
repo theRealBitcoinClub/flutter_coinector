@@ -1,7 +1,5 @@
 // Identifier b
 
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class TagBrand {

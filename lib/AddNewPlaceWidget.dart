@@ -248,7 +248,6 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       reviewableMerchants.add(Merchant.fromJson(item));
 
       final itemData = Map<String, dynamic>();
-      String text = item["n"] + " - " + item["l"];
       itemData['value'] = index;
       itemData['label'] = index.toString() + " " + item["n"];
       allItems.add(itemData);

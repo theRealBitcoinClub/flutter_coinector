@@ -1,7 +1,5 @@
 // Identifier w
 
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class TagCoin {

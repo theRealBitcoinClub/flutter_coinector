@@ -44,6 +44,7 @@ class TagCoinector {
     } catch (e) {
       print(e.toString());
     }
+    return null;
   }
 
   static List<List<dynamic>> getValuesList(String input) {
