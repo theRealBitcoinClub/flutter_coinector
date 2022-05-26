@@ -44,7 +44,7 @@ class TagBrand {
       _brands.add(TagBrand(10, "BCOM", "Bitcoin.com", Colors.deepOrange));
       _brands.add(TagBrand(11, "BARN", "Bitcoinstad Arnhem", Colors.orange));
       _brands.add(TagBrand(12, "CMAP", "Coinmap.org", Colors.deepOrange));
-      _brands.add(TagBrand(13, "DASH", "Discover Dash", Colors.blue[800]));
+      _brands.add(TagBrand(13, "DASH", "Discover Dash", Colors.blue));
       _brands.add(TagBrand(14, "SAT", "Satoshi Angels", Colors.purple));
       _brands.add(TagBrand(15, "BCHH", "BCH House Vzla", Colors.green[400]));
       _brands.add(TagBrand(16, "BCHO", "BCH Oriente Vzla", Colors.green[600]));

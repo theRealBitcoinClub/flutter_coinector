@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:Coinector/TabPageCategory.dart';
 import 'package:Coinector/TabPageStatistics.dart';
 import 'package:Coinector/TagBrands.dart';
@@ -102,8 +100,8 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
                     borderData: FlBorderData(
                       show: false,
                     ),
-                    sectionsSpace: 0,
-                    centerSpaceRadius: 0,
+                    sectionsSpace: 1,
+                    centerSpaceRadius: 75,
                     sections: showingSections()),
               )),
         ),
@@ -165,12 +163,12 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
     return List.generate(passedMinimumShowThese.length, (i) {
       final isTouched = i == touchedIndex;
       final fontSize = isTouched ? 16.0 : 14.0;
-      final radius = isTouched ? 200.0 : 175.0;
+      final radius = isTouched ? 125.0 : 100.0;
       final widgetSize = isTouched ? 75.0 : 60.0;
       var variety = getVariety(passedMinimumShowThese[i]);
       var counter = getCounter(passedMinimumShowThese[i].toString());
-      sleep(Duration(milliseconds: 100));
       return PieChartSectionData(
+        titlePositionPercentageOffset: .4,
         color: variety.color,
         value: counter,
         title: counter.toInt().toString(),
