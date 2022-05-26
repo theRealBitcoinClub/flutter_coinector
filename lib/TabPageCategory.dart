@@ -72,7 +72,7 @@ class TabPages {
     TabPageCategory(
         short: 'OTHER',
         icon: Icons.spa,
-        long: 'Other',
+        long: 'OTHER',
         tabIndex: 6,
         typeIndex: 999,
         color: MyColors.getTabColor(6)),

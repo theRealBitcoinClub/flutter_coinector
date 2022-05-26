@@ -27,8 +27,10 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
 
   initState() {
     super.initState();
-    _tabController =
-        TabController(vsync: this, length: TabPagesStatistics.pages.length);
+    _tabController = TabController(
+        vsync: this,
+        length: TabPagesStatistics.pages.length,
+        animationDuration: const Duration(milliseconds: 900));
     _tabController.addListener(_handleTabSelection);
     counter.clear();
     _initTab(0);
@@ -49,10 +51,11 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
   }
 
   void _initCounter(item, attributeId) {
-    String brand = item[attributeId];
-    if (counter[brand] == null) counter[brand] = 0;
+    String attribute = item[attributeId];
+    String key = attribute == "999" ? "6" : attribute;
+    if (counter[key] == null) counter[key] = 0;
     setState(() {
-      counter[brand]++;
+      counter[key]++;
     });
   }
 
@@ -101,7 +104,7 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
                       show: false,
                     ),
                     sectionsSpace: 1,
-                    centerSpaceRadius: 75,
+                    centerSpaceRadius: 65,
                     sections: showingSections()),
               )),
         ),
@@ -131,7 +134,7 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
         centerTitle: true,
         bottom: TabBar(
           controller: _tabController,
-          isScrollable: true,
+          isScrollable: false,
           indicator: const UnderlineTabIndicator(),
           tabs: TabPagesStatistics.pages.map<Tab>((TabPageStatistics page) {
             return _buildTab(page);
@@ -163,7 +166,7 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
     return List.generate(passedMinimumShowThese.length, (i) {
       final isTouched = i == touchedIndex;
       final fontSize = isTouched ? 16.0 : 14.0;
-      final radius = isTouched ? 125.0 : 100.0;
+      final radius = isTouched ? 115.0 : 100.0;
       final widgetSize = isTouched ? 75.0 : 60.0;
       var variety = getVariety(passedMinimumShowThese[i]);
       var counter = getCounter(passedMinimumShowThese[i].toString());
@@ -177,8 +180,12 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
             fontSize: fontSize,
             fontWeight: FontWeight.w400,
             color: const Color.fromRGBO(255, 255, 255, 1.0)),
-        badgeWidget: _Badge(isTouched ? variety.long : variety.short,
-            widgetSize, variety.color, variety.icon),
+        badgeWidget: _Badge(
+            (isTouched && variety.icon == null) ? variety.long : variety.short,
+            widgetSize,
+            variety.color,
+            variety.icon,
+            isTouched),
         badgePositionPercentageOffset: .98,
       );
     }, growable: false);
@@ -282,8 +289,10 @@ class _Badge extends StatelessWidget {
   final IconData icon;
   final double size;
   final Color color;
+  final bool isTouched;
 
-  const _Badge(this.text, this.size, this.color, this.icon, {Key key})
+  const _Badge(this.text, this.size, this.color, this.icon, this.isTouched,
+      {Key key})
       : super(key: key);
 
   @override
@@ -295,13 +304,15 @@ class _Badge extends StatelessWidget {
       decoration: BoxDecoration(
         color: color,
         shape: BoxShape.circle,
-        border: Border.all(
-          color: Color(0xffffffff),
-          width: 1,
-        ),
+        border: isTouched
+            ? null
+            : Border.all(
+                color: Color(0xffffffff),
+                width: 1,
+              ),
         boxShadow: <BoxShadow>[
           BoxShadow(
-            color: Colors.black.withOpacity(.5),
+            color: Colors.black.withOpacity(.3),
             offset: const Offset(3, 3),
             blurRadius: 3,
           ),
@@ -309,7 +320,8 @@ class _Badge extends StatelessWidget {
       ),
       padding: EdgeInsets.all(size * .15),
       child: Center(
-        child: icon == null ? Text(text) : Icon(icon),
+        child:
+            icon == null ? Text(text) : (isTouched ? Text(text) : Icon(icon)),
       ),
     );
   }
