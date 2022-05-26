@@ -1,3 +1,0 @@
-class AutoSuggestions67484282 { static final reviewedTitles67484282 = const {"Melosa Café - Avenida Norte Av urdaneta de esquina de veroes a jesuitas Inicio boulevard Panteón Edificio San José Al lado de la Casa José Marti Caracas, Caracas 1010, Distrito Capital, Venezuela",
-};
-}
