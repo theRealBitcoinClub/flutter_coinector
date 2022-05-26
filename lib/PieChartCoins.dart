@@ -23,6 +23,8 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
 
   String title;
 
+  int MINIMUM_TO_APPEAR_IN_STATS = 40;
+
   initState() {
     super.initState();
     _tabController =
@@ -157,16 +159,18 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
 
   List<PieChartSectionData> showingSections() {
     var page = TabPagesStatistics.pages[_tabController.index];
-    return List.generate(page.varietyCount, (i) {
+    List<int> passedMinimumShowThese = checkForMinimumThreshold(page);
+    return List.generate(passedMinimumShowThese.length, (i) {
       final isTouched = i == touchedIndex;
       final fontSize = isTouched ? 16.0 : 14.0;
       final radius = isTouched ? 200.0 : 175.0;
       final widgetSize = isTouched ? 75.0 : 60.0;
-      var variety = getVariety(i);
+      var variety = getVariety(passedMinimumShowThese[i]);
+      var counter = getCounter(passedMinimumShowThese[i].toString());
       return PieChartSectionData(
         color: variety.color,
-        value: getCounter(i.toString()),
-        title: getCounter(i.toString()).toInt().toString(),
+        value: counter,
+        title: counter.toInt().toString(),
         radius: radius,
         titleStyle: TextStyle(
             fontSize: fontSize,
@@ -176,7 +180,19 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
             widgetSize, variety.color, variety.icon),
         badgePositionPercentageOffset: .98,
       );
-    });
+    }, growable: false);
+  }
+
+  List<int> checkForMinimumThreshold(TabPageStatistics page) {
+    List<int> passedMinimumShowThese = [];
+    for (int x = 0; x < page.varietyCount; x++) {
+      var counter = getCounter(x.toString());
+      if (counter < MINIMUM_TO_APPEAR_IN_STATS) {
+        continue;
+      }
+      passedMinimumShowThese.add(x);
+    }
+    return passedMinimumShowThese;
   }
 
   getVariety(int i) {

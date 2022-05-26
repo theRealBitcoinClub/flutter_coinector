@@ -1059,8 +1059,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   Widget buildIconButtonStats(ctx) {
     return IconButton(
-        tooltip: "Stats",
-        icon: Icon(Icons.thermostat_sharp),
+        tooltip: "Statistics",
+        icon: Icon(Icons.pie_chart),
         color: Colors.lightBlueAccent,
         onPressed: () {
           handleStatsButtonClick(ctx);
