@@ -38,6 +38,7 @@ class ItemInfoStackLayer extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         children: <Widget>[
           SingleChildScrollView(
+              physics: const NeverScrollableScrollPhysics(),
               scrollDirection: Axis.horizontal,
               child: Text(
                 merchant.name,
@@ -63,6 +64,7 @@ class ItemInfoStackLayer extends StatelessWidget {
                   height: kIsWeb ? 4.0 : 0.01,
                 ),
           SingleChildScrollView(
+              physics: const NeverScrollableScrollPhysics(),
               scrollDirection: Axis.horizontal,
               child: Wrap(
                   spacing: 5.0,

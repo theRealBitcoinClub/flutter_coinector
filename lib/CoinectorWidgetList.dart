@@ -1347,6 +1347,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         ? Padding(
             child: Stack(children: [
               AnimatedList(
+                physics: const ClampingScrollPhysics(),
                 controller: _scrollControl,
                 key: listKey,
                 padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 60.0),
