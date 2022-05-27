@@ -1,5 +1,4 @@
 import 'package:Coinector/Localizer.dart';
-import 'package:flutter/foundation.dart';
 
 import 'TagCoinector.dart';
 
@@ -32,7 +31,7 @@ class TagFactory {
     int index = 0;
     for (String rawTag in rawTags) {
       if (rawTag != null && rawTag.isNotEmpty) {
-        if (!kReleaseMode) print("\n" + rawTag);
+        // if (!kReleaseMode) print("\n" + rawTag);
         List<String> splittedTag = rawTag.split(" ");
         tags.add(TagCoinector(index++, splittedTag[0],
             splittedTag.length > 1 ? splittedTag[1] : ""));

@@ -467,8 +467,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           } else
             allTags.add(t);
         }
-        if (!kReleaseMode)
-          print("index:" + t.id.toString() + "\ntagText:" + tagText + "\n");
+        // if (!kReleaseMode)
+          // print("index:" + t.id.toString() + "\ntagText:" + tagText + "\n");
       }
     }
   }
