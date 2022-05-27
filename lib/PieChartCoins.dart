@@ -33,10 +33,11 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
         animationDuration: const Duration(milliseconds: 900));
     _tabController.addListener(_handleTabSelection);
     counter.clear();
-    _initTab(0);
+    initTabContinentByContinent(0);
+    // _initTab(0);
   }
 
-  void _initTabCoins(item) {
+  void _initCounterCoins(item) {
     List<String> coins = item['w'].toString().split(",");
     coins.forEach((String c) {
       if (counter[c] == null) counter[c] = 0;
@@ -46,7 +47,7 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
     });
   }
 
-  void _initTabBrand(item) {
+  void _initCounterBrand(item) {
     _initCounter(item, 'b');
   }
 
@@ -59,11 +60,11 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
     });
   }
 
-  void _initTabType(item) {
+  void _initCounterType(item) {
     _initCounter(item, 't');
   }
 
-  void _initTabContinent(String continent) {
+  void _initCounterContinent(String continent) {
     if (counter[continent] == null) counter[continent] = 0;
     setState(() {
       counter[continent]++;
@@ -239,12 +240,17 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
 
     _lastTab = _tabController.index;
     counter.clear();
-    if (_tabController.index == 3) {
-      TagContinent.getContinents().forEach((TagContinent element) {
-        _initTab(3, continent: element.short.toLowerCase());
-      });
+    initTabContinentByContinent(_tabController.index);
+    /*if (_tabController.index == 3) {
+      initTabContinentByContinent(3);
     } else
-      _initTab(_tabController.index);
+      _initTab(_tabController.index);*/
+  }
+
+  void initTabContinentByContinent(int index) {
+    TagContinent.getContinents().forEach((TagContinent element) {
+      _initTab(index, continent: element.short.toLowerCase());
+    });
   }
 
   Tab _buildTab(TabPageStatistics page) {
@@ -266,16 +272,16 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
         try {
           switch (i) {
             case 0:
-              _initTabCoins(item);
+              _initCounterCoins(item);
               break;
             case 1:
-              _initTabBrand(item);
+              _initCounterBrand(item);
               break;
             case 2:
-              _initTabType(item);
+              _initCounterType(item);
               break;
             case 3:
-              _initTabContinent(continent);
+              _initCounterContinent(continent);
               break;
           }
         } catch (e) {}
