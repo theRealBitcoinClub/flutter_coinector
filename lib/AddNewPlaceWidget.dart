@@ -391,9 +391,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     setState(() {
       prefillName(merchantGoogleDataSet);
       prefillAddress(merchantGoogleDataSet);
-      prefillCoins(merchantBmapDataset);
-      prefillBrand(merchantBmapDataset);
-      prefillCategory(merchantBmapDataset);
+      if (merchantBmapDataset != null) {
+        prefillCoins(merchantBmapDataset);
+        prefillBrand(merchantBmapDataset);
+        prefillCategory(merchantBmapDataset);
+      }
       for (TagCoinector tag in merchantGoogleDataSet.tagsInput) {
         allSelectedTags.add(tag);
         searchTagsDelegate.alreadySelectedTagIndexes.add(tag.id);
