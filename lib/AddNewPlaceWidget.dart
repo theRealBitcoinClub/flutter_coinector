@@ -121,7 +121,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   bool showInputAdr = false;
   bool showInputTags = false;
   bool showSearchButton = false;
-  String pId;
+  final String pId;
   String placeId;
   List<Uint8List> images = [];
   List<Uint8List> selectedImages = [];
@@ -158,8 +158,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   @override
   void initState() {
     super.initState();
+    _selectedBrand = isSpecificPlace() ? null : 4;
     reviewMode = isSpecificPlace() ? false : true;
-    _selectedCoin[0] = true;
+    _selectedCoin[0] = isSpecificPlace() ? false : true;
     //_initContinent();
     githubCoinector.init();
 
