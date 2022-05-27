@@ -37,7 +37,7 @@ class FileCache {
     var response;
     try {
       response = await new Dio().get(
-          'https://github.com/theRealBitcoinClub/flutter_coinector/raw/master/dataUpdateIncrementVersion.txt');
+          'https://raw.githubusercontent.com/theRealBitcoinClub/flutter_coinector/master/dataUpdateIncrementVersion.txt');
     } catch (e) {}
     if (response == null) return;
     if (int.parse(response.data) > currentVersion) {
