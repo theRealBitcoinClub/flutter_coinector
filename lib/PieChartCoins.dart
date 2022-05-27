@@ -166,23 +166,33 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
     var minimumThreshold = checkForMinimumThreshold(page);
     List<int> passedMinimumShowThese = minimumThreshold[0];
     List<int> passedMinimumFailed = minimumThreshold[1];
+    counter["other"] = 0;
     passedMinimumFailed.forEach((element) {
       counter["other"] += getCounter(element.toString()).toInt();
     });
+    bool hasOther = counter["other"] != 0;
 
-    return List.generate(passedMinimumShowThese.length + 1, (i) {
+    return List.generate(passedMinimumShowThese.length + (hasOther ? 1 : 0),
+        (i) {
       final isOther = i == passedMinimumShowThese.length ? true : false;
+      if (isOther)
+        return PieChartSectionData(
+            value: counter["other"].toDouble(),
+            color: Colors.grey,
+            title: "Other",
+            radius: 100,
+            titlePositionPercentageOffset: .4);
       final isTouched = i == touchedIndex;
       final fontSize = isTouched ? 16.0 : 14.0;
       final radius = isTouched ? 115.0 : 100.0;
       final widgetSize = isTouched ? 75.0 : 60.0;
       var variety = getVariety(passedMinimumShowThese[i]);
-      var counter = getCounter(passedMinimumShowThese[i].toString());
+      var c = getCounter(passedMinimumShowThese[i].toString());
       return PieChartSectionData(
         titlePositionPercentageOffset: .4,
         color: variety.color,
-        value: counter,
-        title: counter.toInt().toString(),
+        value: c,
+        title: c.toInt().toString(),
         radius: radius,
         titleStyle: TextStyle(
             fontSize: fontSize,
