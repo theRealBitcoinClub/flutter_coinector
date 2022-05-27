@@ -64,6 +64,7 @@ class MyColors {
       case 99:
         return Colors.green[900];
       case 999:
+      case 6:
         return Colors.purple[900];
     }
     return null;

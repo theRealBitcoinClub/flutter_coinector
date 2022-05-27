@@ -490,7 +490,7 @@ class CardItem extends StatelessWidget {
         selectedType: type,
         accentColor: MyColors.getTabColor(type),
         actionBarColor: MyColors.getCardActionButtonBackgroundColor(type),
-        typeTitle: TabPages.pages.elementAt(type).long,
+        typeTitle: TabPages.pages.elementAt(type == 999 ? 6 : type).long,
         merchantBmapDataset: merchant,
       );
     }));

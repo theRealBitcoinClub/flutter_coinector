@@ -363,7 +363,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     _merchantGoogleData =
         await loadDetailsFromGoogleCreateMerchant(selectedType, paramPlaceId);
     //TODO HANDLE MORE TAGS LATER, LET ADMIN CHOOSE BEST TAGS OR SIMPLY LET CONTENT CONTAIN MORE TAGS
-    prefillNameAddressAndTags(_merchantGoogleData);
+    prefillFormWithDataFromGoogleAndBmap(_merchantGoogleData);
     loadGooglePlacePhotos(_merchantGoogleData.placeDetailsData);
     drawFormStep(FormStep.SUBMIT);
     hideLoaderSafe();
@@ -387,7 +387,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     return id;
   }
 
-  void prefillNameAddressAndTags(Merchant merchantGoogleDataSet) {
+  void prefillFormWithDataFromGoogleAndBmap(Merchant merchantGoogleDataSet) {
     setState(() {
       prefillName(merchantGoogleDataSet);
       prefillAddress(merchantGoogleDataSet);
