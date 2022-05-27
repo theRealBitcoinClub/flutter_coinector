@@ -66,6 +66,7 @@ enum FormStep {
 }
 
 class AddNewPlaceWidget extends StatefulWidget {
+  final String pId;
   final int selectedType;
   final Color accentColor;
   final Color actionBarColor;
@@ -76,13 +77,14 @@ class AddNewPlaceWidget extends StatefulWidget {
       this.selectedType,
       this.accentColor,
       this.typeTitle,
-      this.actionBarColor})
+      this.actionBarColor,
+      this.pId})
       : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
     return _AddNewPlaceWidgetState(
-        selectedType, accentColor, typeTitle, actionBarColor);
+        selectedType, accentColor, typeTitle, actionBarColor, pId);
   }
 }
 
@@ -119,6 +121,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   bool showInputAdr = false;
   bool showInputTags = false;
   bool showSearchButton = false;
+  String pId;
   String placeId;
   List<Uint8List> images = [];
   List<Uint8List> selectedImages = [];
@@ -149,12 +152,13 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   List<Map<String, dynamic>> reviewableData = [];
 
   bool reviewMode = true;
-  _AddNewPlaceWidgetState(
-      this.selectedType, this.accentColor, this.typeTitle, this.actionBarColor);
+  _AddNewPlaceWidgetState(this.selectedType, this.accentColor, this.typeTitle,
+      this.actionBarColor, this.pId);
 
   @override
   void initState() {
     super.initState();
+    reviewMode = pId == null ? true : false;
     _selectedCoin[0] = true;
     //_initContinent();
     githubCoinector.init();
@@ -162,7 +166,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     initFocusNodes();
     initInputListener();
 
-    drawFormStep(FormStep.IN_NAME);
+    if (pId == null)
+      drawFormStep(FormStep.IN_NAME);
+    else
+      loadMerchantFromGoogleWithPlaceIdThenPrefillForm(pId);
+
     if (reviewMode) {
       // ImportData(githubCoinector).importDataSetGoCrypto();
       //initReviewableDataSet();
@@ -324,13 +332,19 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         chooseFirstCandidate();
         // Toaster.showMerchantSearchHasMultipleResults(context); moved inside findPlaceId
       }
-      _merchant =
-          await loadDetailsFromGoogleCreateMerchant(selectedType, placeId);
-      //TODO HANDLE MORE TAGS LATER, LET ADMIN CHOOSE BEST TAGS OR SIMPLY LET CONTENT CONTAIN MORE TAGS
-      prefillNameAddressAndTags(_merchant);
-      loadGooglePlacePhotos(_merchant.placeDetailsData);
-      drawFormStep(FormStep.SUBMIT);
+      loadMerchantFromGoogleWithPlaceIdThenPrefillForm(placeId);
     }
+  }
+
+  Future<void> loadMerchantFromGoogleWithPlaceIdThenPrefillForm(
+      String paramPlaceId) async {
+    placeId = paramPlaceId;
+    _merchant =
+        await loadDetailsFromGoogleCreateMerchant(selectedType, paramPlaceId);
+    //TODO HANDLE MORE TAGS LATER, LET ADMIN CHOOSE BEST TAGS OR SIMPLY LET CONTENT CONTAIN MORE TAGS
+    prefillNameAddressAndTags(_merchant);
+    loadGooglePlacePhotos(_merchant.placeDetailsData);
+    drawFormStep(FormStep.SUBMIT);
   }
 
   void chooseFirstCandidate() {
@@ -506,10 +520,13 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                     children: <Widget>[
                       //wrapBuildColumnPreFillReviewables(ctx),
                       //buildSizedBoxSeparator(),
-                      wrapBuildColumnPreFillContinent(ctx),
-                      buildSizedBoxSeparator(),
-                      wrapBuildColumnPreFillPlace(ctx),
-                      buildSizedBoxSeparator(multiplier: 3.0),
+                      showIfPlaceIdNotProvided(
+                          wrapBuildColumnPreFillContinent(ctx)),
+                      showIfPlaceIdNotProvided(buildSizedBoxSeparator()),
+                      showIfPlaceIdNotProvided(
+                          wrapBuildColumnPreFillPlace(ctx)),
+                      showIfPlaceIdNotProvided(
+                          buildSizedBoxSeparator(multiplier: 3.0)),
                       wrapBuildColumnName(ctx),
                       wrapBuildColumnAdr(ctx),
                       wrapBuildGoogleButtons(ctx),
@@ -527,6 +544,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
               )),
     );
   }
+
+  Widget showIfPlaceIdNotProvided(method) => pId != null ? SizedBox() : method;
 
   Widget wrapBuildColumnName(ctx) => AnimatedOpacity(
       curve: DEFAULT_ANIMATION_CURVE,

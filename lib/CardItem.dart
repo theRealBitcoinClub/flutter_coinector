@@ -1,3 +1,4 @@
+import 'package:Coinector/TabPageCategory.dart';
 import 'package:Coinector/TagBrands.dart';
 import 'package:Coinector/TagCoins.dart';
 import 'package:Coinector/translator.dart';
@@ -8,11 +9,13 @@ import 'package:loading_animations/loading_animations.dart';
 import 'package:share/share.dart';
 import 'package:transparent_image/transparent_image.dart';
 
+import 'AddNewPlaceWidget.dart';
 import 'AssetLoader.dart';
 import 'CustomBoxShadow.dart';
 import 'Dialogs.dart';
 import 'ItemInfoStackLayer.dart';
 import 'Merchant.dart';
+import 'MyColors.dart';
 import 'RatingWidgetBuilder.dart';
 import 'Toaster.dart';
 import 'UrlLauncher.dart';
@@ -391,8 +394,9 @@ class CardItem extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               alignment: MainAxisAlignment.end,
               children: <Widget>[
+                kIsWeb ? SizedBox() : buildTextButtonManager(context),
                 buildTextButtonShare(context),
-                buildTextButtonReview(context),
+                kIsWeb ? SizedBox() : buildTextButtonReview(context),
                 buildTextButtonVisit(context),
               ],
             )));
@@ -442,13 +446,53 @@ class CardItem extends StatelessWidget {
     if (merchant.place == null) {
       loadPlace(() {
         if (merchant.place == null)
-          showPlaceNotFoundOnGmaps(ctx);
+          debugPrint("MISSING PLACE ID");
+        // showPlaceNotFoundOnGmaps(ctx);
         else
           UrlLauncher.launchReviewUrl(ctx, merchant.place);
       });
     } else {
       UrlLauncher.launchReviewUrl(ctx, merchant.place);
     }
+  }
+
+  TextButton buildTextButtonManager(BuildContext ctx) {
+    return TextButton(
+      child: Column(
+        children: <Widget>[
+          Dialogs.buildIcon(Icons.update, Colors.white),
+          Dialogs.buildSpacer(),
+          Text(
+            Translator.translate(ctx, 'UPDATE'),
+            style: TextStyle(color: Colors.white),
+          )
+        ],
+      ),
+      onPressed: () {
+        if (merchant.place == null) {
+          loadPlace(() {
+            if (merchant.place != null) {
+              launchAddNewPlaceWithPlacesId(ctx);
+            }
+          });
+        } else {
+          launchAddNewPlaceWithPlacesId(ctx);
+        }
+      },
+    );
+  }
+
+  void launchAddNewPlaceWithPlacesId(BuildContext ctx) {
+    Navigator.push(ctx, MaterialPageRoute(builder: (buildCtx) {
+      int type = merchant.type;
+      return AddNewPlaceWidget(
+        pId: merchant.place.placesId,
+        selectedType: type,
+        accentColor: MyColors.getTabColor(type),
+        actionBarColor: MyColors.getCardActionButtonBackgroundColor(type),
+        typeTitle: TabPages.pages.elementAt(type).long,
+      );
+    }));
   }
 
   TextButton buildTextButtonShare(BuildContext ctx) {
