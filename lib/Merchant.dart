@@ -1,6 +1,7 @@
 //{"p":"trbc", "x":"41.406595", "y":"2.16655","n":"TRBC - The Real Bitcoin Club", "t":"99","c":"3","s":"5.0", "d":"3", "a":"0,1,2,34", "l":"Barcelona, Spain, Europe"}
 
 import 'package:Coinector/TagCoinector.dart';
+import 'package:html_unescape/html_unescape.dart';
 
 import 'Place.dart';
 //import 'package:geohash/geohash.dart';
@@ -43,7 +44,7 @@ class Merchant {
     latLngAndGeohash = LatLngAndGeohash(LatLng(x, y));
   }*/
 
-  static Merchant createMerchantFromInputs(
+  static Merchant createMerchantFromGoogleMapsInputs(
       data, placeId, Set<TagCoinector> tagsInput, int placeType) {
     var location = data["geometry"]["location"];
     var cleanAdr =
@@ -115,14 +116,14 @@ class Merchant {
       : id = json['p'],
         x = double.parse(json['x']),
         y = double.parse(json['y']),
-        name = json['n'],
+        name = HtmlUnescape().convert(json['n']),
         type = int.parse(json['t']),
         reviewCount = json['c'],
         reviewStars = json['s'],
         discount = int.parse(json['d']),
         tagsDatabaseFormat = json['a'],
         //TODO use one single source of locations, take the suggestions or the placesIDAddress as reference
-        location = json['l'],
+        location = HtmlUnescape().convert(json['l']),
         brand = json['b'] != null ? int.parse(json['b']) : null,
         acceptedCoins = json['w'];
 }

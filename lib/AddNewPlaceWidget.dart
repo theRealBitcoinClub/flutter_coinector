@@ -378,7 +378,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   Merchant parseGmapsDataToMerchant(String placeId, data, int placeType) {
     Set<TagCoinector> resultTags =
         parseReviewsSearchForMatchingTags(data["name"], data["reviews"]);
-    return Merchant.createMerchantFromInputs(
+    return Merchant.createMerchantFromGoogleMapsInputs(
         data, placeId, resultTags, placeType);
   }
 
