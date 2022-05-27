@@ -158,7 +158,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   @override
   void initState() {
     super.initState();
-    reviewMode = pId == null ? true : false;
+    reviewMode = isSpecificPlace() ? false : true;
     _selectedCoin[0] = true;
     //_initContinent();
     githubCoinector.init();
@@ -166,10 +166,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     initFocusNodes();
     initInputListener();
 
-    if (pId == null)
-      drawFormStep(FormStep.IN_NAME);
-    else
+    if (isSpecificPlace())
       loadMerchantFromGoogleWithPlaceIdThenPrefillForm(pId);
+    else
+      drawFormStep(FormStep.IN_NAME);
 
     if (reviewMode) {
       // ImportData(githubCoinector).importDataSetGoCrypto();
@@ -225,7 +225,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   List reviewableCombos = [ReviewPlaces.searchCombosFake];
 
   void initScrapedDataSet() async {
-    Loader.show(context);
+    showLoaderSafe();
     var america = await _loadReviewablesByContinent("am");
     var asia = await _loadReviewablesByContinent("as");
     var australia = await _loadReviewablesByContinent("au");
@@ -236,7 +236,23 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       reviewableCombos.add(australia);
       reviewableCombos.add(europe);
     });
-    Loader.hide();
+    hideLoaderSafe();
+  }
+
+  void showLoaderSafe() {
+    try {
+      Loader.show(context);
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  void hideLoaderSafe() {
+    try {
+      Loader.hide();
+    } catch (e) {
+      print(e);
+    }
   }
 
   void initReviewableDataSet() async {
@@ -338,6 +354,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   Future<void> loadMerchantFromGoogleWithPlaceIdThenPrefillForm(
       String paramPlaceId) async {
+    showLoaderSafe();
     placeId = paramPlaceId;
     _merchant =
         await loadDetailsFromGoogleCreateMerchant(selectedType, paramPlaceId);
@@ -345,6 +362,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     prefillNameAddressAndTags(_merchant);
     loadGooglePlacePhotos(_merchant.placeDetailsData);
     drawFormStep(FormStep.SUBMIT);
+    hideLoaderSafe();
   }
 
   void chooseFirstCandidate() {
@@ -468,7 +486,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             allTags.add(t);
         }
         // if (!kReleaseMode)
-          // print("index:" + t.id.toString() + "\ntagText:" + tagText + "\n");
+        // print("index:" + t.id.toString() + "\ntagText:" + tagText + "\n");
       }
     }
   }
@@ -1150,6 +1168,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       String label,
       updateInputCallback) {
     return TextField(
+      enabled: isSpecificPlace() ? false : true,
       focusNode: focusNode,
       onTap: () {
         scrollToWithAnimation(onTapScrollToThisPosition);
@@ -1172,6 +1191,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       style: textStyleInput(),
     );
   }
+
+  bool isSpecificPlace() => pId != null;
 
   String i18n(ctx, str) => Translator.translate(ctx, str);
 
