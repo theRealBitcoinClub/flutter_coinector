@@ -1498,6 +1498,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         debugPrint(
             "RECEIVING INVALID DATA FROM COARSE LOCATION PROVIDER\nRECEIVING INVALID DATA FROM COARSE LOCATION PROVIDER\nRECEIVING INVALID DATA FROM COARSE LOCATION PROVIDER");
     } catch (e) {
+      debugPrint("COARSE LOCATION PROVIDER\nCOARSE LOCATION PROVIDER");
       debugPrint(e.toString());
     }
     return userPosition;
