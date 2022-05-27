@@ -163,8 +163,15 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
 
   List<PieChartSectionData> showingSections() {
     var page = TabPagesStatistics.pages[_tabController.index];
-    List<int> passedMinimumShowThese = checkForMinimumThreshold(page);
-    return List.generate(passedMinimumShowThese.length, (i) {
+    var minimumThreshold = checkForMinimumThreshold(page);
+    List<int> passedMinimumShowThese = minimumThreshold[0];
+    List<int> passedMinimumFailed = minimumThreshold[1];
+    passedMinimumFailed.forEach((element) {
+      counter["other"] += getCounter(element.toString()).toInt();
+    });
+
+    return List.generate(passedMinimumShowThese.length + 1, (i) {
+      final isOther = i == passedMinimumShowThese.length ? true : false;
       final isTouched = i == touchedIndex;
       final fontSize = isTouched ? 16.0 : 14.0;
       final radius = isTouched ? 115.0 : 100.0;
@@ -192,16 +199,21 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
     }, growable: false);
   }
 
-  List<int> checkForMinimumThreshold(TabPageStatistics page) {
+  List<List<int>> checkForMinimumThreshold(TabPageStatistics page) {
     List<int> passedMinimumShowThese = [];
+    List<int> passedMinimumFailed = [];
     for (int x = 0; x < page.varietyCount; x++) {
       var counter = getCounter(x.toString());
       if (counter < MINIMUM_TO_APPEAR_IN_STATS) {
+        passedMinimumFailed.add(x);
         continue;
       }
       passedMinimumShowThese.add(x);
     }
-    return passedMinimumShowThese;
+    List<List<int>> results = [];
+    results.add(passedMinimumShowThese);
+    results.add(passedMinimumFailed);
+    return results;
   }
 
   getVariety(int i) {
