@@ -71,6 +71,7 @@ class AddNewPlaceWidget extends StatefulWidget {
   final Color accentColor;
   final Color actionBarColor;
   final String typeTitle;
+  final Merchant merchantBmapDataset;
 
   const AddNewPlaceWidget(
       {Key key,
@@ -78,13 +79,14 @@ class AddNewPlaceWidget extends StatefulWidget {
       this.accentColor,
       this.typeTitle,
       this.actionBarColor,
-      this.pId})
+      this.pId,
+      this.merchantBmapDataset})
       : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return _AddNewPlaceWidgetState(
-        selectedType, accentColor, typeTitle, actionBarColor, pId);
+    return _AddNewPlaceWidgetState(selectedType, accentColor, typeTitle,
+        actionBarColor, pId, merchantBmapDataset);
   }
 }
 
@@ -95,6 +97,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   final Color actionBarColor;
   final AddPlaceTagSearchDelegate searchTagsDelegate =
       AddPlaceTagSearchDelegate();
+  final Merchant merchantBmapDataset;
   static const TEXT_COLOR = Colors.white;
   FocusNode focusNodeInputDASH;
   FocusNode focusNodeInputBCH;
@@ -135,7 +138,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   double _contiVisibility = 1.0;
   Set<String> imagesSuccess;
   GithubCoinector githubCoinector = GithubCoinector();
-  Merchant _merchant;
+  Merchant _merchantGoogleData;
   int _currentContinent = 0;
   int _currentPlace = 0;
 
@@ -153,7 +156,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   bool reviewMode = true;
   _AddNewPlaceWidgetState(this.selectedType, this.accentColor, this.typeTitle,
-      this.actionBarColor, this.pId);
+      this.actionBarColor, this.pId, this.merchantBmapDataset);
 
   @override
   void initState() {
@@ -357,11 +360,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       String paramPlaceId) async {
     showLoaderSafe();
     placeId = paramPlaceId;
-    _merchant =
+    _merchantGoogleData =
         await loadDetailsFromGoogleCreateMerchant(selectedType, paramPlaceId);
     //TODO HANDLE MORE TAGS LATER, LET ADMIN CHOOSE BEST TAGS OR SIMPLY LET CONTENT CONTAIN MORE TAGS
-    prefillNameAddressAndTags(_merchant);
-    loadGooglePlacePhotos(_merchant.placeDetailsData);
+    prefillNameAddressAndTags(_merchantGoogleData);
+    loadGooglePlacePhotos(_merchantGoogleData.placeDetailsData);
     drawFormStep(FormStep.SUBMIT);
     hideLoaderSafe();
   }
@@ -384,11 +387,14 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     return id;
   }
 
-  void prefillNameAddressAndTags(Merchant merchant) {
+  void prefillNameAddressAndTags(Merchant merchantGoogleDataSet) {
     setState(() {
-      prefillName(merchant);
-      prefillAddress(merchant);
-      for (TagCoinector tag in merchant.tagsInput) {
+      prefillName(merchantGoogleDataSet);
+      prefillAddress(merchantGoogleDataSet);
+      prefillCoins(merchantBmapDataset);
+      prefillBrand(merchantBmapDataset);
+      prefillCategory(merchantBmapDataset);
+      for (TagCoinector tag in merchantGoogleDataSet.tagsInput) {
         allSelectedTags.add(tag);
         searchTagsDelegate.alreadySelectedTagIndexes.add(tag.id);
       }
@@ -802,7 +808,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           children: <Widget>[
             buildSizedBoxSeparator(multiplier: 1.0),
             Text(
-              _merchant != null ? _merchant.gmapsCategory : "",
+              _merchantGoogleData != null
+                  ? _merchantGoogleData.gmapsCategory
+                  : "",
               style: textStyleHint(),
             ),
             buildSizedBoxSeparator(multiplier: 1.0),
@@ -939,7 +947,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   void submitData(ctx) async {
     Loader.show(context, progressIndicator: LinearProgressIndicator());
     //TODO PARSE BRANDS AND COINS HERE TO ADD THEM TO MERCHANT AND REMOVE THE PRESELECT CONFIGS OR READ IN THE PRESELECTED STATE FROM LAST SUBMIT TO MAKE ADMIN INTERFACE EASIER FOR THESE WHO FOCUS ON THEIR BRAND ADDING MULTIPLE PLACES
-    _merchant = parseInputsToMerchant(_merchant);
+    _merchantGoogleData = parseInputsToMerchant(_merchantGoogleData);
     await addPlaceToUploadStackAndUploadStack(
         ReviewPlaces.getContinentAsText(_currentContinent));
     /* Loader.show(context,
@@ -950,7 +958,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         themeData: Theme.of(context)
             .copyWith(accentColor: Colors.black38),
         overlayColor: Color(0x99E8EAF6));*/
-    await githubCoinector.githubUploadPlaceImages(selectedImages, _merchant);
+    await githubCoinector.githubUploadPlaceImages(
+        selectedImages, _merchantGoogleData);
     Loader.hide();
     //TODO SHOW PROGRESS BAR OF UPLOADS USING MULTIPLE FUTURE BLOCKS FOR EACH IMAGE
     Navigator.pop(context);
@@ -1497,10 +1506,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       return;
     }
     setState(() {
-      _merchant = reviewableMerchants.elementAt(i - 1);
+      _merchantGoogleData = reviewableMerchants.elementAt(i - 1);
     });
     resetImages();
-    _searchForPrefill(_merchant.name + ", " + _merchant.location);
+    _searchForPrefill(
+        _merchantGoogleData.name + ", " + _merchantGoogleData.location);
   }
 
   _selectContinent(var index) {
@@ -1539,8 +1549,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     if (allSuggestions[continent] == null) allSuggestions[continent] = [];
     if (uploadStack[continent] == null) uploadStack[continent] = [];
 
-    allSuggestions[continent].add(_merchant.name + " - " + _merchant.location);
-    uploadStack[continent].add(_merchant.getBmapDataJson());
+    allSuggestions[continent]
+        .add(_merchantGoogleData.name + " - " + _merchantGoogleData.location);
+    uploadStack[continent].add(_merchantGoogleData.getBmapDataJson());
     StringBuffer buff = StringBuffer();
     buff.writeln("[");
     uploadStack[continent].forEach((element) {
@@ -1557,6 +1568,26 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             .printSuggestions(value, chunkId, key.toString());
       }
     });
-    await githubCoinector.githubUploadPlaceDetails(_merchant);
+    await githubCoinector.githubUploadPlaceDetails(_merchantGoogleData);
+  }
+
+  void prefillCategory(Merchant merchant) {
+    _selectedCategory = merchant.type;
+  }
+
+  void prefillCoins(Merchant merchant) {
+    if (merchant.acceptedCoins == null || merchant.acceptedCoins.isEmpty)
+      return;
+    merchant.acceptedCoins.split(",").forEach((String element) {
+      _selectedCoin[int.parse(element)] = true;
+    });
+  }
+
+  void prefillBrand(Merchant merchant) {
+    if (merchant.brand == null || merchant.brand == -1) {
+      return;
+    }
+
+    _selectedBrand = merchant.brand;
   }
 }

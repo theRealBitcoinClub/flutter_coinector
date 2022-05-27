@@ -491,6 +491,7 @@ class CardItem extends StatelessWidget {
         accentColor: MyColors.getTabColor(type),
         actionBarColor: MyColors.getCardActionButtonBackgroundColor(type),
         typeTitle: TabPages.pages.elementAt(type).long,
+        merchantBmapDataset: merchant,
       );
     }));
   }
