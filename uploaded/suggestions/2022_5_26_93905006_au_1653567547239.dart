@@ -42,7 +42,6 @@ class AutoSuggestions93905006 {
     "Las Vegas Atelier de Uñas - Chacaito, Av Casanova, Centro Comercial Único, PB Local 12, Caracas 1060, Miranda, Venezuela",
     "Vestidos Diosmary - Galerias La Frayette, Edificio Benedetti, PB, Local 66, Blvr. de Sabana Grande, Caracas 1050, Distrito Capital, Venezuela",
     "El Gordo Burger 12 - F3P6+899, Caracas 1020, Capital District, Venezuela",
-    // "Las Vegas Atelier de Uñas - Chacaito, Av Casanova, Centro Comercial Único, PB Local 12, Caracas 1060, Miranda, Venezuela",
     "El Rey de la Hamburguesa - JX26+J43, Av. Balneario, Catia La Mar 1162, La Guaira, Venezuela",
     "La Masion del Sabor Comercializadora C.A - Calle 29 con Carrera 28 casa N° 28-31,zona centro, Barquisimeto 3001, Lara, Venezuela",
     "ImichuStore - Av Caracas entre calle Anacoco y Av Caroni mini local N° 1, Barquisimeto 3001, Lara, Venezuela",
@@ -58,7 +57,6 @@ class AutoSuggestions93905006 {
     "Materiales La Lucha - JX2H+7QH, Av. La Armada, Catia La Mar 1162, La Guaira, Venezuela",
     "Chichi Burguer - JX26+F58, Av. Balneario, Catia La Mar 1162, La Guaira, Venezuela",
     "Rismary Fashion - JX26+J43, Av. Balneario, Catia La Mar 1162, La Guaira, Venezuela",
-    // "El Rey de la Hamburguesa - JX26+J43, Av. Balneario, Catia La Mar 1162, La Guaira, Venezuela",
     "DISTRIBUIDORA LA JOYA 2000, C.A. - CALLE LA JOYA EDIFICIO LA JOYA PB, LOCAL A, Caracas 1060, Miranda, Venezuela",
     "El Criollito Sanchez - La peñita, calle 23 con carrera 3, casa nro 22-43, local 2, planta baja, Guanare 3350, Portuguesa, Venezuela",
     "YC One Detail - Avenida Urdaneta &amp; Avenida Norte 1, entre esquina Madrices e Ibarra, Local 002, Caracas 1012, Distrito Capital, Venezuela",
@@ -67,7 +65,5 @@ class AutoSuggestions93905006 {
     "El POTY - Vía a Carorita,Andrés bello calle 1., El Cují, Barquisimeto 3001, Lara, Venezuela",
     "Repuestos Digaban 2210, C.A. - Av. José Antonio Páez, entre Av. Loiro y Valparaíso, Qta. Digaban, P.B, Caracas 1020, Distrito Capital, Venezuela",
     "King technology D&C - Piso 2, Local MT48. Av José Antonio Paez con Av O&#39;Higgins. C. C. Galerías Paraíso, Nivel Paraíso, Caracas 1020, Distrito Capital, Venezuela",
-    // "Heladería FRUT CREAM - Av. Unda entre carrera 15 y, local 02, casa, nro 15-214 Avenida Simón Bolívar, Guanare 3350, Portuguesa, Venezuela",
-    // "El Rey de la Hamburguesa - JX26+J43, Av. Balneario, Catia La Mar 1162, La Guaira, Venezuela",
   };
 }
