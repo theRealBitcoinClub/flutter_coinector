@@ -71,7 +71,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   TabController tabController;
   bool _customIndicator = false;
   List<ListModel<Merchant>> _lists = [];
-  Set<String> _duplicates = {};
+  // Set<String> _duplicates = {};
   List<Merchant> names = []; // names we get from API
   List<ListModel<Merchant>> tempLists = [];
   List<ListModel<Merchant>> unfilteredLists = [];
@@ -230,7 +230,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     initTempListModel();
     for (int i = 0; i < places.length; i++) {
       Merchant m2 = Merchant.fromJson(places.elementAt(i));
-      checkDuplicate(m2);
+      // checkDuplicate(m2);
       //at the moment there is no PAY feature: m2.isPayEnabled = await AssetLoader.loadReceivingAddress(m2.id) != null;
       bool isLocation = false;
       int brand = -1;
@@ -258,7 +258,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
     updateListModel(tempLists);
   }
-
+/*
   void checkDuplicate(Merchant m2) {
     if (!kReleaseMode) {
       if (_duplicates.contains(m2.id)) {
@@ -266,7 +266,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       }
       _duplicates.add(m2.id);
     }
-  }
+  }*/
 
   containsBrand(Merchant m2, String locationTitleFilter) {
     // print("\nBRAND" + m2.brand.toString());
