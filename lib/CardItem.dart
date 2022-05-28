@@ -146,6 +146,15 @@ class CardItem extends StatelessWidget {
     );
   }
 
+  void restartWidgetWithFilterBrand() {
+    tagFilterCallback
+        .doFilter(TagBrand.getBrands().elementAt(merchant.brand).long);
+  }
+
+  void restartWidgetWithFilterCoin() {
+    // tagFilterCallback.doFilter(TagCoinector.parseTag(context, title));
+  }
+
   SizedBox buildPlaceHolderOfflineVersion(ctx) {
     return SizedBox(
       height: 160,
@@ -258,15 +267,17 @@ class CardItem extends StatelessWidget {
       left: 0.0,
       bottom: 33,
       child: merchant.brand != null
-          ? Container(
-              padding: EdgeInsets.fromLTRB(8.8, 5.0, 10.0, 4.5),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topRight: buildRadius(), bottomRight: buildRadius()),
-                  color: backGroundColor),
-              child: Text(TagBrand.getBrands().elementAt(merchant.brand).long,
-                  style: TextStyle(color: Colors.white70)),
-            )
+          ? GestureDetector(
+              onTap: restartWidgetWithFilterBrand,
+              child: Container(
+                padding: EdgeInsets.fromLTRB(8.8, 5.0, 10.0, 4.5),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                        topRight: buildRadius(), bottomRight: buildRadius()),
+                    color: backGroundColor),
+                child: Text(TagBrand.getBrands().elementAt(merchant.brand).long,
+                    style: TextStyle(color: Colors.white70)),
+              ))
           : Container(),
     );
   }

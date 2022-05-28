@@ -534,7 +534,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       floatingActionButton: wrapBuildSubmitBtn(),
       appBar: AppBar(
         backgroundColor: actionBarColor,
-        title: Text(i18n(context, "add_title") + i18n(context, typeTitle)),
+        title: Text(i18n(context, "UPDATE") + " " + i18n(context, typeTitle)),
       ),
       body: Builder(
           builder: (ctx) => Padding(
