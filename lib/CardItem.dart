@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:Coinector/TabPageCategory.dart';
 import 'package:Coinector/TagBrands.dart';
 import 'package:Coinector/TagCoins.dart';
@@ -402,6 +404,7 @@ class CardItem extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               alignment: MainAxisAlignment.end,
               children: <Widget>[
+                !kIsWeb ? SizedBox() : buildTextButtonReport(context),
                 kIsWeb ? SizedBox() : buildTextButtonManager(context),
                 buildTextButtonShare(context),
                 kIsWeb ? SizedBox() : buildTextButtonReview(context),
@@ -439,6 +442,39 @@ class CardItem extends StatelessWidget {
       });
     } else {
       UrlLauncher.launchVisitUrl(context, merchant);
+    }
+  }
+
+  TextButton buildTextButtonReport(BuildContext context) {
+    return TextButton(
+      child: Column(
+        children: <Widget>[
+          Dialogs.buildIcon(Icons.report, Colors.white),
+          Dialogs.buildSpacer(),
+          Text(
+            Translator.translate(context, 'REPORT'),
+            style: TextStyle(fontSize: 12, color: Colors.white),
+          )
+        ],
+      ),
+      onPressed: () {
+        _handleButtonReport(context);
+      },
+    );
+  }
+
+  void _handleButtonReport(BuildContext context) {
+    if (merchant.place == null) {
+      loadPlace(() {
+        if (merchant.place == null) {
+          UrlLauncher.launchReportUrl(
+              context, htmlEscape.convert(merchant.name));
+        } else {
+          UrlLauncher.launchReportUrl(context, merchant.place.placesId);
+        }
+      });
+    } else {
+      UrlLauncher.launchReportUrl(context, merchant.place.placesId);
     }
   }
 

@@ -41,6 +41,13 @@ class UrlLauncher {
     launchURI(url);
   }
 
+  static void launchReportUrl(context, String prefill) async {
+    var url =
+        'https://docs.google.com/forms/d/e/1FAIpQLSdWIaDcf983QSJdj_u59fwUOR_Jo6cFTQnomCydHFUm3v4YCQ/viewform?usp=pp_url&entry.1825017039=' +
+            prefill;
+    launchURI(url);
+  }
+
   static void launchCoordinatesUrl(context, Merchant merchant) async {
     var url = buildGoogleMapsSearchQueryUrl(merchant);
     launchURI(url);
