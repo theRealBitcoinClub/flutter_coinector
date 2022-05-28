@@ -1462,8 +1462,20 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   Future<Position> _getCoarseLocationViaIP() async {
+    if ((userPosition =
+            await tryGetCoarseLocation('https://bmap.app/geolocation')) ==
+        null) if ((userPosition =
+            await tryGetCoarseLocation('https://coinector.app/geolocation')) ==
+        null) if ((userPosition =
+            await tryGetCoarseLocation('/geolocation')) ==
+        null) {}
+
+    return userPosition;
+  }
+
+  Future<Position> tryGetCoarseLocation(String url) async {
     try {
-      var response = await new Dio().get('https://geolocation-db.com/json/');
+      var response = await new Dio().get(url);
       var responseJSON = json.decode(response.data);
       var longitude = responseJSON['longitude'];
       var latitude = responseJSON['latitude'];
@@ -1474,7 +1486,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         latitude = double.parse(latitude.toString());
       }
       if (longitude is double)
-        userPosition = new Position(
+        return new Position(
             longitude: longitude,
             latitude: latitude,
             speedAccuracy: 0.0,
@@ -1487,10 +1499,11 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         debugPrint(
             "RECEIVING INVALID DATA FROM COARSE LOCATION PROVIDER\nRECEIVING INVALID DATA FROM COARSE LOCATION PROVIDER\nRECEIVING INVALID DATA FROM COARSE LOCATION PROVIDER");
     } catch (e) {
+      debugPrint("URL\n" + url);
       debugPrint("COARSE LOCATION PROVIDER\nCOARSE LOCATION PROVIDER");
       debugPrint(e.toString());
     }
-    return userPosition;
+    return null;
   }
 
   var currentListItemCounter = 0;
