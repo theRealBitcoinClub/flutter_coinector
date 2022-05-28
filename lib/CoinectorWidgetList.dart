@@ -142,8 +142,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     super.dispose();
   }
 
-  void loadAssets(ctx, TagCoinector tagFilter, String locationOrTitleFilter,
-      String fileName) async {
+  void loadAssets(
+      ctx, TagCoinector tagFilter, String locationOrTitleFilter) async {
     updateCurrentPosition();
 
     if (tagFilter == null && locationOrTitleFilter == null) {
@@ -157,11 +157,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
     initListModel();
 
-    if (!kReleaseMode || fileName == null) {
-      _loadAndParseAllPlaces(tagFilter, locationOrTitleFilter);
-    } else {
-      _loadAndParseAsset(tagFilter, locationOrTitleFilter, fileName);
-    }
+    _loadAndParseAllPlaces(tagFilter, locationOrTitleFilter);
   }
 
   var isCheckingForUpdates = false;
@@ -216,9 +212,6 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   void _loadAndParseAllPlaces(TagCoinector tag, String locationFilter) {
-    /*if (!kReleaseMode)
-      _loadAndParseAsset(tag, locationFilter, "places");
-    else {*/
     _loadAndParseAsset(tag, locationFilter, 'am');
     _loadAndParseAsset(tag, locationFilter, 'as');
     _loadAndParseAsset(tag, locationFilter, 'au');
@@ -229,19 +222,15 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       TagCoinector tag, String locationOrTitleFilter, String fileName) async {
     var decoded = await FileCache.loadAndDecodeAsset(fileName);
 
-    parseAssetUpdateListModel(tag, locationOrTitleFilter, decoded, fileName);
+    parseAssetUpdateListModel(tag, locationOrTitleFilter, decoded);
   }
 
   Future<void> parseAssetUpdateListModel(
-      TagCoinector tag,
-      String locationTitleFilter,
-      List places,
-      String serverIdOrFileName) async {
+      TagCoinector tag, String locationTitleFilter, List places) async {
     initTempListModel();
     for (int i = 0; i < places.length; i++) {
       Merchant m2 = Merchant.fromJson(places.elementAt(i));
       checkDuplicate(m2);
-      m2.serverIdOrFileName = serverIdOrFileName;
       //at the moment there is no PAY feature: m2.isPayEnabled = await AssetLoader.loadReceivingAddress(m2.id) != null;
       bool isLocation = false;
       int brand = -1;
@@ -804,7 +793,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   StreamSubscription<Position> positionStream;
 
-  void loadAssetsUnfiltered(ctx) => loadAssets(ctx, null, null, null);
+  void loadAssetsUnfiltered(ctx) => loadAssets(ctx, null, null);
 
   //TODO test if I can simply call that in the build function (once) to avoid calling it from different locations
   void _updateDistanceToAllMerchantsIfNotDoneYet() {
@@ -1302,17 +1291,14 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     final String title = selectedArray[0];
     final String search = title.split(" - ")[0];
     //if selectedItem contains separator ; it has the filename attached
-    final String fileName = selectedArray.length > 1 ? selectedArray[1] : null;
-    showFilterResults(fileName, selectedLocationOrTag, ctx, search);
+    final bool isLocationFilter = selectedArray.length > 1 ? true : false;
+    //TODO Optimize performance by managing lists in memory, this optimization here is only valid in edge case
+    showFilterResults(isLocationFilter, selectedLocationOrTag, ctx, search);
   }
 
-  void showFilterResults(String fileName, String selectedLocationOrTag, ctx,
-      String locationTitleOrTag) {
-    if (fileName != null) {
-      zoomMapAfterSelectLocation = true;
-    } else {
-      zoomMapAfterSelectLocation = false;
-    }
+  void showFilterResults(bool isLocationFilter, String selectedLocationOrTag,
+      ctx, String locationTitleOrTag) {
+    zoomMapAfterSelectLocation = false;
 
     //TODO get the tag index directly from the search without having to find it afterwards, just like location is also returned fully but displayed differently
     //beware that the tag returned by clicking tags is different than the one in search
@@ -1320,10 +1306,10 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         ? TagCoinector.findTag(selectedLocationOrTag)
         : null;
 
-    Snackbars.showFilterSearchSnackBar(
-        _scaffoldKey, ctx, fileName, capitalize(locationTitleOrTag), tag);
+    Snackbars.showFilterSearchSnackBar(_scaffoldKey, ctx, isLocationFilter,
+        capitalize(locationTitleOrTag), tag);
 
-    loadAssets(ctx, tag, tag != null ? null : selectedLocationOrTag, fileName);
+    loadAssets(ctx, tag, tag != null ? null : selectedLocationOrTag);
 
     setState(() {
       _searchTerm = locationTitleOrTag;

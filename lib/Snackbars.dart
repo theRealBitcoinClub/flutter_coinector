@@ -66,12 +66,12 @@ class Snackbars {
         duration: Duration(seconds: 3));
   }
 
-  static void showFilterSearchSnackBar(
-      scaffoldKey, ctx, String fileName, String search, TagCoinector tag) {
-    if (fileName != null)
+  static void showFilterSearchSnackBar(scaffoldKey, ctx, bool isLocationFilter,
+      String search, TagCoinector tag) {
+    if (isLocationFilter)
       _showSnackBar(scaffoldKey, ctx, "snackbar_filtered_by_location",
           additionalText: search);
-    else if (tag != null && fileName == null)
+    else if (tag != null)
       _showSnackBar(scaffoldKey, ctx, "snackbar_filtered_by_tag",
           additionalText: search);
     else
