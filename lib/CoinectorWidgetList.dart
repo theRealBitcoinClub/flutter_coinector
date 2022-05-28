@@ -54,6 +54,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     with TickerProviderStateMixin, WidgetsBindingObserver, TagFilterCallback {
   SearchDemoSearchDelegate searchDelegate;
 
+  Map<String, List> _cachedDecodedDataBase = Map();
+
   _CoinectorWidgetState(String search) {
     urlSearch = search;
   }
@@ -206,57 +208,74 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     await FileCache.loadFromWebAndPersistCache('placesId');
 
     Snackbars.showSnackBarRestartApp(_scaffoldKey, ctx);
-    /*Future.delayed(Duration(seconds: 30), () {
-        Phoenix.rebirth(ctx);
-      }); MAYBE THE USER IS ALREADY OK WITH THE DATA AND THERE IS NO NEED TO RESTART*/
+    _cachedDecodedDataBase = Map();
+    Future.delayed(Duration(seconds: 30), () {
+      Phoenix.rebirth(ctx);
+    });
   }
 
-  void _loadAndParseAllPlaces(TagCoinector tag, String locationFilter) {
-    _loadAndParseAsset(tag, locationFilter, 'am');
-    _loadAndParseAsset(tag, locationFilter, 'as');
-    _loadAndParseAsset(tag, locationFilter, 'au');
-    _loadAndParseAsset(tag, locationFilter, 'e');
+  void _loadAndParseAllPlaces(TagCoinector tag, String locationFilter) async {
+    await _loadAndParseAsset(tag, locationFilter, 'am');
+    await _loadAndParseAsset(tag, locationFilter, 'as');
+    await _loadAndParseAsset(tag, locationFilter, 'au');
+    await _loadAndParseAsset(tag, locationFilter, 'e');
   }
 
   Future _loadAndParseAsset(
       TagCoinector tag, String locationOrTitleFilter, String fileName) async {
-    var decoded = await FileCache.loadAndDecodeAsset(fileName);
+    if (_cachedDecodedDataBase[fileName] == null)
+      _cachedDecodedDataBase[fileName] =
+          await FileCache.loadAndDecodeAsset(fileName);
 
-    parseAssetUpdateListModel(tag, locationOrTitleFilter, decoded);
+    parseAssetUpdateListModel(
+        tag, locationOrTitleFilter, _cachedDecodedDataBase[fileName]);
   }
 
   Future<void> parseAssetUpdateListModel(
       TagCoinector tag, String locationTitleFilter, List places) async {
     initTempListModel();
+    bool isLocation = false;
+    if (locationTitleFilter != null && locationTitleFilter != "null") {
+      locationTitleFilter = locationTitleFilter.toLowerCase();
+      isLocation = LocationSuggestions.locations.contains(locationTitleFilter);
+    } else
+      locationTitleFilter = null;
+
     for (int i = 0; i < places.length; i++) {
       Merchant m2 = Merchant.fromJson(places.elementAt(i));
       // checkDuplicate(m2);
       //at the moment there is no PAY feature: m2.isPayEnabled = await AssetLoader.loadReceivingAddress(m2.id) != null;
-      bool isLocation = false;
-      int brand = -1;
+      int brandFilter = -1;
       bool isTitle = true;
-      String coin = "";
-      if (locationTitleFilter != null && locationTitleFilter != "null") {
-        locationTitleFilter = locationTitleFilter.toLowerCase();
-        isLocation =
-            LocationSuggestions.locations.contains(locationTitleFilter);
-        brand = m2.brand != null ? containsBrand(m2, locationTitleFilter) : -1;
-        coin = m2.acceptedCoins != null
-            ? containsCoin(m2, locationTitleFilter)
-            : "";
+      String coinFilter = "";
+      if (locationTitleFilter != null) {
+        brandFilter = checkForBrandFilter(brandFilter, m2, locationTitleFilter);
+        coinFilter = checkForCoinFilter(coinFilter, m2, locationTitleFilter);
         //TODO CURRENTLY TITLE IS CHECKED WHEN ALL OTHER CHECKS ARE RESULTLESS
         // isTitle = SuggestionsTitles.titleTags.contains(locationTitleFilter);
       }
-      _insertIntoTempList(
-          m2, tag, locationTitleFilter, isLocation, isTitle, brand, coin);
+      _insertIntoTempList(m2, tag, locationTitleFilter, isLocation, isTitle,
+          brandFilter, coinFilter);
     }
 
-    //TODO FIX MAP POSITIONING
+    //TODO IMPROVE MAP POSITIONING
     if (locationTitleFilter == null && tag == null) mapPosition = null;
 
     if (unfilteredLists.length == 0) initUnfilteredLists();
 
     updateListModel(tempLists);
+  }
+
+  String checkForCoinFilter(
+      String coin, Merchant m2, String locationTitleFilter) {
+    coin =
+        m2.acceptedCoins != null ? containsCoin(m2, locationTitleFilter) : "";
+    return coin;
+  }
+
+  int checkForBrandFilter(int brand, Merchant m2, String locationTitleFilter) {
+    brand = m2.brand != null ? containsBrand(m2, locationTitleFilter) : -1;
+    return brand;
   }
 /*
   void checkDuplicate(Merchant m2) {
