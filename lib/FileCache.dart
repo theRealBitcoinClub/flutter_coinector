@@ -35,15 +35,24 @@ class FileCache {
         getLastVersionNumberFromPrefsWithDefaultValue(
             prefs, _kNotificationsPrefs));
     var response;
-    try {
-      response = await new Dio().get(
-          'https://raw.githubusercontent.com/theRealBitcoinClub/flutter_coinector/master/dataUpdateIncrementVersion.txt');
-    } catch (e) {}
+    if ((response = await tryGet('https://bmap.app/updatecheck')) ==
+        null) if ((response =
+            await tryGet('https://coinector.app/updatecheck')) ==
+        null) if ((response = await tryGet('/updatecheck')) == null) {}
+
     if (response == null) return;
     if (int.parse(response.data) > currentVersion) {
       persistCacheVersionCounter(response.data);
       onHasNewVersionCallback();
     }
+  }
+
+  static Future<dynamic> tryGet(String url) async {
+    try {
+      var response = await new Dio().get(url);
+      return response;
+    } catch (e) {}
+    return null;
   }
 
   static String getLastVersionNumberFromPrefsWithDefaultValue(

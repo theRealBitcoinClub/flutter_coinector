@@ -774,11 +774,11 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       Snackbars.showSnackBarPlayStore(_scaffoldKey, context);
     });
     //initPositionStream();
-    if (urlSearch == "statistics") {
+    /*if (urlSearch == "statistics") {
       Future.delayed(Duration(seconds: 3), () {
         handleStatsButtonClick(context);
       });
-    }
+    }*/
   }
 
   void initPositionStream() async {
