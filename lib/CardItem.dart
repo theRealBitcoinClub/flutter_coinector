@@ -151,8 +151,8 @@ class CardItem extends StatelessWidget {
         .doFilter(TagBrand.getBrands().elementAt(merchant.brand).long);
   }
 
-  void restartWidgetWithFilterCoin() {
-    // tagFilterCallback.doFilter(TagCoinector.parseTag(context, title));
+  void restartWidgetWithFilterCoin(int index) {
+    tagFilterCallback.doFilter(TagCoin.getTagCoins().elementAt(index).short);
   }
 
   SizedBox buildPlaceHolderOfflineVersion(ctx) {
@@ -298,10 +298,14 @@ class CardItem extends StatelessWidget {
                 spacing: 10.0,
                 children: merchant.acceptedCoins
                     .split(",")
-                    .map((e) => Text(
+                    .map((e) => GestureDetector(
+                        onTap: () {
+                          restartWidgetWithFilterCoin(int.parse(e));
+                        },
+                        child: Text(
                           TagCoin.getTagCoins().elementAt(int.parse(e)).short,
                           style: tStyle.copyWith(fontWeight: FontWeight.bold),
-                        ))
+                        )))
                     .toList(),
               ),
             )
