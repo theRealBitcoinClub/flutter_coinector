@@ -24,7 +24,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:synchronized/synchronized.dart' as synchro;
 
 import 'AddNewPlaceWidget.dart';
-import 'AssetLoader.dart';
 import 'CardItemBuilder.dart';
 import 'Dialogs.dart';
 import 'FileCache.dart';
@@ -72,7 +71,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   TabController tabController;
   bool _customIndicator = false;
   List<ListModel<Merchant>> _lists = [];
-  var assetLoader = AssetLoader();
+  Set<String> _duplicates = {};
   List<Merchant> names = []; // names we get from API
   List<ListModel<Merchant>> tempLists = [];
   List<ListModel<Merchant>> unfilteredLists = [];
@@ -228,13 +227,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   Future _loadAndParseAsset(
       TagCoinector tag, String locationOrTitleFilter, String fileName) async {
-    var decoded
-        /*;
-    if (!kReleaseMode)
-      decoded = await FileCache.loadAndDecodeAsset("places");
-    else {
-      decoded */
-        = await FileCache.loadAndDecodeAsset(fileName);
+    var decoded = await FileCache.loadAndDecodeAsset(fileName);
 
     parseAssetUpdateListModel(tag, locationOrTitleFilter, decoded, fileName);
   }
@@ -247,6 +240,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     initTempListModel();
     for (int i = 0; i < places.length; i++) {
       Merchant m2 = Merchant.fromJson(places.elementAt(i));
+      checkDuplicate(m2);
       m2.serverIdOrFileName = serverIdOrFileName;
       //at the moment there is no PAY feature: m2.isPayEnabled = await AssetLoader.loadReceivingAddress(m2.id) != null;
       bool isLocation = false;
@@ -274,6 +268,15 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     if (unfilteredLists.length == 0) initUnfilteredLists();
 
     updateListModel(tempLists);
+  }
+
+  void checkDuplicate(Merchant m2) {
+    if (!kReleaseMode) {
+      if (_duplicates.contains(m2.id)) {
+        print("DUPLICATE: " + m2.id + "\n");
+      }
+      _duplicates.add(m2.id);
+    }
   }
 
   containsBrand(Merchant m2, String locationTitleFilter) {
