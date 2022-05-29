@@ -210,6 +210,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
     Snackbars.showSnackBarRestartApp(_scaffoldKey, ctx);
     _cachedDecodedDataBase = Map();
+    _cachedMerchants = Map();
     Future.delayed(Duration(seconds: 30), () {
       Phoenix.rebirth(ctx);
     });
@@ -228,12 +229,12 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       _cachedDecodedDataBase[fileName] =
           await FileCache.loadAndDecodeAsset(fileName);
 
-    parseAssetUpdateListModel(tag, locationOrTitleFilter,
-        _cachedDecodedDataBase[fileName], _cachedMerchants[fileName]);
+    parseAssetUpdateListModel(
+        tag, locationOrTitleFilter, _cachedDecodedDataBase[fileName], fileName);
   }
 
   Future<void> parseAssetUpdateListModel(TagCoinector tag,
-      String locationTitleFilter, List places, List cachedMerchants) async {
+      String locationTitleFilter, List places, String fileName) async {
     initTempListModel();
     bool isLocation = false;
     if (locationTitleFilter != null && locationTitleFilter != "null") {
@@ -242,15 +243,15 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     } else
       locationTitleFilter = null;
 
-    if (cachedMerchants == null) cachedMerchants = [];
+    if (_cachedMerchants[fileName] == null) _cachedMerchants[fileName] = [];
 
     for (int i = 0; i < places.length; i++) {
       Merchant m2;
-      if (cachedMerchants.length < places.length) {
+      if (_cachedMerchants[fileName].length < places.length) {
         m2 = Merchant.fromJson(places.elementAt(i));
-        cachedMerchants.add(m2);
+        _cachedMerchants[fileName].add(m2);
       } else
-        m2 = cachedMerchants[i];
+        m2 = _cachedMerchants[fileName][i];
 
       // checkDuplicate(m2);
       //at the moment there is no PAY feature: m2.isPayEnabled = await AssetLoader.loadReceivingAddress(m2.id) != null;
