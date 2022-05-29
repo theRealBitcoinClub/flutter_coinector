@@ -259,8 +259,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       bool isTitle = true;
       String coinFilter = "";
       if (locationTitleFilter != null) {
-        brandFilter = checkForBrandFilter(brandFilter, m2, locationTitleFilter);
-        coinFilter = checkForCoinFilter(coinFilter, m2, locationTitleFilter);
+        brandFilter = checkForBrandFilter(m2, locationTitleFilter);
+        coinFilter = checkForCoinFilter(m2, locationTitleFilter);
         //TODO CURRENTLY TITLE IS CHECKED WHEN ALL OTHER CHECKS ARE RESULTLESS
         // isTitle = SuggestionsTitles.titleTags.contains(locationTitleFilter);
       }
@@ -276,16 +276,12 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     updateListModel(tempLists);
   }
 
-  String checkForCoinFilter(
-      String coin, Merchant m2, String locationTitleFilter) {
-    coin =
-        m2.acceptedCoins != null ? containsCoin(m2, locationTitleFilter) : "";
-    return coin;
+  String checkForCoinFilter(Merchant m2, String locationTitleFilter) {
+    return m2.acceptedCoins != null ? containsCoin(locationTitleFilter) : "";
   }
 
-  int checkForBrandFilter(int brand, Merchant m2, String locationTitleFilter) {
-    brand = m2.brand != null ? containsBrand(m2, locationTitleFilter) : -1;
-    return brand;
+  int checkForBrandFilter(Merchant m2, String locationTitleFilter) {
+    return m2.brand != null ? containsBrand(locationTitleFilter) : -1;
   }
 /*
   void checkDuplicate(Merchant m2) {
@@ -297,7 +293,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     }
   }*/
 
-  containsBrand(Merchant m2, String locationTitleFilter) {
+  containsBrand(String locationTitleFilter) {
     // print("\nBRAND" + m2.brand.toString());
     int brandIndex = -1;
 
@@ -311,7 +307,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     return brandIndex;
   }
 
-  String containsCoin(Merchant m2, String locationTitleFilter) {
+  String containsCoin(String locationTitleFilter) {
     // print("\nCOINS" + m2.acceptedCoins.toString());
     StringBuffer coins = new StringBuffer();
     TagCoin.getTagCoins()
