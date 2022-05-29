@@ -1328,14 +1328,17 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   void showFilterResults(bool isLocationFilter, String selectedLocationOrTag,
       ctx, String locationTitleOrTag) {
-    print("START showFilterResults");
+    print("START showFilterResults " + selectedLocationOrTag);
     zoomMapAfterSelectLocation = false;
 
     //TODO get the tag index directly from the search without having to find it afterwards, just like location is also returned fully but displayed differently
     //beware that the tag returned by clicking tags is different than the one in search
-    TagCoinector tag = selectedLocationOrTag == locationTitleOrTag
-        ? TagCoinector.findTag(selectedLocationOrTag)
-        : null;
+    TagCoinector tag;
+    try {
+      tag = selectedLocationOrTag == locationTitleOrTag
+          ? TagCoinector.findTag(selectedLocationOrTag)
+          : null;
+    } catch (e) {}
     print("START showFilterResults2");
 
     Snackbars.showFilterSearchSnackBar(_scaffoldKey, ctx, isLocationFilter,
