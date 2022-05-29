@@ -154,15 +154,15 @@ class TagCoinector {
 
   static TagCoinector _findTagIndex(String searchTerm, List<String> tags) {
     for (int i = 0; i < tags.length; i++) {
-      String item = tags.elementAt(i);
-      String itemText = item.split(" ")[0].toLowerCase();
+      String tagItem = tags.elementAt(i);
+      List<String> splittedTag = tagItem.split(" ");
+      String itemText = splittedTag[0].toLowerCase();
       var search = searchTerm.split(" ")[0].toLowerCase();
       if (itemText == search) {
         if (!kReleaseMode)
-          print("TAG FOUND:" + item + " index:" + i.toString());
-        List<String> splittedTag = item.split(" ");
+          print("TAG FOUND: " + tagItem + " index:" + i.toString());
         return TagCoinector(
-            i, splittedTag[0], splittedTag.length > 1 ? splittedTag[1] : "");
+            i, splittedTag[0], splittedTag.length > 1 ? splittedTag[1] : "🔎");
       }
     }
     return null;
