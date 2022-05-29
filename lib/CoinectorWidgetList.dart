@@ -1350,7 +1350,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     print("START showFilterResults4");
     setState(() {
       _searchTerm = locationTitleOrTag;
-      titleActionBar = capitalize(locationTitleOrTag);
+      titleActionBar =
+          tag == null ? capitalize(locationTitleOrTag) : tag.toUI();
     });
     print("START showFilterResults5");
   }
