@@ -55,6 +55,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   SearchDemoSearchDelegate searchDelegate;
 
   Map<String, List> _cachedDecodedDataBase = Map();
+  Map<String, List<Merchant>> _cachedMerchants = Map();
 
   _CoinectorWidgetState(String search) {
     urlSearch = search;
@@ -227,12 +228,12 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       _cachedDecodedDataBase[fileName] =
           await FileCache.loadAndDecodeAsset(fileName);
 
-    parseAssetUpdateListModel(
-        tag, locationOrTitleFilter, _cachedDecodedDataBase[fileName]);
+    parseAssetUpdateListModel(tag, locationOrTitleFilter,
+        _cachedDecodedDataBase[fileName], _cachedMerchants[fileName]);
   }
 
-  Future<void> parseAssetUpdateListModel(
-      TagCoinector tag, String locationTitleFilter, List places) async {
+  Future<void> parseAssetUpdateListModel(TagCoinector tag,
+      String locationTitleFilter, List places, List cachedMerchants) async {
     initTempListModel();
     bool isLocation = false;
     if (locationTitleFilter != null && locationTitleFilter != "null") {
@@ -241,8 +242,16 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     } else
       locationTitleFilter = null;
 
+    if (cachedMerchants == null) cachedMerchants = [];
+
     for (int i = 0; i < places.length; i++) {
-      Merchant m2 = Merchant.fromJson(places.elementAt(i));
+      Merchant m2;
+      if (cachedMerchants.length < places.length) {
+        m2 = Merchant.fromJson(places.elementAt(i));
+        cachedMerchants.add(m2);
+      } else
+        m2 = cachedMerchants[i];
+
       // checkDuplicate(m2);
       //at the moment there is no PAY feature: m2.isPayEnabled = await AssetLoader.loadReceivingAddress(m2.id) != null;
       int brandFilter = -1;
