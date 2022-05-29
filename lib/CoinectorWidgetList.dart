@@ -765,7 +765,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   @override
   void initState() {
     super.initState();
+    print("START initState");
     TagCoinector.initFromFiles();
+    print("START initState2");
     _scrollControl = ScrollController();
     //_verticalScroller = buildCustomScroller();
     WidgetsBinding.instance.addObserver(this);
@@ -779,14 +781,18 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
           Snackbars.showInternetErrorSnackbar(this);
         });
     });
+    print("START initState3");
     initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition(context);
+    print("START initState4");
     //OneSignal.initOneSignalPushMessages(); //TODO maybe activate Signal again, I want to ask users for reviews!
     tabController = TabController(vsync: this, length: TabPages.pages.length);
     tabController.addListener(_handleTabSelection);
     initListModel();
 
+    print("START initState5");
     updateCurrentListItemCounter();
 
+    print("START initState6");
     Future.delayed(Duration(seconds: 5), () {
       Snackbars.showSnackBarPlayStore(_scaffoldKey, context);
     });

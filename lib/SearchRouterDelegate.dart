@@ -22,6 +22,8 @@ class SearchRouterDelegate extends RouterDelegate<RouterPath>
 
   @override
   Widget build(BuildContext context) {
+    print("START build AllMerchantsPage SRD");
+
     return Navigator(
       key: navigatorKey,
       pages: [
@@ -53,6 +55,7 @@ class SearchRouterDelegate extends RouterDelegate<RouterPath>
 
   @override
   Future<void> setNewRoutePath(RouterPath path) async {
+    print("START setNewRoutePath");
     if (path.isUnknown) {
       search = null;
       show404 = true;
@@ -82,6 +85,7 @@ class AllMerchantsPage extends Page {
   }) : super(key: ValueKey(search));
 
   Route createRoute(BuildContext context) {
+    print("START createRoute");
     return MaterialPageRoute(
       settings: this,
       builder: (BuildContext context) {
