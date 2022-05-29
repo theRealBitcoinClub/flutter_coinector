@@ -7,85 +7,19 @@ import 'FileCache.dart';
 import 'Place.dart';
 
 class AssetLoader {
-  static List<dynamic> assetsAm;
-  static List<dynamic> assetsAs;
-  static List<dynamic> assetsAu;
-  static List<dynamic> assetsE;
-  static List addresses;
-  static List places;
+  static Map<String, List<dynamic>> cachedAssets = new Map();
 
   static dynamic decodeJSON(String input) {
     return json.decode(input);
   }
-/*
-  static void putDecodedAssetInCache(String key, List<dynamic> asset) {
-    switch (key) {
-      case "assets/am.json":
-        assetsAm = asset;
-        return;
-      case "assets/am-ven.json":
-        assetsAmVen = asset;
-        return;
-      case "assets/am-ven-car.json":
-        assetsAmVenCar = asset;
-        return;
-      case "assets/as.json":
-        assetsAs = asset;
-        return;
-      case "assets/as-jap.json":
-        assetsAsJap = asset;
-        return;
-      case "assets/au.json":
-        assetsAu = asset;
-        return;
-      case "assets/e.json":
-        assetsE = asset;
-        return;
-      case "assets/e-spa.json":
-        assetsESpa = asset;
-        return;
-      case "assets/addr.json":
-        addresses = asset;
-        return;
-      case "assets/placesId.json":
-        places = asset;
-        return;
-    }
-  }
-
-  static List<dynamic> getDecodedCachedAsset(String key) {
-    switch (key) {
-      case "assets/am.json":
-        return assetsAm;
-      case "assets/am-ven.json":
-        return assetsAmVen;
-      case "assets/am-ven-car.json":
-        return assetsAmVenCar;
-      case "assets/as.json":
-        return assetsAs;
-      case "assets/as-jap.json":
-        return assetsAsJap;
-      case "assets/au.json":
-        return assetsAu;
-      case "assets/e.json":
-        return assetsE;
-      case "assets/e-spa.json":
-        return assetsESpa;
-      case "assets/addr.json":
-        return addresses;
-      case "assets/placesId.json":
-        return places;
-    }
-    return null;
-  }*/
 
   static Future<List<dynamic>> loadAndDecodeAsset(final String fileName) async {
-    //List<dynamic> cached = getDecodedCachedAsset(fileName);
-    //if (cached != null) return cached;
+    List<dynamic> cached = cachedAssets[fileName];
+    if (cached != null) return cached;
 
     String asset = await loadString(fileName);
     var decoded = json.decode(asset);
-    //putDecodedAssetInCache(fileName, decoded);
+    cachedAssets[fileName] = decoded;
     return decoded;
   }
 

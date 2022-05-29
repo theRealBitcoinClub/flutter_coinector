@@ -32,7 +32,7 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
         length: TabPagesStatistics.pages.length,
         animationDuration: const Duration(milliseconds: 900));
     _tabController.addListener(_handleTabSelection);
-    counter.clear();
+    counter = Map();
     initTabContinentByContinent(0);
     // _initTab(0);
   }
@@ -148,7 +148,7 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
         ),
         floating: true,
         snap: true,
-        pinned: false);
+        pinned: true);
   }
 
   Widget buildIconButtonClose() {
@@ -261,7 +261,7 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
     if (_lastTab != null && _lastTab == _tabController.index) return;
 
     _lastTab = _tabController.index;
-    counter.clear();
+    counter = Map();
     initTabContinentByContinent(_tabController.index);
     /*if (_tabController.index == 3) {
       initTabContinentByContinent(3);
