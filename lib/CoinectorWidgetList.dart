@@ -731,7 +731,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       : null;
 
   initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition(ctx) async {
+    print("START initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition");
     var position = await getLatestSavedPosition();
+    print("START initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition1");
     if (position != null && position.isNotEmpty) {
       setState(() {
         userPosition = Position(
@@ -746,24 +748,15 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       });
     }
 
-    if (urlSearch != null &&
-        urlSearch.isNotEmpty &&
-        urlSearch.length > 2 &&
-        !urlSearch.contains("1") &&
-        !urlSearch.contains("2") &&
-        !urlSearch.contains("3") &&
-        !urlSearch.contains("4") &&
-        !urlSearch.contains("5") &&
-        !urlSearch.contains("6") &&
-        !urlSearch.contains("7") &&
-        !urlSearch.contains("8") &&
-        !urlSearch.contains("9") &&
-        !urlSearch.contains("0"))
+    if (urlSearch != null && urlSearch.isNotEmpty && urlSearch.length > 2) {
+      print("START initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition3");
       startProcessSearch(ctx, urlSearch, true);
-    else
+    } else {
+      print("START initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition4");
       loadAssetsUnfiltered(ctx);
-
+    }
     requestCurrentPosition();
+    print("START initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition5");
   }
 
   double parseDouble(String position, int piece) =>
@@ -791,11 +784,6 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     tabController = TabController(vsync: this, length: TabPages.pages.length);
     tabController.addListener(_handleTabSelection);
     initListModel();
-    /*if (hasNotHitSearch()) {
-      initHasHitSearch().then((hasHit) {
-        if (!hasHit) initBlinkAnimation();
-      });
-    }*/
 
     updateCurrentListItemCounter();
 
@@ -1285,6 +1273,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   void startProcessSearch(BuildContext ctx, String selected, hideInfoBox) {
     InternetConnectivityChecker.resumeAutoChecker();
+    print("START startProcessSearch");
 /* TODO BRING BACK THE INFO BOX
     if (/*hasNotHitSearch() && */ !hideInfoBox) {
       Dialogs.showInfoDialogWithCloseButton(ctx);
@@ -1293,8 +1282,10 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     //TODO ask users to rate the app as they are using this advanced feature multiple times
 
     if (selected != null) {
+      print("START startProcessSearch2");
       filterListUpdateTitle(ctx, selected);
     } else {
+      print("START startProcessSearch3");
       _updateDistanceToAllMerchantsIfNotDoneYet();
       showUnfilteredLists(ctx);
     }
@@ -1315,18 +1306,23 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   //bool hasNotHitSearch() => hasHitSearch == null || !hasHitSearch;
 
   void filterListUpdateTitle(ctx, String selectedLocationOrTag) {
+    print("START filterListUpdateTitle");
     var selectedArray =
         selectedLocationOrTag.split(LocationSuggestions.separator);
     final String title = selectedArray[0];
+    print("START filterListUpdateTitle2");
     final String search = title.split(" - ")[0];
     //if selectedItem contains separator ; it has the filename attached
     final bool isLocationFilter = selectedArray.length > 1 ? true : false;
     //TODO Optimize performance by managing lists in memory, this optimization here is only valid in edge case
+    print("START filterListUpdateTitle3");
     showFilterResults(isLocationFilter, selectedLocationOrTag, ctx, search);
+    print("START filterListUpdateTitle4");
   }
 
   void showFilterResults(bool isLocationFilter, String selectedLocationOrTag,
       ctx, String locationTitleOrTag) {
+    print("START showFilterResults");
     zoomMapAfterSelectLocation = false;
 
     //TODO get the tag index directly from the search without having to find it afterwards, just like location is also returned fully but displayed differently
@@ -1334,16 +1330,20 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     TagCoinector tag = selectedLocationOrTag == locationTitleOrTag
         ? TagCoinector.findTag(selectedLocationOrTag)
         : null;
+    print("START showFilterResults2");
 
     Snackbars.showFilterSearchSnackBar(_scaffoldKey, ctx, isLocationFilter,
         capitalize(locationTitleOrTag), tag);
 
+    print("START showFilterResults3");
     loadAssets(ctx, tag, tag != null ? null : selectedLocationOrTag);
 
+    print("START showFilterResults4");
     setState(() {
       _searchTerm = locationTitleOrTag;
       titleActionBar = capitalize(locationTitleOrTag);
     });
+    print("START showFilterResults5");
   }
 
   String capitalize(String search) {
