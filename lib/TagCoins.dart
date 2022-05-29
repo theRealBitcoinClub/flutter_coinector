@@ -31,10 +31,10 @@ class TagCoin {
       _tagCoins.add(TagCoin(0, "Bitcoin Cash", "BCH", Colors.green));
       _tagCoins.add(TagCoin(1, "Digital Cash", "DASH", Colors.blueAccent));
       _tagCoins.add(TagCoin(2, "Bitcoin Core", "BTC", Colors.orange));
-      _tagCoins.add(TagCoin(3, "Tether USD", "USDT", Colors.blue));
-      _tagCoins.add(TagCoin(4, "Binance USD", "BUSD", Colors.amberAccent));
+      _tagCoins.add(TagCoin(3, "Tether USD", "USDT", Colors.blue[700]));
+      _tagCoins.add(TagCoin(4, "Binance USD", "BUSD", Colors.amber));
       _tagCoins.add(TagCoin(5, "Flex USD", "FUSD", Colors.purple));
-      _tagCoins.add(TagCoin(6, "Maker DAI", "DAI", Colors.yellow));
+      _tagCoins.add(TagCoin(6, "Maker DAI", "DAI", Colors.yellow[900]));
       _tagCoins.add(TagCoin(7, "Reserve", "RUSD", Colors.blueGrey));
     }
     return _tagCoins;

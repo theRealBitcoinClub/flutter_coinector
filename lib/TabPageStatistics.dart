@@ -24,7 +24,7 @@ class TabPagesStatistics {
         title: 'Bitcoin / Crypto',
         tabIndex: 0,
         color: Colors.grey,
-        varietyCount: 3),
+        varietyCount: 8),
     TabPageStatistics(
         text: 'BRAND',
         icon: Icons.brightness_auto_outlined,
