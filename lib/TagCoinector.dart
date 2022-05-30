@@ -155,7 +155,8 @@ class TagCoinector {
   static TagCoinector _findTagIndex(String searchTerm, List<String> tags) {
     print("START: _findTagIndex:");
     var search = searchTerm.trim().split(" ")[0].toLowerCase();
-    print("_findTagIndex 2");
+    print(
+        "_findTagIndex 2"); //TODO freesearch on bmap doesnt match the tag but on coinector it does
     for (int i = 0; i < tags.length; i++) {
       String tagItem = tags.elementAt(i);
       List<String> splittedTag = tagItem.split(" ");
