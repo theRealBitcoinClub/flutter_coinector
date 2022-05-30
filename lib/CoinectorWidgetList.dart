@@ -1115,17 +1115,13 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   void handleStatsButtonClick(ctx) async {
-    try {
-      if (Platform.isAndroid || Platform.isIOS) {
-        await Navigator.push(
-          ctx,
-          MaterialPageRoute(builder: (buildCtx) => PieChartCoins()),
-        );
-      }
-    } catch (e) {
-      //forward users to bitcoinmap.cash if app is started in web
+    if (kIsWeb)
       UrlLauncher.launchURI("http://bmap.app/android");
-    }
+    else
+      Navigator.push(
+        ctx,
+        MaterialPageRoute(builder: (buildCtx) => PieChartCoins()),
+      );
   }
 
   List<Widget> buildAllTabContainer(ctx) {
