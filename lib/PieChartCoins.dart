@@ -271,7 +271,7 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
 
   void initTabContinentByContinent(int index) {
     TagContinent.getContinents().forEach((TagContinent element) {
-      _initTab(index, continent: element.short.toLowerCase());
+      _initTab(index, element.short.toLowerCase());
     });
   }
 
@@ -285,10 +285,9 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
         ));
   }
 
-  void _initTab(int i, {String continent}) {
+  void _initTab(int i, String continent) {
     title = TabPagesStatistics.pages[_tabController.index].title;
-    AssetLoader.loadAndDecodeAsset(
-            "assets/" + (continent != null ? continent : "places") + ".json")
+    AssetLoader.loadAndDecodeAsset("assets/" + continent + ".json")
         .then((places) {
       places.forEach((item) {
         try {
