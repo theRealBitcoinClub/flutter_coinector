@@ -863,12 +863,6 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   //TODO make use of theme styles everywhere and add switch theme button
 
-  bool _isWebMobile() {
-    return kIsWeb &&
-        (Theme.of(context).platform == TargetPlatform.iOS ||
-            Theme.of(context).platform == TargetPlatform.android);
-  }
-
   @override
   Widget build(BuildContext ctxRoot) {
     /*new Future.delayed(Duration.zero, () async {
@@ -1085,10 +1079,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         icon: Icon(Icons.pie_chart),
         color: Colors.lightBlueAccent,
         onPressed: () {
-          if (_isWebMobile())
-            UrlLauncher.launchURI("https://bmap.app/android");
-          else
-            handleStatsButtonClick(ctx);
+          handleStatsButtonClick(ctx);
         });
   }
 
