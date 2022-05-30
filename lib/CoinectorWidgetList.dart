@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:Coinector/InternetConnectivityChecker.dart';
 import 'package:Coinector/ItemInfoStackLayer.dart';
@@ -1084,10 +1083,13 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   void handleMapButtonClick(ctx) async {
-    try {
-      if (Platform.isAndroid || Platform.isIOS) {
-        //InternetConnectivityChecker.pauseAutoChecker();
-        Merchant result = await Navigator.push(
+    if (kIsWeb)
+      UrlLauncher.launchBitcoinMap();
+    else {
+      //InternetConnectivityChecker.pauseAutoChecker();
+      Merchant result;
+      try {
+        result = await Navigator.push(
           ctx,
           MaterialPageRoute(
               builder: (buildCtx) => MapSample(
@@ -1099,18 +1101,15 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                           ? 5.0
                           : 0.0)),
         );
-        _updateDistanceToAllMerchantsIfNotDoneYet();
-        if (result != null) {
-          showFilterResults(null, result.name, ctx, result.name);
-          animateToTab(result);
-          // showSnackBar("Showing selected merchant: " + result.name);
-        } else {
-          showUnfilteredLists(ctx);
-        }
+      } catch (e) {}
+      _updateDistanceToAllMerchantsIfNotDoneYet();
+      if (result != null) {
+        showFilterResults(false, result.name, ctx, result.name);
+        animateToTab(result);
+        // showSnackBar("Showing selected merchant: " + result.name);
+      } else {
+        showUnfilteredLists(ctx);
       }
-    } catch (e) {
-      //forward users to bitcoinmap.cash if app is started in web
-      UrlLauncher.launchBitcoinMap();
     }
   }
 
