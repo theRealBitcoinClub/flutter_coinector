@@ -1104,7 +1104,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       } catch (e) {}
       _updateDistanceToAllMerchantsIfNotDoneYet();
       if (result != null) {
-        showFilterResults(false, result.name, ctx, result.name);
+        showFilterResults(false, ctx, result.name);
         animateToTab(result);
         // showSnackBar("Showing selected merchant: " + result.name);
       } else {
@@ -1320,36 +1320,32 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     final bool isLocationFilter = selectedArray.length > 1 ? true : false;
     //TODO Optimize performance by managing lists in memory, this optimization here is only valid in edge case
     print("START filterListUpdateTitle3");
-    showFilterResults(isLocationFilter, selectedLocationOrTag, ctx, search);
+    showFilterResults(isLocationFilter, ctx, search);
     print("START filterListUpdateTitle4");
   }
 
-  void showFilterResults(bool isLocationFilter, String selectedLocationOrTag,
-      ctx, String locationTitleOrTag) {
-    print("START showFilterResults " + selectedLocationOrTag);
+  void showFilterResults(bool isLocationFilter, ctx, String search) {
+    print("START showFilterResults " + search);
     zoomMapAfterSelectLocation = false;
 
     //TODO get the tag index directly from the search without having to find it afterwards, just like location is also returned fully but displayed differently
     //beware that the tag returned by clicking tags is different than the one in search
     TagCoinector tag;
     try {
-      tag = selectedLocationOrTag == locationTitleOrTag
-          ? TagCoinector.findTag(selectedLocationOrTag)
-          : null;
+      tag = TagCoinector.findTag(search);
     } catch (e) {}
     print("START showFilterResults2");
 
-    Snackbars.showFilterSearchSnackBar(_scaffoldKey, ctx, isLocationFilter,
-        capitalize(locationTitleOrTag), tag);
+    Snackbars.showFilterSearchSnackBar(
+        _scaffoldKey, ctx, isLocationFilter, capitalize(search), tag);
 
     print("START showFilterResults3");
-    loadAssets(ctx, tag, tag != null ? null : selectedLocationOrTag);
+    loadAssets(ctx, tag, tag != null ? null : search);
 
     print("START showFilterResults4");
     setState(() {
-      _searchTerm = locationTitleOrTag;
-      titleActionBar =
-          tag == null ? capitalize(locationTitleOrTag) : tag.toUI();
+      _searchTerm = search;
+      titleActionBar = tag == null ? capitalize(search) : tag.toUI();
     });
     print("START showFilterResults5");
   }
