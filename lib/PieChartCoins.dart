@@ -175,38 +175,47 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
     return List.generate(passedMinimumShowThese.length + (hasOther ? 1 : 0),
         (i) {
       final isOther = i == passedMinimumShowThese.length ? true : false;
-      if (isOther)
-        return PieChartSectionData(
-            value: counter["other"].toDouble(),
-            color: Colors.grey,
-            title: "Other",
-            radius: 100,
-            titlePositionPercentageOffset: .4);
+      if (isOther) return pieChartOther();
       final isTouched = i == touchedIndex;
       final fontSize = isTouched ? 16.0 : 14.0;
       final radius = isTouched ? 115.0 : 100.0;
       final widgetSize = isTouched ? 75.0 : 60.0;
       var variety = getVariety(passedMinimumShowThese[i]);
       var c = getCounter(passedMinimumShowThese[i].toString());
-      return PieChartSectionData(
-        titlePositionPercentageOffset: .4,
-        color: variety.color,
-        value: c,
-        title: c.toInt().toString(),
-        radius: radius,
-        titleStyle: TextStyle(
-            fontSize: fontSize,
-            fontWeight: FontWeight.w400,
-            color: const Color.fromRGBO(255, 255, 255, 1.0)),
-        badgeWidget: _Badge(
-            (isTouched && variety.icon == null) ? variety.long : variety.short,
-            widgetSize,
-            variety.color,
-            variety.icon,
-            isTouched),
-        badgePositionPercentageOffset: .98,
-      );
+      return pieChartVariety(
+          variety, c, radius, fontSize, isTouched, widgetSize);
     }, growable: false);
+  }
+
+  PieChartSectionData pieChartVariety(variety, double c, double radius,
+      double fontSize, bool isTouched, double widgetSize) {
+    return PieChartSectionData(
+      titlePositionPercentageOffset: .4,
+      color: variety.color,
+      value: c,
+      title: c.toInt().toString(),
+      radius: radius,
+      titleStyle: TextStyle(
+          fontSize: fontSize,
+          fontWeight: FontWeight.w400,
+          color: const Color.fromRGBO(255, 255, 255, 1.0)),
+      badgeWidget: _Badge(
+          (isTouched && variety.icon == null) ? variety.long : variety.short,
+          widgetSize,
+          variety.color,
+          variety.icon,
+          isTouched),
+      badgePositionPercentageOffset: .98,
+    );
+  }
+
+  PieChartSectionData pieChartOther() {
+    return PieChartSectionData(
+        value: counter["other"].toDouble(),
+        color: Colors.grey,
+        title: "Other",
+        radius: 100,
+        titlePositionPercentageOffset: .4);
   }
 
   List<List<int>> checkForMinimumThreshold(TabPageStatistics page) {
