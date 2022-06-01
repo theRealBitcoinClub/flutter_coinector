@@ -41,5 +41,10 @@ class AutoSuggestions90671291 {
     "Inversiones Tocoquera 2021, C.A. - F3WJ+WQP, Caracas 1014, Capital District, Venezuela",
     // "Inversiones Tocoquera 2021, C.A. - F3WJ+WQP, Caracas 1014, Capital District, Venezuela",
     "PC MANIA, C.A. - Av. Francisco de Miranda, Multicentro Empresarial del Este, Edif. Central Planta Baja, Local PB-24, Caracas 1060, Miranda, Venezuela",
+    "Joyeria Liria C. A. - Av. Libertador con Av. José Félix Sosa. Multicentro Empresarial del Este Chacao, Nivel Miranda, local 9, Caracas 1060, Miranda, Venezuela",
+    "Maniceria Parque Caracas, c.a - Caracas, 1011, Distrito Capital, Venezuela",
+    "Lolar store - Centro comercial Merpoeste, piso 1, pasillo tigre, local 125. Chacao, Caracas 1060, Caracas, Caracas 1060, Distrito Capital, Venezuela",
+    "Los Golfeados de Samuel - Merpoeste. Piso 2 Local 105 Nivel Los Andes, Pasillo Manatí, C. Chico Carrasquel, Caracas 1060, Miranda, Venezuela",
+    "Inversiones Samar - Piso 3 ultimo piso nivel feria de comida Centro Comercial Merpoeste, Local 49 C. Los Ángeles, Caracas 1071, Miranda, Venezuela",
   };
 }
