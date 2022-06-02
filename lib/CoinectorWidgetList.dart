@@ -12,6 +12,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_i18n/flutter_i18n_delegate.dart';
+import 'package:flutter_improved_scrolling/flutter_improved_scrolling.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:geolocator/geolocator.dart';
@@ -1372,8 +1373,37 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       ctx, var listKey, var list, var builderMethod, var cat) {
     return (list != null && list.length > 0)
         ? Padding(
-            child: Stack(children: [
-              AnimatedList(
+            child: ImprovedScrolling(
+              scrollController: _scrollControl,
+              onScroll: (scrollOffset) => debugPrint(
+                'Scroll offset: $scrollOffset',
+              ),
+              onMMBScrollStateChanged: (scrolling) => debugPrint(
+                'Is scrolling: $scrolling',
+              ),
+              onMMBScrollCursorPositionUpdate:
+                  (localCursorOffset, scrollActivity) => debugPrint(
+                'Cursor position: $localCursorOffset\n'
+                'Scroll activity: $scrollActivity',
+              ),
+              enableMMBScrolling: true,
+              enableKeyboardScrolling: true,
+              enableCustomMouseWheelScrolling: true,
+              keyboardScrollConfig: KeyboardScrollConfig(
+                arrowsScrollAmount: 250.0,
+                homeScrollDurationBuilder:
+                    (currentScrollOffset, minScrollOffset) {
+                  return const Duration(milliseconds: 100);
+                },
+                endScrollDurationBuilder:
+                    (currentScrollOffset, maxScrollOffset) {
+                  return const Duration(milliseconds: 2000);
+                },
+              ),
+              customMouseWheelScrollConfig: const CustomMouseWheelScrollConfig(
+                scrollAmountMultiplier: 2.0,
+              ),
+              child: AnimatedList(
                 physics: const ClampingScrollPhysics(),
                 controller: _scrollControl,
                 key: listKey,
@@ -1381,10 +1411,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                 initialItemCount: list.length,
                 itemBuilder: builderMethod,
               ),
-              /*(!kIsWeb || !hasScrollableContent())
-                  ? SizedBox()
-                  : _verticalScroller*/
-            ]),
+            ),
             padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
           )
         : !isInitialized
