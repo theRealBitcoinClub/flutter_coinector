@@ -42,8 +42,10 @@ class MapSampleState extends State<MapSample> {
   final double initialZoomLevel;
   int counterToastGeneral = 0;
   int counterToastSpecific = 0;
+  static const CAM_TILT = 45.0;
 
   static CameraPosition initialCamPosFallback = CameraPosition(
+    tilt: CAM_TILT,
     target: LatLng(41.4027984, 2.1600427),
     zoom: 10, //This position reflect Vila de Gracia Barcelona, Quinoa Bar
   );
@@ -80,6 +82,7 @@ class MapSampleState extends State<MapSample> {
     initMarkerBitmaps();
     if (position != null)
       initialCamPosFallback = CameraPosition(
+          tilt: CAM_TILT,
           target: LatLng(position.latitude, position.longitude),
           zoom: initialZoomLevel);
   }
@@ -123,6 +126,7 @@ class MapSampleState extends State<MapSample> {
     allMarkers = await parseListBuildMarkers(ctx);
     if (allMarkers.length == 1) {
       initialCamPosFallback = CameraPosition(
+          tilt: CAM_TILT,
           target: latLngLastParsedItem,
           zoom: initialZoomFallbackWhenPositionIsProvided);
     }
@@ -267,6 +271,7 @@ class MapSampleState extends State<MapSample> {
             myLocationEnabled: true,
             mapType: MapType.normal,
             markers: allMarkers,
+            buildingsEnabled: true,
             initialCameraPosition: hasMarkers()
                 ? initialCamPosFallback
                 : hasMarkers()
