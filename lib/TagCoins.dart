@@ -36,6 +36,7 @@ class TagCoin {
       _tagCoins.add(TagCoin(5, "Flex USD", "FUSD", Colors.purple));
       _tagCoins.add(TagCoin(6, "Maker DAI", "DAI", Colors.yellow[900]));
       _tagCoins.add(TagCoin(7, "Reserve", "RUSD", Colors.blueGrey));
+      _tagCoins.add(TagCoin(8, "ZCash", "ZEC", Colors.yellow[800]));
     }
     return _tagCoins;
   }

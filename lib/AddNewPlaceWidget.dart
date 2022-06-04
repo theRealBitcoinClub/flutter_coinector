@@ -142,7 +142,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   int _currentContinent = 0;
   int _currentPlace = 0;
 
-  int _selectedBrand = 4; //PRESELECT PANMONI
+  int _selectedBrand;
 
   List<dynamic> _selectedCoin =
       List.filled(TagCoin.getTagCoins().length, false);
@@ -161,9 +161,12 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   @override
   void initState() {
     super.initState();
-    _selectedBrand = isSpecificPlace() ? null : 4;
+    _selectedBrand = isSpecificPlace() ? null : 2; //GOCRYPTO
     reviewMode = isSpecificPlace() ? false : true;
-    _selectedCoin[0] = isSpecificPlace() ? false : true;
+    _selectedCoin[0] =
+        isSpecificPlace() ? false : true; //PRESELECT GOCRYPTO DEFAULT
+    _selectedCoin[2] = isSpecificPlace() ? false : true;
+    _selectedCoin[4] = isSpecificPlace() ? false : true;
     //_initContinent();
     githubCoinector.init();
 
@@ -177,7 +180,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
     if (reviewMode) {
       // ImportData(githubCoinector).importDataSetGoCrypto();
-      //initReviewableDataSet();
+      initReviewableDataSet();
       initScrapedDataSet();
     }
   }
@@ -260,6 +263,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void initReviewableDataSet() async {
+    showLoaderSafe();
     var response = await new Dio().get(
         'https://raw.githubusercontent.com/theRealBitcoinClub/bmap_webp/main/review/json/reviewable.json');
     List<dynamic> reviewables = jsonDecode(response.data);
@@ -284,6 +288,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     setState(() {
       reviewableData = allItems;
     });
+    hideLoaderSafe();
   }
 
   bool hasReviewable() {
@@ -545,15 +550,16 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      //wrapBuildColumnPreFillReviewables(ctx),
-                      //buildSizedBoxSeparator(),
                       showIfPlaceIdNotProvided(
-                          wrapBuildColumnPreFillContinent(ctx)),
+                          wrapBuildColumnPreFillReviewables(ctx)),
                       showIfPlaceIdNotProvided(buildSizedBoxSeparator()),
-                      showIfPlaceIdNotProvided(
-                          wrapBuildColumnPreFillPlace(ctx)),
-                      showIfPlaceIdNotProvided(
-                          buildSizedBoxSeparator(multiplier: 3.0)),
+                      // showIfPlaceIdNotProvided(
+                      //     wrapBuildColumnPreFillContinent(ctx)),
+                      // showIfPlaceIdNotProvided(buildSizedBoxSeparator()),
+                      // showIfPlaceIdNotProvided(
+                      //     wrapBuildColumnPreFillPlace(ctx)),
+                      // showIfPlaceIdNotProvided(
+                      //     buildSizedBoxSeparator(multiplier: 3.0)),
                       wrapBuildColumnName(ctx),
                       wrapBuildColumnAdr(ctx),
                       wrapBuildGoogleButtons(ctx),
