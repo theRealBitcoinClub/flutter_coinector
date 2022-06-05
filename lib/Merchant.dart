@@ -90,9 +90,9 @@ class Merchant {
         '","l":"' +
         location.replaceAll('"', '') +
         '","b":"' +
-        brand.toString() +
+        (brand == null ? "null" : brand.toString()) +
         '","w":"' +
-        acceptedCoins +
+        (acceptedCoins == null ? "null" : acceptedCoins.toString()) +
         '"}';
   }
 

@@ -10,6 +10,7 @@ import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_i18n/flutter_i18n_delegate.dart';
 import 'package:flutter_improved_scrolling/flutter_improved_scrolling.dart';
@@ -27,6 +28,7 @@ import 'AddNewPlaceWidget.dart';
 import 'CardItemBuilder.dart';
 import 'Dialogs.dart';
 import 'FileCache.dart';
+import 'GithubCoinector.dart';
 import 'ListModel.dart';
 import 'LocationSuggestions.dart';
 import 'MapSample.dart';
@@ -74,7 +76,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   TabController tabController;
   bool _customIndicator = false;
   List<ListModel<Merchant>> _lists = [];
-  // Set<String> _duplicates = {};
+  Map<String, Merchant> _uniqueMerchantMap = Map();
   List<Merchant> names = []; // names we get from API
   List<ListModel<Merchant>> tempLists = [];
   List<ListModel<Merchant>> unfilteredLists = [];
@@ -221,6 +223,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     await _loadAndParseAsset(tag, locationFilter, 'as');
     await _loadAndParseAsset(tag, locationFilter, 'au');
     await _loadAndParseAsset(tag, locationFilter, 'e');
+    // printUniqueMerchantMap();
   }
 
   Future _loadAndParseAsset(
@@ -254,6 +257,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         m2 = _cachedMerchants[fileName][i];
 
       // checkDuplicate(m2);
+      // addToUniqueMerchantMap(fileName, m2);
       //at the moment there is no PAY feature: m2.isPayEnabled = await AssetLoader.loadReceivingAddress(m2.id) != null;
       int brandFilter = -1;
       bool isTitle = true;
@@ -277,23 +281,36 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   String checkForCoinFilter(Merchant m2, String locationTitleFilter) {
-    return m2.acceptedCoins != null ? containsCoin(locationTitleFilter) : "";
+    return m2.acceptedCoins != null ? _containsCoin(locationTitleFilter) : "";
   }
 
   int checkForBrandFilter(Merchant m2, String locationTitleFilter) {
-    return m2.brand != null ? containsBrand(locationTitleFilter) : -1;
+    return m2.brand != null ? _containsBrand(locationTitleFilter) : -1;
   }
-/*
-  void checkDuplicate(Merchant m2) {
-    if (!kReleaseMode) {
-      if (_duplicates.contains(m2.id)) {
-        print("DUPLICATE: " + m2.id + "\n");
-      }
-      _duplicates.add(m2.id);
-    }
-  }*/
 
-  containsBrand(String locationTitleFilter) {
+  void addToUniqueMerchantMap(String fileName, Merchant m2) {
+    if (kReleaseMode) return;
+    // if (!m2.id.startsWith("ChI")) return;
+
+    var key = fileName + ";" + m2.id;
+    Merchant uniqueMerchant = _uniqueMerchantMap[key];
+    if (uniqueMerchant == null)
+      _uniqueMerchantMap[key] = m2;
+    else {
+      if (int.parse(uniqueMerchant.reviewCount) < int.parse(m2.reviewCount)) {
+        _uniqueMerchantMap[key] = m2;
+      } else if (int.parse(uniqueMerchant.reviewCount) ==
+          int.parse(m2.reviewCount)) {
+        if (uniqueMerchant.tagsDatabaseFormat
+                .contains(TagCoinector.PLACEHOLDER_TAG) &&
+            !m2.tagsDatabaseFormat.contains(TagCoinector.PLACEHOLDER_TAG)) {
+          _uniqueMerchantMap[key] = m2;
+        }
+      }
+    }
+  }
+
+  int _containsBrand(String locationTitleFilter) {
     // print("\nBRAND" + m2.brand.toString());
     int brandIndex = -1;
 
@@ -307,7 +324,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     return brandIndex;
   }
 
-  String containsCoin(String locationTitleFilter) {
+  String _containsCoin(String locationTitleFilter) {
     // print("\nCOINS" + m2.acceptedCoins.toString());
     StringBuffer coins = new StringBuffer();
     TagCoin.getTagCoins()
@@ -1604,5 +1621,52 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       // print("checkCoinSUCCESS");
       resultCoin.write(currentCoin.index.toString());
     }
+  }
+
+  GithubCoinector coinector = GithubCoinector();
+
+  void printWrapped(String text, coinector) async {
+    // final pattern = new RegExp('.{1,800000}'); // 800 is the size of each chunk
+    // pattern.allMatches(text.substring(0, 10000)).forEach((match) async {
+    bool test = await coinector.githubUploadPlaceDetailStack(
+        text, "UNIQUE", DateTime.now().millisecond.toString());
+    print("\nTEST " + test.toString());
+    // });
+  }
+
+  int lastUniqueMerchMapSize = 0;
+
+  void printUniqueMerchantMap() {
+    if (lastUniqueMerchMapSize == _uniqueMerchantMap.length) return;
+
+    lastUniqueMerchMapSize = _uniqueMerchantMap.length;
+
+    if (kReleaseMode) return;
+    coinector.init();
+
+    StringBuffer buff = StringBuffer();
+    int index = 0;
+    buff.writeln("[");
+    String lastFile = "";
+    _uniqueMerchantMap.forEach((key, value) {
+      var currentFile = key.split(";")[0];
+      if (lastFile != currentFile) {
+        lastFile = currentFile;
+        buff.writeln("FILECHANGE " + currentFile);
+      }
+      index++;
+      buff.writeln(value.getBmapDataJson() + ",");
+
+      // if (index == 10) {
+      //   printWrapped(buff.toString(), coinector);
+      //   buff = StringBuffer();
+      // }
+      // else if (index == _uniqueMerchantMap.length) {
+      //   printWrapped(buff.toString(), coinector);
+      // }
+    });
+    buff.writeln("]");
+    Clipboard.setData(ClipboardData(text: buff.toString()));
+    // coinector.dispose();
   }
 }

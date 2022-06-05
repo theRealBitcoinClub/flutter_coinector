@@ -1,4 +1,5 @@
 [
+  FILECHANGE am
   {"p":"windschief","x":"16.8588867","y":"-88.281852","n":"Windschief Beach Bar And MiniGolf","t":"2","c":"35","s":"4.7","d":"0","a":"100,96,15,32","l":"Hopkins, Belize","b":"null","w":"null"},
   {"p":"casasofiarestaurant","x":"17.209844","y":"-88.9415","n":"Casa Sofia Italian Restaurant","t":"0","c":"33","s":"4.4","d":"0","a":"102,108,71,15","l":"Western Highway, Unitedville, Belize","b":"null","w":"null"},
   {"p":"casasofiahotel","x":"17.209844","y":"-88.9417","n":"Casa Sofia Inn","t":"5","c":"33","s":"4.4","d":"0","a":"104,104,104,104","l":"Western Highway, Unitedville, Belize","b":"null","w":"null"},
@@ -1837,6 +1838,7 @@
   {"p":"ChIJQXIUP6ZfKowRc39W3FlsMkE","x":"10.4816795","y":"-66.91166710000002","n":"Grupo Romano C.A.","t":"4","c":"6","s":"4.7","d":"0","a":"250,181,104,104","l":"Entre esquina Santa Isabel y Prado de María, Quinta 65. 1040 Caracas, 1040, Caracas, Caracas 1040, Distrito Capital, Venezuela","b":"4","w":"0"},
   {"p":"ChIJ216PJvdYKowR3xPTtV61mA4","x":"10.4806981","y":"-66.8608417","n":"Especias Market","t":"999","c":"3","s":"2.3","d":"0","a":"114,250,288,104","l":"F4JQ+7MF, Caracas 1080, Miranda, Venezuela","b":"4","w":"0"},
   {"p":"ChIJ76IDeo1ZKowRHSVU2sXY2G8","x":"10.4833513","y":"-66.8185575","n":"El Rey de los Enrollados","t":"4","c":"1","s":"5","d":"0","a":"124,244,150,104","l":"Av Francisco de -Miranda, Centro comercial El Marques, piso 1 local 217, Caracas 1071, Miranda, Venezuela","b":"4","w":"0"},
+  FILECHANGE as
   {"p":"villavveden","x":"57.4516393","y":"39.7834206","n":"Villa Vvedenye","t":"5","c":"30","s":"4.5","d":"0","a":"104,104,104,104","l":"Yaroslavl, Russia, Asia","b":"null","w":"null"},
   {"p":"Ekoferma","x":"55.6545653","y":"35.6808708","n":"Ekoferma Aleksandrovskiy Spas - Экоферма Александровский Спас","t":"999","c":"7","s":"3.9","d":"0","a":"104,104,104,104","l":"Tushkov Gorodok, Moscow Oblast, Russia, 143240","b":"13","w":"0,1"},
   {"p":"numazukoginza","x":"35.674296","y":"139.768588","n":"Sushi-Bar Numazuko Ginza 1st - 回転寿司酒場 銀座沼津港","t":"0","c":"293","s":"3.6","d":"0","a":"67,104,104,104","l":"1 Chome-8-19 Ginza, Chuo City, Tokyo, Japan","b":"10","w":"0"},
@@ -2248,6 +2250,7 @@
   {"p":"ChIJzx0H-bMDQG0R615VlMfL5Es","x":"-39.92152120000001","y":"175.049536","n":"Z Energy","t":"999","c":"142","s":"4.2","d":"0","a":"250,29,136,286","l":"14 Dublin Street, Whanganui 4500, New Zealand","b":"10","w":"0,2"},
   {"p":"ChIJ1yh4Uk52bm0Ra-iwaa2Mp-Y","x":"-37.70019149999999","y":"176.2850871","n":"Ray White Papamoa","t":"999","c":"30","s":"4.2","d":"0","a":"42,259,175,249","l":"13 Domain Road, Papamoa Beach, Papamoa 3118, New Zealand","b":"10","w":"0"},
   {"p":"ChIJFyVPqcNBDW0RGDS34ojMNGE","x":"-36.8940432","y":"174.6195066","n":"Gull Henderson","t":"999","c":"22","s":"3.3","d":"0","a":"250,286,69,142","l":"150 Henderson Valley Road, Henderson, Auckland 0612, New Zealand","b":"10","w":"0,2"},
+  FILECHANGE au
   {"p":"gringoloco","x":"-28.0012452","y":"153.4309136","n":"Gringo Loco Cantina","t":"2","c":"168","s":"3.6","d":"0","a":"156,129,138,31","l":"Esplanade, Surfers Paradise QLD, Australia","b":"null","w":"null"},
   {"p":"restaurant1903","x":"-31.9444011","y":"115.8634259","n":"1903 Restaurant","t":"0","c":"116","s":"4.3","d":"0","a":"67,100,97,143","l":"Robinson Avenue, Perth WA, Australia","b":"null","w":"null"},
   {"p":"urbanpizza","x":"-33.885727","y":"151.177249","n":"Urban Pizza Bar","t":"1","c":"83","s":"4.4","d":"0","a":"14,102,109,110","l":"Layton Street, Camperdown NSW, Australia","b":"null","w":"null"},
@@ -2487,6 +2490,7 @@
   {"p":"ChIJpySJfXZDkWsRsIkObrGvLZ8","x":"-27.61812369999999","y":"153.1274167","n":"Fun Over Fifty Holidays - Immersive tours & adventures","t":"999","c":"31","s":"4.6","d":"0","a":"271,276,201,249","l":"908/9 Murrajong Rd, Springwood QLD 4127, Australia","b":"0","w":"0,2"},
   {"p":"ChIJD38zIlND1moRmqAdPPPFeno","x":"-37.81434299999999","y":"144.96573","n":"Mind Games","t":"999","c":"676","s":"4.6","d":"0","a":"107,118,96,104","l":"145 Swanston St, Melbourne VIC 3000, Australia","b":"0","w":"0"},
   {"p":"ChIJ8VKx5sj51WsR9OvtUK5z0tk","x":"-19.2633376","y":"146.7584322","n":"CaravanMart","t":"4","c":"71","s":"4","d":"0","a":"69,250,262,271","l":"446 Ingham Rd, Garbutt QLD 4814, Australia","b":"0","w":"0,1,2"},
+  FILECHANGE e
   {"p":"lalima","x":"41.4059946","y":"2.1567663","n":"La Lima, comedor vegano","t":"0","c":"11","s":"5.0","d":"0","a":"3,5,6,11","l":"Carrer de lAlzina, Barcelona, Spain","b":"0","w":"0"},
   {"p":"pasticceria","x":"41.4047427","y":"2.1559692","n":"La Pasticceria di Gracia","t":"1","c":"93","s":"4.5","d":"0","a":"9,10,12,11","l":"Carrer de Verdi, Barcelona, Spain","b":"0","w":"0"},
   {"p":"lavermu","x":"41.4000891","y":"2.1568007","n":"La Vermu - Bar and Tapas","t":"2","c":"473","s":"4.2","d":"0","a":"31,32,33,36","l":"Carrer de Sant Domènec, Barcelona, Spain","b":"0","w":"0"},
