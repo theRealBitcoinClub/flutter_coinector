@@ -24,18 +24,20 @@ class GithubCoinector {
   }
 
   init() {
+    if (_github != null && commitUser != null) return;
+
     _github =
         GitHub(auth: Authentication.withToken(ConfigReader.getGithubKey()));
     commitUser = CommitUser("therealbitcoinclub", "trbc@bitcoinmap.cash");
     print("GITHUB" + _github.toString());
   }
 
-  Future<void> githubUploadPlaceDetailStack(
+  Future<bool> githubUploadPlaceDetailStack(
       String stack, String continent, String chunkId) async {
     CreateFile createFile = _githubCreateFileMerchantDetailStack(
         commitUser, stack, continent, chunkId);
     //TODO REMOVE ALL SPECIAL ACCENTED CHARACTERS FROM THE APP AS IT MAKES THINGS TOO COMPLICATED, ON THE INTERNET WE DO NOT HAVE ACCENTS, OBEY!!! USE THE NORMALIZE METHOD THEN REPLACE / and + with -_ again
-    await _uploadDataSafe(createFile);
+    return await _uploadDataSafe(createFile);
   }
 
   Future<String> githubUploadPlaceDetails(Merchant merchant) async {
@@ -124,12 +126,13 @@ class GithubCoinector {
     await _uploadDataSafe(createFile);
   }
 
-  Future<void> _uploadDataSafe(CreateFile createFile) async {
+  Future<bool> _uploadDataSafe(CreateFile createFile) async {
     bool hasSent = false;
     while (!hasSent) {
       hasSent =
           await _githubSendDataToRepository("flutter_coinector", createFile);
     }
+    return true;
   }
 
   CreateFile _githubCreateFileReviewablesGoCrypto(
