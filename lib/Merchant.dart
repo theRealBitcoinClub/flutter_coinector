@@ -123,6 +123,9 @@ class Merchant {
         tagsDatabaseFormat = json['a'],
         //TODO use one single source of locations, take the suggestions or the placesIDAddress as reference
         location = HtmlUnescape().convert(json['l']),
-        brand = json['b'] != null ? int.parse(json['b']) : null,
-        acceptedCoins = json['w'];
+        brand = json['b'] != null && json['b'] != 'null'
+            ? int.parse(json['b'])
+            : null,
+        acceptedCoins =
+            json['w'] != null && json['w'] != 'null' ? json['w'] : null;
 }
