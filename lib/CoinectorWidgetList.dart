@@ -76,7 +76,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   TabController tabController;
   bool _customIndicator = false;
   List<ListModel<Merchant>> _lists = [];
-  Map<String, Merchant> _uniqueMerchantMap = Map();
+  // Map<String, Merchant> _uniqueMerchantMap = Map();
   List<Merchant> names = []; // names we get from API
   List<ListModel<Merchant>> tempLists = [];
   List<ListModel<Merchant>> unfilteredLists = [];
@@ -287,7 +287,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   int checkForBrandFilter(Merchant m2, String locationTitleFilter) {
     return m2.brand != null ? _containsBrand(locationTitleFilter) : -1;
   }
-
+/*
   void addToUniqueMerchantMap(String fileName, Merchant m2) {
     if (kReleaseMode) return;
     // if (!m2.id.startsWith("ChI")) return;
@@ -308,7 +308,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         }
       }
     }
-  }
+  }*/
 
   int _containsBrand(String locationTitleFilter) {
     // print("\nBRAND" + m2.brand.toString());
@@ -1636,6 +1636,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   int lastUniqueMerchMapSize = 0;
 
+  /*
   void printUniqueMerchantMap() {
     if (lastUniqueMerchMapSize == _uniqueMerchantMap.length) return;
 
@@ -1668,5 +1669,5 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     buff.writeln("]");
     Clipboard.setData(ClipboardData(text: buff.toString()));
     // coinector.dispose();
-  }
+  }*/
 }
