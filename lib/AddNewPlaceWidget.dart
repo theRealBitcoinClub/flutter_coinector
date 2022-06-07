@@ -1518,11 +1518,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     });
     resetImages();
     _searchForPrefill(
-        _merchantGoogleData.name + ", " + _merchantGoogleData.location,
-        placesId: (_merchantGoogleData.id != null &&
-                _merchantGoogleData.id.startsWith("ChI")
-            ? _merchantGoogleData.id
-            : null));
+        _merchantGoogleData.name + ", " + _merchantGoogleData.location);
   }
 
   _selectContinent(var index) {
