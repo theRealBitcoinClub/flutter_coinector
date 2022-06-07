@@ -11,6 +11,7 @@ class Toaster {
   static const double DEFAULT_FONT_SIZE = 16.0;
   static const Color DEFAULT_TEXT_COLOR = Colors.white;
   static Color defaultBackgroundColor = Colors.yellow[900];
+  static Color errorBackgroundColor = Colors.red[900];
   static const int DEFAULT_TIME_FOR_IOS_AND_WEB = 3;
   static const Toast DEFAULT_TIME_FOR_ANDROID = Toast.LENGTH_LONG;
   static const ToastGravity DEFAULT_TOAST_GRAVITY = ToastGravity.TOP;
@@ -44,6 +45,11 @@ class Toaster {
   static void _showWarning(message) async {
     if (!await cancel()) isToasting = true;
     showToast(message, defaultBackgroundColor);
+  }
+
+  static void _showError(message) async {
+    if (!await cancel()) isToasting = true;
+    showToast(message, errorBackgroundColor);
   }
 
   static Future<bool> cancel() async {
@@ -139,7 +145,7 @@ class Toaster {
   }
 
   static void showMerchantNotFoundOnGoogleMapsTryAgain(ctx) {
-    _showWarning(
+    _showError(
         Translator.translate(ctx, "merchant_not_found_on_gmaps_try_again"));
   }
 
