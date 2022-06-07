@@ -18,6 +18,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 import 'package:select_form_field/select_form_field.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';
 import 'Dialogs.dart';
@@ -72,6 +73,21 @@ class AddNewPlaceWidget extends StatefulWidget {
   final Color actionBarColor;
   final String typeTitle;
   final Merchant merchantBmapDataset;
+  final String lastReviewableIndex;
+  final String lastReviewableCount;
+
+  static const _kReviewablesCountAndCurrentIndex =
+      "reviewablesCountAndCurrentIndex";
+
+  static Future<String> getLastReviewableCountAndIndex() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getString(_kReviewablesCountAndCurrentIndex);
+  }
+
+  static setLastReviewableCountAndIndex(String value) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.setString(_kReviewablesCountAndCurrentIndex, value);
+  }
 
   const AddNewPlaceWidget(
       {Key key,
@@ -80,13 +96,22 @@ class AddNewPlaceWidget extends StatefulWidget {
       this.typeTitle,
       this.actionBarColor,
       this.pId,
-      this.merchantBmapDataset})
+      this.merchantBmapDataset,
+      this.lastReviewableIndex,
+      this.lastReviewableCount})
       : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return _AddNewPlaceWidgetState(selectedType, accentColor, typeTitle,
-        actionBarColor, pId, merchantBmapDataset);
+    return _AddNewPlaceWidgetState(
+        selectedType,
+        accentColor,
+        typeTitle,
+        actionBarColor,
+        pId,
+        merchantBmapDataset,
+        lastReviewableIndex,
+        lastReviewableCount);
   }
 }
 
@@ -155,18 +180,38 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   List<Map<String, dynamic>> reviewableData = [];
 
   bool reviewMode = true;
-  _AddNewPlaceWidgetState(this.selectedType, this.accentColor, this.typeTitle,
-      this.actionBarColor, this.pId, this.merchantBmapDataset);
+
+  String lastReviewableIndex;
+  String lastReviewableCount;
+
+  _AddNewPlaceWidgetState(
+      this.selectedType,
+      this.accentColor,
+      this.typeTitle,
+      this.actionBarColor,
+      this.pId,
+      this.merchantBmapDataset,
+      this.lastReviewableIndex,
+      this.lastReviewableCount);
 
   @override
   void initState() {
     super.initState();
+    int lastIndex = 0;
+    if (lastReviewableIndex != null) lastIndex = int.parse(lastReviewableIndex);
+
+    int lastCount = 0;
+    if (lastReviewableCount != null) lastCount = int.parse(lastReviewableCount);
+
+    _currentReviewableIndex =
+        lastIndex != 0 && lastIndex + 1 < lastCount ? lastIndex + 1 : 0;
     _selectedBrand = isSpecificPlace() ? null : 2; //GOCRYPTO
     reviewMode = isSpecificPlace() ? false : true;
     _selectedCoin[0] =
         isSpecificPlace() ? false : true; //PRESELECT GOCRYPTO DEFAULT
     _selectedCoin[2] = isSpecificPlace() ? false : true;
     _selectedCoin[4] = isSpecificPlace() ? false : true;
+
     //_initContinent();
     githubCoinector.init();
 
@@ -288,7 +333,30 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     setState(() {
       reviewableData = allItems;
     });
+
+    _preselectNextReviewableOrResetBackToZero();
+
     hideLoaderSafe();
+  }
+
+  void _preselectNextReviewableOrResetBackToZero() {
+    AddNewPlaceWidget.getLastReviewableCountAndIndex()
+        .then((String countAndIndex) {
+      if (countAndIndex != null && countAndIndex.isNotEmpty) {
+        int count = int.parse(countAndIndex.split(",")[0]);
+        int index = int.parse(countAndIndex.split(",")[1]);
+        bool hasNewReviewables = reviewableData.length != count;
+
+        if (!hasNewReviewables) {
+          setState(() {
+            _selectReviewable((index + 1).toString());
+          }); //hop to next reviewable, fallback to zero when out of bounds
+        } else {
+          AddNewPlaceWidget.setLastReviewableCountAndIndex(
+              reviewableData.length.toString() + ",0");
+        }
+      }
+    });
   }
 
   bool hasReviewable() {
@@ -673,7 +741,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       children: <Widget>[
         SelectFormField(
             type: SelectFormFieldType.dropdown, // or can be dialog
-            initialValue: "0",
+            initialValue: _currentReviewableIndex.toString(),
             icon: Icon(Icons.search),
             labelText: 'Reviewables',
             items: reviewableData,
@@ -1507,24 +1575,40 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       opacity: 1.0,
       child: buildColumnPreFillPlaceSelectBox(ctx));
 
-  _selectReviewable(var index) {
-    int i = int.parse(index);
-    if (i == 0) {
-      drawFormStep(FormStep.HIT_SEARCH);
+  int _currentReviewableIndex = 0;
+
+  _selectReviewable(String index) {
+    setState(() {
+      _currentReviewableIndex = int.parse(index);
+    });
+    if (_currentReviewableIndex == 0 ||
+        _currentReviewableIndex > reviewableMerchants.length) {
+      setState(() {
+        _currentReviewableIndex = 0;
+      });
+      drawFormStep(FormStep.IN_NAME);
       return;
     }
+
     setState(() {
-      _merchantGoogleData = reviewableMerchants.elementAt(i - 1);
+      _merchantGoogleData =
+          reviewableMerchants.elementAt(_currentReviewableIndex - 1);
     });
+
     resetImages();
     _searchForPrefill(
         _merchantGoogleData.name + ", " + _merchantGoogleData.location);
+
+    AddNewPlaceWidget.setLastReviewableCountAndIndex(
+        reviewableData.length.toString() +
+            "," +
+            _currentReviewableIndex.toString());
   }
 
   _selectContinent(var index) {
     var contiIndex = int.parse(index);
     if (contiIndex == 0) {
-      drawFormStep(FormStep.HIT_SEARCH);
+      drawFormStep(FormStep.IN_NAME);
       return;
     }
     setState(() {

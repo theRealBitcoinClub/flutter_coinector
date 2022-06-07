@@ -1523,19 +1523,31 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     if (!isManagerModeRelease) {
       UrlLauncher.launchSubmitForm();
       return;
-    } else
-      await Navigator.push(
-        ctx,
-        MaterialPageRoute(
-            builder: (buildCtx) => AddNewPlaceWidget(
+    } else {
+      AddNewPlaceWidget.getLastReviewableCountAndIndex()
+          .then((String countAndIndex) async {
+        String index;
+        String count;
+        if (countAndIndex != null && countAndIndex.isNotEmpty) {
+          count = countAndIndex.split(",")[0];
+          index = countAndIndex.split(",")[1];
+        }
+        await Navigator.push(
+          ctx,
+          MaterialPageRoute(
+              builder: (buildCtx) => AddNewPlaceWidget(
                   selectedType: tabController.index,
                   accentColor: getAccentColorOfSelectedTab(),
                   actionBarColor: getDarkColorOfSelectedTab(),
                   typeTitle: addButtonCategory,
-                )),
-      );
-    _updateDistanceToAllMerchantsIfNotDoneYet();
-    Snackbars.showSnackBarAfterAddPlace(_scaffoldKey, ctx);
+                  lastReviewableIndex: index,
+                  lastReviewableCount: count)),
+        );
+
+        _updateDistanceToAllMerchantsIfNotDoneYet();
+        Snackbars.showSnackBarAfterAddPlace(_scaffoldKey, ctx);
+      });
+    }
   }
 
   Future<Position> _getCoarseLocationViaIP() async {
