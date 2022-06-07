@@ -14,7 +14,7 @@ class Toaster {
   static Color errorBackgroundColor = Colors.red[900];
   static const int DEFAULT_TIME_FOR_IOS_AND_WEB = 3;
   static const Toast DEFAULT_TIME_FOR_ANDROID = Toast.LENGTH_LONG;
-  static const ToastGravity DEFAULT_TOAST_GRAVITY = ToastGravity.TOP;
+  static const ToastGravity DEFAULT_TOAST_GRAVITY = ToastGravity.CENTER;
 
   static void showToastInternetError(ctx) {
     _showWarning(Dialogs.INTERNET_ERROR);
@@ -40,6 +40,10 @@ class Toaster {
     _showWarning(Translator.translate(ctx, "toaster_email_not_configured"));
   }
 
+  static void showToastSelectCategory(ctx) {
+    _showError(Translator.translate(ctx, "toaster_select_category"));
+  }
+
   static var isToasting = false;
 
   static void _showWarning(message) async {
@@ -60,12 +64,20 @@ class Toaster {
   }
 
   static void showAddName(ctx) {
-    _showWarning(Translator.translate(
+    _showError(Translator.translate(
         ctx, "toaster_enter_name_atleast_five_characters"));
   }
 
+  static void showAddMoreImages(ctx) {
+    _showError(Translator.translate(ctx, "toaster_more_images"));
+  }
+
+  static void showAddMinimumTwoTags(ctx) {
+    _showError(Translator.translate(ctx, "toaster_minimum_two_tags"));
+  }
+
   static void showAddExactlyFourTags(ctx) {
-    _showWarning(Translator.translate(ctx, "toaster_minimum_four_tags"));
+    _showError(Translator.translate(ctx, "toaster_minimum_four_tags"));
   }
 
   static void showAddAtleastOneReceivingAddress(ctx) {
@@ -73,7 +85,7 @@ class Toaster {
   }
 
   static void showAddFullAdr(ctx) {
-    _showWarning(Translator.translate(ctx, "toaster_full_adr"));
+    _showError(Translator.translate(ctx, "toaster_full_adr"));
   }
 
   static void showInstructionToast(

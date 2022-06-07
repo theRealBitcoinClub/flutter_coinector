@@ -43,6 +43,7 @@ const int MAX_IMAGES_UPLOAD = 3;
 const int MIN_INPUT_ADR = 5;
 const int MIN_INPUT_NAME = 2;
 const int MIN_INPUT_TAGS = 2;
+const int MIN_INPUT_SELECT_IMAGES = 3;
 const int MAX_INPUT_TAGS = 4;
 const int MIN_INPUT_BCHyDASH =
     32; //TODO offer an address field for each coin right after checking its box, activates pay button for that place
@@ -172,7 +173,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   List<dynamic> _selectedCoin =
       List.filled(TagCoin.getTagCoins().length, false);
 
-  bool _uploadWithLessThanFourTags = false;
+  // bool _uploadWithLessThanFourTags = false;
   String _textSubmitButton = "";
 
   int _selectedCategory;
@@ -621,6 +622,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                       showIfPlaceIdNotProvided(
                           wrapBuildColumnPreFillReviewables(ctx)),
                       showIfPlaceIdNotProvided(buildSizedBoxSeparator()),
+                      showIfPlaceIdNotProvided(buildSizedBoxSeparator()),
                       // showIfPlaceIdNotProvided(
                       //     wrapBuildColumnPreFillContinent(ctx)),
                       // showIfPlaceIdNotProvided(buildSizedBoxSeparator()),
@@ -634,7 +636,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                       wrapBuildMultipleSwitchButton(ctx),
                       wrapBuildColumnCategory(ctx),
                       wrapBuildColumnTag(ctx),
+                      buildSizedBoxSeparator(multiplier: 1.0),
                       wrapBuildSelectedTagsList(),
+                      buildSizedBoxSeparator(multiplier: 2.0),
                       wrapBuildColumnImages(),
                       buildColumnCoins(ctx),
                       buildColumnBrands(ctx)
@@ -860,6 +864,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   List<RadioListTile> buildCategorySelector() {
     var tc = TabPages.pages.map((TabPageCategory e) {
       return RadioListTile(
+        tileColor: _selectedCategory == null
+            ? Colors.blueAccent.withOpacity(0.2)
+            : Colors.greenAccent.withOpacity(0.2),
         title: Text(e.long),
         groupValue: _selectedCategory,
         value: e.typeIndex,
@@ -1004,15 +1011,27 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
             Toaster.showAddFullAdr(ctx);
             return;
           }
-          if (!_uploadWithLessThanFourTags &&
-              allSelectedTags.length < MIN_INPUT_TAGS) {
+          if (_selectedCategory == null) {
+            Toaster.showToastSelectCategory(ctx);
+            //_selectedCategory
+            return;
+          }
+          if (allSelectedTags.length < MIN_INPUT_TAGS) {
+            Toaster.showAddMinimumTwoTags(ctx);
+            return;
+          }
+          if (selectedImages.length < MIN_INPUT_SELECT_IMAGES &&
+              images.length > selectedImages.length &&
+              !hasSelectedImages) {
+            Toaster.showAddMoreImages(ctx);
+            return;
+          }
+          if (allSelectedTags.length < MAX_INPUT_TAGS &&
+              (images.length > 0 || selectedImages.length > 0)) {
             Toaster.showAddExactlyFourTags(ctx);
-            _uploadWithLessThanFourTags = true;
-            _textSubmitButton = "Upload";
             return;
           }
 
-          _uploadWithLessThanFourTags = false;
           submitData(ctx);
         },
         icon: Icon(Icons.send),
@@ -1191,7 +1210,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void resetTags() {
-    _uploadWithLessThanFourTags = false;
+    // _uploadWithLessThanFourTags = false;
     allSelectedTags = Set.from([]);
     searchTagsDelegate.alreadySelectedTagIndexes = Set.from([]);
   }
@@ -1214,6 +1233,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     var iconSeparator = "   ";
     var tagCounter = allSelectedTags.length;
     return ElevatedButton(
+      style: tagCounter >= MIN_INPUT_TAGS
+          ? tagCounter == MAX_INPUT_TAGS
+              ? ElevatedButton.styleFrom(primary: Colors.red[600])
+              : ElevatedButton.styleFrom(primary: Colors.green[800])
+          : null,
       onPressed: () {
         handleAddTagButton(ctx);
       },
@@ -1221,7 +1245,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         padding: buildEdgeInsetsTextField(),
         child: Row(
           children: <Widget>[
-            Icon(Icons.search),
+            tagCounter == MAX_INPUT_TAGS
+                ? Icon(Icons.remove_circle)
+                : Icon(Icons.search),
             tagCounter == 0
                 ? Text(
                     iconSeparator + Translator.translate(ctx, "choose_tag_1"))
@@ -1549,6 +1575,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     hideInputTag();
     resetTags();
     resetImages();
+
+    _selectedCategory = null;
     cancelAllImageLoads = false;
   }
 
