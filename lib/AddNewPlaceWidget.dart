@@ -174,7 +174,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       List.filled(TagCoin.getTagCoins().length, false);
 
   // bool _uploadWithLessThanFourTags = false;
-  String _textSubmitButton = "";
+  // String _textSubmitButton = "";
 
   int _selectedCategory;
   List<Merchant> reviewableMerchants = [];
@@ -1035,8 +1035,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
           submitData(ctx);
         },
         icon: Icon(Icons.send),
-        label: Text(
-            _textSubmitButton != "Upload" ? i18n(context, "send") : "Upload"));
+        label: Text(i18n(context, "send")));
   }
 
   void submitData(ctx) async {
@@ -1233,7 +1232,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     var iconSeparator = "   ";
     var tagCounter = allSelectedTags.length;
     return ElevatedButton(
-      style: tagCounter >= MIN_INPUT_TAGS
+      style: tagCounter >= MIN_INPUT_TAGS &&
+              images.isEmpty &&
+              selectedImages.isEmpty
           ? tagCounter == MAX_INPUT_TAGS
               ? ElevatedButton.styleFrom(primary: Colors.red[600])
               : ElevatedButton.styleFrom(primary: Colors.green[800])
