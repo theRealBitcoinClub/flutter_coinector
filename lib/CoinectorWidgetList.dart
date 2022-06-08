@@ -28,7 +28,6 @@ import 'AddNewPlaceWidget.dart';
 import 'CardItemBuilder.dart';
 import 'Dialogs.dart';
 import 'FileCache.dart';
-import 'GithubCoinector.dart';
 import 'ListModel.dart';
 import 'LocationSuggestions.dart';
 import 'MapSample.dart';
@@ -1635,8 +1634,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     }
   }
 
-  GithubCoinector coinector = GithubCoinector();
-
+  // GithubCoinector coinector = GithubCoinector();
+/*
   void printWrapped(String text, coinector) async {
     // final pattern = new RegExp('.{1,800000}'); // 800 is the size of each chunk
     // pattern.allMatches(text.substring(0, 10000)).forEach((match) async {
@@ -1647,7 +1646,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   int lastUniqueMerchMapSize = 0;
-
+*/
   /*
   void printUniqueMerchantMap() {
     if (lastUniqueMerchMapSize == _uniqueMerchantMap.length) return;

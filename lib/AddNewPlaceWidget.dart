@@ -1666,6 +1666,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   addPlaceToUploadStackAndUploadStack(String continent) async {
     if (continent.isEmpty) {
       continent = "REVIEW";
+      if (isSpecificPlace()) {
+        continent = "UNIQUE";
+      }
     }
     if (allSuggestions[continent] == null) allSuggestions[continent] = [];
     if (uploadStack[continent] == null) uploadStack[continent] = [];
