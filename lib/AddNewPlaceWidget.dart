@@ -1232,13 +1232,13 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     var iconSeparator = "   ";
     var tagCounter = allSelectedTags.length;
     return ElevatedButton(
-      style: tagCounter >= MIN_INPUT_TAGS &&
-              images.isEmpty &&
-              selectedImages.isEmpty
-          ? tagCounter == MAX_INPUT_TAGS
-              ? ElevatedButton.styleFrom(primary: Colors.red[600])
-              : ElevatedButton.styleFrom(primary: Colors.green[800])
-          : null,
+      style: tagCounter == MAX_INPUT_TAGS
+          ? ElevatedButton.styleFrom(primary: Colors.red[600])
+          : (tagCounter >= MIN_INPUT_TAGS &&
+                  images.isEmpty &&
+                  selectedImages.isEmpty)
+              ? ElevatedButton.styleFrom(primary: Colors.green[800])
+              : null,
       onPressed: () {
         handleAddTagButton(ctx);
       },
