@@ -418,6 +418,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     else if (placeId == GoogleErrors.NOT_FOUND.toString()) {
       //TODO always use snackbar or toasts but dont mix them
       Toaster.showMerchantNotFoundOnGoogleMapsTryAgain(context);
+      setState(() {
+        prefillName(input.split(",")[0]);
+        prefillAddress(input.substring(input.indexOf(",") + 1).trim());
+      });
       drawFormStep(FormStep.IN_NAME);
     } /*else if (placeId == GoogleErrors.NOT_FOUND.toString() && hasTriedSearch) {
       drawFormStep(FormStep.IN_NAME); IRRELEVANT AS WE DO NOT WANT THEM TO SIGN UP ON GOOGLE IN MANAGER MODE
@@ -464,8 +468,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   void prefillFormWithDataFromGoogleAndBmap(Merchant merchantGoogleDataSet) {
     setState(() {
-      prefillName(merchantGoogleDataSet);
-      prefillAddress(merchantGoogleDataSet);
+      prefillName(merchantGoogleDataSet.name);
+      prefillAddress(merchantGoogleDataSet.location);
       if (merchantBmapDataset != null) {
         prefillCoins(merchantBmapDataset);
         prefillBrand(merchantBmapDataset);
@@ -498,16 +502,16 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         data, placeId, resultTags, placeType);
   }
 
-  void prefillAddress(Merchant merchant) {
+  void prefillAddress(String location) {
     controllerInputAdr.clear();
-    controllerInputAdr.text = merchant.location;
-    updateInputAdr(merchant.location);
+    controllerInputAdr.text = location;
+    updateInputAdr(location);
   }
 
-  void prefillName(Merchant merchant) {
+  void prefillName(String name) {
     controllerInputName.clear();
-    controllerInputName.text = merchant.name;
-    updateInputName(merchant.name);
+    controllerInputName.text = name;
+    updateInputName(name);
   }
 /*
   String prefillTags(Set<TagCoinector> inputTags) {
