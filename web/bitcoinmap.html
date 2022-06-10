@@ -1,0 +1,221 @@
+<html>
+    <head>
+        <title>Bitcoin Map Charts</title>
+        <script src="charts.js"></script>
+        <script>
+          const dataCoins = {
+              labels: [
+                'Bitcoin BCH',
+                'DASH',
+                'Bitcoin BTC'
+              ],
+              datasets: [{
+                label: 'Coins',
+                data: [2600, 500, 530],
+                backgroundColor: [
+                  'rgb(76, 175, 80)',
+                  'rgb(68, 138, 255)',
+                  'rgb(255, 152, 0)'
+                ],
+                color: [
+                  'rgb(76, 175, 80)',
+                  'rgb(68, 138, 255)',
+                  'rgb(255, 152, 0)'
+                ],
+                hoverOffset: 4
+              }]
+        };
+
+          const configCoins = {
+            type: 'doughnut',
+            data: dataCoins,
+              options: {
+                    color: 'rgb(255, 255, 255)',
+                    plugins: {
+                        title: {
+                            color: 'rgb(255, 255, 255)',
+                            display: true,
+                            text: 'How many places accept a specific coin?',
+                            padding: {
+                                top: 10,
+                                bottom: 10
+                            }
+                        }
+                    }
+                }
+          };
+        </script>
+        <script>
+          const dataCategories = {
+              labels: [
+                'RESTAURANT',
+                'TAKE-AWAY-FOOD',
+                'BAR, CLUB, CAFE',
+                'SUPERMARKET',
+                'SHOP & FASHION',
+                'HOTEL & BnB',
+                'OTHER',
+              ],
+              datasets: [{
+                label: 'Categories',
+                data: [690, 129, 300,187,968,131,629],
+                backgroundColor: [
+                  'rgb(76, 175, 80)',
+                  'rgb(68, 138, 255)',
+                  'rgb(255, 152, 0)'
+                ],
+                hoverOffset: 4
+              }]
+        };
+
+          const configCategories = {
+            type: 'doughnut',
+            data: dataCategories,
+              options: {
+                    color: 'rgb(255, 255, 255)',
+                    plugins: {
+                        title: {
+                            color: 'rgb(255, 255, 255)',
+                            display: true,
+                            text: 'How many places are there of each category?',
+                            padding: {
+                                top: 10,
+                                bottom: 10
+                            }
+                        }
+                    }
+                }
+          };
+        </script>
+        <script>
+          const dataBrands = {
+              labels: [
+                'Bitcoin BCH',
+                'DASH',
+                'Bitcoin BTC'
+              ],
+              datasets: [{
+                label: 'Coins',
+                data: [2600, 500, 530],
+                backgroundColor: [
+                  'rgb(76, 175, 80)',
+                  'rgb(68, 138, 255)',
+                  'rgb(255, 152, 0)'
+                ],
+                color: [
+                  'rgb(76, 175, 80)',
+                  'rgb(68, 138, 255)',
+                  'rgb(255, 152, 0)'
+                ],
+                hoverOffset: 4
+              }]
+        };
+
+          const configBrands = {
+            type: 'doughnut',
+            data: dataBrands,
+              options: {
+                    color: 'rgb(255, 255, 255)',
+                    plugins: {
+                        title: {
+                            color: 'rgb(255, 255, 255)',
+                            display: true,
+                            text: 'How many places accept a specific coin?',
+                            padding: {
+                                top: 10,
+                                bottom: 30
+                            }
+                        }
+                    }
+                }
+          };
+        </script>
+        <script>
+          const dataGeo = {
+              labels: [
+                'Bitcoin BCH',
+                'DASH',
+                'Bitcoin BTC'
+              ],
+              datasets: [{
+                label: 'Coins',
+                data: [2600, 500, 530],
+                backgroundColor: [
+                  'rgb(76, 175, 80)',
+                  'rgb(68, 138, 255)',
+                  'rgb(255, 152, 0)'
+                ],
+                color: [
+                  'rgb(76, 175, 80)',
+                  'rgb(68, 138, 255)',
+                  'rgb(255, 152, 0)'
+                ],
+                hoverOffset: 4
+              }]
+        };
+
+          const configGeo = {
+            type: 'doughnut',
+            data: dataGeo,
+              options: {
+                    color: 'rgb(255, 255, 255)',
+                    plugins: {
+                        title: {
+                            color: 'rgb(255, 255, 255)',
+                            display: true,
+                            text: 'How many places accept a specific coin?',
+                            padding: {
+                                top: 10,
+                                bottom: 30
+                            }
+                        }
+                    }
+                }
+          };
+        </script>
+        <style>
+            body {
+                background-color:#222;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="chart-container" style="position: relative; height:600px; width:600px">
+            <canvas id="chartCoins"></canvas>
+        </div>
+        <div style="position: relative; height:60px; width:60px">
+        </div>
+        <div class="chart-container" style="position: relative; height:600px; width:600px">
+            <canvas id="chartCategories"></canvas>
+        </div>
+        <div style="position: relative; height:60px; width:60px">
+        </div>
+        <div class="chart-container" style="position: relative; height:600px; width:600px">
+            <canvas id="chartBrands"></canvas>
+        </div>
+        <div style="position: relative; height:60px; width:60px">
+        </div>
+        <div class="chart-container" style="position: relative; height:600px; width:600px">
+            <canvas id="chartGeo"></canvas>
+        </div>
+        <script>
+            Chart.defaults.font.size = 16;
+          const myChart = new Chart(
+            document.getElementById('chartCoins'),
+            configCoins
+          );
+          const myChart2 = new Chart(
+            document.getElementById('chartCategories'),
+            configCategories
+          );
+          const myChart3 = new Chart(
+            document.getElementById('chartBrands'),
+            configBrands
+          );
+          const myChart4 = new Chart(
+            document.getElementById('chartGeo'),
+            configGeo
+          );
+        </script>
+    </body>
+</html>

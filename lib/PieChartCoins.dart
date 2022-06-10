@@ -189,9 +189,24 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
 
   PieChartSectionData pieChartVariety(variety, double c, double radius,
       double fontSize, bool isTouched, double widgetSize) {
+    Color color = variety.color;
+    if (!kReleaseMode)
+      print("\n" +
+          variety.long +
+          "\n" +
+          c.toString() +
+          "\n" +
+          color.red.toString() +
+          "\n" +
+          color.green.toString() +
+          "\n" +
+          color.blue.toString() +
+          "\n" +
+          "\n");
+
     return PieChartSectionData(
       titlePositionPercentageOffset: .4,
-      color: variety.color,
+      color: color,
       value: c,
       title: c.toInt().toString(),
       radius: radius,
@@ -202,7 +217,7 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
       badgeWidget: _Badge(
           (isTouched && variety.icon == null) ? variety.long : variety.short,
           widgetSize,
-          variety.color,
+          color,
           variety.icon,
           isTouched),
       badgePositionPercentageOffset: .98,
