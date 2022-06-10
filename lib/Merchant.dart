@@ -48,11 +48,20 @@ class Merchant {
     var location = data["geometry"]["location"];
     var cleanAdr =
         data["adr_address"].toString().replaceAll(RegExp('<[^>]+>'), '').trim();
+    cleanAdr = HtmlUnescape()
+        .convert(cleanAdr)
+        .replaceAll('"', '')
+        .replaceAll('“', '')
+        .replaceAll('„', '');
     Merchant m = Merchant(
         placeId,
         location["lat"],
         location["lng"],
-        data["name"],
+        HtmlUnescape()
+            .convert(data["name"])
+            .replaceAll('"', '')
+            .replaceAll('“', '')
+            .replaceAll('„', ''),
         placeType /*TODO add function to map google types to bmap types*/,
         data["user_ratings_total"].toString(),
         data["rating"].toString(),

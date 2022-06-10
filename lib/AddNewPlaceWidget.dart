@@ -292,9 +292,10 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     hideLoaderSafe();
   }
 
-  void showLoaderSafe() {
+  void showLoaderSafe({String count}) {
     try {
-      Loader.show(context);
+      Loader.show(context,
+          progressIndicator: count != null ? Text(count) : null);
     } catch (e) {
       print(e);
     }
@@ -1452,21 +1453,27 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   void loadGooglePlacePhotos(var data) async {
     resetImages();
-    const sleepDuration = const Duration(milliseconds: 1000);
+    const sleepDuration = const Duration(milliseconds: 100);
     var result = data;
     if (result != null) {
       if (result["photos"] != null) {
+        int y = 0;
         // print("PHOTOCOUNT: " + result["photos"].length.toString());
         for (int x = 0; x < 10; x++)
           for (var photo in result["photos"]) {
             if (cancelAllImageLoads) return;
             if (!imagesSuccess.contains(photo["photo_reference"].toString())) {
-              print("loadGooglePlacePhoto: " +
-                  x.toString() +
-                  " " +
-                  photo["photo_reference"]);
+              if (x == 0 && y < 5)
+                showLoaderSafe(count: "Image: " + (++y).toString());
+
+              if (!kReleaseMode)
+                print("loadGooglePlacePhoto: " +
+                    x.toString() +
+                    " " +
+                    photo["photo_reference"]);
               await loadGooglePlacePhoto(photo, x);
               await Future.delayed(sleepDuration);
+              if (x == 0 && y < 6) hideLoaderSafe();
             }
           }
       }
