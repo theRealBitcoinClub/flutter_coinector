@@ -41,11 +41,11 @@
           const dataCategories = {
               labels: [
                 'RESTAURANT',
-                'TAKE-AWAY-FOOD',
-                'BAR, CLUB, CAFE',
-                'SUPERMARKET',
-                'SHOP & FASHION',
-                'HOTEL & BnB',
+                'TAKE-AWAY',
+                'BAR/CAFE',
+                'MARKET',
+                'SHOP',
+                'HOTEL',
                 'OTHER',
               ],
               datasets: [{
@@ -75,10 +75,10 @@
         <script>
           const dataBrands = {
               labels: [
-                'The Real Bitcoin Club',
                 'Anypay',
+                'TRBC',
                 'GoCrypto',
-                'BCH City Townsville',
+                'BCH City QLD',
                 'BCHLatam',
                 'Salamantex',
                 'Bitcoin.com',
@@ -88,10 +88,10 @@
               ],
               datasets: [{
                 label: 'Brands',
-                data: [241,83,116,82,958,65,773,329, 54, 42],
+                data: [83,241,116,82,958,65,773,329, 54, 42],
                 backgroundColor: [
-                  'rgb(71, 133, 88)',
                   'rgb(69, 90, 100)',
+                  'rgb(71, 133, 88)',
                   'rgb(251, 192, 45)',
                   'rgb(124, 179, 66)',
                   'rgb(76, 175, 80)',
@@ -116,22 +116,21 @@
         <script>
           const dataGeo = {
               labels: [
-                'Bitcoin BCH',
-                'DASH',
-                'Bitcoin BTC'
+                'Asia',
+                'Australia',
+                'Europe',
+                'America',
+                'Africa'
               ],
               datasets: [{
-                label: 'Coins',
-                data: [2600, 500, 530],
+                label: 'Continents',
+                data: [411, 239, 472, 1838, 74],
                 backgroundColor: [
-                  'rgb(76, 175, 80)',
-                  'rgb(68, 138, 255)',
-                  'rgb(255, 152, 0)'
-                ],
-                color: [
-                  'rgb(76, 175, 80)',
-                  'rgb(68, 138, 255)',
-                  'rgb(255, 152, 0)'
+                  'rgb(249, 168, 37)',
+                  'rgb(198, 40, 40)',
+                  'rgb(21, 101, 192)',
+                  'rgb(46, 125, 50)',
+                  'rgb(245, 124, 0)',
                 ],
                 hoverOffset: 4
               }]
