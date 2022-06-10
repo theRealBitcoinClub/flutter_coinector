@@ -1,5 +1,8 @@
 <html>
     <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
         <title>Bitcoin Map Charts</title>
         <script src="charts.js"></script>
         <script>
@@ -30,18 +33,7 @@
             type: 'doughnut',
             data: dataCoins,
               options: {
-                    color: 'rgb(255, 255, 255)',
-                    plugins: {
-                        title: {
-                            color: 'rgb(255, 255, 255)',
-                            display: true,
-                            text: 'How many places accept a specific coin?',
-                            padding: {
-                                top: 10,
-                                bottom: 10
-                            }
-                        }
-                    }
+                    color: 'rgb(255, 255, 255)'
                 }
           };
         </script>
@@ -60,9 +52,13 @@
                 label: 'Categories',
                 data: [690, 129, 300,187,968,131,629],
                 backgroundColor: [
-                  'rgb(76, 175, 80)',
-                  'rgb(68, 138, 255)',
-                  'rgb(255, 152, 0)'
+                  'rgb(255, 112, 67)',
+                  'rgb(239, 83, 80)',
+                  'rgb(251, 192, 45)',
+                  'rgb(38, 166, 154)',
+                  'rgb(236, 64, 122)',
+                  'rgb(102, 187, 106)',
+                  'rgb(126, 87, 194)'
                 ],
                 hoverOffset: 4
               }]
@@ -72,40 +68,38 @@
             type: 'doughnut',
             data: dataCategories,
               options: {
-                    color: 'rgb(255, 255, 255)',
-                    plugins: {
-                        title: {
-                            color: 'rgb(255, 255, 255)',
-                            display: true,
-                            text: 'How many places are there of each category?',
-                            padding: {
-                                top: 10,
-                                bottom: 10
-                            }
-                        }
-                    }
+                    color: 'rgb(255, 255, 255)'
                 }
           };
         </script>
         <script>
           const dataBrands = {
               labels: [
-                'Bitcoin BCH',
-                'DASH',
-                'Bitcoin BTC'
+                'The Real Bitcoin Club',
+                'Anypay',
+                'GoCrypto',
+                'BCH City Townsville',
+                'BCHLatam',
+                'Salamantex',
+                'Bitcoin.com',
+                'Discover Dash',
+                'Satoshi Angels',
+                'BCH House Vzla'
               ],
               datasets: [{
-                label: 'Coins',
-                data: [2600, 500, 530],
+                label: 'Brands',
+                data: [241,83,116,82,958,65,773,329, 54, 42],
                 backgroundColor: [
+                  'rgb(71, 133, 88)',
+                  'rgb(69, 90, 100)',
+                  'rgb(251, 192, 45)',
+                  'rgb(124, 179, 66)',
                   'rgb(76, 175, 80)',
-                  'rgb(68, 138, 255)',
-                  'rgb(255, 152, 0)'
-                ],
-                color: [
-                  'rgb(76, 175, 80)',
-                  'rgb(68, 138, 255)',
-                  'rgb(255, 152, 0)'
+                  'rgb(245, 124, 0)',
+                  'rgb(255, 87, 34)',
+                  'rgb(33, 150, 243)',
+                  'rgb(156, 39, 176)',
+                  'rgb(102, 187, 106)'
                 ],
                 hoverOffset: 4
               }]
@@ -115,18 +109,7 @@
             type: 'doughnut',
             data: dataBrands,
               options: {
-                    color: 'rgb(255, 255, 255)',
-                    plugins: {
-                        title: {
-                            color: 'rgb(255, 255, 255)',
-                            display: true,
-                            text: 'How many places accept a specific coin?',
-                            padding: {
-                                top: 10,
-                                bottom: 30
-                            }
-                        }
-                    }
+                    color: 'rgb(255, 255, 255)'
                 }
           };
         </script>
@@ -158,48 +141,45 @@
             type: 'doughnut',
             data: dataGeo,
               options: {
-                    color: 'rgb(255, 255, 255)',
-                    plugins: {
-                        title: {
-                            color: 'rgb(255, 255, 255)',
-                            display: true,
-                            text: 'How many places accept a specific coin?',
-                            padding: {
-                                top: 10,
-                                bottom: 30
-                            }
-                        }
-                    }
+                    color: 'rgb(255, 255, 255)'
                 }
           };
         </script>
         <style>
             body {
                 background-color:#222;
+                    font-family: 'Lato', sans-serif;
+                    color:#FFF;
             }
         </style>
     </head>
     <body>
+        <h1>Bitcoin Map Statistics</h1>
+        <h2>Which coin has the most adoption?</h2>
         <div class="chart-container" style="position: relative; height:600px; width:600px">
             <canvas id="chartCoins"></canvas>
         </div>
         <div style="position: relative; height:60px; width:60px">
         </div>
+        <h2>How many bitcoin places are there of each category?</h2>
         <div class="chart-container" style="position: relative; height:600px; width:600px">
             <canvas id="chartCategories"></canvas>
         </div>
         <div style="position: relative; height:60px; width:60px">
         </div>
+        <h2>Which team/brand has onboarded how many places?</h2>
         <div class="chart-container" style="position: relative; height:600px; width:600px">
             <canvas id="chartBrands"></canvas>
         </div>
         <div style="position: relative; height:60px; width:60px">
         </div>
+        <h2>In which geographic location there are most crypto merchants?</h2>
         <div class="chart-container" style="position: relative; height:600px; width:600px">
             <canvas id="chartGeo"></canvas>
         </div>
         <script>
             Chart.defaults.font.size = 16;
+            Chart.defaults.plugins.legend.position = 'bottom';
           const myChart = new Chart(
             document.getElementById('chartCoins'),
             configCoins
