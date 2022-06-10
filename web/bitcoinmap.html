@@ -153,33 +153,44 @@
             a {
                 color:#fff;
             }
+            h2 {
+             text-align:center
+            }
+            p {
+                hyphens: auto;
+                text-align: justify
+            }
         </style>
     </head>
     <body>
-        <h1>Bitcoin Map Statistics</h1>
-        <h3>These Bitcoin Adoption Charts were last updated in 06/2022</h3>
-        <p>These statistics are taking into account various sources which are listed below</p>
+        <h1>Bitcoin Map Charts / Statistics</h1>
+        <h3>Bitcoin adoption charts, last updated in June 2022</h3>
+        <p>Taking into account various sources which are listed below</p>
         <p>The same places can be found on <a href="http://bitcoinmap.cash">Bitcoin Map</a></p>
-        <h2>Which coin has the most merchant adoption?</h2>
+        <p>The data is open source for any kind of promotional use, contact: <a href="http://therealbitcoin.club">TRBC</a></p>
         <div class="chart-container" style="position: relative; height:600px; width:600px">
+            <h2>Which coin has the most merchant adoption?</h2>
             <canvas id="chartCoins"></canvas>
+            <p>We are hungry to promote your most secret bitcoin places! In the end they should not be a secret, because these places need customers. If you have any more data to provide, feel free to contact TRBC via TG @felizbitcoin.</p>
+            <p>We can also do custom integrations to show an interactive crypto merchant directory with a beautiful map on your own website</p>
         </div>
-        <div style="position: relative; height:60px; width:60px">
+        <div style="position: relative; height:200px; width:60px">
         </div>
-        <h2>How many bitcoin places are there of each category?</h2>
         <div class="chart-container" style="position: relative; height:600px; width:600px">
+            <h2>How many bitcoin places are there of each category?</h2>
             <canvas id="chartCategories"></canvas>
+            <p>Places listed on bitcoinmap.cash, coinector.app or inside the respective Android Apps are verified, categorized and tagged by products/services. Each place has been individually reviewed and we only list the most famous places which are also being promoted on Google Maps. We think that if a place wants to be listed on bmap.app he should understand the basics of online marketing which is listing their business on Google Maps. We also support merchants in registering their place on Google, so that they can be more succesfull long term. No matter if someone likes Google or not, their product Google Maps is being shipped on all Android devices, so leveraging that network effect to promote places that accept Cryptocurrencies is an opportunity that should not be missed.</p>
         </div>
-        <div style="position: relative; height:60px; width:60px">
+        <div style="position: relative; height:280px; width:60px">
         </div>
-        <h2>Which team/brand has published these places?</h2>
         <div class="chart-container" style="position: relative; height:600px; width:600px">
+            <h2>Which team/brand has published these places?</h2>
             <canvas id="chartBrands"></canvas>
         </div>
         <div style="position: relative; height:60px; width:60px">
         </div>
-        <h2>In which geographic location there are most crypto merchants?</h2>
         <div class="chart-container" style="position: relative; height:600px; width:600px">
+            <h2>Where are these crypto merchants located?</h2>
             <canvas id="chartGeo"></canvas>
         </div>
         <script>
