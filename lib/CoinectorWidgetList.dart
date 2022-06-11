@@ -192,16 +192,16 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   Future<bool> checkDataUpdateShowSnackbarUpdateCache(ctx) async {
-    FileCache.initLastVersion(() {
+    FileCache.initLastVersion((String version) {
       //has new version
       if (checkDataUpdateTimerIsCancelled) return false;
-      _updateAllCachedContent(ctx);
+      _updateAllCachedContent(ctx, version);
       return true;
     });
     return false;
   }
 
-  void _updateAllCachedContent(ctx) async {
+  void _updateAllCachedContent(ctx, String version) async {
     if (kIsWeb) return;
 
     if (await FileCache.loadFromWebAndPersistCache('am') &&
@@ -214,9 +214,10 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       Snackbars.showSnackBarRestartApp(_scaffoldKey, ctx);
       _cachedDecodedDataBase = Map();
       _cachedMerchants = Map();
-      Future.delayed(Duration(seconds: 30), () {
-        Phoenix.rebirth(ctx);
-      });
+      // Future.delayed(Duration(seconds: 30), () {
+      //   Phoenix.rebirth(ctx);
+      // });
+      FileCache.persistCacheVersionCounter(version);
     }
   }
 
@@ -933,7 +934,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   void buildWithinScopeOfTranslator(BuildContext ctx) {
-    if (kReleaseMode) _checkForUpdatedData(ctx);
+    if (!kReleaseMode) _checkForUpdatedData(ctx);
     /*if (kIsWeb) {
       InternetConnectivityChecker.pauseAutoChecker();
     } else {*/

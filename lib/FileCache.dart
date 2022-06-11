@@ -42,8 +42,7 @@ class FileCache {
 
     if (response == null) return;
     if (int.parse(response.data) > currentVersion) {
-      persistCacheVersionCounter(response.data);
-      onHasNewVersionCallback();
+      onHasNewVersionCallback(response.data);
     }
   }
 
