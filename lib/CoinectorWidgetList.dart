@@ -937,7 +937,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   void buildWithinScopeOfTranslator(BuildContext ctx) {
-    if (!kReleaseMode) _checkForUpdatedData(ctx);
+    _checkForUpdatedData(ctx);
     /*if (kIsWeb) {
       InternetConnectivityChecker.pauseAutoChecker();
     } else {*/
