@@ -196,7 +196,6 @@ class AutoSuggestions99991565 {
 // ""E-REVOLUCIJA" Vape Shop el. Cigarete i tekućine -Geekvape, Vaporesso, L&A Vape, Voopoo - Maksimirska cesta 118, 10000, Zagreb, Croatia",
     "Skechers - Mall of Split, Ul. Josipa Jovića 93, 21000, Split, Croatia",
     "Konoba Nebuloza - Titov trg 2, 51000, Rijeka, Croatia",
-    // "Maslina - Trg Ivana Koblera bb, 51000, Rijeka, Croatia",
     "Fast Food Citta Vecchia - Ul. Antuna Dalmatina 2, 51000, Rijeka, Croatia",
     // "Tools Milic - Branch first Malesnica - Ul. Mirka Viriusa 1, 10090, Zagreb, Croatia",
     "E-REVOLUCIJA Vape Shop el. Cigarete i tekućine -Geekvape, Vaporesso, L&A Vape, Voopoo - Maksimirska cesta 118, 10000, Zagreb, Croatia",
