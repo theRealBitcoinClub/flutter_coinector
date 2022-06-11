@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:Coinector/AssetLoader.dart';
 import 'package:Coinector/InternetConnectivityChecker.dart';
 import 'package:Coinector/ItemInfoStackLayer.dart';
 import 'package:Coinector/Snackbars.dart';
@@ -214,6 +215,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       Snackbars.showSnackBarRestartApp(_scaffoldKey, ctx);
       _cachedDecodedDataBase = Map();
       _cachedMerchants = Map();
+      AssetLoader.cachedAssets = Map();
+      FileCache.memoryCache = Map();
       // Future.delayed(Duration(seconds: 30), () {
       //   Phoenix.rebirth(ctx);
       // });

@@ -87,10 +87,15 @@ class FileCache {
     return await file.readAsString();
   }
 
+  static Map<String, List<dynamic>> memoryCache = new Map();
+
   static Future loadAndDecodeAsset(String fileName) async {
+    if (memoryCache[fileName] != null) return memoryCache[fileName];
+
     String cachedAsset = await getCachedAssetWithDefaultFallback(fileName);
     var decoded = AssetLoader.decodeJSON(cachedAsset);
     if (!kReleaseMode) print(cachedAsset);
+    memoryCache[fileName] = decoded;
     return decoded;
   }
 

@@ -1,3 +1,4 @@
+import 'package:Coinector/FileCache.dart';
 import 'package:Coinector/TabPageCategory.dart';
 import 'package:Coinector/TabPageStatistics.dart';
 import 'package:Coinector/TagBrands.dart';
@@ -6,8 +7,6 @@ import 'package:Coinector/TagContinents.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-import 'AssetLoader.dart';
 
 class PieChartCoins extends StatefulWidget {
   const PieChartCoins({Key key}) : super(key: key);
@@ -311,8 +310,7 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
 
   void _initTab(int i, String continent) {
     title = TabPagesStatistics.pages[_tabController.index].title;
-    AssetLoader.loadAndDecodeAsset("assets/" + continent + ".json")
-        .then((places) {
+    FileCache.loadAndDecodeAsset(continent).then((places) {
       places.forEach((item) {
         try {
           switch (i) {
