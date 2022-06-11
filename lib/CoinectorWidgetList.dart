@@ -75,7 +75,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   TabController tabController;
   bool _customIndicator = false;
   List<ListModel<Merchant>> _lists = [];
-  // Map<String, Merchant> _uniqueMerchantMap = Map();
+  Map<String, Merchant> _uniqueMerchantMap = Map();
   List<Merchant> names = []; // names we get from API
   List<ListModel<Merchant>> tempLists = [];
   List<ListModel<Merchant>> unfilteredLists = [];
@@ -286,7 +286,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   int checkForBrandFilter(Merchant m2, String locationTitleFilter) {
     return m2.brand != null ? _containsBrand(locationTitleFilter) : -1;
   }
-/*
+
   void addToUniqueMerchantMap(String fileName, Merchant m2) {
     if (kReleaseMode) return;
     // if (!m2.id.startsWith("ChI")) return;
@@ -307,7 +307,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         }
       }
     }
-  }*/
+  }
 
   int _containsBrand(String locationTitleFilter) {
     // print("\nBRAND" + m2.brand.toString());
@@ -1634,27 +1634,14 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     }
   }
 
-  // GithubCoinector coinector = GithubCoinector();
-/*
-  void printWrapped(String text, coinector) async {
-    // final pattern = new RegExp('.{1,800000}'); // 800 is the size of each chunk
-    // pattern.allMatches(text.substring(0, 10000)).forEach((match) async {
-    bool test = await coinector.githubUploadPlaceDetailStack(
-        text, "UNIQUE", DateTime.now().millisecond.toString());
-    print("\nTEST " + test.toString());
-    // });
-  }
-
   int lastUniqueMerchMapSize = 0;
-*/
-  /*
+
   void printUniqueMerchantMap() {
     if (lastUniqueMerchMapSize == _uniqueMerchantMap.length) return;
 
     lastUniqueMerchMapSize = _uniqueMerchantMap.length;
 
     if (kReleaseMode) return;
-    coinector.init();
 
     StringBuffer buff = StringBuffer();
     int index = 0;
@@ -1668,17 +1655,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       }
       index++;
       buff.writeln(value.getBmapDataJson() + ",");
-
-      // if (index == 10) {
-      //   printWrapped(buff.toString(), coinector);
-      //   buff = StringBuffer();
-      // }
-      // else if (index == _uniqueMerchantMap.length) {
-      //   printWrapped(buff.toString(), coinector);
-      // }
     });
     buff.writeln("]");
     Clipboard.setData(ClipboardData(text: buff.toString()));
-    // coinector.dispose();
-  }*/
+  }
 }
