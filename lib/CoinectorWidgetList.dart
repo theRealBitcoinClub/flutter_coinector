@@ -168,6 +168,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   var checkDataUpdateTimerIsCancelled = false;
 
   void _checkForUpdatedData(ctx) async {
+    if (kIsWeb) return;
     if (isCheckingForUpdates || checkDataUpdateTimerIsCancelled) return;
     isCheckingForUpdates = true;
     bool hasUpdatedData = await checkDataUpdateShowSnackbarUpdateCache(ctx);
@@ -201,20 +202,22 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   void _updateAllCachedContent(ctx) async {
-    await FileCache.loadFromWebAndPersistCache('am');
-    await FileCache.loadFromWebAndPersistCache('as');
-    await FileCache.loadFromWebAndPersistCache('au');
-    await FileCache.loadFromWebAndPersistCache('e');
+    if (kIsWeb) return;
 
-    await FileCache.loadFromWebAndPersistCache('addr');
-    await FileCache.loadFromWebAndPersistCache('placesId');
+    if (await FileCache.loadFromWebAndPersistCache('am') &&
+        await FileCache.loadFromWebAndPersistCache('as') &&
+        await FileCache.loadFromWebAndPersistCache('au') &&
+        await FileCache.loadFromWebAndPersistCache('e')) {
+      // await FileCache.loadFromWebAndPersistCache('addr');
+      // await FileCache.loadFromWebAndPersistCache('placesId');
 
-    Snackbars.showSnackBarRestartApp(_scaffoldKey, ctx);
-    _cachedDecodedDataBase = Map();
-    _cachedMerchants = Map();
-    Future.delayed(Duration(seconds: 30), () {
-      Phoenix.rebirth(ctx);
-    });
+      Snackbars.showSnackBarRestartApp(_scaffoldKey, ctx);
+      _cachedDecodedDataBase = Map();
+      _cachedMerchants = Map();
+      Future.delayed(Duration(seconds: 30), () {
+        Phoenix.rebirth(ctx);
+      });
+    }
   }
 
   void _loadAndParseAllPlaces(TagCoinector tag, String locationFilter) async {

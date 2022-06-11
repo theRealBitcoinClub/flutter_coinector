@@ -22,7 +22,7 @@ class FileCache {
     var response;
     try {
       response = await new Dio().get(
-          'https://github.com/theRealBitcoinClub/flutter_coinector/raw/master/assets/' +
+          'https://raw.githubusercontent.com/theRealBitcoinClub/flutter_coinector/master/assets/' +
               fileName +
               '.json');
     } catch (e) {}
@@ -112,10 +112,10 @@ class FileCache {
     return cachedAsset;
   }
 
-  static Future loadFromWebAndPersistCache(String fileName) async {
+  static Future<bool> loadFromWebAndPersistCache(String fileName) async {
     String latestContent = await FileCache.getLatestContentFromWeb(fileName);
-    if (latestContent == null) return;
-    await FileCache.writeCache(fileName, latestContent);
+    if (latestContent == null) return false;
+    return await FileCache.writeCache(fileName, latestContent);
   }
 
   static Future<bool> writeCache(String fileName, String content) async {
