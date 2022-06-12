@@ -1598,7 +1598,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
       var response = await new Dio().get(url,
           options: Options(
-              contentType: "application/json",
+              //contentType: "application/json",
+              //headers: headers,
               followRedirects: true));
       var responseJSON = json.decode(response.data);
       var longitude = responseJSON['longitude'];
