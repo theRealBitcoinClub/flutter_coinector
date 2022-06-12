@@ -67,7 +67,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   StreamSubscription subscriptionConnectivityChangeListener;
 
   static var isInitialized = false;
-  ScrollController _scrollControl;
+  List<ScrollController> _scrollControlList = [];
 
   NestedScrollView appContent;
   var _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -618,7 +618,6 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         _verticalScroller.state.resetOffset();
       }
     });*/
-    updateCurrentListItemCounter();
     if (!isFilteredList()) updateTitleToCurrentlySelectedTab();
     updateAddButtonCategory();
     initCurrentPositionIfNotInitialized()
@@ -787,7 +786,11 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     print("START initState");
     TagCoinector.initFromFiles();
     print("START initState2");
-    _scrollControl = ScrollController();
+
+    if (_scrollControlList.isEmpty)
+      TabPages.pages.forEach((element) {
+        _scrollControlList.add(ScrollController());
+      });
     //_verticalScroller = buildCustomScroller();
     WidgetsBinding.instance.addObserver(this);
     scaffoldKey = _scaffoldKey;
@@ -952,13 +955,13 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     //}
   }
 
-  void scrollCallBack(DragUpdateDetails dragUpdate) {
+  /* void scrollCallBack(DragUpdateDetails dragUpdate) {
     const SCROLL_SPEED_MULTIPLIER = 5;
     setState(() {
       _scrollControl.position.moveTo(dragUpdate.localPosition.dy *
           (dragUpdate.localPosition.dy / SCROLL_SPEED_MULTIPLIER));
     });
-  }
+  }*/
 
   Color hexToColor(String code) {
     return new Color(int.parse(code.substring(1, 7), radix: 16) + 0xFF000000);
@@ -1400,7 +1403,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     return (list != null && list.length > 0)
         ? Padding(
             child: ImprovedScrolling(
-                scrollController: _scrollControl,
+                scrollController: _scrollControlList[tabController.index],
                 /*
                 onScroll: (scrollOffset) => debugPrint(
                       'Scroll offset: $scrollOffset',
@@ -1433,7 +1436,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                 ),
                 child: Scrollbar(
                   trackVisibility: false,
-                  controller: _scrollControl,
+                  controller: _scrollControlList[tabController.index],
                   thumbVisibility: true,
                   thickness: kIsWeb ? 8.0 : 2.0,
                   radius: Radius.circular(kIsWeb ? 5.0 : 3.0),
@@ -1497,7 +1500,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   AnimatedList buildAnimatedList(listKey, list, builderMethod) {
     return AnimatedList(
       physics: const ClampingScrollPhysics(),
-      controller: _scrollControl,
+      controller: _scrollControlList[tabController.index],
       key: listKey,
       padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 60.0),
       initialItemCount: list.length,
@@ -1588,7 +1591,16 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   Future<Position> tryGetCoarseLocation(String url) async {
     try {
-      var response = await new Dio().get(url);
+      Map<String, dynamic> headers = new Map();
+      headers["Origin"] = "*";
+      headers["Access-Control-Allow-Origin"] = "*";
+      headers["Access-Control-Allow-Credentials"] = "true";
+
+      var response = await new Dio().get(url,
+          options: Options(
+              contentType: "application/json",
+              followRedirects: true,
+              headers: headers));
       var responseJSON = json.decode(response.data);
       var longitude = responseJSON['longitude'];
       var latitude = responseJSON['latitude'];
