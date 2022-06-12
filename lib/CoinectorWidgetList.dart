@@ -1567,17 +1567,20 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         );
 
         _updateDistanceToAllMerchantsIfNotDoneYet();
-        Snackbars.showSnackBarAfterAddPlace(_scaffoldKey, ctx);//
+        Snackbars.showSnackBarAfterAddPlace(_scaffoldKey, ctx); //
       });
     }
   }
 
   Future<Position> _getCoarseLocationViaIP() async {
-    if ((userPosition = await tryGetCoarseLocation('/geolocation')) ==
+    if ((userPosition =
+            await tryGetCoarseLocation('https://coinector.app/geolocation')) ==
+        null) if ((userPosition =
+            await tryGetCoarseLocation('https://bmap.app/geolocation')) ==
+        null) if ((userPosition = await tryGetCoarseLocation(
+            'https://geolocation-db.com/json/index.html')) ==
         null) if ((userPosition =
             await tryGetCoarseLocation('/geolocation')) ==
-        null) if ((userPosition =
-            await tryGetCoarseLocation('https://geolocation-db.com/json/')) ==
         null) {}
 
     return userPosition;
@@ -1606,12 +1609,12 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
             speed: 0.0,
             timestamp: DateTime.now());
       else
-        debugPrint(
+        print(
             "RECEIVING INVALID DATA FROM COARSE LOCATION PROVIDER\nRECEIVING INVALID DATA FROM COARSE LOCATION PROVIDER\nRECEIVING INVALID DATA FROM COARSE LOCATION PROVIDER");
     } catch (e) {
-      debugPrint("URL\n" + url);
-      debugPrint("COARSE LOCATION PROVIDER\nCOARSE LOCATION PROVIDER");
-      debugPrint(e.toString());
+      print("URL\n" + url);
+      print("COARSE LOCATION PROVIDER\nCOARSE LOCATION PROVIDER");
+      print(e.toString());
     }
     return null;
   }
