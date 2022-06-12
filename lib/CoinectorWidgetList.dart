@@ -152,7 +152,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     updateCurrentPosition();
 
     if (tagFilter == null && locationOrTitleFilter == null) {
-      _updateDistanceToAllMerchantsIfNotDoneYet();
+      // _updateDistanceToAllMerchantsIfNotDoneYet();
       if (isUnfilteredList) return;
       //if (unfilteredLists.length != 0) updateListModel(unfilteredLists);
       this.isUnfilteredList = true;
@@ -847,8 +847,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     if (userPosition == null) return;
 
     _updateDistanceToAllMerchantsNow().then((updateSuccess) {
-      if (updateSuccess)
-        Phoenix.rebirth(context); //_loadAndParseAllPlaces(null, null);
+      // if (updateSuccess) TODO check distance to last position and update list if moved more than 100m
+      //   Phoenix.rebirth(context); //_loadAndParseAllPlaces(null, null);
     });
   }
 
@@ -858,7 +858,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       for (int x = 0; x < model.length; x++) {
         Merchant m = model[x];
 
-        if (m.distance != null) return false;
+        if (m.distance != null)
+          return false; //TODO let distance be updateableer moves
 
         calculateDistanceUpdateMerchant(userPosition, m);
       }
@@ -1135,7 +1136,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                           : 0.0)),
         );
       } catch (e) {}
-      _updateDistanceToAllMerchantsIfNotDoneYet();
+      // _updateDistanceToAllMerchantsIfNotDoneYet();
       if (result != null) {
         showFilterResults(false, ctx, result.name);
         animateToTab(result);
@@ -1323,7 +1324,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       filterListUpdateTitle(ctx, selected);
     } else {
       print("START startProcessSearch3");
-      _updateDistanceToAllMerchantsIfNotDoneYet();
+      // _updateDistanceToAllMerchantsIfNotDoneYet();
       showUnfilteredLists(ctx);
     }
   }
@@ -1572,7 +1573,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                   lastReviewableCount: count)),
         );
 
-        _updateDistanceToAllMerchantsIfNotDoneYet();
+        // _updateDistanceToAllMerchantsIfNotDoneYet();
         Snackbars.showSnackBarAfterAddPlace(_scaffoldKey, ctx); //
       });
     }
