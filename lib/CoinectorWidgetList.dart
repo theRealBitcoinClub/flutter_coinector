@@ -841,21 +841,23 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   void _updateDistanceToAllMerchantsIfNotDoneYet() {
     if (userPosition == null) return;
 
-    _updateDistanceToAllMerchantsNow();
-    loadAssetsUnfiltered(context);
+    _updateDistanceToAllMerchantsNow().then((updateSuccess) {
+      if (updateSuccess) _loadAndParseAllPlaces(null, null);
+    });
   }
 
-  void _updateDistanceToAllMerchantsNow() async {
+  Future<bool> _updateDistanceToAllMerchantsNow() async {
     for (int i = 0; i < _lists.length; i++) {
       ListModel<Merchant> model = _lists[i];
       for (int x = 0; x < model.length; x++) {
         Merchant m = model[x];
 
-        if (m.distance != null) return;
+        // if (m.distance != null) return;
 
-        await calculateDistanceUpdateMerchant(userPosition, m);
+        calculateDistanceUpdateMerchant(userPosition, m);
       }
     }
+    return true;
   }
 
   void updateTitleToCurrentlySelectedTab() {
