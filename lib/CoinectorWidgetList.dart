@@ -1397,44 +1397,46 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     return (list != null && list.length > 0)
         ? Padding(
             child: ImprovedScrolling(
-              scrollController: _scrollControl,
-              onScroll: (scrollOffset) => debugPrint(
-                'Scroll offset: $scrollOffset',
-              ),
-              onMMBScrollStateChanged: (scrolling) => debugPrint(
-                'Is scrolling: $scrolling',
-              ),
-              onMMBScrollCursorPositionUpdate:
-                  (localCursorOffset, scrollActivity) => debugPrint(
-                'Cursor position: $localCursorOffset\n'
-                'Scroll activity: $scrollActivity',
-              ),
-              enableMMBScrolling: true,
-              enableKeyboardScrolling: true,
-              enableCustomMouseWheelScrolling: true,
-              keyboardScrollConfig: KeyboardScrollConfig(
-                arrowsScrollAmount: 250.0,
-                homeScrollDurationBuilder:
-                    (currentScrollOffset, minScrollOffset) {
-                  return const Duration(milliseconds: 100);
-                },
-                endScrollDurationBuilder:
-                    (currentScrollOffset, maxScrollOffset) {
-                  return const Duration(milliseconds: 2000);
-                },
-              ),
-              customMouseWheelScrollConfig: const CustomMouseWheelScrollConfig(
-                scrollAmountMultiplier: 2.0,
-              ),
-              child: AnimatedList(
-                physics: const ClampingScrollPhysics(),
-                controller: _scrollControl,
-                key: listKey,
-                padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 60.0),
-                initialItemCount: list.length,
-                itemBuilder: builderMethod,
-              ),
-            ),
+                scrollController: _scrollControl,
+                /*
+                onScroll: (scrollOffset) => debugPrint(
+                      'Scroll offset: $scrollOffset',
+                    ),
+                onMMBScrollStateChanged: (scrolling) => debugPrint(
+                      'Is scrolling: $scrolling',
+                    ),
+                onMMBScrollCursorPositionUpdate:
+                    (localCursorOffset, scrollActivity) => debugPrint(
+                          'Cursor position: $localCursorOffset\n'
+                          'Scroll activity: $scrollActivity',
+                        ),*/
+                enableMMBScrolling: true,
+                enableKeyboardScrolling: true,
+                enableCustomMouseWheelScrolling: true,
+                keyboardScrollConfig: KeyboardScrollConfig(
+                  arrowsScrollAmount: 250.0,
+                  homeScrollDurationBuilder:
+                      (currentScrollOffset, minScrollOffset) {
+                    return const Duration(milliseconds: 100);
+                  },
+                  endScrollDurationBuilder:
+                      (currentScrollOffset, maxScrollOffset) {
+                    return const Duration(milliseconds: 2000);
+                  },
+                ),
+                customMouseWheelScrollConfig:
+                    const CustomMouseWheelScrollConfig(
+                  scrollAmountMultiplier: 2.0,
+                ),
+                child: Scrollbar(
+                  trackVisibility: false,
+                  controller: _scrollControl,
+                  thumbVisibility: true,
+                  thickness: kIsWeb ? 6.0 : 2.0,
+                  radius: Radius.circular(kIsWeb ? 5.0 : 3.0),
+                  scrollbarOrientation: ScrollbarOrientation.right,
+                  child: buildAnimatedList(listKey, list, builderMethod),
+                )),
             padding: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
           )
         : !isInitialized
@@ -1487,6 +1489,17 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                         )),
                   ],
                 ));
+  }
+
+  AnimatedList buildAnimatedList(listKey, list, builderMethod) {
+    return AnimatedList(
+      physics: const ClampingScrollPhysics(),
+      controller: _scrollControl,
+      key: listKey,
+      padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 60.0),
+      initialItemCount: list.length,
+      itemBuilder: builderMethod,
+    );
   }
 
 /*
