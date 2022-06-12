@@ -695,16 +695,18 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         debugPrint("\n\n\”dgfdbvevgreave\n\n\n" + e.toString());
       }*/
       latestPositionWasCoarse = false;
+      return true;
     } else if (await setLatestPosition(await _getCoarseLocationViaIP())) {
       //TODO silently update the data
       latestPositionWasCoarse = true;
+      return true;
       //_updateDistanceToAllMerchantsNow();
       //showSnackBarGPS();
       //After getting coarse location we do nothing
     }
     //latestPositionWasCoarse = true;
     //isUpdatingPosition = false;
-    return true;
+    return false;
     //}
     //return false;
   }
@@ -845,7 +847,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     if (userPosition == null) return;
 
     _updateDistanceToAllMerchantsNow().then((updateSuccess) {
-      if (updateSuccess) _loadAndParseAllPlaces(null, null);
+      if (updateSuccess)
+        Phoenix.rebirth(context); //_loadAndParseAllPlaces(null, null);
     });
   }
 
