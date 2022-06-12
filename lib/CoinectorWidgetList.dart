@@ -1570,10 +1570,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   Future<Position> _getCoarseLocationViaIP() async {
-    if ((userPosition =
-            await tryGetCoarseLocation('https://bmap.app/geolocation')) ==
+    if ((userPosition = await tryGetCoarseLocation('/geolocation')) ==
         null) if ((userPosition =
-            await tryGetCoarseLocation('https://coinector.app/geolocation')) ==
+            await tryGetCoarseLocation('/geolocation')) ==
         null) if ((userPosition =
             await tryGetCoarseLocation('/geolocation')) ==
         null) {}
