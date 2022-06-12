@@ -1594,7 +1594,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       Map<String, dynamic> headers = new Map();
       //headers["Origin"] = "*";
       headers["Access-Control-Allow-Origin"] = "*";
-      headers["Access-Control-Allow-Credentials"] = "true";
+      // headers["Access-Control-Allow-Credentials"] = "true";
 
       var response = await new Dio().get(url,
           options: Options(
