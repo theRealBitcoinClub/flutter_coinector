@@ -1580,12 +1580,15 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
             await tryGetCoarseLocation('https://coinector.app/geolocation')) ==
         null) if ((userPosition =
             await tryGetCoarseLocation('https://bmap.app/geolocation')) ==
-        null) if ((userPosition = await tryGetCoarseLocation(
-            'https://geolocation-db.com/json/index.html')) ==
-        null) if ((userPosition =
+        null) if ((userPosition = await tryGetCoarseLocation('https://geolocation-db.com/json/index.html')) == null) if ((userPosition =
             await tryGetCoarseLocation('/geolocation')) ==
-        null) {}
-
+        null) if ((userPosition =
+            await tryGetCoarseLocation('https://coinector.app/geolocation2')) ==
+        null) if ((userPosition =
+            await tryGetCoarseLocation('https://bmap.app/geolocation2')) ==
+        null) if ((userPosition =
+            await tryGetCoarseLocation('https://api.ipgeolocation.io/ipgeo?apiKey=1eee688bf62d48979d54739f383d9364')) ==
+        null) if ((userPosition = await tryGetCoarseLocation('/geolocation2')) == null) {}
     return userPosition;
   }
 
