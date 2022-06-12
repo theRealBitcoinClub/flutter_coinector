@@ -1591,6 +1591,21 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   Future<Position> _getCoarseLocationViaIP() async {
+    // List<String> locationProviderUrl = [];
+    // locationProviderUrl.add(
+    //     "https://api.ipgeolocation.io/ipgeo?apiKey=1eee688bf62d48979d54739f383d9364");
+    // locationProviderUrl.add("https://coinector.app/geolocation");
+    // locationProviderUrl.add("https://bmap.app/geolocation");
+    // locationProviderUrl.add("https://geolocation-db.com/json/index.html");
+    // locationProviderUrl.add("/geolocation");
+    // locationProviderUrl.add("https://coinector.app/geolocation2");
+    // locationProviderUrl.add("https://bmap.app/geolocation2");
+    // locationProviderUrl.add("/geolocation2");
+    //
+    // locationProviderUrl.forEach((element) async {
+    //   if ((userPosition = await tryGetCoarseLocation(element)) != null) return;
+    // });
+
     if ((userPosition =
             await tryGetCoarseLocation('https://coinector.app/geolocation')) ==
         null) if ((userPosition =
@@ -1609,6 +1624,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   Future<Position> tryGetCoarseLocation(String url) async {
     try {
+      if (!kIsWeb && !url.startsWith("http")) return null;
+
       // Map<String, dynamic> headers = new Map();
       //headers["Origin"] = "*";
       // headers["Access-Control-Allow-Origin"] = "*";
@@ -1619,13 +1636,18 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
               //contentType: "application/json",
               //headers: headers,
               followRedirects: true));
-      var responseJSON = json.decode(response.data);
+      var responseJSON;
+      if (response.data.runtimeType == String)
+        responseJSON = json.decode(response.data);
+      else
+        responseJSON = response.data;
+
       var longitude = responseJSON['longitude'];
       var latitude = responseJSON['latitude'];
-      if (longitude is int) {
+      if (longitude is int || longitude is String) {
         longitude = double.parse(longitude.toString());
       }
-      if (latitude is int) {
+      if (latitude is int || latitude is String) {
         latitude = double.parse(latitude.toString());
       }
       if (longitude is double)
