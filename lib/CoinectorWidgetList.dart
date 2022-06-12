@@ -621,8 +621,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     updateCurrentListItemCounter();
     if (!isFilteredList()) updateTitleToCurrentlySelectedTab();
     updateAddButtonCategory();
-    await initCurrentPositionIfNotInitialized();
-    _updateDistanceToAllMerchantsIfNotDoneYet();
+    initCurrentPositionIfNotInitialized()
+        .then((value) => _updateDistanceToAllMerchantsIfNotDoneYet());
   }
 
   void updateCurrentListItemCounter() {
