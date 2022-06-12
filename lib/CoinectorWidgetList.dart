@@ -1432,7 +1432,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                   trackVisibility: false,
                   controller: _scrollControl,
                   thumbVisibility: true,
-                  thickness: kIsWeb ? 6.0 : 2.0,
+                  thickness: kIsWeb ? 8.0 : 2.0,
                   radius: Radius.circular(kIsWeb ? 5.0 : 3.0),
                   scrollbarOrientation: ScrollbarOrientation.right,
                   child: buildAnimatedList(listKey, list, builderMethod),
