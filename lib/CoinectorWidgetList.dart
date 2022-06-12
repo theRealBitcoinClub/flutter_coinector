@@ -842,6 +842,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     if (userPosition == null) return;
 
     _updateDistanceToAllMerchantsNow();
+    loadAssetsUnfiltered(context);
   }
 
   void _updateDistanceToAllMerchantsNow() async {
@@ -1574,7 +1575,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         null) if ((userPosition =
             await tryGetCoarseLocation('/geolocation')) ==
         null) if ((userPosition =
-            await tryGetCoarseLocation('/geolocation')) ==
+            await tryGetCoarseLocation('https://geolocation-db.com/json/')) ==
         null) {}
 
     return userPosition;
