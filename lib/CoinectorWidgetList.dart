@@ -1592,7 +1592,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   Future<Position> tryGetCoarseLocation(String url) async {
     try {
       Map<String, dynamic> headers = new Map();
-      headers["Origin"] = "*";
+      //headers["Origin"] = "*";
       headers["Access-Control-Allow-Origin"] = "*";
       headers["Access-Control-Allow-Credentials"] = "true";
 
