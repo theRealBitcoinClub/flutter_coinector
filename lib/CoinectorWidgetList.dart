@@ -1579,8 +1579,6 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
             await tryGetCoarseLocation('https://bmap.app/geolocation')) ==
         null) if ((userPosition = await tryGetCoarseLocation(
             'https://geolocation-db.com/json/index.html')) ==
-        null) if ((userPosition = await tryGetCoarseLocation(
-            'http://geolocation-db.com/json/index.html')) ==
         null) if ((userPosition =
             await tryGetCoarseLocation('/geolocation')) ==
         null) {}
