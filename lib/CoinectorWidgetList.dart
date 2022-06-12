@@ -637,8 +637,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       LocationPermission p = await Geolocator.requestPermission();
       if (p == LocationPermission.whileInUse ||
           p == LocationPermission.always) {
-        await updateCurrentPosition();
-        _updateDistanceToAllMerchantsIfNotDoneYet();
+        updateCurrentPosition()
+            .then((value) => _updateDistanceToAllMerchantsIfNotDoneYet());
       }
     } catch (e) {
       FlutterError.presentError(e);
@@ -852,7 +852,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       for (int x = 0; x < model.length; x++) {
         Merchant m = model[x];
 
-        // if (m.distance != null) return;
+        if (m.distance != null) return false;
 
         calculateDistanceUpdateMerchant(userPosition, m);
       }
@@ -1567,7 +1567,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         );
 
         _updateDistanceToAllMerchantsIfNotDoneYet();
-        Snackbars.showSnackBarAfterAddPlace(_scaffoldKey, ctx);
+        Snackbars.showSnackBarAfterAddPlace(_scaffoldKey, ctx);//
       });
     }
   }
