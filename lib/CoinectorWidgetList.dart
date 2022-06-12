@@ -141,7 +141,13 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     if (subscriptionConnectivityChangeListener != null)
       subscriptionConnectivityChangeListener.cancel();
 
+    _cachedDecodedDataBase = Map();
+    _cachedMerchants = Map();
+    AssetLoader.cachedAssets = Map();
+    FileCache.memoryCache = Map();
+    userPosition = null;
     tabController.dispose();
+    hasUpdatedDistanceToMerchants = false;
     /*if (searchIconBlinkAnimationController != null)
       searchIconBlinkAnimationController.dispose();*/
     super.dispose();
@@ -217,6 +223,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       _cachedMerchants = Map();
       AssetLoader.cachedAssets = Map();
       FileCache.memoryCache = Map();
+      hasUpdatedDistanceToMerchants = false;
       // Future.delayed(Duration(seconds: 30), () {
       //   Phoenix.rebirth(ctx);
       // });
@@ -840,15 +847,19 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   StreamSubscription<Position> positionStream;
 
+  bool hasUpdatedDistanceToMerchants;
   void loadAssetsUnfiltered(ctx) => loadAssets(ctx, null, null);
 
   //TODO test if I can simply call that in the build function (once) to avoid calling it from different locations
   void _updateDistanceToAllMerchantsIfNotDoneYet() {
-    if (userPosition == null) return;
+    if (userPosition == null || hasUpdatedDistanceToMerchants) return;
 
     _updateDistanceToAllMerchantsNow().then((updateSuccess) {
-      // if (updateSuccess) TODO check distance to last position and update list if moved more than 100m
-      //   Phoenix.rebirth(context); //_loadAndParseAllPlaces(null, null);
+      if (updateSuccess) {
+        //TODO check distance to last position and update list if moved more than 100m
+        hasUpdatedDistanceToMerchants = true;
+        Phoenix.rebirth(context); //_loadAndParseAllPlaces(null, null);
+      }
     });
   }
 
