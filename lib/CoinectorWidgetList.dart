@@ -1591,16 +1591,15 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   Future<Position> tryGetCoarseLocation(String url) async {
     try {
-      Map<String, dynamic> headers = new Map();
+      // Map<String, dynamic> headers = new Map();
       //headers["Origin"] = "*";
-      headers["Access-Control-Allow-Origin"] = "*";
+      // headers["Access-Control-Allow-Origin"] = "*";
       // headers["Access-Control-Allow-Credentials"] = "true";
 
       var response = await new Dio().get(url,
           options: Options(
               contentType: "application/json",
-              followRedirects: true,
-              headers: headers));
+              followRedirects: true));
       var responseJSON = json.decode(response.data);
       var longitude = responseJSON['longitude'];
       var latitude = responseJSON['latitude'];
