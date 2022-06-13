@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:Coinector/AssetLoader.dart';
 import 'package:Coinector/InternetConnectivityChecker.dart';
@@ -1608,7 +1607,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
     int index = 0;
     while (userPosition == null) {
-      sleep(Duration(milliseconds: 100));
+      // sleep(Duration(milliseconds: 100));
       userPosition = await tryGetCoarseLocation(locationProviderUrl[index++]);
       if (index == locationProviderUrl.length)
         index = 0; // return userPosition;
