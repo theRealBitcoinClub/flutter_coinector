@@ -147,7 +147,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     FileCache.memoryCache = Map();
     userPosition = null;
     tabController.dispose();
-    hasUpdatedDistanceToMerchants = false;
+    // hasUpdatedDistanceToMerchants = false;
     /*if (searchIconBlinkAnimationController != null)
       searchIconBlinkAnimationController.dispose();*/
     super.dispose();
@@ -223,7 +223,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       _cachedMerchants = Map();
       AssetLoader.cachedAssets = Map();
       FileCache.memoryCache = Map();
-      hasUpdatedDistanceToMerchants = false;
+      // hasUpdatedDistanceToMerchants = false;
       // Future.delayed(Duration(seconds: 30), () {
       //   Phoenix.rebirth(ctx);
       // });
@@ -506,47 +506,49 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       bool isTitle,
       int brand,
       String coin) {
-    if (coin.isNotEmpty && !m2.acceptedCoins.contains(coin)) {
-      if (!kReleaseMode) print("coinfilter");
-      return;
-    }
-    if (brand != -1 && m2.brand != brand) {
-      if (!kReleaseMode) print("brandfilter");
-      return;
-    }
-    if (tag != null && filterWordIndexDoesNotMatch(tag, m2)) {
-      if (!kReleaseMode) print("tagfilter");
-      return;
-    }
-    if (locationTitleOrTag != null) {
-      if (isLocation && !_containsLocationPrefilled(m2, locationTitleOrTag)) {
-        if (!kReleaseMode) print("locationPrefilledFilter");
+    if (locationTitleOrTag != "reset") {
+      //TODO this is used for the inital reset after getting user position and having calculated distance
+      if (coin.isNotEmpty && !m2.acceptedCoins.contains(coin)) {
+        if (!kReleaseMode) print("coinfilter");
         return;
       }
-      if (tag == null &&
-          !isLocation &&
-          coin.isEmpty &&
-          brand == -1 &&
-          isTitle &&
-          !_containsTitle(m2, locationTitleOrTag) &&
-          !_containsLocationFreeSearch(m2, locationTitleOrTag)) {
-        if (!kReleaseMode) print("titlefilter");
+      if (brand != -1 && m2.brand != brand) {
+        if (!kReleaseMode) print("brandfilter");
         return;
       }
+      if (tag != null && filterWordIndexDoesNotMatch(tag, m2)) {
+        if (!kReleaseMode) print("tagfilter");
+        return;
+      }
+      if (locationTitleOrTag != null) {
+        if (isLocation && !_containsLocationPrefilled(m2, locationTitleOrTag)) {
+          if (!kReleaseMode) print("locationPrefilledFilter");
+          return;
+        }
+        if (tag == null &&
+            !isLocation &&
+            coin.isEmpty &&
+            brand == -1 &&
+            isTitle &&
+            !_containsTitle(m2, locationTitleOrTag) &&
+            !_containsLocationFreeSearch(m2, locationTitleOrTag)) {
+          if (!kReleaseMode) print("titlefilter");
+          return;
+        }
+      }
     }
-
-    if (tag == null &&
-        locationTitleOrTag !=
-            null) //TODO why is this setting the position on every single merchant????
-      mapPosition = Position(
-          latitude: m2.x,
-          longitude: m2.y,
-          speedAccuracy: 0.0,
-          altitude: 0.0,
-          accuracy: 0.0,
-          heading: 0.0,
-          speed: 0.0,
-          timestamp: DateTime.now());
+    /*if (tag == null &&
+          locationTitleOrTag !=
+              null) //TODO why is this setting the position on every single merchant????
+        mapPosition = Position(
+            latitude: m2.x,
+            longitude: m2.y,
+            speedAccuracy: 0.0,
+            altitude: 0.0,
+            accuracy: 0.0,
+            heading: 0.0,
+            speed: 0.0,
+            timestamp: DateTime.now());*/
 
     switch (m2.type) {
       case 0:
@@ -567,6 +569,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       case 5:
         tempLists[5].insert(0, m2);
         break;
+      case 6:
       case 999:
         tempLists[6].insert(0, m2);
         break;
@@ -849,21 +852,30 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   StreamSubscription<Position> positionStream;
 
-  bool hasUpdatedDistanceToMerchants;
+  // bool hasUpdatedDistanceToMerchants = false;
   void loadAssetsUnfiltered(ctx) => loadAssets(ctx, null, null);
 
   //TODO test if I can simply call that in the build function (once) to avoid calling it from different locations
   void _updateDistanceToAllMerchantsIfNotDoneYet() {
-    if (userPosition == null || hasUpdatedDistanceToMerchants) return;
-
-    _updateDistanceToAllMerchantsNow().then((updateSuccess) {
-      if (updateSuccess) {
-        //TODO check distance to last position and update list if moved more than 100m
-        hasUpdatedDistanceToMerchants = true;
-        // startProcessSearch(context, null, false);
-        Phoenix.rebirth(context); //_loadAndParseAllPlaces(null, null);
-      }
-    });
+    getLatestSavedPosition().then((savedPosition) => {
+          if (userPosition != null && savedPosition == null)
+            {
+              _updateDistanceToAllMerchantsNow().then((updateSuccess) {
+                if (updateSuccess) {
+                  //TODO check distance to last position and update list if moved more than 100m
+                  // hasUpdatedDistanceToMerchants = true;
+                  // startProcessSearch(context, "reset", false);
+                  // setState(() {
+                  //   initUnfilteredLists();
+                  // });
+                  setLatestPosition(userPosition)
+                      .then((value) => Phoenix.rebirth(context));
+                  // Phoenix.rebirth(
+                  //     context); //_loadAndParseAllPlaces(null, null);
+                }
+              })
+            }
+        });
   }
 
   Future<bool> _updateDistanceToAllMerchantsNow() async {
