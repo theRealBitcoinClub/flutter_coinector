@@ -859,6 +859,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       if (updateSuccess) {
         //TODO check distance to last position and update list if moved more than 100m
         hasUpdatedDistanceToMerchants = true;
+        // startProcessSearch(context, null, false);
         Phoenix.rebirth(context); //_loadAndParseAllPlaces(null, null);
       }
     });
@@ -870,8 +871,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       for (int x = 0; x < model.length; x++) {
         Merchant m = model[x];
 
-        if (m.distance != null)
-          return false; //TODO let distance be updateableer moves
+        // if (m.distance != null)
+        //   return false; //TODO let distance be updateableer moves
 
         calculateDistanceUpdateMerchant(userPosition, m);
       }
@@ -1331,7 +1332,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     }*/
     //TODO ask users to rate the app as they are using this advanced feature multiple times
 
-    if (selected != null) {
+    if (selected != null && selected.isNotEmpty) {
       print("START startProcessSearch2");
       filterListUpdateTitle(ctx, selected);
     } else {
