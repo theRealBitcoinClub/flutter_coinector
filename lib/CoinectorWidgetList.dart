@@ -156,8 +156,6 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   void loadAssets(
       ctx, TagCoinector tagFilter, String locationOrTitleFilter) async {
-    updateCurrentPosition();
-
     if (tagFilter == null && locationOrTitleFilter == null) {
       // _updateDistanceToAllMerchantsIfNotDoneYet();
       if (isUnfilteredList) return;
@@ -169,7 +167,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
     initListModel();
 
-    _loadAndParseAllPlaces(tagFilter, locationOrTitleFilter);
+    _loadAndParseAllPlaces(tagFilter, locationOrTitleFilter).then((value) =>
+        updateCurrentPosition()
+            .then((value) => _updateDistanceToAllMerchantsIfNotDoneYet()));
   }
 
   var isCheckingForUpdates = false;
@@ -232,12 +232,14 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     }
   }
 
-  void _loadAndParseAllPlaces(TagCoinector tag, String locationFilter) async {
+  Future<bool> _loadAndParseAllPlaces(
+      TagCoinector tag, String locationFilter) async {
     await _loadAndParseAsset(tag, locationFilter, 'am');
     await _loadAndParseAsset(tag, locationFilter, 'as');
     await _loadAndParseAsset(tag, locationFilter, 'au');
     await _loadAndParseAsset(tag, locationFilter, 'e');
     // printUniqueMerchantMap();
+    return true;
   }
 
   Future _loadAndParseAsset(
@@ -742,9 +744,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 */
   Future<bool> setLatestPosition(Position pos) async {
-    String position = await getLatestSavedPosition();
+    // String position = await getLatestSavedPosition();
     var posString = _buildPosString(pos);
-    if (posString != null && position == posString) return false;
+    // if (posString != null && position == posString) return false;
 
     bool success = await _saveLatestSavedPosition(posString);
 
@@ -1606,32 +1608,12 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
     int index = 0;
     while (userPosition == null) {
-      sleep(Duration(milliseconds: 400));
+      sleep(Duration(milliseconds: 100));
       userPosition = await tryGetCoarseLocation(locationProviderUrl[index++]);
-      if (index + 1 == locationProviderUrl.length) return null;
+      if (index == locationProviderUrl.length)
+        index = 0; // return userPosition;
     }
     return userPosition;
-    // locationProviderUrl.forEach((element) async {
-    //   if ((userPosition = await tryGetCoarseLocation(element)) != null) return;
-    // });
-
-    // tryGetCoarseLocation('https://coinector.app/geolocation').then((value) => {
-    //       if (value != null) {userPosition = value}
-    //     });
-
-    // userPosition =
-    //     await tryGetCoarseLocation('https://coinector.app/geolocation');
-    // if (userPosition == null) if ((userPosition =
-    //         await tryGetCoarseLocation('https://bmap.app/geolocation')) ==
-    //     null) if ((userPosition = await tryGetCoarseLocation(
-    //         'https://geolocation-db.com/json/index.html')) ==
-    //     null) if ((userPosition = await tryGetCoarseLocation('/geolocation')) == null) if ((userPosition =
-    //         await tryGetCoarseLocation('https://coinector.app/geolocation2')) ==
-    //     null) if ((userPosition =
-    //         await tryGetCoarseLocation('https://bmap.app/geolocation2')) ==
-    //     null) if ((userPosition =
-    //         await tryGetCoarseLocation('https://api.ipgeolocation.io/ipgeo?apiKey=1eee688bf62d48979d54739f383d9364')) ==
-    //     null) if ((userPosition = await tryGetCoarseLocation('/geolocation2')) == null) {}
   }
 
   Future<Position> tryGetCoarseLocation(String url) async {
