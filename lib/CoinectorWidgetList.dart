@@ -858,11 +858,16 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   //TODO test if I can simply call that in the build function (once) to avoid calling it from different locations
   void _updateDistanceToAllMerchantsIfNotDoneYet() {
     try {
+      print("\nERROR _updateDistanceToAllMerchantsIfNotDoneYet 1\n");
       getLatestSavedPosition().then((savedPosition) => {
             if (userPosition != null && savedPosition == null)
               {
                 _updateDistanceToAllMerchantsNow().then((updateSuccess) {
+                  print(
+                      "\nERROR _updateDistanceToAllMerchantsIfNotDoneYet updateSuccess1\n");
                   if (updateSuccess) {
+                    print(
+                        "\nERROR _updateDistanceToAllMerchantsIfNotDoneYet updateSuccess2\n");
                     //TODO check distance to last position and update list if moved more than 100m
                     // hasUpdatedDistanceToMerchants = true;
                     // startProcessSearch(context, "reset", false);
