@@ -1,0 +1,18 @@
+class AutoSuggestions73915511 { static final reviewedTitles73915511 = const {"Sports center Millenium - Španska ulica 5, 1000 Ljubljana, Slovenia",
+"1001 dar, Aleja - Rakuševa ulica 1, 1000 Ljubljana, Slovenia",
+"Villa Andor - Vinogradniška pot 9, 6280 Ankaran - Ancarano, Slovenia",
+"Buldog bar - Koprska ulica 94, 1000 Ljubljana, Slovenia",
+"Cocozebra - Rakuševa ulica 1, 1000 Ljubljana, Slovenia",
+"Forum - Petkovškovo nabrežje 27, 1000 Ljubljana, Slovenia",
+"Spletna tiskarna - Ob železnici 14, 1000 Ljubljana, Slovenia",
+"Q Tabor - Gorkega ulica 45, 2000 Maribor, Slovenia",
+"GA+kuhinje LJUBLJANA - Grška ulica 13, 1000 Ljubljana, Slovenia",
+"GA+kuhinje LJUBLJANA - Grška ulica 13, 1000 Ljubljana, Slovenia",
+"Mlacom l.l.c. - Pot heroja Trtnika 27, 1261 Ljubljana - Dobrunje, Slovenia",
+"Tkanina d.o.o. - Miklošičeva - Miklošičeva cesta 10, 1000 Ljubljana, Slovenia",
+"Slovenska kinoteka - Miklošičeva cesta 28, 1000 Ljubljana, Slovenia",
+"Računalniški mojster - Cesta talcev, 1294 Višnja Gora, Slovenia",
+"Tiskarna Aip Praprotnik d.o.o. - Tavčarjeva ulica 14, 9000 Murska Sobota, Slovenia",
+"Kolesarski servis -Vidic France s.p. - Tenetiše 7, 1270 Litija, Slovenia",
+};
+}
