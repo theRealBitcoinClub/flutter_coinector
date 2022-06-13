@@ -857,25 +857,30 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   //TODO test if I can simply call that in the build function (once) to avoid calling it from different locations
   void _updateDistanceToAllMerchantsIfNotDoneYet() {
-    getLatestSavedPosition().then((savedPosition) => {
-          if (userPosition != null && savedPosition == null)
-            {
-              _updateDistanceToAllMerchantsNow().then((updateSuccess) {
-                if (updateSuccess) {
-                  //TODO check distance to last position and update list if moved more than 100m
-                  // hasUpdatedDistanceToMerchants = true;
-                  // startProcessSearch(context, "reset", false);
-                  // setState(() {
-                  //   initUnfilteredLists();
-                  // });
-                  setLatestPosition(userPosition)
-                      .then((value) => Phoenix.rebirth(context));
-                  // Phoenix.rebirth(
-                  //     context); //_loadAndParseAllPlaces(null, null);
-                }
-              })
-            }
-        });
+    try {
+      getLatestSavedPosition().then((savedPosition) => {
+            if (userPosition != null && savedPosition == null)
+              {
+                _updateDistanceToAllMerchantsNow().then((updateSuccess) {
+                  if (updateSuccess) {
+                    //TODO check distance to last position and update list if moved more than 100m
+                    // hasUpdatedDistanceToMerchants = true;
+                    // startProcessSearch(context, "reset", false);
+                    // setState(() {
+                    //   initUnfilteredLists();
+                    // });
+                    setLatestPosition(userPosition)
+                        .then((value) => Phoenix.rebirth(context));
+                    // Phoenix.rebirth(
+                    //     context); //_loadAndParseAllPlaces(null, null);
+                  }
+                })
+              }
+          });
+    } catch (e) {
+      print("\nERROR _updateDistanceToAllMerchantsIfNotDoneYet \n");
+      print(e.toString());
+    }
   }
 
   Future<bool> _updateDistanceToAllMerchantsNow() async {
