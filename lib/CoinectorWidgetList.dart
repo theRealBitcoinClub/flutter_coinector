@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:Coinector/AssetLoader.dart';
 import 'package:Coinector/InternetConnectivityChecker.dart';
@@ -1591,35 +1592,45 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   Future<Position> _getCoarseLocationViaIP() async {
-    // List<String> locationProviderUrl = [];
-    // locationProviderUrl.add(
-    //     "https://api.ipgeolocation.io/ipgeo?apiKey=1eee688bf62d48979d54739f383d9364");
-    // locationProviderUrl.add("https://coinector.app/geolocation");
-    // locationProviderUrl.add("https://bmap.app/geolocation");
-    // locationProviderUrl.add("https://geolocation-db.com/json/index.html");
-    // locationProviderUrl.add("/geolocation");
-    // locationProviderUrl.add("https://coinector.app/geolocation2");
-    // locationProviderUrl.add("https://bmap.app/geolocation2");
-    // locationProviderUrl.add("/geolocation2");
-    //
+    List<String> locationProviderUrl = [];
+    locationProviderUrl.add(
+        "https://api.ipgeolocation.io/ipgeo?apiKey=1eee688bf62d48979d54739f383d9364");
+    locationProviderUrl.add("https://coinector.app/geolocation");
+    locationProviderUrl.add("https://bmap.app/geolocation");
+    locationProviderUrl.add("https://geolocation-db.com/json/index.html");
+    locationProviderUrl.add("/geolocation");
+    locationProviderUrl.add("https://coinector.app/geolocation2");
+    locationProviderUrl.add("https://bmap.app/geolocation2");
+    locationProviderUrl.add("/geolocation2");
+
+    int index = 0;
+    while (userPosition == null) {
+      sleep(Duration(milliseconds: 400));
+      userPosition = await tryGetCoarseLocation(locationProviderUrl[index++]);
+      if (index + 1 == locationProviderUrl.length) return null;
+    }
+    return userPosition;
     // locationProviderUrl.forEach((element) async {
     //   if ((userPosition = await tryGetCoarseLocation(element)) != null) return;
     // });
 
-    if ((userPosition =
-            await tryGetCoarseLocation('https://coinector.app/geolocation')) ==
-        null) if ((userPosition =
-            await tryGetCoarseLocation('https://bmap.app/geolocation')) ==
-        null) if ((userPosition = await tryGetCoarseLocation('https://geolocation-db.com/json/index.html')) == null) if ((userPosition =
-            await tryGetCoarseLocation('/geolocation')) ==
-        null) if ((userPosition =
-            await tryGetCoarseLocation('https://coinector.app/geolocation2')) ==
-        null) if ((userPosition =
-            await tryGetCoarseLocation('https://bmap.app/geolocation2')) ==
-        null) if ((userPosition =
-            await tryGetCoarseLocation('https://api.ipgeolocation.io/ipgeo?apiKey=1eee688bf62d48979d54739f383d9364')) ==
-        null) if ((userPosition = await tryGetCoarseLocation('/geolocation2')) == null) {}
-    return userPosition;
+    // tryGetCoarseLocation('https://coinector.app/geolocation').then((value) => {
+    //       if (value != null) {userPosition = value}
+    //     });
+
+    // userPosition =
+    //     await tryGetCoarseLocation('https://coinector.app/geolocation');
+    // if (userPosition == null) if ((userPosition =
+    //         await tryGetCoarseLocation('https://bmap.app/geolocation')) ==
+    //     null) if ((userPosition = await tryGetCoarseLocation(
+    //         'https://geolocation-db.com/json/index.html')) ==
+    //     null) if ((userPosition = await tryGetCoarseLocation('/geolocation')) == null) if ((userPosition =
+    //         await tryGetCoarseLocation('https://coinector.app/geolocation2')) ==
+    //     null) if ((userPosition =
+    //         await tryGetCoarseLocation('https://bmap.app/geolocation2')) ==
+    //     null) if ((userPosition =
+    //         await tryGetCoarseLocation('https://api.ipgeolocation.io/ipgeo?apiKey=1eee688bf62d48979d54739f383d9364')) ==
+    //     null) if ((userPosition = await tryGetCoarseLocation('/geolocation2')) == null) {}
   }
 
   Future<Position> tryGetCoarseLocation(String url) async {
