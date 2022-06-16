@@ -1,0 +1,18 @@
+class AutoSuggestions27458068 { static final reviewedTitles27458068 = const {"Club SEVEN - Šmartno - Brod, 1133 Ljubljana - Brod, Slovenia",
+"Club SEVEN - Šmartno - Brod, 1133 Ljubljana - Brod, Slovenia",
+"Restavracija Dobri Čuk - Stegne 23a, 1000 Ljubljana, Slovenia",
+"Prosti čas Kamnik - Šutna 37, 1241 Kamnik, Slovenia",
+"Lečnik, urarstvo in trgovina, d.o.o. - Stari trg 14, 1000 Ljubljana, Slovenia",
+"SkyEye Bitcoin ATM - Šentviška ulica 7, 1210 Ljubljana - Šentvid, Slovenia",
+"Tehnično svetovanje, Matjaž Aleš s.p. - Tesovnikova ulica 50, 1000 Ljubljana, Slovenia",
+"Hotel Triglav l.l.c. Bled - Kolodvorska cesta 33, 4260 Bled, Slovenia",
+"Captain's Cabin - Ključavničarska ulica 5, 1000 Ljubljana, Slovenia",
+"Omega sport trgovina in servis koles ter ostale športne opreme d.o.o. - Dunajska c. 85, 1000 Ljubljana, Slovenia",
+"Bistro & Rooms Hiša Budja - Dupleška cesta 132, 2000 Maribor, Slovenia",
+"Mizarstvo Nemec - kuhinje po meri - Kamnica 2, 1262 Dol pri Ljubljani, Slovenia",
+"Šport & Wellness Center Harmonija - 1234 Mengeš, Slovenia",
+"XYZ - Rakuševa ulica 1, 1000 Ljubljana, Slovenia",
+"Autobroker by Kreativni najemi - Prodajni salon, Verovškova ulica 60a, 1000 Ljubljana, Slovenia",
+"📲 iDoktor [iPhone iPad iPod Mac Servis] Murgle Center - Cesta v Mestni log 55, 1000 Ljubljana, Slovenia",
+};
+}
