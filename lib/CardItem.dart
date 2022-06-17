@@ -181,7 +181,7 @@ class CardItem extends StatelessWidget {
 
   Widget buildImageContainer(String imgUrl, BuildContext ctx) {
     bool isGif = imgUrl.endsWith("gif");
-    double jpgHeightWeb = 360;
+    const double jpgHeightWeb = 360;
     double imgHeight = kIsWeb
         ? isWebMobile
             ? isGif
@@ -193,7 +193,7 @@ class CardItem extends StatelessWidget {
         : isGif
             ? 228
             : jpgHeightWeb - 40;
-    double imgWidth = 640;
+    const double imgWidth = 640;
     return Stack(children: <Widget>[
       SizedBox(
           height: 160,
