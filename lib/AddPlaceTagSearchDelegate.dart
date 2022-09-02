@@ -1,6 +1,6 @@
-import 'package:Coinector/Localizer.dart';
-import 'package:Coinector/TagFactory.dart';
-import 'package:Coinector/translator.dart';
+import 'Localizer.dart';
+import 'TagFactory.dart';
+import 'translator.dart';
 import 'package:flutter/material.dart';
 
 import 'SuggestionList.dart';

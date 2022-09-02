@@ -1,6 +1,7 @@
-import 'package:Coinector/translator.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
+
+import 'translator.dart';
 
 class Dialogs {
   static var hasDialog = false;
@@ -41,7 +42,7 @@ class Dialogs {
         context: buildCtx,
         builder: (BuildContext ctx) {
           return AlertDialog(
-            backgroundColor: Colors.grey[900],
+            backgroundColor: Theme.of(ctx).backgroundColor,
             content: Text(Translator.translate(buildCtx, "make_donation_text")),
             title: Row(
               children: <Widget>[
@@ -63,7 +64,7 @@ class Dialogs {
         context: context,
         builder: (BuildContext ctx) {
           return AlertDialog(
-            backgroundColor: Colors.grey[900],
+            backgroundColor: Theme.of(context).backgroundColor,
             content: Text(Translator.translate(
                 context, "Upload this place to bmap.app?")),
             title: Row(
@@ -88,7 +89,7 @@ class Dialogs {
         context: context,
         builder: (BuildContext ctx) {
           return AlertDialog(
-            backgroundColor: Colors.grey[900],
+            backgroundColor: Theme.of(context).backgroundColor,
             content: Text(
                 Translator.translate(context, "send_email_containing_data")),
             title: Row(
@@ -110,7 +111,7 @@ class Dialogs {
         context: context,
         builder: (BuildContext ctx) {
           return AlertDialog(
-            backgroundColor: Colors.grey[900],
+            backgroundColor: Theme.of(context).backgroundColor,
             content: Text(Translator.translate(context, "download_qr_code")),
             title: Row(
               children: <Widget>[
@@ -150,7 +151,7 @@ class Dialogs {
         context: context,
         builder: (BuildContext ctx) {
           return AlertDialog(
-            backgroundColor: Colors.grey[900],
+            backgroundColor: Theme.of(context).backgroundColor,
             content:
                 Text(Translator.translate(context, "reset_tags_select_again")),
             title: Row(
@@ -175,7 +176,7 @@ class Dialogs {
           var color = Colors.white;
           var textStyle = TextStyle(color: color);
           return AlertDialog(
-            backgroundColor: Colors.grey[900],
+            backgroundColor: Theme.of(ctx).backgroundColor,
             content: Text(content, style: textStyle),
             title: Text(title, style: textStyle),
             actions: <Widget>[

@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:Coinector/translator.dart';
+import 'translator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 

@@ -1,9 +1,9 @@
-import 'package:Coinector/Localizer.dart';
-import 'package:Coinector/TagBrands.dart';
-import 'package:Coinector/TagCoinector.dart';
-import 'package:Coinector/TagFactory.dart';
-import 'package:Coinector/TitleSuggestions.dart';
-import 'package:Coinector/translator.dart';
+import 'Localizer.dart';
+import 'TagBrands.dart';
+import 'TagCoinector.dart';
+import 'TagFactory.dart';
+import 'TitleSuggestions.dart';
+import 'translator.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';

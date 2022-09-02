@@ -1,6 +1,6 @@
 //{"p":"trbc", "x":"41.406595", "y":"2.16655","n":"TRBC - The Real Bitcoin Club", "t":"99","c":"3","s":"5.0", "d":"3", "a":"0,1,2,34", "l":"Barcelona, Spain, Europe"}
 
-import 'package:Coinector/TagCoinector.dart';
+import 'TagCoinector.dart';
 import 'package:html_unescape/html_unescape.dart';
 
 import 'Place.dart';

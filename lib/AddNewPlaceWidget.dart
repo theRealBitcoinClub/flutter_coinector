@@ -2,15 +2,6 @@ import 'dart:convert';
 import 'dart:math';
 import 'dart:typed_data';
 
-import 'package:Coinector/GithubCoinector.dart';
-import 'package:Coinector/GooglePlacesApiCoinector.dart';
-import 'package:Coinector/Localizer.dart';
-import 'package:Coinector/Merchant.dart';
-import 'package:Coinector/TabPageCategory.dart';
-import 'package:Coinector/TagCoinector.dart';
-import 'package:Coinector/TagCoins.dart';
-import 'package:Coinector/TagFactory.dart';
-import 'package:Coinector/translator.dart';
 import 'package:csv/csv.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -22,11 +13,20 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'AddPlaceTagSearchDelegate.dart';
 import 'Dialogs.dart';
+import 'GithubCoinector.dart';
+import 'GooglePlacesApiCoinector.dart';
 import 'ImportData.dart';
+import 'Localizer.dart';
+import 'Merchant.dart';
 import 'ReviewPlaces.dart';
+import 'TabPageCategory.dart';
 import 'TagBrands.dart';
+import 'TagCoinector.dart';
+import 'TagCoins.dart';
+import 'TagFactory.dart';
 import 'Toaster.dart';
 import 'UrlLauncher.dart';
+import 'translator.dart';
 
 const OPACITY_ITEM_VALIDATED = 0.7;
 const OPACITY_ITEM_DEACTIVATED = 0.0;
@@ -609,7 +609,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[900],
+      backgroundColor: Theme.of(context).primaryColor,
       floatingActionButton: wrapBuildSubmitBtn(),
       appBar: AppBar(
         backgroundColor: actionBarColor,

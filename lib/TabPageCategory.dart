@@ -1,4 +1,4 @@
-import 'package:Coinector/MyColors.dart';
+import 'MyColors.dart';
 import 'package:flutter/material.dart';
 
 class TabPageCategory {

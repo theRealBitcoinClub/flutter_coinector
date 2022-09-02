@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:Coinector/AddNewPlaceWidget.dart';
-import 'package:Coinector/Merchant.dart';
+import 'AddNewPlaceWidget.dart';
+import 'Merchant.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:github/github.dart';

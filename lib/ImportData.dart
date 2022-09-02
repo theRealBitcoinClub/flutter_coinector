@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:Coinector/GithubCoinector.dart';
+import 'GithubCoinector.dart';
 // import 'package:country_codes/country_codes.dart';
 import 'package:dio/dio.dart';
 

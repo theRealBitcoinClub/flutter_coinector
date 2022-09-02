@@ -1,10 +1,11 @@
 // Identifier a
 
-import 'package:Coinector/AssetLoader.dart';
-import 'package:Coinector/Localizer.dart';
 import 'package:csv/csv.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
+
+import 'AssetLoader.dart';
+import 'Localizer.dart';
 
 class TagCoinector {
   //TODO TRANSLATE ENG TAGS IN ALL LANGUAGES AND ADD EMOTICON TO SPANISH
@@ -74,6 +75,7 @@ class TagCoinector {
   }
 
   String toUI() {
+    // return text.toUpperCase();
     return text.toUpperCase() + " " + emoji;
   }
 

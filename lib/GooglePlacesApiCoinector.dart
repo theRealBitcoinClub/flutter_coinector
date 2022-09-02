@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:Coinector/ConfigReader.dart';
+import 'ConfigReader.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';

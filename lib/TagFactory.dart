@@ -1,4 +1,4 @@
-import 'package:Coinector/Localizer.dart';
+import 'Localizer.dart';
 
 import 'TagCoinector.dart';
 

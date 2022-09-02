@@ -1,12 +1,12 @@
-import 'package:Coinector/Dialogs.dart';
-import 'package:Coinector/InternetConnectivityChecker.dart';
-import 'package:Coinector/translator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 
+import 'Dialogs.dart';
+import 'InternetConnectivityChecker.dart';
 import 'TagCoinector.dart';
 import 'UrlLauncher.dart';
+import 'translator.dart';
 
 class Snackbars {
   static void _showSnackBar(
@@ -25,7 +25,7 @@ class Snackbars {
         style: TextStyle(
             fontSize: 18.0,
             fontWeight: FontWeight.w400,
-            color: Colors.grey[900]),
+            color: Theme.of(ctx).primaryColor),
       ),
       backgroundColor: Colors.yellow[700],
     ));

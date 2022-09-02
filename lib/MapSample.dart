@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:Coinector/TagCoinector.dart';
-import 'package:Coinector/translator.dart';
+import 'TagCoinector.dart';
+import 'translator.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';

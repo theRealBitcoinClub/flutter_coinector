@@ -1,12 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:Coinector/AssetLoader.dart';
-import 'package:Coinector/InternetConnectivityChecker.dart';
-import 'package:Coinector/ItemInfoStackLayer.dart';
-import 'package:Coinector/Snackbars.dart';
-import 'package:Coinector/TagCoins.dart';
-import 'package:Coinector/translator.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
@@ -26,9 +20,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:synchronized/synchronized.dart' as synchro;
 
 import 'AddNewPlaceWidget.dart';
+import 'AssetLoader.dart';
 import 'CardItemBuilder.dart';
 import 'Dialogs.dart';
 import 'FileCache.dart';
+import 'InternetConnectivityChecker.dart';
+import 'ItemInfoStackLayer.dart';
 import 'ListModel.dart';
 import 'LocationSuggestions.dart';
 import 'MapSample.dart';
@@ -36,10 +33,13 @@ import 'Merchant.dart';
 import 'MyColors.dart';
 import 'PieChartCoins.dart';
 import 'SearchDemoSearchDelegate.dart';
+import 'Snackbars.dart';
 import 'TabPageCategory.dart';
 import 'TagBrands.dart';
 import 'TagCoinector.dart';
+import 'TagCoins.dart';
 import 'UrlLauncher.dart';
+import 'translator.dart';
 
 const bool isManagerModeRelease = false;
 
@@ -80,8 +80,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   List<Merchant> names = []; // names we get from API
   List<ListModel<Merchant>> tempLists = [];
   List<ListModel<Merchant>> unfilteredLists = [];
-  String titleActionBar = "Coinector";
-  String addButtonCategory = "EAT";
+  String titleActionBar = "BCH-City, Townsville";
+  String addButtonCategory = "PLACE";
   bool isUnfilteredList = false;
   bool
       hasHitSearch; //TODO count user activity by how often he hits search, how much he interacts with the app, reward him for that with badges or BMAP tokens
@@ -233,10 +233,10 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   Future<bool> _loadAndParseAllPlaces(
       TagCoinector tag, String locationFilter) async {
-    await _loadAndParseAsset(tag, locationFilter, 'am');
-    await _loadAndParseAsset(tag, locationFilter, 'as');
-    await _loadAndParseAsset(tag, locationFilter, 'au');
-    await _loadAndParseAsset(tag, locationFilter, 'e');
+    await _loadAndParseAsset(tag, locationFilter, 'bchcity');
+    // await _loadAndParseAsset(tag, locationFilter, 'as');
+    // await _loadAndParseAsset(tag, locationFilter, 'au');
+    // await _loadAndParseAsset(tag, locationFilter, 'e');
     // printUniqueMerchantMap();
     return true;
   }
@@ -906,9 +906,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   void updateTitleToCurrentlySelectedTab() {
-    setState(() {
-      titleActionBar = getTitleOfSelectedTab();
-    });
+    // setState(() {
+    //   titleActionBar = getTitleOfSelectedTab();
+    // });
   }
 
   void updateAddButtonCategory() {
@@ -970,10 +970,11 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         home: new WillPopScope(
           onWillPop: _onWillPop,
           child: Scaffold(
+            backgroundColor: Colors.green,
             key: _scaffoldKey,
-            floatingActionButtonLocation:
-                FloatingActionButtonLocation.centerFloat,
-            floatingActionButton: buildFloatingActionButton(),
+            // floatingActionButtonLocation:
+            //     FloatingActionButtonLocation.centerFloat,
+            // floatingActionButton: buildFloatingActionButton(),
             body: new Builder(builder: (BuildContext ctx) {
               buildWithinScopeOfTranslator(ctx);
               appContent = NestedScrollView(
@@ -1062,10 +1063,10 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   ThemeData buildTheme() {
     return ThemeData(
       brightness: Brightness.dark,
-      backgroundColor: Colors.grey[900],
-      primaryColor: Colors.grey[900],
+      backgroundColor: Colors.green[900],
+      primaryColor: Colors.green[900],
       secondaryHeaderColor: Colors.white,
-      fontFamily: 'OpenSans',
+      fontFamily: 'Roboto',
       textTheme: TextTheme(
         headline6: TextStyle(color: Colors.black),
         headline5: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
@@ -1103,8 +1104,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         //     return buildColoredTab(page);
         //   }).toList(),
         // ),
+        backgroundColor: Colors.white,
         actions: <Widget>[
-          buildIconButtonStats(buildCtx),
+          // buildIconButtonStats(buildCtx),
           buildIconButtonMap(buildCtx),
         ],
         title: buildTitleWidget(),
@@ -1128,7 +1130,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
               fontWeight: kIsWeb ? FontWeight.w100 : FontWeight.w300,
               fontStyle: FontStyle.normal,
               //decoration: TextDecoration.underline,
-              color: Colors.white.withOpacity(0.5)),
+              color: Colors.black.withOpacity(0.5)),
         )));
   }
 
@@ -1155,7 +1157,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     return IconButton(
         tooltip: "Map",
         icon: Icon(Icons.map),
-        color: Colors.lightBlueAccent,
+        color: Colors.green,
         onPressed: () {
           handleMapButtonClick(ctx);
         });
@@ -1165,7 +1167,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     return IconButton(
         tooltip: "Statistics",
         icon: Icon(Icons.pie_chart),
-        color: Colors.lightBlueAccent,
+        color: Colors.green,
         onPressed: () {
           handleStatsButtonClick(ctx);
         });
@@ -1344,7 +1346,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         color: /*searchIconBlinkAnimation != null && hasNotHitSearch()
             ? searchIconBlinkAnimation.value
             : */
-            Colors.lightBlueAccent,
+            Colors.green,
         //progress: getSearchDelegate().transitionAnimation,
       ),
       onPressed: () async {

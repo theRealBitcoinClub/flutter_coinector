@@ -1,4 +1,4 @@
-import 'package:Coinector/SearchRouterApp.dart';
+import 'SearchRouterApp.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'ConfigReader.dart';

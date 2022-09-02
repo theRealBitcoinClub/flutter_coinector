@@ -1,9 +1,5 @@
 import 'dart:convert';
 
-import 'package:Coinector/TabPageCategory.dart';
-import 'package:Coinector/TagBrands.dart';
-import 'package:Coinector/TagCoins.dart';
-import 'package:Coinector/translator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/widgets/I18nText.dart';
@@ -19,8 +15,12 @@ import 'ItemInfoStackLayer.dart';
 import 'Merchant.dart';
 import 'MyColors.dart';
 import 'RatingWidgetBuilder.dart';
+import 'TabPageCategory.dart';
+import 'TagBrands.dart';
+import 'TagCoins.dart';
 import 'Toaster.dart';
 import 'UrlLauncher.dart';
+import 'translator.dart';
 
 class CardItem extends StatelessWidget {
   //final bool isDataSaveOfflineMode;
@@ -90,7 +90,7 @@ class CardItem extends StatelessWidget {
 
     /*final infoBoxBackgroundColor =
         MyColors.getCardInfoBoxBackgroundColor(merchant.type).withOpacity(1.0);
-    final actionButtonBackgroundColor = Colors.grey[900].withOpacity(0.0);*/
+    final actionButtonBackgroundColor = Theme.of(context).backgroundColor.withOpacity(0.0);*/
     return SizedBox(
       child: Card(
           clipBehavior: Clip.none,
@@ -126,7 +126,7 @@ class CardItem extends StatelessWidget {
 
     if (!kReleaseMode) print("\n" + imgUrl);
 
-    var backGroundColor = Colors.grey[900].withOpacity(0.80);
+    var backGroundColor = Colors.grey[800].withOpacity(0.80);
     return Stack(
       children: <Widget>[
         ClipRRect(
@@ -139,8 +139,8 @@ class CardItem extends StatelessWidget {
         buildStackInfoTextWithBackgroundAndShadow(
             backGroundColor, textStyle, textStyle2, tagFilterCallback),
         buildPositionedContainerDistance(ctx, backGroundColor, textStyle2),
-        buildPositionedContainerBrand(ctx, backGroundColor, textStyle2),
-        buildPositionedContainerAcceptedCoins(backGroundColor, ctx, textStyle2),
+        // buildPositionedContainerBrand(ctx, backGroundColor, textStyle2),
+        // buildPositionedContainerAcceptedCoins(backGroundColor, ctx, textStyle2),
         RatingWidgetBuilder.hasReviews(merchant)
             ? buildPositionedContainerReviews(backGroundColor, ctx)
             : SizedBox(),
@@ -174,7 +174,7 @@ class CardItem extends StatelessWidget {
                   style: TextStyle(color: Colors.white54),
                   textScaleFactor: 0.9,
                 ))), //),*/
-        decoration: BoxDecoration(color: Colors.grey[900]),
+        decoration: BoxDecoration(color: Theme.of(ctx).backgroundColor),
       ),
     );
   }
@@ -388,7 +388,7 @@ class CardItem extends StatelessWidget {
           borderRadius: BorderRadius.only(
               bottomRight: Radius.circular(15.0),
               bottomLeft: Radius.circular(15.0)),
-          color: Colors.grey[900].withOpacity(0.1)),
+          color: Theme.of(context).primaryColor.withOpacity(0.1)),
       child: buildButtons(context),
     );
   }
@@ -404,13 +404,51 @@ class CardItem extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               alignment: MainAxisAlignment.end,
               children: <Widget>[
-                !kIsWeb ? SizedBox() : buildTextButtonReport(context),
-                kIsWeb ? SizedBox() : buildTextButtonManager(context),
-                buildTextButtonShare(context),
-                kIsWeb ? SizedBox() : buildTextButtonReview(context),
+                // !kIsWeb ? SizedBox() : buildTextButtonReport(context),
+                // kIsWeb ? SizedBox() : buildTextButtonManager(context),
+                // buildTextButtonShare(context),
+                // kIsWeb ? SizedBox() : buildTextButtonReview(context),
+                buildTextButtonPay(context),
+                buildTextButtonVideo(context),
                 buildTextButtonVisit(context),
               ],
             )));
+  }
+
+  TextButton buildTextButtonPay(BuildContext context) {
+    return TextButton(
+      child: Column(
+        children: <Widget>[
+          Dialogs.buildIcon(Icons.currency_bitcoin, Colors.white),
+          Dialogs.buildSpacer(),
+          Text(
+            Translator.translate(context, 'PAY'),
+            style: TextStyle(fontSize: 14, color: Colors.white),
+          )
+        ],
+      ),
+      onPressed: () {
+        // _handleButtonPay(context);
+      },
+    );
+  }
+
+  TextButton buildTextButtonVideo(BuildContext context) {
+    return TextButton(
+      child: Column(
+        children: <Widget>[
+          Dialogs.buildIcon(Icons.play_circle, Colors.white),
+          Dialogs.buildSpacer(),
+          Text(
+            Translator.translate(context, 'VIDEO'),
+            style: TextStyle(fontSize: 14, color: Colors.white),
+          )
+        ],
+      ),
+      onPressed: () {
+        // _handleButtonVideo(context);
+      },
+    );
   }
 
   TextButton buildTextButtonVisit(BuildContext context) {

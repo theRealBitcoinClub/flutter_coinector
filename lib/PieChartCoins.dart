@@ -1,9 +1,9 @@
-import 'package:Coinector/FileCache.dart';
-import 'package:Coinector/TabPageCategory.dart';
-import 'package:Coinector/TabPageStatistics.dart';
-import 'package:Coinector/TagBrands.dart';
-import 'package:Coinector/TagCoins.dart';
-import 'package:Coinector/TagContinents.dart';
+import 'FileCache.dart';
+import 'TabPageCategory.dart';
+import 'TabPageStatistics.dart';
+import 'TagBrands.dart';
+import 'TagCoins.dart';
+import 'TagContinents.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
