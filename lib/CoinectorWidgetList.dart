@@ -73,7 +73,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   var _scaffoldKey = GlobalKey<ScaffoldState>();
   var scaffoldKey;
   final List<GlobalKey<AnimatedListState>> _listKeys = [];
-  TabController tabController;
+  // TabController tabController;
   bool _customIndicator = false;
   List<ListModel<Merchant>> _lists = [];
   Map<String, Merchant> _uniqueMerchantMap = Map();
@@ -146,7 +146,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     AssetLoader.cachedAssets = Map();
     FileCache.memoryCache = Map();
     userPosition = null;
-    tabController.dispose();
+    // tabController.dispose();
     // hasUpdatedDistanceToMerchants = false;
     /*if (searchIconBlinkAnimationController != null)
       searchIconBlinkAnimationController.dispose();*/
@@ -368,7 +368,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
           if (!hasAnimated) {
             hasAnimated = true;
-            animateToFirstResult(m);
+            // animateToFirstResult(m);
           }
         });
         totalAdded++;
@@ -431,27 +431,27 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     isInitialized = true;
   }
 
-  void animateToFirstResult(Merchant merchant) async {
-    if (tabController.indexIsChanging) return;
-
-    if (merchant != null) {
-      animateToTab(merchant);
-      return;
-    }
-
-    for (int i = 0; i < _lists.length; i++) {
-      ListModel<Merchant> model = _lists[i];
-      for (int x = 0; x < model.length; x++) {
-        Merchant m = model[x];
-        animateToTab(m);
-        return;
-      }
-    }
-  }
-
-  void animateToTab(Merchant merchant) {
-    tabController.animateTo(TabPages.getTabIndex(merchant));
-  }
+  // void animateToFirstResult(Merchant merchant) async {
+  //   if (tabController.indexIsChanging) return;
+  //
+  //   if (merchant != null) {
+  //     animateToTab(merchant);
+  //     return;
+  //   }
+  //
+  //   for (int i = 0; i < _lists.length; i++) {
+  //     ListModel<Merchant> model = _lists[i];
+  //     for (int x = 0; x < model.length; x++) {
+  //       Merchant m = model[x];
+  //       animateToTab(m);
+  //       return;
+  //     }
+  //   }
+  // }
+  //
+  // void animateToTab(Merchant merchant) {
+  //   tabController.animateTo(TabPages.getTabIndex(merchant));
+  // }
 
   void initUnfilteredLists() {
     initListModelSeveralTimes(unfilteredLists, false);
@@ -550,33 +550,33 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
             speed: 0.0,
             timestamp: DateTime.now());*/
 
-    switch (m2.type) {
-      case 0:
-        tempLists[0].insert(0, m2);
-        break;
-      case 1:
-        tempLists[1].insert(0, m2);
-        break;
-      case 2:
-        tempLists[2].insert(0, m2);
-        break;
-      case 3:
-        tempLists[3].insert(0, m2);
-        break;
-      case 4:
-        tempLists[4].insert(0, m2);
-        break;
-      case 5:
-        tempLists[5].insert(0, m2);
-        break;
-      case 6:
-      case 999:
-        tempLists[6].insert(0, m2);
-        break;
-      /*case 999:
+    // switch (m2.type) {
+    //   case 0:
+    tempLists[0].insert(0, m2);
+    // break;
+    // case 1:
+    //   tempLists[1].insert(0, m2);
+    //   break;
+    // case 2:
+    //   tempLists[2].insert(0, m2);
+    //   break;
+    // case 3:
+    //   tempLists[3].insert(0, m2);
+    //   break;
+    // case 4:
+    //   tempLists[4].insert(0, m2);
+    //   break;
+    // case 5:
+    //   tempLists[5].insert(0, m2);
+    //   break;
+    // case 6:
+    // case 999:
+    //   tempLists[6].insert(0, m2);
+    //   break;
+    /*case 999:
         tempLists[7].insert(0, m2);
         break;*/
-    }
+    // }
   }
 
   bool filterWordIndexDoesNotMatch(TagCoinector filterTag, Merchant m2) {
@@ -587,16 +587,17 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   void initListModelSeveralTimes(List lists, bool keepListKeys) {
     lists.clear();
     if (keepListKeys) _listKeys.clear();
-    for (int i = 0; i < TabPages.pages.length + 1; i++) {
-      if (keepListKeys)
-        _listKeys.add(GlobalKey<AnimatedListState>(
-            debugLabel: "Scaffoldkey Listmodel no." + i.toString()));
-      lists.add(ListModel<Merchant>(
-        tabIndex: i,
-        listKey: (keepListKeys) ? _listKeys[i] : GlobalKey<AnimatedListState>(),
-        removedItemBuilder: CardItemBuilder.buildRemovedItem,
-      ));
-    }
+    int i = 0;
+    // for (int i = 0; i < TabPages.pages.length + 1; i++) {
+    if (keepListKeys)
+      _listKeys.add(GlobalKey<AnimatedListState>(
+          debugLabel: "Scaffoldkey Listmodel no." + i.toString()));
+    lists.add(ListModel<Merchant>(
+      tabIndex: i,
+      listKey: (keepListKeys) ? _listKeys[i] : GlobalKey<AnimatedListState>(),
+      removedItemBuilder: CardItemBuilder.buildRemovedItem,
+    ));
+    // }
   }
 
   void initTempListModel() {
@@ -637,7 +638,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   void updateCurrentListItemCounter() {
-    currentListItemCounter = _lists[tabController.index].length;
+    // currentListItemCounter = _lists[tabController.index].length;
+    currentListItemCounter = _lists[0].length;
   }
 
   void requestCurrentPosition() async {
@@ -802,9 +804,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     print("START initState2");
 
     if (_scrollControlList.isEmpty)
-      TabPages.pages.forEach((element) {
-        _scrollControlList.add(ScrollController());
-      });
+      // TabPages.pages.forEach((element) {
+      _scrollControlList.add(ScrollController());
+    // });
     //_verticalScroller = buildCustomScroller();
     WidgetsBinding.instance.addObserver(this);
     scaffoldKey = _scaffoldKey;
@@ -821,8 +823,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition(context);
     print("START initState4");
     //OneSignal.initOneSignalPushMessages(); //TODO maybe activate Signal again, I want to ask users for reviews!
-    tabController = TabController(vsync: this, length: TabPages.pages.length);
-    tabController.addListener(_handleTabSelection);
+    // tabController = TabController(vsync: this, length: TabPages.pages.length);
+    // tabController.addListener(_handleTabSelection);
     initListModel();
 
     print("START initState5");
@@ -911,20 +913,29 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   void updateAddButtonCategory() {
     setState(() {
-      addButtonCategory = TabPages.pages[tabController.index].short;
+      // addButtonCategory = TabPages.pages[tabController.index].short;
+      addButtonCategory = TabPages.pages[0].short;
     });
   }
 
-  String getTitleOfSelectedTab() => TabPages.pages[tabController.index].long;
+  // String getTitleOfSelectedTab() => TabPages.pages[tabController.index].long;
+  String getTitleOfSelectedTab() => TabPages.pages[0].long;
 
-  Color getColorOfSelectedTab() =>
-      MyColors.getCardInfoBoxBackgroundColor(tabController.index);
+  // Color getColorOfSelectedTab() =>
+  //     MyColors.getCardInfoBoxBackgroundColor(tabController.index);
+  //
+  // Color getAccentColorOfSelectedTab() =>
+  //     MyColors.getTabColor(tabController.index);
+  //
+  // Color getDarkColorOfSelectedTab() =>
+  //     MyColors.getCardActionButtonBackgroundColor(tabController.index);
 
-  Color getAccentColorOfSelectedTab() =>
-      MyColors.getTabColor(tabController.index);
+  Color getColorOfSelectedTab() => MyColors.getCardInfoBoxBackgroundColor(0);
+
+  Color getAccentColorOfSelectedTab() => MyColors.getTabColor(0);
 
   Color getDarkColorOfSelectedTab() =>
-      MyColors.getCardActionButtonBackgroundColor(tabController.index);
+      MyColors.getCardActionButtonBackgroundColor(0);
 
   void initListModel() {
     initListModelSeveralTimes(_lists, true);
@@ -972,9 +983,17 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                     buildSliverAppBar(buildCtx),
                   ];
                 },
-                body: TabBarView(
-                    controller: tabController,
-                    children: buildAllTabContainer(ctx)),
+                // body: TabBarView(
+                //     controller: tabController,
+                //     children: buildAllTabContainer(ctx)),
+                body: buildTabContainer(
+                    ctx,
+                    _listKeys[0],
+                    _lists[0],
+                    CardItemBuilder(
+                            ctx, _lists, this /*, isDataSaverOfflineMode*/)
+                        .buildItemRestaurant,
+                    TabPages.pages[0].long),
               );
               return appContent;
             }),
@@ -1076,14 +1095,14 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                 : null,
         forceElevated: true,
         leading: buildHomeButton(buildCtx),
-        bottom: TabBar(
-          controller: tabController,
-          isScrollable: true,
-          indicator: getIndicator(),
-          tabs: TabPages.pages.map<Tab>((TabPageCategory page) {
-            return buildColoredTab(page);
-          }).toList(),
-        ),
+        // bottom: TabBar(
+        //   controller: tabController,
+        //   isScrollable: true,
+        //   indicator: getIndicator(),
+        //   tabs: TabPages.pages.map<Tab>((TabPageCategory page) {
+        //     return buildColoredTab(page);
+        //   }).toList(),
+        // ),
         actions: <Widget>[
           buildIconButtonStats(buildCtx),
           buildIconButtonMap(buildCtx),
@@ -1113,22 +1132,22 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         )));
   }
 
-  Tab buildColoredTab(TabPageCategory page) {
-    return _lists[page.tabIndex].length > 0
-        ? Tab(
-            text: page.short,
-            icon: Icon(
-              page.icon,
-              color: MyColors.getTabColor(page.typeIndex),
-              size: 22,
-            ))
-        : Tab(
-            icon: Icon(
-            page.icon,
-            color: Colors.white.withOpacity(0.5),
-            size: 22,
-          ));
-  }
+  // Tab buildColoredTab(TabPageCategory page) {
+  //   return _lists[page.tabIndex].length > 0
+  //       ? Tab(
+  //           text: page.short,
+  //           icon: Icon(
+  //             page.icon,
+  //             color: MyColors.getTabColor(page.typeIndex),
+  //             size: 22,
+  //           ))
+  //       : Tab(
+  //           icon: Icon(
+  //           page.icon,
+  //           color: Colors.white.withOpacity(0.5),
+  //           size: 22,
+  //         ));
+  // }
 
   bool zoomMapAfterSelectLocation = false;
 
@@ -1175,7 +1194,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       // _updateDistanceToAllMerchantsIfNotDoneYet();
       if (result != null) {
         showFilterResults(false, ctx, result.name);
-        animateToTab(result);
+        // animateToTab(result);
         // showSnackBar("Showing selected merchant: " + result.name);
       } else {
         showUnfilteredLists(ctx);
@@ -1193,26 +1212,26 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       );
   }
 
-  List<Widget> buildAllTabContainer(ctx) {
-    var builder =
-        CardItemBuilder(ctx, _lists, this /*, isDataSaverOfflineMode*/);
-    return [
-      buildTabContainer(ctx, _listKeys[0], _lists[0],
-          builder.buildItemRestaurant, TabPages.pages[0].long),
-      buildTabContainer(ctx, _listKeys[1], _lists[1], builder.buildItemTogo,
-          TabPages.pages[1].long),
-      buildTabContainer(ctx, _listKeys[2], _lists[2], builder.buildItemBar,
-          TabPages.pages[2].long),
-      buildTabContainer(ctx, _listKeys[3], _lists[3], builder.buildItemMarket,
-          TabPages.pages[3].long),
-      buildTabContainer(ctx, _listKeys[4], _lists[4], builder.buildItemShop,
-          TabPages.pages[4].long),
-      buildTabContainer(ctx, _listKeys[5], _lists[5], builder.buildItemHotel,
-          TabPages.pages[5].long),
-      buildTabContainer(ctx, _listKeys[6], _lists[6], builder.buildItemWellness,
-          TabPages.pages[6].long),
-    ];
-  }
+  // List<Widget> buildAllTabContainer(ctx) {
+  //   var builder =
+  //       CardItemBuilder(ctx, _lists, this /*, isDataSaverOfflineMode*/);
+  //   return [
+  //     buildTabContainer(ctx, _listKeys[0], _lists[0],
+  //         builder.buildItemRestaurant, TabPages.pages[0].long),
+  //     buildTabContainer(ctx, _listKeys[1], _lists[1], builder.buildItemTogo,
+  //         TabPages.pages[1].long),
+  //     buildTabContainer(ctx, _listKeys[2], _lists[2], builder.buildItemBar,
+  //         TabPages.pages[2].long),
+  //     buildTabContainer(ctx, _listKeys[3], _lists[3], builder.buildItemMarket,
+  //         TabPages.pages[3].long),
+  //     buildTabContainer(ctx, _listKeys[4], _lists[4], builder.buildItemShop,
+  //         TabPages.pages[4].long),
+  //     buildTabContainer(ctx, _listKeys[5], _lists[5], builder.buildItemHotel,
+  //         TabPages.pages[5].long),
+  //     buildTabContainer(ctx, _listKeys[6], _lists[6], builder.buildItemWellness,
+  //         TabPages.pages[6].long),
+  //   ];
+  // }
 
   bool isFilterEmpty() => _searchTerm == null || _searchTerm.isEmpty;
 
@@ -1443,7 +1462,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     return (list != null && list.length > 0)
         ? Padding(
             child: ImprovedScrolling(
-                scrollController: _scrollControlList[tabController.index],
+                scrollController: _scrollControlList[0],
+                // scrollController: _scrollControlList[tabController.index],
                 /*
                 onScroll: (scrollOffset) => debugPrint(
                       'Scroll offset: $scrollOffset',
@@ -1476,7 +1496,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                 ),
                 child: Scrollbar(
                   trackVisibility: false,
-                  controller: _scrollControlList[tabController.index],
+                  controller: _scrollControlList[0],
+                  // controller: _scrollControlList[tabController.index],
                   thumbVisibility: true,
                   thickness: kIsWeb ? 8.0 : 2.0,
                   radius: Radius.circular(kIsWeb ? 5.0 : 3.0),
@@ -1540,7 +1561,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   AnimatedList buildAnimatedList(listKey, list, builderMethod) {
     return AnimatedList(
       physics: const ClampingScrollPhysics(),
-      controller: _scrollControlList[tabController.index],
+      // controller: _scrollControlList[tabController.index],
+      controller: _scrollControlList[0],
       key: listKey,
       padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 60.0),
       initialItemCount: list.length,
@@ -1601,7 +1623,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
           ctx,
           MaterialPageRoute(
               builder: (buildCtx) => AddNewPlaceWidget(
-                  selectedType: tabController.index,
+                  selectedType: 0,
+                  // selectedType: tabController.index,
                   accentColor: getAccentColorOfSelectedTab(),
                   actionBarColor: getDarkColorOfSelectedTab(),
                   typeTitle: addButtonCategory,
@@ -1690,7 +1713,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   int currentListItemCount() {
     return currentListItemCounter == 0
-        ? currentListItemCounter = _lists[tabController.index].length
+        ? currentListItemCounter = _lists[0].length
+        // ? currentListItemCounter = _lists[tabController.index].length
         : currentListItemCounter;
   }
 
