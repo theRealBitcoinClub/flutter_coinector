@@ -1,5 +1,5 @@
 name: BCH_City
-description: Coinecting to coimunity...
+description: Bitcoin Cash City App
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -12,7 +12,7 @@ description: Coinecting to coimunity...
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 
-version: 4.20.97+254022
+version: 4.20.98+254023
 
 environment:
   sdk: ">=2.2.2 <3.0.0"

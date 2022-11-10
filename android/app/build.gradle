@@ -34,7 +34,7 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     ext.kotlin_version = '1.6.10'
-    compileSdkVersion 32
+    compileSdkVersion 33
 
     lintOptions {
         disable 'InvalidPackage'
@@ -43,9 +43,9 @@ android {
     defaultConfig {
         applicationId "cash.bitcoinmap.coinector"
         minSdkVersion 23
-        targetSdkVersion 32
-        versionCode 254022
-        versionName "BMAP 4.20.97"
+        targetSdkVersion 33
+        versionCode 254023
+        versionName "BCITY 4.20.98"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
