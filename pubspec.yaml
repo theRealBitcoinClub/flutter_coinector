@@ -37,7 +37,7 @@ dependencies:
   loading_animations: ^2.2.0
   shared_preferences: ^2.0.15
   share: ^2.0.4
-  dio: ^4.0.6
+  dio: ">=4.0.6 <6.0.0"
   responsive_framework: ^0.1.7
   connectivity: ^3.0.6
   in_app_review: ^2.0.4
