@@ -1,4 +1,0 @@
-/*void configureApp() {
-  // No-op.
-}
-*/
