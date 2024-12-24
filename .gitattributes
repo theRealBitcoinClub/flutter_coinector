@@ -1,0 +1,22 @@
+#FOR WINDOWS USERS RUN THIS COMMAND TO AVOID CHECKING IN FILES WITH CHANGED LINE ENDINGS: 
+#git config --global core.autocrlf true
+
+# Set the default behavior for all files.
+* text=auto
+
+# Normalized and converts to 
+# native line endings on checkout.
+*.c text
+*.h text
+
+# Convert to CRLF line endings on checkout.
+*.sln text eol=crlf
+
+# Convert to LF line endings on checkout.
+*.sh text eol=lf
+
+# Binary files.
+*.png binary
+*.jpg binary
+*.gif binary
+*.webp binary

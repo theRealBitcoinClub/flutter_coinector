@@ -1,0 +1,44 @@
+:root {
+    --primary:#303030
+}
+
+.loading-bar1 {
+    width: 100%;
+    background-color: #FFFA;
+    height: 10px;
+    border-radius: 1rem;
+    position: relative;
+}
+.loading-bar1:after {
+    position: absolute;
+    content: '';
+    left:0;
+    width: 10px;
+    height: 10px;
+    background-color: var(--primary);
+    border-radius: 1rem;
+    animation: bar1 linear 3s infinite;
+}
+
+@keyframes first {
+    0% {
+        transform: rotate(0);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes bar1 {
+    0% {
+        width: 0;
+    }
+    30% {
+        width: 60%
+    }
+    50% {
+        width: 80%;
+    }
+    100% {
+        width: 100%;
+    }
+}

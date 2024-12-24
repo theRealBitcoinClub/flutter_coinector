@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+
+    <!-- Primary Meta Tags -->
+    <title>Coinector</title>
+    <meta name="title" content="BMAP.APP - Coinector">
+    <meta name="description" content="#Coinecting to coimunity...">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bmap.app/">
+    <meta property="og:title" content="BMAP.APP - Coinector">
+    <meta property="og:description" content="#Coinecting to coimunity...">
+    <meta property="og:image" content="https://coinector.app/coinector1024x500.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://bmap.app/">
+    <meta property="twitter:title" content="BMAP.APP - Coinector">
+    <meta property="twitter:description" content="#Coinecting to coimunity...">
+    <meta property="twitter:image" content="https://coinector.app/coinector1024x500.png">
+
+    <!-- iOS meta tags & icons -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="coinector">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <link rel="manifest" href="/manifest.json">
+
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#303030">
+
+    <link type="text/css" rel="stylesheet"
+          href="jssocials.css"/>
+    <link type="text/css" rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+    <link type="text/css" rel="stylesheet" href="jssocials-theme-classic.css"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+    html, body {
+        background-color:#303030;
+    }
+    </style>
+</head>
+<body>
+<div style="width:495px;height:100%;margin-top:50px;margin-left:auto;margin-right:auto;">
+    <div style="font-size:larger;" id="share"></div>
+    <div style="color:white;font-family:arial;font-size:medium;"><i>The shareable link has been copied to clipboard! You can
+        paste it anywhere or use the social media sharing buttons!</i></div>
+    <h2><span style="color:white;font-family:arial;" id="search"></span>
+        <span style='color:white;'
+              id="urlPreview"></span>
+    </h2>
+    <h4 style="color:white;font-family:arial;" id="location"></h4>
+</div>
+<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
+<script type="text/javascript"
+        src="jssocials.min.js"></script>
+
+<script>
+function fallbackCopyTextToClipboard(text) {
+  var textArea = document.createElement("textarea");
+  textArea.value = text;
+
+  // Avoid scrolling to bottom
+  textArea.style.top = "0";
+  textArea.style.left = "0";
+  textArea.style.position = "fixed";
+
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+
+  try {
+    var successful = document.execCommand('copy');
+    var msg = successful ? 'successful' : 'unsuccessful';
+    console.log('Fallback: Copying text command was ' + msg);
+  } catch (err) {
+    console.error('Fallback: Oops, unable to copy', err);
+  }
+
+  document.body.removeChild(textArea);
+}
+function copyTextToClipboard(text) {
+  if (!navigator.clipboard) {
+    fallbackCopyTextToClipboard(text);
+    return;
+  }
+  navigator.clipboard.writeText(text).then(function() {
+    console.log('Async: Copying to clipboard was successful!');
+  }, function(err) {
+    console.error('Async: Could not copy text: ', err);
+  });
+}
+function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+
+var name = getUrlParameter("search").trim();
+var shareURL = "https://bmap.app/" + encodeURIComponent(getUrlParameter("search"));
+var fullText = " \n\n\"" + name + "\" \n\n" + shareURL + " \n\n" + getUrlParameter("location");
+$("#search").html("<a style='color:white;' target='_blank' href='" + shareURL + "'>" + name + "</a>");
+$("#location").html(getUrlParameter("location"));
+$("#url").html(shareURL);
+
+        $("#share").jsSocials({
+            shares: ["twitter", "whatsapp", "telegram", "email"],
+            url: fullText,
+            showLabel: true,
+            showCount: false,
+            shareIn: "popup",
+        });
+        copyTextToClipboard(shareURL);
+
+
+</script>
+</body>
+</html>

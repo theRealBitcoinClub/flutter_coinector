@@ -1,0 +1,5708 @@
+{
+    "count": 2242,
+    "next": "http://api.gocrypto.com/publicapi/stores?limit=100&offset=900",
+    "previous": "http://api.gocrypto.com/publicapi/stores?limit=100&offset=700",
+    "results": [{
+        "id": "1411",
+        "name": "Jezikovna šola Speak up",
+        "brand": "Jezikovna šola Speak up",
+        "source_opened": true,
+        "address": "Trdinov trg 14",
+        "email": "info@speakup.si",
+        "phone": "+38641986501",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/e3710ddefdba4e73b6dd6be7c1cb7947.jpg",
+        "lat": "46.163653",
+        "lng": "14.569550",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1234",
+        "city": "Mengeš",
+        "country": "SI",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJvZAByAI1ZUcRBdPi8R2Low0",
+        "store_image": null,
+        "images": [{
+            "id": 1538,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/15069010752a4d9da51ebeaa7d2761e1.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "05:30:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "05:30:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "05:30:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "05:30:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "05:30:00",
+                "to": "17:00:00"
+            }],
+            [],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "41986501"
+    }, {
+        "id": "1412",
+        "name": "Apetit okrepčevalnica - catering",
+        "brand": "Apetit okrepčevalnica - catering",
+        "source_opened": true,
+        "address": "Stjenkova ulica 1",
+        "email": "apetit.catering@siol.net",
+        "phone": "+38641338770",
+        "logo_url": "",
+        "lat": "45.705929",
+        "lng": "13.867378",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "6210",
+        "city": "Sežana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://www.apetit.si/",
+        "place_id": "ChIJk4WHnHcVe0cRBX247PLylxE",
+        "store_image": null,
+        "images": [{
+            "id": 1545,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/1032909ff3bf46ba9d2ba3240323aa17.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "06:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "13:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "food_and_drink",
+            "display_name": "Food and drink",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "41338770"
+    }, {
+        "id": "1413",
+        "name": "Parketarstvo Valenčič",
+        "brand": "Parketarstvo Valenčič",
+        "source_opened": true,
+        "address": "Stjenkova ulica 1",
+        "email": "info@parketarstvo-valencic.si",
+        "phone": "+38651605624",
+        "logo_url": "",
+        "lat": "45.705929",
+        "lng": "13.867378",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "6210",
+        "city": "Sežana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://www.parketarstvo-valencic.si/",
+        "place_id": "ChIJk4WHnHcVe0cRHE3wSDYdRjA",
+        "store_image": null,
+        "images": [{
+            "id": 1546,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/96a3c28a20fc4008b49750d79c783919.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "07:00:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "15:00:00"
+            }],
+            [],
+            []
+        ],
+        "tags": [{
+            "name": "services",
+            "display_name": "Services",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "51605624"
+    }, {
+        "id": "1414",
+        "name": "Zlata ptička",
+        "brand": "Zlata ptička",
+        "source_opened": true,
+        "address": "Šutna 2",
+        "email": "info@zlatapticka.si",
+        "phone": "+38618392793",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/0598c445e7a141df95bc0bb3cd40426e.jpg",
+        "lat": "46.224452",
+        "lng": "14.610256",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1241",
+        "city": "Kamnik",
+        "country": "SI",
+        "source_type": 0,
+        "website": "http://www.zlatapticka.si",
+        "place_id": "ChIJcc-ZdfdKZUcRinoWUI24v4I",
+        "store_image": null,
+        "images": [{
+            "id": 1547,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/a8b87ec3cbb14e26968135434ec5d35b.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "06:00:00",
+                "to": "17:30:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "17:30:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "17:30:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "17:30:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "17:30:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "11:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "18392793"
+    }, {
+        "id": "1416",
+        "name": "Manuel's",
+        "brand": "Manuel's",
+        "source_opened": true,
+        "address": "Löwenstrasse 12",
+        "email": "hola@manuels.ch",
+        "phone": "+41445452140",
+        "logo_url": "",
+        "lat": "47.373605",
+        "lng": "8.535107",
+        "source_timezone": "Europe/Zurich",
+        "postal_code": "8001",
+        "city": "Zürich",
+        "country": "CH",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJd4koOQQKkEcRJe_ySX1McIA",
+        "store_image": null,
+        "images": [{
+            "id": 1551,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/0ae6dfc10b174a93a65ebb218e71b11a.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "09:00:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "09:00:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "09:00:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "09:00:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "09:00:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "09:00:00",
+                "to": "22:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "food_and_drink",
+            "display_name": "Food and drink",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+41",
+        "national_number": "445452140"
+    }, {
+        "id": "1421",
+        "name": "Restavracija Strelec",
+        "brand": "Kaval Group",
+        "source_opened": true,
+        "address": "Grajska planota 1",
+        "email": "strelec@kaval-group.si",
+        "phone": "+38683843142",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/3c29e5133d2e49d7a80a1e7a8cfb7b8e.png",
+        "lat": "46.048782",
+        "lng": "14.508914",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1000",
+        "city": "Ljubljana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "http://www.kaval-group.si/",
+        "place_id": "ChIJ-QJ-TWMtZUcRDG0Ofc0g8XY",
+        "store_image": null,
+        "images": [{
+            "id": 1660,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/b250f324f81441e48f8943bfa7ccafad.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "10:00:00",
+                "to": "20:00:00"
+            }],
+            [{
+                "from": "10:00:00",
+                "to": "20:00:00"
+            }],
+            [{
+                "from": "10:00:00",
+                "to": "20:00:00"
+            }],
+            [{
+                "from": "10:00:00",
+                "to": "20:00:00"
+            }],
+            [{
+                "from": "10:00:00",
+                "to": "20:00:00"
+            }],
+            [{
+                "from": "10:00:00",
+                "to": "20:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "food_and_drink",
+            "display_name": "Food and drink",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "83843142"
+    }, {
+        "id": "1422",
+        "name": "Lolita",
+        "brand": "Kaval Group",
+        "source_opened": true,
+        "address": "Cankarjevo nabrežje 1",
+        "email": "lolita@kaval-group.si",
+        "phone": "+38659016299",
+        "logo_url": "",
+        "lat": "46.050606",
+        "lng": "14.506071",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1000",
+        "city": "Ljubljana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "http://www.kaval-group.si/",
+        "place_id": "ChIJBd5ApWMtZUcRl3Af0EF8ZHs",
+        "store_image": null,
+        "images": [{
+            "id": 1632,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/5fbd197d036442bfbae7e4e586dfee44.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "06:30:00",
+                "to": "20:00:00"
+            }],
+            [{
+                "from": "06:30:00",
+                "to": "20:00:00"
+            }],
+            [{
+                "from": "06:30:00",
+                "to": "20:00:00"
+            }],
+            [{
+                "from": "06:30:00",
+                "to": "20:00:00"
+            }],
+            [{
+                "from": "06:30:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "06:30:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }]
+        ],
+        "tags": [{
+            "name": "food_and_drink",
+            "display_name": "Food and drink",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "59016299"
+    }, {
+        "id": "1752",
+        "name": "Old Capital's Bar",
+        "brand": "Old Capital's Bar",
+        "source_opened": true,
+        "address": "Stefan Stambolov 29a",
+        "email": "tedobuiukliev@gmail.com",
+        "phone": "+359878691448",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/e66239021cac4ec3a139430edfeba188.jpg",
+        "lat": "43.084020",
+        "lng": "25.638810",
+        "source_timezone": "Europe/Sofia",
+        "postal_code": "5000",
+        "city": "Veliko Tarnovo",
+        "country": "BG",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJ47hCrB4mqUARcdPwGxp_YL4",
+        "store_image": null,
+        "images": [{
+            "id": 1901,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/aedc5fc4beb54044ae1884d89ca14e38.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "10:00:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "10:00:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "10:00:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "10:00:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "10:00:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "10:00:00",
+                "to": "22:00:00"
+            }]
+        ],
+        "tags": [{
+            "name": "food_and_drink",
+            "display_name": "Food and drink",
+            "ordering": 0
+        }, {
+            "name": "services",
+            "display_name": "Services",
+            "ordering": 1
+        }],
+        "country_phone_prefix": "+359",
+        "national_number": "878691448"
+    }, {
+        "id": "1424",
+        "name": "Restravracija in pizzerija Angel",
+        "brand": "Kaval Group",
+        "source_opened": true,
+        "address": "Cesta Ljubljanske brigade 33",
+        "email": "angel@kaval-group.si",
+        "phone": "+38615187454",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/874bd5acdac84ef9b07dadb52bace56b.png",
+        "lat": "46.087652",
+        "lng": "14.476687",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1000",
+        "city": "Ljubljana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "http://www.kaval-group.si/",
+        "place_id": "ChIJCSfF1WzNekcRgCwwIwPGqo8",
+        "store_image": null,
+        "images": [{
+            "id": 1556,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/4a5d45fc66f543a7832ddd83b093ff73.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "09:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "09:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "09:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "09:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "09:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "09:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "09:00:00",
+                "to": "13:00:00"
+            }]
+        ],
+        "tags": [{
+            "name": "food_and_drink",
+            "display_name": "Food and drink",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "15187454"
+    }, {
+        "id": "1425",
+        "name": "Caffe Bienale",
+        "brand": "Kaval Group",
+        "source_opened": true,
+        "address": "Pod turnom 3",
+        "email": "lolita@kaval-group.si",
+        "phone": "+38612413822",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/01a4c72734c74a68bef196d44ec7ec8d.png",
+        "lat": "46.054654",
+        "lng": "14.492846",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1000",
+        "city": "Ljubljana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "http://www.kaval-group.si/",
+        "place_id": "ChIJ-yWBTl8tZUcRNROBJ1xuW3A",
+        "store_image": null,
+        "images": [{
+            "id": 1557,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/84d9d64085594d799d83ac909c3b18ec.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "08:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "08:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "08:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "08:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "08:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "16:00:00"
+            }]
+        ],
+        "tags": [{
+            "name": "food_and_drink",
+            "display_name": "Food and drink",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "12413822"
+    }, {
+        "id": "1427",
+        "name": "Kavarna Mao",
+        "brand": "Kaval Group",
+        "source_opened": true,
+        "address": "Pot na Fužine 2",
+        "email": "mao@kaval-group.si",
+        "phone": "+38641585034",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/e1b7bef22c254367a0d85f928cae958c.png",
+        "lat": "46.050578",
+        "lng": "14.563590",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1000",
+        "city": "Ljubljana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "http://www.kaval-group.si/",
+        "place_id": "ChIJewLMDwYyZUcRBsleP6e_njs",
+        "store_image": null,
+        "images": [{
+            "id": 1638,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/f5c16dd38f484aa095c96e296170f0b5.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "07:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "16:00:00"
+            }]
+        ],
+        "tags": [{
+            "name": "food_and_drink",
+            "display_name": "Food and drink",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "41585034"
+    }, {
+        "id": "1428",
+        "name": "Špica Caffe",
+        "brand": "Kaval Group",
+        "source_opened": true,
+        "address": "Gruberjevo nabrežje",
+        "email": "spica@kaval-group.si",
+        "phone": "+38640673391",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/d5c8dd8eb53f44d194a2a6155894130f.png",
+        "lat": "46.040162",
+        "lng": "14.511310",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1000",
+        "city": "Ljubljana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "http://www.kaval-group.si/spica_caffe.asp",
+        "place_id": "ChIJFRO6znYtZUcRSrzw5WgKJiU",
+        "store_image": null,
+        "images": [{
+            "id": 1633,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/1f3f3eb2c456423e84df431237f81502.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "06:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "08:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "08:00:00",
+                "to": "17:00:00"
+            }]
+        ],
+        "tags": [{
+            "name": "food_and_drink",
+            "display_name": "Food and drink",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "40673391"
+    }, {
+        "id": "1429",
+        "name": "Element Restavracija",
+        "brand": "Kaval Group",
+        "source_opened": true,
+        "address": "Šlandrova 4",
+        "email": "element@kaval-group.si",
+        "phone": "+38659049290",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/3e0221788c6d4a448bb32f98176f5129.png",
+        "lat": "46.098223",
+        "lng": "14.534564",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1231",
+        "city": "Ljubljana - Črnuče",
+        "country": "SI",
+        "source_type": 0,
+        "website": "http://www.kaval-group.si/",
+        "place_id": "ChIJ0-OnrRozZUcRz4dHxXNswrg",
+        "store_image": null,
+        "images": [{
+            "id": 1653,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/aff8c83e8f1b4859b829465e193a627d.png"
+        }],
+        "working_hours": [
+            [{
+                "from": "05:00:00",
+                "to": "20:00:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "20:00:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "20:00:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "20:00:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "20:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "15:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "food_and_drink",
+            "display_name": "Food and drink",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "59049290"
+    }, {
+        "id": "1430",
+        "name": "Biljardnica Kaval",
+        "brand": "Kaval Group",
+        "source_opened": true,
+        "address": "Tacenska cesta 95",
+        "email": "biljardnica@kaval-group.si",
+        "phone": "+38615125596",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/faa8f5a94c1e4a529a55da4041205e73.png",
+        "lat": "46.108252",
+        "lng": "14.461548",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1210",
+        "city": "Ljubljana - Šentvid",
+        "country": "SI",
+        "source_type": 0,
+        "website": "http://www.kaval-group.si/",
+        "place_id": "ChIJmbfM-O_MekcRGSuGmyXm4h0",
+        "store_image": null,
+        "images": [{
+            "id": 1648,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/00097cb7ce2f4629ab18124454d04863.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "14:00:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "15:00:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "15:00:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "15:00:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "15:00:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "10:00:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "10:00:00",
+                "to": "22:00:00"
+            }]
+        ],
+        "tags": [{
+            "name": "food_and_drink",
+            "display_name": "Food and drink",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "15125596"
+    }, {
+        "id": "1432",
+        "name": "Gostilnica in pizzerija Kaval",
+        "brand": "Kaval Group",
+        "source_opened": true,
+        "address": "Tacenska cesta 95",
+        "email": "kaval@kaval-group.si",
+        "phone": "+38615125596",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/21c0756d9b04448ba2e6cbc3cc8e0655.png",
+        "lat": "46.108291",
+        "lng": "14.461665",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1210",
+        "city": "Ljubljana - Šentvid",
+        "country": "SI",
+        "source_type": 0,
+        "website": "http://www.kaval-group.si/",
+        "place_id": "ChIJjTpM-O_MekcRBTnE18Vs_2g",
+        "store_image": null,
+        "images": [{
+            "id": 1643,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/ef627f2c9b0e401487e059d5820cc5ae.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "09:00:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "09:00:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "09:00:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "09:00:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "09:00:00",
+                "to": "21:30:00"
+            }],
+            [{
+                "from": "10:00:00",
+                "to": "21:30:00"
+            }],
+            [{
+                "from": "10:00:00",
+                "to": "21:00:00"
+            }]
+        ],
+        "tags": [{
+            "name": "food_and_drink",
+            "display_name": "Food and drink",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "15125596"
+    }, {
+        "id": "1611",
+        "name": "Dobra hiša",
+        "brand": "Dobra hiša",
+        "source_opened": true,
+        "address": "Stegne 11A",
+        "email": "info@ap-gost.si",
+        "phone": "+38641787810",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/88e62b21717349878e38eccd726c6bf9.png",
+        "lat": "46.083531",
+        "lng": "14.484156",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1000",
+        "city": "Ljubljana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJ1xtqVDLNekcRo-NlP-qjtt8",
+        "store_image": null,
+        "images": [],
+        "working_hours": [
+            [{
+                "from": "07:00:00",
+                "to": "13:30:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "13:30:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "13:30:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "13:30:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "13:30:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "13:30:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "13:30:00"
+            }]
+        ],
+        "tags": [{
+            "name": "food_and_drink",
+            "display_name": "Food and drink",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "41787810"
+    }, {
+        "id": "3760",
+        "name": "Electronics Sale",
+        "brand": "GP TOM",
+        "source_opened": true,
+        "address": "Bucuresti 5",
+        "email": "robertcretu@gmail.com",
+        "phone": null,
+        "logo_url": null,
+        "lat": "44.197968",
+        "lng": "27.321003",
+        "source_timezone": "Europe/Bucharest",
+        "postal_code": "910079",
+        "city": "Calarasi",
+        "country": "RO",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJ22sNwZYisEARd8HnP8obX-I",
+        "store_image": null,
+        "images": [],
+        "working_hours": [
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }]
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 1
+        }],
+        "country_phone_prefix": null,
+        "national_number": null
+    }, {
+        "id": "2083",
+        "name": "Restaurant Swiss",
+        "brand": "Restaurant Swiss",
+        "source_opened": true,
+        "address": "str. Vasil Aprilov 56",
+        "email": null,
+        "phone": null,
+        "logo_url": "https://s3.eu-central-1.amazonaws.com/public.elipay.com/live-3514d179aac2/source/images/bf91b689310140c287c7ffc79399f0f9.jpg",
+        "lat": "43.277016",
+        "lng": "26.919630",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "9705",
+        "city": "Shumen",
+        "country": "BG",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJUcAsPmSKpUAR3eSFRHMwxrU",
+        "store_image": "https://s3.eu-central-1.amazonaws.com/public.elipay.com/live-3514d179aac2/source/images/732ae308664748d5ac6c24c9dc3335dd.jpg",
+        "images": [{
+            "id": 2030,
+            "image": "https://s3.eu-central-1.amazonaws.com/public.elipay.com/live-3514d179aac2/source/images/732ae308664748d5ac6c24c9dc3335dd.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "06:00:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "21:00:00"
+            }]
+        ],
+        "tags": [{
+            "name": "food_and_drink",
+            "display_name": "Food and drink",
+            "ordering": 0
+        }],
+        "country_phone_prefix": null,
+        "national_number": null
+    }, {
+        "id": "1780",
+        "name": "Tiskara Sušak",
+        "brand": "Tiskara Sušak",
+        "source_opened": true,
+        "address": "Milutina Barača 54",
+        "email": "darjan.blazic@gmail.com",
+        "phone": "+385981650534",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/f06ba6622f464b0280848eed29b1c2f1.jpg",
+        "lat": "45.335620",
+        "lng": "14.405505",
+        "source_timezone": "Europe/Zagreb",
+        "postal_code": "51000",
+        "city": "Rijeka",
+        "country": "HR",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJF8yBjdamZEcRoPKHhYMheYg",
+        "store_image": null,
+        "images": [{
+            "id": 1899,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/2547f3b64ad04b3c86dc72a5d1dae50c.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "05:30:00",
+                "to": "13:30:00"
+            }],
+            [{
+                "from": "05:30:00",
+                "to": "13:30:00"
+            }],
+            [{
+                "from": "05:30:00",
+                "to": "13:30:00"
+            }],
+            [{
+                "from": "05:30:00",
+                "to": "13:30:00"
+            }],
+            [{
+                "from": "05:30:00",
+                "to": "13:30:00"
+            }],
+            [],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+385",
+        "national_number": "0981650534"
+    }, {
+        "id": "1435",
+        "name": "Harat's Pub",
+        "brand": "Harat's Pub",
+        "source_opened": true,
+        "address": "Pod Kaštelom 9",
+        "email": "Haratsri@gmail.com",
+        "phone": "+385051621434",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/af12431004c5484186a1f672bad13ac6.png",
+        "lat": "45.327848",
+        "lng": "14.443445",
+        "source_timezone": "Europe/Zagreb",
+        "postal_code": "51000",
+        "city": "Rijeka",
+        "country": "HR",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJkV5K9R2hZEcRD5QSRACzXJM",
+        "store_image": null,
+        "images": [{
+            "id": 1639,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/7fea22e180894cd7be5b180bd9091974.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "08:00:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "08:00:00",
+                "to": "00:00:00"
+            }],
+            [{
+                "from": "08:00:00",
+                "to": "00:00:00"
+            }],
+            [{
+                "from": "08:00:00",
+                "to": "00:00:00"
+            }],
+            [{
+                "from": "08:00:00",
+                "to": "00:00:00"
+            }],
+            [{
+                "from": "10:00:00",
+                "to": "00:00:00"
+            }],
+            [{
+                "from": "14:00:00",
+                "to": "22:00:00"
+            }]
+        ],
+        "tags": [{
+            "name": "food_and_drink",
+            "display_name": "Food and drink",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+385",
+        "national_number": "51621434"
+    }, {
+        "id": "1436",
+        "name": "Altera Vita",
+        "brand": "Altera Vita",
+        "source_opened": true,
+        "address": "Ulica Petra Zoranića 34",
+        "email": "alteravita19@gmail.com",
+        "phone": "+385955546542",
+        "logo_url": "",
+        "lat": "45.516383",
+        "lng": "18.725086",
+        "source_timezone": "Europe/Zagreb",
+        "postal_code": "31207",
+        "city": "OSIJEK - TENJA",
+        "country": "HR",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJqS4NLrnoXEcRCzNQE6X03pI",
+        "store_image": null,
+        "images": [{
+            "id": 1581,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/a898cda47b0c4774b4d68296bb4033fa.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }]
+        ],
+        "tags": [{
+            "name": "services",
+            "display_name": "Services",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+385",
+        "national_number": "955546542"
+    }, {
+        "id": "1438",
+        "name": "Alo Alo",
+        "brand": "Alo Alo",
+        "source_opened": true,
+        "address": "Istarska 25",
+        "email": "aloalo@aloalo.hr",
+        "phone": "+38521341000",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/2e933113cb744278be4b1f47b6c7a67a.jpg",
+        "lat": "43.509952",
+        "lng": "16.446359",
+        "source_timezone": "Europe/Zagreb",
+        "postal_code": "21000",
+        "city": "Split",
+        "country": "HR",
+        "source_type": 0,
+        "website": "https://aloalo.hr/",
+        "place_id": "ChIJ16dtpwZeNRMRwskm2v2C1Lg",
+        "store_image": null,
+        "images": [{
+            "id": 1584,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/bb516e6b484b4ba991d3fd24c27cd072.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "06:00:00",
+                "to": "14:00:59"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:59"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:59"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:59"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:59"
+            }],
+            [],
+            []
+        ],
+        "tags": [{
+            "name": "electronics",
+            "display_name": "Electronics",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+385",
+        "national_number": "21341000"
+    }, {
+        "id": "1439",
+        "name": "Alo Alo Knin",
+        "brand": "Alo Alo",
+        "source_opened": true,
+        "address": "Ulica Kralja Zvonimira 21",
+        "email": "alo3@aloalo.hr",
+        "phone": "+38522661056",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/1f5313b58b37439c93d85e0d62545c41.jpg",
+        "lat": "44.035237",
+        "lng": "16.197520",
+        "source_timezone": "Europe/Zagreb",
+        "postal_code": "22300",
+        "city": "Knin",
+        "country": "HR",
+        "source_type": 0,
+        "website": "https://aloalo.hr/",
+        "place_id": "ChIJUf7Jplw8YEcR1WaHM3gZQSM",
+        "store_image": null,
+        "images": [{
+            "id": 1585,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/8b8c3db2912f4076b0b348f898e2acf2.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "07:00:00",
+                "to": "18:00:59"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "18:00:59"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "18:00:59"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "18:00:59"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "18:00:59"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "11:00:59"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "electronics",
+            "display_name": "Electronics",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+385",
+        "national_number": "22661056"
+    }, {
+        "id": "1440",
+        "name": "Alo Alo Trogir",
+        "brand": "Alo Alo",
+        "source_opened": true,
+        "address": "Obala Kralja Zvonimira 9",
+        "email": "alo5@aloalo.hr",
+        "phone": "+38521882770",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/e29318d817764935bb1242b8e062fce3.jpg",
+        "lat": "43.514878",
+        "lng": "16.252011",
+        "source_timezone": "Europe/Zagreb",
+        "postal_code": "21218",
+        "city": "Trogir",
+        "country": "HR",
+        "source_type": 0,
+        "website": "https://aloalo.hr/",
+        "place_id": "ChIJASnk4h9qNRMR6bkkbbJ9MKY",
+        "store_image": null,
+        "images": [{
+            "id": 1586,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/ba72344c323843028d60928fc1c601a2.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "06:00:00",
+                "to": "18:00:59"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "18:00:59"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "18:00:59"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "18:00:59"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "18:00:59"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "12:00:59"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "electronics",
+            "display_name": "Electronics",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+385",
+        "national_number": "21882770"
+    }, {
+        "id": "1441",
+        "name": "Alo Alo PC Studenac",
+        "brand": "Alo Alo",
+        "source_opened": true,
+        "address": "Četvrt Ribnjak 17",
+        "email": "alo6@aloalo.hr",
+        "phone": "+38521882770",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/a2323cd41f2141228b7e261cacc78087.jpg",
+        "lat": "43.442333",
+        "lng": "16.684939",
+        "source_timezone": "Europe/Zagreb",
+        "postal_code": "21310",
+        "city": "Omiš",
+        "country": "HR",
+        "source_type": 0,
+        "website": "https://aloalo.hr/",
+        "place_id": "EinEjGV0dnJ0IFJpYm5qYWsgMTcsIDIxMzEwLCBPbWnFoSwgQ3JvYXRpYSIaEhgKFAoSCTXiP1lamEoTEWblULoGSaFnEBE",
+        "store_image": null,
+        "images": [{
+            "id": 1587,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/f4b2e0382bd5493db2d107c89eb8ce6d.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "06:00:00",
+                "to": "18:00:59"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "18:00:59"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "18:00:59"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "18:00:59"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "18:00:59"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "18:00:59"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "electronics",
+            "display_name": "Electronics",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+385",
+        "national_number": "21882770"
+    }, {
+        "id": "1442",
+        "name": "Alo Alo Dalmare",
+        "brand": "Alo Alo",
+        "source_opened": true,
+        "address": "Ulica Velimira Škorpika 23",
+        "email": "alo11@aloalo.hr",
+        "phone": "+38522340169",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/dba8f98b335b4e0f996a4e3cf3d9160a.jpg",
+        "lat": "43.711484",
+        "lng": "15.910019",
+        "source_timezone": "Europe/Zagreb",
+        "postal_code": "22000",
+        "city": "Šibenik",
+        "country": "HR",
+        "source_type": 0,
+        "website": "https://aloalo.hr/",
+        "place_id": "ChIJOYk7I70lNRMR3icaxpo1uiQ",
+        "store_image": null,
+        "images": [{
+            "id": 1588,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/f33a87799d5c4024a1d3042b4b8412e0.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "07:00:00",
+                "to": "19:00:59"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:59"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:59"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:59"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:59"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:59"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:59"
+            }]
+        ],
+        "tags": [{
+            "name": "electronics",
+            "display_name": "Electronics",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+385",
+        "national_number": "22340169"
+    }, {
+        "id": "1444",
+        "name": "Alo Alo Tele2 centar",
+        "brand": "Alo Alo",
+        "source_opened": true,
+        "address": "Ulica Velimira Škorpika 23",
+        "email": "alo8@aloalo.hr",
+        "phone": "+38522340380",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/a0b00ddd698d47dcadd05ac954a7f092.jpg",
+        "lat": "43.711484",
+        "lng": "15.910019",
+        "source_timezone": "Europe/Zagreb",
+        "postal_code": "22000",
+        "city": "Šibenik",
+        "country": "HR",
+        "source_type": 0,
+        "website": "https://aloalo.hr/",
+        "place_id": "ChIJOYk7I70lNRMR3icaxpo1uiQ",
+        "store_image": null,
+        "images": [{
+            "id": 1589,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/1a83ea4982da4ff7bfc98c88dd8e8423.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "07:00:00",
+                "to": "19:00:59"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:59"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:59"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:59"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:59"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:59"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:59"
+            }]
+        ],
+        "tags": [{
+            "name": "electronics",
+            "display_name": "Electronics",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+385",
+        "national_number": "22340380"
+    }, {
+        "id": "1446",
+        "name": "Alo Alo Mall of Split",
+        "brand": "Alo Alo",
+        "source_opened": true,
+        "address": "Josipa Jovića 93",
+        "email": "alo12@aloalo.hr",
+        "phone": "+38521373497",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/c61cadd0a4b04802aef8a6f423bbf65d.jpg",
+        "lat": "43.518564",
+        "lng": "16.483286",
+        "source_timezone": "Europe/Zagreb",
+        "postal_code": "21000",
+        "city": "Split",
+        "country": "HR",
+        "source_type": 0,
+        "website": "https://aloalo.hr/",
+        "place_id": "ChIJpZWWDEpeNRMRnUJwUNNXjY4",
+        "store_image": null,
+        "images": [{
+            "id": 1591,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/af19f407f2554f71bb2e16a8b25b1e01.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "07:00:00",
+                "to": "19:00:59"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:59"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:59"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:59"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "19:00:59"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:59"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:59"
+            }]
+        ],
+        "tags": [{
+            "name": "electronics",
+            "display_name": "Electronics",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+385",
+        "national_number": "21373497"
+    }, {
+        "id": "1450",
+        "name": "Simple Velenje",
+        "brand": "Simple",
+        "source_opened": true,
+        "address": "Celjska cesta 40",
+        "email": "info@simple.si",
+        "phone": "+38659012053",
+        "logo_url": "",
+        "lat": "46.352383",
+        "lng": "15.127370",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "3320",
+        "city": "Velenje",
+        "country": "SI",
+        "source_type": 0,
+        "website": "http://simple.si/",
+        "place_id": "ChIJScIQhs9mZUcRYp-Sliti2eo",
+        "store_image": null,
+        "images": [{
+            "id": 1559,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/93bf02d9e78147daa620d34266662237.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "13:00:00"
+            }]
+        ],
+        "tags": [{
+            "name": "services",
+            "display_name": "Services",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "59012053"
+    }, {
+        "id": "1451",
+        "name": "Žito Ljubljana, Bavarski dvor",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Slovenska cesta 58",
+        "email": "trg.bavarskidvor@zito.si",
+        "phone": "+38614305562",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/d4ec600bd2a1414b83410b17737ee287.jpg",
+        "lat": "46.056671",
+        "lng": "14.505802",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1000",
+        "city": "Ljubljana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJdbBdkJ4yZUcRJVtMxirumJ0",
+        "store_image": null,
+        "images": [{
+            "id": 1566,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/e131b4fb584f49ed867df692e1888fd2.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "03:30:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "03:30:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "03:30:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "03:30:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "03:30:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "12:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "14305562"
+    }, {
+        "id": "1455",
+        "name": "Žito Ljubljana, Kržičeva",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Kržičeva 9",
+        "email": "trg.krziceva@zito.si",
+        "phone": "+38612927380",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/62d8b8c9fe0843218554360be2c4d37a.jpg",
+        "lat": "46.065126",
+        "lng": "14.511118",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1000",
+        "city": "Ljubljana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJI1bf1JAyZUcR4Ey0SzhkB8g",
+        "store_image": null,
+        "images": [{
+            "id": 1567,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/1c874a4ab71e4753bab39b3783fec996.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "04:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "11:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "12927380"
+    }, {
+        "id": "1456",
+        "name": "Žito Ljubljana, Dunajska",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Dunajska cesta 15",
+        "email": "trg.dunajska@zito.si",
+        "phone": "+38651411093",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/62cd5d06b0c04c2f88553c0d44df5b31.jpg",
+        "lat": "46.060498",
+        "lng": "14.506865",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1000",
+        "city": "Ljubljana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJm5nvDJkyZUcRE3Oarw7R-0c",
+        "store_image": null,
+        "images": [{
+            "id": 1563,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/8bdd58bbf2874478ae589e011eb9a1a6.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "04:30:00",
+                "to": "14:30:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "14:30:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "14:30:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "14:30:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "14:30:00"
+            }],
+            [],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "51411093"
+    }, {
+        "id": "1457",
+        "name": "Žito Ljubljana, Čufarjeva",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Čufarjeva 2",
+        "email": "trg.cufarjeva@zito.si",
+        "phone": "+38612347569",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/0a45addd36e74c14ae182a8ae7fe24ed.jpg",
+        "lat": "46.055162",
+        "lng": "14.508457",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1000",
+        "city": "Ljubljana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJle1qpZ0yZUcR0C_2wmdjYzo",
+        "store_image": null,
+        "images": [{
+            "id": 1573,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/208a87a7bde04817bb6a70e7dba91825.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "04:30:00",
+                "to": "12:00:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "12:00:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "12:00:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "12:00:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "12:00:00"
+            }],
+            [],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "12347569"
+    }, {
+        "id": "1459",
+        "name": "Žito Ljubljana, Avtobusna postaja",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Trg OF 4",
+        "email": "trg.avtobusna@zito.si",
+        "phone": "+38614304368",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/d7cf074d27c246b695209c3716228a63.jpg",
+        "lat": "46.057744",
+        "lng": "14.509539",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1000",
+        "city": "Ljubljana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJhT_pcJwyZUcRs8tJ_ce7LRo",
+        "store_image": null,
+        "images": [{
+            "id": 1578,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/8048e2f2682144daa064a48882c9e0cc.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "04:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "18:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "14304368"
+    }, {
+        "id": "1460",
+        "name": "Žito kruharna Ljubljana, Vodnikov trg",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Vodnikov trg 5",
+        "email": "trg.vodnikovtrg@zito.si",
+        "phone": "+38612312059",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/1c74805c16fc4546802d3fe7d2b2ce24.jpg",
+        "lat": "46.050612",
+        "lng": "14.509226",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1000",
+        "city": "Ljubljana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJMcg4JmMtZUcRkOZFiYdTVWE",
+        "store_image": null,
+        "images": [{
+            "id": 1570,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/e44bd2c175f44239880f0c424dda7673.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "04:30:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "12:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "12312059"
+    }, {
+        "id": "1462",
+        "name": "Žito Ljubljana, Kolodvorska",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Kolodvorska 3",
+        "email": "trg.kolodvorska@zito.si",
+        "phone": "+38614325061",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/8cf3422a422c44d2a64e7d341de862f1.jpg",
+        "lat": "46.054888",
+        "lng": "14.508776",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1000",
+        "city": "Ljubljana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJucROoZ0yZUcRUVBnWr8daxY",
+        "store_image": null,
+        "images": [{
+            "id": 1568,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/d50335636be24e968dac4896f1afa281.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "04:30:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "10:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "14325061"
+    }, {
+        "id": "1464",
+        "name": "Žito Ljubljana, Tržaška",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Tržaška 90",
+        "email": "trg.trzaska@zito.si",
+        "phone": "+38612442466",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/e1277fda1efb4f9a8ca4e22cf6e32d61.jpg",
+        "lat": "46.041464",
+        "lng": "14.475400",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1000",
+        "city": "Ljubljana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJv-Ny4kgtZUcRDqBfDp3ynD4",
+        "store_image": null,
+        "images": [{
+            "id": 1575,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/b5137c84f5fc45b0bcc42b2e542a9f9b.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "05:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "11:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "12442466"
+    }, {
+        "id": "1467",
+        "name": "Žito Ljubljana, BTC Tržnica",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Šmartinska 152",
+        "email": "trg.btc@zito.si",
+        "phone": "+38641760927",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/0064e77d20c04a3b831899f09ec4b775.jpg",
+        "lat": "46.064111",
+        "lng": "14.544550",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1000",
+        "city": "Ljubljana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJuZTTu2gyZUcRIbaWnfK-dWo",
+        "store_image": null,
+        "images": [{
+            "id": 1594,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/96ce80c782ea4fdfa64e0427d1e4e612.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "06:00:00",
+                "to": "13:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "13:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "13:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "13:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "13:00:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "13:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "41760927"
+    }, {
+        "id": "1468",
+        "name": "Žito Radomlje",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Prešernova cesta 43",
+        "email": "trg.radomlje@zito.si",
+        "phone": "+38617227118",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/5faa6c4cc06c4d108bf49cd17d31549a.png",
+        "lat": "46.177130",
+        "lng": "14.610713",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1235",
+        "city": "Radomlje",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJkcnBjJU1ZUcRMtUmJQfgzeU",
+        "store_image": null,
+        "images": [{
+            "id": 1561,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/244373c5997248728a5b5a4ac1d501a5.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "04:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "10:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "17227118"
+    }, {
+        "id": "1469",
+        "name": "Žito delikatesa Cerknica",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Cesta 4. maja 47",
+        "email": "trg.cerknica@zito.si",
+        "phone": "+38617091007",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/919c96fd1e8c495bbdc0f6e66ba9d45b.png",
+        "lat": "45.793073",
+        "lng": "14.362811",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1380",
+        "city": "Cerknica",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJQxkin93SZEcR5-xeN7pxSYM",
+        "store_image": null,
+        "images": [{
+            "id": 1590,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/afe9d5bc43a2494f9a5fea51f5d12470.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "03:45:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "03:45:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "03:45:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "03:45:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "03:45:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "03:45:00",
+                "to": "11:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "17091007"
+    }, {
+        "id": "1470",
+        "name": "Žito Kruhek Vrhnika",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Idrijska cesta 21",
+        "email": "trg.kruhek@zito.si",
+        "phone": "+38617558943",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/760656d7c4224e9e8739af70e8ee2243.png",
+        "lat": "45.962962",
+        "lng": "14.286474",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1360",
+        "city": "Vrhnika",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJKc4xiVjWekcRHgumhrev_Xw",
+        "store_image": null,
+        "images": [{
+            "id": 1572,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/b56cd74b3c9543b1acbef28d0f459bfc.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "04:00:00",
+                "to": "11:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "11:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "11:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "11:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "11:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "10:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "17558943"
+    }, {
+        "id": "2169",
+        "name": "Konoba Blato",
+        "brand": "Konoba Blato",
+        "source_opened": true,
+        "address": "Titov trg 8c",
+        "email": null,
+        "phone": null,
+        "logo_url": "",
+        "lat": "45.327520",
+        "lng": "14.447823",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "51000",
+        "city": "Rijeka",
+        "country": "HR",
+        "source_type": 0,
+        "website": null,
+        "place_id": "ChIJBxr3Ux2hZEcRNOxuRp1q3Jg",
+        "store_image": "",
+        "images": [],
+        "working_hours": [
+            [{
+                "from": "06:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "16:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "food_and_drink",
+            "display_name": "Food and drink",
+            "ordering": 0
+        }],
+        "country_phone_prefix": null,
+        "national_number": null
+    }, {
+        "id": "1471",
+        "name": "Žito Jazon Vrhnika",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Cankarjev trg 6",
+        "email": "trg.mantova@zito.si",
+        "phone": "+38617505944",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/87914eb9562145f081da4550290fc9a7.png",
+        "lat": "45.966218",
+        "lng": "14.297775",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1360",
+        "city": "Vrhnika",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJ29HQJYvWekcR_c1wLx73s9k",
+        "store_image": null,
+        "images": [{
+            "id": 1565,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/a0d0d9fee8c74addaaac52f3a8aa4c7c.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "03:30:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "03:30:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "03:30:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "03:30:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "03:30:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "03:30:00",
+                "to": "17:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "17505944"
+    }, {
+        "id": "1472",
+        "name": "Žito Logatec",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Cankarjeva 5",
+        "email": "trg.logatec@zito.si",
+        "phone": "+38617509088",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/ad056e134a864fb1855526d865cf1440.png",
+        "lat": "45.917818",
+        "lng": "14.229157",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1370",
+        "city": "Logatec",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJ7UDNDDkoe0cRJvfmkn5gOYg",
+        "store_image": null,
+        "images": [{
+            "id": 1579,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/8dff3b9205144238968df03c3cf19f0f.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "03:30:00",
+                "to": "12:30:00"
+            }],
+            [{
+                "from": "03:30:00",
+                "to": "12:30:00"
+            }],
+            [{
+                "from": "03:30:00",
+                "to": "12:30:00"
+            }],
+            [{
+                "from": "03:30:00",
+                "to": "12:30:00"
+            }],
+            [{
+                "from": "03:30:00",
+                "to": "12:30:00"
+            }],
+            [{
+                "from": "03:30:00",
+                "to": "10:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "17509088"
+    }, {
+        "id": "1474",
+        "name": "Žito kruharna Koper",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Pristaniška ulica 2",
+        "email": "trg.koper@zito.si",
+        "phone": "+38656271655",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/51d62b49733f4478a001eba448aa1397.jpg",
+        "lat": "45.545974",
+        "lng": "13.725763",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "6000",
+        "city": "Koper",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJm2PRBpdoe0cRv6J5NwB0e7U",
+        "store_image": null,
+        "images": [{
+            "id": 1577,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/b7054b96377747eca90057598e5cc578.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "04:30:00",
+                "to": "12:30:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "21:30:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "21:30:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "21:30:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "21:30:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "11:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "56271655"
+    }, {
+        "id": "1475",
+        "name": "Žito Sežana",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Ulica Mirka Pirca 4",
+        "email": "trg.sezana@zito.si",
+        "phone": "+38657304884",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/2ec22b2f1da1472ea39eca154f2dd25d.jpg",
+        "lat": "45.708788",
+        "lng": "13.873216",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "6210",
+        "city": "Sežana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJg3YgX4IVe0cRs6yANAYMYgQ",
+        "store_image": null,
+        "images": [{
+            "id": 1593,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/0bedbddcdd0a4af39f81b810ce038c30.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "05:00:00",
+                "to": "12:30:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "12:30:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "12:30:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "12:30:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "12:30:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "10:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "57304884"
+    }, {
+        "id": "1476",
+        "name": "Žito Novo mesto, Ločna",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Ločna 2",
+        "email": "trgkiosknm@zito.si",
+        "phone": "+38673930774",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/ed53d765fcf34c3ba237eb8ea3554b2b.jpg",
+        "lat": "45.820783",
+        "lng": "15.181988",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "8000",
+        "city": "Novo mesto",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJ0RV9AQ8AZUcRcSio8_Sx0HM",
+        "store_image": null,
+        "images": [{
+            "id": 1603,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/ef0ef3a93bd94d2e8942c0cb091c3825.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "03:30:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "03:30:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "03:30:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "03:30:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "03:30:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "03:30:00",
+                "to": "09:30:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "73930774"
+    }, {
+        "id": "1477",
+        "name": "Žito Sezam Novo mesto",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Ljubljanska cesta 27",
+        "email": "trg.kruharnanm@zito.si",
+        "phone": "+38672927777",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/91afbe86e15144048155da3752569c63.jpg",
+        "lat": "45.816503",
+        "lng": "15.153971",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "8000",
+        "city": "Novo mesto",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJUZb2liYAZUcR5D8eF_klI-8",
+        "store_image": null,
+        "images": [{
+            "id": 1599,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/988d4635b85b47d291f4aade25038b13.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "04:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "11:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "72927777"
+    }, {
+        "id": "1478",
+        "name": "Žito Krško",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Cesta 4. julija 86",
+        "email": "trgkrsko@zito.si",
+        "phone": "+38674922963",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/2d1c57413f3547c68ed05951ff2c2f3f.png",
+        "lat": "45.954242",
+        "lng": "15.499766",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "8270",
+        "city": "Krško",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJa9e4LNy6ZUcR3BlaAfmVvd8",
+        "store_image": null,
+        "images": [{
+            "id": 1606,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/5244cf8bac8b47e2a70710d6829a90df.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "05:00:00",
+                "to": "13:30:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "13:30:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "13:30:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "13:30:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "13:30:00"
+            }],
+            [{
+                "from": "05:30:00",
+                "to": "10:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "74922963"
+    }, {
+        "id": "1479",
+        "name": "Žito Hlebček Lesce",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Rožna dolina 8",
+        "email": "trg.gorenjka@zito.si",
+        "phone": "+38645353294",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/687aad3660d94a719649a534eee4b21a.jpg",
+        "lat": "46.356300",
+        "lng": "14.161818",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "4248",
+        "city": "Lesce",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://www.zito.si",
+        "place_id": "ChIJ75RrE1mWekcRKK5McbGTwrY",
+        "store_image": null,
+        "images": [{
+            "id": 1684,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/6cfe5f14be91418c957cc41790c38e46.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "04:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "17:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "45353294"
+    }, {
+        "id": "1480",
+        "name": "Žito bar Hlebček Lesce",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Rožna dolina 8",
+        "email": "trg.gorenjka@zito.si",
+        "phone": "+38645353294",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/6362c1f5257b44b39e9a599a3b4e0dad.jpg",
+        "lat": "46.356300",
+        "lng": "14.161818",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "4248",
+        "city": "Lesce",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJ75RrE1mWekcRKK5McbGTwrY",
+        "store_image": null,
+        "images": [{
+            "id": 1685,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/20865b6566544982b7f580abc3e424d8.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "04:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "17:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "45353294"
+    }, {
+        "id": "1481",
+        "name": "Žito Maribor, Europark",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Pobreška cesta 18",
+        "email": "trg.europark@zito.si",
+        "phone": null,
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/5f11c386750e4ef486b42a3838c3b85f.jpg",
+        "lat": "46.553781",
+        "lng": "15.653292",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "2000",
+        "city": "Maribor",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJS8miqgl3b0cRxxejveLlgxk",
+        "store_image": null,
+        "images": [{
+            "id": 1597,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/868abe3b47c8442abbe4c936ff7d72f2.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "13:00:00"
+            }]
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": null,
+        "national_number": null
+    }, {
+        "id": "1487",
+        "name": "Mark-Logistika",
+        "brand": "Mark-Logistika",
+        "source_opened": true,
+        "address": "Jablanska 66",
+        "email": "josipmarkanovic1vu@gmail.com",
+        "phone": "+385977546936",
+        "logo_url": "",
+        "lat": "45.796601",
+        "lng": "15.916821",
+        "source_timezone": "Europe/Zagreb",
+        "postal_code": "10000",
+        "city": "Zagreb",
+        "country": "HR",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJnVc5NEzRZUcR1u0ETMUSB-w",
+        "store_image": null,
+        "images": [{
+            "id": 1580,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/4b4923ed5d044461b21dfaf2d23b40b9.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [],
+            []
+        ],
+        "tags": [{
+            "name": "services",
+            "display_name": "Services",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+385",
+        "national_number": "977546936"
+    }, {
+        "id": "1488",
+        "name": "Žito Maribor, Ertlova",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Ertlova 19",
+        "email": "trg.ertlova@zito.si",
+        "phone": null,
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/2d71f6f0675f41a9b0d79ff2c0d28856.png",
+        "lat": "46.538375",
+        "lng": "15.636636",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "2000",
+        "city": "Maribor",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "EihFcnRsb3ZhIHVsaWNhIDE5LCAyMDAwIE1hcmlib3IsIFNsb3ZlbmlhIhoSGAoUChIJFVi00px3b0cRoXmV5rNqT6QQEw",
+        "store_image": null,
+        "images": [{
+            "id": 1674,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/782eb91fe07b4f83acc64570689e5145.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "03:15:00",
+                "to": "11:00:00"
+            }],
+            [{
+                "from": "03:15:00",
+                "to": "11:00:00"
+            }],
+            [{
+                "from": "03:15:00",
+                "to": "11:00:00"
+            }],
+            [{
+                "from": "03:15:00",
+                "to": "11:00:00"
+            }],
+            [{
+                "from": "03:15:00",
+                "to": "11:00:00"
+            }],
+            [{
+                "from": "03:15:00",
+                "to": "10:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": null,
+        "national_number": null
+    }, {
+        "id": "1489",
+        "name": "Žito Štukelj Maribor",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Trg Leona Štuklja 1",
+        "email": "trg.leonastuklja@zito.si",
+        "phone": "+38622506948",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/838c5faecb1543f29621329f63784be8.png",
+        "lat": "46.559239",
+        "lng": "15.648421",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "2000",
+        "city": "Maribor",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJTRfiAql3b0cREDqugnXUXDk",
+        "store_image": null,
+        "images": [{
+            "id": 1672,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/702f3ba0ba8248eab3e8c76fe9f853d2.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "04:00:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "15:00:00"
+            }],
+            [],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "22506948"
+    }, {
+        "id": "1490",
+        "name": "Žito Celje",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Prešernova cesta 25",
+        "email": "trg.presernovacelje@zito.si",
+        "phone": "+38637573465",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/24243a954a764178bc57d40761b0186b.jpg",
+        "lat": "46.229285",
+        "lng": "15.262355",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "3000",
+        "city": "Celje",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJ0ZTLNfxwZUcR1IbhonEfjiM",
+        "store_image": null,
+        "images": [{
+            "id": 1609,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/17c67210c5594e72af1525759c21393e.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "04:00:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "04:00:00",
+                "to": "15:00:00"
+            }],
+            [],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "37573465"
+    }, {
+        "id": "1491",
+        "name": "Žito Slovenske Konjice",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Liptovska 15",
+        "email": "trgslovenskekonjice@zito.si",
+        "phone": "+38637573460",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/0baceb8027724e2eb87da706de749506.jpg",
+        "lat": "46.340231",
+        "lng": "15.427168",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "3210",
+        "city": "Slovenske Konjice",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJudH1wCF_ZUcRw7KwA_iSXZo",
+        "store_image": null,
+        "images": [{
+            "id": 1608,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/082cafccad4240b5a1d540d0f5a87ad6.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "03:00:00",
+                "to": "16:30:00"
+            }],
+            [{
+                "from": "03:00:00",
+                "to": "16:30:00"
+            }],
+            [{
+                "from": "03:00:00",
+                "to": "16:30:00"
+            }],
+            [{
+                "from": "03:00:00",
+                "to": "16:30:00"
+            }],
+            [{
+                "from": "03:00:00",
+                "to": "16:30:00"
+            }],
+            [{
+                "from": "03:00:00",
+                "to": "10:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "37573460"
+    }, {
+        "id": "1492",
+        "name": "Žito kruharna Maribor, Center",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Trg revolucije 2",
+        "email": "trgkruharnamb@zito.si",
+        "phone": "+38627739587",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/7bb338572be541ceaa2447563c73a25f.jpg",
+        "lat": "46.554282",
+        "lng": "15.646143",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "2000",
+        "city": "Maribor",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJM-po_qZ3b0cRJoVHuLDcVtA",
+        "store_image": null,
+        "images": [{
+            "id": 1596,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/dd4eb68d272b4bdbb78a807de7e1b29f.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "04:30:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "11:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "27739587"
+    }, {
+        "id": "1493",
+        "name": "Žito Intes Maribor",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Meljska cesta 19",
+        "email": "trg.intes@zito.si",
+        "phone": "+38622506960",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/6e96612db4cb44508dac82ea54a41f7d.jpg",
+        "lat": "46.560957",
+        "lng": "15.660135",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "2000",
+        "city": "Maribor",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJE6sG5QN3b0cRIIjZtAgypao",
+        "store_image": null,
+        "images": [{
+            "id": 1604,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/697ba8728d614808a982151e6904b418.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "10:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "22506960"
+    }, {
+        "id": "1496",
+        "name": "Žito Tezno Maribor",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Jožice Flander 2",
+        "email": "trg.tezno@zito.si",
+        "phone": "+38624503221",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/f794734806424f91b877620a4cb7b017.jpg",
+        "lat": "46.536308",
+        "lng": "15.656916",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "2000",
+        "city": "Maribor",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJJcSocG93b0cRj9pIglPm1O4",
+        "store_image": null,
+        "images": [{
+            "id": 1605,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/80c7f8afb35a42a7a80104ad02317d92.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "05:00:00",
+                "to": "13:00:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "13:00:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "13:00:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "13:00:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "13:00:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "09:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "24503221"
+    }, {
+        "id": "1497",
+        "name": "Žito Maribor, City",
+        "brand": "Žito",
+        "source_opened": true,
+        "address": "Ulica Vita Kraigherja 5",
+        "email": "",
+        "phone": "+38625876100",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/8c38b5563a39470aa065152b7f40c601.png",
+        "lat": "46.559090",
+        "lng": "15.650595",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "2000",
+        "city": "Maribor",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://zito.si/",
+        "place_id": "ChIJOXkXk_93b0cRAdng712pjBQ",
+        "store_image": null,
+        "images": [{
+            "id": 1673,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/d579d54c1cfc48808226b07507851900.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "04:30:00",
+                "to": "14:30:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "14:30:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "14:30:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "14:30:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "14:30:00"
+            }],
+            [],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "25876100"
+    }, {
+        "id": "1498",
+        "name": "TaRICH frizerski studio",
+        "brand": "TaRICH frizerski studio",
+        "source_opened": true,
+        "address": "Slamnikarska cesta 3",
+        "email": "lukataricota@gmail.com",
+        "phone": "+38641983417",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/9a329197b6ea40e999a163de8ca50051.jpg",
+        "lat": "46.138197",
+        "lng": "14.598364",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1230",
+        "city": "Domžale",
+        "country": "SI",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJe80enhU0ZUcRj0MEtJ6z9cE",
+        "store_image": null,
+        "images": [{
+            "id": 1595,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/450a54d2778a482cbe4979682aa57b19.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "06:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "17:00:00"
+            }],
+            [],
+            []
+        ],
+        "tags": [{
+            "name": "fashion",
+            "display_name": "Fashion",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "41983417"
+    }, {
+        "id": "1499",
+        "name": "Luna outlet",
+        "brand": "Luna",
+        "source_opened": true,
+        "address": "Zelenikova ulica 1",
+        "email": "shop.ptuj@fashion-luna.com",
+        "phone": "+38627711308",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/61acedfe5b734436b7992b06b8ee34f4.jpg",
+        "lat": "46.419214",
+        "lng": "15.872317",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "2250",
+        "city": "Ptuj",
+        "country": "SI",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJi0iPgbVmb0cRKhWd9FCTFzo",
+        "store_image": null,
+        "images": [{
+            "id": 1681,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/81252cf6fc9a46a1bd167499f64aa56e.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "07:00:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "11:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "fashion",
+            "display_name": "Fashion",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "27711308"
+    }, {
+        "id": "1501",
+        "name": "Luna Maribor, Europark",
+        "brand": "Luna",
+        "source_opened": true,
+        "address": "Pobreška cesta 18",
+        "email": "luna.maribor@gmail.com",
+        "phone": "+38623313150",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/be0b816ba43f40b38e8220f431f36df9.jpg",
+        "lat": "46.553592",
+        "lng": "15.653035",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "2000",
+        "city": "Maribor",
+        "country": "SI",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJUddZ-Ah3b0cRuQ6O7xBg7_s",
+        "store_image": null,
+        "images": [{
+            "id": 1705,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/3db4fdfd271a44d2862a059cf193b000.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "13:00:00"
+            }]
+        ],
+        "tags": [{
+            "name": "fashion",
+            "display_name": "Fashion",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "23313150"
+    }, {
+        "id": "2190",
+        "name": "Zajček Bar",
+        "brand": "Zajček Bar",
+        "source_opened": true,
+        "address": "Jurčkova cesta 79",
+        "email": null,
+        "phone": null,
+        "logo_url": "https://s3.eu-central-1.amazonaws.com/public.elipay.com/live-3514d179aac2/source/images/640ee1b039914a8e98278b7ca2755508.jpg",
+        "lat": "46.028636",
+        "lng": "14.523415",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1000",
+        "city": "Ljubljana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "http://www.zajcek-bar.si/",
+        "place_id": "ChIJV55wPqMtZUcRdt2kOtCGzO0",
+        "store_image": "https://s3.eu-central-1.amazonaws.com/public.elipay.com/live-3514d179aac2/source/images/ab48dac639a446dc8fb35fcdb10ab462.jpg",
+        "images": [{
+            "id": 2057,
+            "image": "https://s3.eu-central-1.amazonaws.com/public.elipay.com/live-3514d179aac2/source/images/ab48dac639a446dc8fb35fcdb10ab462.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "04:30:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "04:30:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "06:30:00",
+                "to": "21:00:00"
+            }]
+        ],
+        "tags": [{
+            "name": "food_and_drink",
+            "display_name": "Food and drink",
+            "ordering": 0
+        }],
+        "country_phone_prefix": null,
+        "national_number": null
+    }, {
+        "id": "1505",
+        "name": "Menard RA",
+        "brand": "Menard RA",
+        "source_opened": true,
+        "address": "Tržaška cesta 14A",
+        "email": "urska.menard@menardra.si",
+        "phone": "+38617541014",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/085d1a564fa84f32a57be6d571235bdf.png",
+        "lat": "45.920362",
+        "lng": "14.228772",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1370",
+        "city": "Logatec",
+        "country": "SI",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJz2GS6zsoe0cRkxED4jSbOZ8",
+        "store_image": null,
+        "images": [{
+            "id": 1601,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/082ba31ceb5244b0943dd5e39c350669.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "06:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "16:00:00"
+            }],
+            [],
+            []
+        ],
+        "tags": [{
+            "name": "services",
+            "display_name": "Services",
+            "ordering": 0
+        }, {
+            "name": "home_and_garden",
+            "display_name": "Home and garden",
+            "ordering": 1
+        }, {
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 2
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "17541014"
+    }, {
+        "id": "1507",
+        "name": "DRM reklamni materiali Sežana",
+        "brand": "DRM",
+        "source_opened": true,
+        "address": "Orleška cesta 16",
+        "email": "jure@drm.si",
+        "phone": "+38641553290",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/08ac489673274763b942a75d3ab678de.jpg",
+        "lat": "45.703257",
+        "lng": "13.868332",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "6210",
+        "city": "Sežana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://www.drm.si/",
+        "place_id": "ChIJNQMoHHoVe0cRoM2zH8Dzalg",
+        "store_image": null,
+        "images": [{
+            "id": 1617,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/0e852d021da7442d9788c3bf100951f3.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [],
+            []
+        ],
+        "tags": [{
+            "name": "services",
+            "display_name": "Services",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "41553290"
+    }, {
+        "id": "1508",
+        "name": "Azure Film",
+        "brand": "Azure Film",
+        "source_opened": true,
+        "address": "Orleška cesta 16",
+        "email": "info@azurefilm.com",
+        "phone": "+38641553290",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/e182af59331a4137b4b9c88ca60cb07c.jpg",
+        "lat": "45.703377",
+        "lng": "13.868353",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "6210",
+        "city": "Sežana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://www.azurefilm.com/",
+        "place_id": "ChIJt_LWsGMVe0cRAL92g9sLhRg",
+        "store_image": null,
+        "images": [{
+            "id": 1614,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/92c26126b05f471fa1d21db5a2cea0f2.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "41553290"
+    }, {
+        "id": "1509",
+        "name": "Optimist",
+        "brand": "Trgovina Optimist",
+        "source_opened": true,
+        "address": "Mariborska cesta 128",
+        "email": "info@optimist.si",
+        "phone": "+38634911499",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/e2dd7c90bca84db1bdaa15777c68c0b5.jpg",
+        "lat": "46.243705",
+        "lng": "15.278828",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "3000",
+        "city": "Celje",
+        "country": "SI",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJX9stPO1wZUcRiWcwRpobMBQ",
+        "store_image": null,
+        "images": [{
+            "id": 1612,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/e40fc7b4b63f4044bfbff9c2e119fda3.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "13:00:00"
+            }]
+        ],
+        "tags": [{
+            "name": "fashion",
+            "display_name": "Fashion",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "34911499"
+    }, {
+        "id": "1513",
+        "name": "Viki's Bar Ljubljana, Beethovnova",
+        "brand": "Viki's Place",
+        "source_opened": true,
+        "address": "Beethovnova ulica 12",
+        "email": "info@vikisplace.si",
+        "phone": "+38659011355",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/5784430a2afd48cf9cced1cc0c406f31.jpg",
+        "lat": "46.051094",
+        "lng": "14.504578",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1000",
+        "city": "Ljubljana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJ0Rze0WMtZUcRRpQKlMQ5Gks",
+        "store_image": null,
+        "images": [{
+            "id": 1628,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/3f5de4ac17b34db88ab70687ef0dda58.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "07:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "13:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "services",
+            "display_name": "Services",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "59011355"
+    }, {
+        "id": "1514",
+        "name": "Estetika Fabjan Šenčur",
+        "brand": "Estetika Fabjan",
+        "source_opened": true,
+        "address": "Poslovna cona A32",
+        "email": "info@fabjan.com",
+        "phone": "+38641630687",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/413b22ced79a46a8b66bb10513ac9ffd.jpg",
+        "lat": "46.236973",
+        "lng": "14.409002",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "4208",
+        "city": "Šenčur",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://www.fabjan.si/",
+        "place_id": "ChIJI_yV5xi4ekcRK2Flt_bwZws",
+        "store_image": null,
+        "images": [{
+            "id": 1627,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/8d2647cef6e44a43b721581ac7191935.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "06:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "11:00:00"
+            }],
+            [],
+            []
+        ],
+        "tags": [{
+            "name": "services",
+            "display_name": "Services",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "41630687"
+    }, {
+        "id": "1515",
+        "name": "Maya's beauty concept store",
+        "brand": "Maya´s beauty concept store",
+        "source_opened": true,
+        "address": "Maznina 5",
+        "email": "majarenic@net.hr",
+        "phone": "+385922132678",
+        "logo_url": "",
+        "lat": "45.707102",
+        "lng": "16.395976",
+        "source_timezone": "Europe/Zagreb",
+        "postal_code": "10310",
+        "city": "Ivanić Grad",
+        "country": "HR",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJC0Ed3L1fZkcRQLYrhlCtAAQ",
+        "store_image": null,
+        "images": [{
+            "id": 1720,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/f22a2a4a88184050beb050be739dcf0c.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }]
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+385",
+        "national_number": "922132678"
+    }, {
+        "id": "1516",
+        "name": "Voyager Travel Agency",
+        "brand": "Voyager Travel Agency",
+        "source_opened": true,
+        "address": "Dolac 3/C",
+        "email": "info@voyager-travel.com",
+        "phone": "+385051606606",
+        "logo_url": "",
+        "lat": "45.328154",
+        "lng": "14.440279",
+        "source_timezone": "Europe/Zagreb",
+        "postal_code": "51000",
+        "city": "Rijeka",
+        "country": "HR",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJB6Hy3-GgZEcRO_Ec7LVQD2M",
+        "store_image": null,
+        "images": [{
+            "id": 1642,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/ff7db31cf50a456eaf6810c5d25cc25d.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "06:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "11:00:00"
+            }],
+            [{
+                "from": "08:26:38",
+                "to": "16:00:00"
+            }]
+        ],
+        "tags": [{
+            "name": "travel",
+            "display_name": "Travel",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+385",
+        "national_number": "51606606"
+    }, {
+        "id": "2875",
+        "name": "Bolji-shopping online store",
+        "brand": "Bolji-shopping online store",
+        "source_opened": true,
+        "address": "Vukave 41",
+        "email": "Boljias@gmail.com",
+        "phone": null,
+        "logo_url": "https://s3.eu-central-1.amazonaws.com/public.elipay.com/live-3514d179aac2/source/images/Vqdcik5omKpVxU3AVkLd3H.png",
+        "lat": "43.597330",
+        "lng": "16.412477",
+        "source_timezone": "Europe/Zagreb",
+        "postal_code": "21202",
+        "city": "Vučevica",
+        "country": "HR",
+        "source_type": 1,
+        "website": "https://bolji-shopping.online/",
+        "place_id": "ChIJXYqn5oNbNRMRNDSKAFNS9cc",
+        "store_image": "",
+        "images": [],
+        "working_hours": [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+        ],
+        "tags": [{
+            "name": "electronics",
+            "display_name": "Electronics",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+385",
+        "national_number": "922479396"
+    }, {
+        "id": "1530",
+        "name": "Pizzeria Podroom",
+        "brand": "Pizzeria Podroom",
+        "source_opened": true,
+        "address": "Vožišće 5",
+        "email": "pizzeria.podroom@gmail.com",
+        "phone": "+38551620905",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/81afbec90cb14d6d8c918db816e5757b.png",
+        "lat": "45.380972",
+        "lng": "14.384047",
+        "source_timezone": "Europe/Zagreb",
+        "postal_code": "51216",
+        "city": "Viškovo",
+        "country": "HR",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJ22Ow6dKlZEcRi5U3_cS0OjU",
+        "store_image": null,
+        "images": [{
+            "id": 1640,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/ca0c8735da1340a6a859d5a5c52ccc25.jpg"
+        }],
+        "working_hours": [
+            [],
+            [{
+                "from": "11:00:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "11:00:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "11:00:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "11:00:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "11:00:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "11:00:00",
+                "to": "21:00:00"
+            }]
+        ],
+        "tags": [{
+            "name": "food_and_drink",
+            "display_name": "Food and drink",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+385",
+        "national_number": "51620905"
+    }, {
+        "id": "2447",
+        "name": "Lop, lesna obdelava in predelava",
+        "brand": "Lop, lesna obdelava in predelava",
+        "source_opened": true,
+        "address": "Gradiška 21",
+        "email": null,
+        "phone": null,
+        "logo_url": "",
+        "lat": "46.606358",
+        "lng": "15.654519",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "2211",
+        "city": "Pesnica pri Mariboru",
+        "country": "SI",
+        "source_type": 0,
+        "website": "http://mizarstvo-lop.si/",
+        "place_id": "ChIJtWx3mN91b0cRo0VQT-F-Lxw",
+        "store_image": "",
+        "images": [],
+        "working_hours": [
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }]
+        ],
+        "tags": [{
+            "name": "home_and_garden",
+            "display_name": "Home and garden",
+            "ordering": 0
+        }],
+        "country_phone_prefix": null,
+        "national_number": null
+    }, {
+        "id": "1532",
+        "name": "Omara Ljubljana, BTC",
+        "brand": "Omara",
+        "source_opened": true,
+        "address": "Šmartinska 152",
+        "email": "omara@elporo.si",
+        "phone": "+38651255040",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/1547a87560034e6b99bca3bee4255269.jpg",
+        "lat": "46.068108",
+        "lng": "14.542046",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1000",
+        "city": "Ljubljana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJtUb-CmgyZUcRP10eTMuxdlA",
+        "store_image": null,
+        "images": [{
+            "id": 1634,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/007d9db2194c46658dd4003daec12d2b.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "07:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "18:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "fashion",
+            "display_name": "Fashion",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "51255040"
+    }, {
+        "id": "1536",
+        "name": "DRM reklamni materiali Celje",
+        "brand": "DRM",
+        "source_opened": true,
+        "address": "Lava 2a",
+        "email": "jure@drm.si",
+        "phone": "+38641553290",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/8ae387b319e44c4c8a846f7e396c6b40.jpg",
+        "lat": "46.239457",
+        "lng": "15.251014",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "3000",
+        "city": "Celje",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://www.drm.si/",
+        "place_id": "ChIJqQH4wL9xZUcRZ_IPtUDK-gY",
+        "store_image": null,
+        "images": [{
+            "id": 1669,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/1a6f3af853ff4eec92b68595572942f6.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [],
+            []
+        ],
+        "tags": [{
+            "name": "services",
+            "display_name": "Services",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "41553290"
+    }, {
+        "id": "1545",
+        "name": "Restavracija Manna",
+        "brand": "Manna",
+        "source_opened": true,
+        "address": "EIPPROVA ULICA 1A",
+        "email": "info@restavracija-manna.si",
+        "phone": "+38651315220",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/13c6d7916185457f8b3cd8a2ca687428.png",
+        "lat": "46.043348",
+        "lng": "14.505135",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1000 LJUBLJANA",
+        "city": "LJUBLJANA",
+        "country": "SI",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJAXdi7m8tZUcR1Iqys3EeFKo",
+        "store_image": null,
+        "images": [{
+            "id": 1670,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/49af838f258a4048940e01d30d437dab.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "10:00:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "10:00:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "10:00:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "10:00:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "10:00:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "10:00:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "10:00:00",
+                "to": "19:00:00"
+            }]
+        ],
+        "tags": [{
+            "name": "food_and_drink",
+            "display_name": "Food and drink",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "51315220"
+    }, {
+        "id": "1550",
+        "name": "Klub Bačva",
+        "brand": "Klub Bačva",
+        "source_opened": true,
+        "address": "Dolac 8",
+        "email": "klubbacva.ri@gmail.com",
+        "phone": "+38551214643",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/cfac7fcbc06d4db3a93b93f58dd7796b.jpg",
+        "lat": "45.328268",
+        "lng": "14.440382",
+        "source_timezone": "Europe/Zagreb",
+        "postal_code": "51000",
+        "city": "Rijeka",
+        "country": "HR",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJlVVEIB6hZEcRqEe9BNcM96I",
+        "store_image": null,
+        "images": [{
+            "id": 1715,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/be1b43b1981d45b4be5b87aef85fa954.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "05:00:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "22:00:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "23:00:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "00:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "00:00:00"
+            }],
+            [{
+                "from": "05:57:30",
+                "to": "22:00:00"
+            }]
+        ],
+        "tags": [{
+            "name": "food_and_drink",
+            "display_name": "Food and drink",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+385",
+        "national_number": "51214643"
+    }, {
+        "id": "1553",
+        "name": "Ajda burgers and more",
+        "brand": "Ajda",
+        "source_opened": true,
+        "address": "Šmartinska 152",
+        "email": "info@ajda-skupina.si",
+        "phone": "+38641898777",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/04e0f14a79a94f9cb69c1b2b79fdda5a.jpg",
+        "lat": "46.063086",
+        "lng": "14.545706",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1000",
+        "city": "Ljubljana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJ3QdaLG8yZUcR9B45sBNMil0",
+        "store_image": null,
+        "images": [{
+            "id": 1694,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/dd5c119c766644589ec225a9963036e5.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "07:00:00",
+                "to": "21:00:59"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "21:00:59"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "21:00:59"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "21:00:59"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "21:00:59"
+            }],
+            [{
+                "from": "09:00:00",
+                "to": "21:00:59"
+            }],
+            [{
+                "from": "09:00:00",
+                "to": "21:00:59"
+            }]
+        ],
+        "tags": [{
+            "name": "food_and_drink",
+            "display_name": "Food and drink",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "41898777"
+    }, {
+        "id": "1517",
+        "name": "Debarcadero Lugano Centrale",
+        "brand": "Debarcadero Lugano Centrale",
+        "source_opened": true,
+        "address": "Riva Vincenzo Vela 1",
+        "email": "info@lakelugano.ch",
+        "phone": "+41912221111",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/7cc9ee48c9ca4adca5d4b72c759552d5.jpg",
+        "lat": "46.002687",
+        "lng": "8.951588",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "6900",
+        "city": "Lugano",
+        "country": "CH",
+        "source_type": 0,
+        "website": "https://www.lakelugano.ch/",
+        "place_id": "ChIJz7GECY4thEcR2PpHTdxWIcg",
+        "store_image": null,
+        "images": [{
+            "id": 1693,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/e525a8f9b47d4899bf3acd0c6eb3b51c.jpg"
+        }],
+        "working_hours": [
+            [],
+            [],
+            [],
+            [],
+            [],
+            [],
+            []
+        ],
+        "tags": [{
+            "name": "entertainment",
+            "display_name": "Entertainment",
+            "ordering": 0
+        }, {
+            "name": "travel",
+            "display_name": "Travel",
+            "ordering": 2
+        }],
+        "country_phone_prefix": "+41",
+        "national_number": "912221111"
+    }, {
+        "id": "2244",
+        "name": "Bobi Bar",
+        "brand": "Bobi Bar",
+        "source_opened": true,
+        "address": "Grošljeva ulica 1a",
+        "email": null,
+        "phone": null,
+        "logo_url": "https://s3.eu-central-1.amazonaws.com/public.elipay.com/live-3514d179aac2/source/images/d68dd6ce14e746868624e1ad2ef3411f.jpg",
+        "lat": "46.073843",
+        "lng": "14.483209",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1000",
+        "city": "Ljubljana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJrTScKbUyZUcRBancbu5jCyc",
+        "store_image": "https://s3.eu-central-1.amazonaws.com/public.elipay.com/live-3514d179aac2/source/images/ddc09bf22f4e438486fc2ee79de98def.jpg",
+        "images": [{
+            "id": 2080,
+            "image": "https://s3.eu-central-1.amazonaws.com/public.elipay.com/live-3514d179aac2/source/images/ddc09bf22f4e438486fc2ee79de98def.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "05:00:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "05:00:00",
+                "to": "21:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "food_and_drink",
+            "display_name": "Food and drink",
+            "ordering": 0
+        }],
+        "country_phone_prefix": null,
+        "national_number": null
+    }, {
+        "id": "2067",
+        "name": "Infinium Office",
+        "brand": "Infinium Office",
+        "source_opened": true,
+        "address": "Bul. Jawaharlal Nehru 28, Silver Center, Office 4",
+        "email": "office@infinium.one",
+        "phone": null,
+        "logo_url": "https://s3.eu-central-1.amazonaws.com/public.elipay.com/live-3514d179aac2/source/images/8VTZAXUuqvw3WGMh9Ktfw9.png",
+        "lat": "42.715170",
+        "lng": "23.254223",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1324",
+        "city": "Sofia",
+        "country": "BG",
+        "source_type": 0,
+        "website": "https://www.infinium.one/en/",
+        "place_id": "ChIJ0Skcfo-aqkARciEDYXoVLp0",
+        "store_image": "https://s3.eu-central-1.amazonaws.com/public.elipay.com/live-3514d179aac2/source/images/gyUikjSifNNQsMNRse5rLL.jpeg",
+        "images": [{
+            "id": 2014,
+            "image": "https://s3.eu-central-1.amazonaws.com/public.elipay.com/live-3514d179aac2/source/images/gyUikjSifNNQsMNRse5rLL.jpeg"
+        }],
+        "working_hours": [
+            [{
+                "from": "06:00:00",
+                "to": "20:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "20:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "20:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "20:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "20:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "20:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "20:00:00"
+            }]
+        ],
+        "tags": [{
+            "name": "services",
+            "display_name": "Services",
+            "ordering": 0
+        }, {
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 2
+        }],
+        "country_phone_prefix": "+359",
+        "national_number": "899916643"
+    }, {
+        "id": "1555",
+        "name": "Rdeča Češnja",
+        "brand": "Rdeča Češnja",
+        "source_opened": true,
+        "address": "Otoška cesta 5",
+        "email": "masa.kastelic@gmail.com",
+        "phone": "+38651257239",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/e2a86984c6374857833f7c3ea85db6e7.png",
+        "lat": "45.827501",
+        "lng": "15.184015",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "8000",
+        "city": "Novo mesto",
+        "country": "SI",
+        "source_type": 0,
+        "website": "https://www.facebook.com/smoothiebarrdecacesnja/?tn-str=k*F",
+        "place_id": "ChIJP5LyMQ0AZUcRyGJ9-F7ICYw",
+        "store_image": null,
+        "images": [{
+            "id": 1666,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/56ed1ac527f64c4faac3866e4b03e531.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "19:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "13:00:00"
+            }]
+        ],
+        "tags": [{
+            "name": "food_and_drink",
+            "display_name": "Food and drink",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "51257239"
+    }, {
+        "id": "1556",
+        "name": "Okrepčevalnica Ajda",
+        "brand": "Ajda",
+        "source_opened": true,
+        "address": "Ajdovščina 4",
+        "email": "info@ajda-skupina.si",
+        "phone": "+38612312220",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/654b3f15ff384d509c153238f4569fca.jpg",
+        "lat": "46.053620",
+        "lng": "14.504606",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1000",
+        "city": "Ljubljana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJR5GlAWItZUcRjawQQW4Pvz8",
+        "store_image": null,
+        "images": [{
+            "id": 1696,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/6d7781c72712491fa4a01748c13172e9.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "07:30:00",
+                "to": "18:30:00"
+            }],
+            [{
+                "from": "07:30:00",
+                "to": "18:30:00"
+            }],
+            [{
+                "from": "07:30:00",
+                "to": "18:30:00"
+            }],
+            [{
+                "from": "07:30:00",
+                "to": "18:30:00"
+            }],
+            [{
+                "from": "07:30:00",
+                "to": "18:30:00"
+            }],
+            [],
+            []
+        ],
+        "tags": [{
+            "name": "food_and_drink",
+            "display_name": "Food and drink",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "12312220"
+    }, {
+        "id": "1557",
+        "name": "Fast Food Ajda 2",
+        "brand": "Ajda",
+        "source_opened": true,
+        "address": "Ajdovščina 2",
+        "email": "info@ajda-skupina.si",
+        "phone": "+38612322208",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/a6e8bf9c865444c79a42f2a27aabd190.jpg",
+        "lat": "46.053620",
+        "lng": "14.504606",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "1000",
+        "city": "Ljubljana",
+        "country": "SI",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJR5GlAWItZUcRjawQQW4Pvz8",
+        "store_image": null,
+        "images": [{
+            "id": 1668,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/7e488aaed89b4aeb8ef2a0a71b3b7551.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "07:00:00",
+                "to": "03:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "03:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "03:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "03:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "03:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "04:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "04:00:00"
+            }]
+        ],
+        "tags": [{
+            "name": "food_and_drink",
+            "display_name": "Food and drink",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "12322208"
+    }, {
+        "id": "1559",
+        "name": "Bokal Sport",
+        "brand": "Bokal Sport",
+        "source_opened": true,
+        "address": "Mestni trg 20",
+        "email": "info@bokal-sport.si",
+        "phone": "+38631681018",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/1535f30bea8a4fc383464ecdbe0adc35.jpg",
+        "lat": "46.164325",
+        "lng": "14.306892",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "4220",
+        "city": "Škofja loka",
+        "country": "SI",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJ84MknQXGekcRlba4pnJKqdg",
+        "store_image": null,
+        "images": [{
+            "id": 1688,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/cadf406632214f8f9c3722aea8b20f88.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "07:00:00",
+                "to": "17:30:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "17:30:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "17:30:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "17:30:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "17:30:00"
+            }],
+            [{
+                "from": "06:30:00",
+                "to": "11:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "sports_and_leisure",
+            "display_name": "Sports and leisure",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "31681018"
+    }, {
+        "id": "1561",
+        "name": "FinLantern",
+        "brand": "FinLantern",
+        "source_opened": true,
+        "address": "Corso Elvezia 10",
+        "email": "riccardo@finlantern.com",
+        "phone": "+41792265496",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/75508040bfd0468cad64d4118992a786.jpg",
+        "lat": "46.007051",
+        "lng": "8.955898",
+        "source_timezone": "Europe/Zurich",
+        "postal_code": "6900",
+        "city": "Lugano",
+        "country": "CH",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJ6x5igosthEcRsXxuIAKsTtM",
+        "store_image": null,
+        "images": [],
+        "working_hours": [
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }]
+        ],
+        "tags": [{
+            "name": "services",
+            "display_name": "Services",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+41",
+        "national_number": "792265496"
+    }, {
+        "id": "1562",
+        "name": "Blockadopt",
+        "brand": "Blockadopt",
+        "source_opened": true,
+        "address": "Brnasi 2",
+        "email": "filip.dra123@gmail.com",
+        "phone": "+385911606991",
+        "logo_url": "",
+        "lat": "45.380692",
+        "lng": "14.378161",
+        "source_timezone": "Europe/Zagreb",
+        "postal_code": "51216",
+        "city": "Viskovo",
+        "country": "HR",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJ0TvlaNGlZEcRFkOe4DOSOf0",
+        "store_image": null,
+        "images": [{
+            "id": 1679,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/7e61cc64b840409482c36f7207a1258c.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [],
+            []
+        ],
+        "tags": [{
+            "name": "services",
+            "display_name": "Services",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+385",
+        "national_number": "911606991"
+    }, {
+        "id": "1563",
+        "name": "Vizazistica Dajana Pajkic",
+        "brand": "Vizazistica Dajana Pajkic",
+        "source_opened": true,
+        "address": "Bolnička cesta 34d",
+        "email": "pajkicdajana@gmail.com",
+        "phone": "+385916371717",
+        "logo_url": "",
+        "lat": "45.817196",
+        "lng": "15.894772",
+        "source_timezone": "Europe/Zagreb",
+        "postal_code": "10000",
+        "city": "Zagreb",
+        "country": "HR",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJZ7MfuxrRZUcRwOe6U9VuAr8",
+        "store_image": null,
+        "images": [{
+            "id": 1678,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/b42274267e744f488f52691c6b8a7c94.jpg"
+        }],
+        "working_hours": [
+            [],
+            [{
+                "from": "08:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "08:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "08:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "08:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "08:00:00",
+                "to": "16:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "services",
+            "display_name": "Services",
+            "ordering": 0
+        }, {
+            "name": "fashion",
+            "display_name": "Fashion",
+            "ordering": 1
+        }],
+        "country_phone_prefix": "+385",
+        "national_number": "916371717"
+    }, {
+        "id": "1565",
+        "name": "GoodGate",
+        "brand": "GoodGate",
+        "source_opened": true,
+        "address": "Obrovačka ulica 16",
+        "email": "goodgatefilm@gmail.com",
+        "phone": "+385976052476",
+        "logo_url": "",
+        "lat": "45.735270",
+        "lng": "16.016028",
+        "source_timezone": "Europe/Zagreb",
+        "postal_code": "10000",
+        "city": "Zagreb",
+        "country": "HR",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJ-U-ubXR_ZkcRb5a3iDszbrI",
+        "store_image": null,
+        "images": [{
+            "id": 1676,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/0f8cecfc809240a0a45a237321520487.jpg"
+        }],
+        "working_hours": [
+            [],
+            [{
+                "from": "06:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "16:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "services",
+            "display_name": "Services",
+            "ordering": 0
+        }, {
+            "name": "entertainment",
+            "display_name": "Entertainment",
+            "ordering": 1
+        }],
+        "country_phone_prefix": "+385",
+        "national_number": "976052476"
+    }, {
+        "id": "1566",
+        "name": "Mauri Concept",
+        "brand": "Mauri Concept",
+        "source_opened": true,
+        "address": "Via Gerolamo Vegezzi 4",
+        "email": "info@mauriconcept.ch",
+        "phone": "+41919234570",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/1c53daccf2884d5a9c0d550828445b73.jpg",
+        "lat": "46.004536",
+        "lng": "8.952076",
+        "source_timezone": "Europe/Zurich",
+        "postal_code": "6900",
+        "city": "Lugano",
+        "country": "CH",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJRSNogI4thEcRHKVekq9y4CM",
+        "store_image": null,
+        "images": [{
+            "id": 1711,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/3d6e700dc7e9432e991cd172edd88f42.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "07:00:00",
+                "to": "16:30:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "17:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "15:00:00"
+            }],
+            [{
+                "from": "22:00:00",
+                "to": "21:59:59"
+            }]
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+41",
+        "national_number": "0919234570"
+    }, {
+        "id": "1569",
+        "name": "Mateyaneira",
+        "brand": "Mateyaneira",
+        "source_opened": true,
+        "address": "Primorska ulica 14",
+        "email": "info@mateyaneira.com",
+        "phone": "+385922335877",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/f52797a1c522492580dc7bd6fbcd01cf.png",
+        "lat": "45.811618",
+        "lng": "15.960902",
+        "source_timezone": "Europe/Zagreb",
+        "postal_code": "10000",
+        "city": "Zagreb",
+        "country": "HR",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJ96rOv0PXZUcReXJhvZguILM",
+        "store_image": null,
+        "images": [{
+            "id": 1722,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/91832930d799495882a8b3a85ae5c0b4.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [],
+            []
+        ],
+        "tags": [{
+            "name": "fashion",
+            "display_name": "Fashion",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+385",
+        "national_number": "922335877"
+    }, {
+        "id": "1570",
+        "name": "Mijo Majhen Hair",
+        "brand": "Mijo Majhen Hair",
+        "source_opened": true,
+        "address": "Vinicka 19",
+        "email": "mijomajhen@gmail.com",
+        "phone": "+385981650608",
+        "logo_url": "",
+        "lat": "46.354816",
+        "lng": "16.152844",
+        "source_timezone": "Europe/Zagreb",
+        "postal_code": "42207",
+        "city": "Gornje Vratno",
+        "country": "HR",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJlRqTr2lXb0cROCc3LZ3nTI8",
+        "store_image": null,
+        "images": [{
+            "id": 1721,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/0821953ed62443359f9908fc62f9a25b.jpg"
+        }],
+        "working_hours": [
+            [],
+            [{
+                "from": "08:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "08:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "08:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "08:00:00",
+                "to": "16:00:00"
+            }],
+            [{
+                "from": "08:00:00",
+                "to": "16:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "services",
+            "display_name": "Services",
+            "ordering": 0
+        }, {
+            "name": "fashion",
+            "display_name": "Fashion",
+            "ordering": 1
+        }],
+        "country_phone_prefix": "+385",
+        "national_number": "981650608"
+    }, {
+        "id": "1572",
+        "name": "Hostel Snezinka",
+        "brand": "Hostel Snezinka",
+        "source_opened": true,
+        "address": "Borovška cesta 48",
+        "email": "hostelsnezinka@gmail.com",
+        "phone": "+38670185131",
+        "logo_url": "",
+        "lat": "46.486009",
+        "lng": "13.789208",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "4280",
+        "city": "Kranjska Gora",
+        "country": "SI",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJb-ughsV9ekcR-Ja4x57fO4s",
+        "store_image": null,
+        "images": [{
+            "id": 1707,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/2567cbc69e7d44be88111c6e1612c698.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "06:00:00",
+                "to": "20:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "20:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "20:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "20:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "20:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "20:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "20:00:00"
+            }]
+        ],
+        "tags": [{
+            "name": "services",
+            "display_name": "Services",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "70185131"
+    }, {
+        "id": "1573",
+        "name": "Zvita feltna",
+        "brand": "Zvita feltna",
+        "source_opened": true,
+        "address": "Dutovlje 114A",
+        "email": "info@zvita-feltna.com",
+        "phone": "+38641588187",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/6a292eb2488a464d9bb8cacfbd9467ec.png",
+        "lat": "45.755707",
+        "lng": "13.832726",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "6221",
+        "city": "Dutovlje",
+        "country": "SI",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJz7lpHB0Ue0cR5dy_-Olj4fg",
+        "store_image": null,
+        "images": [{
+            "id": 1716,
+            "image": "https://public.elipay.com/live-3514d179aac2/source/images/23e888b9914b47b99efdd8b3a645fd16.jpg"
+        }],
+        "working_hours": [
+            [{
+                "from": "06:00:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "21:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "21:00:00"
+            }]
+        ],
+        "tags": [{
+            "name": "services",
+            "display_name": "Services",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+386",
+        "national_number": "41588187"
+    }, {
+        "id": "3675",
+        "name": "RM Design",
+        "brand": "RM Design",
+        "source_opened": true,
+        "address": "Trčova 169",
+        "email": null,
+        "phone": null,
+        "logo_url": "",
+        "lat": "46.542093",
+        "lng": "15.720447",
+        "source_timezone": "Europe/Ljubljana",
+        "postal_code": "2229",
+        "city": "Malečnik",
+        "country": "SI",
+        "source_type": 0,
+        "website": null,
+        "place_id": "ChIJnRsC1MNwb0cRipMZ4lX3JE8",
+        "store_image": "",
+        "images": [],
+        "working_hours": [
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [{
+                "from": "06:00:00",
+                "to": "14:00:00"
+            }],
+            [],
+            []
+        ],
+        "tags": [{
+            "name": "services",
+            "display_name": "Services",
+            "ordering": 0
+        }],
+        "country_phone_prefix": null,
+        "national_number": null
+    }, {
+        "id": "1577",
+        "name": "Gallery RIart",
+        "brand": "Gallery RIart",
+        "source_opened": true,
+        "address": "Marka Marulica 10",
+        "email": "lada1952@gmail.com",
+        "phone": "+38598634981",
+        "logo_url": "https://public.elipay.com/live-3514d179aac2/source/images/30ad991b8a7c4d45847a7df60e9a76d9.jpg",
+        "lat": "45.327403",
+        "lng": "14.443068",
+        "source_timezone": "Europe/Zagreb",
+        "postal_code": "51000",
+        "city": "Rijeka",
+        "country": "HR",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJTxRXDOKgZEcRFDiGXWH9FJA",
+        "store_image": null,
+        "images": [],
+        "working_hours": [
+            [{
+                "from": "07:00:00",
+                "to": "10:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "10:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "10:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "10:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "10:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "11:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "retail",
+            "display_name": "Other",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+385",
+        "national_number": "098634981"
+    }, {
+        "id": "1578",
+        "name": "Optika Vid",
+        "brand": "Optika Vid",
+        "source_opened": true,
+        "address": "Uzarska 18",
+        "email": "info@optikavid.hr",
+        "phone": "+38551245199",
+        "logo_url": "",
+        "lat": "45.326790",
+        "lng": "14.444620",
+        "source_timezone": "Europe/Zagreb",
+        "postal_code": "51000",
+        "city": "Rijeka",
+        "country": "HR",
+        "source_type": 0,
+        "website": "",
+        "place_id": "ChIJATXUlHqhZEcR4PL2jgwJb8k",
+        "store_image": null,
+        "images": [],
+        "working_hours": [
+            [{
+                "from": "07:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "18:00:00"
+            }],
+            [{
+                "from": "07:00:00",
+                "to": "11:00:00"
+            }],
+            []
+        ],
+        "tags": [{
+            "name": "fashion",
+            "display_name": "Fashion",
+            "ordering": 0
+        }],
+        "country_phone_prefix": "+385",
+        "national_number": "051245199"
+    }]
+}

@@ -1,0 +1,219 @@
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet">
+        <title>Bitcoin Map Charts</title>
+        <script src="charts.js"></script>
+        <script>
+          const dataCoins = {
+              labels: [
+                'Bitcoin BCH',
+                'DASH',
+                'Bitcoin BTC'
+              ],
+              datasets: [{
+                label: 'Coins',
+                data: [2600, 500, 530],
+                backgroundColor: [
+                  'rgb(76, 175, 80)',
+                  'rgb(68, 138, 255)',
+                  'rgb(255, 152, 0)'
+                ],
+                color: [
+                  'rgb(76, 175, 80)',
+                  'rgb(68, 138, 255)',
+                  'rgb(255, 152, 0)'
+                ],
+                hoverOffset: 4
+              }]
+        };
+
+          const configCoins = {
+            type: 'doughnut',
+            data: dataCoins,
+              options: {
+                    color: 'rgb(255, 255, 255)'
+                }
+          };
+        </script>
+        <script>
+          const dataCategories = {
+              labels: [
+                'RESTAURANT',
+                'TAKE-AWAY',
+                'BAR/CAFE',
+                'MARKET',
+                'SHOP',
+                'HOTEL',
+                'OTHER',
+              ],
+              datasets: [{
+                label: 'Categories',
+                data: [690, 129, 300,187,968,131,629],
+                backgroundColor: [
+                  'rgb(255, 112, 67)',
+                  'rgb(239, 83, 80)',
+                  'rgb(251, 192, 45)',
+                  'rgb(38, 166, 154)',
+                  'rgb(236, 64, 122)',
+                  'rgb(102, 187, 106)',
+                  'rgb(126, 87, 194)'
+                ],
+                hoverOffset: 4
+              }]
+        };
+
+          const configCategories = {
+            type: 'doughnut',
+            data: dataCategories,
+              options: {
+                    color: 'rgb(255, 255, 255)'
+                }
+          };
+        </script>
+        <script>
+          const dataBrands = {
+              labels: [
+                'Anypay',
+                'TRBC',
+                'GoCrypto',
+                'BCH City QLD',
+                'BCHLatam',
+                'Salamantex',
+                'Bitcoin.com',
+                'Discover Dash',
+                'Satoshi Angels',
+                'BCH House Vzla'
+              ],
+              datasets: [{
+                label: 'Brands',
+                data: [83,241,116,82,958,65,773,329, 54, 42],
+                backgroundColor: [
+                  'rgb(69, 90, 100)',
+                  'rgb(71, 133, 88)',
+                  'rgb(251, 192, 45)',
+                  'rgb(124, 179, 66)',
+                  'rgb(76, 175, 80)',
+                  'rgb(245, 124, 0)',
+                  'rgb(255, 87, 34)',
+                  'rgb(33, 150, 243)',
+                  'rgb(156, 39, 176)',
+                  'rgb(102, 187, 106)'
+                ],
+                hoverOffset: 4
+              }]
+        };
+
+          const configBrands = {
+            type: 'doughnut',
+            data: dataBrands,
+              options: {
+                    color: 'rgb(255, 255, 255)'
+                }
+          };
+        </script>
+        <script>
+          const dataGeo = {
+              labels: [
+                'Asia',
+                'Australia',
+                'Europe',
+                'America',
+                'Africa'
+              ],
+              datasets: [{
+                label: 'Continents',
+                data: [411, 239, 472, 1838, 74],
+                backgroundColor: [
+                  'rgb(249, 168, 37)',
+                  'rgb(198, 40, 40)',
+                  'rgb(21, 101, 192)',
+                  'rgb(46, 125, 50)',
+                  'rgb(245, 124, 0)',
+                ],
+                hoverOffset: 4
+              }]
+        };
+
+          const configGeo = {
+            type: 'doughnut',
+            data: dataGeo,
+              options: {
+                    color: 'rgb(255, 255, 255)'
+                }
+          };
+        </script>
+        <style>
+            body {
+                background-color:#222;
+                    font-family: 'Lato', sans-serif;
+                    color:#FFF;
+            }
+            a {
+                color:#fff;
+            }
+            h2 {
+             text-align:center
+            }
+            p {
+                hyphens: auto;
+                text-align: justify
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Bitcoin Map Charts</h1>
+        <h3>Bitcoin P2P Cash Adoption Statistics</h3>
+        <div class="chart-container" style="position: relative; height:600px; width:600px">
+            <p>Last updated in June 2022, taking into account various sources which are listed below. The same places can be found on <a href="http://bitcoinmap.cash">Bitcoin Map</a>. The data is open source for any kind of promotional use, contact: <a href="http://therealbitcoin.club">TRBC</a>, remember "You are Satoshi Nakamoto"</p>
+            <h2>Which coin has the most merchant adoption?</h2>
+            <canvas id="chartCoins"></canvas>
+            <p>We are hungry to promote your most secret bitcoin places! In the end they should not be a secret, because these places need customers. If you have any more data to provide, feel free to contact TRBC via TG @felizbitcoin.</p>
+            <p>Any coin is appreciated, we can also do custom integrations with limited dataset to show an interactive crypto merchant directory with a beautiful map on your own website tailored to your brand.</p>
+        </div>
+        <div style="position: relative; height:300px; width:60px">
+        </div>
+        <div class="chart-container" style="position: relative; height:600px; width:600px">
+            <h2>How many bitcoin places are there of each category?</h2>
+            <canvas id="chartCategories"></canvas>
+            <p>Places listed on bitcoinmap.cash, coinector.app or inside the respective Android Apps are verified, categorized and tagged by products/services. Each place has been individually reviewed and we only list the most famous places which are also being promoted on Google Maps. We think that if a place wants to be listed on bmap.app he should understand the basics of online marketing which is listing their business on Google Maps, its like a free website with massive outreach. We also support merchants in registering their place on Google, so that they can be more succesfull long term. No matter if someone likes Google or not, their product Google Maps is being shipped on all Android devices, so leveraging that network effect to promote places that accept Cryptocurrencies is an opportunity that should not be missed.</p>
+        </div>
+        <div style="position: relative; height:290px; width:60px">
+        </div>
+        <div class="chart-container" style="position: relative; height:600px; width:600px">
+            <h2>Which team/brand has published these places?</h2>
+            <canvas id="chartBrands"></canvas>
+            <p>This chart is highlighting the source of the data. We receive data from many teams and brands around the globe to promote the merchants, that they educated on bitcoin payments, to more users willing to use bitcoin as p2p cash. This service is absolutely free of charge, the data is being kept in an open source database on github.com</p>
+            <p>Hopefully in the future we can also provide statistics about the amount of customers these places are having in each coin as that would be much more meaningful to measure the success of a brand strategy. We have seen in the past years that managing too many places leads to poor customer experience as often these places are rarely receiving any customers. So this statistic about the amount of places can not be interpretated as a scoreboard of success at all, it could mean the opposite.</p>
+        </div>
+        <div style="position: relative; height:320px; width:60px">
+        </div>
+        <div class="chart-container" style="position: relative; height:600px; width:600px">
+            <h2>Where are these crypto merchants located?</h2>
+            <canvas id="chartGeo"></canvas>
+            <p>Merchant adoption in Venezuela and Slovenia is leading the race of numbers go up, while in Australia there has been a very focused BCH community ever since 2018 in Australia, BCH City North Queensland, that has achieved to create a circulating economy. Also there has been strong adoption on carribean islands lately and rumours about a circulating BCH economy in St.Maarten, St. Kitts & Nevis have arised. Swiss, Japan, Colombia and Argentina are some other hotspots apart from the classics like New Hampshire (USA), Arnhem (Holland), Rovereto (Italy) and Barcelona (Spain).</p>
+            <p>The latest adoption in El Salvador has largely happened in an isolated environment inside the governments own wallet that requires KYC, also the Bitcoin Beach wallet is a custodial solution which we do not count as a p2p bitcoin user as transactions inside custodial wallets do not happen on-chain and are undocumented, usually custodians abuse the trust of their clients and lend out their money to speculate with that risking the clients funds to their own profit. There has also been heavy promotion of company specific apps that are incompatible to the original protocol of Bitcoin. We are happy to list any merchant that accepts crypto on-chain but in El Salvador that is not happening. All statistics have proven that the amount of transactions has stagnated and has even gone down for BTC during 2022. But I am sure the real bitcoiners in El Salvador are aware of that issue and will provide data of places that accept Bitcoin on-chain p2p as soon as it is available.</p>
+        </div>
+        <script>
+            Chart.defaults.font.size = 16;
+            Chart.defaults.plugins.legend.position = 'bottom';
+          const myChart = new Chart(
+            document.getElementById('chartCoins'),
+            configCoins
+          );
+          const myChart2 = new Chart(
+            document.getElementById('chartCategories'),
+            configCategories
+          );
+          const myChart3 = new Chart(
+            document.getElementById('chartBrands'),
+            configBrands
+          );
+          const myChart4 = new Chart(
+            document.getElementById('chartGeo'),
+            configGeo
+          );
+        </script>
+    </body>
+</html>
