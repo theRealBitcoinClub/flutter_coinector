@@ -15,7 +15,7 @@ description: Coinecting to coimunity...
 version: 6.9.0+254023
 
 environment:
-  sdk: ">=2.12.2 <3.0.0"
+  sdk: ">=2.15.0 <4.0.0"
 
 dependencies:
   flutter_improved_scrolling: 0.0.3
