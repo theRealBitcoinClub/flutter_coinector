@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyColors {
-  static Color getTabColor(typeIndex) {
+  static Color? getTabColor(typeIndex) {
     switch (typeIndex) {
       case 0:
         return Colors.deepOrange[400];
@@ -24,7 +24,7 @@ class MyColors {
     return null;
   }
 
-  static Color getCardInfoBoxBackgroundColor(typeIndex) {
+  static Color? getCardInfoBoxBackgroundColor(typeIndex) {
     switch (typeIndex) {
       case 0:
         return Colors.deepOrange[700];
@@ -47,7 +47,7 @@ class MyColors {
     return null;
   }
 
-  static Color getCardActionButtonBackgroundColor(typeIndex) {
+  static Color? getCardActionButtonBackgroundColor(typeIndex) {
     switch (typeIndex) {
       case 0:
         return Colors.deepOrange[900];
