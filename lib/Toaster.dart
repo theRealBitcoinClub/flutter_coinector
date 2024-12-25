@@ -7,11 +7,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'Dialogs.dart';
 
 class Toaster {
-  static const DEFAULT_BACKGROUND_OPACITY = 0.9;
+  static const DEFAULT_BACKGROUND_OPACITY = 90;
   static const double DEFAULT_FONT_SIZE = 16.0;
   static const Color DEFAULT_TEXT_COLOR = Colors.white;
-  static Color defaultBackgroundColor = Colors.yellow[900];
-  static Color errorBackgroundColor = Colors.red[900];
+  static Color? defaultBackgroundColor = Colors.yellow[900];
+  static Color? errorBackgroundColor = Colors.red[900];
   static const int DEFAULT_TIME_FOR_IOS_AND_WEB = 3;
   static const Toast DEFAULT_TIME_FOR_ANDROID = Toast.LENGTH_LONG;
   static const ToastGravity DEFAULT_TOAST_GRAVITY = ToastGravity.CENTER;
@@ -108,7 +108,7 @@ class Toaster {
 
   static Color getBackGroundColor(showToastCount, hintCountTotal) {
     return Colors.primaries[(showToastCount % hintCountTotal) * 2]
-        .withOpacity(DEFAULT_BACKGROUND_OPACITY);
+        .withAlpha(DEFAULT_BACKGROUND_OPACITY);
   }
 
   static Future<int> initToastCounter(prefKey) async {

@@ -43,8 +43,8 @@ class TagCoinector {
       return allItems;
     } catch (e) {
       print(e.toString());
+      throw e;
     }
-    return null;
   }
 
   static List<List<dynamic>> getValuesList(String input) {
@@ -69,8 +69,8 @@ class TagCoinector {
       return allItems;
     } catch (e) {
       print(e.toString());
+      throw e;
     }
-    return null;
   }
 
   String toUI() {
@@ -103,7 +103,7 @@ class TagCoinector {
     try {
       var i = int.parse(index);
       var key = Localizer.getLangCode(ctx).name.toLowerCase();
-      return tagsCached[key].elementAt(i);
+      return tagsCached[key]!.elementAt(i);
     } catch (e) {
       debugPrint(e.toString());
       print("INVALID TAG INDEX:" + index);
@@ -111,7 +111,7 @@ class TagCoinector {
     }
   }
 
-  static List<String> getTagsByLangCode(LangCode lang) {
+  static List<String>? getTagsByLangCode(LangCode lang) {
     return tagsCached[lang.name.toLowerCase()];
   }
 
@@ -142,17 +142,16 @@ class TagCoinector {
     return results;
   }
 
-  static TagCoinector findTag(String searchTerm) {
-    TagCoinector result;
+  static TagCoinector? findTag(String searchTerm) {
+    TagCoinector? result=null;
     LangCode.values.forEach((LangCode lang) {
-      var tmp = _findTagIndex(searchTerm, tagsCached[lang.name.toLowerCase()]);
-      if (tmp != null) result = tmp;
+      result = _findTagIndex(searchTerm, tagsCached[lang.name.toLowerCase()]!);
     });
 
     return result;
   }
 
-  static TagCoinector _findTagIndex(String searchTerm, List<String> tags) {
+  static TagCoinector? _findTagIndex(String searchTerm, List<String> tags) {
     print("START: _findTagIndex:");
     var search = searchTerm.trim().split(" ")[0].toLowerCase();
     print(
@@ -173,7 +172,7 @@ class TagCoinector {
 
   static String fallbackToEN(String t, int i) {
     if (t.startsWith("🍔🍔🍔"))
-      return tagsCached[LangCode.EN.name.toLowerCase()].elementAt(i);
+      return tagsCached[LangCode.EN.name.toLowerCase()]!.elementAt(i);
     return t;
   }
 }

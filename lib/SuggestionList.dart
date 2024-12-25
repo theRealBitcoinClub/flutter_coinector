@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 import 'SuggestionMatch.dart';
 
 class SuggestionList extends StatelessWidget {
-  const SuggestionList({this.suggestions, this.query, this.onSelected});
+  const SuggestionList({required this.suggestions, required this.query, required this.onSelected});
 
   final List<String> suggestions;
   final String query;
   final ValueChanged<String> onSelected;
 
   String addSeparator(String input) {
-    return input != null && input.isNotEmpty ? " - " + input : "";
+    return input.isNotEmpty ? " - " + input : "";
   }
 
   String capitalize(String s) => s[0].toUpperCase() + s.substring(1);
@@ -42,8 +42,8 @@ class SuggestionList extends StatelessWidget {
                       ? searchMatch.substring(0, query.trim().length)
                       : searchMatch
                   : searchMatch,
-              style: theme.textTheme.subtitle1
-                  .copyWith(fontWeight: FontWeight.bold),
+              style: theme.textTheme.titleMedium
+                  ?.copyWith(fontWeight: FontWeight.bold),
               children: <TextSpan>[
                 TextSpan(
                   text: (isRealSuggestion(searchMatch, ctx))
@@ -51,17 +51,17 @@ class SuggestionList extends StatelessWidget {
                           ? searchMatch.substring(query.trim().length)
                           : ''
                       : '',
-                  style: theme.textTheme.subtitle1,
+                  style: theme.textTheme.titleMedium,
                 ),
                 TextSpan(
                   text: state,
-                  style: theme.textTheme.subtitle1
-                      .copyWith(color: Colors.white.withOpacity(0.5)),
+                  style: theme.textTheme.titleMedium
+                      ?.copyWith(color: Colors.white.withAlpha(50)),
                 ),
                 TextSpan(
                   text: continent,
-                  style: theme.textTheme.subtitle1
-                      .copyWith(color: Colors.white.withOpacity(0.5)),
+                  style: theme.textTheme.titleMedium
+                      ?.copyWith(color: Colors.white.withAlpha(50)),
                 ),
               ],
             ),
