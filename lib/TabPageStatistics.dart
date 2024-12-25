@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class TabPageStatistics {
   const TabPageStatistics(
-      {this.text,
-      this.icon,
-      this.title,
-      this.tabIndex,
-      this.color,
-      this.varietyCount});
+      {required this.text,
+      required this.icon,
+      required this.title,
+      required this.tabIndex,
+      required this.color,
+      required this.varietyCount});
   final String text;
   final String title;
   final IconData icon;

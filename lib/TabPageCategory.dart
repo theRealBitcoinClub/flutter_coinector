@@ -5,12 +5,12 @@ import 'Merchant.dart';
 
 class TabPageCategory {
   TabPageCategory(
-      {this.short,
-      this.icon,
-      this.long,
-      this.tabIndex,
-      this.typeIndex,
-      this.color});
+      {required this.short,
+      required this.icon,
+      required this.long,
+      required this.tabIndex,
+      required this.typeIndex,
+      required this.color});
   final String short;
   final String long;
   final IconData icon;

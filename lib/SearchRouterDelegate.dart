@@ -81,7 +81,7 @@ class AllMerchantsPage extends Page {
   final String search;
 
   AllMerchantsPage({
-    this.search,
+    required this.search,
   }) : super(key: ValueKey(search));
 
   Route createRoute(BuildContext context) {

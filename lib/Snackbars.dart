@@ -36,7 +36,7 @@ class Snackbars {
       ctx.widget == null ||
       _scaffoldKey == null ||
       _scaffoldKey.currentState == null ||
-      !_scaffoldKey.currentState.mounted;
+      !_scaffoldKey.currentState!.mounted;
 
   static var isBusySnacking = false;
 
