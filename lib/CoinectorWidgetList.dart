@@ -655,7 +655,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     //return true;
     // } else {
     if (!kIsWeb && await Permission.locationWhenInUse.isGranted) {
-      Position pos = await GeolocatorPlatform.instance.getLastKnownPosition();
+      Position? pos = await GeolocatorPlatform.instance.getLastKnownPosition();
       //setState(() {
       userPosition = pos;
       //});
@@ -706,7 +706,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     return isDataSaverOfflineMode;
   }
 */
-  Future<bool> setLatestPosition(Position pos) async {
+  Future<bool> setLatestPosition(Position ?pos) async {
     // String position = await getLatestSavedPosition();
     var posString = _buildPosString(pos);
     // if (posString != null && position == posString) return false;
@@ -901,17 +901,14 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       Translator.currentLocale(context);
     });*/
     return MaterialApp(
-        builder: (context, widget) => ResponsiveWrapper.builder(
-            BouncingScrollWrapper.builder(context, widget),
-            maxWidth: 545,
-            minWidth: 450,
-            defaultScale: true,
+        builder: (context, widget) => ResponsiveBreakpoints.builder(
+            child: widget!,
             breakpoints: [
-              ResponsiveBreakpoint.resize(450, name: MOBILE),
-              ResponsiveBreakpoint.resize(800, name: TABLET),
-              ResponsiveBreakpoint.resize(1200, name: DESKTOP),
-            ],
-            background: Container(color: hexToColor("#303030"))),
+              const Breakpoint(start: 0, end: 450, name: MOBILE),
+              const Breakpoint(start: 451, end: 800, name: TABLET),
+              const Breakpoint(start: 801, end: 1920, name: DESKTOP),
+              const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+            ]),
         localizationsDelegates: [
           FlutterI18nDelegate(),
           GlobalMaterialLocalizations.delegate,
@@ -1190,7 +1187,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString(sharedPrefKeyLastLocation);
   }
-
+/*
   Future<bool> initHasHitSearch() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -1201,7 +1198,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
     return hasHitSearch;
   }
-
+*/
   Future<bool> persistHasHitSearch() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.setBool(sharedPrefKeyHasHitSearch, true);
