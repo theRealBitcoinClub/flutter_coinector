@@ -529,6 +529,9 @@ class CardItem extends StatelessWidget {
     Navigator.push(ctx, MaterialPageRoute(builder: (buildCtx) {
       int type = merchant.type;
       return AddNewPlaceWidget(
+        key: new Key(merchant.place!.placesId.toString()),
+        lastReviewableCount: "",
+        lastReviewableIndex: "",
         pId: merchant.place!.placesId,
         selectedType: type,
         accentColor: MyColors.getTabColor(type)!,

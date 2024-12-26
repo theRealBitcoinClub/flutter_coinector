@@ -16,14 +16,14 @@ final Animatable<BorderRadius> _kFrontHeadingBevelRadius = BorderRadiusTween(
     topLeft: Radius.circular(_kFrontHeadingHeight),
     topRight: Radius.circular(_kFrontHeadingHeight),
   ),
-);
+) as Animatable<BorderRadius>;
 
 class _TappableWhileStatusIs extends StatefulWidget {
   const _TappableWhileStatusIs(
     this.status, {
-    Key key,
-    this.controller,
-    this.child,
+    required Key key,
+    required this.controller,
+    required this.child,
   }) : super(key: key);
 
   final AnimationController controller;
@@ -35,7 +35,7 @@ class _TappableWhileStatusIs extends StatefulWidget {
 }
 
 class _TappableWhileStatusIsState extends State<_TappableWhileStatusIs> {
-  bool _active;
+  late bool _active;
 
   @override
   void initState() {
