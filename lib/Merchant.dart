@@ -11,27 +11,27 @@ import 'Place.dart';
 
 class Merchant {
   bool isPayEnabled = false;
-  int index;
-  String id;
-  double x;
-  double y;
-  String name;
-  int type;
-  String reviewCount;
-  String reviewStars;
-  int discount;
-  String
+  late   int index;
+  late String id;
+  late double x;
+  late double y;
+  late String name;
+  late int type;
+  late String reviewCount;
+  late String reviewStars;
+  late int discount;
+  late String
       tagsDatabaseFormat; //TODO SPLIT THE TAGS ONE TIME AND SAVE THEM IN TWO ARRAYS ONE INT ARRAY FOR SEARCH AND ONE STRING ARRAY WITH PARSED TAGS
-  Set<TagCoinector> tagsInput;
-  String
+  late Set<TagCoinector> tagsInput;
+  late String
       location; //TODO PROGRAM A BACKUP SERVER IF GITHUB CANT SERVE DATA USE FIREBASE AND IF THATS ALSO BLOCKED THEN USE IPFS
-  Place place;
-  String distance;
+  late Place place;
+  late String distance;
   double distanceInMeters = -1;
-  String geohash;
-  int brand; //TODO LET USER TAP THE BRAND TO SEE ONLY THE SAME BRAND
-  String acceptedCoins; //TODO SPLIT TAGS ON FIRST READ
-  String continent;
+  late String geohash;
+  late int brand; //TODO LET USER TAP THE BRAND TO SEE ONLY THE SAME BRAND
+  late String acceptedCoins; //TODO SPLIT TAGS ON FIRST READ
+  late String continent;
 
   var placeDetailsData;
 
@@ -68,8 +68,8 @@ class Merchant {
         0,
         TagCoinector.parseTagsToDatabaseFormat(tagsInput),
         cleanAdr,
-        null,
-        null);
+        -1,
+        "");
     m.gmapsCategory = data["types"].toString();
     m.tagsInput = tagsInput;
     //create fake Place object to use new id thats equal to place id
@@ -99,9 +99,9 @@ class Merchant {
         '","l":"' +
         location.replaceAll('"', '') +
         '","b":"' +
-        (brand == null ? "null" : brand.toString()) +
+        (brand == -1 ? "null" : brand.toString()) +
         '","w":"' +
-        (acceptedCoins == null ? "null" : acceptedCoins.toString()) +
+        (acceptedCoins.isEmpty ? "null" : acceptedCoins.toString()) +
         '"}';
   }
 
@@ -134,7 +134,7 @@ class Merchant {
         location = HtmlUnescape().convert(json['l']),
         brand = json['b'] != null && json['b'] != 'null'
             ? int.parse(json['b'])
-            : null,
+            : -1,
         acceptedCoins =
-            json['w'] != null && json['w'] != 'null' ? json['w'] : null;
+            json['w'] != null && json['w'] != 'null' ? json['w'] : "";
 }
