@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class Dialogs {
   static var hasDialog = false;
-  static late AwesomeDialog dialog;
+  static AwesomeDialog ?dialog;
   static const String INTERNET_ERROR = "Internet Error!";
 
   static void showDialogInternetError(ctx) async {
@@ -33,7 +33,7 @@ class Dialogs {
 
   static void dismissDialog() {
     hasDialog = false;
-    if (dialog != null) dialog.dismiss();
+    if (dialog != null) dialog!.dismiss();
   }
 
   static void confirmMakeDonation(BuildContext buildCtx, callbackYes) {
