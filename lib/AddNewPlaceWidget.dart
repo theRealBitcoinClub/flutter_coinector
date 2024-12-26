@@ -182,7 +182,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   bool reviewMode = true;
 
-  late String lastReviewableIndex;
+  String ?lastReviewableIndex;
   late String lastReviewableCount;
 
   _AddNewPlaceWidgetState(
@@ -199,10 +199,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   void initState() {
     super.initState();
     int lastIndex = 0;
-    if (lastReviewableIndex != null) lastIndex = int.parse(lastReviewableIndex);
-
     int lastCount = 0;
-    if (lastReviewableCount != null) lastCount = int.parse(lastReviewableCount);
+    if (lastReviewableIndex != null) {
+      lastIndex = int.parse(lastReviewableIndex!);
+      lastCount = int.parse(lastReviewableCount);
+    }
 
     _currentReviewableIndex =
         lastIndex != 0 && lastIndex + 1 < lastCount ? lastIndex + 1 : 0;

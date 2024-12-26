@@ -8,7 +8,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/widgets/I18nText.dart';
 import 'package:loading_animations/loading_animations.dart';
-import 'package:share/share.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 import 'AddNewPlaceWidget.dart';

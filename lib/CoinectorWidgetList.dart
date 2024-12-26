@@ -7,7 +7,7 @@ import 'package:Coinector/ItemInfoStackLayer.dart';
 import 'package:Coinector/Snackbars.dart';
 import 'package:Coinector/TagCoins.dart';
 import 'package:Coinector/translator.dart';
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -773,7 +773,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     scaffoldKey = _scaffoldKey;
     subscriptionConnectivityChangeListener = Connectivity()
         .onConnectivityChanged
-        .listen((ConnectivityResult result) {
+        .listen((List<ConnectivityResult> result) {
       if (!kIsWeb)
         InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(this,
             (onConnectionLoss) {

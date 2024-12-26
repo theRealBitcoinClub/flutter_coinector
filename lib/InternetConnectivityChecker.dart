@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 
@@ -34,10 +34,10 @@ class InternetConnectivityChecker {
     }
     lastWarningInMillis = milliSecondsNow;
 
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.mobile) {
+    final List<ConnectivityResult> connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult.contains(ConnectivityResult.mobile)) {
       // I am connected to a mobile network. all fine
-    } else if (connectivityResult == ConnectivityResult.wifi) {
+    } else if (connectivityResult.contains(ConnectivityResult.wifi)) {
       // wifi activated doesnt assura having internet
       checkConnectionWithRequest(that, (abc) {
         _onError(that);
