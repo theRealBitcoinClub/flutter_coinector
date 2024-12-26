@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cash.bitcoinmap.coinector">
+    package="app.bmap.coinector">
 
     <queries>
         <!-- If your app opens https URLs -->
@@ -30,12 +30,12 @@
 
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
-    <!--permission android:name="cash.bitcoinmap.coinector.gcm.permission.C2D_MESSAGE"
+    <!--permission android:name="app.bmap.coinector.gcm.permission.C2D_MESSAGE"
         android:protectionLevel="signature" /-->
-    <permission android:name="cash.bitcoinmap.coinector.permission.C2D_MESSAGE"
+    <permission android:name="app.bmap.coinector.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
-    <!--uses-permission android:name="cash.bitcoinmap.coinector.gcm.permission.C2D_MESSAGE" /-->
-    <uses-permission android:name="cash.bitcoinmap.coinector.permission.C2D_MESSAGE" />
+    <!--uses-permission android:name="app.bmap.coinector.gcm.permission.C2D_MESSAGE" /-->
+    <uses-permission android:name="app.bmap.coinector.permission.C2D_MESSAGE" />
 
     <!--uses-feature android:name="android.hardware.location.network" android:required="false" />
     <uses-feature android:name="android.hardware.location.gps" android:required="false"  /-->
