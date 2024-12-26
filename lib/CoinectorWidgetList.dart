@@ -130,7 +130,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   void loadAssets(
-      ctx, TagCoinector tagFilter, String locationOrTitleFilter) async {
+      ctx, TagCoinector ?tagFilter, String ?locationOrTitleFilter) async {
     if (tagFilter == null && locationOrTitleFilter == null) {
       // _updateDistanceToAllMerchantsIfNotDoneYet();
       if (isUnfilteredList) return;
@@ -208,7 +208,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   Future<bool> _loadAndParseAllPlaces(
-      TagCoinector tag, String locationFilter) async {
+      TagCoinector ?tag, String ?locationFilter) async {
     await _loadAndParseAsset(tag, locationFilter, 'am');
     await _loadAndParseAsset(tag, locationFilter, 'as');
     await _loadAndParseAsset(tag, locationFilter, 'au');
@@ -218,7 +218,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   Future _loadAndParseAsset(
-      TagCoinector tag, String locationOrTitleFilter, String fileName) async {
+      TagCoinector ?tag, String ?locationOrTitleFilter, String fileName) async {
     if (_cachedDecodedDataBase[fileName] == null)
       _cachedDecodedDataBase[fileName] =
           await FileCache.loadAndDecodeAsset(fileName);
@@ -227,7 +227,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         tag, locationOrTitleFilter, _cachedDecodedDataBase[fileName]!, fileName);
   }
 
-  Future<void> parseAssetUpdateListModel(TagCoinector tag,
+  Future<void> parseAssetUpdateListModel(TagCoinector ?tag,
       String ?locationTitleFilter, List places, String fileName) async {
     initTempListModel();
     bool isLocation = false;
@@ -936,7 +936,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                     controller: tabController,
                     children: buildAllTabContainer(ctx)),
               );
-              return appContent;
+              return appContent!;
             }),
           ),
         ));
@@ -1003,23 +1003,22 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   ThemeData buildTheme() {
     return ThemeData(
       brightness: Brightness.dark,
-      backgroundColor: Colors.grey[900],
       primaryColor: Colors.grey[900],
       secondaryHeaderColor: Colors.white,
       fontFamily: 'OpenSans',
       textTheme: TextTheme(
-        headline6: TextStyle(color: Colors.black),
-        headline5: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-        bodyText1: TextStyle(
+        headlineMedium: TextStyle(color: Colors.black),
+        headlineLarge: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+        bodyMedium: TextStyle(
             fontSize: 17.0,
             fontFamily: 'Hind',
             color: Colors.white,
             fontWeight: kIsWeb ? FontWeight.w100 : FontWeight.w400),
-        bodyText2: TextStyle(
+        bodyLarge: TextStyle(
             fontSize: 14.0,
             fontFamily: 'Hind',
             color: Colors.white.withOpacity(0.8)),
-      ),
+      ), colorScheme: ColorScheme(surface: Colors.grey[900]!,brightness: Brightness.light,error: Colors.red,onError: Colors.redAccent,onPrimary: Colors.grey[700]!,primary: Colors.grey[900]!, onSecondary: Colors.amber[700]!,secondary: Colors.amber[900]!,onSurface: Colors.blueGrey[400]!),
     );
   }
 
