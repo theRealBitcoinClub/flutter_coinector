@@ -80,7 +80,7 @@ class AddNewPlaceWidget extends StatefulWidget {
   static const _kReviewablesCountAndCurrentIndex =
       "reviewablesCountAndCurrentIndex";
 
-  static Future<String> getLastReviewableCountAndIndex() async {
+  static Future<String?> getLastReviewableCountAndIndex() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString(_kReviewablesCountAndCurrentIndex);
   }
@@ -91,15 +91,15 @@ class AddNewPlaceWidget extends StatefulWidget {
   }
 
   const AddNewPlaceWidget(
-      {Key key,
-      this.selectedType,
-      this.accentColor,
-      this.typeTitle,
-      this.actionBarColor,
-      this.pId,
-      this.merchantBmapDataset,
-      this.lastReviewableIndex,
-      this.lastReviewableCount})
+      {required Key key,
+        required this.selectedType,
+        required this.accentColor,
+        required this.typeTitle,
+        required this.actionBarColor,
+        required this.pId,
+        required this.merchantBmapDataset,
+        required this.lastReviewableIndex,
+        required this.lastReviewableCount})
       : super(key: key);
 
   @override
@@ -117,22 +117,22 @@ class AddNewPlaceWidget extends StatefulWidget {
 }
 
 class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
-  final int selectedType;
-  final Color accentColor;
-  final String typeTitle;
-  final Color actionBarColor;
+  late final int selectedType;
+  late final Color accentColor;
+  late final String typeTitle;
+  late final Color actionBarColor;
   final AddPlaceTagSearchDelegate searchTagsDelegate =
       AddPlaceTagSearchDelegate();
-  final Merchant merchantBmapDataset;
+  late final Merchant merchantBmapDataset;
   static const TEXT_COLOR = Colors.white;
-  FocusNode focusNodeInputDASH;
-  FocusNode focusNodeInputBCH;
-  FocusNode focusNodeInputAdr;
-  FocusNode focusNodeInputName;
-  TextEditingController controllerInputDASH;
-  TextEditingController controllerInputBCH;
-  TextEditingController controllerInputAdr;
-  TextEditingController controllerInputName;
+  late FocusNode focusNodeInputDASH;
+  late FocusNode focusNodeInputBCH;
+  late FocusNode focusNodeInputAdr;
+  late FocusNode focusNodeInputName;
+  late TextEditingController controllerInputDASH;
+  late TextEditingController controllerInputBCH;
+  late TextEditingController controllerInputAdr;
+  late TextEditingController controllerInputName;
   String inputName = "";
   String lastInputNameWithCommand = "";
   String lastInputName = "";
@@ -150,8 +150,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   bool showInputAdr = false;
   bool showInputTags = false;
   bool showSearchButton = false;
-  final String pId;
-  String placeId;
+  late final String pId;
+  late String placeId;
   List<Uint8List> images = [];
   List<Uint8List> selectedImages = [];
   var textStyleButtons = TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0);
@@ -162,13 +162,13 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   bool hasSelectedImages = false;
   bool cancelAllImageLoads = false;
   double _contiVisibility = 1.0;
-  Set<String> imagesSuccess;
+  late Set<String> imagesSuccess;
   GithubCoinector githubCoinector = GithubCoinector();
-  Merchant _merchantGoogleData;
+  late Merchant _merchantGoogleData;
   int _currentContinent = 0;
   int _currentPlace = 0;
 
-  int _selectedBrand;
+  int ?_selectedBrand;
 
   List<dynamic> _selectedCoin =
       List.filled(TagCoin.getTagCoins().length, false);
@@ -176,14 +176,14 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   // bool _uploadWithLessThanFourTags = false;
   // String _textSubmitButton = "";
 
-  int _selectedCategory;
+  int ?_selectedCategory;
   List<Merchant> reviewableMerchants = [];
   List<Map<String, dynamic>> reviewableData = [];
 
   bool reviewMode = true;
 
-  String lastReviewableIndex;
-  String lastReviewableCount;
+  late String lastReviewableIndex;
+  late String lastReviewableCount;
 
   _AddNewPlaceWidgetState(
       this.selectedType,
@@ -206,7 +206,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
     _currentReviewableIndex =
         lastIndex != 0 && lastIndex + 1 < lastCount ? lastIndex + 1 : 0;
-    _selectedBrand = isSpecificPlace() ? null : 2; //GOCRYPTO
+    _selectedBrand = (isSpecificPlace() ? null : 2)!; //GOCRYPTO
     reviewMode = isSpecificPlace() ? false : true;
     _selectedCoin[0] =
         isSpecificPlace() ? false : true; //PRESELECT GOCRYPTO DEFAULT
@@ -292,7 +292,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     hideLoaderSafe();
   }
 
-  void showLoaderSafe({String count}) {
+  void showLoaderSafe({String ?count}) {
     try {
       Loader.show(context,
           progressIndicator: count != null ? Text(count) : null);
@@ -336,11 +336,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       reviewableData = allItems;
     });
 
-    _preselectNextReviewableOrResetBackToZero();
+    //_preselectNextReviewableOrResetBackToZero();
 
     hideLoaderSafe();
   }
-
+/*
   void _preselectNextReviewableOrResetBackToZero() {
     AddNewPlaceWidget.getLastReviewableCountAndIndex()
         .then((String countAndIndex) {
@@ -359,7 +359,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         }
       }
     });
-  }
+  }*/
 
   bool hasReviewable() {
     return reviewableData.length > 0;
@@ -403,7 +403,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         placesId: multiplePlacesFoundSplit[++multiplePlacesCurrentIndex]);
   }
 
-  void searchOnGoogleMapsPrefillFields(String input, {String placesId}) async {
+  void searchOnGoogleMapsPrefillFields(String ?input, {String? placesId}) async {
     if (placesId == null || placesId.isEmpty) {
       multiplePlacesFoundSplit = [];
       multiplePlacesCurrentIndex = 1;
@@ -419,7 +419,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       //TODO always use snackbar or toasts but dont mix them
       Toaster.showMerchantNotFoundOnGoogleMapsTryAgain(context);
       setState(() {
-        prefillName(input.split(",")[0]);
+        prefillName(input!.split(",")[0]);
         prefillAddress(input.substring(input.indexOf(",") + 1).trim());
       });
       drawFormStep(FormStep.IN_NAME);
@@ -455,7 +455,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     });
   }
 
-  Future<String> findPlaceIdForSearchQuery(String input) async {
+  Future<String> findPlaceIdForSearchQuery(String ?input) async {
     var search = inputName + " " + inputAdr;
     if (input != null && input.isNotEmpty) search = input;
     if (!kReleaseMode) print("inputs: " + search);
@@ -475,7 +475,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         prefillBrand(merchantBmapDataset);
         prefillCategory(merchantBmapDataset);
       }
-      for (TagCoinector tag in merchantGoogleDataSet.tagsInput) {
+      for (TagCoinector tag in merchantGoogleDataSet.tagsInput!) {
         allSelectedTags.add(tag);
         searchTagsDelegate.alreadySelectedTagIndexes.add(tag.id);
       }
@@ -861,7 +861,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     );
   }
 
-  void _searchForPrefill(String search, {String placesId}) {
+  void _searchForPrefill(String ?search, {String? placesId}) {
     hideSearchBtn();
     searchOnGoogleMapsPrefillFields(search, placesId: placesId);
   }
@@ -875,7 +875,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         title: Text(e.long),
         groupValue: _selectedCategory,
         value: e.typeIndex,
-        onChanged: (value) {
+        onChanged: (int ?value) {
           setState(() {
             _selectedCategory = value;
           });
@@ -1075,8 +1075,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   Merchant parseInputsToMerchant(Merchant m) {
     m = overwriteTagsIfSelectionChanged(m);
-    m.brand = _selectedBrand != null ? _selectedBrand : 0;
-    m.type = _selectedCategory != null ? _selectedCategory : 999;
+    m.brand = _selectedBrand != null ? _selectedBrand! : 0;
+    m.type = _selectedCategory != null ? _selectedCategory! : 999;
     m = parseInputCoinsToMerchant(m);
     return m;
   }
@@ -1141,7 +1141,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
         title: Text(e.long),
         groupValue: _selectedBrand,
         value: e.index,
-        onChanged: (value) {
+        onChanged: (int ?value) {
           setState(() {
             _selectedBrand = value;
           });
@@ -1185,14 +1185,14 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       });
     }
 
-    final String selected = await showSearch<String>(
+    final String? selected = await showSearch<String>(
       context: ctx,
       delegate: searchTagsDelegate,
     );
 
     if (selected == null || selected.isEmpty) return;
 
-    inputTag(TagCoinector.findTag(selected));
+    inputTag(TagCoinector.findTag(selected)!);
   }
 
   void inputTag(TagCoinector selected) {
@@ -1238,11 +1238,11 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     var tagCounter = allSelectedTags.length;
     return ElevatedButton(
       style: tagCounter == MAX_INPUT_TAGS
-          ? ElevatedButton.styleFrom(primary: Colors.red[600])
+          ? ElevatedButton.styleFrom(backgroundColor: Colors.red[600])
           : (tagCounter >= MIN_INPUT_TAGS &&
                   images.isEmpty &&
                   selectedImages.isEmpty)
-              ? ElevatedButton.styleFrom(primary: Colors.green[800])
+              ? ElevatedButton.styleFrom(backgroundColor: Colors.green[800])
               : null,
       onPressed: () {
         handleAddTagButton(ctx);
@@ -1498,9 +1498,9 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
     var divider = index + 1;
     bool flip = divider % 2 == 0;
-    var result = await GooglePlacesApiCoinector.loadPhoto(ref,
+    Uint8List result = await GooglePlacesApiCoinector.loadPhoto(ref,
         height: isVertical && flip ? IMAGE_WIDTH : null,
-        width: isVertical && flip ? null : IMAGE_WIDTH);
+        width: isVertical && flip ? null : IMAGE_WIDTH) as Uint8List;
 
     print("loadGooglePlacePhoto RESULT: " +
         (result == null ? "NOP " : "JUP ") +
@@ -1574,8 +1574,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
   }
 
   void focusAwayFromInputs() {
-    _fieldFocusChange(context, focusNodeInputAdr, null);
-    _fieldFocusChange(context, focusNodeInputName, null);
+    _fieldFocusChange(context, focusNodeInputAdr, FocusNode());
+    _fieldFocusChange(context, focusNodeInputName, FocusNode());
   }
 
   void drawStepSearch() {
@@ -1684,12 +1684,12 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     if (allSuggestions[continent] == null) allSuggestions[continent] = [];
     if (uploadStack[continent] == null) uploadStack[continent] = [];
 
-    allSuggestions[continent]
+    allSuggestions[continent]!
         .add(_merchantGoogleData.name + " - " + _merchantGoogleData.location);
-    uploadStack[continent].add(_merchantGoogleData.getBmapDataJson());
+    uploadStack[continent]!.add(_merchantGoogleData.getBmapDataJson());
     StringBuffer buff = StringBuffer();
     buff.writeln("[");
-    uploadStack[continent].forEach((element) {
+    uploadStack[continent]!.forEach((element) {
       buff.writeln(element + ",");
     });
     buff.writeln("]");
