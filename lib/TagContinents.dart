@@ -10,6 +10,7 @@ class TagContinent {
   String short;
   String long;
   Color color;
+IconData ?icon;
 
   TagContinent(this.index, this.short, this.long, this.color);
 
