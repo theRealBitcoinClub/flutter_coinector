@@ -9,6 +9,7 @@ class TagCoin {
   String long;
   String short;
   Color color;
+  IconData? icon;
 
   TagCoin(this.index, this.long, this.short, this.color);
 

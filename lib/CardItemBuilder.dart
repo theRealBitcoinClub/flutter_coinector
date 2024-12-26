@@ -14,11 +14,11 @@ class CardItemBuilder {
   CardItemBuilder(this._ctx, this._lists,
       this._tagFilterCallback /*, this._isDataSaverOfflineMode*/);
 
-  CardItem? _buildItem(
+  CardItem _buildItem(
       int index, Animation<double> animation, ListModel<Merchant> listModel) {
-    try {
+    // try {
       var currentListModel = listModel[index];
-      if (listModel.length > 0) {
+      // if (listModel.length > 0) {
         return CardItem(
             index: index,
             animation: animation,
@@ -32,47 +32,48 @@ class CardItemBuilder {
 
             //isDataSaveOfflineMode: _isDataSaverOfflineMode,
             );
-      }
-    } catch (e) {
+      // }
+    // } catch (e) {
       //not catching RangeErrors caused issues with filterbar
-      return null;
-    }
-    return null;
+      // return null;
+    // }
+
+    // return null;
   }
 
   // Used to build list items that haven't been removed.
-  CardItem? buildItemRestaurant(
+  CardItem buildItemRestaurant(
       BuildContext context, int index, Animation<double> animation) {
     return _buildItem(index, animation, _lists[0]);
   }
 
   // Used to build list items that haven't been removed.
-  CardItem? buildItemTogo(
+  CardItem buildItemTogo(
       BuildContext context, int index, Animation<double> animation) {
     return _buildItem(index, animation, _lists[1]);
   }
 
-  CardItem? buildItemBar(
+  CardItem buildItemBar(
       BuildContext context, int index, Animation<double> animation) {
     return _buildItem(index, animation, _lists[2]);
   }
 
-  CardItem? buildItemMarket(
+  CardItem buildItemMarket(
       BuildContext context, int index, Animation<double> animation) {
     return _buildItem(index, animation, _lists[3]);
   }
 
-  CardItem? buildItemShop(
+  CardItem buildItemShop(
       BuildContext context, int index, Animation<double> animation) {
     return _buildItem(index, animation, _lists[4]);
   }
 
-  CardItem? buildItemHotel(
+  CardItem buildItemHotel(
       BuildContext context, int index, Animation<double> animation) {
     return _buildItem(index, animation, _lists[5]);
   }
 
-  CardItem? buildItemWellness(
+  CardItem buildItemWellness(
       BuildContext context, int index, Animation<double> animation) {
     return _buildItem(index, animation, _lists[6]);
   }

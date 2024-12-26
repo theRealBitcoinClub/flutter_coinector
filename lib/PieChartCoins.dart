@@ -52,10 +52,10 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
 
   void _initCounter(item, attributeId) {
     String attribute = item[attributeId];
-    String key = attribute == "999" ? "6" : attribute;
-    if (counter[key] == null) counter[key] = 0;
+    String i = attribute == "999" ? "6" : attribute;
+    if (counter[i] == null) counter[i] = 0;
     setState(() {
-      counter[key] = counter[key]!+1;
+      counter[i] = counter[i]!+1;
     });
   }
 
@@ -218,7 +218,7 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
           widgetSize,
           color,
           variety.icon,
-          isTouched, key: new Key(variety.toString()),),
+          isTouched, key: new Key(variety.long.toString()),),
       badgePositionPercentageOffset: .98,
     );
   }
@@ -335,7 +335,7 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
 
 class _Badge extends StatelessWidget {
   final String text;
-  final IconData icon;
+  final IconData? icon;
   final double size;
   final Color color;
   final bool isTouched;

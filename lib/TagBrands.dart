@@ -9,6 +9,7 @@ class TagBrand {
   String short;
   String long;
   Color color;
+  IconData? icon;
 
   TagBrand(this.index, this.short, this.long, this.color);
 

@@ -134,7 +134,7 @@ class Merchant {
         location = HtmlUnescape().convert(json['l']),
         brand = json['b'] != null && json['b'] != 'null'
             ? int.parse(json['b'])
-            : -1,
+            : 0,
         acceptedCoins =
-            json['w'] != null && json['w'] != 'null' ? json['w'] : "";
+            json['w'] != null && json['w'] != 'null' ? json['w'] : "0";
 }

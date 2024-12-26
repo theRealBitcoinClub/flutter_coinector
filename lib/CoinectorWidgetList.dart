@@ -334,7 +334,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         Merchant m = currentTmpList[x];
         var lock = synchro.Lock();
         lock.synchronized(() async {
-          bool hasCalculated =
+          bool hasCalculated = false;
+          if (userPosition!=null) hasCalculated =
               await calculateDistanceUpdateMerchant(userPosition!, m);
 
           if (hasCalculated)
@@ -743,7 +744,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       });
     }
 
-    if (urlSearch != null && urlSearch.isNotEmpty && urlSearch.length > 2) {
+    if (urlSearch != null && urlSearch!.isNotEmpty && urlSearch!.length > 2) {
       print("START initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition3");
       startProcessSearch(ctx, urlSearch, true);
     } else {
@@ -1020,8 +1021,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         bodyLarge: TextStyle(
             fontSize: 14.0,
             fontFamily: 'Hind',
-            color: Colors.white.withOpacity(0.8)),
-      ), colorScheme: ColorScheme(surface: Colors.grey[900]!,brightness: Brightness.light,error: Colors.red,onError: Colors.redAccent,onPrimary: Colors.grey[700]!,primary: Colors.grey[900]!, onSecondary: Colors.amber[700]!,secondary: Colors.amber[900]!,onSurface: Colors.blueGrey[400]!),
+            color: Colors.white.withAlpha(80)),
+      )//  , colorScheme: ColorScheme(surface: Colors.grey[900]!,brightness: Brightness.light,error: Colors.red,onError: Colors.redAccent,onPrimary: Colors.grey[700]!,primary: Colors.grey[900]!, onSecondary: Colors.amber[700]!,secondary: Colors.amber[900]!,onSurface: Colors.blueGrey[400]!),
     );
   }
 

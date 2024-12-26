@@ -78,10 +78,10 @@ class SearchRouterDelegate extends RouterDelegate<RouterPath>
 }
 
 class AllMerchantsPage extends Page {
-  final String search;
+  String? search;
 
   AllMerchantsPage({
-    required this.search,
+    this.search,
   }) : super(key: ValueKey(search));
 
   Route createRoute(BuildContext context) {
@@ -89,8 +89,10 @@ class AllMerchantsPage extends Page {
     return MaterialPageRoute(
       settings: this,
       builder: (BuildContext context) {
+        if (search==null)
+          search = "";
         return Phoenix(
-          child: CoinectorWidget(search),
+          child: CoinectorWidget(search!),
         );
       },
     );
