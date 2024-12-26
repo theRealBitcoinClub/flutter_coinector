@@ -72,7 +72,7 @@ class Pay {
 
   Future handlePayButton(BuildContext ctx, Merchant merchant) async {
     bothReceivingAddresses = await AssetLoader.loadReceivingAddress(merchant
-        .id); //TODO load receiving address before creating the carditem so that the item is truly stateless
+        .id!); //TODO load receiving address before creating the carditem so that the item is truly stateless
 
     if (bothReceivingAddresses != null) {
       merchant.isPayEnabled = true;

@@ -40,12 +40,12 @@ class CardItem extends StatelessWidget {
   }
 
   const CardItem({
-    Key key,
-    @required this.animation,
-    @required this.index,
-    @required this.merchant,
-    @required this.tagFilterCallback,
-    @required this.isWebMobile,
+    Key? key,
+    required this.animation,
+    required this.index,
+    required this.merchant,
+    required this.tagFilterCallback,
+    required this.isWebMobile,
     this.selected: false,
     /*this.isDataSaveOfflineMode: false*/
   })  : assert(animation != null),
@@ -85,8 +85,8 @@ class CardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle textStyleBody1 = Theme.of(context).textTheme.bodyText1;
-    TextStyle textStyleBody2 = Theme.of(context).textTheme.bodyText2;
+    TextStyle textStyleBody1 = Theme.of(context).textTheme.bodyMedium!;
+    TextStyle textStyleBody2 = Theme.of(context).textTheme.bodyLarge!;
 
     /*final infoBoxBackgroundColor =
         MyColors.getCardInfoBoxBackgroundColor(merchant.type).withOpacity(1.0);
@@ -126,7 +126,7 @@ class CardItem extends StatelessWidget {
 
     if (!kReleaseMode) print("\n" + imgUrl);
 
-    var backGroundColor = Colors.grey[900].withOpacity(0.80);
+    var backGroundColor = Colors.grey[900]!.withAlpha(80);
     return Stack(
       children: <Widget>[
         ClipRRect(
@@ -205,17 +205,16 @@ class CardItem extends StatelessWidget {
             child: LoadingBouncingLine.circle(
               size: 32.0,
               borderSize: 5.0,
-              borderColor: Colors.grey[800],
+              borderColor: Colors.grey[800]!,
               backgroundColor: Colors.white24,
             ),
           )), //),
       FadeInImage.memoryNetwork(
-        imageErrorBuilder:
-            (BuildContext context, Object exception, StackTrace stackTrace) {
+        imageErrorBuilder:(context, error, stackTrace) {
           return buildPlaceHolderOfflineVersion(ctx);
         },
         placeholderErrorBuilder:
-            (BuildContext context, Object exception, StackTrace stackTrace) {
+        (context, error, stackTrace) {
           return buildPlaceHolderOfflineVersion(ctx);
         },
         fadeInCurve: Curves.decelerate,
@@ -356,7 +355,7 @@ class CardItem extends StatelessWidget {
                     topLeft: buildRadius(), bottomLeft: buildRadius()),
                 color: backGroundColor),
             child: RatingWidgetBuilder.buildRatingWidgetIfReviewsAvailable(
-                merchant, Theme.of(ctx).textTheme.bodyText2),
+                merchant, Theme.of(ctx).textTheme.bodyLarge!),
           ),
         ));
   }
@@ -388,7 +387,7 @@ class CardItem extends StatelessWidget {
           borderRadius: BorderRadius.only(
               bottomRight: Radius.circular(15.0),
               bottomLeft: Radius.circular(15.0)),
-          color: Colors.grey[900].withOpacity(0.1)),
+          color: Colors.grey[900]!.withAlpha(10)),
       child: buildButtons(context),
     );
   }
@@ -470,11 +469,11 @@ class CardItem extends StatelessWidget {
           UrlLauncher.launchReportUrl(
               context, htmlEscape.convert(merchant.name));
         } else {
-          UrlLauncher.launchReportUrl(context, merchant.place.placesId);
+          UrlLauncher.launchReportUrl(context, merchant.place!.placesId);
         }
       });
     } else {
-      UrlLauncher.launchReportUrl(context, merchant.place.placesId);
+      UrlLauncher.launchReportUrl(context, merchant.place!.placesId);
     }
   }
 
@@ -530,10 +529,10 @@ class CardItem extends StatelessWidget {
     Navigator.push(ctx, MaterialPageRoute(builder: (buildCtx) {
       int type = merchant.type;
       return AddNewPlaceWidget(
-        pId: merchant.place.placesId,
+        pId: merchant.place!.placesId,
         selectedType: type,
-        accentColor: MyColors.getTabColor(type),
-        actionBarColor: MyColors.getCardActionButtonBackgroundColor(type),
+        accentColor: MyColors.getTabColor(type)!,
+        actionBarColor: MyColors.getCardActionButtonBackgroundColor(type)!,
         typeTitle: TabPages.pages.elementAt(type == 999 ? 6 : type).long,
         merchantBmapDataset: merchant,
       );

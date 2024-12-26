@@ -7,7 +7,7 @@ import 'package:dio/dio.dart';
 import 'Merchant.dart';
 
 class ImportData {
-  GithubCoinector github;
+  late GithubCoinector github;
 
   ImportData(GithubCoinector coinector) {
     github = coinector;
@@ -59,7 +59,7 @@ class ImportData {
       Merchant m) {
     if (reviewablesResultMap[countryCode] == null)
       reviewablesResultMap[countryCode] = [];
-    reviewablesResultMap[countryCode].add(m);
+    reviewablesResultMap[countryCode]!.add(m);
   }
 
   Merchant createMerchantForReview(String pId, item, String country) {

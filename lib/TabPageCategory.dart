@@ -10,13 +10,13 @@ class TabPageCategory {
       required this.long,
       required this.tabIndex,
       required this.typeIndex,
-      required this.color});
+      this.color});
   final String short;
   final String long;
   final IconData icon;
   final int tabIndex;
   final int typeIndex;
-  Color color;
+  Color ?color;
 }
 
 class TabPages {

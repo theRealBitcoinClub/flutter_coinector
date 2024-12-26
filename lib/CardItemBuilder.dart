@@ -14,13 +14,11 @@ class CardItemBuilder {
   CardItemBuilder(this._ctx, this._lists,
       this._tagFilterCallback /*, this._isDataSaverOfflineMode*/);
 
-  CardItem _buildItem(
+  CardItem? _buildItem(
       int index, Animation<double> animation, ListModel<Merchant> listModel) {
     try {
       var currentListModel = listModel[index];
-      if (listModel != null &&
-          currentListModel != null &&
-          listModel.length > 0) {
+      if (listModel.length > 0) {
         return CardItem(
             index: index,
             animation: animation,
@@ -43,38 +41,38 @@ class CardItemBuilder {
   }
 
   // Used to build list items that haven't been removed.
-  Widget buildItemRestaurant(
+  CardItem? buildItemRestaurant(
       BuildContext context, int index, Animation<double> animation) {
     return _buildItem(index, animation, _lists[0]);
   }
 
   // Used to build list items that haven't been removed.
-  Widget buildItemTogo(
+  CardItem? buildItemTogo(
       BuildContext context, int index, Animation<double> animation) {
     return _buildItem(index, animation, _lists[1]);
   }
 
-  Widget buildItemBar(
+  CardItem? buildItemBar(
       BuildContext context, int index, Animation<double> animation) {
     return _buildItem(index, animation, _lists[2]);
   }
 
-  Widget buildItemMarket(
+  CardItem? buildItemMarket(
       BuildContext context, int index, Animation<double> animation) {
     return _buildItem(index, animation, _lists[3]);
   }
 
-  Widget buildItemShop(
+  CardItem? buildItemShop(
       BuildContext context, int index, Animation<double> animation) {
     return _buildItem(index, animation, _lists[4]);
   }
 
-  Widget buildItemHotel(
+  CardItem? buildItemHotel(
       BuildContext context, int index, Animation<double> animation) {
     return _buildItem(index, animation, _lists[5]);
   }
 
-  Widget buildItemWellness(
+  CardItem? buildItemWellness(
       BuildContext context, int index, Animation<double> animation) {
     return _buildItem(index, animation, _lists[6]);
   }

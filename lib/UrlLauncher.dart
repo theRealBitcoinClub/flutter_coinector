@@ -62,7 +62,7 @@ class UrlLauncher {
   static void launchVisitUrl(context, Merchant merchant) async {
     var url = buildGoogleMapsSearchQueryUrl(merchant) +
         '&query_place_id=' +
-        merchant.place.placesId;
+        merchant.place!.placesId;
     launchURI(url);
   }
 
@@ -163,7 +163,7 @@ class UrlLauncher {
       ctx, Merchant m, onEmailClientNotFound) {
     var urlString = "mailto:trbc@bitcoinmap.cash?subject=Update Coinector: " +
         //"mailto:trbc@bitcoinmap.cash,bitcoinmap@fire.fundersclub.com,incoming+bmap-cash-bmap-cash-12646634-issue-@incoming.gitlab.com?subject=Update Coinector: " +
-        m.id;
+        m.id!;
     _launchEmail(ctx, urlString, onEmailClientNotFound);
   }
 

@@ -11,13 +11,13 @@ class TagFilterCallback {
 
 class ItemInfoStackLayer extends StatelessWidget {
   const ItemInfoStackLayer({
-    Key key,
-    @required this.filterCallback,
-    @required this.merchant,
-    @required this.textStyleMerchantTitle,
-    @required this.textStyleMerchantLocation,
-    @required this.height,
-    @required this.isWebMobile,
+    Key? key,
+    required this.filterCallback,
+    required this.merchant,
+    required this.textStyleMerchantTitle,
+    required this.textStyleMerchantLocation,
+    required this.height,
+    required this.isWebMobile,
   }) : super(key: key);
 
   final TagFilterCallback filterCallback;
@@ -29,7 +29,7 @@ class ItemInfoStackLayer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var splittedTags = merchant.tagsDatabaseFormat.split(",");
+    var splittedTags = merchant.tagsDatabaseFormat!.split(",");
     return Container(
       height: height,
       child: ListView(
@@ -41,7 +41,7 @@ class ItemInfoStackLayer extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               scrollDirection: Axis.horizontal,
               child: Text(
-                merchant.name,
+                merchant.name!,
                 style: textStyleMerchantTitle,
                 maxLines: 1,
               )),
@@ -52,7 +52,7 @@ class ItemInfoStackLayer extends StatelessWidget {
               padding: EdgeInsets.all(0.0),
               scrollDirection: Axis.horizontal,
               child: Text(
-                merchant.location,
+                merchant.location!,
                 maxLines: 1,
                 style: textStyleMerchantLocation,
               )),

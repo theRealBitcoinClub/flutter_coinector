@@ -12,12 +12,12 @@ class RatingWidgetBuilder {
             SmoothStarRating(
               allowHalfRating: true,
               starCount: 5,
-              rating: double.parse(m.reviewStars),
+              rating: double.parse(m.reviewStars!),
               size: 15.0,
               color: Colors.yellow[700],
               borderColor: Colors.white,
             ),
-            Text(" " + convertRatingToPercentage(m.reviewStars), style: textStyle)
+            Text(" " + convertRatingToPercentage(m.reviewStars!), style: textStyle)
             //buildTextStarCount(m, textStyle),
           ],
         ),
@@ -34,7 +34,7 @@ class RatingWidgetBuilder {
 
   static Text buildTextStarCount(Merchant m, textStyle) {
     return Text(
-      " (" + m.reviewStars + ")",
+      " (" + m.reviewStars! + ")",
       style: textStyle,
     );
   }

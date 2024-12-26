@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class Dialogs {
   static var hasDialog = false;
-  static AwesomeDialog dialog;
+  static late AwesomeDialog dialog;
   static const String INTERNET_ERROR = "Internet Error!";
 
   static void showDialogInternetError(ctx) async {
@@ -17,10 +17,10 @@ class Dialogs {
               headerAnimationLoop: false,
               desc: INTERNET_ERROR,
               autoHide: Duration(seconds: 7),
-              dialogType: DialogType.ERROR,
-              animType: AnimType.SCALE,
+              dialogType: DialogType.error,
+              animType: AnimType.scale,
               padding: EdgeInsets.all(0.0),
-              onDissmissCallback: (DismissType d) {
+              onDismissCallback: (DismissType d) {
                 hasDialog = false;
                 Navigator.of(ctx).pop();
               },

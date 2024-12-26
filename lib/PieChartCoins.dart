@@ -9,7 +9,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class PieChartCoins extends StatefulWidget {
-  const PieChartCoins({required Key key}) : super(key: key);
+  const PieChartCoins({ Key ?key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => PieChartCoinsState();

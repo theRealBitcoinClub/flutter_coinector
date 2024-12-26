@@ -54,7 +54,7 @@ class CoinectorWidget extends StatefulWidget {
 
 class _CoinectorWidgetState extends State<CoinectorWidget>
     with TickerProviderStateMixin, WidgetsBindingObserver, TagFilterCallback {
-  SearchDemoSearchDelegate searchDelegate;
+  SearchDemoSearchDelegate ?searchDelegate;
 
   Map<String, List> _cachedDecodedDataBase = Map();
   Map<String, List<Merchant>> _cachedMerchants = Map();
@@ -63,17 +63,17 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     urlSearch = search;
   }
 
-  String urlSearch;
-  StreamSubscription subscriptionConnectivityChangeListener;
+  late String urlSearch;
+  StreamSubscription ?subscriptionConnectivityChangeListener;
 
   static var isInitialized = false;
   List<ScrollController> _scrollControlList = [];
 
-  NestedScrollView appContent;
+  NestedScrollView ?appContent;
   var _scaffoldKey = GlobalKey<ScaffoldState>();
-  var scaffoldKey;
+  late var scaffoldKey;
   final List<GlobalKey<AnimatedListState>> _listKeys = [];
-  TabController tabController;
+  late TabController tabController;
   bool _customIndicator = false;
   List<ListModel<Merchant>> _lists = [];
   Map<String, Merchant> _uniqueMerchantMap = Map();
@@ -83,36 +83,13 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   String titleActionBar = "Coinector";
   String addButtonCategory = "EAT";
   bool isUnfilteredList = false;
-  bool
-      hasHitSearch; //TODO count user activity by how often he hits search, how much he interacts with the app, reward him for that with badges or BMAP tokens
   var sharedPrefKeyHasHitSearch = "sharedPrefKeyHasHitSearch";
   var sharedPrefKeyLastLocation = "dsfdsfdsfdsfwer3e3r3";
-  String _searchTerm;
-  Position userPosition;
-  Position mapPosition;
-
-  //Animation<Color> searchIconBlinkAnimation;
-  //AnimationController searchIconBlinkAnimationController;
+  String ?_searchTerm;
+  Position ?userPosition;
+  Position ?mapPosition;
 
   static bool latestPositionWasCoarse = false;
-/*
-  initBlinkAnimation() {
-    searchIconBlinkAnimationController = AnimationController(
-        duration: const Duration(milliseconds: 1000), vsync: this);
-    final CurvedAnimation curve = CurvedAnimation(
-        parent: searchIconBlinkAnimationController, curve: Curves.decelerate);
-    searchIconBlinkAnimation =
-        ColorTween(begin: Colors.white, end: Colors.lightGreen).animate(curve);
-    searchIconBlinkAnimation.addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
-        searchIconBlinkAnimationController.reverse();
-      } else if (status == AnimationStatus.dismissed) {
-        searchIconBlinkAnimationController.forward();
-      }
-      setState(() {});
-    });
-    searchIconBlinkAnimationController.forward();
-  }*/
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
@@ -131,22 +108,21 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     InternetConnectivityChecker.pauseAutoChecker();
     Snackbars.close();
     InternetConnectivityChecker.close();
-    if (positionStream != null) positionStream.cancel();
+    positionStream!.cancel();
     isInitialized = false;
     //isUpdatingPosition = false;
     isCheckingForUpdates = false;
     //isUnfilteredList = false;
     checkDataUpdateTimerIsCancelled = true;
     Dialogs.dismissDialog();
-    if (subscriptionConnectivityChangeListener != null)
-      subscriptionConnectivityChangeListener.cancel();
+      subscriptionConnectivityChangeListener!.cancel();
 
     _cachedDecodedDataBase = Map();
     _cachedMerchants = Map();
     AssetLoader.cachedAssets = Map();
     FileCache.memoryCache = Map();
     userPosition = null;
-    tabController.dispose();
+    tabController!.dispose();
     // hasUpdatedDistanceToMerchants = false;
     /*if (searchIconBlinkAnimationController != null)
       searchIconBlinkAnimationController.dispose();*/
@@ -248,11 +224,11 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
           await FileCache.loadAndDecodeAsset(fileName);
 
     parseAssetUpdateListModel(
-        tag, locationOrTitleFilter, _cachedDecodedDataBase[fileName], fileName);
+        tag, locationOrTitleFilter, _cachedDecodedDataBase[fileName]!, fileName);
   }
 
   Future<void> parseAssetUpdateListModel(TagCoinector tag,
-      String locationTitleFilter, List places, String fileName) async {
+      String ?locationTitleFilter, List places, String fileName) async {
     initTempListModel();
     bool isLocation = false;
     if (locationTitleFilter != null && locationTitleFilter != "null") {
@@ -265,11 +241,11 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
     for (int i = 0; i < places.length; i++) {
       Merchant m2;
-      if (_cachedMerchants[fileName].length < places.length) {
+      if (_cachedMerchants[fileName]!.length < places.length) {
         m2 = Merchant.fromJson(places.elementAt(i));
-        _cachedMerchants[fileName].add(m2);
+        _cachedMerchants[fileName]!.add(m2);
       } else
-        m2 = _cachedMerchants[fileName][i];
+        m2 = _cachedMerchants[fileName]![i];
 
       // checkDuplicate(m2);
       // addToUniqueMerchantMap(fileName, m2);
@@ -308,7 +284,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     // if (!m2.id.startsWith("ChI")) return;
 
     var key = fileName + ";" + m2.id;
-    Merchant uniqueMerchant = _uniqueMerchantMap[key];
+    Merchant? uniqueMerchant = _uniqueMerchantMap[key];
     if (uniqueMerchant == null)
       _uniqueMerchantMap[key] = m2;
     else {
@@ -359,7 +335,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         var lock = synchro.Lock();
         lock.synchronized(() async {
           bool hasCalculated =
-              await calculateDistanceUpdateMerchant(userPosition, m);
+              await calculateDistanceUpdateMerchant(userPosition!, m);
 
           if (hasCalculated)
             insertItemInOrderedPosition(currentList, m, updateState);
@@ -402,7 +378,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   Future<bool> calculateDistanceUpdateMerchant(
-      Position position, Merchant m) async {
+      Position ?position, Merchant m) async {
     if (position == null) {
       m.distance = null;
       return false;
@@ -450,7 +426,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   void animateToTab(Merchant merchant) {
-    tabController.animateTo(TabPages.getTabIndex(merchant));
+    tabController!.animateTo(TabPages.getTabIndex(merchant));
   }
 
   void initUnfilteredLists() {
@@ -500,8 +476,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   void _insertIntoTempList(
       Merchant m2,
-      TagCoinector tag,
-      String locationTitleOrTag,
+      TagCoinector ?tag,
+      String ?locationTitleOrTag,
       bool isLocation,
       bool isTitle,
       int brand,
@@ -537,18 +513,6 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         }
       }
     }
-    /*if (tag == null &&
-          locationTitleOrTag !=
-              null) //TODO why is this setting the position on every single merchant????
-        mapPosition = Position(
-            latitude: m2.x,
-            longitude: m2.y,
-            speedAccuracy: 0.0,
-            altitude: 0.0,
-            accuracy: 0.0,
-            heading: 0.0,
-            speed: 0.0,
-            timestamp: DateTime.now());*/
 
     switch (m2.type) {
       case 0:
@@ -573,13 +537,10 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       case 999:
         tempLists[6].insert(0, m2);
         break;
-      /*case 999:
-        tempLists[7].insert(0, m2);
-        break;*/
     }
   }
 
-  bool filterWordIndexDoesNotMatch(TagCoinector filterTag, Merchant m2) {
+  bool filterWordIndexDoesNotMatch(TagCoinector ?filterTag, Merchant m2) {
     return filterTag == null ||
         (filterTag != null && !matchesFilteredTag(m2, filterTag));
   }
@@ -637,7 +598,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   void updateCurrentListItemCounter() {
-    currentListItemCounter = _lists[tabController.index].length;
+    currentListItemCounter = _lists[tabController!.index].length;
   }
 
   void requestCurrentPosition() async {
@@ -652,7 +613,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
             .then((value) => _updateDistanceToAllMerchantsIfNotDoneYet());
       }
     } catch (e) {
-      FlutterError.presentError(e);
+      FlutterError.presentError(FlutterErrorDetails(exception: e));
     }
   }
 
@@ -758,9 +719,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     return success;
   }
 
-  String _buildPosString(Position pos) => pos != null && pos.latitude != null
+  String _buildPosString(Position ?pos) => pos != null && pos.latitude != null
       ? (pos.latitude.toString() + ";" + pos.longitude.toString())
-      : null;
+      : "null";
 
   initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition(ctx) async {
     print("START initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition");
@@ -774,6 +735,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
             speedAccuracy: 0.0,
             altitude: 0.0,
             accuracy: 0.0,
+            altitudeAccuracy: 0.0,
+            headingAccuracy: 0.0,
             heading: 0.0,
             speed: 0.0,
             timestamp: DateTime.now());
@@ -850,7 +813,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     });
   }
 
-  StreamSubscription<Position> positionStream;
+  StreamSubscription<Position> ?positionStream;
 
   // bool hasUpdatedDistanceToMerchants = false;
   void loadAssetsUnfiltered(ctx) => loadAssets(ctx, null, null);
@@ -1157,14 +1120,14 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       UrlLauncher.launchBitcoinMap();
     else {
       //InternetConnectivityChecker.pauseAutoChecker();
-      Merchant result;
+      Merchant ?result;
       try {
         result = await Navigator.push(
           ctx,
           MaterialPageRoute(
               builder: (buildCtx) => MapSample(
                   _lists,
-                  mapPosition != null ? mapPosition : userPosition,
+                  mapPosition != null ? mapPosition! : userPosition!,
                   zoomMapAfterSelectLocation
                       ? 10.0
                       : userPosition != null
@@ -1223,7 +1186,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     return await prefs.setString(sharedPrefKeyLastLocation, value);
   }
 
-  Future<String> getLatestSavedPosition() async {
+  Future<String?> getLatestSavedPosition() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString(sharedPrefKeyLastLocation);
   }

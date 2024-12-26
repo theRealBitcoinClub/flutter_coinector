@@ -14,9 +14,6 @@ class CoinectorTextScalevalue {
   }
 
   @override
-  int get hashCode => hashValues(scale, label);
-
-  @override
   String toString() {
     return '$runtimeType($label)';
   }
@@ -24,7 +21,7 @@ class CoinectorTextScalevalue {
 
 const List<CoinectorTextScalevalue> kAllCoinectorTextScalevalues =
     <CoinectorTextScalevalue>[
-  CoinectorTextScalevalue(null, 'System Default'),
+  CoinectorTextScalevalue(1.0, 'System Default'),
   CoinectorTextScalevalue(0.8, 'Small'),
   CoinectorTextScalevalue(1.0, 'Normal'),
   CoinectorTextScalevalue(1.3, 'Large'),

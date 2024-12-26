@@ -11,12 +11,11 @@ import 'package:flutter/material.dart';
 /// [AnimatedListState.insertItem] and [AnimatedList.removeItem].
 class ListModel<E> {
   ListModel({
-    @required this.tabIndex,
-    @required this.listKey,
+    required this.tabIndex,
+    required this.listKey,
     @required this.removedItemBuilder,
-    Iterable<E> initialItems,
-  })  : assert(listKey != null),
-        assert(removedItemBuilder != null),
+    Iterable<E>? initialItems,
+  })  : assert(removedItemBuilder != null),
         _items = List<E>.from(initialItems ?? <E>[]);
 
   final GlobalKey<AnimatedListState> listKey;
@@ -24,7 +23,7 @@ class ListModel<E> {
   List<E> _items;
   final int tabIndex;
 
-  AnimatedListState get _animatedList => listKey.currentState;
+  AnimatedListState? get _animatedList => listKey.currentState;
 
   ListModel<E> sublist(int start, int end) {
     if (end >= _items.length) end = _items.length - 1;
@@ -36,13 +35,13 @@ class ListModel<E> {
 
   void insert(int index, E item) {
     _items.insert(index, item);
-    if (_animatedList != null) _animatedList.insertItem(index);
+    if (_animatedList != null) _animatedList!.insertItem(index);
   }
 
   E removeAt(int index) {
     final E removedItem = _items.removeAt(index);
     if (removedItem != null && _animatedList != null) {
-      _animatedList.removeItem(index,
+      _animatedList!.removeItem(index,
           (BuildContext context, Animation<double> animation) {
         return removedItemBuilder(removedItem, context, animation);
       });

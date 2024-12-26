@@ -11,7 +11,7 @@ import 'Place.dart';
 
 class Merchant {
   bool isPayEnabled = false;
-  late   int index;
+  int ?index;
   late String id;
   late double x;
   late double y;
@@ -19,19 +19,19 @@ class Merchant {
   late int type;
   late String reviewCount;
   late String reviewStars;
-  late int discount;
+  int ?discount;
   late String
       tagsDatabaseFormat; //TODO SPLIT THE TAGS ONE TIME AND SAVE THEM IN TWO ARRAYS ONE INT ARRAY FOR SEARCH AND ONE STRING ARRAY WITH PARSED TAGS
-  late Set<TagCoinector> tagsInput;
+  Set<TagCoinector> ?tagsInput;
   late String
       location; //TODO PROGRAM A BACKUP SERVER IF GITHUB CANT SERVE DATA USE FIREBASE AND IF THATS ALSO BLOCKED THEN USE IPFS
-  late Place place;
-  late String distance;
+  Place ?place;
+  String ?distance;
   double distanceInMeters = -1;
-  late String geohash;
+  String ?geohash;
   late int brand; //TODO LET USER TAP THE BRAND TO SEE ONLY THE SAME BRAND
   late String acceptedCoins; //TODO SPLIT TAGS ON FIRST READ
-  late String continent;
+  String ?continent;
 
   var placeDetailsData;
 
@@ -73,19 +73,19 @@ class Merchant {
     m.gmapsCategory = data["types"].toString();
     m.tagsInput = tagsInput;
     //create fake Place object to use new id thats equal to place id
-    if (m.id.length == 27) m.place = new Place(m.id, m.id);
+    if (m.id!.length == 27) m.place = new Place(m.id!, m.id!);
     return m;
   }
 
   String getBmapDataJson() {
     return '{"p":"' +
-        id +
+        id! +
         '","x":"' +
         x.toString() +
         '","y":"' +
         y.toString() +
         '","n":"' +
-        name.replaceAll('"', '') +
+        name!.replaceAll('"', '') +
         '","t":"' +
         type.toString() +
         '","c":"' +
@@ -95,13 +95,13 @@ class Merchant {
         '","d":"' +
         discount.toString() +
         '","a":"' +
-        tagsDatabaseFormat +
+        tagsDatabaseFormat! +
         '","l":"' +
-        location.replaceAll('"', '') +
+        location!.replaceAll('"', '') +
         '","b":"' +
         (brand == -1 ? "null" : brand.toString()) +
         '","w":"' +
-        (acceptedCoins.isEmpty ? "null" : acceptedCoins.toString()) +
+        (acceptedCoins!.isEmpty ? "null" : acceptedCoins.toString()) +
         '"}';
   }
 
