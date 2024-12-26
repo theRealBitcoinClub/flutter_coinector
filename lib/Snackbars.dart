@@ -67,7 +67,7 @@ class Snackbars {
   }
 
   static void showFilterSearchSnackBar(scaffoldKey, ctx, bool isLocationFilter,
-      String search, TagCoinector tag) {
+      String search, TagCoinector ?tag) {
     if (isLocationFilter)
       _showSnackBar(scaffoldKey, ctx, "snackbar_filtered_by_location",
           additionalText: search);

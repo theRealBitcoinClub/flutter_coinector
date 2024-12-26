@@ -991,7 +991,10 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
           backgroundColor: getColorOfSelectedTab(),
           foregroundColor: Colors.white,
           onPressed: () {
-            openAddNewPlaceWidget(builderCtx);
+            // if (!isManagerModeRelease) {
+              UrlLauncher.launchSubmitForm();
+            // } else {}
+            //openAddNewPlaceWidget(builderCtx);
           },
           label: Text(Translator.translate(builderCtx, "floatbutton_add") +
               Translator.translate(
@@ -1173,9 +1176,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     ];
   }
 
-  bool isFilterEmpty() => _searchTerm == null || _searchTerm.isEmpty;
+  bool isFilterEmpty() => _searchTerm == null || _searchTerm!.isEmpty;
 
-  Future<bool> _saveLatestSavedPosition(String value) async {
+  Future<bool> _saveLatestSavedPosition(String ?value) async {
     if (value == null) return false;
 
     final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -1239,7 +1242,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
       await inAppReview.openStoreListing(appStoreId: "1522720562");
     } catch (e) {
-      debugPrint(e);
+      if(kDebugMode)
+      debugPrint(e.toString());
     }
   }
 
@@ -1291,7 +1295,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         InternetConnectivityChecker.pauseAutoChecker();
         try {
           getSearchDelegate(ctx).buildHistory();
-          final String selected = await showSearch<String>(
+          final String ?selected = await showSearch<String>(
             context: ctx,
             delegate: getSearchDelegate(ctx),
           );
@@ -1304,7 +1308,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     );
   }
 
-  void startProcessSearch(BuildContext ctx, String selected, hideInfoBox) {
+  void startProcessSearch(BuildContext ctx, String ?selected, hideInfoBox) {
     InternetConnectivityChecker.resumeAutoChecker();
     print("START startProcessSearch");
 /* TODO BRING BACK THE INFO BOX
@@ -1359,7 +1363,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
     //TODO get the tag index directly from the search without having to find it afterwards, just like location is also returned fully but displayed differently
     //beware that the tag returned by clicking tags is different than the one in search
-    TagCoinector tag;
+    TagCoinector ?tag;
     try {
       tag = TagCoinector.findTag(search);
     } catch (e) {}
@@ -1395,7 +1399,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     Snackbars.showSnackBarUnfilteredList(_scaffoldKey, ctx);
   }
 
-  bool isFilteredList() => _searchTerm != null && _searchTerm.isNotEmpty;
+  bool isFilteredList() => _searchTerm != null && _searchTerm!.isNotEmpty;
 
   Widget buildTabContainer(
       ctx, var listKey, var list, var builderMethod, var cat) {
@@ -1450,7 +1454,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                   //inverted: true,
                   size: 32.0,
                   borderSize: 5.0,
-                  borderColor: Colors.grey[800],
+                  borderColor: Colors.grey[800]!,
                   backgroundColor: Colors.white24,
                 ),
               )
@@ -1528,13 +1532,12 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   SearchDemoSearchDelegate getSearchDelegate(ctx) {
     if (searchDelegate == null ||
-        searchDelegate.hintText == null ||
-        searchDelegate.hintText.isEmpty) {
+        searchDelegate!.hintText.isEmpty) {
       final t = Translator.translate(ctx, "search_hint");
       searchDelegate = SearchDemoSearchDelegate(hintText: t);
-      searchDelegate.hintText = t;
+      searchDelegate!.hintText = t;
     }
-    return searchDelegate;
+    return searchDelegate!;
   }
 
   SizedBox buildSeparator() {
@@ -1542,12 +1545,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       height: 20,
     );
   }
-
+/*
   void openAddNewPlaceWidget(BuildContext ctx) async {
-    if (!isManagerModeRelease) {
-      UrlLauncher.launchSubmitForm();
-      return;
-    } else {
       AddNewPlaceWidget.getLastReviewableCountAndIndex()
           .then((String countAndIndex) async {
         String index;
@@ -1571,8 +1570,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         // _updateDistanceToAllMerchantsIfNotDoneYet();
         Snackbars.showSnackBarAfterAddPlace(_scaffoldKey, ctx); //
       });
-    }
-  }
+  }*/
 
   Future<Position> _getCoarseLocationViaIP() async {
     List<String> locationProviderUrl = [];
@@ -1593,10 +1591,10 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       if (index == locationProviderUrl.length)
         index = 0; // return userPosition;
     }
-    return userPosition;
+    return userPosition!;
   }
 
-  Future<Position> tryGetCoarseLocation(String url) async {
+  Future<Position?> tryGetCoarseLocation(String url) async {
     try {
       if (!kIsWeb && !url.startsWith("http")) return null;
 
@@ -1626,6 +1624,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       }
       if (longitude is double)
         return new Position(
+          altitudeAccuracy: 1.0,
+            headingAccuracy: 1.0,
             longitude: longitude,
             latitude: latitude,
             speedAccuracy: 0.0,

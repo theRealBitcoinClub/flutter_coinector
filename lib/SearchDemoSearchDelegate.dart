@@ -15,7 +15,7 @@ import 'TagCoins.dart';
 class SearchDemoSearchDelegate extends SearchDelegate<String> {
   final Set<String> _historyBackup = {}; //Set.from(Suggestions.locations);
   final Set<String> _history = {}; //Set.from(Suggestions.locations);
-  String hintText ="Satoshi lives, children yeaha!";
+  String hintText = "";
 
   SearchDemoSearchDelegate({String hintText = "Satoshi lives, children yeaha!"})
       : super(
