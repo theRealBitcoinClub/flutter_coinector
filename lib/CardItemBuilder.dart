@@ -14,11 +14,11 @@ class CardItemBuilder {
   CardItemBuilder(this._ctx, this._lists,
       this._tagFilterCallback /*, this._isDataSaverOfflineMode*/);
 
-  CardItem _buildItem(
+  CardItem? _buildItem(
       int index, Animation<double> animation, ListModel<Merchant> listModel) {
-    // try {
+    try {
       var currentListModel = listModel[index];
-      // if (listModel.length > 0) {
+      if (listModel.length > 0) {
         return CardItem(
             index: index,
             animation: animation,
@@ -32,50 +32,57 @@ class CardItemBuilder {
 
             //isDataSaveOfflineMode: _isDataSaverOfflineMode,
             );
-      // }
-    // } catch (e) {
+      }
+    } catch (e) {
       //not catching RangeErrors caused issues with filterbar
-      // return null;
-    // }
+      return null;
+    }
 
-    // return null;
+    return null;
   }
 
   // Used to build list items that haven't been removed.
-  CardItem buildItemRestaurant(
+  Widget buildItemRestaurant(
       BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _lists[0]);
+    var item = _buildItem(index, animation, _lists[0]);
+    return item==null?new Text("end"):item;
   }
 
   // Used to build list items that haven't been removed.
-  CardItem buildItemTogo(
+  Widget buildItemTogo(
       BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _lists[1]);
+    var item = _buildItem(index, animation, _lists[1]);
+    return item==null?new Text("end"):item;
   }
 
-  CardItem buildItemBar(
+  Widget buildItemBar(
       BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _lists[2]);
+    var item = _buildItem(index, animation, _lists[2]);
+    return item==null?new Text("end"):item;
   }
 
-  CardItem buildItemMarket(
+  Widget buildItemMarket(
       BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _lists[3]);
+    var item = _buildItem(index, animation, _lists[3]);
+    return item==null?new Text("end"):item;
   }
 
-  CardItem buildItemShop(
+  Widget buildItemShop(
       BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _lists[4]);
+    var item = _buildItem(index, animation, _lists[4]);
+    return item==null?new Text("end"):item;
   }
 
-  CardItem buildItemHotel(
+  Widget buildItemHotel(
       BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _lists[5]);
+    var item = _buildItem(index, animation, _lists[5]);
+    return item==null?new Text("end"):item;
   }
 
-  CardItem buildItemWellness(
+  Widget buildItemWellness(
       BuildContext context, int index, Animation<double> animation) {
-    return _buildItem(index, animation, _lists[6]);
+    var item = _buildItem(index, animation, _lists[6]);
+    return item==null?new Text("end"):item;
   }
 
   // Used to build an item after it has been removed from the list. This method is
@@ -92,6 +99,7 @@ class CardItemBuilder {
         selected: false,
         tagFilterCallback: new TagFilterCallback(),
         isWebMobile: true
+
         // No gesture detector here: we don't want removed items to be interactive.
         );
   }
