@@ -53,7 +53,7 @@ class CoinectorWidget extends StatefulWidget {
 }
 
 class _CoinectorWidgetState extends State<CoinectorWidget>
-    with TickerProviderStateMixin, WidgetsBindingObserver, TagFilterCallback {
+    with TickerProviderStateMixin, WidgetsBindingObserver implements TagFilterCallback {
   SearchDemoSearchDelegate ?searchDelegate;
 
   Map<String, List> _cachedDecodedDataBase = Map();

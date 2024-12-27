@@ -46,7 +46,7 @@ class CardItem extends StatelessWidget {
     required this.merchant,
     required this.tagFilterCallback,
     required this.isWebMobile,
-    this.selected: false,
+    this.selected= false,
     /*this.isDataSaveOfflineMode: false*/
   })  : assert(animation != null),
         assert(merchant != null),
