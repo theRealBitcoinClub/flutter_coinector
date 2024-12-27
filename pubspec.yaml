@@ -15,7 +15,7 @@ description: Coinecting to coimunity...
 version: 6.9.0+254023
 
 environment:
-  sdk: ">=2.15.0 <4.0.0"
+  sdk: '^3.6.0'
 
 dependencies:
   flutter_improved_scrolling: 0.0.3
@@ -28,7 +28,7 @@ dependencies:
   github: ^9.2.0
   hovering: ^1.0.4
   firebase_core: ^3.9.0
-  flutter_easyrefresh: ^2.2.1
+  easy_refresh: ^3.4.0
   fluttertoast: ^8.0.9
   permission_handler: ^11.3.1
   synchronized: ^3.0.0+2
