@@ -67,6 +67,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   StreamSubscription ?subscriptionConnectivityChangeListener;
 
   static var isInitialized = false;
+  // List<ScrollController> _scrollControlListAnimated = [];
   List<ScrollController> _scrollControlList = [];
 
   NestedScrollView ?appContent;
@@ -765,10 +766,12 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     TagCoinector.initFromFiles();
     print("START initState2");
 
-    if (_scrollControlList.isEmpty)
+    if (_scrollControlList.isEmpty) {
       TabPages.pages.forEach((element) {
         _scrollControlList.add(ScrollController());
+        // _scrollControlListAnimated.add(ScrollController());
       });
+    }
     //_verticalScroller = buildCustomScroller();
     WidgetsBinding.instance.addObserver(this);
     scaffoldKey = _scaffoldKey;
@@ -1440,7 +1443,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                 ),
                 child: Scrollbar(
                   trackVisibility: false,
-                  controller: _scrollControlList[tabController.index],
+                  // controller: _scrollControlList[tabController.index],
                   thumbVisibility: true,
                   thickness: kIsWeb ? 8.0 : 2.0,
                   radius: Radius.circular(kIsWeb ? 5.0 : 3.0),
@@ -1504,7 +1507,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   AnimatedList buildAnimatedList(listKey, list, builderMethod) {
     return AnimatedList(
       physics: const ClampingScrollPhysics(),
+      // primary: true,
       controller: _scrollControlList[tabController.index],
+      // controller: _scrollControlListAnimated[tabController.index],
       key: listKey,
       padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 60.0),
       initialItemCount: list.length,
