@@ -181,7 +181,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
 
   bool reviewMode = true;
 
-  String ?lastReviewableIndex;
+  late String lastReviewableIndex;
   late String lastReviewableCount;
 
   _AddNewPlaceWidgetState(
@@ -199,14 +199,14 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     super.initState();
     int lastIndex = 0;
     int lastCount = 0;
-    if (lastReviewableIndex != null) {
+    if (lastReviewableIndex.isNotEmpty) {
       lastIndex = int.parse(lastReviewableIndex!);
       lastCount = int.parse(lastReviewableCount);
     }
 
     _currentReviewableIndex =
         lastIndex != 0 && lastIndex + 1 < lastCount ? lastIndex + 1 : 0;
-    _selectedBrand = (isSpecificPlace() ? null : 2)!; //GOCRYPTO
+    _selectedBrand = (isSpecificPlace() ? null : 2); //GOCRYPTO
     reviewMode = isSpecificPlace() ? false : true;
     _selectedCoin[0] =
         isSpecificPlace() ? false : true; //PRESELECT GOCRYPTO DEFAULT

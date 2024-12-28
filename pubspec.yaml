@@ -12,7 +12,7 @@ description: Coinecting to coimunity...
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 
-version: 6.9.0+254023
+version: 6.9.1+254024
 
 environment:
   sdk: '^3.6.0'

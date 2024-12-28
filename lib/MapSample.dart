@@ -273,7 +273,7 @@ class MapSampleState extends State<MapSample> {
               Toaster.persistToastCounter(
                   sharedPrefKeyCounterToastGeneral, counterToastGeneral);
             },
-            compassEnabled: true,
+            compassEnabled: false,
             myLocationEnabled: true,
             mapType: MapType.normal,
             markers: allMarkers,

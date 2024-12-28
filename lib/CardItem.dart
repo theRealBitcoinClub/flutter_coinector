@@ -131,7 +131,7 @@ class CardItem extends StatelessWidget {
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(10.0),
                 topRight: Radius.circular(10.0)),
-            child: !kReleaseMode
+            child: kReleaseMode
                 ? buildImageContainer(imgUrl, ctx)
                 : buildPlaceHolderOfflineVersion(ctx)),
         buildStackInfoTextWithBackgroundAndShadow(
@@ -401,10 +401,10 @@ class CardItem extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               alignment: MainAxisAlignment.end,
               children: <Widget>[
-                !kIsWeb ? SizedBox() : buildTextButtonReport(context),
-                kIsWeb ? SizedBox() : buildTextButtonManager(context),
+                /*!kIsWeb ? SizedBox() : */buildTextButtonReport(context),
+                //kIsWeb ? SizedBox() : buildTextButtonManager(context),
                 buildTextButtonShare(context),
-                kIsWeb ? SizedBox() : buildTextButtonReview(context),
+                /*kIsWeb ? SizedBox() : */buildTextButtonReview(context),
                 buildTextButtonVisit(context),
               ],
             )));
