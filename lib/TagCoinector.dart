@@ -145,7 +145,8 @@ class TagCoinector {
   static TagCoinector? findTag(String searchTerm) {
     TagCoinector? result=null;
     LangCode.values.forEach((LangCode lang) {
-      result = _findTagIndex(searchTerm, tagsCached[lang.name.toLowerCase()]!);
+      if (result == null)
+        result = _findTagIndex(searchTerm, tagsCached[lang.name.toLowerCase()]!);
     });
 
     return result;

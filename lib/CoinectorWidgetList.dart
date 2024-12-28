@@ -1373,8 +1373,10 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     } catch (e) {}
     print("START showFilterResults2");
 
-    Snackbars.showFilterSearchSnackBar(
-        _scaffoldKey, ctx, isLocationFilter, capitalize(search), tag);
+    try {
+      Snackbars.showFilterSearchSnackBar(
+          _scaffoldKey, ctx, isLocationFilter, capitalize(search), tag);
+    } catch (e) {}
 
     print("START showFilterResults3");
     loadAssets(ctx, tag, tag != null ? null : search);

@@ -51,7 +51,7 @@ class TagBrand {
       _brands.add(TagBrand(19, "FAL", "Marc Falzon", Colors.pink));
       _brands.add(TagBrand(20, "SUN", "BCH Sunny", Colors.yellow));
       _brands.add(TagBrand(21, "NICK", "Nick Chase", Colors.red));
-      _brands.add(TagBrand(22, "OTHER", "Other", Colors.indigo));
+      _brands.add(TagBrand(22, "BMAP", "Bmap.app", Colors.indigo));
     }
     return _brands;
   }

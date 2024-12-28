@@ -96,7 +96,7 @@ class MapSampleState extends State<MapSample> {
           checkConnection();
         });
         //Dialogs.showDialogInternetError(context);
-        if (context == null || !mounted) return;
+        if (context == null || !mounted || !context.mounted) return;
         Toaster.showToastInternetError(context);
       });
     } catch (e) {
