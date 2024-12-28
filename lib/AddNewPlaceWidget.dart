@@ -871,8 +871,8 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
     var tc = TabPages.pages.map((TabPageCategory e) {
       return RadioListTile(
         tileColor: _selectedCategory == null
-            ? Colors.blueAccent.withOpacity(0.2)
-            : Colors.greenAccent.withOpacity(0.2),
+            ? Colors.blueAccent.withAlpha(51)
+            : Colors.greenAccent.withAlpha(51),
         title: Text(e.long),
         groupValue: _selectedCategory,
         value: e.typeIndex,
@@ -1325,7 +1325,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
       fontStyle: FontStyle.italic,
       fontWeight: FontWeight.bold);
   TextStyle textStyleHint() => TextStyle(
-      color: TEXT_COLOR.withOpacity(0.8),
+      color: TEXT_COLOR.withAlpha(210),
       fontSize: 14.0,
       fontWeight: FontWeight.w300);
 
@@ -1431,7 +1431,7 @@ class _AddNewPlaceWidgetState extends State<AddNewPlaceWidget> {
                   },
                   child: Card(
                     color: hasSelectedImages
-                        ? Colors.greenAccent.withOpacity(0.5)
+                        ? Colors.greenAccent.withAlpha(127)
                         : Colors.black12,
                     elevation: 4,
                     shape: RoundedRectangleBorder(

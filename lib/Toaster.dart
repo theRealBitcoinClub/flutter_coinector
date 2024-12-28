@@ -7,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'Dialogs.dart';
 
 class Toaster {
-  static const DEFAULT_BACKGROUND_OPACITY = 90;
+  static const DEFAULT_BACKGROUND_OPACITY = 230;
   static const double DEFAULT_FONT_SIZE = 16.0;
   static const Color DEFAULT_TEXT_COLOR = Colors.white;
   static Color? defaultBackgroundColor = Colors.yellow[900];

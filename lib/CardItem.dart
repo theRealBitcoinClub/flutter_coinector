@@ -124,14 +124,14 @@ class CardItem extends StatelessWidget {
 
     if (!kReleaseMode) print("\n" + imgUrl);
 
-    var backGroundColor = Colors.grey[900]!.withAlpha(80);
+    var backGroundColor = Colors.grey[900]!.withAlpha(210);
     return Stack(
       children: <Widget>[
         ClipRRect(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(10.0),
                 topRight: Radius.circular(10.0)),
-            child: kReleaseMode
+            child: !kReleaseMode
                 ? buildImageContainer(imgUrl, ctx)
                 : buildPlaceHolderOfflineVersion(ctx)),
         buildStackInfoTextWithBackgroundAndShadow(
@@ -377,7 +377,7 @@ class CardItem extends StatelessWidget {
       decoration: BoxDecoration(
           boxShadow: [
             CustomBoxShadow(
-                color: Colors.black.withOpacity(0.65),
+                color: Colors.black.withAlpha(180),
                 blurRadius: 1.0,
                 offset: Offset(0.0, 0.0),
                 blurStyle: BlurStyle.outer)
@@ -385,7 +385,7 @@ class CardItem extends StatelessWidget {
           borderRadius: BorderRadius.only(
               bottomRight: Radius.circular(15.0),
               bottomLeft: Radius.circular(15.0)),
-          color: Colors.grey[900]!.withAlpha(10)),
+          color: Colors.grey[900]!.withAlpha(25)),
       child: buildButtons(context),
     );
   }

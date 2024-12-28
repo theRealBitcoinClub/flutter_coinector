@@ -1026,7 +1026,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         bodyLarge: TextStyle(
             fontSize: 14.0,
             fontFamily: 'Hind',
-            color: Colors.white.withAlpha(80)),
+            color: Colors.white.withAlpha(210)),
       )//  , colorScheme: ColorScheme(surface: Colors.grey[900]!,brightness: Brightness.light,error: Colors.red,onError: Colors.redAccent,onPrimary: Colors.grey[700]!,primary: Colors.grey[900]!, onSecondary: Colors.amber[700]!,secondary: Colors.amber[900]!,onSurface: Colors.blueGrey[400]!),
     );
   }
@@ -1077,7 +1077,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
               fontWeight: kIsWeb ? FontWeight.w100 : FontWeight.w300,
               fontStyle: FontStyle.normal,
               //decoration: TextDecoration.underline,
-              color: Colors.white.withOpacity(0.5)),
+              color: Colors.white.withAlpha(127)),
         )));
   }
 
@@ -1093,7 +1093,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         : Tab(
             icon: Icon(
             page.icon,
-            color: Colors.white.withOpacity(0.5),
+            color: Colors.white.withAlpha(127),
             size: 22,
           ));
   }

@@ -56,12 +56,12 @@ class SuggestionList extends StatelessWidget {
                 TextSpan(
                   text: state,
                   style: theme.textTheme.titleMedium
-                      ?.copyWith(color: Colors.white.withAlpha(50)),
+                      ?.copyWith(color: Colors.white.withAlpha(127)),
                 ),
                 TextSpan(
                   text: continent,
                   style: theme.textTheme.titleMedium
-                      ?.copyWith(color: Colors.white.withAlpha(50)),
+                      ?.copyWith(color: Colors.white.withAlpha(127)),
                 ),
               ],
             ),
