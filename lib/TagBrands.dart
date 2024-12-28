@@ -32,14 +32,14 @@ class TagBrand {
       _brands.add(TagBrand(1, "APAY", "Anypay", Colors.blueGrey[700]!));
       _brands.add(TagBrand(2, "GOC", "GoCrypto", Colors.yellow[700]!));
       _brands.add(
-          TagBrand(3, "TOW", "BCH City Townsville", Colors.lightGreen[600]!));
+          TagBrand(3, "TOW", "BCH City", Colors.lightGreen[600]!));
       _brands.add(TagBrand(4, "BCHLAT", "BCHLatam", Colors.green));
       _brands.add(TagBrand(5, "BNB", "Binance", Colors.amber[700]!));
       _brands.add(TagBrand(6, "SAL", "Salamantex", Colors.orange[700]!));
       _brands.add(TagBrand(7, "CBUY", "CryptoBuyer", Colors.teal));
       _brands.add(TagBrand(8, "XPAY", "XPay", Colors.blue[600]!));
       _brands.add(TagBrand(9, "CAT", "Cripto Catia", Colors.green[800]!));
-      _brands.add(TagBrand(10, "BCOM", "Bitcoin.com", Colors.deepOrange));
+      _brands.add(TagBrand(10, "BCOM", "bitcoin.com", Colors.deepOrange));
       _brands.add(TagBrand(11, "BARN", "Bitcoinstad Arnhem", Colors.orange));
       _brands.add(TagBrand(12, "CMAP", "Coinmap.org", Colors.deepOrange));
       _brands.add(TagBrand(13, "DASH", "Discover Dash", Colors.blue));
@@ -51,7 +51,7 @@ class TagBrand {
       _brands.add(TagBrand(19, "FAL", "Marc Falzon", Colors.pink));
       _brands.add(TagBrand(20, "SUN", "BCH Sunny", Colors.yellow));
       _brands.add(TagBrand(21, "NICK", "Nick Chase", Colors.red));
-      _brands.add(TagBrand(22, "BMAP", "Bmap.app", Colors.indigo));
+      _brands.add(TagBrand(22, "BMAP", "bmap.app", Colors.indigo));
     }
     return _brands;
   }
