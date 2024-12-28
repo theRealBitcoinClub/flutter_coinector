@@ -160,7 +160,7 @@ class MapSampleState extends State<MapSample> {
           itemCounter < listMerchants.length;
           itemCounter++) {
         var merchant = listMerchants[itemCounter];
-        latLngLastParsedItem = LatLng(merchant.x!, merchant.y!);
+        latLngLastParsedItem = LatLng(merchant.x, merchant.y);
         if (latLngBounds.contains(latLngLastParsedItem))
           allMarkers.add(Marker(
               onTap: () {
@@ -180,7 +180,7 @@ class MapSampleState extends State<MapSample> {
               },
               infoWindow: buildInfoWindow(merchant),
               icon: getMarkerColor(merchant),
-              markerId: MarkerId(merchant.id!),
+              markerId: MarkerId(merchant.id),
               position: latLngLastParsedItem));
       }
     }
@@ -233,7 +233,7 @@ class MapSampleState extends State<MapSample> {
         title: merchant.name.toString() +
             ": " +
             TagCoinector.parseTagIndexToText(
-                    context, merchant.tagsDatabaseFormat!.split(","))
+                    context, merchant.tagsDatabaseFormat.split(","))
                 .toUpperCase(),
         onTap: () {
           closeMapReturnMerchant(merchant);
@@ -244,12 +244,12 @@ class MapSampleState extends State<MapSample> {
   }
 
   String buildTypeSnippet(Merchant m) {
-    return TabPages.pages[m.type! == 999 ? 6 : m.type!]
+    return TabPages.pages[m.type == 999 ? 6 : m.type]
         .short; //type 999 gets mapped to tab 6
   }
 
   String buildAdrSnippet(Merchant merchant) {
-    return merchant.location!;
+    return merchant.location;
   }
 
   late AwesomeDialog dialog;
@@ -262,6 +262,7 @@ class MapSampleState extends State<MapSample> {
         body: Padding(
           padding: EdgeInsets.only(top: 25.0),
           child: GoogleMap(
+            style: MAP_STYLE,
             onTap: (pos) {
               if (counterToastGeneral >= SHOW_HINT_MAX_COUNTER_GENERAL) return;
               Toaster.showInstructionToast(buildCtx, counterToastGeneral,
@@ -285,7 +286,6 @@ class MapSampleState extends State<MapSample> {
             },
             onMapCreated: (GoogleMapController controller) {
               _googleMapController = controller;
-              controller.setMapStyle(MAP_STYLE);
               _controller.complete(controller);
             },
           ),
