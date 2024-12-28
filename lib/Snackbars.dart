@@ -1,3 +1,4 @@
+import 'package:Coinector/CoinectorWidgetList.dart';
 import 'package:Coinector/Dialogs.dart';
 import 'package:Coinector/InternetConnectivityChecker.dart';
 import 'package:Coinector/translator.dart';
@@ -36,7 +37,7 @@ class Snackbars {
       ctx.widget == null ||
       _scaffoldKey == null ||
       _scaffoldKey.currentState == null ||
-      !_scaffoldKey.currentState.mounted;
+      !_scaffoldKey.currentState!.mounted;
 
   static var isBusySnacking = false;
 
@@ -67,7 +68,7 @@ class Snackbars {
   }
 
   static void showFilterSearchSnackBar(scaffoldKey, ctx, bool isLocationFilter,
-      String search, TagCoinector tag) {
+      String search, TagCoinector ?tag) {
     if (isLocationFilter)
       _showSnackBar(scaffoldKey, ctx, "snackbar_filtered_by_location",
           additionalText: search);
@@ -110,7 +111,6 @@ class Snackbars {
     //THIS METHOD IS ONLY FOR THE WEB APP, in case that someone opens the web app with a mobile phone
     if (!kIsWeb) return;
     String appstore = "Android";
-    String chosenUrl = "https://bmap.app/android";
     final iphoneUrl = "https://bitcoinmap.cash/iphone";
 
     try {
@@ -129,7 +129,7 @@ class Snackbars {
           snackbarAction: SnackBarAction(
             label: "Install",
             onPressed: () {
-              UrlLauncher.launchURI(chosenUrl, forceWebView: true);
+              UrlLauncher.launchURI(urlApkDownload, forceWebView: true);
             },
           ));
     } catch (e) {

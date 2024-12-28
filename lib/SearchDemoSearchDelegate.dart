@@ -15,7 +15,7 @@ import 'TagCoins.dart';
 class SearchDemoSearchDelegate extends SearchDelegate<String> {
   final Set<String> _historyBackup = {}; //Set.from(Suggestions.locations);
   final Set<String> _history = {}; //Set.from(Suggestions.locations);
-  String hintText;
+  String hintText = "";
 
   SearchDemoSearchDelegate({String hintText = "Satoshi lives, children yeaha!"})
       : super(
@@ -38,18 +38,18 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
         progress: transitionAnimation,
       ),
       onPressed: () {
-        close(context, null);
+        close(context, "");
       },
     );
   }
 
   buildHistory() async {
-    List<String> historyItems = await getHistory();
+    List<String>? historyItems = await getHistory();
     if (historyItems == null || historyItems.isEmpty) return;
 
     historyItems = _reverseList(historyItems);
     _history.clear();
-    historyItems.forEach((item) => _history.add(item));
+    historyItems!.forEach((item) => _history.add(item));
     _history.addAll(_historyBackup);
   }
 
@@ -61,7 +61,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
 
   var _kNotificationsPrefs = "historyItems";
 
-  Future<List<String>> getHistory() async {
+  Future<List<String>?> getHistory() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
     return prefs.getStringList(_kNotificationsPrefs);
@@ -72,7 +72,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
     return prefs.setStringList(_kNotificationsPrefs, value);
   }
 
-  bool hasResults;
+  bool hasResults = false   ;
 
   _getSuggestions(String pattern, ctx) {
     Set<String> matches = Set.from([]);
@@ -140,7 +140,7 @@ class SearchDemoSearchDelegate extends SearchDelegate<String> {
   //static const TRY_ANOTHER_WORD = 'Not found! Try another word!';
 
   _addHistoryItem(String item) async {
-    List<String> historyItems = await getHistory();
+    List<String>? historyItems = await getHistory();
 
     if (historyItems == null) historyItems = [];
 

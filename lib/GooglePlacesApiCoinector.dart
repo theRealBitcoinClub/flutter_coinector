@@ -49,7 +49,7 @@ class GooglePlacesApiCoinector {
       search.split(",")[0].trim().toLowerCase();
 
   static Future<Object> loadPhoto(String reference,
-      {int height, int width}) async {
+      {int? height, int? width}) async {
     var uri = "https://maps.googleapis.com/maps/api/place/photo" +
         "?key=" +
         ConfigReader.getGooglePlacesKey() +

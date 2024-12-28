@@ -1,4 +1,4 @@
-package cash.bitcoinmap.coinector;
+package app.bmap.coinector;
 
 import io.flutter.embedding.android.FlutterActivity;
 

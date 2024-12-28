@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'AssetLoader.dart';
 
 abstract class ConfigReader {
-  static Map<String, dynamic> _config;
+  static late Map<String, dynamic> _config;
 
   static Future<void> initialize() async {
     final configString = await AssetLoader.loadString('config/app_config.json');

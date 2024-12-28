@@ -1,4 +1,7 @@
-//apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+plugins {
+    id "com.android.application"
+    id "dev.flutter.flutter-gradle-plugin"
+}
 
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
@@ -8,24 +11,6 @@ if (localPropertiesFile.exists()) {
     }
 }
 
-def flutterRoot = localProperties.getProperty('flutter.sdk')
-if (flutterRoot == null) {
-    //throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
-}
-
-//def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
-//if (flutterVersionCode == null) {
-//    flutterVersionCode = '1'
-//}
-
-//def flutterVersionName = localProperties.getProperty('flutter.versionName')
-//if (flutterVersionName == null) {
-//    flutterVersionName = '1.0.0'
-//}
-
-apply plugin: 'com.android.application'
-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
-
 def keystoreProperties = new Properties()
 def keystorePropertiesFile = rootProject.file('key.properties')
 if (keystorePropertiesFile.exists()) {
@@ -33,19 +18,21 @@ if (keystorePropertiesFile.exists()) {
 }
 
 android {
-    ext.kotlin_version = '1.6.10'
-    compileSdkVersion 32
+    namespace = "app.bmap.coinector"
+    ext.kotlin_version = '1.9.25'
+    compileSdkVersion 34
+    ndkVersion = "27.0.12077973"
 
     lintOptions {
         disable 'InvalidPackage'
     }
 
     defaultConfig {
-        applicationId "cash.bitcoinmap.coinector"
-        minSdkVersion 23
-        targetSdkVersion 32
-        versionCode 254022
-        versionName "BMAP 4.20.97"
+        applicationId "app.bmap.coinector"
+        minSdkVersion 26
+        targetSdkVersion 34
+        versionCode 254023
+        versionName "BMAP 6.9.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -62,6 +49,11 @@ android {
             signingConfig signingConfigs.release
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
 }
 
 flutter {
@@ -73,5 +65,3 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
-
-//apply plugin: 'com.google.gms.google-services'

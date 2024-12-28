@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
+import 'package:smooth_star_rating_null_safety/smooth_star_rating_null_safety.dart';
 
 import 'Merchant.dart';
 
@@ -12,13 +12,12 @@ class RatingWidgetBuilder {
             SmoothStarRating(
               allowHalfRating: true,
               starCount: 5,
-              isReadOnly: true,
-              rating: double.parse(m.reviewStars),
+              rating: double.parse(m.reviewStars!),
               size: 15.0,
               color: Colors.yellow[700],
               borderColor: Colors.white,
             ),
-            Text(" " + convertRatingToPercentage(m.reviewStars), style: textStyle)
+            Text(" " + convertRatingToPercentage(m.reviewStars!), style: textStyle)
             //buildTextStarCount(m, textStyle),
           ],
         ),
@@ -35,7 +34,7 @@ class RatingWidgetBuilder {
 
   static Text buildTextStarCount(Merchant m, textStyle) {
     return Text(
-      " (" + m.reviewStars + ")",
+      " (" + m.reviewStars! + ")",
       style: textStyle,
     );
   }

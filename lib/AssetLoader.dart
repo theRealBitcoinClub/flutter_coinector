@@ -14,7 +14,7 @@ class AssetLoader {
   }
 
   static Future<List<dynamic>> loadAndDecodeAsset(final String fileName) async {
-    List<dynamic> cached = cachedAssets[fileName];
+    List? cached = cachedAssets[fileName];
     if (cached != null) return cached;
 
     String asset = await loadString(fileName);
@@ -29,7 +29,7 @@ class AssetLoader {
   static Future<String> loadReceivingAddress(String id) async {
     var addresses = await AssetLoader.loadAndDecodeAsset("assets/addr.json");
 
-    String addr;
+    String addr="";
     addresses.forEach((item) {
       var itemId = item['p'];
       if (itemId == id) {
@@ -43,7 +43,7 @@ class AssetLoader {
   var placesIdCache;
 
   //TODO split contents in one file for each continent
-  Future<Place> loadPlace(String id) async {
+  Future<Place?> loadPlace(String ?id) async {
     if (id == null || id.isEmpty) return null;
 
     if (id.startsWith("ChI")) return Place(id, id);
@@ -66,7 +66,7 @@ class AssetLoader {
     }
     //var p = await AssetLoader.loadAndDecodeAsset("assets/placesId.json");
 
-    Place result;
+    Place ?result=null;
     placesIdCache.forEach((item) {
       var itemId = item['p'];
       if (itemId == id) {

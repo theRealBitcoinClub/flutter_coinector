@@ -2,14 +2,14 @@ import 'LocationSuggestions.dart';
 
 class SuggestionMatch {
   const SuggestionMatch(
-      {this.title,
-      this.searchMatch,
-      this.state,
-      this.continent,
-      this.fileName,
-      this.type,
-      this.index,
-      this.input});
+      {required this.title,
+      required this.searchMatch,
+      required this.state,
+      required this.continent,
+      required this.fileName,
+      required this.type,
+      required this.index,
+      required this.input});
   final String title;
   final String searchMatch;
   final String state;
@@ -31,8 +31,8 @@ class SuggestionMatch {
     var inputArray = input.split(LocationSuggestions.separator);
     var title = inputArray[0];
     var titleArray = inputArray[0].split(" - ");
-    var state = titleArray.length > 1 ? titleArray[1] : null;
-    var continent = titleArray.length > 2 ? titleArray[2] : null;
+    String state =  titleArray.length > 1 ? titleArray[1] : "";
+    String continent = titleArray.length > 2 ? titleArray[2] : "";
     return SuggestionMatch(
         title: title,
         searchMatch: titleArray[0],

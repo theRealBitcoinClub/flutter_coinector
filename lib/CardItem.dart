@@ -8,11 +8,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/widgets/I18nText.dart';
 import 'package:loading_animations/loading_animations.dart';
-import 'package:share/share.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 import 'AddNewPlaceWidget.dart';
 import 'AssetLoader.dart';
+import 'CoinectorWidgetList.dart';
 import 'CustomBoxShadow.dart';
 import 'Dialogs.dart';
 import 'ItemInfoStackLayer.dart';
@@ -40,18 +41,15 @@ class CardItem extends StatelessWidget {
   }
 
   const CardItem({
-    Key key,
-    @required this.animation,
-    @required this.index,
-    @required this.merchant,
-    @required this.tagFilterCallback,
-    @required this.isWebMobile,
-    this.selected: false,
+    Key? key,
+    required this.animation,
+    required this.index,
+    required this.merchant,
+    required this.tagFilterCallback,
+    required this.isWebMobile,
+    this.selected= false,
     /*this.isDataSaveOfflineMode: false*/
-  })  : assert(animation != null),
-        assert(merchant != null),
-        assert(index != null),
-        super(key: key);
+  })  : super(key: key);
 
   TextButton buildSendEmailButton(BuildContext ctx) {
     return TextButton(
@@ -85,8 +83,8 @@ class CardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle textStyleBody1 = Theme.of(context).textTheme.bodyText1;
-    TextStyle textStyleBody2 = Theme.of(context).textTheme.bodyText2;
+    TextStyle textStyleBody1 = Theme.of(context).textTheme.bodyMedium!;
+    TextStyle textStyleBody2 = Theme.of(context).textTheme.bodyLarge!;
 
     /*final infoBoxBackgroundColor =
         MyColors.getCardInfoBoxBackgroundColor(merchant.type).withOpacity(1.0);
@@ -126,14 +124,14 @@ class CardItem extends StatelessWidget {
 
     if (!kReleaseMode) print("\n" + imgUrl);
 
-    var backGroundColor = Colors.grey[900].withOpacity(0.80);
+    var backGroundColor = Colors.grey[900]!.withAlpha(210);
     return Stack(
       children: <Widget>[
         ClipRRect(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(10.0),
                 topRight: Radius.circular(10.0)),
-            child: kReleaseMode
+            child: !kReleaseMode
                 ? buildImageContainer(imgUrl, ctx)
                 : buildPlaceHolderOfflineVersion(ctx)),
         buildStackInfoTextWithBackgroundAndShadow(
@@ -205,17 +203,16 @@ class CardItem extends StatelessWidget {
             child: LoadingBouncingLine.circle(
               size: 32.0,
               borderSize: 5.0,
-              borderColor: Colors.grey[800],
+              borderColor: Colors.grey[800]!,
               backgroundColor: Colors.white24,
             ),
           )), //),
       FadeInImage.memoryNetwork(
-        imageErrorBuilder:
-            (BuildContext context, Object exception, StackTrace stackTrace) {
+        imageErrorBuilder:(context, error, stackTrace) {
           return buildPlaceHolderOfflineVersion(ctx);
         },
         placeholderErrorBuilder:
-            (BuildContext context, Object exception, StackTrace stackTrace) {
+        (context, error, stackTrace) {
           return buildPlaceHolderOfflineVersion(ctx);
         },
         fadeInCurve: Curves.decelerate,
@@ -356,7 +353,7 @@ class CardItem extends StatelessWidget {
                     topLeft: buildRadius(), bottomLeft: buildRadius()),
                 color: backGroundColor),
             child: RatingWidgetBuilder.buildRatingWidgetIfReviewsAvailable(
-                merchant, Theme.of(ctx).textTheme.bodyText2),
+                merchant, Theme.of(ctx).textTheme.bodyLarge!),
           ),
         ));
   }
@@ -380,7 +377,7 @@ class CardItem extends StatelessWidget {
       decoration: BoxDecoration(
           boxShadow: [
             CustomBoxShadow(
-                color: Colors.black.withOpacity(0.65),
+                color: Colors.black.withAlpha(180),
                 blurRadius: 1.0,
                 offset: Offset(0.0, 0.0),
                 blurStyle: BlurStyle.outer)
@@ -388,7 +385,7 @@ class CardItem extends StatelessWidget {
           borderRadius: BorderRadius.only(
               bottomRight: Radius.circular(15.0),
               bottomLeft: Radius.circular(15.0)),
-          color: Colors.grey[900].withOpacity(0.1)),
+          color: Colors.grey[900]!.withAlpha(25)),
       child: buildButtons(context),
     );
   }
@@ -470,11 +467,11 @@ class CardItem extends StatelessWidget {
           UrlLauncher.launchReportUrl(
               context, htmlEscape.convert(merchant.name));
         } else {
-          UrlLauncher.launchReportUrl(context, merchant.place.placesId);
+          UrlLauncher.launchReportUrl(context, merchant.place!.placesId);
         }
       });
     } else {
-      UrlLauncher.launchReportUrl(context, merchant.place.placesId);
+      UrlLauncher.launchReportUrl(context, merchant.place!.placesId);
     }
   }
 
@@ -530,9 +527,12 @@ class CardItem extends StatelessWidget {
     Navigator.push(ctx, MaterialPageRoute(builder: (buildCtx) {
       int type = merchant.type;
       return AddNewPlaceWidget(
-        pId: merchant.place.placesId,
+        key: new Key(merchant.place!.placesId.toString()),
+        lastReviewableCount: "",
+        lastReviewableIndex: "",
+        pId: merchant.place!.placesId,
         selectedType: type,
-        accentColor: MyColors.getTabColor(type),
+        accentColor: MyColors.getTabColor(type)!,
         actionBarColor: MyColors.getCardActionButtonBackgroundColor(type),
         typeTitle: TabPages.pages.elementAt(type == 999 ? 6 : type).long,
         merchantBmapDataset: merchant,
@@ -554,14 +554,14 @@ class CardItem extends StatelessWidget {
       ),
       onPressed: () {
         if (kIsWeb) {
-          UrlLauncher.launchURI("https://coinector.app/share.html?search=" +
+          UrlLauncher.launchURI(COINECTOR_URL + "/share.html?search=" +
               Uri.encodeComponent(merchant.name) +
               "&location=" +
               Uri.encodeComponent(merchant.location));
           return;
         }
         Share.share(
-            'https://coinector.app/#/' + Uri.encodeComponent(merchant.name),
+            COINECTOR_URL + '/#/' + Uri.encodeComponent(merchant.name),
             subject: 'Coinector - coinecting to coimunity...');
       },
     );

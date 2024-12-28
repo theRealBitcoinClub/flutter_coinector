@@ -5,12 +5,12 @@ import 'TagCoinector.dart';
 class TagFactory {
   static Map<String, Set<TagCoinector>> _tagz = Map();
 
-  static Set<TagCoinector> getTags(ctx, {LangCode lang}) {
+  static Set<TagCoinector> getTags(ctx, {LangCode? lang}) {
     if (lang == null) lang = Localizer.getLangCode(ctx);
     var langISO = lang.name.toLowerCase();
-    if (_tagz[langISO] == null) _tagz[langISO] = _createTags(lang);
-
-    return _tagz[langISO];
+    var tagz = _tagz[langISO];
+    if (tagz == null) tagz = _createTags(lang);
+    return tagz;
   }
 
   /*
@@ -19,10 +19,10 @@ class TagFactory {
    */
 
   static Set<TagCoinector> _createTags(LangCode lang) {
-    Set tags = _createTagsFromRaw(TagCoinector.getTagsByLangCode(lang));
+    Set<TagCoinector> tags = _createTagsFromRaw(TagCoinector.getTagsByLangCode(lang)!);
     if (lang != LangCode.EN) //add english tags as default
       tags.addAll(
-          _createTagsFromRaw(TagCoinector.getTagsByLangCode(LangCode.EN)));
+          _createTagsFromRaw(TagCoinector.getTagsByLangCode(LangCode.EN)!));
     return tags;
   }
 

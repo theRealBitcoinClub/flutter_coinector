@@ -14,7 +14,7 @@ class SearchRouteInformationParser extends RouteInformationParser<RouterPath> {
     if (uri.pathSegments.length == 1) {
       var s = uri.pathSegments[0];
       String search = s.toString();
-      if (search == null) return RouterPath.unknown();
+      if (search.isEmpty) return RouterPath.unknown();
       return RouterPath.filtered(search);
     }
 
@@ -23,7 +23,7 @@ class SearchRouteInformationParser extends RouteInformationParser<RouterPath> {
       if (uri.pathSegments[0] != 'search') return RouterPath.unknown();
       var remaining = uri.pathSegments[1];
       String search = remaining.toString();
-      if (search == null) return RouterPath.unknown();
+      if (search.isEmpty) return RouterPath.unknown();
       return RouterPath.filtered(search);
     }
 
@@ -42,6 +42,6 @@ class SearchRouteInformationParser extends RouteInformationParser<RouterPath> {
     if (path.isFilteredPage) {
       return RouteInformation(location: '/search/${path.search}');
     }
-    return null;
+    return RouteInformation(location: '/');
   }
 }

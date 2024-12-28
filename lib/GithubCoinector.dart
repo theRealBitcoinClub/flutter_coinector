@@ -11,11 +11,11 @@ import 'ConfigReader.dart';
 import 'TagBrands.dart';
 
 class GithubCoinector {
-  String _lastMerchantUploadId;
+  late String _lastMerchantUploadId;
 
-  GitHub _github;
+  late GitHub _github;
 
-  CommitUser commitUser;
+  late CommitUser commitUser;
 
   GithubCoinector();
 
@@ -41,10 +41,9 @@ class GithubCoinector {
   }
 
   Future<String> githubUploadPlaceDetails(Merchant merchant) async {
-    if (merchant == null) return null;
     if (_lastMerchantUploadId != null && _lastMerchantUploadId == merchant.id) {
       print("That place has already been uploaded");
-      return null;
+      return merchant.id;
     }
     CreateFile createFile =
         _githubCreateFileMerchantDetails(commitUser, merchant);
@@ -75,7 +74,7 @@ class GithubCoinector {
             t.millisecondsSinceEpoch.toString() +
             ".json",
         message: "Add Place " + continent);
-    if (!kReleaseMode) print("\nPATH:\n" + createFile.path);
+    if (!kReleaseMode) print("\nPATH:\n" + createFile.path.toString());
     return createFile;
   }
 
@@ -102,12 +101,12 @@ class GithubCoinector {
             "_" +
             merchant.name.replaceAll(RegExp('[^A-Za-z0-9]'), '-') +
             "_" +
-            TagBrand.getBrands().elementAt(merchant.brand).short +
+            TagBrand.getBrands().elementAt(merchant.brand!).short +
             "_" +
             t.millisecondsSinceEpoch.toString() +
             ".json",
         message: "Add Place " + merchant.name);
-    if (!kReleaseMode) print("\nPATH:\n" + createFile.path);
+    if (!kReleaseMode) print("\nPATH:\n" + createFile.path.toString());
     return createFile;
   }
 
@@ -154,7 +153,7 @@ class GithubCoinector {
             t.millisecondsSinceEpoch.toString() +
             ".json",
         message: "Add Reviewables GoCrypto");
-    if (!kReleaseMode) print("\nPATH:\n" + createFile.path);
+    if (!kReleaseMode) print("\nPATH:\n" + createFile.path.toString());
     return createFile;
   }
 
@@ -179,7 +178,7 @@ class GithubCoinector {
             t.millisecondsSinceEpoch.toString() +
             ".dart",
         message: "Add Suggestions");
-    if (!kReleaseMode) print("\nPATH:\n" + createFile.path);
+    if (!kReleaseMode) print("\nPATH:\n" + createFile.path.toString());
     return createFile;
   }
 
@@ -198,15 +197,15 @@ class GithubCoinector {
       print("\nRESPONSE NULL repo: " + repository);
       return false;
     } else {
-      var url = response.content.downloadUrl;
+      var url = response.content!.downloadUrl;
       print(repository +
           "\nresponse github downloadUrl:" +
-          url +
+          url.toString() +
           "\n" +
           "https://ezgif.com/crop?url=" +
-          url +
+          url.toString() +
           "\nhttps://ezgif.com/resize?url=" +
-          url);
+          url.toString());
     }
     return true;
   }

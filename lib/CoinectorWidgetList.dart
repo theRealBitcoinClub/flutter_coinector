@@ -7,7 +7,7 @@ import 'package:Coinector/ItemInfoStackLayer.dart';
 import 'package:Coinector/Snackbars.dart';
 import 'package:Coinector/TagCoins.dart';
 import 'package:Coinector/translator.dart';
-import 'package:connectivity/connectivity.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +41,9 @@ import 'TagBrands.dart';
 import 'TagCoinector.dart';
 import 'UrlLauncher.dart';
 
+const String urlApkDownload = "https://bmap.app/android";
 const bool isManagerModeRelease = false;
+const COINECTOR_URL="https://coinector.web.app";
 
 class CoinectorWidget extends StatefulWidget {
   final String search;
@@ -53,8 +55,8 @@ class CoinectorWidget extends StatefulWidget {
 }
 
 class _CoinectorWidgetState extends State<CoinectorWidget>
-    with TickerProviderStateMixin, WidgetsBindingObserver, TagFilterCallback {
-  SearchDemoSearchDelegate searchDelegate;
+    with TickerProviderStateMixin, WidgetsBindingObserver implements TagFilterCallback {
+  SearchDemoSearchDelegate ?searchDelegate;
 
   Map<String, List> _cachedDecodedDataBase = Map();
   Map<String, List<Merchant>> _cachedMerchants = Map();
@@ -63,17 +65,18 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     urlSearch = search;
   }
 
-  String urlSearch;
-  StreamSubscription subscriptionConnectivityChangeListener;
+  late String urlSearch;
+  StreamSubscription ?subscriptionConnectivityChangeListener;
 
   static var isInitialized = false;
+  // List<ScrollController> _scrollControlListAnimated = [];
   List<ScrollController> _scrollControlList = [];
 
-  NestedScrollView appContent;
+  NestedScrollView ?appContent;
   var _scaffoldKey = GlobalKey<ScaffoldState>();
-  var scaffoldKey;
+  late var scaffoldKey;
   final List<GlobalKey<AnimatedListState>> _listKeys = [];
-  TabController tabController;
+  late TabController tabController;
   bool _customIndicator = false;
   List<ListModel<Merchant>> _lists = [];
   Map<String, Merchant> _uniqueMerchantMap = Map();
@@ -83,36 +86,13 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   String titleActionBar = "Coinector";
   String addButtonCategory = "EAT";
   bool isUnfilteredList = false;
-  bool
-      hasHitSearch; //TODO count user activity by how often he hits search, how much he interacts with the app, reward him for that with badges or BMAP tokens
   var sharedPrefKeyHasHitSearch = "sharedPrefKeyHasHitSearch";
   var sharedPrefKeyLastLocation = "dsfdsfdsfdsfwer3e3r3";
-  String _searchTerm;
-  Position userPosition;
-  Position mapPosition;
-
-  //Animation<Color> searchIconBlinkAnimation;
-  //AnimationController searchIconBlinkAnimationController;
+  String ?_searchTerm;
+  Position ?userPosition;
+  Position ?mapPosition;
 
   static bool latestPositionWasCoarse = false;
-/*
-  initBlinkAnimation() {
-    searchIconBlinkAnimationController = AnimationController(
-        duration: const Duration(milliseconds: 1000), vsync: this);
-    final CurvedAnimation curve = CurvedAnimation(
-        parent: searchIconBlinkAnimationController, curve: Curves.decelerate);
-    searchIconBlinkAnimation =
-        ColorTween(begin: Colors.white, end: Colors.lightGreen).animate(curve);
-    searchIconBlinkAnimation.addStatusListener((status) {
-      if (status == AnimationStatus.completed) {
-        searchIconBlinkAnimationController.reverse();
-      } else if (status == AnimationStatus.dismissed) {
-        searchIconBlinkAnimationController.forward();
-      }
-      setState(() {});
-    });
-    searchIconBlinkAnimationController.forward();
-  }*/
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
@@ -131,22 +111,21 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     InternetConnectivityChecker.pauseAutoChecker();
     Snackbars.close();
     InternetConnectivityChecker.close();
-    if (positionStream != null) positionStream.cancel();
+    positionStream!.cancel();
     isInitialized = false;
     //isUpdatingPosition = false;
     isCheckingForUpdates = false;
     //isUnfilteredList = false;
     checkDataUpdateTimerIsCancelled = true;
     Dialogs.dismissDialog();
-    if (subscriptionConnectivityChangeListener != null)
-      subscriptionConnectivityChangeListener.cancel();
+      subscriptionConnectivityChangeListener!.cancel();
 
     _cachedDecodedDataBase = Map();
     _cachedMerchants = Map();
     AssetLoader.cachedAssets = Map();
     FileCache.memoryCache = Map();
     userPosition = null;
-    tabController.dispose();
+    tabController!.dispose();
     // hasUpdatedDistanceToMerchants = false;
     /*if (searchIconBlinkAnimationController != null)
       searchIconBlinkAnimationController.dispose();*/
@@ -154,7 +133,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   void loadAssets(
-      ctx, TagCoinector tagFilter, String locationOrTitleFilter) async {
+      ctx, TagCoinector ?tagFilter, String ?locationOrTitleFilter) async {
     if (tagFilter == null && locationOrTitleFilter == null) {
       // _updateDistanceToAllMerchantsIfNotDoneYet();
       if (isUnfilteredList) return;
@@ -232,7 +211,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   Future<bool> _loadAndParseAllPlaces(
-      TagCoinector tag, String locationFilter) async {
+      TagCoinector ?tag, String ?locationFilter) async {
     await _loadAndParseAsset(tag, locationFilter, 'am');
     await _loadAndParseAsset(tag, locationFilter, 'as');
     await _loadAndParseAsset(tag, locationFilter, 'au');
@@ -242,17 +221,17 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   Future _loadAndParseAsset(
-      TagCoinector tag, String locationOrTitleFilter, String fileName) async {
+      TagCoinector ?tag, String ?locationOrTitleFilter, String fileName) async {
     if (_cachedDecodedDataBase[fileName] == null)
       _cachedDecodedDataBase[fileName] =
           await FileCache.loadAndDecodeAsset(fileName);
 
     parseAssetUpdateListModel(
-        tag, locationOrTitleFilter, _cachedDecodedDataBase[fileName], fileName);
+        tag, locationOrTitleFilter, _cachedDecodedDataBase[fileName]!, fileName);
   }
 
-  Future<void> parseAssetUpdateListModel(TagCoinector tag,
-      String locationTitleFilter, List places, String fileName) async {
+  Future<void> parseAssetUpdateListModel(TagCoinector ?tag,
+      String ?locationTitleFilter, List places, String fileName) async {
     initTempListModel();
     bool isLocation = false;
     if (locationTitleFilter != null && locationTitleFilter != "null") {
@@ -265,11 +244,11 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
     for (int i = 0; i < places.length; i++) {
       Merchant m2;
-      if (_cachedMerchants[fileName].length < places.length) {
+      if (_cachedMerchants[fileName]!.length < places.length) {
         m2 = Merchant.fromJson(places.elementAt(i));
-        _cachedMerchants[fileName].add(m2);
+        _cachedMerchants[fileName]!.add(m2);
       } else
-        m2 = _cachedMerchants[fileName][i];
+        m2 = _cachedMerchants[fileName]![i];
 
       // checkDuplicate(m2);
       // addToUniqueMerchantMap(fileName, m2);
@@ -308,7 +287,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     // if (!m2.id.startsWith("ChI")) return;
 
     var key = fileName + ";" + m2.id;
-    Merchant uniqueMerchant = _uniqueMerchantMap[key];
+    Merchant? uniqueMerchant = _uniqueMerchantMap[key];
     if (uniqueMerchant == null)
       _uniqueMerchantMap[key] = m2;
     else {
@@ -358,8 +337,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         Merchant m = currentTmpList[x];
         var lock = synchro.Lock();
         lock.synchronized(() async {
-          bool hasCalculated =
-              await calculateDistanceUpdateMerchant(userPosition, m);
+          bool hasCalculated = false;
+          if (userPosition!=null) hasCalculated =
+              await calculateDistanceUpdateMerchant(userPosition!, m);
 
           if (hasCalculated)
             insertItemInOrderedPosition(currentList, m, updateState);
@@ -402,7 +382,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   Future<bool> calculateDistanceUpdateMerchant(
-      Position position, Merchant m) async {
+      Position ?position, Merchant m) async {
     if (position == null) {
       m.distance = null;
       return false;
@@ -450,7 +430,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   void animateToTab(Merchant merchant) {
-    tabController.animateTo(TabPages.getTabIndex(merchant));
+    tabController!.animateTo(TabPages.getTabIndex(merchant));
   }
 
   void initUnfilteredLists() {
@@ -500,8 +480,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   void _insertIntoTempList(
       Merchant m2,
-      TagCoinector tag,
-      String locationTitleOrTag,
+      TagCoinector ?tag,
+      String ?locationTitleOrTag,
       bool isLocation,
       bool isTitle,
       int brand,
@@ -537,18 +517,6 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         }
       }
     }
-    /*if (tag == null &&
-          locationTitleOrTag !=
-              null) //TODO why is this setting the position on every single merchant????
-        mapPosition = Position(
-            latitude: m2.x,
-            longitude: m2.y,
-            speedAccuracy: 0.0,
-            altitude: 0.0,
-            accuracy: 0.0,
-            heading: 0.0,
-            speed: 0.0,
-            timestamp: DateTime.now());*/
 
     switch (m2.type) {
       case 0:
@@ -573,13 +541,10 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       case 999:
         tempLists[6].insert(0, m2);
         break;
-      /*case 999:
-        tempLists[7].insert(0, m2);
-        break;*/
     }
   }
 
-  bool filterWordIndexDoesNotMatch(TagCoinector filterTag, Merchant m2) {
+  bool filterWordIndexDoesNotMatch(TagCoinector ?filterTag, Merchant m2) {
     return filterTag == null ||
         (filterTag != null && !matchesFilteredTag(m2, filterTag));
   }
@@ -637,7 +602,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   void updateCurrentListItemCounter() {
-    currentListItemCounter = _lists[tabController.index].length;
+    currentListItemCounter = _lists[tabController!.index].length;
   }
 
   void requestCurrentPosition() async {
@@ -652,7 +617,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
             .then((value) => _updateDistanceToAllMerchantsIfNotDoneYet());
       }
     } catch (e) {
-      FlutterError.presentError(e);
+      FlutterError.presentError(FlutterErrorDetails(exception: e));
     }
   }
 
@@ -694,7 +659,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     //return true;
     // } else {
     if (!kIsWeb && await Permission.locationWhenInUse.isGranted) {
-      Position pos = await GeolocatorPlatform.instance.getLastKnownPosition();
+      Position? pos = await GeolocatorPlatform.instance.getLastKnownPosition();
       //setState(() {
       userPosition = pos;
       //});
@@ -745,7 +710,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     return isDataSaverOfflineMode;
   }
 */
-  Future<bool> setLatestPosition(Position pos) async {
+  Future<bool> setLatestPosition(Position ?pos) async {
     // String position = await getLatestSavedPosition();
     var posString = _buildPosString(pos);
     // if (posString != null && position == posString) return false;
@@ -758,9 +723,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     return success;
   }
 
-  String _buildPosString(Position pos) => pos != null && pos.latitude != null
+  String _buildPosString(Position ?pos) => pos != null && pos.latitude != null
       ? (pos.latitude.toString() + ";" + pos.longitude.toString())
-      : null;
+      : "null";
 
   initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition(ctx) async {
     print("START initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition");
@@ -774,13 +739,15 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
             speedAccuracy: 0.0,
             altitude: 0.0,
             accuracy: 0.0,
+            altitudeAccuracy: 0.0,
+            headingAccuracy: 0.0,
             heading: 0.0,
             speed: 0.0,
             timestamp: DateTime.now());
       });
     }
 
-    if (urlSearch != null && urlSearch.isNotEmpty && urlSearch.length > 2) {
+    if (urlSearch != null && urlSearch!.isNotEmpty && urlSearch!.length > 2) {
       print("START initLastSavedPosThenTriggerLoadAssetsAndUpdatePosition3");
       startProcessSearch(ctx, urlSearch, true);
     } else {
@@ -801,16 +768,18 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     TagCoinector.initFromFiles();
     print("START initState2");
 
-    if (_scrollControlList.isEmpty)
+    if (_scrollControlList.isEmpty) {
       TabPages.pages.forEach((element) {
         _scrollControlList.add(ScrollController());
+        // _scrollControlListAnimated.add(ScrollController());
       });
+    }
     //_verticalScroller = buildCustomScroller();
     WidgetsBinding.instance.addObserver(this);
     scaffoldKey = _scaffoldKey;
     subscriptionConnectivityChangeListener = Connectivity()
         .onConnectivityChanged
-        .listen((ConnectivityResult result) {
+        .listen((List<ConnectivityResult> result) {
       if (!kIsWeb)
         InternetConnectivityChecker.checkInternetConnectivityShowSnackbar(this,
             (onConnectionLoss) {
@@ -850,7 +819,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     });
   }
 
-  StreamSubscription<Position> positionStream;
+  StreamSubscription<Position> ?positionStream;
 
   // bool hasUpdatedDistanceToMerchants = false;
   void loadAssetsUnfiltered(ctx) => loadAssets(ctx, null, null);
@@ -938,17 +907,14 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       Translator.currentLocale(context);
     });*/
     return MaterialApp(
-        builder: (context, widget) => ResponsiveWrapper.builder(
-            BouncingScrollWrapper.builder(context, widget),
-            maxWidth: 545,
-            minWidth: 450,
-            defaultScale: true,
+        builder: (context, widget) => ResponsiveBreakpoints.builder(
+            child: widget!,
             breakpoints: [
-              ResponsiveBreakpoint.resize(450, name: MOBILE),
-              ResponsiveBreakpoint.resize(800, name: TABLET),
-              ResponsiveBreakpoint.resize(1200, name: DESKTOP),
-            ],
-            background: Container(color: hexToColor("#303030"))),
+              const Breakpoint(start: 0, end: 450, name: MOBILE),
+              const Breakpoint(start: 451, end: 800, name: TABLET),
+              const Breakpoint(start: 801, end: 1920, name: DESKTOP),
+              const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+            ]),
         localizationsDelegates: [
           FlutterI18nDelegate(),
           GlobalMaterialLocalizations.delegate,
@@ -976,7 +942,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                     controller: tabController,
                     children: buildAllTabContainer(ctx)),
               );
-              return appContent;
+              return appContent!;
             }),
           ),
         ));
@@ -1031,7 +997,10 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
           backgroundColor: getColorOfSelectedTab(),
           foregroundColor: Colors.white,
           onPressed: () {
-            openAddNewPlaceWidget(builderCtx);
+            // if (!isManagerModeRelease) {
+              UrlLauncher.launchSubmitForm();
+            // } else {}
+            //openAddNewPlaceWidget(builderCtx);
           },
           label: Text(Translator.translate(builderCtx, "floatbutton_add") +
               Translator.translate(
@@ -1043,23 +1012,22 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   ThemeData buildTheme() {
     return ThemeData(
       brightness: Brightness.dark,
-      backgroundColor: Colors.grey[900],
       primaryColor: Colors.grey[900],
       secondaryHeaderColor: Colors.white,
       fontFamily: 'OpenSans',
       textTheme: TextTheme(
-        headline6: TextStyle(color: Colors.black),
-        headline5: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-        bodyText1: TextStyle(
+        headlineMedium: TextStyle(color: Colors.black),
+        headlineLarge: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
+        bodyMedium: TextStyle(
             fontSize: 17.0,
             fontFamily: 'Hind',
             color: Colors.white,
             fontWeight: kIsWeb ? FontWeight.w100 : FontWeight.w400),
-        bodyText2: TextStyle(
+        bodyLarge: TextStyle(
             fontSize: 14.0,
             fontFamily: 'Hind',
-            color: Colors.white.withOpacity(0.8)),
-      ),
+            color: Colors.white.withAlpha(210)),
+      )//  , colorScheme: ColorScheme(surface: Colors.grey[900]!,brightness: Brightness.light,error: Colors.red,onError: Colors.redAccent,onPrimary: Colors.grey[700]!,primary: Colors.grey[900]!, onSecondary: Colors.amber[700]!,secondary: Colors.amber[900]!,onSurface: Colors.blueGrey[400]!),
     );
   }
 
@@ -1109,7 +1077,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
               fontWeight: kIsWeb ? FontWeight.w100 : FontWeight.w300,
               fontStyle: FontStyle.normal,
               //decoration: TextDecoration.underline,
-              color: Colors.white.withOpacity(0.5)),
+              color: Colors.white.withAlpha(127)),
         )));
   }
 
@@ -1125,7 +1093,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         : Tab(
             icon: Icon(
             page.icon,
-            color: Colors.white.withOpacity(0.5),
+            color: Colors.white.withAlpha(127),
             size: 22,
           ));
   }
@@ -1157,14 +1125,14 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       UrlLauncher.launchBitcoinMap();
     else {
       //InternetConnectivityChecker.pauseAutoChecker();
-      Merchant result;
+      Merchant ?result;
       try {
         result = await Navigator.push(
           ctx,
           MaterialPageRoute(
               builder: (buildCtx) => MapSample(
                   _lists,
-                  mapPosition != null ? mapPosition : userPosition,
+                  mapPosition != null ? mapPosition! : userPosition!,
                   zoomMapAfterSelectLocation
                       ? 10.0
                       : userPosition != null
@@ -1185,7 +1153,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   void handleStatsButtonClick(ctx) async {
     if (kIsWeb)
-      UrlLauncher.launchURI("http://bmap.app/android");
+      UrlLauncher.launchURI(urlApkDownload);
     else
       Navigator.push(
         ctx,
@@ -1214,20 +1182,20 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     ];
   }
 
-  bool isFilterEmpty() => _searchTerm == null || _searchTerm.isEmpty;
+  bool isFilterEmpty() => _searchTerm == null || _searchTerm!.isEmpty;
 
-  Future<bool> _saveLatestSavedPosition(String value) async {
+  Future<bool> _saveLatestSavedPosition(String ?value) async {
     if (value == null) return false;
 
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     return await prefs.setString(sharedPrefKeyLastLocation, value);
   }
 
-  Future<String> getLatestSavedPosition() async {
+  Future<String?> getLatestSavedPosition() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString(sharedPrefKeyLastLocation);
   }
-
+/*
   Future<bool> initHasHitSearch() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -1238,7 +1206,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
     return hasHitSearch;
   }
-
+*/
   Future<bool> persistHasHitSearch() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.setBool(sharedPrefKeyHasHitSearch, true);
@@ -1280,7 +1248,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
       await inAppReview.openStoreListing(appStoreId: "1522720562");
     } catch (e) {
-      debugPrint(e);
+      if(kDebugMode)
+      debugPrint(e.toString());
     }
   }
 
@@ -1332,7 +1301,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         InternetConnectivityChecker.pauseAutoChecker();
         try {
           getSearchDelegate(ctx).buildHistory();
-          final String selected = await showSearch<String>(
+          final String ?selected = await showSearch<String>(
             context: ctx,
             delegate: getSearchDelegate(ctx),
           );
@@ -1345,7 +1314,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     );
   }
 
-  void startProcessSearch(BuildContext ctx, String selected, hideInfoBox) {
+  void startProcessSearch(BuildContext ctx, String ?selected, hideInfoBox) {
     InternetConnectivityChecker.resumeAutoChecker();
     print("START startProcessSearch");
 /* TODO BRING BACK THE INFO BOX
@@ -1400,14 +1369,16 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
     //TODO get the tag index directly from the search without having to find it afterwards, just like location is also returned fully but displayed differently
     //beware that the tag returned by clicking tags is different than the one in search
-    TagCoinector tag;
+    TagCoinector ?tag;
     try {
       tag = TagCoinector.findTag(search);
     } catch (e) {}
     print("START showFilterResults2");
 
-    Snackbars.showFilterSearchSnackBar(
-        _scaffoldKey, ctx, isLocationFilter, capitalize(search), tag);
+    try {
+      Snackbars.showFilterSearchSnackBar(
+          _scaffoldKey, ctx, isLocationFilter, capitalize(search), tag);
+    } catch (e) {}
 
     print("START showFilterResults3");
     loadAssets(ctx, tag, tag != null ? null : search);
@@ -1436,7 +1407,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     Snackbars.showSnackBarUnfilteredList(_scaffoldKey, ctx);
   }
 
-  bool isFilteredList() => _searchTerm != null && _searchTerm.isNotEmpty;
+  bool isFilteredList() => _searchTerm != null && _searchTerm!.isNotEmpty;
 
   Widget buildTabContainer(
       ctx, var listKey, var list, var builderMethod, var cat) {
@@ -1476,7 +1447,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                 ),
                 child: Scrollbar(
                   trackVisibility: false,
-                  controller: _scrollControlList[tabController.index],
+                  // controller: _scrollControlList[tabController.index],
                   thumbVisibility: true,
                   thickness: kIsWeb ? 8.0 : 2.0,
                   radius: Radius.circular(kIsWeb ? 5.0 : 3.0),
@@ -1491,7 +1462,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                   //inverted: true,
                   size: 32.0,
                   borderSize: 5.0,
-                  borderColor: Colors.grey[800],
+                  borderColor: Colors.grey[800]!,
                   backgroundColor: Colors.white24,
                 ),
               )
@@ -1540,7 +1511,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   AnimatedList buildAnimatedList(listKey, list, builderMethod) {
     return AnimatedList(
       physics: const ClampingScrollPhysics(),
+      // primary: true,
       controller: _scrollControlList[tabController.index],
+      // controller: _scrollControlListAnimated[tabController.index],
       key: listKey,
       padding: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 60.0),
       initialItemCount: list.length,
@@ -1569,13 +1542,12 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   SearchDemoSearchDelegate getSearchDelegate(ctx) {
     if (searchDelegate == null ||
-        searchDelegate.hintText == null ||
-        searchDelegate.hintText.isEmpty) {
+        searchDelegate!.hintText.isEmpty) {
       final t = Translator.translate(ctx, "search_hint");
       searchDelegate = SearchDemoSearchDelegate(hintText: t);
-      searchDelegate.hintText = t;
+      searchDelegate!.hintText = t;
     }
-    return searchDelegate;
+    return searchDelegate!;
   }
 
   SizedBox buildSeparator() {
@@ -1583,12 +1555,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       height: 20,
     );
   }
-
+/*
   void openAddNewPlaceWidget(BuildContext ctx) async {
-    if (!isManagerModeRelease) {
-      UrlLauncher.launchSubmitForm();
-      return;
-    } else {
       AddNewPlaceWidget.getLastReviewableCountAndIndex()
           .then((String countAndIndex) async {
         String index;
@@ -1612,18 +1580,17 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         // _updateDistanceToAllMerchantsIfNotDoneYet();
         Snackbars.showSnackBarAfterAddPlace(_scaffoldKey, ctx); //
       });
-    }
-  }
+  }*/
 
   Future<Position> _getCoarseLocationViaIP() async {
     List<String> locationProviderUrl = [];
     locationProviderUrl.add(
         "https://api.ipgeolocation.io/ipgeo?apiKey=1eee688bf62d48979d54739f383d9364");
-    locationProviderUrl.add("https://coinector.app/geolocation");
+    locationProviderUrl.add(COINECTOR_URL + "/geolocation");
     locationProviderUrl.add("https://bmap.app/geolocation");
     locationProviderUrl.add("https://geolocation-db.com/json/index.html");
     locationProviderUrl.add("/geolocation");
-    locationProviderUrl.add("https://coinector.app/geolocation2");
+    locationProviderUrl.add(COINECTOR_URL + "/geolocation2");
     locationProviderUrl.add("https://bmap.app/geolocation2");
     locationProviderUrl.add("/geolocation2");
 
@@ -1634,10 +1601,10 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       if (index == locationProviderUrl.length)
         index = 0; // return userPosition;
     }
-    return userPosition;
+    return userPosition!;
   }
 
-  Future<Position> tryGetCoarseLocation(String url) async {
+  Future<Position?> tryGetCoarseLocation(String url) async {
     try {
       if (!kIsWeb && !url.startsWith("http")) return null;
 
@@ -1667,6 +1634,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       }
       if (longitude is double)
         return new Position(
+          altitudeAccuracy: 1.0,
+            headingAccuracy: 1.0,
             longitude: longitude,
             latitude: latitude,
             speedAccuracy: 0.0,

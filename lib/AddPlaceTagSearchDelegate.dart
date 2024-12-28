@@ -19,7 +19,7 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
         progress: transitionAnimation,
       ),
       onPressed: () {
-        close(context, null);
+        close(context, "");
       },
     );
   }
@@ -59,7 +59,7 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
   bool startsWith(String currentItem, String pattern) =>
       currentItem.toLowerCase().startsWith(pattern.toLowerCase());
 
-  Set<String> unfilteredSuggestions;
+  Set<String> ?unfilteredSuggestions;
 
   @override
   Widget buildSuggestions(BuildContext ctx) {
@@ -69,7 +69,7 @@ class AddPlaceTagSearchDelegate extends SearchDelegate<String> {
     ]);
 
     if (unfilteredSuggestions != null && query.isEmpty)
-      suggestions = unfilteredSuggestions;
+      suggestions = unfilteredSuggestions!;
     else if (query.isEmpty) {
       suggestions = addAllTagsInAllLanguages(suggestions, ctx);
       unfilteredSuggestions = suggestions;

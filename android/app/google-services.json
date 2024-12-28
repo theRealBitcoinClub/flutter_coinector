@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:277269285327:android:59036bfab2f8e921",
         "android_client_info": {
-          "package_name": "cash.bitcoinmap.coinector"
+          "package_name": "app.bmap.coinector"
         }
       },
       "oauth_client": [

@@ -9,7 +9,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class PieChartCoins extends StatefulWidget {
-  const PieChartCoins({Key key}) : super(key: key);
+  const PieChartCoins({ Key ?key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => PieChartCoinsState();
@@ -18,9 +18,9 @@ class PieChartCoins extends StatefulWidget {
 class PieChartCoinsState extends State with TickerProviderStateMixin {
   int touchedIndex = 0;
   Map<String, int> counter = Map();
-  TabController _tabController;
+  late TabController _tabController;
 
-  String title;
+  late String title;
 
   static const int MINIMUM_TO_APPEAR_IN_STATS = 40;
 
@@ -41,7 +41,7 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
     coins.forEach((String c) {
       if (counter[c] == null) counter[c] = 0;
       setState(() {
-        counter[c]++;
+        counter[c] = counter[c]!+1;
       });
     });
   }
@@ -52,10 +52,10 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
 
   void _initCounter(item, attributeId) {
     String attribute = item[attributeId];
-    String key = attribute == "999" ? "6" : attribute;
-    if (counter[key] == null) counter[key] = 0;
+    String i = attribute == "999" ? "6" : attribute;
+    if (counter[i] == null) counter[i] = 0;
     setState(() {
-      counter[key]++;
+      counter[i] = counter[i]!+1;
     });
   }
 
@@ -66,7 +66,7 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
   void _initCounterContinent(String continent) {
     if (counter[continent] == null) counter[continent] = 0;
     setState(() {
-      counter[continent]++;
+      counter[continent]=counter[continent]!+1;
     });
   }
 
@@ -97,7 +97,7 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
                           return;
                         }
                         touchedIndex =
-                            pieTouchResponse.touchedSection.touchedSectionIndex;
+                            pieTouchResponse.touchedSection!.touchedSectionIndex;
                       });
                     }),
                     borderData: FlBorderData(
@@ -167,7 +167,7 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
     List<int> passedMinimumFailed = minimumThreshold[1];
     counter["other"] = 0;
     passedMinimumFailed.forEach((element) {
-      counter["other"] += getCounter(element.toString()).toInt();
+      counter["other"] = counter["other"] !+ getCounter(element.toString()).toInt();
     });
     bool hasOther = counter["other"] != 0;
 
@@ -218,14 +218,14 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
           widgetSize,
           color,
           variety.icon,
-          isTouched),
+          isTouched, key: new Key(variety.long.toString()),),
       badgePositionPercentageOffset: .98,
     );
   }
 
   PieChartSectionData pieChartOther() {
     return PieChartSectionData(
-        value: counter["other"].toDouble(),
+        value: counter["other"]!.toDouble(),
         color: Colors.grey,
         title: "Other",
         radius: 100,
@@ -275,7 +275,7 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
           .short
           .toLowerCase();
 
-    return counter[index] != null ? counter[index].toDouble() : 0.0;
+    return counter[index] != null ? counter[index]!.toDouble() : 0.0;
   }
 
   var _lastTab;
@@ -335,13 +335,13 @@ class PieChartCoinsState extends State with TickerProviderStateMixin {
 
 class _Badge extends StatelessWidget {
   final String text;
-  final IconData icon;
+  final IconData? icon;
   final double size;
   final Color color;
   final bool isTouched;
 
   const _Badge(this.text, this.size, this.color, this.icon, this.isTouched,
-      {Key key})
+      {required Key key})
       : super(key: key);
 
   @override
