@@ -38,7 +38,17 @@ class SearchRouterDelegate extends RouterDelegate<RouterPath>
         else if (search != null)
           AllMerchantsPage()*/
       ],
-      onPopPage: (route, result) {
+      onDidRemovePage: (page) {
+        if (!page.canPop) {
+          return;
+        }
+
+        // Update the list of pages by setting _selectedBook to null
+        search = null;
+        show404 = false;
+        notifyListeners();
+      }
+      /*onPopPage: (route, result) {
         if (!route.didPop(result)) {
           return false;
         }
@@ -49,7 +59,7 @@ class SearchRouterDelegate extends RouterDelegate<RouterPath>
         notifyListeners();
 
         return true;
-      },
+      }*/,
     );
   }
 
@@ -78,7 +88,7 @@ class SearchRouterDelegate extends RouterDelegate<RouterPath>
 }
 
 class AllMerchantsPage extends Page {
-  String? search;
+  final String? search;
 
   AllMerchantsPage({
     this.search,
@@ -90,9 +100,11 @@ class AllMerchantsPage extends Page {
       settings: this,
       builder: (BuildContext context) {
         if (search==null)
-          search = "";
-        return Phoenix(
-          child: CoinectorWidget(search!),
+          return Phoenix(
+              child: CoinectorWidget("")
+          );
+        else return Phoenix(
+          child: CoinectorWidget(search!)
         );
       },
     );

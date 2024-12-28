@@ -125,7 +125,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     AssetLoader.cachedAssets = Map();
     FileCache.memoryCache = Map();
     userPosition = null;
-    tabController!.dispose();
+
+    tabController.dispose();
     // hasUpdatedDistanceToMerchants = false;
     /*if (searchIconBlinkAnimationController != null)
       searchIconBlinkAnimationController.dispose();*/
@@ -907,6 +908,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       Translator.currentLocale(context);
     });*/
     return MaterialApp(
+
         builder: (context, widget) => ResponsiveBreakpoints.builder(
             child: widget!,
             breakpoints: [
@@ -922,8 +924,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
         ],
         supportedLocales: supportedLocales(),
         theme: buildTheme(),
-        home: new WillPopScope(
-          onWillPop: _onWillPop,
+        home: new PopScope(
+          canPop: true,
+          onPopInvokedWithResult: _onWillPop,
           child: Scaffold(
             key: _scaffoldKey,
             floatingActionButtonLocation:
@@ -932,6 +935,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
             body: new Builder(builder: (BuildContext ctx) {
               buildWithinScopeOfTranslator(ctx);
               appContent = NestedScrollView(
+
                 headerSliverBuilder:
                     (BuildContext buildCtx, bool innerBoxIsScrolled) {
                   return <Widget>[
@@ -1255,7 +1259,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   var lastMilliSeconds = 0;
 
-  Future<bool> _onWillPop() async {
+  Future<bool> _onWillPop(didpop, result) async {
     //User has to tap twice on the back button within one second to exit the app
     var milliSecondsNow = DateTime.now().millisecondsSinceEpoch;
     if (lastMilliSeconds != 0 && lastMilliSeconds + 1000 > milliSecondsNow) {

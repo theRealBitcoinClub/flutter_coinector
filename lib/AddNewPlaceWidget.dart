@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:math';
-import 'dart:typed_data';
 
 import 'package:Coinector/GithubCoinector.dart';
 import 'package:Coinector/GooglePlacesApiCoinector.dart';
