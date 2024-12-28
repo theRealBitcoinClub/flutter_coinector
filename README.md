@@ -14,7 +14,7 @@ Download:https://github.com/theRealBitcoinClub/flutter_coinector/releases
 
 ## Running Web App
 
-Web: https://coinector.app
+Web: https://coinector.web.app
 Development: https://coinector.codemagic.app
 
 ## Play Store & App Store
