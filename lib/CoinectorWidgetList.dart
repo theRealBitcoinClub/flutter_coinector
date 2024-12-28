@@ -43,6 +43,7 @@ import 'UrlLauncher.dart';
 
 const String urlApkDownload = "https://bmap.app/android";
 const bool isManagerModeRelease = false;
+const COINECTOR_URL="https://coinector.web.app";
 
 class CoinectorWidget extends StatefulWidget {
   final String search;
@@ -1585,11 +1586,11 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
     List<String> locationProviderUrl = [];
     locationProviderUrl.add(
         "https://api.ipgeolocation.io/ipgeo?apiKey=1eee688bf62d48979d54739f383d9364");
-    locationProviderUrl.add("https://coinector.app/geolocation");
+    locationProviderUrl.add(COINECTOR_URL + "/geolocation");
     locationProviderUrl.add("https://bmap.app/geolocation");
     locationProviderUrl.add("https://geolocation-db.com/json/index.html");
     locationProviderUrl.add("/geolocation");
-    locationProviderUrl.add("https://coinector.app/geolocation2");
+    locationProviderUrl.add(COINECTOR_URL + "/geolocation2");
     locationProviderUrl.add("https://bmap.app/geolocation2");
     locationProviderUrl.add("/geolocation2");
 

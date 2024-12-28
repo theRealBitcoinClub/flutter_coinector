@@ -13,6 +13,7 @@ import 'package:transparent_image/transparent_image.dart';
 
 import 'AddNewPlaceWidget.dart';
 import 'AssetLoader.dart';
+import 'CoinectorWidgetList.dart';
 import 'CustomBoxShadow.dart';
 import 'Dialogs.dart';
 import 'ItemInfoStackLayer.dart';
@@ -48,10 +49,7 @@ class CardItem extends StatelessWidget {
     required this.isWebMobile,
     this.selected= false,
     /*this.isDataSaveOfflineMode: false*/
-  })  : assert(animation != null),
-        assert(merchant != null),
-        assert(index != null),
-        super(key: key);
+  })  : super(key: key);
 
   TextButton buildSendEmailButton(BuildContext ctx) {
     return TextButton(
@@ -535,7 +533,7 @@ class CardItem extends StatelessWidget {
         pId: merchant.place!.placesId,
         selectedType: type,
         accentColor: MyColors.getTabColor(type)!,
-        actionBarColor: MyColors.getCardActionButtonBackgroundColor(type)!,
+        actionBarColor: MyColors.getCardActionButtonBackgroundColor(type),
         typeTitle: TabPages.pages.elementAt(type == 999 ? 6 : type).long,
         merchantBmapDataset: merchant,
       );
@@ -556,14 +554,14 @@ class CardItem extends StatelessWidget {
       ),
       onPressed: () {
         if (kIsWeb) {
-          UrlLauncher.launchURI("https://coinector.app/share.html?search=" +
+          UrlLauncher.launchURI(COINECTOR_URL + "/share.html?search=" +
               Uri.encodeComponent(merchant.name) +
               "&location=" +
               Uri.encodeComponent(merchant.location));
           return;
         }
         Share.share(
-            'https://coinector.app/#/' + Uri.encodeComponent(merchant.name),
+            COINECTOR_URL + '/#/' + Uri.encodeComponent(merchant.name),
             subject: 'Coinector - coinecting to coimunity...');
       },
     );

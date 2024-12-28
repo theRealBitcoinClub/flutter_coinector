@@ -6,6 +6,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'AssetLoader.dart';
+import 'CoinectorWidgetList.dart';
 
 const _kNotificationsPrefs = "initLastVersionKey";
 
@@ -37,7 +38,7 @@ class FileCache {
     var response;
     if ((response = await tryGet('https://bmap.app/updatecheck')) ==
         null) if ((response =
-            await tryGet('https://coinector.app/updatecheck')) ==
+            await tryGet(COINECTOR_URL + '/updatecheck')) ==
         null) if ((response = await tryGet('/updatecheck')) == null) {}
 
     if (response == null) return;
