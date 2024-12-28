@@ -41,6 +41,7 @@ import 'TagBrands.dart';
 import 'TagCoinector.dart';
 import 'UrlLauncher.dart';
 
+const String urlApkDownload = "https://bmap.app/android";
 const bool isManagerModeRelease = false;
 
 class CoinectorWidget extends StatefulWidget {
@@ -1151,7 +1152,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   void handleStatsButtonClick(ctx) async {
     if (kIsWeb)
-      UrlLauncher.launchURI("http://bmap.app/android");
+      UrlLauncher.launchURI(urlApkDownload);
     else
       Navigator.push(
         ctx,
