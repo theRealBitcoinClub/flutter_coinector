@@ -190,7 +190,7 @@ class CardItem extends StatelessWidget {
                 : jpgHeightWeb
         : isGif
             ? 228
-            : jpgHeightWeb - 40;
+            : jpgHeightWeb - 65;
     const double imgWidth = 640;
     return Stack(children: <Widget>[
       SizedBox(
