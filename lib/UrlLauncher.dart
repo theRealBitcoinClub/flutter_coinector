@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:Coinector/translator.dart';
 import 'package:flutter/foundation.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'AddNewPlaceWidget.dart';
@@ -96,8 +97,11 @@ class UrlLauncher {
     }
   }
 
-  static void launchBitcoinMap() {
-    launchURI("https://bitcoinmap.cash");
+  static void launchBitcoinMap(ctx) {
+    if (ResponsiveBreakpoints.of(ctx).isDesktop)
+      launchURI("https://bmap.app");
+    else
+      launchURI("https://bitcoinmap.cash");
   }
 
   static void launchQrCodeGeneratorUrl(

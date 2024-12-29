@@ -913,9 +913,8 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
             child: widget!,
             breakpoints: [
               const Breakpoint(start: 0, end: 450, name: MOBILE),
-              const Breakpoint(start: 451, end: 800, name: TABLET),
-              const Breakpoint(start: 801, end: 1920, name: DESKTOP),
-              const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+              const Breakpoint(start: 451, end: 1200, name: TABLET),
+              const Breakpoint(start: 1200, end: double.infinity, name: DESKTOP)
             ]),
         localizationsDelegates: [
           FlutterI18nDelegate(),
@@ -1126,7 +1125,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
 
   void handleMapButtonClick(ctx) async {
     if (kIsWeb)
-      UrlLauncher.launchBitcoinMap();
+      UrlLauncher.launchBitcoinMap(ctx);
     else {
       //InternetConnectivityChecker.pauseAutoChecker();
       Merchant ?result;
@@ -1143,7 +1142,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
                           ? 5.0
                           : 0.0)),
         );
-      } catch (e) {}
+      } catch (e) {
+        debugPrint("ERROR MAP" + e.toString());
+      }
       // _updateDistanceToAllMerchantsIfNotDoneYet();
       if (result != null) {
         showFilterResults(false, ctx, result.name);
@@ -1156,9 +1157,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   void handleStatsButtonClick(ctx) async {
-    if (kIsWeb)
-      UrlLauncher.launchURI(urlApkDownload);
-    else
+    // if (kIsWeb)
+    //   UrlLauncher.launchURI(urlApkDownload);
+    // else
       Navigator.push(
         ctx,
         MaterialPageRoute(builder: (buildCtx) => PieChartCoins()),
