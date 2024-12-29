@@ -8,7 +8,7 @@ class SearchRouterDelegate extends RouterDelegate<RouterPath>
     with ChangeNotifier, PopNavigatorRouterDelegateMixin<RouterPath> {
   final GlobalKey<NavigatorState> navigatorKey;
 
-  var search;
+  String search = "";
   bool show404 = false;
 
   SearchRouterDelegate() : navigatorKey = GlobalKey<NavigatorState>();
@@ -17,7 +17,7 @@ class SearchRouterDelegate extends RouterDelegate<RouterPath>
     if (show404) {
       return RouterPath.unknown();
     }
-    return search == null ? RouterPath.home() : RouterPath.filtered(search);
+    return search.isEmpty ? RouterPath.home() : RouterPath.filtered(search);
   }
 
   @override
@@ -44,7 +44,7 @@ class SearchRouterDelegate extends RouterDelegate<RouterPath>
         }
 
         // Update the list of pages by setting _selectedBook to null
-        search = null;
+        search = "";
         show404 = false;
         notifyListeners();
       }
@@ -67,7 +67,7 @@ class SearchRouterDelegate extends RouterDelegate<RouterPath>
   Future<void> setNewRoutePath(RouterPath path) async {
     print("START setNewRoutePath");
     if (path.isUnknown) {
-      search = null;
+      search = "";
       show404 = true;
       return;
     }
@@ -80,7 +80,7 @@ class SearchRouterDelegate extends RouterDelegate<RouterPath>
 
       search = path.search;
     } else {
-      search = null;
+      search = "";
     }
 
     show404 = false;
@@ -88,10 +88,10 @@ class SearchRouterDelegate extends RouterDelegate<RouterPath>
 }
 
 class AllMerchantsPage extends Page {
-  final String? search;
+  final String search;
 
   AllMerchantsPage({
-    this.search,
+    required this.search,
   }) : super(key: ValueKey(search));
 
   Route createRoute(BuildContext context) {
@@ -99,12 +99,8 @@ class AllMerchantsPage extends Page {
     return MaterialPageRoute(
       settings: this,
       builder: (BuildContext context) {
-        if (search==null)
-          return Phoenix(
-              child: CoinectorWidget("")
-          );
-        else return Phoenix(
-          child: CoinectorWidget(search!)
+        return Phoenix(
+          child: CoinectorWidget(search)
         );
       },
     );
