@@ -1124,9 +1124,9 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
   }
 
   void handleMapButtonClick(ctx) async {
-    if (kIsWeb)
-      UrlLauncher.launchBitcoinMap(ctx);
-    else {
+    // if (kIsWeb)
+    //   UrlLauncher.launchBitcoinMap(ctx);
+    // else {
       //InternetConnectivityChecker.pauseAutoChecker();
       Merchant ?result;
       try {
@@ -1153,7 +1153,7 @@ class _CoinectorWidgetState extends State<CoinectorWidget>
       } else {
         showUnfilteredLists(ctx);
       }
-    }
+    // }
   }
 
   void handleStatsButtonClick(ctx) async {
