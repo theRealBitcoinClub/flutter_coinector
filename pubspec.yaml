@@ -27,7 +27,7 @@ dependencies:
   #web_scraper: 0.1.4
   github: ^9.25.0
   hovering: ^1.0.4
-  firebase_core: ^3.15.1
+  firebase_core: ^3.15.2
   easy_refresh: ^3.4.0
   fluttertoast: ^8.2.12
   permission_handler: ^12.0.1
@@ -45,7 +45,7 @@ dependencies:
   smooth_star_rating_null_safety: ^1.0.4+2
   google_maps_flutter: ^2.12.3
   #google_maps_flutter_web: ^0.5.12+2
-  url_launcher: ^6.3.1
+  url_launcher: ^6.3.2
   flutter_i18n: ^0.36.3
   geolocator: ^14.0.2
   crypto: ^3.0.6
